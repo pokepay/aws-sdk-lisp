@@ -45,27 +45,72 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assertion-rule (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assertion-rule-"))
-   (asserted-controls (common-lisp:error ":asserted-controls is required")
-    :type
-    (common-lisp:or |__listOf__stringMin1Max256PatternAZaZ09|
-                    common-lisp:null))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (rule-config (common-lisp:error ":rule-config is required") :type
-    (common-lisp:or rule-config common-lisp:null))
-   (safety-rule-arn (common-lisp:error ":safety-rule-arn is required") :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or status common-lisp:null))
-   (wait-period-ms (common-lisp:error ":wait-period-ms is required") :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (owner common-lisp:nil :type
-    (common-lisp:or |__stringMin12Max12PatternD12| common-lisp:null)))
+ (common-lisp:defclass assertion-rule common-lisp:nil
+                       ((asserted-controls :initarg :asserted-controls
+                         :initform
+                         (common-lisp:error ":asserted-controls is required")
+                         :type
+                         (common-lisp:or
+                          |__listOf__stringMin1Max256PatternAZaZ09|
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-assertion-rule-asserted-controls :shape
+                         "__listOf__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assertion-rule-control-panel-arn :shape
+                         "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-assertion-rule-name :shape
+                         "__stringMin1Max64PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rule-config :initarg :rule-config :initform
+                         (common-lisp:error ":rule-config is required") :type
+                         (common-lisp:or rule-config common-lisp:null)
+                         :accessor struct-shape-assertion-rule-rule-config
+                         :shape "RuleConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (safety-rule-arn :initarg :safety-rule-arn :initform
+                         (common-lisp:error ":safety-rule-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor struct-shape-assertion-rule-safety-rule-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or status common-lisp:null) :accessor
+                         struct-shape-assertion-rule-status :shape "Status"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (wait-period-ms :initarg :wait-period-ms :initform
+                         (common-lisp:error ":wait-period-ms is required")
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor struct-shape-assertion-rule-wait-period-ms
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner :initarg :owner :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin12Max12PatternD12|
+                                         common-lisp:null)
+                         :accessor struct-shape-assertion-rule-owner :shape
+                         "__stringMin12Max12PatternD12" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assertion-rule
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'assertion-rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'assertion-rule 'make-assertion-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input assertion-rule))
@@ -133,15 +178,35 @@
                         ((aws-sdk/generator/shape::input assertion-rule))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assertion-rule-update (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assertion-rule-update-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (safety-rule-arn (common-lisp:error ":safety-rule-arn is required") :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (wait-period-ms (common-lisp:error ":wait-period-ms is required") :type
-    (common-lisp:or |__integer| common-lisp:null)))
+ (common-lisp:defclass assertion-rule-update common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-assertion-rule-update-name
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (safety-rule-arn :initarg :safety-rule-arn :initform
+                         (common-lisp:error ":safety-rule-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assertion-rule-update-safety-rule-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (wait-period-ms :initarg :wait-period-ms :initform
+                         (common-lisp:error ":wait-period-ms is required")
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-assertion-rule-update-wait-period-ms
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assertion-rule-update
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'assertion-rule-update
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assertion-rule-update 'make-assertion-rule-update))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -181,17 +246,43 @@
                           assertion-rule-update))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster (:copier common-lisp:nil) (:conc-name "struct-shape-cluster-"))
-   (cluster-arn common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (cluster-endpoints common-lisp:nil :type
-    (common-lisp:or |__listOfClusterEndpoint| common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (status common-lisp:nil :type (common-lisp:or status common-lisp:null))
-   (owner common-lisp:nil :type
-    (common-lisp:or |__stringMin12Max12PatternD12| common-lisp:null)))
+ (common-lisp:defclass cluster common-lisp:nil
+                       ((cluster-arn :initarg :cluster-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor struct-shape-cluster-cluster-arn :shape
+                         "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-endpoints :initarg :cluster-endpoints
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__listOfClusterEndpoint|
+                                         common-lisp:null)
+                         :accessor struct-shape-cluster-cluster-endpoints
+                         :shape "__listOfClusterEndpoint" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-cluster-name :shape
+                         "__stringMin1Max64PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or status common-lisp:null)
+                         :accessor struct-shape-cluster-status :shape "Status"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (owner :initarg :owner :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin12Max12PatternD12|
+                                         common-lisp:null)
+                         :accessor struct-shape-cluster-owner :shape
+                         "__stringMin12Max12PatternD12" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cluster
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cluster
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'cluster 'make-cluster))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input cluster))
@@ -238,13 +329,26 @@
                         ((aws-sdk/generator/shape::input cluster))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cluster-endpoint (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cluster-endpoint-"))
-   (endpoint common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max128PatternAZaZ09| common-lisp:null))
-   (region common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max32PatternS| common-lisp:null)))
+ (common-lisp:defclass cluster-endpoint common-lisp:nil
+                       ((endpoint :initarg :endpoint :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__stringMin1Max128PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor struct-shape-cluster-endpoint-endpoint
+                         :shape "__stringMin1Max128PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (region :initarg :region :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__stringMin1Max32PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-cluster-endpoint-region :shape
+                         "__stringMin1Max32PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cluster-endpoint
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cluster-endpoint
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cluster-endpoint 'make-cluster-endpoint))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -278,22 +382,57 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (control-panel (:copier common-lisp:nil)
-      (:conc-name "struct-shape-control-panel-"))
-   (cluster-arn common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (control-panel-arn common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (default-control-panel common-lisp:nil :type
-    (common-lisp:or |__boolean| common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (routing-control-count common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (status common-lisp:nil :type (common-lisp:or status common-lisp:null))
-   (owner common-lisp:nil :type
-    (common-lisp:or |__stringMin12Max12PatternD12| common-lisp:null)))
+ (common-lisp:defclass control-panel common-lisp:nil
+                       ((cluster-arn :initarg :cluster-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor struct-shape-control-panel-cluster-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (control-panel-arn :initarg :control-panel-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor struct-shape-control-panel-control-panel-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-control-panel :initarg :default-control-panel
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor
+                         struct-shape-control-panel-default-control-panel
+                         :shape "__boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-control-panel-name :shape
+                         "__stringMin1Max64PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (routing-control-count :initarg :routing-control-count
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-control-panel-routing-control-count
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or status common-lisp:null)
+                         :accessor struct-shape-control-panel-status :shape
+                         "Status" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (owner :initarg :owner :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin12Max12PatternD12|
+                                         common-lisp:null)
+                         :accessor struct-shape-control-panel-owner :shape
+                         "__stringMin12Max12PatternD12" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-control-panel
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'control-panel
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'control-panel 'make-control-panel))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input control-panel))
@@ -356,15 +495,34 @@
                         ((aws-sdk/generator/shape::input control-panel))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-cluster-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-cluster-request-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (cluster-name (common-lisp:error ":cluster-name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or |__mapOf__stringMin0Max256PatternS| common-lisp:null)))
+ (common-lisp:defclass create-cluster-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-cluster-request-client-token
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":cluster-name is required") :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-cluster-request-cluster-name
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or |__mapOf__stringMin0Max256PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-create-cluster-request-tags
+                         :shape "__mapOf__stringMin0Max256PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-cluster-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-cluster-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-cluster-request 'make-create-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -404,10 +562,17 @@
                           create-cluster-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-cluster-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-cluster-response-"))
-   (cluster common-lisp:nil :type (common-lisp:or cluster common-lisp:null)))
+ (common-lisp:defclass create-cluster-response common-lisp:nil
+                       ((cluster :initarg :cluster :initform common-lisp:nil
+                         :type (common-lisp:or cluster common-lisp:null)
+                         :accessor struct-shape-create-cluster-response-cluster
+                         :shape "Cluster" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-cluster-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-cluster-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-cluster-response 'make-create-cluster-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -433,17 +598,45 @@
                           create-cluster-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-control-panel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-control-panel-request-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (cluster-arn (common-lisp:error ":cluster-arn is required") :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (control-panel-name (common-lisp:error ":control-panel-name is required")
-    :type (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or |__mapOf__stringMin0Max256PatternS| common-lisp:null)))
+ (common-lisp:defclass create-control-panel-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-control-panel-request-client-token
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-arn :initarg :cluster-arn :initform
+                         (common-lisp:error ":cluster-arn is required") :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-control-panel-request-cluster-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (control-panel-name :initarg :control-panel-name
+                         :initform
+                         (common-lisp:error ":control-panel-name is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-control-panel-request-control-panel-name
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or |__mapOf__stringMin0Max256PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-control-panel-request-tags :shape
+                         "__mapOf__stringMin0Max256PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-control-panel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-control-panel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-control-panel-request
                     'make-create-control-panel-request))
@@ -491,11 +684,20 @@
                           create-control-panel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-control-panel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-control-panel-response-"))
-   (control-panel common-lisp:nil :type
-    (common-lisp:or control-panel common-lisp:null)))
+ (common-lisp:defclass create-control-panel-response common-lisp:nil
+                       ((control-panel :initarg :control-panel :initform
+                         common-lisp:nil :type
+                         (common-lisp:or control-panel common-lisp:null)
+                         :accessor
+                         struct-shape-create-control-panel-response-control-panel
+                         :shape "ControlPanel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-control-panel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-control-panel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-control-panel-response
                     'make-create-control-panel-response))
@@ -522,18 +724,48 @@
                           create-control-panel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-routing-control-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-routing-control-request-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (cluster-arn (common-lisp:error ":cluster-arn is required") :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (control-panel-arn common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (routing-control-name
-    (common-lisp:error ":routing-control-name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null)))
+ (common-lisp:defclass create-routing-control-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-routing-control-request-client-token
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-arn :initarg :cluster-arn :initform
+                         (common-lisp:error ":cluster-arn is required") :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-routing-control-request-cluster-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (control-panel-arn :initarg :control-panel-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-routing-control-request-control-panel-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (routing-control-name :initarg :routing-control-name
+                         :initform
+                         (common-lisp:error
+                          ":routing-control-name is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-routing-control-request-routing-control-name
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-routing-control-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-routing-control-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-routing-control-request
                     'make-create-routing-control-request))
@@ -582,11 +814,20 @@
                           create-routing-control-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-routing-control-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-routing-control-response-"))
-   (routing-control common-lisp:nil :type
-    (common-lisp:or routing-control common-lisp:null)))
+ (common-lisp:defclass create-routing-control-response common-lisp:nil
+                       ((routing-control :initarg :routing-control :initform
+                         common-lisp:nil :type
+                         (common-lisp:or routing-control common-lisp:null)
+                         :accessor
+                         struct-shape-create-routing-control-response-routing-control
+                         :shape "RoutingControl" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-routing-control-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-routing-control-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-routing-control-response
                     'make-create-routing-control-response))
@@ -613,17 +854,40 @@
                           create-routing-control-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-safety-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-safety-rule-request-"))
-   (assertion-rule common-lisp:nil :type
-    (common-lisp:or new-assertion-rule common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (gating-rule common-lisp:nil :type
-    (common-lisp:or new-gating-rule common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or |__mapOf__stringMin0Max256PatternS| common-lisp:null)))
+ (common-lisp:defclass create-safety-rule-request common-lisp:nil
+                       ((assertion-rule :initarg :assertion-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or new-assertion-rule common-lisp:null)
+                         :accessor
+                         struct-shape-create-safety-rule-request-assertion-rule
+                         :shape "NewAssertionRule" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-safety-rule-request-client-token
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (gating-rule :initarg :gating-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or new-gating-rule common-lisp:null)
+                         :accessor
+                         struct-shape-create-safety-rule-request-gating-rule
+                         :shape "NewGatingRule" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or |__mapOf__stringMin0Max256PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-create-safety-rule-request-tags
+                         :shape "__mapOf__stringMin0Max256PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-safety-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-safety-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-safety-rule-request
                     'make-create-safety-rule-request))
@@ -671,13 +935,26 @@
                           create-safety-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-safety-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-safety-rule-response-"))
-   (assertion-rule common-lisp:nil :type
-    (common-lisp:or assertion-rule common-lisp:null))
-   (gating-rule common-lisp:nil :type
-    (common-lisp:or gating-rule common-lisp:null)))
+ (common-lisp:defclass create-safety-rule-response common-lisp:nil
+                       ((assertion-rule :initarg :assertion-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or assertion-rule common-lisp:null)
+                         :accessor
+                         struct-shape-create-safety-rule-response-assertion-rule
+                         :shape "AssertionRule" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (gating-rule :initarg :gating-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or gating-rule common-lisp:null)
+                         :accessor
+                         struct-shape-create-safety-rule-response-gating-rule
+                         :shape "GatingRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-safety-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-safety-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-safety-rule-response
                     'make-create-safety-rule-response))
@@ -711,11 +988,18 @@
                           create-safety-rule-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-cluster-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-cluster-request-"))
-   (cluster-arn (common-lisp:error ":cluster-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-cluster-request common-lisp:nil
+                       ((cluster-arn :initarg :cluster-arn :initform
+                         (common-lisp:error ":cluster-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-delete-cluster-request-cluster-arn :shape
+                         "__string" :location "uri" :location-name
+                         "ClusterArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-cluster-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-cluster-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-cluster-request 'make-delete-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -734,9 +1018,12 @@
                           delete-cluster-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-cluster-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-cluster-response-")))
+ (common-lisp:defclass delete-cluster-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-cluster-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-cluster-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-cluster-response 'make-delete-cluster-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -755,11 +1042,20 @@
                           delete-cluster-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-control-panel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-control-panel-request-"))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-control-panel-request common-lisp:nil
+                       ((control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-delete-control-panel-request-control-panel-arn
+                         :shape "__string" :location "uri" :location-name
+                         "ControlPanelArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-control-panel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-control-panel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-control-panel-request
                     'make-delete-control-panel-request))
@@ -779,9 +1075,14 @@
                           delete-control-panel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-control-panel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-control-panel-response-")))
+ (common-lisp:defclass delete-control-panel-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-control-panel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-control-panel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-control-panel-response
                     'make-delete-control-panel-response))
@@ -801,11 +1102,21 @@
                           delete-control-panel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-routing-control-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-routing-control-request-"))
-   (routing-control-arn (common-lisp:error ":routing-control-arn is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-routing-control-request common-lisp:nil
+                       ((routing-control-arn :initarg :routing-control-arn
+                         :initform
+                         (common-lisp:error ":routing-control-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-delete-routing-control-request-routing-control-arn
+                         :shape "__string" :location "uri" :location-name
+                         "RoutingControlArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-routing-control-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-routing-control-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-routing-control-request
                     'make-delete-routing-control-request))
@@ -825,9 +1136,14 @@
                           delete-routing-control-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-routing-control-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-routing-control-response-")))
+ (common-lisp:defclass delete-routing-control-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-routing-control-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-routing-control-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-routing-control-response
                     'make-delete-routing-control-response))
@@ -847,11 +1163,19 @@
                           delete-routing-control-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-safety-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-safety-rule-request-"))
-   (safety-rule-arn (common-lisp:error ":safety-rule-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-safety-rule-request common-lisp:nil
+                       ((safety-rule-arn :initarg :safety-rule-arn :initform
+                         (common-lisp:error ":safety-rule-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-delete-safety-rule-request-safety-rule-arn
+                         :shape "__string" :location "uri" :location-name
+                         "SafetyRuleArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-safety-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-safety-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-safety-rule-request
                     'make-delete-safety-rule-request))
@@ -871,9 +1195,13 @@
                           delete-safety-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-safety-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-safety-rule-response-")))
+ (common-lisp:defclass delete-safety-rule-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-safety-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-safety-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-safety-rule-response
                     'make-delete-safety-rule-response))
@@ -893,11 +1221,18 @@
                           delete-safety-rule-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-cluster-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-cluster-request-"))
-   (cluster-arn (common-lisp:error ":cluster-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass describe-cluster-request common-lisp:nil
+                       ((cluster-arn :initarg :cluster-arn :initform
+                         (common-lisp:error ":cluster-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-cluster-request-cluster-arn
+                         :shape "__string" :location "uri" :location-name
+                         "ClusterArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-cluster-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-cluster-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-cluster-request 'make-describe-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -916,10 +1251,18 @@
                           describe-cluster-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-cluster-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-cluster-response-"))
-   (cluster common-lisp:nil :type (common-lisp:or cluster common-lisp:null)))
+ (common-lisp:defclass describe-cluster-response common-lisp:nil
+                       ((cluster :initarg :cluster :initform common-lisp:nil
+                         :type (common-lisp:or cluster common-lisp:null)
+                         :accessor
+                         struct-shape-describe-cluster-response-cluster :shape
+                         "Cluster" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-cluster-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-cluster-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-cluster-response
                     'make-describe-cluster-response))
@@ -946,11 +1289,21 @@
                           describe-cluster-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-control-panel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-control-panel-request-"))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass describe-control-panel-request common-lisp:nil
+                       ((control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-describe-control-panel-request-control-panel-arn
+                         :shape "__string" :location "uri" :location-name
+                         "ControlPanelArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-control-panel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-control-panel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-control-panel-request
                     'make-describe-control-panel-request))
@@ -970,11 +1323,20 @@
                           describe-control-panel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-control-panel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-control-panel-response-"))
-   (control-panel common-lisp:nil :type
-    (common-lisp:or control-panel common-lisp:null)))
+ (common-lisp:defclass describe-control-panel-response common-lisp:nil
+                       ((control-panel :initarg :control-panel :initform
+                         common-lisp:nil :type
+                         (common-lisp:or control-panel common-lisp:null)
+                         :accessor
+                         struct-shape-describe-control-panel-response-control-panel
+                         :shape "ControlPanel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-control-panel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-control-panel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-control-panel-response
                     'make-describe-control-panel-response))
@@ -1001,11 +1363,21 @@
                           describe-control-panel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-routing-control-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-routing-control-request-"))
-   (routing-control-arn (common-lisp:error ":routing-control-arn is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass describe-routing-control-request common-lisp:nil
+                       ((routing-control-arn :initarg :routing-control-arn
+                         :initform
+                         (common-lisp:error ":routing-control-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-describe-routing-control-request-routing-control-arn
+                         :shape "__string" :location "uri" :location-name
+                         "RoutingControlArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-routing-control-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-routing-control-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-routing-control-request
                     'make-describe-routing-control-request))
@@ -1025,11 +1397,20 @@
                           describe-routing-control-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-routing-control-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-routing-control-response-"))
-   (routing-control common-lisp:nil :type
-    (common-lisp:or routing-control common-lisp:null)))
+ (common-lisp:defclass describe-routing-control-response common-lisp:nil
+                       ((routing-control :initarg :routing-control :initform
+                         common-lisp:nil :type
+                         (common-lisp:or routing-control common-lisp:null)
+                         :accessor
+                         struct-shape-describe-routing-control-response-routing-control
+                         :shape "RoutingControl" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-routing-control-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-routing-control-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-routing-control-response
                     'make-describe-routing-control-response))
@@ -1056,11 +1437,19 @@
                           describe-routing-control-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-safety-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-safety-rule-request-"))
-   (safety-rule-arn (common-lisp:error ":safety-rule-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass describe-safety-rule-request common-lisp:nil
+                       ((safety-rule-arn :initarg :safety-rule-arn :initform
+                         (common-lisp:error ":safety-rule-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-describe-safety-rule-request-safety-rule-arn
+                         :shape "__string" :location "uri" :location-name
+                         "SafetyRuleArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-safety-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-safety-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-safety-rule-request
                     'make-describe-safety-rule-request))
@@ -1080,13 +1469,27 @@
                           describe-safety-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-safety-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-safety-rule-response-"))
-   (assertion-rule common-lisp:nil :type
-    (common-lisp:or assertion-rule common-lisp:null))
-   (gating-rule common-lisp:nil :type
-    (common-lisp:or gating-rule common-lisp:null)))
+ (common-lisp:defclass describe-safety-rule-response common-lisp:nil
+                       ((assertion-rule :initarg :assertion-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or assertion-rule common-lisp:null)
+                         :accessor
+                         struct-shape-describe-safety-rule-response-assertion-rule
+                         :shape "AssertionRule" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (gating-rule :initarg :gating-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or gating-rule common-lisp:null)
+                         :accessor
+                         struct-shape-describe-safety-rule-response-gating-rule
+                         :shape "GatingRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-safety-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-safety-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-safety-rule-response
                     'make-describe-safety-rule-response))
@@ -1120,29 +1523,80 @@
                           describe-safety-rule-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (gating-rule (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gating-rule-"))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (gating-controls (common-lisp:error ":gating-controls is required") :type
-    (common-lisp:or |__listOf__stringMin1Max256PatternAZaZ09|
-                    common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (rule-config (common-lisp:error ":rule-config is required") :type
-    (common-lisp:or rule-config common-lisp:null))
-   (safety-rule-arn (common-lisp:error ":safety-rule-arn is required") :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or status common-lisp:null))
-   (target-controls (common-lisp:error ":target-controls is required") :type
-    (common-lisp:or |__listOf__stringMin1Max256PatternAZaZ09|
-                    common-lisp:null))
-   (wait-period-ms (common-lisp:error ":wait-period-ms is required") :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (owner common-lisp:nil :type
-    (common-lisp:or |__stringMin12Max12PatternD12| common-lisp:null)))
+ (common-lisp:defclass gating-rule common-lisp:nil
+                       ((control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor struct-shape-gating-rule-control-panel-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (gating-controls :initarg :gating-controls :initform
+                         (common-lisp:error ":gating-controls is required")
+                         :type
+                         (common-lisp:or
+                          |__listOf__stringMin1Max256PatternAZaZ09|
+                          common-lisp:null)
+                         :accessor struct-shape-gating-rule-gating-controls
+                         :shape "__listOf__stringMin1Max256PatternAZaZ09"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-gating-rule-name :shape
+                         "__stringMin1Max64PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rule-config :initarg :rule-config :initform
+                         (common-lisp:error ":rule-config is required") :type
+                         (common-lisp:or rule-config common-lisp:null)
+                         :accessor struct-shape-gating-rule-rule-config :shape
+                         "RuleConfig" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (safety-rule-arn :initarg :safety-rule-arn :initform
+                         (common-lisp:error ":safety-rule-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor struct-shape-gating-rule-safety-rule-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or status common-lisp:null) :accessor
+                         struct-shape-gating-rule-status :shape "Status"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (target-controls :initarg :target-controls :initform
+                         (common-lisp:error ":target-controls is required")
+                         :type
+                         (common-lisp:or
+                          |__listOf__stringMin1Max256PatternAZaZ09|
+                          common-lisp:null)
+                         :accessor struct-shape-gating-rule-target-controls
+                         :shape "__listOf__stringMin1Max256PatternAZaZ09"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (wait-period-ms :initarg :wait-period-ms :initform
+                         (common-lisp:error ":wait-period-ms is required")
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor struct-shape-gating-rule-wait-period-ms
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner :initarg :owner :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin12Max12PatternD12|
+                                         common-lisp:null)
+                         :accessor struct-shape-gating-rule-owner :shape
+                         "__stringMin12Max12PatternD12" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gating-rule
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'gating-rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'gating-rule 'make-gating-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input gating-rule))
@@ -1217,15 +1671,35 @@
                         ((aws-sdk/generator/shape::input gating-rule))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (gating-rule-update (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gating-rule-update-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (safety-rule-arn (common-lisp:error ":safety-rule-arn is required") :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (wait-period-ms (common-lisp:error ":wait-period-ms is required") :type
-    (common-lisp:or |__integer| common-lisp:null)))
+ (common-lisp:defclass gating-rule-update common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-gating-rule-update-name :shape
+                         "__stringMin1Max64PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (safety-rule-arn :initarg :safety-rule-arn :initform
+                         (common-lisp:error ":safety-rule-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-gating-rule-update-safety-rule-arn :shape
+                         "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (wait-period-ms :initarg :wait-period-ms :initform
+                         (common-lisp:error ":wait-period-ms is required")
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-gating-rule-update-wait-period-ms :shape
+                         "__integer" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gating-rule-update
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'gating-rule-update
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gating-rule-update 'make-gating-rule-update))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1259,11 +1733,18 @@
                         ((aws-sdk/generator/shape::input gating-rule-update))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resource-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resource-policy-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-resource-policy-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-resource-policy-request-resource-arn
+                         :shape "__string" :location "uri" :location-name
+                         "ResourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resource-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resource-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resource-policy-request
                     'make-get-resource-policy-request))
@@ -1283,10 +1764,18 @@
                           get-resource-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resource-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resource-policy-response-"))
-   (policy common-lisp:nil :type (common-lisp:or |__policy| common-lisp:null)))
+ (common-lisp:defclass get-resource-policy-response common-lisp:nil
+                       ((policy :initarg :policy :initform common-lisp:nil
+                         :type (common-lisp:or |__policy| common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-policy-response-policy
+                         :shape "__policy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resource-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resource-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resource-policy-response
                     'make-get-resource-policy-response))
@@ -1321,16 +1810,35 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-associated-route53health-checks-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-associated-route53health-checks-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (routing-control-arn (common-lisp:error ":routing-control-arn is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-associated-route53health-checks-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-associated-route53health-checks-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "MaxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-associated-route53health-checks-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "NextToken")
+                        (routing-control-arn :initarg :routing-control-arn
+                         :initform
+                         (common-lisp:error ":routing-control-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-list-associated-route53health-checks-request-routing-control-arn
+                         :shape "__string" :location "uri" :location-name
+                         "RoutingControlArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-associated-route53health-checks-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-associated-route53health-checks-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-associated-route53health-checks-request
                     'make-list-associated-route53health-checks-request))
@@ -1350,14 +1858,30 @@
                           list-associated-route53health-checks-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-associated-route53health-checks-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-associated-route53health-checks-response-"))
-   (health-check-ids common-lisp:nil :type
-    (common-lisp:or |__listOf__stringMax36PatternS| common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max8096PatternS| common-lisp:null)))
+ (common-lisp:defclass list-associated-route53health-checks-response
+                       common-lisp:nil
+                       ((health-check-ids :initarg :health-check-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOf__stringMax36PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-associated-route53health-checks-response-health-check-ids
+                         :shape "__listOf__stringMax36PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max8096PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-associated-route53health-checks-response-next-token
+                         :shape "__stringMin1Max8096PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-associated-route53health-checks-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-associated-route53health-checks-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-associated-route53health-checks-response
                     'make-list-associated-route53health-checks-response))
@@ -1391,13 +1915,25 @@
                           list-associated-route53health-checks-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-clusters-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-clusters-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-clusters-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-clusters-request-max-results :shape
+                         "MaxResults" :location "querystring" :location-name
+                         "MaxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-clusters-request-next-token :shape
+                         "__string" :location "querystring" :location-name
+                         "NextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-clusters-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-clusters-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-clusters-request 'make-list-clusters-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1416,13 +1952,26 @@
                           list-clusters-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-clusters-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-clusters-response-"))
-   (clusters common-lisp:nil :type
-    (common-lisp:or |__listOfCluster| common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max8096PatternS| common-lisp:null)))
+ (common-lisp:defclass list-clusters-response common-lisp:nil
+                       ((clusters :initarg :clusters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOfCluster| common-lisp:null)
+                         :accessor struct-shape-list-clusters-response-clusters
+                         :shape "__listOfCluster" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max8096PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-clusters-response-next-token :shape
+                         "__stringMin1Max8096PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-clusters-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-clusters-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-clusters-response 'make-list-clusters-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1455,15 +2004,31 @@
                           list-clusters-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-control-panels-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-control-panels-request-"))
-   (cluster-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-control-panels-request common-lisp:nil
+                       ((cluster-arn :initarg :cluster-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-control-panels-request-cluster-arn
+                         :shape "__string" :location "querystring"
+                         :location-name "ClusterArn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-control-panels-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "MaxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-control-panels-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "NextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-control-panels-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-control-panels-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-control-panels-request
                     'make-list-control-panels-request))
@@ -1483,13 +2048,28 @@
                           list-control-panels-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-control-panels-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-control-panels-response-"))
-   (control-panels common-lisp:nil :type
-    (common-lisp:or |__listOfControlPanel| common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max8096PatternS| common-lisp:null)))
+ (common-lisp:defclass list-control-panels-response common-lisp:nil
+                       ((control-panels :initarg :control-panels :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfControlPanel|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-control-panels-response-control-panels
+                         :shape "__listOfControlPanel" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max8096PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-control-panels-response-next-token
+                         :shape "__stringMin1Max8096PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-control-panels-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-control-panels-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-control-panels-response
                     'make-list-control-panels-response))
@@ -1523,15 +2103,34 @@
                           list-control-panels-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-routing-controls-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-routing-controls-request-"))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-routing-controls-request common-lisp:nil
+                       ((control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-list-routing-controls-request-control-panel-arn
+                         :shape "__string" :location "uri" :location-name
+                         "ControlPanelArn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-routing-controls-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "MaxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-routing-controls-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "NextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-routing-controls-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-routing-controls-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-routing-controls-request
                     'make-list-routing-controls-request))
@@ -1551,13 +2150,29 @@
                           list-routing-controls-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-routing-controls-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-routing-controls-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max8096PatternS| common-lisp:null))
-   (routing-controls common-lisp:nil :type
-    (common-lisp:or |__listOfRoutingControl| common-lisp:null)))
+ (common-lisp:defclass list-routing-controls-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max8096PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-routing-controls-response-next-token
+                         :shape "__stringMin1Max8096PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (routing-controls :initarg :routing-controls :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfRoutingControl|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-routing-controls-response-routing-controls
+                         :shape "__listOfRoutingControl" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-routing-controls-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-routing-controls-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-routing-controls-response
                     'make-list-routing-controls-response))
@@ -1591,15 +2206,33 @@
                           list-routing-controls-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-safety-rules-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-safety-rules-request-"))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-safety-rules-request common-lisp:nil
+                       ((control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-list-safety-rules-request-control-panel-arn
+                         :shape "__string" :location "uri" :location-name
+                         "ControlPanelArn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-safety-rules-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "MaxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-safety-rules-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "NextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-safety-rules-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-safety-rules-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-safety-rules-request
                     'make-list-safety-rules-request))
@@ -1619,13 +2252,27 @@
                           list-safety-rules-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-safety-rules-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-safety-rules-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max8096PatternS| common-lisp:null))
-   (safety-rules common-lisp:nil :type
-    (common-lisp:or |__listOfRule| common-lisp:null)))
+ (common-lisp:defclass list-safety-rules-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max8096PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-safety-rules-response-next-token
+                         :shape "__stringMin1Max8096PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (safety-rules :initarg :safety-rules :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfRule| common-lisp:null)
+                         :accessor
+                         struct-shape-list-safety-rules-response-safety-rules
+                         :shape "__listOfRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-safety-rules-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-safety-rules-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-safety-rules-response
                     'make-list-safety-rules-response))
@@ -1659,11 +2306,19 @@
                           list-safety-rules-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "__string" :location "uri" :location-name
+                         "ResourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -1683,11 +2338,20 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type
-    (common-lisp:or |__mapOf__stringMin0Max256PatternS| common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or |__mapOf__stringMin0Max256PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "__mapOf__stringMin0Max256PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -1715,21 +2379,54 @@
    common-lisp:nil))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (new-assertion-rule (:copier common-lisp:nil)
-      (:conc-name "struct-shape-new-assertion-rule-"))
-   (asserted-controls (common-lisp:error ":asserted-controls is required")
-    :type
-    (common-lisp:or |__listOf__stringMin1Max256PatternAZaZ09|
-                    common-lisp:null))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (rule-config (common-lisp:error ":rule-config is required") :type
-    (common-lisp:or rule-config common-lisp:null))
-   (wait-period-ms (common-lisp:error ":wait-period-ms is required") :type
-    (common-lisp:or |__integer| common-lisp:null)))
+ (common-lisp:defclass new-assertion-rule common-lisp:nil
+                       ((asserted-controls :initarg :asserted-controls
+                         :initform
+                         (common-lisp:error ":asserted-controls is required")
+                         :type
+                         (common-lisp:or
+                          |__listOf__stringMin1Max256PatternAZaZ09|
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-new-assertion-rule-asserted-controls
+                         :shape "__listOf__stringMin1Max256PatternAZaZ09"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-new-assertion-rule-control-panel-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-new-assertion-rule-name :shape
+                         "__stringMin1Max64PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rule-config :initarg :rule-config :initform
+                         (common-lisp:error ":rule-config is required") :type
+                         (common-lisp:or rule-config common-lisp:null)
+                         :accessor struct-shape-new-assertion-rule-rule-config
+                         :shape "RuleConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (wait-period-ms :initarg :wait-period-ms :initform
+                         (common-lisp:error ":wait-period-ms is required")
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-new-assertion-rule-wait-period-ms :shape
+                         "__integer" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-new-assertion-rule
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'new-assertion-rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'new-assertion-rule 'make-new-assertion-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1777,23 +2474,61 @@
                         ((aws-sdk/generator/shape::input new-assertion-rule))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (new-gating-rule (:copier common-lisp:nil)
-      (:conc-name "struct-shape-new-gating-rule-"))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (gating-controls (common-lisp:error ":gating-controls is required") :type
-    (common-lisp:or |__listOf__stringMin1Max256PatternAZaZ09|
-                    common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (rule-config (common-lisp:error ":rule-config is required") :type
-    (common-lisp:or rule-config common-lisp:null))
-   (target-controls (common-lisp:error ":target-controls is required") :type
-    (common-lisp:or |__listOf__stringMin1Max256PatternAZaZ09|
-                    common-lisp:null))
-   (wait-period-ms (common-lisp:error ":wait-period-ms is required") :type
-    (common-lisp:or |__integer| common-lisp:null)))
+ (common-lisp:defclass new-gating-rule common-lisp:nil
+                       ((control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-new-gating-rule-control-panel-arn :shape
+                         "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (gating-controls :initarg :gating-controls :initform
+                         (common-lisp:error ":gating-controls is required")
+                         :type
+                         (common-lisp:or
+                          |__listOf__stringMin1Max256PatternAZaZ09|
+                          common-lisp:null)
+                         :accessor struct-shape-new-gating-rule-gating-controls
+                         :shape "__listOf__stringMin1Max256PatternAZaZ09"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-new-gating-rule-name :shape
+                         "__stringMin1Max64PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rule-config :initarg :rule-config :initform
+                         (common-lisp:error ":rule-config is required") :type
+                         (common-lisp:or rule-config common-lisp:null)
+                         :accessor struct-shape-new-gating-rule-rule-config
+                         :shape "RuleConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-controls :initarg :target-controls :initform
+                         (common-lisp:error ":target-controls is required")
+                         :type
+                         (common-lisp:or
+                          |__listOf__stringMin1Max256PatternAZaZ09|
+                          common-lisp:null)
+                         :accessor struct-shape-new-gating-rule-target-controls
+                         :shape "__listOf__stringMin1Max256PatternAZaZ09"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (wait-period-ms :initarg :wait-period-ms :initform
+                         (common-lisp:error ":wait-period-ms is required")
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor struct-shape-new-gating-rule-wait-period-ms
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-new-gating-rule
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'new-gating-rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'new-gating-rule 'make-new-gating-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input new-gating-rule))
@@ -1855,18 +2590,45 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (routing-control (:copier common-lisp:nil)
-      (:conc-name "struct-shape-routing-control-"))
-   (control-panel-arn common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null))
-   (routing-control-arn common-lisp:nil :type
-    (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (status common-lisp:nil :type (common-lisp:or status common-lisp:null))
-   (owner common-lisp:nil :type
-    (common-lisp:or |__stringMin12Max12PatternD12| common-lisp:null)))
+ (common-lisp:defclass routing-control common-lisp:nil
+                       ((control-panel-arn :initarg :control-panel-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-routing-control-control-panel-arn :shape
+                         "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-routing-control-name :shape
+                         "__stringMin1Max64PatternS" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (routing-control-arn :initarg :routing-control-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-routing-control-routing-control-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or status common-lisp:null)
+                         :accessor struct-shape-routing-control-status :shape
+                         "Status" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (owner :initarg :owner :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMin12Max12PatternD12|
+                                         common-lisp:null)
+                         :accessor struct-shape-routing-control-owner :shape
+                         "__stringMin12Max12PatternD12" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-routing-control
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'routing-control
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'routing-control 'make-routing-control))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input routing-control))
@@ -1913,12 +2675,22 @@
                         ((aws-sdk/generator/shape::input routing-control))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rule (:copier common-lisp:nil) (:conc-name "struct-shape-rule-"))
-   (assertion common-lisp:nil :type
-    (common-lisp:or assertion-rule common-lisp:null))
-   (gating common-lisp:nil :type
-    (common-lisp:or gating-rule common-lisp:null)))
+ (common-lisp:defclass rule common-lisp:nil
+                       ((assertion :initarg :assertion :initform
+                         common-lisp:nil :type
+                         (common-lisp:or assertion-rule common-lisp:null)
+                         :accessor struct-shape-rule-assertion :shape
+                         "AssertionRule" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (gating :initarg :gating :initform common-lisp:nil
+                         :type (common-lisp:or gating-rule common-lisp:null)
+                         :accessor struct-shape-rule-gating :shape "GatingRule"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rule (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'rule 'make-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input rule))
@@ -1944,15 +2716,30 @@
                         ((aws-sdk/generator/shape::input rule))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rule-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rule-config-"))
-   (inverted (common-lisp:error ":inverted is required") :type
-    (common-lisp:or |__boolean| common-lisp:null))
-   (threshold (common-lisp:error ":threshold is required") :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or rule-type common-lisp:null)))
+ (common-lisp:defclass rule-config common-lisp:nil
+                       ((inverted :initarg :inverted :initform
+                         (common-lisp:error ":inverted is required") :type
+                         (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor struct-shape-rule-config-inverted :shape
+                         "__boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (threshold :initarg :threshold :initform
+                         (common-lisp:error ":threshold is required") :type
+                         (common-lisp:or |__integer| common-lisp:null)
+                         :accessor struct-shape-rule-config-threshold :shape
+                         "__integer" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or rule-type common-lisp:null) :accessor
+                         struct-shape-rule-config-type :shape "RuleType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rule-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rule-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'rule-config 'make-rule-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input rule-config))
@@ -1995,13 +2782,25 @@
                     'service-quota-exceeded-exception-message)))
 (common-lisp:deftype status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or |__mapOf__stringMin0Max256PatternS| common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "__string" :location "uri" :location-name
+                         "ResourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or |__mapOf__stringMin0Max256PatternS|
+                                         common-lisp:null)
+                         :accessor struct-shape-tag-resource-request-tags
+                         :shape "__mapOf__stringMin0Max256PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2021,9 +2820,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2049,13 +2851,24 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "__string" :location "uri" :location-name
+                         "ResourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "__listOf__string" :location "querystring"
+                         :location-name "TagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2074,9 +2887,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2095,13 +2911,32 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-control-panel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-control-panel-request-"))
-   (control-panel-arn (common-lisp:error ":control-panel-arn is required")
-    :type (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (control-panel-name (common-lisp:error ":control-panel-name is required")
-    :type (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null)))
+ (common-lisp:defclass update-control-panel-request common-lisp:nil
+                       ((control-panel-arn :initarg :control-panel-arn
+                         :initform
+                         (common-lisp:error ":control-panel-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-control-panel-request-control-panel-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (control-panel-name :initarg :control-panel-name
+                         :initform
+                         (common-lisp:error ":control-panel-name is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-control-panel-request-control-panel-name
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-control-panel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-control-panel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-control-panel-request
                     'make-update-control-panel-request))
@@ -2135,11 +2970,20 @@
                           update-control-panel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-control-panel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-control-panel-response-"))
-   (control-panel common-lisp:nil :type
-    (common-lisp:or control-panel common-lisp:null)))
+ (common-lisp:defclass update-control-panel-response common-lisp:nil
+                       ((control-panel :initarg :control-panel :initform
+                         common-lisp:nil :type
+                         (common-lisp:or control-panel common-lisp:null)
+                         :accessor
+                         struct-shape-update-control-panel-response-control-panel
+                         :shape "ControlPanel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-control-panel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-control-panel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-control-panel-response
                     'make-update-control-panel-response))
@@ -2166,14 +3010,34 @@
                           update-control-panel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-routing-control-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-routing-control-request-"))
-   (routing-control-arn (common-lisp:error ":routing-control-arn is required")
-    :type (common-lisp:or |__stringMin1Max256PatternAZaZ09| common-lisp:null))
-   (routing-control-name
-    (common-lisp:error ":routing-control-name is required") :type
-    (common-lisp:or |__stringMin1Max64PatternS| common-lisp:null)))
+ (common-lisp:defclass update-routing-control-request common-lisp:nil
+                       ((routing-control-arn :initarg :routing-control-arn
+                         :initform
+                         (common-lisp:error ":routing-control-arn is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max256PatternAZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-routing-control-request-routing-control-arn
+                         :shape "__stringMin1Max256PatternAZaZ09" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (routing-control-name :initarg :routing-control-name
+                         :initform
+                         (common-lisp:error
+                          ":routing-control-name is required")
+                         :type
+                         (common-lisp:or |__stringMin1Max64PatternS|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-routing-control-request-routing-control-name
+                         :shape "__stringMin1Max64PatternS" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-routing-control-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-routing-control-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-routing-control-request
                     'make-update-routing-control-request))
@@ -2208,11 +3072,20 @@
                           update-routing-control-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-routing-control-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-routing-control-response-"))
-   (routing-control common-lisp:nil :type
-    (common-lisp:or routing-control common-lisp:null)))
+ (common-lisp:defclass update-routing-control-response common-lisp:nil
+                       ((routing-control :initarg :routing-control :initform
+                         common-lisp:nil :type
+                         (common-lisp:or routing-control common-lisp:null)
+                         :accessor
+                         struct-shape-update-routing-control-response-routing-control
+                         :shape "RoutingControl" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-routing-control-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-routing-control-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-routing-control-response
                     'make-update-routing-control-response))
@@ -2239,13 +3112,27 @@
                           update-routing-control-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-safety-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-safety-rule-request-"))
-   (assertion-rule-update common-lisp:nil :type
-    (common-lisp:or assertion-rule-update common-lisp:null))
-   (gating-rule-update common-lisp:nil :type
-    (common-lisp:or gating-rule-update common-lisp:null)))
+ (common-lisp:defclass update-safety-rule-request common-lisp:nil
+                       ((assertion-rule-update :initarg :assertion-rule-update
+                         :initform common-lisp:nil :type
+                         (common-lisp:or assertion-rule-update
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-safety-rule-request-assertion-rule-update
+                         :shape "AssertionRuleUpdate" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (gating-rule-update :initarg :gating-rule-update
+                         :initform common-lisp:nil :type
+                         (common-lisp:or gating-rule-update common-lisp:null)
+                         :accessor
+                         struct-shape-update-safety-rule-request-gating-rule-update
+                         :shape "GatingRuleUpdate" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-safety-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-safety-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-safety-rule-request
                     'make-update-safety-rule-request))
@@ -2280,13 +3167,26 @@
                           update-safety-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-safety-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-safety-rule-response-"))
-   (assertion-rule common-lisp:nil :type
-    (common-lisp:or assertion-rule common-lisp:null))
-   (gating-rule common-lisp:nil :type
-    (common-lisp:or gating-rule common-lisp:null)))
+ (common-lisp:defclass update-safety-rule-response common-lisp:nil
+                       ((assertion-rule :initarg :assertion-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or assertion-rule common-lisp:null)
+                         :accessor
+                         struct-shape-update-safety-rule-response-assertion-rule
+                         :shape "AssertionRule" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (gating-rule :initarg :gating-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or gating-rule common-lisp:null)
+                         :accessor
+                         struct-shape-update-safety-rule-response-gating-rule
+                         :shape "GatingRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-safety-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-safety-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-safety-rule-response
                     'make-update-safety-rule-response))

@@ -36,12 +36,23 @@
 (common-lisp:deftype attribute-name () 'common-lisp:string)
 (common-lisp:deftype attribute-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (data-point (:copier common-lisp:nil)
-      (:conc-name "struct-shape-data-point-"))
-   (timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass data-point common-lisp:nil
+                       ((timestamp :initarg :timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-data-point-timestamp :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-data-point-value :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-data-point
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'data-point
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'data-point 'make-data-point))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input data-point))
@@ -77,10 +88,18 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (forecast (:copier common-lisp:nil) (:conc-name "struct-shape-forecast-"))
-   (predictions common-lisp:nil :type
-    (common-lisp:or predictions common-lisp:null)))
+ (common-lisp:defclass forecast common-lisp:nil
+                       ((predictions :initarg :predictions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or predictions common-lisp:null)
+                         :accessor struct-shape-forecast-predictions :shape
+                         "Predictions" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-forecast
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'forecast
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'forecast 'make-forecast))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input forecast))
@@ -131,18 +150,41 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (query-forecast-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-query-forecast-request-"))
-   (forecast-arn (common-lisp:error ":forecast-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (start-date common-lisp:nil :type
-    (common-lisp:or date-time common-lisp:null))
-   (end-date common-lisp:nil :type (common-lisp:or date-time common-lisp:null))
-   (filters (common-lisp:error ":filters is required") :type
-    (common-lisp:or filters common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass query-forecast-request common-lisp:nil
+                       ((forecast-arn :initarg :forecast-arn :initform
+                         (common-lisp:error ":forecast-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-query-forecast-request-forecast-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-date :initarg :start-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-time common-lisp:null) :accessor
+                         struct-shape-query-forecast-request-start-date :shape
+                         "DateTime" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-date :initarg :end-date :initform common-lisp:nil
+                         :type (common-lisp:or date-time common-lisp:null)
+                         :accessor struct-shape-query-forecast-request-end-date
+                         :shape "DateTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform
+                         (common-lisp:error ":filters is required") :type
+                         (common-lisp:or filters common-lisp:null) :accessor
+                         struct-shape-query-forecast-request-filters :shape
+                         "Filters" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-query-forecast-request-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-query-forecast-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'query-forecast-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'query-forecast-request 'make-query-forecast-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -196,10 +238,18 @@
                           query-forecast-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (query-forecast-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-query-forecast-response-"))
-   (forecast common-lisp:nil :type (common-lisp:or forecast common-lisp:null)))
+ (common-lisp:defclass query-forecast-response common-lisp:nil
+                       ((forecast :initarg :forecast :initform common-lisp:nil
+                         :type (common-lisp:or forecast common-lisp:null)
+                         :accessor
+                         struct-shape-query-forecast-response-forecast :shape
+                         "Forecast" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-query-forecast-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'query-forecast-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'query-forecast-response 'make-query-forecast-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -225,19 +275,46 @@
                           query-forecast-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (query-what-if-forecast-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-query-what-if-forecast-request-"))
-   (what-if-forecast-arn
-    (common-lisp:error ":what-if-forecast-arn is required") :type
-    (common-lisp:or long-arn common-lisp:null))
-   (start-date common-lisp:nil :type
-    (common-lisp:or date-time common-lisp:null))
-   (end-date common-lisp:nil :type (common-lisp:or date-time common-lisp:null))
-   (filters (common-lisp:error ":filters is required") :type
-    (common-lisp:or filters common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass query-what-if-forecast-request common-lisp:nil
+                       ((what-if-forecast-arn :initarg :what-if-forecast-arn
+                         :initform
+                         (common-lisp:error
+                          ":what-if-forecast-arn is required")
+                         :type (common-lisp:or long-arn common-lisp:null)
+                         :accessor
+                         struct-shape-query-what-if-forecast-request-what-if-forecast-arn
+                         :shape "LongArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-date :initarg :start-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-time common-lisp:null) :accessor
+                         struct-shape-query-what-if-forecast-request-start-date
+                         :shape "DateTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-date :initarg :end-date :initform common-lisp:nil
+                         :type (common-lisp:or date-time common-lisp:null)
+                         :accessor
+                         struct-shape-query-what-if-forecast-request-end-date
+                         :shape "DateTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform
+                         (common-lisp:error ":filters is required") :type
+                         (common-lisp:or filters common-lisp:null) :accessor
+                         struct-shape-query-what-if-forecast-request-filters
+                         :shape "Filters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-query-what-if-forecast-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-query-what-if-forecast-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'query-what-if-forecast-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'query-what-if-forecast-request
                     'make-query-what-if-forecast-request))
@@ -293,10 +370,19 @@
                           query-what-if-forecast-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (query-what-if-forecast-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-query-what-if-forecast-response-"))
-   (forecast common-lisp:nil :type (common-lisp:or forecast common-lisp:null)))
+ (common-lisp:defclass query-what-if-forecast-response common-lisp:nil
+                       ((forecast :initarg :forecast :initform common-lisp:nil
+                         :type (common-lisp:or forecast common-lisp:null)
+                         :accessor
+                         struct-shape-query-what-if-forecast-response-forecast
+                         :shape "Forecast" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-query-what-if-forecast-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'query-what-if-forecast-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'query-what-if-forecast-response
                     'make-query-what-if-forecast-response))

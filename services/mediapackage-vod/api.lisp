@@ -36,23 +36,58 @@
     ("UnprocessableEntityException" . unprocessable-entity-exception)))
 (common-lisp:deftype ad-markers () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (asset (:copier common-lisp:nil) (:conc-name "struct-shape-asset-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (egress-endpoints common-lisp:nil :type
-    (common-lisp:or |__listOfEgressEndpoint| common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-role-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass asset common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-arn :shape "__string" :location
+                         common-lisp:nil :location-name "arn")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-created-at :shape "__string"
+                         :location common-lisp:nil :location-name "createdAt")
+                        (egress-endpoints :initarg :egress-endpoints :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfEgressEndpoint|
+                                         common-lisp:null)
+                         :accessor struct-shape-asset-egress-endpoints :shape
+                         "__listOfEgressEndpoint" :location common-lisp:nil
+                         :location-name "egressEndpoints")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-id :shape "__string" :location
+                         common-lisp:nil :location-name "id")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-packaging-group-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "packagingGroupId")
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-resource-id :shape "__string"
+                         :location common-lisp:nil :location-name "resourceId")
+                        (source-arn :initarg :source-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-source-arn :shape "__string"
+                         :location common-lisp:nil :location-name "sourceArn")
+                        (source-role-arn :initarg :source-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-source-role-arn :shape "__string"
+                         :location common-lisp:nil :location-name
+                         "sourceRoleArn")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-asset-tags :shape "Tags" :location
+                         common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-asset
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'asset
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'asset 'make-asset))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input asset))
@@ -127,20 +162,50 @@
                         ((aws-sdk/generator/shape::input asset))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (asset-create-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-asset-create-parameters-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (packaging-group-id (common-lisp:error ":packaging-group-id is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-arn (common-lisp:error ":source-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-role-arn (common-lisp:error ":source-role-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass asset-create-parameters common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-create-parameters-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "id")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform
+                         (common-lisp:error ":packaging-group-id is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-asset-create-parameters-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-create-parameters-resource-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "resourceId")
+                        (source-arn :initarg :source-arn :initform
+                         (common-lisp:error ":source-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-create-parameters-source-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "sourceArn")
+                        (source-role-arn :initarg :source-role-arn :initform
+                         (common-lisp:error ":source-role-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-asset-create-parameters-source-role-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "sourceRoleArn")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-asset-create-parameters-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-asset-create-parameters
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'asset-create-parameters
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'asset-create-parameters 'make-asset-create-parameters))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -201,13 +266,24 @@
                           asset-create-parameters))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (asset-list (:copier common-lisp:nil)
-      (:conc-name "struct-shape-asset-list-"))
-   (assets common-lisp:nil :type
-    (common-lisp:or |__listOfAssetShallow| common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass asset-list common-lisp:nil
+                       ((assets :initarg :assets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOfAssetShallow|
+                                         common-lisp:null)
+                         :accessor struct-shape-asset-list-assets :shape
+                         "__listOfAssetShallow" :location common-lisp:nil
+                         :location-name "assets")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-list-next-token :shape "__string"
+                         :location common-lisp:nil :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-asset-list
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'asset-list
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'asset-list 'make-asset-list))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input asset-list))
@@ -233,22 +309,54 @@
                         ((aws-sdk/generator/shape::input asset-list))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (asset-shallow (:copier common-lisp:nil)
-      (:conc-name "struct-shape-asset-shallow-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-role-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass asset-shallow common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-shallow-arn :shape "__string"
+                         :location common-lisp:nil :location-name "arn")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-shallow-created-at :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "createdAt")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-shallow-id :shape "__string"
+                         :location common-lisp:nil :location-name "id")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-shallow-packaging-group-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "packagingGroupId")
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-shallow-resource-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "resourceId")
+                        (source-arn :initarg :source-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-shallow-source-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "sourceArn")
+                        (source-role-arn :initarg :source-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-asset-shallow-source-role-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "sourceRoleArn")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-asset-shallow-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-asset-shallow
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'asset-shallow
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'asset-shallow 'make-asset-shallow))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input asset-shallow))
@@ -316,14 +424,27 @@
                         ((aws-sdk/generator/shape::input asset-shallow))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (authorization (:copier common-lisp:nil)
-      (:conc-name "struct-shape-authorization-"))
-   (cdn-identifier-secret
-    (common-lisp:error ":cdn-identifier-secret is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (secrets-role-arn (common-lisp:error ":secrets-role-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass authorization common-lisp:nil
+                       ((cdn-identifier-secret :initarg :cdn-identifier-secret
+                         :initform
+                         (common-lisp:error
+                          ":cdn-identifier-secret is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-authorization-cdn-identifier-secret
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "cdnIdentifierSecret")
+                        (secrets-role-arn :initarg :secrets-role-arn :initform
+                         (common-lisp:error ":secrets-role-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor struct-shape-authorization-secrets-role-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "secretsRoleArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-authorization
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'authorization
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'authorization 'make-authorization))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input authorization))
@@ -350,13 +471,28 @@
                         ((aws-sdk/generator/shape::input authorization))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cmaf-encryption (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cmaf-encryption-"))
-   (constant-initialization-vector common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (speke-key-provider (common-lisp:error ":speke-key-provider is required")
-    :type (common-lisp:or speke-key-provider common-lisp:null)))
+ (common-lisp:defclass cmaf-encryption common-lisp:nil
+                       ((constant-initialization-vector :initarg
+                         :constant-initialization-vector :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-cmaf-encryption-constant-initialization-vector
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "constantInitializationVector")
+                        (speke-key-provider :initarg :speke-key-provider
+                         :initform
+                         (common-lisp:error ":speke-key-provider is required")
+                         :type
+                         (common-lisp:or speke-key-provider common-lisp:null)
+                         :accessor
+                         struct-shape-cmaf-encryption-speke-key-provider :shape
+                         "SpekeKeyProvider" :location common-lisp:nil
+                         :location-name "spekeKeyProvider"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cmaf-encryption
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cmaf-encryption
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'cmaf-encryption 'make-cmaf-encryption))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input cmaf-encryption))
@@ -383,17 +519,41 @@
                         ((aws-sdk/generator/shape::input cmaf-encryption))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cmaf-package (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cmaf-package-"))
-   (encryption common-lisp:nil :type
-    (common-lisp:or cmaf-encryption common-lisp:null))
-   (hls-manifests (common-lisp:error ":hls-manifests is required") :type
-    (common-lisp:or |__listOfHlsManifest| common-lisp:null))
-   (include-encoder-configuration-in-segments common-lisp:nil :type
-    (common-lisp:or |__boolean| common-lisp:null))
-   (segment-duration-seconds common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null)))
+ (common-lisp:defclass cmaf-package common-lisp:nil
+                       ((encryption :initarg :encryption :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cmaf-encryption common-lisp:null)
+                         :accessor struct-shape-cmaf-package-encryption :shape
+                         "CmafEncryption" :location common-lisp:nil
+                         :location-name "encryption")
+                        (hls-manifests :initarg :hls-manifests :initform
+                         (common-lisp:error ":hls-manifests is required") :type
+                         (common-lisp:or |__listOfHlsManifest|
+                                         common-lisp:null)
+                         :accessor struct-shape-cmaf-package-hls-manifests
+                         :shape "__listOfHlsManifest" :location common-lisp:nil
+                         :location-name "hlsManifests")
+                        (include-encoder-configuration-in-segments :initarg
+                         :include-encoder-configuration-in-segments :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor
+                         struct-shape-cmaf-package-include-encoder-configuration-in-segments
+                         :shape "__boolean" :location common-lisp:nil
+                         :location-name
+                         "includeEncoderConfigurationInSegments")
+                        (segment-duration-seconds :initarg
+                         :segment-duration-seconds :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-cmaf-package-segment-duration-seconds
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "segmentDurationSeconds"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cmaf-package
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cmaf-package
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'cmaf-package 'make-cmaf-package))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input cmaf-package))
@@ -435,11 +595,19 @@
                         ((aws-sdk/generator/shape::input cmaf-package))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configure-logs-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configure-logs-parameters-"))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null)))
+ (common-lisp:defclass configure-logs-parameters common-lisp:nil
+                       ((egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-configure-logs-parameters-egress-access-logs
+                         :shape "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configure-logs-parameters
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'configure-logs-parameters
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configure-logs-parameters
                     'make-configure-logs-parameters))
@@ -466,13 +634,24 @@
                           configure-logs-parameters))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configure-logs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configure-logs-request-"))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass configure-logs-request common-lisp:nil
+                       ((egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-configure-logs-request-egress-access-logs
+                         :shape "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs")
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-configure-logs-request-id :shape
+                         "__string" :location "uri" :location-name "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configure-logs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'configure-logs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configure-logs-request 'make-configure-logs-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -498,20 +677,53 @@
                           configure-logs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configure-logs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configure-logs-response-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass configure-logs-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-configure-logs-response-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "arn")
+                        (authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor
+                         struct-shape-configure-logs-response-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-configure-logs-response-created-at :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "createdAt")
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-configure-logs-response-domain-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "domainName")
+                        (egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-configure-logs-response-egress-access-logs
+                         :shape "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-configure-logs-response-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "id")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-configure-logs-response-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configure-logs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'configure-logs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configure-logs-response 'make-configure-logs-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -579,20 +791,48 @@
                           configure-logs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-asset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-asset-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (packaging-group-id (common-lisp:error ":packaging-group-id is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-arn (common-lisp:error ":source-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-role-arn (common-lisp:error ":source-role-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-asset-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-request-id :shape "__string"
+                         :location common-lisp:nil :location-name "id")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform
+                         (common-lisp:error ":packaging-group-id is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-asset-request-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-request-resource-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "resourceId")
+                        (source-arn :initarg :source-arn :initform
+                         (common-lisp:error ":source-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-request-source-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "sourceArn")
+                        (source-role-arn :initarg :source-role-arn :initform
+                         (common-lisp:error ":source-role-arn is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-asset-request-source-role-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "sourceRoleArn")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-asset-request-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-asset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-asset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-asset-request 'make-create-asset-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -647,24 +887,64 @@
                         ((aws-sdk/generator/shape::input create-asset-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-asset-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-asset-response-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (egress-endpoints common-lisp:nil :type
-    (common-lisp:or |__listOfEgressEndpoint| common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-role-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-asset-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-response-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "arn")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-response-created-at :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "createdAt")
+                        (egress-endpoints :initarg :egress-endpoints :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfEgressEndpoint|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-asset-response-egress-endpoints
+                         :shape "__listOfEgressEndpoint" :location
+                         common-lisp:nil :location-name "egressEndpoints")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-response-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "id")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-response-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-response-resource-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "resourceId")
+                        (source-arn :initarg :source-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-response-source-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "sourceArn")
+                        (source-role-arn :initarg :source-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-asset-response-source-role-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "sourceRoleArn")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-asset-response-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-asset-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-asset-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-asset-response 'make-create-asset-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -746,22 +1026,60 @@
                           create-asset-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-packaging-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-packaging-configuration-request-"))
-   (cmaf-package common-lisp:nil :type
-    (common-lisp:or cmaf-package common-lisp:null))
-   (dash-package common-lisp:nil :type
-    (common-lisp:or dash-package common-lisp:null))
-   (hls-package common-lisp:nil :type
-    (common-lisp:or hls-package common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (mss-package common-lisp:nil :type
-    (common-lisp:or mss-package common-lisp:null))
-   (packaging-group-id (common-lisp:error ":packaging-group-id is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-packaging-configuration-request common-lisp:nil
+                       ((cmaf-package :initarg :cmaf-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cmaf-package common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-request-cmaf-package
+                         :shape "CmafPackage" :location common-lisp:nil
+                         :location-name "cmafPackage")
+                        (dash-package :initarg :dash-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dash-package common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-request-dash-package
+                         :shape "DashPackage" :location common-lisp:nil
+                         :location-name "dashPackage")
+                        (hls-package :initarg :hls-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hls-package common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-request-hls-package
+                         :shape "HlsPackage" :location common-lisp:nil
+                         :location-name "hlsPackage")
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-configuration-request-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "id")
+                        (mss-package :initarg :mss-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mss-package common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-request-mss-package
+                         :shape "MssPackage" :location common-lisp:nil
+                         :location-name "mssPackage")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform
+                         (common-lisp:error ":packaging-group-id is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-request-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-packaging-configuration-request-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-packaging-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-packaging-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-packaging-configuration-request
                     'make-create-packaging-configuration-request))
@@ -830,24 +1148,68 @@
                           create-packaging-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-packaging-configuration-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-packaging-configuration-response-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (cmaf-package common-lisp:nil :type
-    (common-lisp:or cmaf-package common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (dash-package common-lisp:nil :type
-    (common-lisp:or dash-package common-lisp:null))
-   (hls-package common-lisp:nil :type
-    (common-lisp:or hls-package common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (mss-package common-lisp:nil :type
-    (common-lisp:or mss-package common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-packaging-configuration-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-configuration-response-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "arn")
+                        (cmaf-package :initarg :cmaf-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cmaf-package common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-response-cmaf-package
+                         :shape "CmafPackage" :location common-lisp:nil
+                         :location-name "cmafPackage")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-configuration-response-created-at
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "createdAt")
+                        (dash-package :initarg :dash-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dash-package common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-response-dash-package
+                         :shape "DashPackage" :location common-lisp:nil
+                         :location-name "dashPackage")
+                        (hls-package :initarg :hls-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hls-package common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-response-hls-package
+                         :shape "HlsPackage" :location common-lisp:nil
+                         :location-name "hlsPackage")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-configuration-response-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "id")
+                        (mss-package :initarg :mss-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mss-package common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-configuration-response-mss-package
+                         :shape "MssPackage" :location common-lisp:nil
+                         :location-name "mssPackage")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-configuration-response-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-packaging-configuration-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-packaging-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-packaging-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-packaging-configuration-response
                     'make-create-packaging-configuration-response))
@@ -930,16 +1292,38 @@
                           create-packaging-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-packaging-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-packaging-group-request-"))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-packaging-group-request common-lisp:nil
+                       ((authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-group-request-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization")
+                        (egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-group-request-egress-access-logs
+                         :shape "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs")
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-group-request-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "id")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-packaging-group-request-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-packaging-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-packaging-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-packaging-group-request
                     'make-create-packaging-group-request))
@@ -987,20 +1371,54 @@
                           create-packaging-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-packaging-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-packaging-group-response-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-packaging-group-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-group-response-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "arn")
+                        (authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-group-response-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-group-response-created-at
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "createdAt")
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-group-response-domain-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "domainName")
+                        (egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-create-packaging-group-response-egress-access-logs
+                         :shape "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-packaging-group-response-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "id")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-packaging-group-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-packaging-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-packaging-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-packaging-group-response
                     'make-create-packaging-group-response))
@@ -1069,11 +1487,21 @@
                           create-packaging-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dash-encryption (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dash-encryption-"))
-   (speke-key-provider (common-lisp:error ":speke-key-provider is required")
-    :type (common-lisp:or speke-key-provider common-lisp:null)))
+ (common-lisp:defclass dash-encryption common-lisp:nil
+                       ((speke-key-provider :initarg :speke-key-provider
+                         :initform
+                         (common-lisp:error ":speke-key-provider is required")
+                         :type
+                         (common-lisp:or speke-key-provider common-lisp:null)
+                         :accessor
+                         struct-shape-dash-encryption-speke-key-provider :shape
+                         "SpekeKeyProvider" :location common-lisp:nil
+                         :location-name "spekeKeyProvider"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dash-encryption
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dash-encryption
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'dash-encryption 'make-dash-encryption))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input dash-encryption))
@@ -1092,20 +1520,49 @@
                         ((aws-sdk/generator/shape::input dash-encryption))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dash-manifest (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dash-manifest-"))
-   (manifest-layout common-lisp:nil :type
-    (common-lisp:or manifest-layout common-lisp:null))
-   (manifest-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (min-buffer-time-seconds common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (profile common-lisp:nil :type (common-lisp:or profile common-lisp:null))
-   (scte-markers-source common-lisp:nil :type
-    (common-lisp:or scte-markers-source common-lisp:null))
-   (stream-selection common-lisp:nil :type
-    (common-lisp:or stream-selection common-lisp:null)))
+ (common-lisp:defclass dash-manifest common-lisp:nil
+                       ((manifest-layout :initarg :manifest-layout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or manifest-layout common-lisp:null)
+                         :accessor struct-shape-dash-manifest-manifest-layout
+                         :shape "ManifestLayout" :location common-lisp:nil
+                         :location-name "manifestLayout")
+                        (manifest-name :initarg :manifest-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-dash-manifest-manifest-name :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "manifestName")
+                        (min-buffer-time-seconds :initarg
+                         :min-buffer-time-seconds :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-dash-manifest-min-buffer-time-seconds
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "minBufferTimeSeconds")
+                        (profile :initarg :profile :initform common-lisp:nil
+                         :type (common-lisp:or profile common-lisp:null)
+                         :accessor struct-shape-dash-manifest-profile :shape
+                         "Profile" :location common-lisp:nil :location-name
+                         "profile")
+                        (scte-markers-source :initarg :scte-markers-source
+                         :initform common-lisp:nil :type
+                         (common-lisp:or scte-markers-source common-lisp:null)
+                         :accessor
+                         struct-shape-dash-manifest-scte-markers-source :shape
+                         "ScteMarkersSource" :location common-lisp:nil
+                         :location-name "scteMarkersSource")
+                        (stream-selection :initarg :stream-selection :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-selection common-lisp:null)
+                         :accessor struct-shape-dash-manifest-stream-selection
+                         :shape "StreamSelection" :location common-lisp:nil
+                         :location-name "streamSelection"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dash-manifest
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dash-manifest
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'dash-manifest 'make-dash-manifest))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input dash-manifest))
@@ -1160,23 +1617,66 @@
                         ((aws-sdk/generator/shape::input dash-manifest))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dash-package (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dash-package-"))
-   (dash-manifests (common-lisp:error ":dash-manifests is required") :type
-    (common-lisp:or |__listOfDashManifest| common-lisp:null))
-   (encryption common-lisp:nil :type
-    (common-lisp:or dash-encryption common-lisp:null))
-   (include-encoder-configuration-in-segments common-lisp:nil :type
-    (common-lisp:or |__boolean| common-lisp:null))
-   (include-iframe-only-stream common-lisp:nil :type
-    (common-lisp:or |__boolean| common-lisp:null))
-   (period-triggers common-lisp:nil :type
-    (common-lisp:or |__listOf__PeriodTriggersElement| common-lisp:null))
-   (segment-duration-seconds common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (segment-template-format common-lisp:nil :type
-    (common-lisp:or segment-template-format common-lisp:null)))
+ (common-lisp:defclass dash-package common-lisp:nil
+                       ((dash-manifests :initarg :dash-manifests :initform
+                         (common-lisp:error ":dash-manifests is required")
+                         :type
+                         (common-lisp:or |__listOfDashManifest|
+                                         common-lisp:null)
+                         :accessor struct-shape-dash-package-dash-manifests
+                         :shape "__listOfDashManifest" :location
+                         common-lisp:nil :location-name "dashManifests")
+                        (encryption :initarg :encryption :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dash-encryption common-lisp:null)
+                         :accessor struct-shape-dash-package-encryption :shape
+                         "DashEncryption" :location common-lisp:nil
+                         :location-name "encryption")
+                        (include-encoder-configuration-in-segments :initarg
+                         :include-encoder-configuration-in-segments :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor
+                         struct-shape-dash-package-include-encoder-configuration-in-segments
+                         :shape "__boolean" :location common-lisp:nil
+                         :location-name
+                         "includeEncoderConfigurationInSegments")
+                        (include-iframe-only-stream :initarg
+                         :include-iframe-only-stream :initform common-lisp:nil
+                         :type (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor
+                         struct-shape-dash-package-include-iframe-only-stream
+                         :shape "__boolean" :location common-lisp:nil
+                         :location-name "includeIframeOnlyStream")
+                        (period-triggers :initarg :period-triggers :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOf__PeriodTriggersElement|
+                                         common-lisp:null)
+                         :accessor struct-shape-dash-package-period-triggers
+                         :shape "__listOf__PeriodTriggersElement" :location
+                         common-lisp:nil :location-name "periodTriggers")
+                        (segment-duration-seconds :initarg
+                         :segment-duration-seconds :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-dash-package-segment-duration-seconds
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "segmentDurationSeconds")
+                        (segment-template-format :initarg
+                         :segment-template-format :initform common-lisp:nil
+                         :type
+                         (common-lisp:or segment-template-format
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dash-package-segment-template-format
+                         :shape "SegmentTemplateFormat" :location
+                         common-lisp:nil :location-name
+                         "segmentTemplateFormat"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dash-package
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dash-package
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'dash-package 'make-dash-package))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input dash-package))
@@ -1241,11 +1741,17 @@
                         ((aws-sdk/generator/shape::input dash-package))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-asset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-asset-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-asset-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-delete-asset-request-id :shape "__string"
+                         :location "uri" :location-name "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-asset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-asset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-asset-request 'make-delete-asset-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1258,9 +1764,12 @@
                         ((aws-sdk/generator/shape::input delete-asset-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-asset-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-asset-response-")))
+ (common-lisp:defclass delete-asset-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-asset-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-asset-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-asset-response 'make-delete-asset-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1279,11 +1788,19 @@
                           delete-asset-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-packaging-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-packaging-configuration-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-packaging-configuration-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-delete-packaging-configuration-request-id
+                         :shape "__string" :location "uri" :location-name
+                         "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-packaging-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-packaging-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-packaging-configuration-request
                     'make-delete-packaging-configuration-request))
@@ -1303,9 +1820,14 @@
                           delete-packaging-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-packaging-configuration-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-packaging-configuration-response-")))
+ (common-lisp:defclass delete-packaging-configuration-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-packaging-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-packaging-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-packaging-configuration-response
                     'make-delete-packaging-configuration-response))
@@ -1325,11 +1847,18 @@
                           delete-packaging-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-packaging-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-packaging-group-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-packaging-group-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-delete-packaging-group-request-id :shape
+                         "__string" :location "uri" :location-name "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-packaging-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-packaging-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-packaging-group-request
                     'make-delete-packaging-group-request))
@@ -1349,9 +1878,14 @@
                           delete-packaging-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-packaging-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-packaging-group-response-")))
+ (common-lisp:defclass delete-packaging-group-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-packaging-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-packaging-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-packaging-group-response
                     'make-delete-packaging-group-response))
@@ -1371,11 +1905,17 @@
                           delete-packaging-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-asset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-asset-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass describe-asset-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-asset-request-id :shape
+                         "__string" :location "uri" :location-name "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-asset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-asset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-asset-request 'make-describe-asset-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1394,24 +1934,65 @@
                           describe-asset-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-asset-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-asset-response-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (egress-endpoints common-lisp:nil :type
-    (common-lisp:or |__listOfEgressEndpoint| common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (source-role-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass describe-asset-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-asset-response-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "arn")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-asset-response-created-at :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "createdAt")
+                        (egress-endpoints :initarg :egress-endpoints :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfEgressEndpoint|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-asset-response-egress-endpoints
+                         :shape "__listOfEgressEndpoint" :location
+                         common-lisp:nil :location-name "egressEndpoints")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-asset-response-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "id")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-asset-response-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-asset-response-resource-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "resourceId")
+                        (source-arn :initarg :source-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-asset-response-source-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "sourceArn")
+                        (source-role-arn :initarg :source-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-asset-response-source-role-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "sourceRoleArn")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-describe-asset-response-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-asset-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-asset-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-asset-response 'make-describe-asset-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1493,11 +2074,19 @@
                           describe-asset-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-packaging-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-packaging-configuration-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass describe-packaging-configuration-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-configuration-request-id
+                         :shape "__string" :location "uri" :location-name
+                         "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-packaging-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-packaging-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-packaging-configuration-request
                     'make-describe-packaging-configuration-request))
@@ -1517,24 +2106,69 @@
                           describe-packaging-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-packaging-configuration-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-packaging-configuration-response-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (cmaf-package common-lisp:nil :type
-    (common-lisp:or cmaf-package common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (dash-package common-lisp:nil :type
-    (common-lisp:or dash-package common-lisp:null))
-   (hls-package common-lisp:nil :type
-    (common-lisp:or hls-package common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (mss-package common-lisp:nil :type
-    (common-lisp:or mss-package common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass describe-packaging-configuration-response
+                       common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-configuration-response-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "arn")
+                        (cmaf-package :initarg :cmaf-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cmaf-package common-lisp:null)
+                         :accessor
+                         struct-shape-describe-packaging-configuration-response-cmaf-package
+                         :shape "CmafPackage" :location common-lisp:nil
+                         :location-name "cmafPackage")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-configuration-response-created-at
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "createdAt")
+                        (dash-package :initarg :dash-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dash-package common-lisp:null)
+                         :accessor
+                         struct-shape-describe-packaging-configuration-response-dash-package
+                         :shape "DashPackage" :location common-lisp:nil
+                         :location-name "dashPackage")
+                        (hls-package :initarg :hls-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hls-package common-lisp:null)
+                         :accessor
+                         struct-shape-describe-packaging-configuration-response-hls-package
+                         :shape "HlsPackage" :location common-lisp:nil
+                         :location-name "hlsPackage")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-configuration-response-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "id")
+                        (mss-package :initarg :mss-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mss-package common-lisp:null)
+                         :accessor
+                         struct-shape-describe-packaging-configuration-response-mss-package
+                         :shape "MssPackage" :location common-lisp:nil
+                         :location-name "mssPackage")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-configuration-response-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-describe-packaging-configuration-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-packaging-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-packaging-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-packaging-configuration-response
                     'make-describe-packaging-configuration-response))
@@ -1617,11 +2251,19 @@
                           describe-packaging-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-packaging-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-packaging-group-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass describe-packaging-group-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-group-request-id
+                         :shape "__string" :location "uri" :location-name
+                         "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-packaging-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-packaging-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-packaging-group-request
                     'make-describe-packaging-group-request))
@@ -1641,22 +2283,61 @@
                           describe-packaging-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-packaging-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-packaging-group-response-"))
-   (approximate-asset-count common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass describe-packaging-group-response common-lisp:nil
+                       ((approximate-asset-count :initarg
+                         :approximate-asset-count :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-describe-packaging-group-response-approximate-asset-count
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "approximateAssetCount")
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-group-response-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "arn")
+                        (authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor
+                         struct-shape-describe-packaging-group-response-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-group-response-created-at
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "createdAt")
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-group-response-domain-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "domainName")
+                        (egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-describe-packaging-group-response-egress-access-logs
+                         :shape "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-describe-packaging-group-response-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "id")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-describe-packaging-group-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-packaging-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-packaging-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-packaging-group-response
                     'make-describe-packaging-group-response))
@@ -1733,11 +2414,18 @@
                           describe-packaging-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (egress-access-logs (:copier common-lisp:nil)
-      (:conc-name "struct-shape-egress-access-logs-"))
-   (log-group-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass egress-access-logs common-lisp:nil
+                       ((log-group-name :initarg :log-group-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-egress-access-logs-log-group-name :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "logGroupName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-egress-access-logs
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'egress-access-logs
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'egress-access-logs 'make-egress-access-logs))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1757,13 +2445,28 @@
                         ((aws-sdk/generator/shape::input egress-access-logs))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (egress-endpoint (:copier common-lisp:nil)
-      (:conc-name "struct-shape-egress-endpoint-"))
-   (packaging-configuration-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (status common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (url common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass egress-endpoint common-lisp:nil
+                       ((packaging-configuration-id :initarg
+                         :packaging-configuration-id :initform common-lisp:nil
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-egress-endpoint-packaging-configuration-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingConfigurationId")
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor struct-shape-egress-endpoint-status :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "status")
+                        (url :initarg :url :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-egress-endpoint-url :shape "__string"
+                         :location common-lisp:nil :location-name "url"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-egress-endpoint
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'egress-endpoint
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'egress-endpoint 'make-egress-endpoint))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input egress-endpoint))
@@ -1797,13 +2500,31 @@
                         ((aws-sdk/generator/shape::input egress-endpoint))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (encryption-contract-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encryption-contract-configuration-"))
-   (preset-speke20audio (common-lisp:error ":preset-speke20audio is required")
-    :type (common-lisp:or preset-speke20audio common-lisp:null))
-   (preset-speke20video (common-lisp:error ":preset-speke20video is required")
-    :type (common-lisp:or preset-speke20video common-lisp:null)))
+ (common-lisp:defclass encryption-contract-configuration common-lisp:nil
+                       ((preset-speke20audio :initarg :preset-speke20audio
+                         :initform
+                         (common-lisp:error ":preset-speke20audio is required")
+                         :type
+                         (common-lisp:or preset-speke20audio common-lisp:null)
+                         :accessor
+                         struct-shape-encryption-contract-configuration-preset-speke20audio
+                         :shape "PresetSpeke20Audio" :location common-lisp:nil
+                         :location-name "presetSpeke20Audio")
+                        (preset-speke20video :initarg :preset-speke20video
+                         :initform
+                         (common-lisp:error ":preset-speke20video is required")
+                         :type
+                         (common-lisp:or preset-speke20video common-lisp:null)
+                         :accessor
+                         struct-shape-encryption-contract-configuration-preset-speke20video
+                         :shape "PresetSpeke20Video" :location common-lisp:nil
+                         :location-name "presetSpeke20Video"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-encryption-contract-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'encryption-contract-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'encryption-contract-configuration
                     'make-encryption-contract-configuration))
@@ -1845,15 +2566,35 @@
  (common-lisp:export
   (common-lisp:list 'forbidden-exception 'forbidden-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (hls-encryption (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hls-encryption-"))
-   (constant-initialization-vector common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (encryption-method common-lisp:nil :type
-    (common-lisp:or encryption-method common-lisp:null))
-   (speke-key-provider (common-lisp:error ":speke-key-provider is required")
-    :type (common-lisp:or speke-key-provider common-lisp:null)))
+ (common-lisp:defclass hls-encryption common-lisp:nil
+                       ((constant-initialization-vector :initarg
+                         :constant-initialization-vector :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-hls-encryption-constant-initialization-vector
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "constantInitializationVector")
+                        (encryption-method :initarg :encryption-method
+                         :initform common-lisp:nil :type
+                         (common-lisp:or encryption-method common-lisp:null)
+                         :accessor
+                         struct-shape-hls-encryption-encryption-method :shape
+                         "EncryptionMethod" :location common-lisp:nil
+                         :location-name "encryptionMethod")
+                        (speke-key-provider :initarg :speke-key-provider
+                         :initform
+                         (common-lisp:error ":speke-key-provider is required")
+                         :type
+                         (common-lisp:or speke-key-provider common-lisp:null)
+                         :accessor
+                         struct-shape-hls-encryption-speke-key-provider :shape
+                         "SpekeKeyProvider" :location common-lisp:nil
+                         :location-name "spekeKeyProvider"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-hls-encryption
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'hls-encryption
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'hls-encryption 'make-hls-encryption))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input hls-encryption))
@@ -1887,21 +2628,51 @@
                         ((aws-sdk/generator/shape::input hls-encryption))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (hls-manifest (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hls-manifest-"))
-   (ad-markers common-lisp:nil :type
-    (common-lisp:or ad-markers common-lisp:null))
-   (include-iframe-only-stream common-lisp:nil :type
-    (common-lisp:or |__boolean| common-lisp:null))
-   (manifest-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (program-date-time-interval-seconds common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (repeat-ext-xkey common-lisp:nil :type
-    (common-lisp:or |__boolean| common-lisp:null))
-   (stream-selection common-lisp:nil :type
-    (common-lisp:or stream-selection common-lisp:null)))
+ (common-lisp:defclass hls-manifest common-lisp:nil
+                       ((ad-markers :initarg :ad-markers :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ad-markers common-lisp:null) :accessor
+                         struct-shape-hls-manifest-ad-markers :shape
+                         "AdMarkers" :location common-lisp:nil :location-name
+                         "adMarkers")
+                        (include-iframe-only-stream :initarg
+                         :include-iframe-only-stream :initform common-lisp:nil
+                         :type (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor
+                         struct-shape-hls-manifest-include-iframe-only-stream
+                         :shape "__boolean" :location common-lisp:nil
+                         :location-name "includeIframeOnlyStream")
+                        (manifest-name :initarg :manifest-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-hls-manifest-manifest-name :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "manifestName")
+                        (program-date-time-interval-seconds :initarg
+                         :program-date-time-interval-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-hls-manifest-program-date-time-interval-seconds
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "programDateTimeIntervalSeconds")
+                        (repeat-ext-xkey :initarg :repeat-ext-xkey :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor struct-shape-hls-manifest-repeat-ext-xkey
+                         :shape "__boolean" :location common-lisp:nil
+                         :location-name "repeatExtXKey")
+                        (stream-selection :initarg :stream-selection :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-selection common-lisp:null)
+                         :accessor struct-shape-hls-manifest-stream-selection
+                         :shape "StreamSelection" :location common-lisp:nil
+                         :location-name "streamSelection"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-hls-manifest
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'hls-manifest
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'hls-manifest 'make-hls-manifest))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input hls-manifest))
@@ -1957,19 +2728,46 @@
                         ((aws-sdk/generator/shape::input hls-manifest))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (hls-package (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hls-package-"))
-   (encryption common-lisp:nil :type
-    (common-lisp:or hls-encryption common-lisp:null))
-   (hls-manifests (common-lisp:error ":hls-manifests is required") :type
-    (common-lisp:or |__listOfHlsManifest| common-lisp:null))
-   (include-dvb-subtitles common-lisp:nil :type
-    (common-lisp:or |__boolean| common-lisp:null))
-   (segment-duration-seconds common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (use-audio-rendition-group common-lisp:nil :type
-    (common-lisp:or |__boolean| common-lisp:null)))
+ (common-lisp:defclass hls-package common-lisp:nil
+                       ((encryption :initarg :encryption :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hls-encryption common-lisp:null)
+                         :accessor struct-shape-hls-package-encryption :shape
+                         "HlsEncryption" :location common-lisp:nil
+                         :location-name "encryption")
+                        (hls-manifests :initarg :hls-manifests :initform
+                         (common-lisp:error ":hls-manifests is required") :type
+                         (common-lisp:or |__listOfHlsManifest|
+                                         common-lisp:null)
+                         :accessor struct-shape-hls-package-hls-manifests
+                         :shape "__listOfHlsManifest" :location common-lisp:nil
+                         :location-name "hlsManifests")
+                        (include-dvb-subtitles :initarg :include-dvb-subtitles
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor
+                         struct-shape-hls-package-include-dvb-subtitles :shape
+                         "__boolean" :location common-lisp:nil :location-name
+                         "includeDvbSubtitles")
+                        (segment-duration-seconds :initarg
+                         :segment-duration-seconds :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-hls-package-segment-duration-seconds
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "segmentDurationSeconds")
+                        (use-audio-rendition-group :initarg
+                         :use-audio-rendition-group :initform common-lisp:nil
+                         :type (common-lisp:or |__boolean| common-lisp:null)
+                         :accessor
+                         struct-shape-hls-package-use-audio-rendition-group
+                         :shape "__boolean" :location common-lisp:nil
+                         :location-name "useAudioRenditionGroup"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-hls-package
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'hls-package
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'hls-package 'make-hls-package))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input hls-package))
@@ -2027,15 +2825,30 @@
   (common-lisp:list 'internal-server-error-exception
                     'internal-server-error-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-assets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-assets-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-assets-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor struct-shape-list-assets-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-assets-request-next-token :shape
+                         "__string" :location "querystring" :location-name
+                         "nextToken")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-assets-request-packaging-group-id
+                         :shape "__string" :location "querystring"
+                         :location-name "packagingGroupId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-assets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-assets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-assets-request 'make-list-assets-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2048,13 +2861,25 @@
                         ((aws-sdk/generator/shape::input list-assets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-assets-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-assets-response-"))
-   (assets common-lisp:nil :type
-    (common-lisp:or |__listOfAssetShallow| common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-assets-response common-lisp:nil
+                       ((assets :initarg :assets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOfAssetShallow|
+                                         common-lisp:null)
+                         :accessor struct-shape-list-assets-response-assets
+                         :shape "__listOfAssetShallow" :location
+                         common-lisp:nil :location-name "assets")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-assets-response-next-token :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-assets-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-assets-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-assets-response 'make-list-assets-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2081,15 +2906,32 @@
                         ((aws-sdk/generator/shape::input list-assets-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-packaging-configurations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-packaging-configurations-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-packaging-configurations-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-packaging-configurations-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-packaging-configurations-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-packaging-configurations-request-packaging-group-id
+                         :shape "__string" :location "querystring"
+                         :location-name "packagingGroupId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-packaging-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-packaging-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-packaging-configurations-request
                     'make-list-packaging-configurations-request))
@@ -2109,13 +2951,29 @@
                           list-packaging-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-packaging-configurations-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-packaging-configurations-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (packaging-configurations common-lisp:nil :type
-    (common-lisp:or |__listOfPackagingConfiguration| common-lisp:null)))
+ (common-lisp:defclass list-packaging-configurations-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-packaging-configurations-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (packaging-configurations :initarg
+                         :packaging-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOfPackagingConfiguration|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-packaging-configurations-response-packaging-configurations
+                         :shape "__listOfPackagingConfiguration" :location
+                         common-lisp:nil :location-name
+                         "packagingConfigurations"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-packaging-configurations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-packaging-configurations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-packaging-configurations-response
                     'make-list-packaging-configurations-response))
@@ -2150,13 +3008,26 @@
                           list-packaging-configurations-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-packaging-groups-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-packaging-groups-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-packaging-groups-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-packaging-groups-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-packaging-groups-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-packaging-groups-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-packaging-groups-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-packaging-groups-request
                     'make-list-packaging-groups-request))
@@ -2176,13 +3047,27 @@
                           list-packaging-groups-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-packaging-groups-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-packaging-groups-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (packaging-groups common-lisp:nil :type
-    (common-lisp:or |__listOfPackagingGroup| common-lisp:null)))
+ (common-lisp:defclass list-packaging-groups-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-packaging-groups-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (packaging-groups :initarg :packaging-groups :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfPackagingGroup|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-packaging-groups-response-packaging-groups
+                         :shape "__listOfPackagingGroup" :location
+                         common-lisp:nil :location-name "packagingGroups"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-packaging-groups-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-packaging-groups-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-packaging-groups-response
                     'make-list-packaging-groups-response))
@@ -2216,11 +3101,19 @@
                           list-packaging-groups-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "__string" :location "uri" :location-name
+                         "resource-arn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -2240,11 +3133,19 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type
-    (common-lisp:or |__mapOf__string| common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or |__mapOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "__mapOf__string" :location common-lisp:nil
+                         :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -2273,11 +3174,21 @@
 (common-lisp:deftype manifest-layout () 'common-lisp:string)
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (mss-encryption (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mss-encryption-"))
-   (speke-key-provider (common-lisp:error ":speke-key-provider is required")
-    :type (common-lisp:or speke-key-provider common-lisp:null)))
+ (common-lisp:defclass mss-encryption common-lisp:nil
+                       ((speke-key-provider :initarg :speke-key-provider
+                         :initform
+                         (common-lisp:error ":speke-key-provider is required")
+                         :type
+                         (common-lisp:or speke-key-provider common-lisp:null)
+                         :accessor
+                         struct-shape-mss-encryption-speke-key-provider :shape
+                         "SpekeKeyProvider" :location common-lisp:nil
+                         :location-name "spekeKeyProvider"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mss-encryption
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mss-encryption
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mss-encryption 'make-mss-encryption))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mss-encryption))
@@ -2296,13 +3207,24 @@
                         ((aws-sdk/generator/shape::input mss-encryption))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mss-manifest (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mss-manifest-"))
-   (manifest-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (stream-selection common-lisp:nil :type
-    (common-lisp:or stream-selection common-lisp:null)))
+ (common-lisp:defclass mss-manifest common-lisp:nil
+                       ((manifest-name :initarg :manifest-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-mss-manifest-manifest-name :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "manifestName")
+                        (stream-selection :initarg :stream-selection :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-selection common-lisp:null)
+                         :accessor struct-shape-mss-manifest-stream-selection
+                         :shape "StreamSelection" :location common-lisp:nil
+                         :location-name "streamSelection"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mss-manifest
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mss-manifest
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mss-manifest 'make-mss-manifest))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mss-manifest))
@@ -2328,15 +3250,32 @@
                         ((aws-sdk/generator/shape::input mss-manifest))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mss-package (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mss-package-"))
-   (encryption common-lisp:nil :type
-    (common-lisp:or mss-encryption common-lisp:null))
-   (mss-manifests (common-lisp:error ":mss-manifests is required") :type
-    (common-lisp:or |__listOfMssManifest| common-lisp:null))
-   (segment-duration-seconds common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null)))
+ (common-lisp:defclass mss-package common-lisp:nil
+                       ((encryption :initarg :encryption :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mss-encryption common-lisp:null)
+                         :accessor struct-shape-mss-package-encryption :shape
+                         "MssEncryption" :location common-lisp:nil
+                         :location-name "encryption")
+                        (mss-manifests :initarg :mss-manifests :initform
+                         (common-lisp:error ":mss-manifests is required") :type
+                         (common-lisp:or |__listOfMssManifest|
+                                         common-lisp:null)
+                         :accessor struct-shape-mss-package-mss-manifests
+                         :shape "__listOfMssManifest" :location common-lisp:nil
+                         :location-name "mssManifests")
+                        (segment-duration-seconds :initarg
+                         :segment-duration-seconds :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-mss-package-segment-duration-seconds
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "segmentDurationSeconds"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mss-package
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mss-package
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mss-package 'make-mss-package))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mss-package))
@@ -2377,24 +3316,67 @@
  (common-lisp:export
   (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (packaging-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-packaging-configuration-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (cmaf-package common-lisp:nil :type
-    (common-lisp:or cmaf-package common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (dash-package common-lisp:nil :type
-    (common-lisp:or dash-package common-lisp:null))
-   (hls-package common-lisp:nil :type
-    (common-lisp:or hls-package common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (mss-package common-lisp:nil :type
-    (common-lisp:or mss-package common-lisp:null))
-   (packaging-group-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass packaging-configuration common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-configuration-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "arn")
+                        (cmaf-package :initarg :cmaf-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cmaf-package common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-cmaf-package
+                         :shape "CmafPackage" :location common-lisp:nil
+                         :location-name "cmafPackage")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-configuration-created-at :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "createdAt")
+                        (dash-package :initarg :dash-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dash-package common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-dash-package
+                         :shape "DashPackage" :location common-lisp:nil
+                         :location-name "dashPackage")
+                        (hls-package :initarg :hls-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hls-package common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-hls-package
+                         :shape "HlsPackage" :location common-lisp:nil
+                         :location-name "hlsPackage")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-configuration-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "id")
+                        (mss-package :initarg :mss-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mss-package common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-mss-package
+                         :shape "MssPackage" :location common-lisp:nil
+                         :location-name "mssPackage")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-configuration-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-packaging-configuration-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-packaging-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'packaging-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'packaging-configuration 'make-packaging-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2476,22 +3458,61 @@
                           packaging-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (packaging-configuration-create-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-packaging-configuration-create-parameters-"))
-   (cmaf-package common-lisp:nil :type
-    (common-lisp:or cmaf-package common-lisp:null))
-   (dash-package common-lisp:nil :type
-    (common-lisp:or dash-package common-lisp:null))
-   (hls-package common-lisp:nil :type
-    (common-lisp:or hls-package common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (mss-package common-lisp:nil :type
-    (common-lisp:or mss-package common-lisp:null))
-   (packaging-group-id (common-lisp:error ":packaging-group-id is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass packaging-configuration-create-parameters
+                       common-lisp:nil
+                       ((cmaf-package :initarg :cmaf-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cmaf-package common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-create-parameters-cmaf-package
+                         :shape "CmafPackage" :location common-lisp:nil
+                         :location-name "cmafPackage")
+                        (dash-package :initarg :dash-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dash-package common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-create-parameters-dash-package
+                         :shape "DashPackage" :location common-lisp:nil
+                         :location-name "dashPackage")
+                        (hls-package :initarg :hls-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hls-package common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-create-parameters-hls-package
+                         :shape "HlsPackage" :location common-lisp:nil
+                         :location-name "hlsPackage")
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-configuration-create-parameters-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "id")
+                        (mss-package :initarg :mss-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mss-package common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-create-parameters-mss-package
+                         :shape "MssPackage" :location common-lisp:nil
+                         :location-name "mssPackage")
+                        (packaging-group-id :initarg :packaging-group-id
+                         :initform
+                         (common-lisp:error ":packaging-group-id is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-create-parameters-packaging-group-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "packagingGroupId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-packaging-configuration-create-parameters-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-packaging-configuration-create-parameters
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'packaging-configuration-create-parameters
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'packaging-configuration-create-parameters
                     'make-packaging-configuration-create-parameters))
@@ -2560,13 +3581,28 @@
                           packaging-configuration-create-parameters))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (packaging-configuration-list (:copier common-lisp:nil)
-      (:conc-name "struct-shape-packaging-configuration-list-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (packaging-configurations common-lisp:nil :type
-    (common-lisp:or |__listOfPackagingConfiguration| common-lisp:null)))
+ (common-lisp:defclass packaging-configuration-list common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-configuration-list-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (packaging-configurations :initarg
+                         :packaging-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOfPackagingConfiguration|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-configuration-list-packaging-configurations
+                         :shape "__listOfPackagingConfiguration" :location
+                         common-lisp:nil :location-name
+                         "packagingConfigurations"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-packaging-configuration-list
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'packaging-configuration-list
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'packaging-configuration-list
                     'make-packaging-configuration-list))
@@ -2601,22 +3637,56 @@
                           packaging-configuration-list))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (packaging-group (:copier common-lisp:nil)
-      (:conc-name "struct-shape-packaging-group-"))
-   (approximate-asset-count common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass packaging-group common-lisp:nil
+                       ((approximate-asset-count :initarg
+                         :approximate-asset-count :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-group-approximate-asset-count
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "approximateAssetCount")
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-group-arn :shape "__string"
+                         :location common-lisp:nil :location-name "arn")
+                        (authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor struct-shape-packaging-group-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-group-created-at :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "createdAt")
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-group-domain-name :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "domainName")
+                        (egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-group-egress-access-logs :shape
+                         "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-group-id :shape "__string"
+                         :location common-lisp:nil :location-name "id")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-packaging-group-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-packaging-group
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'packaging-group
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'packaging-group 'make-packaging-group))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input packaging-group))
@@ -2685,16 +3755,38 @@
                         ((aws-sdk/generator/shape::input packaging-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (packaging-group-create-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-packaging-group-create-parameters-"))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass packaging-group-create-parameters common-lisp:nil
+                       ((authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-group-create-parameters-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization")
+                        (egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-group-create-parameters-egress-access-logs
+                         :shape "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs")
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-group-create-parameters-id
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "id")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-packaging-group-create-parameters-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-packaging-group-create-parameters
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'packaging-group-create-parameters
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'packaging-group-create-parameters
                     'make-packaging-group-create-parameters))
@@ -2742,13 +3834,26 @@
                           packaging-group-create-parameters))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (packaging-group-list (:copier common-lisp:nil)
-      (:conc-name "struct-shape-packaging-group-list-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (packaging-groups common-lisp:nil :type
-    (common-lisp:or |__listOfPackagingGroup| common-lisp:null)))
+ (common-lisp:defclass packaging-group-list common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-packaging-group-list-next-token :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "nextToken")
+                        (packaging-groups :initarg :packaging-groups :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfPackagingGroup|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-group-list-packaging-groups
+                         :shape "__listOfPackagingGroup" :location
+                         common-lisp:nil :location-name "packagingGroups"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-packaging-group-list
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'packaging-group-list
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'packaging-group-list 'make-packaging-group-list))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2775,11 +3880,20 @@
                         ((aws-sdk/generator/shape::input packaging-group-list))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (packaging-group-update-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-packaging-group-update-parameters-"))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null)))
+ (common-lisp:defclass packaging-group-update-parameters common-lisp:nil
+                       ((authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor
+                         struct-shape-packaging-group-update-parameters-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-packaging-group-update-parameters
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'packaging-group-update-parameters
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'packaging-group-update-parameters
                     'make-packaging-group-update-parameters))
@@ -2819,17 +3933,39 @@
   (common-lisp:list 'service-unavailable-exception
                     'service-unavailable-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (speke-key-provider (:copier common-lisp:nil)
-      (:conc-name "struct-shape-speke-key-provider-"))
-   (encryption-contract-configuration common-lisp:nil :type
-    (common-lisp:or encryption-contract-configuration common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (system-ids (common-lisp:error ":system-ids is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (url (common-lisp:error ":url is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass speke-key-provider common-lisp:nil
+                       ((encryption-contract-configuration :initarg
+                         :encryption-contract-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or encryption-contract-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-speke-key-provider-encryption-contract-configuration
+                         :shape "EncryptionContractConfiguration" :location
+                         common-lisp:nil :location-name
+                         "encryptionContractConfiguration")
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":role-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-speke-key-provider-role-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "roleArn")
+                        (system-ids :initarg :system-ids :initform
+                         (common-lisp:error ":system-ids is required") :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-speke-key-provider-system-ids
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "systemIds")
+                        (url :initarg :url :initform
+                         (common-lisp:error ":url is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-speke-key-provider-url :shape "__string"
+                         :location common-lisp:nil :location-name "url"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-speke-key-provider
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'speke-key-provider
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'speke-key-provider 'make-speke-key-provider))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2872,15 +4008,32 @@
    common-lisp:nil))
 (common-lisp:deftype stream-order () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (stream-selection (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stream-selection-"))
-   (max-video-bits-per-second common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (min-video-bits-per-second common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (stream-order common-lisp:nil :type
-    (common-lisp:or stream-order common-lisp:null)))
+ (common-lisp:defclass stream-selection common-lisp:nil
+                       ((max-video-bits-per-second :initarg
+                         :max-video-bits-per-second :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-stream-selection-max-video-bits-per-second
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "maxVideoBitsPerSecond")
+                        (min-video-bits-per-second :initarg
+                         :min-video-bits-per-second :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-stream-selection-min-video-bits-per-second
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "minVideoBitsPerSecond")
+                        (stream-order :initarg :stream-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-order common-lisp:null)
+                         :accessor struct-shape-stream-selection-stream-order
+                         :shape "StreamOrder" :location common-lisp:nil
+                         :location-name "streamOrder"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stream-selection
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stream-selection
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stream-selection 'make-stream-selection))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2916,13 +4069,24 @@
                         ((aws-sdk/generator/shape::input stream-selection))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or |__mapOf__string| common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "__string" :location "uri" :location-name
+                         "resource-arn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or |__mapOf__string| common-lisp:null)
+                         :accessor struct-shape-tag-resource-request-tags
+                         :shape "__mapOf__string" :location common-lisp:nil
+                         :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2949,11 +4113,18 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tags-model (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tags-model-"))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or |__mapOf__string| common-lisp:null)))
+ (common-lisp:defclass tags-model common-lisp:nil
+                       ((tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or |__mapOf__string| common-lisp:null)
+                         :accessor struct-shape-tags-model-tags :shape
+                         "__mapOf__string" :location common-lisp:nil
+                         :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tags-model
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tags-model
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tags-model 'make-tags-model))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tags-model))
@@ -2988,13 +4159,24 @@
   (common-lisp:list 'unprocessable-entity-exception
                     'unprocessable-entity-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "__string" :location "uri" :location-name
+                         "resource-arn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "__listOf__string" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3013,13 +4195,25 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-packaging-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-packaging-group-request-"))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass update-packaging-group-request common-lisp:nil
+                       ((authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor
+                         struct-shape-update-packaging-group-request-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization")
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-update-packaging-group-request-id :shape
+                         "__string" :location "uri" :location-name "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-packaging-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-packaging-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-packaging-group-request
                     'make-update-packaging-group-request))
@@ -3046,22 +4240,61 @@
                           update-packaging-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-packaging-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-packaging-group-response-"))
-   (approximate-asset-count common-lisp:nil :type
-    (common-lisp:or |__integer| common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (authorization common-lisp:nil :type
-    (common-lisp:or authorization common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (egress-access-logs common-lisp:nil :type
-    (common-lisp:or egress-access-logs common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass update-packaging-group-response common-lisp:nil
+                       ((approximate-asset-count :initarg
+                         :approximate-asset-count :initform common-lisp:nil
+                         :type (common-lisp:or |__integer| common-lisp:null)
+                         :accessor
+                         struct-shape-update-packaging-group-response-approximate-asset-count
+                         :shape "__integer" :location common-lisp:nil
+                         :location-name "approximateAssetCount")
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-update-packaging-group-response-arn
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "arn")
+                        (authorization :initarg :authorization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization common-lisp:null)
+                         :accessor
+                         struct-shape-update-packaging-group-response-authorization
+                         :shape "Authorization" :location common-lisp:nil
+                         :location-name "authorization")
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-update-packaging-group-response-created-at
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "createdAt")
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-update-packaging-group-response-domain-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "domainName")
+                        (egress-access-logs :initarg :egress-access-logs
+                         :initform common-lisp:nil :type
+                         (common-lisp:or egress-access-logs common-lisp:null)
+                         :accessor
+                         struct-shape-update-packaging-group-response-egress-access-logs
+                         :shape "EgressAccessLogs" :location common-lisp:nil
+                         :location-name "egressAccessLogs")
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-update-packaging-group-response-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "id")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-update-packaging-group-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-packaging-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-packaging-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-packaging-group-response
                     'make-update-packaging-group-response))

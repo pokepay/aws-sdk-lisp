@@ -63,29 +63,88 @@
  (common-lisp:export (common-lisp:list 'conflict-exception)))
 (common-lisp:deftype connection-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-environment-ec2request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-environment-ec2request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or environment-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or environment-description common-lisp:null))
-   (client-request-token common-lisp:nil :type
-    (common-lisp:or client-request-token common-lisp:null))
-   (instance-type (common-lisp:error ":instancetype is required") :type
-    (common-lisp:or instance-type common-lisp:null))
-   (subnet-id common-lisp:nil :type
-    (common-lisp:or subnet-id common-lisp:null))
-   (image-id (common-lisp:error ":imageid is required") :type
-    (common-lisp:or image-id common-lisp:null))
-   (automatic-stop-time-minutes common-lisp:nil :type
-    (common-lisp:or automatic-stop-time-minutes common-lisp:null))
-   (owner-arn common-lisp:nil :type (common-lisp:or user-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (connection-type common-lisp:nil :type
-    (common-lisp:or connection-type common-lisp:null))
-   (dry-run common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null)))
+ (common-lisp:defclass create-environment-ec2request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or environment-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-ec2request-name :shape
+                         "EnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-ec2request-description
+                         :shape "EnvironmentDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-request-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-ec2request-client-request-token
+                         :shape "ClientRequestToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-type :initarg :instance-type :initform
+                         (common-lisp:error ":instancetype is required") :type
+                         (common-lisp:or instance-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-ec2request-instance-type
+                         :shape "InstanceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subnet-id :initarg :subnet-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or subnet-id common-lisp:null) :accessor
+                         struct-shape-create-environment-ec2request-subnet-id
+                         :shape "SubnetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (image-id :initarg :image-id :initform
+                         (common-lisp:error ":imageid is required") :type
+                         (common-lisp:or image-id common-lisp:null) :accessor
+                         struct-shape-create-environment-ec2request-image-id
+                         :shape "ImageId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (automatic-stop-time-minutes :initarg
+                         :automatic-stop-time-minutes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or automatic-stop-time-minutes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-ec2request-automatic-stop-time-minutes
+                         :shape "AutomaticStopTimeMinutes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (owner-arn :initarg :owner-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or user-arn common-lisp:null) :accessor
+                         struct-shape-create-environment-ec2request-owner-arn
+                         :shape "UserArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-environment-ec2request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (connection-type :initarg :connection-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or connection-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-ec2request-connection-type
+                         :shape "ConnectionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dry-run :initarg :dry-run :initform common-lisp:nil
+                         :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-ec2request-dry-run
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-environment-ec2request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-environment-ec2request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-environment-ec2request
                     'make-create-environment-ec2request))
@@ -184,11 +243,19 @@
                           create-environment-ec2request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-environment-ec2result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-environment-ec2result-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null)))
+ (common-lisp:defclass create-environment-ec2result common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-ec2result-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-environment-ec2result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-environment-ec2result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-environment-ec2result
                     'make-create-environment-ec2result))
@@ -215,15 +282,33 @@
                           create-environment-ec2result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-environment-membership-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-environment-membership-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
-   (permissions (common-lisp:error ":permissions is required") :type
-    (common-lisp:or member-permissions common-lisp:null)))
+ (common-lisp:defclass create-environment-membership-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-membership-request-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-arn :initarg :user-arn :initform
+                         (common-lisp:error ":userarn is required") :type
+                         (common-lisp:or user-arn common-lisp:null) :accessor
+                         struct-shape-create-environment-membership-request-user-arn
+                         :shape "UserArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (permissions :initarg :permissions :initform
+                         (common-lisp:error ":permissions is required") :type
+                         (common-lisp:or member-permissions common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-membership-request-permissions
+                         :shape "MemberPermissions" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-environment-membership-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-environment-membership-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-environment-membership-request
                     'make-create-environment-membership-request))
@@ -264,11 +349,20 @@
                           create-environment-membership-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-environment-membership-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-environment-membership-result-"))
-   (membership (common-lisp:error ":membership is required") :type
-    (common-lisp:or environment-member common-lisp:null)))
+ (common-lisp:defclass create-environment-membership-result common-lisp:nil
+                       ((membership :initarg :membership :initform
+                         (common-lisp:error ":membership is required") :type
+                         (common-lisp:or environment-member common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-membership-result-membership
+                         :shape "EnvironmentMember" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-environment-membership-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-environment-membership-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-environment-membership-result
                     'make-create-environment-membership-result))
@@ -295,13 +389,26 @@
                           create-environment-membership-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-environment-membership-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-environment-membership-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null)))
+ (common-lisp:defclass delete-environment-membership-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-environment-membership-request-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-arn :initarg :user-arn :initform
+                         (common-lisp:error ":userarn is required") :type
+                         (common-lisp:or user-arn common-lisp:null) :accessor
+                         struct-shape-delete-environment-membership-request-user-arn
+                         :shape "UserArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-environment-membership-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-environment-membership-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-environment-membership-request
                     'make-delete-environment-membership-request))
@@ -335,9 +442,14 @@
                           delete-environment-membership-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-environment-membership-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-environment-membership-result-")))
+ (common-lisp:defclass delete-environment-membership-result common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-environment-membership-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-environment-membership-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-environment-membership-result
                     'make-delete-environment-membership-result))
@@ -357,11 +469,19 @@
                           delete-environment-membership-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-environment-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null)))
+ (common-lisp:defclass delete-environment-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-environment-request-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-environment-request
                     'make-delete-environment-request))
@@ -388,9 +508,13 @@
                           delete-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-environment-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-environment-result-")))
+ (common-lisp:defclass delete-environment-result common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-environment-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-environment-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-environment-result
                     'make-delete-environment-result))
@@ -410,17 +534,46 @@
                           delete-environment-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-environment-memberships-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-environment-memberships-request-"))
-   (user-arn common-lisp:nil :type (common-lisp:or user-arn common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (permissions common-lisp:nil :type
-    (common-lisp:or permissions-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass describe-environment-memberships-request common-lisp:nil
+                       ((user-arn :initarg :user-arn :initform common-lisp:nil
+                         :type (common-lisp:or user-arn common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environment-memberships-request-user-arn
+                         :shape "UserArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environment-memberships-request-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (permissions :initarg :permissions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or permissions-list common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environment-memberships-request-permissions
+                         :shape "PermissionsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-environment-memberships-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environment-memberships-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-environment-memberships-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-environment-memberships-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-environment-memberships-request
                     'make-describe-environment-memberships-request))
@@ -475,12 +628,27 @@
                           describe-environment-memberships-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-environment-memberships-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-environment-memberships-result-"))
-   (memberships common-lisp:nil :type
-    (common-lisp:or environment-members-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass describe-environment-memberships-result common-lisp:nil
+                       ((memberships :initarg :memberships :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-members-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environment-memberships-result-memberships
+                         :shape "EnvironmentMembersList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-environment-memberships-result-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-environment-memberships-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-environment-memberships-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-environment-memberships-result
                     'make-describe-environment-memberships-result))
@@ -514,11 +682,20 @@
                           describe-environment-memberships-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-environment-status-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-environment-status-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null)))
+ (common-lisp:defclass describe-environment-status-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environment-status-request-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-environment-status-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-environment-status-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-environment-status-request
                     'make-describe-environment-status-request))
@@ -545,13 +722,26 @@
                           describe-environment-status-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-environment-status-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-environment-status-result-"))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or environment-status common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass describe-environment-status-result common-lisp:nil
+                       ((status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or environment-status common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environment-status-result-status
+                         :shape "EnvironmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-environment-status-result-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-environment-status-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-environment-status-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-environment-status-result
                     'make-describe-environment-status-result))
@@ -585,11 +775,22 @@
                           describe-environment-status-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-environments-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-environments-request-"))
-   (environment-ids (common-lisp:error ":environmentids is required") :type
-    (common-lisp:or bounded-environment-id-list common-lisp:null)))
+ (common-lisp:defclass describe-environments-request common-lisp:nil
+                       ((environment-ids :initarg :environment-ids :initform
+                         (common-lisp:error ":environmentids is required")
+                         :type
+                         (common-lisp:or bounded-environment-id-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environments-request-environment-ids
+                         :shape "BoundedEnvironmentIdList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-environments-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-environments-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-environments-request
                     'make-describe-environments-request))
@@ -616,11 +817,19 @@
                           describe-environments-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-environments-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-environments-result-"))
-   (environments common-lisp:nil :type
-    (common-lisp:or environment-list common-lisp:null)))
+ (common-lisp:defclass describe-environments-result common-lisp:nil
+                       ((environments :initarg :environments :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-list common-lisp:null)
+                         :accessor
+                         struct-shape-describe-environments-result-environments
+                         :shape "EnvironmentList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-environments-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-environments-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-environments-result
                     'make-describe-environments-result))
@@ -647,26 +856,68 @@
                           describe-environments-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (environment (:copier common-lisp:nil)
-      (:conc-name "struct-shape-environment-"))
-   (id common-lisp:nil :type (common-lisp:or environment-id common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or environment-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or environment-description common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or environment-type common-lisp:null))
-   (connection-type common-lisp:nil :type
-    (common-lisp:or connection-type common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (owner-arn (common-lisp:error ":ownerarn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (lifecycle common-lisp:nil :type
-    (common-lisp:or environment-lifecycle common-lisp:null))
-   (managed-credentials-status common-lisp:nil :type
-    (common-lisp:or managed-credentials-status common-lisp:null)))
+ (common-lisp:defclass environment common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor struct-shape-environment-id :shape
+                         "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or environment-name common-lisp:null)
+                         :accessor struct-shape-environment-name :shape
+                         "EnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-description
+                                         common-lisp:null)
+                         :accessor struct-shape-environment-description :shape
+                         "EnvironmentDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or environment-type common-lisp:null)
+                         :accessor struct-shape-environment-type :shape
+                         "EnvironmentType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (connection-type :initarg :connection-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or connection-type common-lisp:null)
+                         :accessor struct-shape-environment-connection-type
+                         :shape "ConnectionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-environment-arn :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (owner-arn :initarg :owner-arn :initform
+                         (common-lisp:error ":ownerarn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-environment-owner-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (lifecycle :initarg :lifecycle :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-lifecycle
+                                         common-lisp:null)
+                         :accessor struct-shape-environment-lifecycle :shape
+                         "EnvironmentLifecycle" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (managed-credentials-status :initarg
+                         :managed-credentials-status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or managed-credentials-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-environment-managed-credentials-status
+                         :shape "ManagedCredentialsStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-environment
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'environment
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'environment 'make-environment))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input environment))
@@ -753,14 +1004,30 @@
                            (trivial-types:proper-list environment-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (environment-lifecycle (:copier common-lisp:nil)
-      (:conc-name "struct-shape-environment-lifecycle-"))
-   (status common-lisp:nil :type
-    (common-lisp:or environment-lifecycle-status common-lisp:null))
-   (reason common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (failure-resource common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass environment-lifecycle common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or environment-lifecycle-status
+                                         common-lisp:null)
+                         :accessor struct-shape-environment-lifecycle-status
+                         :shape "EnvironmentLifecycleStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (reason :initarg :reason :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-environment-lifecycle-reason
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (failure-resource :initarg :failure-resource :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-environment-lifecycle-failure-resource
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-environment-lifecycle
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'environment-lifecycle
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'environment-lifecycle 'make-environment-lifecycle))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -809,19 +1076,43 @@
                            (trivial-types:proper-list environment))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (environment-member (:copier common-lisp:nil)
-      (:conc-name "struct-shape-environment-member-"))
-   (permissions (common-lisp:error ":permissions is required") :type
-    (common-lisp:or permissions common-lisp:null))
-   (user-id (common-lisp:error ":userid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (last-access common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass environment-member common-lisp:nil
+                       ((permissions :initarg :permissions :initform
+                         (common-lisp:error ":permissions is required") :type
+                         (common-lisp:or permissions common-lisp:null)
+                         :accessor struct-shape-environment-member-permissions
+                         :shape "Permissions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-id :initarg :user-id :initform
+                         (common-lisp:error ":userid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-environment-member-user-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-arn :initarg :user-arn :initform
+                         (common-lisp:error ":userarn is required") :type
+                         (common-lisp:or user-arn common-lisp:null) :accessor
+                         struct-shape-environment-member-user-arn :shape
+                         "UserArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-environment-member-environment-id :shape
+                         "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-access :initarg :last-access :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-environment-member-last-access :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-environment-member
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'environment-member
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'environment-member 'make-environment-member))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -897,12 +1188,25 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-environments-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-environments-request-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-environments-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-environments-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-environments-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-environments-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-environments-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-environments-request
                     'make-list-environments-request))
@@ -936,12 +1240,25 @@
                           list-environments-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-environments-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-environments-result-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (environment-ids common-lisp:nil :type
-    (common-lisp:or environment-id-list common-lisp:null)))
+ (common-lisp:defclass list-environments-result common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-environments-result-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-ids :initarg :environment-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-environments-result-environment-ids
+                         :shape "EnvironmentIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-environments-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-environments-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-environments-result 'make-list-environments-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -974,11 +1291,20 @@
                           list-environments-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or environment-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -1005,10 +1331,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -1056,12 +1390,21 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype subnet-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -1102,13 +1445,25 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1135,9 +1490,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1163,13 +1521,25 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'too-many-requests-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1202,9 +1572,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1223,15 +1596,33 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-environment-membership-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-environment-membership-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
-   (permissions (common-lisp:error ":permissions is required") :type
-    (common-lisp:or member-permissions common-lisp:null)))
+ (common-lisp:defclass update-environment-membership-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-membership-request-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-arn :initarg :user-arn :initform
+                         (common-lisp:error ":userarn is required") :type
+                         (common-lisp:or user-arn common-lisp:null) :accessor
+                         struct-shape-update-environment-membership-request-user-arn
+                         :shape "UserArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (permissions :initarg :permissions :initform
+                         (common-lisp:error ":permissions is required") :type
+                         (common-lisp:or member-permissions common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-membership-request-permissions
+                         :shape "MemberPermissions" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-environment-membership-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-environment-membership-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-environment-membership-request
                     'make-update-environment-membership-request))
@@ -1272,11 +1663,20 @@
                           update-environment-membership-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-environment-membership-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-environment-membership-result-"))
-   (membership common-lisp:nil :type
-    (common-lisp:or environment-member common-lisp:null)))
+ (common-lisp:defclass update-environment-membership-result common-lisp:nil
+                       ((membership :initarg :membership :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-member common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-membership-result-membership
+                         :shape "EnvironmentMember" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-environment-membership-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-environment-membership-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-environment-membership-result
                     'make-update-environment-membership-result))
@@ -1303,17 +1703,41 @@
                           update-environment-membership-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-environment-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or environment-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or environment-description common-lisp:null))
-   (managed-credentials-action common-lisp:nil :type
-    (common-lisp:or managed-credentials-action common-lisp:null)))
+ (common-lisp:defclass update-environment-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-request-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or environment-name common-lisp:null)
+                         :accessor struct-shape-update-environment-request-name
+                         :shape "EnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-request-description
+                         :shape "EnvironmentDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (managed-credentials-action :initarg
+                         :managed-credentials-action :initform common-lisp:nil
+                         :type
+                         (common-lisp:or managed-credentials-action
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-request-managed-credentials-action
+                         :shape "ManagedCredentialsAction" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-environment-request
                     'make-update-environment-request))
@@ -1362,9 +1786,13 @@
                           update-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-environment-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-environment-result-")))
+ (common-lisp:defclass update-environment-result common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-environment-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-environment-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-environment-result
                     'make-update-environment-result))

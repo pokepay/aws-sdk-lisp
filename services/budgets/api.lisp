@@ -47,28 +47,76 @@
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (action (:copier common-lisp:nil) (:conc-name "struct-shape-action-"))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or action-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification-type (common-lisp:error ":notification-type is required")
-    :type (common-lisp:or notification-type common-lisp:null))
-   (action-type (common-lisp:error ":action-type is required") :type
-    (common-lisp:or action-type common-lisp:null))
-   (action-threshold (common-lisp:error ":action-threshold is required") :type
-    (common-lisp:or action-threshold common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or definition common-lisp:null))
-   (execution-role-arn (common-lisp:error ":execution-role-arn is required")
-    :type (common-lisp:or role-arn common-lisp:null))
-   (approval-model (common-lisp:error ":approval-model is required") :type
-    (common-lisp:or approval-model common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or action-status common-lisp:null))
-   (subscribers (common-lisp:error ":subscribers is required") :type
-    (common-lisp:or subscribers common-lisp:null)))
+ (common-lisp:defclass action common-lisp:nil
+                       ((action-id :initarg :action-id :initform
+                         (common-lisp:error ":action-id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-action-action-id :shape "ActionId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor struct-shape-action-budget-name :shape
+                         "BudgetName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (notification-type :initarg :notification-type
+                         :initform
+                         (common-lisp:error ":notification-type is required")
+                         :type
+                         (common-lisp:or notification-type common-lisp:null)
+                         :accessor struct-shape-action-notification-type :shape
+                         "NotificationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-type :initarg :action-type :initform
+                         (common-lisp:error ":action-type is required") :type
+                         (common-lisp:or action-type common-lisp:null)
+                         :accessor struct-shape-action-action-type :shape
+                         "ActionType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action-threshold :initarg :action-threshold :initform
+                         (common-lisp:error ":action-threshold is required")
+                         :type
+                         (common-lisp:or action-threshold common-lisp:null)
+                         :accessor struct-shape-action-action-threshold :shape
+                         "ActionThreshold" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (definition :initarg :definition :initform
+                         (common-lisp:error ":definition is required") :type
+                         (common-lisp:or definition common-lisp:null) :accessor
+                         struct-shape-action-definition :shape "Definition"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (execution-role-arn :initarg :execution-role-arn
+                         :initform
+                         (common-lisp:error ":execution-role-arn is required")
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor struct-shape-action-execution-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (approval-model :initarg :approval-model :initform
+                         (common-lisp:error ":approval-model is required")
+                         :type (common-lisp:or approval-model common-lisp:null)
+                         :accessor struct-shape-action-approval-model :shape
+                         "ApprovalModel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or action-status common-lisp:null)
+                         :accessor struct-shape-action-status :shape
+                         "ActionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subscribers :initarg :subscribers :initform
+                         (common-lisp:error ":subscribers is required") :type
+                         (common-lisp:or subscribers common-lisp:null)
+                         :accessor struct-shape-action-subscribers :shape
+                         "Subscribers" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'action 'make-action))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input action))
@@ -158,18 +206,41 @@
                            (trivial-types:proper-list action-history))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-history (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-history-"))
-   (timestamp (common-lisp:error ":timestamp is required") :type
-    (common-lisp:or generic-timestamp common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or action-status common-lisp:null))
-   (event-type (common-lisp:error ":event-type is required") :type
-    (common-lisp:or event-type common-lisp:null))
-   (action-history-details
-    (common-lisp:error ":action-history-details is required") :type
-    (common-lisp:or action-history-details common-lisp:null)))
+ (common-lisp:defclass action-history common-lisp:nil
+                       ((timestamp :initarg :timestamp :initform
+                         (common-lisp:error ":timestamp is required") :type
+                         (common-lisp:or generic-timestamp common-lisp:null)
+                         :accessor struct-shape-action-history-timestamp :shape
+                         "GenericTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or action-status common-lisp:null)
+                         :accessor struct-shape-action-history-status :shape
+                         "ActionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-type :initarg :event-type :initform
+                         (common-lisp:error ":event-type is required") :type
+                         (common-lisp:or event-type common-lisp:null) :accessor
+                         struct-shape-action-history-event-type :shape
+                         "EventType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action-history-details :initarg
+                         :action-history-details :initform
+                         (common-lisp:error
+                          ":action-history-details is required")
+                         :type
+                         (common-lisp:or action-history-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-action-history-action-history-details
+                         :shape "ActionHistoryDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-history
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-history
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'action-history 'make-action-history))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input action-history))
@@ -210,13 +281,24 @@
                         ((aws-sdk/generator/shape::input action-history))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-history-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-history-details-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or generic-string common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or action common-lisp:null)))
+ (common-lisp:defclass action-history-details common-lisp:nil
+                       ((message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor struct-shape-action-history-details-message
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or action common-lisp:null) :accessor
+                         struct-shape-action-history-details-action :shape
+                         "Action" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-history-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-history-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'action-history-details 'make-action-history-details))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -252,15 +334,32 @@
 (common-lisp:deftype action-status () 'common-lisp:string)
 (common-lisp:deftype action-sub-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-threshold (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-threshold-"))
-   (action-threshold-value
-    (common-lisp:error ":action-threshold-value is required") :type
-    (common-lisp:or notification-threshold common-lisp:null))
-   (action-threshold-type
-    (common-lisp:error ":action-threshold-type is required") :type
-    (common-lisp:or threshold-type common-lisp:null)))
+ (common-lisp:defclass action-threshold common-lisp:nil
+                       ((action-threshold-value :initarg
+                         :action-threshold-value :initform
+                         (common-lisp:error
+                          ":action-threshold-value is required")
+                         :type
+                         (common-lisp:or notification-threshold
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-action-threshold-action-threshold-value
+                         :shape "NotificationThreshold" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (action-threshold-type :initarg :action-threshold-type
+                         :initform
+                         (common-lisp:error
+                          ":action-threshold-type is required")
+                         :type (common-lisp:or threshold-type common-lisp:null)
+                         :accessor
+                         struct-shape-action-threshold-action-threshold-type
+                         :shape "ThresholdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-threshold
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-threshold
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'action-threshold 'make-action-threshold))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -299,15 +398,34 @@
 (common-lisp:deftype adjustment-period () 'common-lisp:integer)
 (common-lisp:deftype approval-model () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (auto-adjust-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-auto-adjust-data-"))
-   (auto-adjust-type (common-lisp:error ":auto-adjust-type is required") :type
-    (common-lisp:or auto-adjust-type common-lisp:null))
-   (historical-options common-lisp:nil :type
-    (common-lisp:or historical-options common-lisp:null))
-   (last-auto-adjust-time common-lisp:nil :type
-    (common-lisp:or generic-timestamp common-lisp:null)))
+ (common-lisp:defclass auto-adjust-data common-lisp:nil
+                       ((auto-adjust-type :initarg :auto-adjust-type :initform
+                         (common-lisp:error ":auto-adjust-type is required")
+                         :type
+                         (common-lisp:or auto-adjust-type common-lisp:null)
+                         :accessor
+                         struct-shape-auto-adjust-data-auto-adjust-type :shape
+                         "AutoAdjustType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (historical-options :initarg :historical-options
+                         :initform common-lisp:nil :type
+                         (common-lisp:or historical-options common-lisp:null)
+                         :accessor
+                         struct-shape-auto-adjust-data-historical-options
+                         :shape "HistoricalOptions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-auto-adjust-time :initarg :last-auto-adjust-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or generic-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-auto-adjust-data-last-auto-adjust-time
+                         :shape "GenericTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-auto-adjust-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'auto-adjust-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'auto-adjust-data 'make-auto-adjust-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -343,29 +461,79 @@
    common-lisp:nil))
 (common-lisp:deftype auto-adjust-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (budget (:copier common-lisp:nil) (:conc-name "struct-shape-budget-"))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (budget-limit common-lisp:nil :type (common-lisp:or spend common-lisp:null))
-   (planned-budget-limits common-lisp:nil :type
-    (common-lisp:or planned-budget-limits common-lisp:null))
-   (cost-filters common-lisp:nil :type
-    (common-lisp:or cost-filters common-lisp:null))
-   (cost-types common-lisp:nil :type
-    (common-lisp:or cost-types common-lisp:null))
-   (time-unit (common-lisp:error ":time-unit is required") :type
-    (common-lisp:or time-unit common-lisp:null))
-   (time-period common-lisp:nil :type
-    (common-lisp:or time-period common-lisp:null))
-   (calculated-spend common-lisp:nil :type
-    (common-lisp:or calculated-spend common-lisp:null))
-   (budget-type (common-lisp:error ":budget-type is required") :type
-    (common-lisp:or budget-type common-lisp:null))
-   (last-updated-time common-lisp:nil :type
-    (common-lisp:or generic-timestamp common-lisp:null))
-   (auto-adjust-data common-lisp:nil :type
-    (common-lisp:or auto-adjust-data common-lisp:null)))
+ (common-lisp:defclass budget common-lisp:nil
+                       ((budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor struct-shape-budget-budget-name :shape
+                         "BudgetName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (budget-limit :initarg :budget-limit :initform
+                         common-lisp:nil :type
+                         (common-lisp:or spend common-lisp:null) :accessor
+                         struct-shape-budget-budget-limit :shape "Spend"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (planned-budget-limits :initarg :planned-budget-limits
+                         :initform common-lisp:nil :type
+                         (common-lisp:or planned-budget-limits
+                                         common-lisp:null)
+                         :accessor struct-shape-budget-planned-budget-limits
+                         :shape "PlannedBudgetLimits" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cost-filters :initarg :cost-filters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cost-filters common-lisp:null)
+                         :accessor struct-shape-budget-cost-filters :shape
+                         "CostFilters" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cost-types :initarg :cost-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cost-types common-lisp:null) :accessor
+                         struct-shape-budget-cost-types :shape "CostTypes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (time-unit :initarg :time-unit :initform
+                         (common-lisp:error ":time-unit is required") :type
+                         (common-lisp:or time-unit common-lisp:null) :accessor
+                         struct-shape-budget-time-unit :shape "TimeUnit"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (time-period :initarg :time-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or time-period common-lisp:null)
+                         :accessor struct-shape-budget-time-period :shape
+                         "TimePeriod" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (calculated-spend :initarg :calculated-spend :initform
+                         common-lisp:nil :type
+                         (common-lisp:or calculated-spend common-lisp:null)
+                         :accessor struct-shape-budget-calculated-spend :shape
+                         "CalculatedSpend" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-type :initarg :budget-type :initform
+                         (common-lisp:error ":budget-type is required") :type
+                         (common-lisp:or budget-type common-lisp:null)
+                         :accessor struct-shape-budget-budget-type :shape
+                         "BudgetType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-time :initarg :last-updated-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or generic-timestamp common-lisp:null)
+                         :accessor struct-shape-budget-last-updated-time :shape
+                         "GenericTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (auto-adjust-data :initarg :auto-adjust-data :initform
+                         common-lisp:nil :type
+                         (common-lisp:or auto-adjust-data common-lisp:null)
+                         :accessor struct-shape-budget-auto-adjust-data :shape
+                         "AutoAdjustData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-budget
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'budget
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'budget 'make-budget))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input budget))
@@ -456,13 +624,27 @@
    common-lisp:nil))
 (common-lisp:deftype budget-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (budget-notifications-for-account (:copier common-lisp:nil)
-      (:conc-name "struct-shape-budget-notifications-for-account-"))
-   (notifications common-lisp:nil :type
-    (common-lisp:or notifications common-lisp:null))
-   (budget-name common-lisp:nil :type
-    (common-lisp:or budget-name common-lisp:null)))
+ (common-lisp:defclass budget-notifications-for-account common-lisp:nil
+                       ((notifications :initarg :notifications :initform
+                         common-lisp:nil :type
+                         (common-lisp:or notifications common-lisp:null)
+                         :accessor
+                         struct-shape-budget-notifications-for-account-notifications
+                         :shape "Notifications" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-budget-notifications-for-account-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-budget-notifications-for-account
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'budget-notifications-for-account
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'budget-notifications-for-account
                     'make-budget-notifications-for-account))
@@ -505,21 +687,54 @@
                             budget-notifications-for-account))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (budget-performance-history (:copier common-lisp:nil)
-      (:conc-name "struct-shape-budget-performance-history-"))
-   (budget-name common-lisp:nil :type
-    (common-lisp:or budget-name common-lisp:null))
-   (budget-type common-lisp:nil :type
-    (common-lisp:or budget-type common-lisp:null))
-   (cost-filters common-lisp:nil :type
-    (common-lisp:or cost-filters common-lisp:null))
-   (cost-types common-lisp:nil :type
-    (common-lisp:or cost-types common-lisp:null))
-   (time-unit common-lisp:nil :type
-    (common-lisp:or time-unit common-lisp:null))
-   (budgeted-and-actual-amounts-list common-lisp:nil :type
-    (common-lisp:or budgeted-and-actual-amounts-list common-lisp:null)))
+ (common-lisp:defclass budget-performance-history common-lisp:nil
+                       ((budget-name :initarg :budget-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-budget-performance-history-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-type :initarg :budget-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or budget-type common-lisp:null)
+                         :accessor
+                         struct-shape-budget-performance-history-budget-type
+                         :shape "BudgetType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cost-filters :initarg :cost-filters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cost-filters common-lisp:null)
+                         :accessor
+                         struct-shape-budget-performance-history-cost-filters
+                         :shape "CostFilters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cost-types :initarg :cost-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cost-types common-lisp:null) :accessor
+                         struct-shape-budget-performance-history-cost-types
+                         :shape "CostTypes" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (time-unit :initarg :time-unit :initform
+                         common-lisp:nil :type
+                         (common-lisp:or time-unit common-lisp:null) :accessor
+                         struct-shape-budget-performance-history-time-unit
+                         :shape "TimeUnit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budgeted-and-actual-amounts-list :initarg
+                         :budgeted-and-actual-amounts-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or budgeted-and-actual-amounts-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-budget-performance-history-budgeted-and-actual-amounts-list
+                         :shape "BudgetedAndActualAmountsList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-budget-performance-history
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'budget-performance-history
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'budget-performance-history
                     'make-budget-performance-history))
@@ -583,15 +798,31 @@
    common-lisp:nil))
 (common-lisp:deftype budget-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (budgeted-and-actual-amounts (:copier common-lisp:nil)
-      (:conc-name "struct-shape-budgeted-and-actual-amounts-"))
-   (budgeted-amount common-lisp:nil :type
-    (common-lisp:or spend common-lisp:null))
-   (actual-amount common-lisp:nil :type
-    (common-lisp:or spend common-lisp:null))
-   (time-period common-lisp:nil :type
-    (common-lisp:or time-period common-lisp:null)))
+ (common-lisp:defclass budgeted-and-actual-amounts common-lisp:nil
+                       ((budgeted-amount :initarg :budgeted-amount :initform
+                         common-lisp:nil :type
+                         (common-lisp:or spend common-lisp:null) :accessor
+                         struct-shape-budgeted-and-actual-amounts-budgeted-amount
+                         :shape "Spend" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (actual-amount :initarg :actual-amount :initform
+                         common-lisp:nil :type
+                         (common-lisp:or spend common-lisp:null) :accessor
+                         struct-shape-budgeted-and-actual-amounts-actual-amount
+                         :shape "Spend" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (time-period :initarg :time-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or time-period common-lisp:null)
+                         :accessor
+                         struct-shape-budgeted-and-actual-amounts-time-period
+                         :shape "TimePeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-budgeted-and-actual-amounts
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'budgeted-and-actual-amounts
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'budgeted-and-actual-amounts
                     'make-budgeted-and-actual-amounts))
@@ -648,13 +879,24 @@
                            (trivial-types:proper-list budget))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (calculated-spend (:copier common-lisp:nil)
-      (:conc-name "struct-shape-calculated-spend-"))
-   (actual-spend (common-lisp:error ":actual-spend is required") :type
-    (common-lisp:or spend common-lisp:null))
-   (forecasted-spend common-lisp:nil :type
-    (common-lisp:or spend common-lisp:null)))
+ (common-lisp:defclass calculated-spend common-lisp:nil
+                       ((actual-spend :initarg :actual-spend :initform
+                         (common-lisp:error ":actual-spend is required") :type
+                         (common-lisp:or spend common-lisp:null) :accessor
+                         struct-shape-calculated-spend-actual-spend :shape
+                         "Spend" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (forecasted-spend :initarg :forecasted-spend :initform
+                         common-lisp:nil :type
+                         (common-lisp:or spend common-lisp:null) :accessor
+                         struct-shape-calculated-spend-forecasted-spend :shape
+                         "Spend" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-calculated-spend
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'calculated-spend
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'calculated-spend 'make-calculated-spend))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -689,31 +931,80 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cost-types (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cost-types-"))
-   (include-tax common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (include-subscription common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (use-blended common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (include-refund common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (include-credit common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (include-upfront common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (include-recurring common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (include-other-subscription common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (include-support common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (include-discount common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null))
-   (use-amortized common-lisp:nil :type
-    (common-lisp:or nullable-boolean common-lisp:null)))
+ (common-lisp:defclass cost-types common-lisp:nil
+                       ((include-tax :initarg :include-tax :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-include-tax :shape
+                         "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-subscription :initarg :include-subscription
+                         :initform common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-include-subscription
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (use-blended :initarg :use-blended :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-use-blended :shape
+                         "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-refund :initarg :include-refund :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-include-refund
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-credit :initarg :include-credit :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-include-credit
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-upfront :initarg :include-upfront :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-include-upfront
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-recurring :initarg :include-recurring
+                         :initform common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-include-recurring
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-other-subscription :initarg
+                         :include-other-subscription :initform common-lisp:nil
+                         :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor
+                         struct-shape-cost-types-include-other-subscription
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-support :initarg :include-support :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-include-support
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-discount :initarg :include-discount :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-include-discount
+                         :shape "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (use-amortized :initarg :use-amortized :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nullable-boolean common-lisp:null)
+                         :accessor struct-shape-cost-types-use-amortized :shape
+                         "NullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cost-types
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cost-types
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'cost-types 'make-cost-types))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input cost-types))
@@ -804,27 +1095,77 @@
                         ((aws-sdk/generator/shape::input cost-types))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-budget-action-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-budget-action-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification-type (common-lisp:error ":notification-type is required")
-    :type (common-lisp:or notification-type common-lisp:null))
-   (action-type (common-lisp:error ":action-type is required") :type
-    (common-lisp:or action-type common-lisp:null))
-   (action-threshold (common-lisp:error ":action-threshold is required") :type
-    (common-lisp:or action-threshold common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or definition common-lisp:null))
-   (execution-role-arn (common-lisp:error ":execution-role-arn is required")
-    :type (common-lisp:or role-arn common-lisp:null))
-   (approval-model (common-lisp:error ":approval-model is required") :type
-    (common-lisp:or approval-model common-lisp:null))
-   (subscribers (common-lisp:error ":subscribers is required") :type
-    (common-lisp:or subscribers common-lisp:null)))
+ (common-lisp:defclass create-budget-action-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-budget-action-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-action-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification-type :initarg :notification-type
+                         :initform
+                         (common-lisp:error ":notification-type is required")
+                         :type
+                         (common-lisp:or notification-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-action-request-notification-type
+                         :shape "NotificationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-type :initarg :action-type :initform
+                         (common-lisp:error ":action-type is required") :type
+                         (common-lisp:or action-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-action-request-action-type
+                         :shape "ActionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-threshold :initarg :action-threshold :initform
+                         (common-lisp:error ":action-threshold is required")
+                         :type
+                         (common-lisp:or action-threshold common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-action-request-action-threshold
+                         :shape "ActionThreshold" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (definition :initarg :definition :initform
+                         (common-lisp:error ":definition is required") :type
+                         (common-lisp:or definition common-lisp:null) :accessor
+                         struct-shape-create-budget-action-request-definition
+                         :shape "Definition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-role-arn :initarg :execution-role-arn
+                         :initform
+                         (common-lisp:error ":execution-role-arn is required")
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-action-request-execution-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (approval-model :initarg :approval-model :initform
+                         (common-lisp:error ":approval-model is required")
+                         :type (common-lisp:or approval-model common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-action-request-approval-model
+                         :shape "ApprovalModel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subscribers :initarg :subscribers :initform
+                         (common-lisp:error ":subscribers is required") :type
+                         (common-lisp:or subscribers common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-action-request-subscribers
+                         :shape "Subscribers" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-budget-action-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-budget-action-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-budget-action-request
                     'make-create-budget-action-request))
@@ -907,15 +1248,32 @@
                           create-budget-action-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-budget-action-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-budget-action-response-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or action-id common-lisp:null)))
+ (common-lisp:defclass create-budget-action-response common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-budget-action-response-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-action-response-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-id :initarg :action-id :initform
+                         (common-lisp:error ":action-id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-create-budget-action-response-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-budget-action-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-budget-action-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-budget-action-response
                     'make-create-budget-action-response))
@@ -956,15 +1314,33 @@
                           create-budget-action-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-budget-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-budget-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget (common-lisp:error ":budget is required") :type
-    (common-lisp:or budget common-lisp:null))
-   (notifications-with-subscribers common-lisp:nil :type
-    (common-lisp:or notification-with-subscribers-list common-lisp:null)))
+ (common-lisp:defclass create-budget-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-budget-request-account-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (budget :initarg :budget :initform
+                         (common-lisp:error ":budget is required") :type
+                         (common-lisp:or budget common-lisp:null) :accessor
+                         struct-shape-create-budget-request-budget :shape
+                         "Budget" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (notifications-with-subscribers :initarg
+                         :notifications-with-subscribers :initform
+                         common-lisp:nil :type
+                         (common-lisp:or notification-with-subscribers-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-budget-request-notifications-with-subscribers
+                         :shape "NotificationWithSubscribersList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-budget-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-budget-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-budget-request 'make-create-budget-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1005,9 +1381,12 @@
                           create-budget-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-budget-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-budget-response-")))
+ (common-lisp:defclass create-budget-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-budget-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-budget-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-budget-response 'make-create-budget-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1026,17 +1405,39 @@
                           create-budget-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-notification-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-notification-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (subscribers (common-lisp:error ":subscribers is required") :type
-    (common-lisp:or subscribers common-lisp:null)))
+ (common-lisp:defclass create-notification-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-notification-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification :initarg :notification :initform
+                         (common-lisp:error ":notification is required") :type
+                         (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-request-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subscribers :initarg :subscribers :initform
+                         (common-lisp:error ":subscribers is required") :type
+                         (common-lisp:or subscribers common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-request-subscribers
+                         :shape "Subscribers" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-notification-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-notification-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-notification-request
                     'make-create-notification-request))
@@ -1084,9 +1485,13 @@
                           create-notification-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-notification-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-notification-response-")))
+ (common-lisp:defclass create-notification-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-notification-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-notification-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-notification-response
                     'make-create-notification-response))
@@ -1106,17 +1511,38 @@
                           create-notification-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-subscriber-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-subscriber-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (subscriber (common-lisp:error ":subscriber is required") :type
-    (common-lisp:or subscriber common-lisp:null)))
+ (common-lisp:defclass create-subscriber-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-subscriber-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-subscriber-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification :initarg :notification :initform
+                         (common-lisp:error ":notification is required") :type
+                         (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-create-subscriber-request-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subscriber :initarg :subscriber :initform
+                         (common-lisp:error ":subscriber is required") :type
+                         (common-lisp:or subscriber common-lisp:null) :accessor
+                         struct-shape-create-subscriber-request-subscriber
+                         :shape "Subscriber" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-subscriber-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-subscriber-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-subscriber-request
                     'make-create-subscriber-request))
@@ -1164,9 +1590,13 @@
                           create-subscriber-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-subscriber-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-subscriber-response-")))
+ (common-lisp:defclass create-subscriber-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-subscriber-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-subscriber-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-subscriber-response
                     'make-create-subscriber-response))
@@ -1194,15 +1624,36 @@
   (common-lisp:list 'creation-limit-exceeded-exception
                     'creation-limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-definition-"))
-   (iam-action-definition common-lisp:nil :type
-    (common-lisp:or iam-action-definition common-lisp:null))
-   (scp-action-definition common-lisp:nil :type
-    (common-lisp:or scp-action-definition common-lisp:null))
-   (ssm-action-definition common-lisp:nil :type
-    (common-lisp:or ssm-action-definition common-lisp:null)))
+ (common-lisp:defclass definition common-lisp:nil
+                       ((iam-action-definition :initarg :iam-action-definition
+                         :initform common-lisp:nil :type
+                         (common-lisp:or iam-action-definition
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-definition-iam-action-definition :shape
+                         "IamActionDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scp-action-definition :initarg :scp-action-definition
+                         :initform common-lisp:nil :type
+                         (common-lisp:or scp-action-definition
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-definition-scp-action-definition :shape
+                         "ScpActionDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ssm-action-definition :initarg :ssm-action-definition
+                         :initform common-lisp:nil :type
+                         (common-lisp:or ssm-action-definition
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-definition-ssm-action-definition :shape
+                         "SsmActionDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'definition 'make-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input definition))
@@ -1238,15 +1689,31 @@
                         ((aws-sdk/generator/shape::input definition))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-budget-action-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-budget-action-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or action-id common-lisp:null)))
+ (common-lisp:defclass delete-budget-action-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-budget-action-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-budget-action-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-id :initarg :action-id :initform
+                         (common-lisp:error ":action-id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-delete-budget-action-request-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-budget-action-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-budget-action-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-budget-action-request
                     'make-delete-budget-action-request))
@@ -1287,15 +1754,32 @@
                           delete-budget-action-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-budget-action-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-budget-action-response-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or action common-lisp:null)))
+ (common-lisp:defclass delete-budget-action-response common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-budget-action-response-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-budget-action-response-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or action common-lisp:null) :accessor
+                         struct-shape-delete-budget-action-response-action
+                         :shape "Action" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-budget-action-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-budget-action-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-budget-action-response
                     'make-delete-budget-action-response))
@@ -1336,13 +1820,25 @@
                           delete-budget-action-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-budget-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-budget-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null)))
+ (common-lisp:defclass delete-budget-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-budget-request-account-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-budget-request-budget-name :shape
+                         "BudgetName" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-budget-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-budget-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-budget-request 'make-delete-budget-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1375,9 +1871,12 @@
                           delete-budget-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-budget-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-budget-response-")))
+ (common-lisp:defclass delete-budget-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-budget-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-budget-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-budget-response 'make-delete-budget-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1396,15 +1895,32 @@
                           delete-budget-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-notification-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-notification-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null)))
+ (common-lisp:defclass delete-notification-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-notification-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-notification-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification :initarg :notification :initform
+                         (common-lisp:error ":notification is required") :type
+                         (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-delete-notification-request-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-notification-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-notification-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-notification-request
                     'make-delete-notification-request))
@@ -1445,9 +1961,13 @@
                           delete-notification-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-notification-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-notification-response-")))
+ (common-lisp:defclass delete-notification-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-notification-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-notification-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-notification-response
                     'make-delete-notification-response))
@@ -1467,17 +1987,38 @@
                           delete-notification-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-subscriber-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-subscriber-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (subscriber (common-lisp:error ":subscriber is required") :type
-    (common-lisp:or subscriber common-lisp:null)))
+ (common-lisp:defclass delete-subscriber-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-subscriber-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-subscriber-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification :initarg :notification :initform
+                         (common-lisp:error ":notification is required") :type
+                         (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-delete-subscriber-request-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subscriber :initarg :subscriber :initform
+                         (common-lisp:error ":subscriber is required") :type
+                         (common-lisp:or subscriber common-lisp:null) :accessor
+                         struct-shape-delete-subscriber-request-subscriber
+                         :shape "Subscriber" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-subscriber-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-subscriber-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-subscriber-request
                     'make-delete-subscriber-request))
@@ -1525,9 +2066,13 @@
                           delete-subscriber-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-subscriber-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-subscriber-response-")))
+ (common-lisp:defclass delete-subscriber-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-subscriber-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-subscriber-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-subscriber-response
                     'make-delete-subscriber-response))
@@ -1547,21 +2092,53 @@
                           delete-subscriber-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-action-histories-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-action-histories-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or action-id common-lisp:null))
-   (time-period common-lisp:nil :type
-    (common-lisp:or time-period common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-action-histories-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-action-histories-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-action-histories-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-id :initarg :action-id :initform
+                         (common-lisp:error ":action-id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-action-histories-request-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (time-period :initarg :time-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or time-period common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-action-histories-request-time-period
+                         :shape "TimePeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-action-histories-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-action-histories-request-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-action-histories-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-action-histories-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-action-histories-request
                     'make-describe-budget-action-histories-request))
@@ -1623,13 +2200,29 @@
                           describe-budget-action-histories-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-action-histories-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-action-histories-response-"))
-   (action-histories (common-lisp:error ":action-histories is required") :type
-    (common-lisp:or action-histories common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-action-histories-response
+                       common-lisp:nil
+                       ((action-histories :initarg :action-histories :initform
+                         (common-lisp:error ":action-histories is required")
+                         :type
+                         (common-lisp:or action-histories common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-action-histories-response-action-histories
+                         :shape "ActionHistories" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-action-histories-response-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-action-histories-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-action-histories-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-action-histories-response
                     'make-describe-budget-action-histories-response))
@@ -1663,15 +2256,32 @@
                           describe-budget-action-histories-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-action-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-action-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or action-id common-lisp:null)))
+ (common-lisp:defclass describe-budget-action-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-action-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-action-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-id :initarg :action-id :initform
+                         (common-lisp:error ":action-id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-action-request-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-action-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-action-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-action-request
                     'make-describe-budget-action-request))
@@ -1712,15 +2322,32 @@
                           describe-budget-action-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-action-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-action-response-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or action common-lisp:null)))
+ (common-lisp:defclass describe-budget-action-response common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-action-response-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-action-response-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or action common-lisp:null) :accessor
+                         struct-shape-describe-budget-action-response-action
+                         :shape "Action" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-action-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-action-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-action-response
                     'make-describe-budget-action-response))
@@ -1761,15 +2388,34 @@
                           describe-budget-action-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-actions-for-account-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-actions-for-account-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-actions-for-account-request
+                       common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-actions-for-account-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-actions-for-account-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-actions-for-account-request-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-actions-for-account-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-actions-for-account-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-actions-for-account-request
                     'make-describe-budget-actions-for-account-request))
@@ -1810,14 +2456,27 @@
                           describe-budget-actions-for-account-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-actions-for-account-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-budget-actions-for-account-response-"))
-   (actions (common-lisp:error ":actions is required") :type
-    (common-lisp:or actions common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-actions-for-account-response
+                       common-lisp:nil
+                       ((actions :initarg :actions :initform
+                         (common-lisp:error ":actions is required") :type
+                         (common-lisp:or actions common-lisp:null) :accessor
+                         struct-shape-describe-budget-actions-for-account-response-actions
+                         :shape "Actions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-actions-for-account-response-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-actions-for-account-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-actions-for-account-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-actions-for-account-response
                     'make-describe-budget-actions-for-account-response))
@@ -1851,17 +2510,41 @@
                           describe-budget-actions-for-account-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-actions-for-budget-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-actions-for-budget-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-actions-for-budget-request
+                       common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-actions-for-budget-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-actions-for-budget-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-actions-for-budget-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-actions-for-budget-request-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-actions-for-budget-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-actions-for-budget-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-actions-for-budget-request
                     'make-describe-budget-actions-for-budget-request))
@@ -1909,13 +2592,27 @@
                           describe-budget-actions-for-budget-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-actions-for-budget-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-actions-for-budget-response-"))
-   (actions (common-lisp:error ":actions is required") :type
-    (common-lisp:or actions common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-actions-for-budget-response
+                       common-lisp:nil
+                       ((actions :initarg :actions :initform
+                         (common-lisp:error ":actions is required") :type
+                         (common-lisp:or actions common-lisp:null) :accessor
+                         struct-shape-describe-budget-actions-for-budget-response-actions
+                         :shape "Actions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-actions-for-budget-response-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-actions-for-budget-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-actions-for-budget-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-actions-for-budget-response
                     'make-describe-budget-actions-for-budget-response))
@@ -1949,17 +2646,35 @@
                           describe-budget-actions-for-budget-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-notifications-for-account-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-budget-notifications-for-account-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results-budget-notifications common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-notifications-for-account-request
+                       common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-notifications-for-account-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results-budget-notifications
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-notifications-for-account-request-max-results
+                         :shape "MaxResultsBudgetNotifications" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-notifications-for-account-request-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-notifications-for-account-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-notifications-for-account-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-notifications-for-account-request
                     'make-describe-budget-notifications-for-account-request))
@@ -2000,15 +2715,30 @@
                           describe-budget-notifications-for-account-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-notifications-for-account-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-budget-notifications-for-account-response-"))
-   (budget-notifications-for-account common-lisp:nil :type
-    (common-lisp:or budget-notifications-for-account-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-notifications-for-account-response
+                       common-lisp:nil
+                       ((budget-notifications-for-account :initarg
+                         :budget-notifications-for-account :initform
+                         common-lisp:nil :type
+                         (common-lisp:or budget-notifications-for-account-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-notifications-for-account-response-budget-notifications-for-account
+                         :shape "BudgetNotificationsForAccountList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-notifications-for-account-response-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-notifications-for-account-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-notifications-for-account-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-notifications-for-account-response
                     'make-describe-budget-notifications-for-account-response))
@@ -2043,19 +2773,48 @@
                           describe-budget-notifications-for-account-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-performance-history-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-performance-history-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (time-period common-lisp:nil :type
-    (common-lisp:or time-period common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-performance-history-request
+                       common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-performance-history-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-performance-history-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (time-period :initarg :time-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or time-period common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-performance-history-request-time-period
+                         :shape "TimePeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-performance-history-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-performance-history-request-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-performance-history-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-performance-history-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-performance-history-request
                     'make-describe-budget-performance-history-request))
@@ -2110,14 +2869,30 @@
                           describe-budget-performance-history-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-performance-history-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-budget-performance-history-response-"))
-   (budget-performance-history common-lisp:nil :type
-    (common-lisp:or budget-performance-history common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budget-performance-history-response
+                       common-lisp:nil
+                       ((budget-performance-history :initarg
+                         :budget-performance-history :initform common-lisp:nil
+                         :type
+                         (common-lisp:or budget-performance-history
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-performance-history-response-budget-performance-history
+                         :shape "BudgetPerformanceHistory" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-performance-history-response-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-performance-history-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-budget-performance-history-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-performance-history-response
                     'make-describe-budget-performance-history-response))
@@ -2152,13 +2927,25 @@
                           describe-budget-performance-history-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null)))
+ (common-lisp:defclass describe-budget-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budget-request-account-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budget-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-budget-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-request 'make-describe-budget-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2191,10 +2978,17 @@
                           describe-budget-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budget-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budget-response-"))
-   (budget common-lisp:nil :type (common-lisp:or budget common-lisp:null)))
+ (common-lisp:defclass describe-budget-response common-lisp:nil
+                       ((budget :initarg :budget :initform common-lisp:nil
+                         :type (common-lisp:or budget common-lisp:null)
+                         :accessor struct-shape-describe-budget-response-budget
+                         :shape "Budget" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budget-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-budget-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budget-response 'make-describe-budget-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2220,15 +3014,33 @@
                           describe-budget-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budgets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budgets-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results-describe-budgets common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budgets-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-budgets-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results-describe-budgets
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budgets-request-max-results
+                         :shape "MaxResultsDescribeBudgets" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budgets-request-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budgets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-budgets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budgets-request 'make-describe-budgets-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2268,12 +3080,25 @@
                           describe-budgets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-budgets-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-budgets-response-"))
-   (budgets common-lisp:nil :type (common-lisp:or budgets common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-budgets-response common-lisp:nil
+                       ((budgets :initarg :budgets :initform common-lisp:nil
+                         :type (common-lisp:or budgets common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budgets-response-budgets :shape
+                         "Budgets" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-budgets-response-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-budgets-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-budgets-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-budgets-response
                     'make-describe-budgets-response))
@@ -2307,17 +3132,41 @@
                           describe-budgets-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-notifications-for-budget-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-notifications-for-budget-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-notifications-for-budget-request
+                       common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-notifications-for-budget-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notifications-for-budget-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notifications-for-budget-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notifications-for-budget-request-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-notifications-for-budget-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-notifications-for-budget-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-notifications-for-budget-request
                     'make-describe-notifications-for-budget-request))
@@ -2365,13 +3214,28 @@
                           describe-notifications-for-budget-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-notifications-for-budget-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-notifications-for-budget-response-"))
-   (notifications common-lisp:nil :type
-    (common-lisp:or notifications common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-notifications-for-budget-response
+                       common-lisp:nil
+                       ((notifications :initarg :notifications :initform
+                         common-lisp:nil :type
+                         (common-lisp:or notifications common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notifications-for-budget-response-notifications
+                         :shape "Notifications" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notifications-for-budget-response-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-notifications-for-budget-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-notifications-for-budget-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-notifications-for-budget-response
                     'make-describe-notifications-for-budget-response))
@@ -2405,20 +3269,48 @@
                           describe-notifications-for-budget-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-subscribers-for-notification-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-subscribers-for-notification-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-subscribers-for-notification-request
+                       common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-subscribers-for-notification-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-subscribers-for-notification-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification :initarg :notification :initform
+                         (common-lisp:error ":notification is required") :type
+                         (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-describe-subscribers-for-notification-request-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-subscribers-for-notification-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-subscribers-for-notification-request-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-subscribers-for-notification-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-subscribers-for-notification-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-subscribers-for-notification-request
                     'make-describe-subscribers-for-notification-request))
@@ -2473,14 +3365,28 @@
                           describe-subscribers-for-notification-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-subscribers-for-notification-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-subscribers-for-notification-response-"))
-   (subscribers common-lisp:nil :type
-    (common-lisp:or subscribers common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass describe-subscribers-for-notification-response
+                       common-lisp:nil
+                       ((subscribers :initarg :subscribers :initform
+                         common-lisp:nil :type
+                         (common-lisp:or subscribers common-lisp:null)
+                         :accessor
+                         struct-shape-describe-subscribers-for-notification-response-subscribers
+                         :shape "Subscribers" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor
+                         struct-shape-describe-subscribers-for-notification-response-next-token
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-subscribers-for-notification-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-subscribers-for-notification-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-subscribers-for-notification-response
                     'make-describe-subscribers-for-notification-response))
@@ -2532,17 +3438,39 @@
                     'duplicate-record-exception-message)))
 (common-lisp:deftype event-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (execute-budget-action-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-execute-budget-action-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or action-id common-lisp:null))
-   (execution-type (common-lisp:error ":execution-type is required") :type
-    (common-lisp:or execution-type common-lisp:null)))
+ (common-lisp:defclass execute-budget-action-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-execute-budget-action-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-execute-budget-action-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-id :initarg :action-id :initform
+                         (common-lisp:error ":action-id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-execute-budget-action-request-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-type :initarg :execution-type :initform
+                         (common-lisp:error ":execution-type is required")
+                         :type (common-lisp:or execution-type common-lisp:null)
+                         :accessor
+                         struct-shape-execute-budget-action-request-execution-type
+                         :shape "ExecutionType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-execute-budget-action-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'execute-budget-action-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'execute-budget-action-request
                     'make-execute-budget-action-request))
@@ -2590,17 +3518,39 @@
                           execute-budget-action-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (execute-budget-action-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-execute-budget-action-response-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or action-id common-lisp:null))
-   (execution-type (common-lisp:error ":execution-type is required") :type
-    (common-lisp:or execution-type common-lisp:null)))
+ (common-lisp:defclass execute-budget-action-response common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-execute-budget-action-response-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-execute-budget-action-response-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-id :initarg :action-id :initform
+                         (common-lisp:error ":action-id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-execute-budget-action-response-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-type :initarg :execution-type :initform
+                         (common-lisp:error ":execution-type is required")
+                         :type (common-lisp:or execution-type common-lisp:null)
+                         :accessor
+                         struct-shape-execute-budget-action-response-execution-type
+                         :shape "ExecutionType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-execute-budget-action-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'execute-budget-action-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'execute-budget-action-response
                     'make-execute-budget-action-response))
@@ -2667,14 +3617,30 @@
                            (trivial-types:proper-list group))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (historical-options (:copier common-lisp:nil)
-      (:conc-name "struct-shape-historical-options-"))
-   (budget-adjustment-period
-    (common-lisp:error ":budget-adjustment-period is required") :type
-    (common-lisp:or adjustment-period common-lisp:null))
-   (look-back-available-periods common-lisp:nil :type
-    (common-lisp:or adjustment-period common-lisp:null)))
+ (common-lisp:defclass historical-options common-lisp:nil
+                       ((budget-adjustment-period :initarg
+                         :budget-adjustment-period :initform
+                         (common-lisp:error
+                          ":budget-adjustment-period is required")
+                         :type
+                         (common-lisp:or adjustment-period common-lisp:null)
+                         :accessor
+                         struct-shape-historical-options-budget-adjustment-period
+                         :shape "AdjustmentPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (look-back-available-periods :initarg
+                         :look-back-available-periods :initform common-lisp:nil
+                         :type
+                         (common-lisp:or adjustment-period common-lisp:null)
+                         :accessor
+                         struct-shape-historical-options-look-back-available-periods
+                         :shape "AdjustmentPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-historical-options
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'historical-options
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'historical-options 'make-historical-options))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2703,14 +3669,33 @@
                         ((aws-sdk/generator/shape::input historical-options))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (iam-action-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-iam-action-definition-"))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or policy-arn common-lisp:null))
-   (roles common-lisp:nil :type (common-lisp:or roles common-lisp:null))
-   (groups common-lisp:nil :type (common-lisp:or groups common-lisp:null))
-   (users common-lisp:nil :type (common-lisp:or users common-lisp:null)))
+ (common-lisp:defclass iam-action-definition common-lisp:nil
+                       ((policy-arn :initarg :policy-arn :initform
+                         (common-lisp:error ":policy-arn is required") :type
+                         (common-lisp:or policy-arn common-lisp:null) :accessor
+                         struct-shape-iam-action-definition-policy-arn :shape
+                         "PolicyArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (roles :initarg :roles :initform common-lisp:nil :type
+                         (common-lisp:or roles common-lisp:null) :accessor
+                         struct-shape-iam-action-definition-roles :shape
+                         "Roles" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (groups :initarg :groups :initform common-lisp:nil
+                         :type (common-lisp:or groups common-lisp:null)
+                         :accessor struct-shape-iam-action-definition-groups
+                         :shape "Groups" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (users :initarg :users :initform common-lisp:nil :type
+                         (common-lisp:or users common-lisp:null) :accessor
+                         struct-shape-iam-action-definition-users :shape
+                         "Users" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-iam-action-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'iam-action-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'iam-action-definition 'make-iam-action-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2799,19 +3784,48 @@
  (common-lisp:export
   (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (notification (:copier common-lisp:nil)
-      (:conc-name "struct-shape-notification-"))
-   (notification-type (common-lisp:error ":notification-type is required")
-    :type (common-lisp:or notification-type common-lisp:null))
-   (comparison-operator (common-lisp:error ":comparison-operator is required")
-    :type (common-lisp:or comparison-operator common-lisp:null))
-   (threshold (common-lisp:error ":threshold is required") :type
-    (common-lisp:or notification-threshold common-lisp:null))
-   (threshold-type common-lisp:nil :type
-    (common-lisp:or threshold-type common-lisp:null))
-   (notification-state common-lisp:nil :type
-    (common-lisp:or notification-state common-lisp:null)))
+ (common-lisp:defclass notification common-lisp:nil
+                       ((notification-type :initarg :notification-type
+                         :initform
+                         (common-lisp:error ":notification-type is required")
+                         :type
+                         (common-lisp:or notification-type common-lisp:null)
+                         :accessor struct-shape-notification-notification-type
+                         :shape "NotificationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (comparison-operator :initarg :comparison-operator
+                         :initform
+                         (common-lisp:error ":comparison-operator is required")
+                         :type
+                         (common-lisp:or comparison-operator common-lisp:null)
+                         :accessor
+                         struct-shape-notification-comparison-operator :shape
+                         "ComparisonOperator" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (threshold :initarg :threshold :initform
+                         (common-lisp:error ":threshold is required") :type
+                         (common-lisp:or notification-threshold
+                                         common-lisp:null)
+                         :accessor struct-shape-notification-threshold :shape
+                         "NotificationThreshold" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (threshold-type :initarg :threshold-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or threshold-type common-lisp:null)
+                         :accessor struct-shape-notification-threshold-type
+                         :shape "ThresholdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification-state :initarg :notification-state
+                         :initform common-lisp:nil :type
+                         (common-lisp:or notification-state common-lisp:null)
+                         :accessor struct-shape-notification-notification-state
+                         :shape "NotificationState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-notification
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'notification
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'notification 'make-notification))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input notification))
@@ -2861,13 +3875,27 @@
 (common-lisp:deftype notification-threshold () 'common-lisp:double-float)
 (common-lisp:deftype notification-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (notification-with-subscribers (:copier common-lisp:nil)
-      (:conc-name "struct-shape-notification-with-subscribers-"))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (subscribers (common-lisp:error ":subscribers is required") :type
-    (common-lisp:or subscribers common-lisp:null)))
+ (common-lisp:defclass notification-with-subscribers common-lisp:nil
+                       ((notification :initarg :notification :initform
+                         (common-lisp:error ":notification is required") :type
+                         (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-notification-with-subscribers-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subscribers :initarg :subscribers :initform
+                         (common-lisp:error ":subscribers is required") :type
+                         (common-lisp:or subscribers common-lisp:null)
+                         :accessor
+                         struct-shape-notification-with-subscribers-subscribers
+                         :shape "Subscribers" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-notification-with-subscribers
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'notification-with-subscribers
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'notification-with-subscribers
                     'make-notification-with-subscribers))
@@ -2948,13 +3976,24 @@
                            (trivial-types:proper-list role))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (scp-action-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scp-action-definition-"))
-   (policy-id (common-lisp:error ":policy-id is required") :type
-    (common-lisp:or policy-id common-lisp:null))
-   (target-ids (common-lisp:error ":target-ids is required") :type
-    (common-lisp:or target-ids common-lisp:null)))
+ (common-lisp:defclass scp-action-definition common-lisp:nil
+                       ((policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policy-id is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-scp-action-definition-policy-id :shape
+                         "PolicyId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (target-ids :initarg :target-ids :initform
+                         (common-lisp:error ":target-ids is required") :type
+                         (common-lisp:or target-ids common-lisp:null) :accessor
+                         struct-shape-scp-action-definition-target-ids :shape
+                         "TargetIds" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-scp-action-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'scp-action-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'scp-action-definition 'make-scp-action-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2987,12 +4026,23 @@
                           scp-action-definition))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (spend (:copier common-lisp:nil) (:conc-name "struct-shape-spend-"))
-   (amount (common-lisp:error ":amount is required") :type
-    (common-lisp:or numeric-value common-lisp:null))
-   (unit (common-lisp:error ":unit is required") :type
-    (common-lisp:or unit-value common-lisp:null)))
+ (common-lisp:defclass spend common-lisp:nil
+                       ((amount :initarg :amount :initform
+                         (common-lisp:error ":amount is required") :type
+                         (common-lisp:or numeric-value common-lisp:null)
+                         :accessor struct-shape-spend-amount :shape
+                         "NumericValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unit :initarg :unit :initform
+                         (common-lisp:error ":unit is required") :type
+                         (common-lisp:or unit-value common-lisp:null) :accessor
+                         struct-shape-spend-unit :shape "UnitValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-spend
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'spend
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'spend 'make-spend))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input spend))
@@ -3018,15 +4068,33 @@
                         ((aws-sdk/generator/shape::input spend))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ssm-action-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ssm-action-definition-"))
-   (action-sub-type (common-lisp:error ":action-sub-type is required") :type
-    (common-lisp:or action-sub-type common-lisp:null))
-   (region (common-lisp:error ":region is required") :type
-    (common-lisp:or region common-lisp:null))
-   (instance-ids (common-lisp:error ":instance-ids is required") :type
-    (common-lisp:or instance-ids common-lisp:null)))
+ (common-lisp:defclass ssm-action-definition common-lisp:nil
+                       ((action-sub-type :initarg :action-sub-type :initform
+                         (common-lisp:error ":action-sub-type is required")
+                         :type
+                         (common-lisp:or action-sub-type common-lisp:null)
+                         :accessor
+                         struct-shape-ssm-action-definition-action-sub-type
+                         :shape "ActionSubType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (region :initarg :region :initform
+                         (common-lisp:error ":region is required") :type
+                         (common-lisp:or region common-lisp:null) :accessor
+                         struct-shape-ssm-action-definition-region :shape
+                         "Region" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (instance-ids :initarg :instance-ids :initform
+                         (common-lisp:error ":instance-ids is required") :type
+                         (common-lisp:or instance-ids common-lisp:null)
+                         :accessor
+                         struct-shape-ssm-action-definition-instance-ids :shape
+                         "InstanceIds" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ssm-action-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ssm-action-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ssm-action-definition 'make-ssm-action-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3066,13 +4134,26 @@
                           ssm-action-definition))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subscriber (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subscriber-"))
-   (subscription-type (common-lisp:error ":subscription-type is required")
-    :type (common-lisp:or subscription-type common-lisp:null))
-   (address (common-lisp:error ":address is required") :type
-    (common-lisp:or subscriber-address common-lisp:null)))
+ (common-lisp:defclass subscriber common-lisp:nil
+                       ((subscription-type :initarg :subscription-type
+                         :initform
+                         (common-lisp:error ":subscription-type is required")
+                         :type
+                         (common-lisp:or subscription-type common-lisp:null)
+                         :accessor struct-shape-subscriber-subscription-type
+                         :shape "SubscriptionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (address :initarg :address :initform
+                         (common-lisp:error ":address is required") :type
+                         (common-lisp:or subscriber-address common-lisp:null)
+                         :accessor struct-shape-subscriber-address :shape
+                         "SubscriberAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-subscriber
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'subscriber
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'subscriber 'make-subscriber))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input subscriber))
@@ -3123,13 +4204,22 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (time-period (:copier common-lisp:nil)
-      (:conc-name "struct-shape-time-period-"))
-   (start common-lisp:nil :type
-    (common-lisp:or generic-timestamp common-lisp:null))
-   (end common-lisp:nil :type
-    (common-lisp:or generic-timestamp common-lisp:null)))
+ (common-lisp:defclass time-period common-lisp:nil
+                       ((start :initarg :start :initform common-lisp:nil :type
+                         (common-lisp:or generic-timestamp common-lisp:null)
+                         :accessor struct-shape-time-period-start :shape
+                         "GenericTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end :initarg :end :initform common-lisp:nil :type
+                         (common-lisp:or generic-timestamp common-lisp:null)
+                         :accessor struct-shape-time-period-end :shape
+                         "GenericTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-time-period
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'time-period
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'time-period 'make-time-period))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input time-period))
@@ -3157,27 +4247,71 @@
 (common-lisp:deftype time-unit () 'common-lisp:string)
 (common-lisp:deftype unit-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-budget-action-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-budget-action-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or action-id common-lisp:null))
-   (notification-type common-lisp:nil :type
-    (common-lisp:or notification-type common-lisp:null))
-   (action-threshold common-lisp:nil :type
-    (common-lisp:or action-threshold common-lisp:null))
-   (definition common-lisp:nil :type
-    (common-lisp:or definition common-lisp:null))
-   (execution-role-arn common-lisp:nil :type
-    (common-lisp:or role-arn common-lisp:null))
-   (approval-model common-lisp:nil :type
-    (common-lisp:or approval-model common-lisp:null))
-   (subscribers common-lisp:nil :type
-    (common-lisp:or subscribers common-lisp:null)))
+ (common-lisp:defclass update-budget-action-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-budget-action-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-budget-action-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-id :initarg :action-id :initform
+                         (common-lisp:error ":action-id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-update-budget-action-request-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification-type :initarg :notification-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or notification-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-budget-action-request-notification-type
+                         :shape "NotificationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-threshold :initarg :action-threshold :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-threshold common-lisp:null)
+                         :accessor
+                         struct-shape-update-budget-action-request-action-threshold
+                         :shape "ActionThreshold" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (definition :initarg :definition :initform
+                         common-lisp:nil :type
+                         (common-lisp:or definition common-lisp:null) :accessor
+                         struct-shape-update-budget-action-request-definition
+                         :shape "Definition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-role-arn :initarg :execution-role-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-update-budget-action-request-execution-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (approval-model :initarg :approval-model :initform
+                         common-lisp:nil :type
+                         (common-lisp:or approval-model common-lisp:null)
+                         :accessor
+                         struct-shape-update-budget-action-request-approval-model
+                         :shape "ApprovalModel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subscribers :initarg :subscribers :initform
+                         common-lisp:nil :type
+                         (common-lisp:or subscribers common-lisp:null)
+                         :accessor
+                         struct-shape-update-budget-action-request-subscribers
+                         :shape "Subscribers" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-budget-action-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-budget-action-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-budget-action-request
                     'make-update-budget-action-request))
@@ -3260,17 +4394,38 @@
                           update-budget-action-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-budget-action-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-budget-action-response-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (old-action (common-lisp:error ":old-action is required") :type
-    (common-lisp:or action common-lisp:null))
-   (new-action (common-lisp:error ":new-action is required") :type
-    (common-lisp:or action common-lisp:null)))
+ (common-lisp:defclass update-budget-action-response common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-budget-action-response-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-budget-action-response-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (old-action :initarg :old-action :initform
+                         (common-lisp:error ":old-action is required") :type
+                         (common-lisp:or action common-lisp:null) :accessor
+                         struct-shape-update-budget-action-response-old-action
+                         :shape "Action" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (new-action :initarg :new-action :initform
+                         (common-lisp:error ":new-action is required") :type
+                         (common-lisp:or action common-lisp:null) :accessor
+                         struct-shape-update-budget-action-response-new-action
+                         :shape "Action" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-budget-action-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-budget-action-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-budget-action-response
                     'make-update-budget-action-response))
@@ -3318,13 +4473,24 @@
                           update-budget-action-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-budget-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-budget-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (new-budget (common-lisp:error ":new-budget is required") :type
-    (common-lisp:or budget common-lisp:null)))
+ (common-lisp:defclass update-budget-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-budget-request-account-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (new-budget :initarg :new-budget :initform
+                         (common-lisp:error ":new-budget is required") :type
+                         (common-lisp:or budget common-lisp:null) :accessor
+                         struct-shape-update-budget-request-new-budget :shape
+                         "Budget" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-budget-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-budget-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-budget-request 'make-update-budget-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3357,9 +4523,12 @@
                           update-budget-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-budget-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-budget-response-")))
+ (common-lisp:defclass update-budget-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-budget-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-budget-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-budget-response 'make-update-budget-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3378,17 +4547,39 @@
                           update-budget-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-notification-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-notification-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (old-notification (common-lisp:error ":old-notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (new-notification (common-lisp:error ":new-notification is required") :type
-    (common-lisp:or notification common-lisp:null)))
+ (common-lisp:defclass update-notification-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-notification-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (old-notification :initarg :old-notification :initform
+                         (common-lisp:error ":old-notification is required")
+                         :type (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-request-old-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (new-notification :initarg :new-notification :initform
+                         (common-lisp:error ":new-notification is required")
+                         :type (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-request-new-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-notification-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-notification-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-notification-request
                     'make-update-notification-request))
@@ -3436,9 +4627,13 @@
                           update-notification-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-notification-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-notification-response-")))
+ (common-lisp:defclass update-notification-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-notification-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-notification-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-notification-response
                     'make-update-notification-response))
@@ -3458,19 +4653,46 @@
                           update-notification-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-subscriber-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-subscriber-request-"))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (old-subscriber (common-lisp:error ":old-subscriber is required") :type
-    (common-lisp:or subscriber common-lisp:null))
-   (new-subscriber (common-lisp:error ":new-subscriber is required") :type
-    (common-lisp:or subscriber common-lisp:null)))
+ (common-lisp:defclass update-subscriber-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         (common-lisp:error ":account-id is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-subscriber-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (budget-name :initarg :budget-name :initform
+                         (common-lisp:error ":budget-name is required") :type
+                         (common-lisp:or budget-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-subscriber-request-budget-name
+                         :shape "BudgetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification :initarg :notification :initform
+                         (common-lisp:error ":notification is required") :type
+                         (common-lisp:or notification common-lisp:null)
+                         :accessor
+                         struct-shape-update-subscriber-request-notification
+                         :shape "Notification" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (old-subscriber :initarg :old-subscriber :initform
+                         (common-lisp:error ":old-subscriber is required")
+                         :type (common-lisp:or subscriber common-lisp:null)
+                         :accessor
+                         struct-shape-update-subscriber-request-old-subscriber
+                         :shape "Subscriber" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (new-subscriber :initarg :new-subscriber :initform
+                         (common-lisp:error ":new-subscriber is required")
+                         :type (common-lisp:or subscriber common-lisp:null)
+                         :accessor
+                         struct-shape-update-subscriber-request-new-subscriber
+                         :shape "Subscriber" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-subscriber-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-subscriber-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-subscriber-request
                     'make-update-subscriber-request))
@@ -3525,9 +4747,13 @@
                           update-subscriber-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-subscriber-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-subscriber-response-")))
+ (common-lisp:defclass update-subscriber-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-subscriber-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-subscriber-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-subscriber-response
                     'make-update-subscriber-response))

@@ -39,15 +39,33 @@
     ("UnauthorizedClientException" . unauthorized-client-exception)))
 (common-lisp:deftype allow-notifications () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (app-instance-user-membership-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-app-instance-user-membership-summary-"))
-   (type common-lisp:nil :type
-    (common-lisp:or channel-membership-type common-lisp:null))
-   (read-marker-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass app-instance-user-membership-summary common-lisp:nil
+                       ((type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or channel-membership-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-app-instance-user-membership-summary-type
+                         :shape "ChannelMembershipType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (read-marker-timestamp :initarg :read-marker-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-app-instance-user-membership-summary-read-marker-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-app-instance-user-membership-summary-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-app-instance-user-membership-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'app-instance-user-membership-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'app-instance-user-membership-summary
                     'make-app-instance-user-membership-summary))
@@ -89,15 +107,32 @@
                           app-instance-user-membership-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-channel-flow-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-channel-flow-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (channel-flow-arn (common-lisp:error ":channel-flow-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass associate-channel-flow-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-associate-channel-flow-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (channel-flow-arn :initarg :channel-flow-arn :initform
+                         (common-lisp:error ":channel-flow-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-associate-channel-flow-request-channel-flow-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-associate-channel-flow-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-channel-flow-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-channel-flow-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-channel-flow-request
                     'make-associate-channel-flow-request))
@@ -138,18 +173,43 @@
   (common-lisp:list 'bad-request-exception 'bad-request-exception-code
                     'bad-request-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-channel-memberships (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-channel-memberships-"))
-   (invited-by common-lisp:nil :type
-    (common-lisp:or identity common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or channel-membership-type common-lisp:null))
-   (members common-lisp:nil :type (common-lisp:or members common-lisp:null))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass batch-channel-memberships common-lisp:nil
+                       ((invited-by :initarg :invited-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity common-lisp:null) :accessor
+                         struct-shape-batch-channel-memberships-invited-by
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or channel-membership-type
+                                         common-lisp:null)
+                         :accessor struct-shape-batch-channel-memberships-type
+                         :shape "ChannelMembershipType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (members :initarg :members :initform common-lisp:nil
+                         :type (common-lisp:or members common-lisp:null)
+                         :accessor
+                         struct-shape-batch-channel-memberships-members :shape
+                         "Members" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-batch-channel-memberships-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-batch-channel-memberships-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-channel-memberships
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-channel-memberships
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-channel-memberships
                     'make-batch-channel-memberships))
@@ -204,15 +264,31 @@
                           batch-channel-memberships))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-create-channel-membership-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-create-channel-membership-error-"))
-   (member-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (error-code common-lisp:nil :type
-    (common-lisp:or error-code common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass batch-create-channel-membership-error common-lisp:nil
+                       ((member-arn :initarg :member-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-batch-create-channel-membership-error-member-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-code :initarg :error-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-code common-lisp:null) :accessor
+                         struct-shape-batch-create-channel-membership-error-error-code
+                         :shape "ErrorCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-batch-create-channel-membership-error-error-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-create-channel-membership-error
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-create-channel-membership-error
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-create-channel-membership-error
                     'make-batch-create-channel-membership-error))
@@ -262,19 +338,46 @@
                             batch-create-channel-membership-error))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-create-channel-membership-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-create-channel-membership-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or channel-membership-type common-lisp:null))
-   (member-arns (common-lisp:error ":member-arns is required") :type
-    (common-lisp:or member-arns common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass batch-create-channel-membership-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-batch-create-channel-membership-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or channel-membership-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-create-channel-membership-request-type
+                         :shape "ChannelMembershipType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (member-arns :initarg :member-arns :initform
+                         (common-lisp:error ":member-arns is required") :type
+                         (common-lisp:or member-arns common-lisp:null)
+                         :accessor
+                         struct-shape-batch-create-channel-membership-request-member-arns
+                         :shape "MemberArns" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-batch-create-channel-membership-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-batch-create-channel-membership-request-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-create-channel-membership-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-create-channel-membership-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-create-channel-membership-request
                     'make-batch-create-channel-membership-request))
@@ -319,13 +422,30 @@
                           batch-create-channel-membership-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-create-channel-membership-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-create-channel-membership-response-"))
-   (batch-channel-memberships common-lisp:nil :type
-    (common-lisp:or batch-channel-memberships common-lisp:null))
-   (errors common-lisp:nil :type
-    (common-lisp:or batch-create-channel-membership-errors common-lisp:null)))
+ (common-lisp:defclass batch-create-channel-membership-response common-lisp:nil
+                       ((batch-channel-memberships :initarg
+                         :batch-channel-memberships :initform common-lisp:nil
+                         :type
+                         (common-lisp:or batch-channel-memberships
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-create-channel-membership-response-batch-channel-memberships
+                         :shape "BatchChannelMemberships" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (errors :initarg :errors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or batch-create-channel-membership-errors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-create-channel-membership-response-errors
+                         :shape "BatchCreateChannelMembershipErrors" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-create-channel-membership-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-create-channel-membership-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-create-channel-membership-response
                     'make-batch-create-channel-membership-response))
@@ -361,30 +481,85 @@
    common-lisp:nil))
 (common-lisp:deftype callback-id-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel (:copier common-lisp:nil) (:conc-name "struct-shape-channel-"))
-   (name common-lisp:nil :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (mode common-lisp:nil :type (common-lisp:or channel-mode common-lisp:null))
-   (privacy common-lisp:nil :type
-    (common-lisp:or channel-privacy common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (created-by common-lisp:nil :type
-    (common-lisp:or identity common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-message-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (channel-flow-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (elastic-channel-configuration common-lisp:nil :type
-    (common-lisp:or elastic-channel-configuration common-lisp:null))
-   (expiration-settings common-lisp:nil :type
-    (common-lisp:or expiration-settings common-lisp:null)))
+ (common-lisp:defclass channel common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor struct-shape-channel-name :shape
+                         "NonEmptyResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-channel-arn :shape "ChimeArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mode :initarg :mode :initform common-lisp:nil :type
+                         (common-lisp:or channel-mode common-lisp:null)
+                         :accessor struct-shape-channel-mode :shape
+                         "ChannelMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (privacy :initarg :privacy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-privacy common-lisp:null)
+                         :accessor struct-shape-channel-privacy :shape
+                         "ChannelPrivacy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor struct-shape-channel-metadata :shape
+                         "Metadata" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-by :initarg :created-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity common-lisp:null) :accessor
+                         struct-shape-channel-created-by :shape "Identity"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-created-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-message-timestamp :initarg
+                         :last-message-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-channel-last-message-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-timestamp :initarg
+                         :last-updated-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-channel-last-updated-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-flow-arn :initarg :channel-flow-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-channel-flow-arn :shape
+                         "ChimeArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (elastic-channel-configuration :initarg
+                         :elastic-channel-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or elastic-channel-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-elastic-channel-configuration
+                         :shape "ElasticChannelConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expiration-settings :initarg :expiration-settings
+                         :initform common-lisp:nil :type
+                         (common-lisp:or expiration-settings common-lisp:null)
+                         :accessor struct-shape-channel-expiration-settings
+                         :shape "ExpirationSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'channel 'make-channel))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input channel))
@@ -483,17 +658,45 @@
                         ((aws-sdk/generator/shape::input channel))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-associated-with-flow-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-associated-with-flow-summary-"))
-   (name common-lisp:nil :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (mode common-lisp:nil :type (common-lisp:or channel-mode common-lisp:null))
-   (privacy common-lisp:nil :type
-    (common-lisp:or channel-privacy common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null)))
+ (common-lisp:defclass channel-associated-with-flow-summary common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-associated-with-flow-summary-name
+                         :shape "NonEmptyResourceName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-associated-with-flow-summary-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mode :initarg :mode :initform common-lisp:nil :type
+                         (common-lisp:or channel-mode common-lisp:null)
+                         :accessor
+                         struct-shape-channel-associated-with-flow-summary-mode
+                         :shape "ChannelMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (privacy :initarg :privacy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-privacy common-lisp:null)
+                         :accessor
+                         struct-shape-channel-associated-with-flow-summary-privacy
+                         :shape "ChannelPrivacy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor
+                         struct-shape-channel-associated-with-flow-summary-metadata
+                         :shape "Metadata" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-associated-with-flow-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'channel-associated-with-flow-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-associated-with-flow-summary
                     'make-channel-associated-with-flow-summary))
@@ -557,16 +760,35 @@
                             channel-associated-with-flow-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-ban (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-ban-"))
-   (member common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (created-by common-lisp:nil :type
-    (common-lisp:or identity common-lisp:null)))
+ (common-lisp:defclass channel-ban common-lisp:nil
+                       ((member :initarg :member :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor struct-shape-channel-ban-member :shape
+                         "Identity" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-ban-channel-arn :shape "ChimeArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-ban-created-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-by :initarg :created-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity common-lisp:null) :accessor
+                         struct-shape-channel-ban-created-by :shape "Identity"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-ban
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-ban
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'channel-ban 'make-channel-ban))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input channel-ban))
@@ -606,10 +828,17 @@
                         ((aws-sdk/generator/shape::input channel-ban))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-ban-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-ban-summary-"))
-   (member common-lisp:nil :type (common-lisp:or identity common-lisp:null)))
+ (common-lisp:defclass channel-ban-summary common-lisp:nil
+                       ((member :initarg :member :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor struct-shape-channel-ban-summary-member
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-ban-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-ban-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-ban-summary 'make-channel-ban-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -637,19 +866,43 @@
                            (trivial-types:proper-list channel-ban-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-flow (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-flow-"))
-   (channel-flow-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (processors common-lisp:nil :type
-    (common-lisp:or processor-list common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass channel-flow common-lisp:nil
+                       ((channel-flow-arn :initarg :channel-flow-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-flow-channel-flow-arn :shape
+                         "ChimeArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (processors :initarg :processors :initform
+                         common-lisp:nil :type
+                         (common-lisp:or processor-list common-lisp:null)
+                         :accessor struct-shape-channel-flow-processors :shape
+                         "ProcessorList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor struct-shape-channel-flow-name :shape
+                         "NonEmptyResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-flow-created-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-timestamp :initarg
+                         :last-updated-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-channel-flow-last-updated-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-flow
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-flow
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'channel-flow 'make-channel-flow))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input channel-flow))
@@ -697,17 +950,42 @@
                         ((aws-sdk/generator/shape::input channel-flow))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-flow-callback-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-flow-callback-request-"))
-   (callback-id (common-lisp:error ":callback-id is required") :type
-    (common-lisp:or callback-id-type common-lisp:null))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (delete-resource common-lisp:nil :type
-    (common-lisp:or non-nullable-boolean common-lisp:null))
-   (channel-message (common-lisp:error ":channel-message is required") :type
-    (common-lisp:or channel-message-callback common-lisp:null)))
+ (common-lisp:defclass channel-flow-callback-request common-lisp:nil
+                       ((callback-id :initarg :callback-id :initform
+                         (common-lisp:error ":callback-id is required") :type
+                         (common-lisp:or callback-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-channel-flow-callback-request-callback-id
+                         :shape "CallbackIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-flow-callback-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (delete-resource :initarg :delete-resource :initform
+                         common-lisp:nil :type
+                         (common-lisp:or non-nullable-boolean common-lisp:null)
+                         :accessor
+                         struct-shape-channel-flow-callback-request-delete-resource
+                         :shape "NonNullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-message :initarg :channel-message :initform
+                         (common-lisp:error ":channel-message is required")
+                         :type
+                         (common-lisp:or channel-message-callback
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-flow-callback-request-channel-message
+                         :shape "ChannelMessageCallback" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-flow-callback-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'channel-flow-callback-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-flow-callback-request
                     'make-channel-flow-callback-request))
@@ -748,13 +1026,26 @@
                           channel-flow-callback-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-flow-callback-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-flow-callback-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (callback-id common-lisp:nil :type
-    (common-lisp:or callback-id-type common-lisp:null)))
+ (common-lisp:defclass channel-flow-callback-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-flow-callback-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (callback-id :initarg :callback-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or callback-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-channel-flow-callback-response-callback-id
+                         :shape "CallbackIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-flow-callback-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'channel-flow-callback-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-flow-callback-response
                     'make-channel-flow-callback-response))
@@ -789,15 +1080,30 @@
    common-lisp:nil))
 (common-lisp:deftype channel-flow-execution-order () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-flow-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-flow-summary-"))
-   (channel-flow-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (processors common-lisp:nil :type
-    (common-lisp:or processor-list common-lisp:null)))
+ (common-lisp:defclass channel-flow-summary common-lisp:nil
+                       ((channel-flow-arn :initarg :channel-flow-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-flow-summary-channel-flow-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor struct-shape-channel-flow-summary-name
+                         :shape "NonEmptyResourceName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (processors :initarg :processors :initform
+                         common-lisp:nil :type
+                         (common-lisp:or processor-list common-lisp:null)
+                         :accessor struct-shape-channel-flow-summary-processors
+                         :shape "ProcessorList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-flow-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-flow-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-flow-summary 'make-channel-flow-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -848,22 +1154,55 @@
                            (trivial-types:proper-list chime-arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-membership (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-membership-"))
-   (invited-by common-lisp:nil :type
-    (common-lisp:or identity common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or channel-membership-type common-lisp:null))
-   (member common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass channel-membership common-lisp:nil
+                       ((invited-by :initarg :invited-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity common-lisp:null) :accessor
+                         struct-shape-channel-membership-invited-by :shape
+                         "Identity" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or channel-membership-type
+                                         common-lisp:null)
+                         :accessor struct-shape-channel-membership-type :shape
+                         "ChannelMembershipType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (member :initarg :member :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor struct-shape-channel-membership-member
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-membership-channel-arn :shape
+                         "ChimeArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-membership-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-timestamp :initarg
+                         :last-updated-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-channel-membership-last-updated-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-channel-membership-sub-channel-id :shape
+                         "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-membership
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-membership
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-membership 'make-channel-membership))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -926,15 +1265,30 @@
                         ((aws-sdk/generator/shape::input channel-membership))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-membership-for-app-instance-user-summary
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-channel-membership-for-app-instance-user-summary-"))
-   (channel-summary common-lisp:nil :type
-    (common-lisp:or channel-summary common-lisp:null))
-   (app-instance-user-membership-summary common-lisp:nil :type
-    (common-lisp:or app-instance-user-membership-summary common-lisp:null)))
+ (common-lisp:defclass channel-membership-for-app-instance-user-summary
+                       common-lisp:nil
+                       ((channel-summary :initarg :channel-summary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-summary common-lisp:null)
+                         :accessor
+                         struct-shape-channel-membership-for-app-instance-user-summary-channel-summary
+                         :shape "ChannelSummary" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (app-instance-user-membership-summary :initarg
+                         :app-instance-user-membership-summary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or app-instance-user-membership-summary
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-membership-for-app-instance-user-summary-app-instance-user-membership-summary
+                         :shape "AppInstanceUserMembershipSummary" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-membership-for-app-instance-user-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'channel-membership-for-app-instance-user-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-membership-for-app-instance-user-summary
                     'make-channel-membership-for-app-instance-user-summary))
@@ -979,11 +1333,21 @@
                             channel-membership-for-app-instance-user-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-membership-preferences (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-membership-preferences-"))
-   (push-notifications common-lisp:nil :type
-    (common-lisp:or push-notification-preferences common-lisp:null)))
+ (common-lisp:defclass channel-membership-preferences common-lisp:nil
+                       ((push-notifications :initarg :push-notifications
+                         :initform common-lisp:nil :type
+                         (common-lisp:or push-notification-preferences
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-membership-preferences-push-notifications
+                         :shape "PushNotificationPreferences" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-membership-preferences
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'channel-membership-preferences
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-membership-preferences
                     'make-channel-membership-preferences))
@@ -1010,10 +1374,18 @@
                           channel-membership-preferences))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-membership-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-membership-summary-"))
-   (member common-lisp:nil :type (common-lisp:or identity common-lisp:null)))
+ (common-lisp:defclass channel-membership-summary common-lisp:nil
+                       ((member :initarg :member :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-channel-membership-summary-member :shape
+                         "Identity" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-membership-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-membership-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-membership-summary
                     'make-channel-membership-summary))
@@ -1050,38 +1422,108 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype channel-membership-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-message (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-message-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id common-lisp:nil :type
-    (common-lisp:or message-id common-lisp:null))
-   (content common-lisp:nil :type (common-lisp:or content common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or channel-message-type common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-edited-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (sender common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (redacted common-lisp:nil :type
-    (common-lisp:or non-nullable-boolean common-lisp:null))
-   (persistence common-lisp:nil :type
-    (common-lisp:or channel-message-persistence-type common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or channel-message-status-structure common-lisp:null))
-   (message-attributes common-lisp:nil :type
-    (common-lisp:or message-attribute-map common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null))
-   (content-type common-lisp:nil :type
-    (common-lisp:or content-type common-lisp:null))
-   (target common-lisp:nil :type
-    (common-lisp:or target-list common-lisp:null)))
+ (common-lisp:defclass channel-message common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-message-channel-arn :shape
+                         "ChimeArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (message-id :initarg :message-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-channel-message-message-id :shape
+                         "MessageId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type (common-lisp:or content common-lisp:null)
+                         :accessor struct-shape-channel-message-content :shape
+                         "Content" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor struct-shape-channel-message-metadata :shape
+                         "Metadata" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or channel-message-type common-lisp:null)
+                         :accessor struct-shape-channel-message-type :shape
+                         "ChannelMessageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-message-created-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-edited-timestamp :initarg :last-edited-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-message-last-edited-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-timestamp :initarg
+                         :last-updated-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-last-updated-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sender :initarg :sender :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor struct-shape-channel-message-sender :shape
+                         "Identity" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (redacted :initarg :redacted :initform common-lisp:nil
+                         :type
+                         (common-lisp:or non-nullable-boolean common-lisp:null)
+                         :accessor struct-shape-channel-message-redacted :shape
+                         "NonNullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (persistence :initarg :persistence :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-message-persistence-type
+                                         common-lisp:null)
+                         :accessor struct-shape-channel-message-persistence
+                         :shape "ChannelMessagePersistenceType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-message-status-structure
+                                         common-lisp:null)
+                         :accessor struct-shape-channel-message-status :shape
+                         "ChannelMessageStatusStructure" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (message-attributes :initarg :message-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or message-attribute-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-message-attributes :shape
+                         "MessageAttributeMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor struct-shape-channel-message-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-type common-lisp:null)
+                         :accessor struct-shape-channel-message-content-type
+                         :shape "ContentType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target :initarg :target :initform common-lisp:nil
+                         :type (common-lisp:or target-list common-lisp:null)
+                         :accessor struct-shape-channel-message-target :shape
+                         "TargetList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-message
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-message
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'channel-message 'make-channel-message))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input channel-message))
@@ -1207,22 +1649,61 @@
                         ((aws-sdk/generator/shape::input channel-message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-message-callback (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-message-callback-"))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or message-id common-lisp:null))
-   (content common-lisp:nil :type
-    (common-lisp:or non-empty-content common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (push-notification common-lisp:nil :type
-    (common-lisp:or push-notification-configuration common-lisp:null))
-   (message-attributes common-lisp:nil :type
-    (common-lisp:or message-attribute-map common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null))
-   (content-type common-lisp:nil :type
-    (common-lisp:or content-type common-lisp:null)))
+ (common-lisp:defclass channel-message-callback common-lisp:nil
+                       ((message-id :initarg :message-id :initform
+                         (common-lisp:error ":message-id is required") :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-channel-message-callback-message-id
+                         :shape "MessageId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type
+                         (common-lisp:or non-empty-content common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-callback-content :shape
+                         "NonEmptyContent" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-callback-metadata :shape
+                         "Metadata" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (push-notification :initarg :push-notification
+                         :initform common-lisp:nil :type
+                         (common-lisp:or push-notification-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-callback-push-notification
+                         :shape "PushNotificationConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (message-attributes :initarg :message-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or message-attribute-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-callback-message-attributes
+                         :shape "MessageAttributeMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-callback-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-type common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-callback-content-type
+                         :shape "ContentType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-message-callback
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-message-callback
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-message-callback 'make-channel-message-callback))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1292,13 +1773,26 @@
 (common-lisp:deftype channel-message-persistence-type () 'common-lisp:string)
 (common-lisp:deftype channel-message-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-message-status-structure (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-message-status-structure-"))
-   (value common-lisp:nil :type
-    (common-lisp:or channel-message-status common-lisp:null))
-   (detail common-lisp:nil :type
-    (common-lisp:or status-detail common-lisp:null)))
+ (common-lisp:defclass channel-message-status-structure common-lisp:nil
+                       ((value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or channel-message-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-status-structure-value
+                         :shape "ChannelMessageStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (detail :initarg :detail :initform common-lisp:nil
+                         :type (common-lisp:or status-detail common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-status-structure-detail
+                         :shape "StatusDetail" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-message-status-structure
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'channel-message-status-structure
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-message-status-structure
                     'make-channel-message-status-structure))
@@ -1332,32 +1826,92 @@
                           channel-message-status-structure))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-message-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-message-summary-"))
-   (message-id common-lisp:nil :type
-    (common-lisp:or message-id common-lisp:null))
-   (content common-lisp:nil :type (common-lisp:or content common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or channel-message-type common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-edited-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (sender common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (redacted common-lisp:nil :type
-    (common-lisp:or non-nullable-boolean common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or channel-message-status-structure common-lisp:null))
-   (message-attributes common-lisp:nil :type
-    (common-lisp:or message-attribute-map common-lisp:null))
-   (content-type common-lisp:nil :type
-    (common-lisp:or content-type common-lisp:null))
-   (target common-lisp:nil :type
-    (common-lisp:or target-list common-lisp:null)))
+ (common-lisp:defclass channel-message-summary common-lisp:nil
+                       ((message-id :initarg :message-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-channel-message-summary-message-id :shape
+                         "MessageId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type (common-lisp:or content common-lisp:null)
+                         :accessor struct-shape-channel-message-summary-content
+                         :shape "Content" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-summary-metadata :shape
+                         "Metadata" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or channel-message-type common-lisp:null)
+                         :accessor struct-shape-channel-message-summary-type
+                         :shape "ChannelMessageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-message-summary-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-timestamp :initarg
+                         :last-updated-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-summary-last-updated-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-edited-timestamp :initarg :last-edited-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-message-summary-last-edited-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sender :initarg :sender :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor struct-shape-channel-message-summary-sender
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (redacted :initarg :redacted :initform common-lisp:nil
+                         :type
+                         (common-lisp:or non-nullable-boolean common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-summary-redacted :shape
+                         "NonNullableBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-message-status-structure
+                                         common-lisp:null)
+                         :accessor struct-shape-channel-message-summary-status
+                         :shape "ChannelMessageStatusStructure" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (message-attributes :initarg :message-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or message-attribute-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-summary-message-attributes
+                         :shape "MessageAttributeMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-type common-lisp:null)
+                         :accessor
+                         struct-shape-channel-message-summary-content-type
+                         :shape "ContentType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target :initarg :target :initform common-lisp:nil
+                         :type (common-lisp:or target-list common-lisp:null)
+                         :accessor struct-shape-channel-message-summary-target
+                         :shape "TargetList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-message-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-message-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-message-summary 'make-channel-message-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1479,12 +2033,21 @@
 (common-lisp:deftype channel-message-type () 'common-lisp:string)
 (common-lisp:deftype channel-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-moderated-by-app-instance-user-summary (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-channel-moderated-by-app-instance-user-summary-"))
-   (channel-summary common-lisp:nil :type
-    (common-lisp:or channel-summary common-lisp:null)))
+ (common-lisp:defclass channel-moderated-by-app-instance-user-summary
+                       common-lisp:nil
+                       ((channel-summary :initarg :channel-summary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-summary common-lisp:null)
+                         :accessor
+                         struct-shape-channel-moderated-by-app-instance-user-summary-channel-summary
+                         :shape "ChannelSummary" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-moderated-by-app-instance-user-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'channel-moderated-by-app-instance-user-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-moderated-by-app-instance-user-summary
                     'make-channel-moderated-by-app-instance-user-summary))
@@ -1520,16 +2083,36 @@
                             channel-moderated-by-app-instance-user-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-moderator (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-moderator-"))
-   (moderator common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (created-by common-lisp:nil :type
-    (common-lisp:or identity common-lisp:null)))
+ (common-lisp:defclass channel-moderator common-lisp:nil
+                       ((moderator :initarg :moderator :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity common-lisp:null) :accessor
+                         struct-shape-channel-moderator-moderator :shape
+                         "Identity" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-moderator-channel-arn :shape
+                         "ChimeArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-channel-moderator-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-by :initarg :created-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity common-lisp:null) :accessor
+                         struct-shape-channel-moderator-created-by :shape
+                         "Identity" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-moderator
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-moderator
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-moderator 'make-channel-moderator))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1578,11 +2161,18 @@
                            (trivial-types:proper-list chime-arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-moderator-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-moderator-summary-"))
-   (moderator common-lisp:nil :type
-    (common-lisp:or identity common-lisp:null)))
+ (common-lisp:defclass channel-moderator-summary common-lisp:nil
+                       ((moderator :initarg :moderator :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity common-lisp:null) :accessor
+                         struct-shape-channel-moderator-summary-moderator
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-moderator-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-moderator-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-moderator-summary
                     'make-channel-moderator-summary))
@@ -1619,19 +2209,47 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype channel-privacy () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-summary-"))
-   (name common-lisp:nil :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (mode common-lisp:nil :type (common-lisp:or channel-mode common-lisp:null))
-   (privacy common-lisp:nil :type
-    (common-lisp:or channel-privacy common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (last-message-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass channel-summary common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor struct-shape-channel-summary-name :shape
+                         "NonEmptyResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-channel-summary-channel-arn :shape
+                         "ChimeArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mode :initarg :mode :initform common-lisp:nil :type
+                         (common-lisp:or channel-mode common-lisp:null)
+                         :accessor struct-shape-channel-summary-mode :shape
+                         "ChannelMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (privacy :initarg :privacy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-privacy common-lisp:null)
+                         :accessor struct-shape-channel-summary-privacy :shape
+                         "ChannelPrivacy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor struct-shape-channel-summary-metadata :shape
+                         "Metadata" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-message-timestamp :initarg
+                         :last-message-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-channel-summary-last-message-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'channel-summary 'make-channel-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input channel-summary))
@@ -1708,15 +2326,30 @@
 (common-lisp:deftype content () 'common-lisp:string)
 (common-lisp:deftype content-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-ban-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-ban-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member-arn (common-lisp:error ":member-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass create-channel-ban-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-ban-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (member-arn :initarg :member-arn :initform
+                         (common-lisp:error ":member-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-ban-request-member-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-ban-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-ban-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-channel-ban-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-ban-request
                     'make-create-channel-ban-request))
@@ -1747,12 +2380,24 @@
                           create-channel-ban-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-ban-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-ban-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member common-lisp:nil :type (common-lisp:or identity common-lisp:null)))
+ (common-lisp:defclass create-channel-ban-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-ban-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (member :initarg :member :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-ban-response-member :shape
+                         "Identity" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-ban-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-channel-ban-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-ban-response
                     'make-create-channel-ban-response))
@@ -1786,19 +2431,49 @@
                           create-channel-ban-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-flow-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-flow-request-"))
-   (app-instance-arn (common-lisp:error ":app-instance-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (processors (common-lisp:error ":processors is required") :type
-    (common-lisp:or processor-list common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (client-request-token
-    (common-lisp:error ":client-request-token is required") :type
-    (common-lisp:or client-request-token common-lisp:null)))
+ (common-lisp:defclass create-channel-flow-request common-lisp:nil
+                       ((app-instance-arn :initarg :app-instance-arn :initform
+                         (common-lisp:error ":app-instance-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-flow-request-app-instance-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (processors :initarg :processors :initform
+                         (common-lisp:error ":processors is required") :type
+                         (common-lisp:or processor-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-flow-request-processors
+                         :shape "ProcessorList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-flow-request-name :shape
+                         "NonEmptyResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-channel-flow-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform
+                         (common-lisp:error
+                          ":client-request-token is required")
+                         :type
+                         (common-lisp:or client-request-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-flow-request-client-request-token
+                         :shape "ClientRequestToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-flow-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-channel-flow-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-flow-request
                     'make-create-channel-flow-request))
@@ -1854,11 +2529,18 @@
                           create-channel-flow-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-flow-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-flow-response-"))
-   (channel-flow-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass create-channel-flow-response common-lisp:nil
+                       ((channel-flow-arn :initarg :channel-flow-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-flow-response-channel-flow-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-flow-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-channel-flow-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-flow-response
                     'make-create-channel-flow-response))
@@ -1885,19 +2567,46 @@
                           create-channel-flow-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-membership-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-membership-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member-arn (common-lisp:error ":member-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or channel-membership-type common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass create-channel-membership-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-membership-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (member-arn :initarg :member-arn :initform
+                         (common-lisp:error ":member-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-membership-request-member-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or channel-membership-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-membership-request-type
+                         :shape "ChannelMembershipType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-membership-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-membership-request-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-membership-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-channel-membership-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-membership-request
                     'make-create-channel-membership-request))
@@ -1942,14 +2651,32 @@
                           create-channel-membership-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-membership-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-membership-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass create-channel-membership-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-membership-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (member :initarg :member :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-membership-response-member
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-membership-response-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-membership-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-channel-membership-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-membership-response
                     'make-create-channel-membership-response))
@@ -1990,16 +2717,34 @@
                           create-channel-membership-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-moderator-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-moderator-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (channel-moderator-arn
-    (common-lisp:error ":channel-moderator-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass create-channel-moderator-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-moderator-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (channel-moderator-arn :initarg :channel-moderator-arn
+                         :initform
+                         (common-lisp:error
+                          ":channel-moderator-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-moderator-request-channel-moderator-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-moderator-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-moderator-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-channel-moderator-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-moderator-request
                     'make-create-channel-moderator-request))
@@ -2031,13 +2776,25 @@
                           create-channel-moderator-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-moderator-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-moderator-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (channel-moderator common-lisp:nil :type
-    (common-lisp:or identity common-lisp:null)))
+ (common-lisp:defclass create-channel-moderator-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-moderator-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-moderator :initarg :channel-moderator
+                         :initform common-lisp:nil :type
+                         (common-lisp:or identity common-lisp:null) :accessor
+                         struct-shape-create-channel-moderator-response-channel-moderator
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-moderator-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-channel-moderator-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-moderator-response
                     'make-create-channel-moderator-response))
@@ -2071,33 +2828,100 @@
                           create-channel-moderator-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-request-"))
-   (app-instance-arn (common-lisp:error ":app-instance-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (mode common-lisp:nil :type (common-lisp:or channel-mode common-lisp:null))
-   (privacy common-lisp:nil :type
-    (common-lisp:or channel-privacy common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (client-request-token
-    (common-lisp:error ":client-request-token is required") :type
-    (common-lisp:or client-request-token common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (channel-id common-lisp:nil :type
-    (common-lisp:or channel-id common-lisp:null))
-   (member-arns common-lisp:nil :type
-    (common-lisp:or channel-member-arns common-lisp:null))
-   (moderator-arns common-lisp:nil :type
-    (common-lisp:or channel-moderator-arns common-lisp:null))
-   (elastic-channel-configuration common-lisp:nil :type
-    (common-lisp:or elastic-channel-configuration common-lisp:null))
-   (expiration-settings common-lisp:nil :type
-    (common-lisp:or expiration-settings common-lisp:null)))
+ (common-lisp:defclass create-channel-request common-lisp:nil
+                       ((app-instance-arn :initarg :app-instance-arn :initform
+                         (common-lisp:error ":app-instance-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-request-app-instance-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor struct-shape-create-channel-request-name
+                         :shape "NonEmptyResourceName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (mode :initarg :mode :initform common-lisp:nil :type
+                         (common-lisp:or channel-mode common-lisp:null)
+                         :accessor struct-shape-create-channel-request-mode
+                         :shape "ChannelMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (privacy :initarg :privacy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-privacy common-lisp:null)
+                         :accessor struct-shape-create-channel-request-privacy
+                         :shape "ChannelPrivacy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor struct-shape-create-channel-request-metadata
+                         :shape "Metadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform
+                         (common-lisp:error
+                          ":client-request-token is required")
+                         :type
+                         (common-lisp:or client-request-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-request-client-request-token
+                         :shape "ClientRequestToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-channel-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (channel-id :initarg :channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-id common-lisp:null) :accessor
+                         struct-shape-create-channel-request-channel-id :shape
+                         "ChannelId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (member-arns :initarg :member-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-member-arns common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-request-member-arns :shape
+                         "ChannelMemberArns" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (moderator-arns :initarg :moderator-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-moderator-arns
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-request-moderator-arns
+                         :shape "ChannelModeratorArns" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (elastic-channel-configuration :initarg
+                         :elastic-channel-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or elastic-channel-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-request-elastic-channel-configuration
+                         :shape "ElasticChannelConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expiration-settings :initarg :expiration-settings
+                         :initform common-lisp:nil :type
+                         (common-lisp:or expiration-settings common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-request-expiration-settings
+                         :shape "ExpirationSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-channel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-request 'make-create-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2206,11 +3030,18 @@
                           create-channel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass create-channel-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-create-channel-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-channel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-response 'make-create-channel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2236,15 +3067,30 @@
                           create-channel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-channel-ban-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-channel-ban-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member-arn (common-lisp:error ":member-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass delete-channel-ban-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-ban-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (member-arn :initarg :member-arn :initform
+                         (common-lisp:error ":member-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-ban-request-member-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "memberArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-ban-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-channel-ban-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-channel-ban-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-channel-ban-request
                     'make-delete-channel-ban-request))
@@ -2268,11 +3114,19 @@
                           delete-channel-ban-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-channel-flow-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-channel-flow-request-"))
-   (channel-flow-arn (common-lisp:error ":channel-flow-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass delete-channel-flow-request common-lisp:nil
+                       ((channel-flow-arn :initarg :channel-flow-arn :initform
+                         (common-lisp:error ":channel-flow-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-channel-flow-request-channel-flow-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelFlowArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-channel-flow-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-channel-flow-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-channel-flow-request
                     'make-delete-channel-flow-request))
@@ -2292,17 +3146,38 @@
                           delete-channel-flow-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-channel-membership-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-channel-membership-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member-arn (common-lisp:error ":member-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass delete-channel-membership-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-membership-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (member-arn :initarg :member-arn :initform
+                         (common-lisp:error ":member-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-membership-request-member-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "memberArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-membership-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-channel-membership-request-sub-channel-id
+                         :shape "SubChannelId" :location "querystring"
+                         :location-name "sub-channel-id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-channel-membership-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-channel-membership-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-channel-membership-request
                     'make-delete-channel-membership-request))
@@ -2326,17 +3201,38 @@
                           delete-channel-membership-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-channel-message-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-channel-message-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or message-id common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass delete-channel-message-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-message-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (message-id :initarg :message-id :initform
+                         (common-lisp:error ":message-id is required") :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-delete-channel-message-request-message-id
+                         :shape "MessageId" :location "uri" :location-name
+                         "messageId")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-message-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-channel-message-request-sub-channel-id
+                         :shape "SubChannelId" :location "querystring"
+                         :location-name "sub-channel-id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-channel-message-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-channel-message-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-channel-message-request
                     'make-delete-channel-message-request))
@@ -2360,16 +3256,34 @@
                           delete-channel-message-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-channel-moderator-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-channel-moderator-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (channel-moderator-arn
-    (common-lisp:error ":channel-moderator-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass delete-channel-moderator-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-moderator-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (channel-moderator-arn :initarg :channel-moderator-arn
+                         :initform
+                         (common-lisp:error
+                          ":channel-moderator-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-channel-moderator-request-channel-moderator-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelModeratorArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-moderator-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-channel-moderator-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-channel-moderator-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-channel-moderator-request
                     'make-delete-channel-moderator-request))
@@ -2393,13 +3307,24 @@
                           delete-channel-moderator-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-channel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-channel-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass delete-channel-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-request-channel-arn :shape
+                         "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-delete-channel-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-channel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-channel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-channel-request 'make-delete-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2422,13 +3347,21 @@
                           delete-channel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-messaging-streaming-configurations-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-messaging-streaming-configurations-request-"))
-   (app-instance-arn (common-lisp:error ":app-instance-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass delete-messaging-streaming-configurations-request
+                       common-lisp:nil
+                       ((app-instance-arn :initarg :app-instance-arn :initform
+                         (common-lisp:error ":app-instance-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-messaging-streaming-configurations-request-app-instance-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "appInstanceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-messaging-streaming-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-messaging-streaming-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-messaging-streaming-configurations-request
                     'make-delete-messaging-streaming-configurations-request))
@@ -2448,15 +3381,30 @@
                           delete-messaging-streaming-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-ban-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-ban-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member-arn (common-lisp:error ":member-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass describe-channel-ban-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-ban-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (member-arn :initarg :member-arn :initform
+                         (common-lisp:error ":member-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-ban-request-member-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "memberArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-ban-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-ban-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-channel-ban-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-ban-request
                     'make-describe-channel-ban-request))
@@ -2480,11 +3428,20 @@
                           describe-channel-ban-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-ban-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-ban-response-"))
-   (channel-ban common-lisp:nil :type
-    (common-lisp:or channel-ban common-lisp:null)))
+ (common-lisp:defclass describe-channel-ban-response common-lisp:nil
+                       ((channel-ban :initarg :channel-ban :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-ban common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-ban-response-channel-ban
+                         :shape "ChannelBan" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-ban-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-ban-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-ban-response
                     'make-describe-channel-ban-response))
@@ -2511,11 +3468,20 @@
                           describe-channel-ban-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-flow-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-flow-request-"))
-   (channel-flow-arn (common-lisp:error ":channel-flow-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass describe-channel-flow-request common-lisp:nil
+                       ((channel-flow-arn :initarg :channel-flow-arn :initform
+                         (common-lisp:error ":channel-flow-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-flow-request-channel-flow-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelFlowArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-flow-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-flow-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-flow-request
                     'make-describe-channel-flow-request))
@@ -2535,11 +3501,20 @@
                           describe-channel-flow-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-flow-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-flow-response-"))
-   (channel-flow common-lisp:nil :type
-    (common-lisp:or channel-flow common-lisp:null)))
+ (common-lisp:defclass describe-channel-flow-response common-lisp:nil
+                       ((channel-flow :initarg :channel-flow :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-flow common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-flow-response-channel-flow
+                         :shape "ChannelFlow" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-flow-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-flow-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-flow-response
                     'make-describe-channel-flow-response))
@@ -2566,18 +3541,30 @@
                           describe-channel-flow-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-membership-for-app-instance-user-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-channel-membership-for-app-instance-user-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (app-instance-user-arn
+ (common-lisp:defclass
+  describe-channel-membership-for-app-instance-user-request common-lisp:nil
+  ((channel-arn :initarg :channel-arn :initform
+    (common-lisp:error ":channel-arn is required") :type
+    (common-lisp:or chime-arn common-lisp:null) :accessor
+    struct-shape-describe-channel-membership-for-app-instance-user-request-channel-arn
+    :shape "ChimeArn" :location "uri" :location-name "channelArn")
+   (app-instance-user-arn :initarg :app-instance-user-arn :initform
     (common-lisp:error ":app-instance-user-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+    (common-lisp:or chime-arn common-lisp:null) :accessor
+    struct-shape-describe-channel-membership-for-app-instance-user-request-app-instance-user-arn
+    :shape "ChimeArn" :location "querystring" :location-name
+    "app-instance-user-arn")
+   (chime-bearer :initarg :chime-bearer :initform
+    (common-lisp:error ":chime-bearer is required") :type
+    (common-lisp:or chime-arn common-lisp:null) :accessor
+    struct-shape-describe-channel-membership-for-app-instance-user-request-chime-bearer
+    :shape "ChimeArn" :location "header" :location-name "x-amz-chime-bearer"))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-membership-for-app-instance-user-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-membership-for-app-instance-user-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-membership-for-app-instance-user-request
                     'make-describe-channel-membership-for-app-instance-user-request))
@@ -2601,14 +3588,22 @@
                           describe-channel-membership-for-app-instance-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-membership-for-app-instance-user-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-channel-membership-for-app-instance-user-response-"))
-   (channel-membership common-lisp:nil :type
+ (common-lisp:defclass
+  describe-channel-membership-for-app-instance-user-response common-lisp:nil
+  ((channel-membership :initarg :channel-membership :initform common-lisp:nil
+    :type
     (common-lisp:or channel-membership-for-app-instance-user-summary
-                    common-lisp:null)))
+                    common-lisp:null)
+    :accessor
+    struct-shape-describe-channel-membership-for-app-instance-user-response-channel-membership
+    :shape "ChannelMembershipForAppInstanceUserSummary" :location
+    common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-membership-for-app-instance-user-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-membership-for-app-instance-user-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-membership-for-app-instance-user-response
                     'make-describe-channel-membership-for-app-instance-user-response))
@@ -2635,17 +3630,38 @@
                           describe-channel-membership-for-app-instance-user-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-membership-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-membership-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member-arn (common-lisp:error ":member-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass describe-channel-membership-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-membership-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (member-arn :initarg :member-arn :initform
+                         (common-lisp:error ":member-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-membership-request-member-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "memberArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-membership-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-membership-request-sub-channel-id
+                         :shape "SubChannelId" :location "querystring"
+                         :location-name "sub-channel-id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-membership-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-membership-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-membership-request
                     'make-describe-channel-membership-request))
@@ -2669,11 +3685,20 @@
                           describe-channel-membership-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-membership-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-membership-response-"))
-   (channel-membership common-lisp:nil :type
-    (common-lisp:or channel-membership common-lisp:null)))
+ (common-lisp:defclass describe-channel-membership-response common-lisp:nil
+                       ((channel-membership :initarg :channel-membership
+                         :initform common-lisp:nil :type
+                         (common-lisp:or channel-membership common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-membership-response-channel-membership
+                         :shape "ChannelMembership" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-membership-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-membership-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-membership-response
                     'make-describe-channel-membership-response))
@@ -2700,18 +3725,35 @@
                           describe-channel-membership-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-moderated-by-app-instance-user-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-channel-moderated-by-app-instance-user-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (app-instance-user-arn
-    (common-lisp:error ":app-instance-user-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass describe-channel-moderated-by-app-instance-user-request
+                       common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-moderated-by-app-instance-user-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (app-instance-user-arn :initarg :app-instance-user-arn
+                         :initform
+                         (common-lisp:error
+                          ":app-instance-user-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-moderated-by-app-instance-user-request-app-instance-user-arn
+                         :shape "ChimeArn" :location "querystring"
+                         :location-name "app-instance-user-arn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-moderated-by-app-instance-user-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-moderated-by-app-instance-user-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-moderated-by-app-instance-user-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-moderated-by-app-instance-user-request
                     'make-describe-channel-moderated-by-app-instance-user-request))
@@ -2735,14 +3777,24 @@
                           describe-channel-moderated-by-app-instance-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-moderated-by-app-instance-user-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-channel-moderated-by-app-instance-user-response-"))
-   (channel common-lisp:nil :type
-    (common-lisp:or channel-moderated-by-app-instance-user-summary
-                    common-lisp:null)))
+ (common-lisp:defclass describe-channel-moderated-by-app-instance-user-response
+                       common-lisp:nil
+                       ((channel :initarg :channel :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          channel-moderated-by-app-instance-user-summary
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-moderated-by-app-instance-user-response-channel
+                         :shape "ChannelModeratedByAppInstanceUserSummary"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-moderated-by-app-instance-user-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-moderated-by-app-instance-user-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-moderated-by-app-instance-user-response
                     'make-describe-channel-moderated-by-app-instance-user-response))
@@ -2769,16 +3821,34 @@
                           describe-channel-moderated-by-app-instance-user-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-moderator-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-moderator-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (channel-moderator-arn
-    (common-lisp:error ":channel-moderator-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass describe-channel-moderator-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-moderator-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (channel-moderator-arn :initarg :channel-moderator-arn
+                         :initform
+                         (common-lisp:error
+                          ":channel-moderator-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-moderator-request-channel-moderator-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelModeratorArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-moderator-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-moderator-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-moderator-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-moderator-request
                     'make-describe-channel-moderator-request))
@@ -2802,11 +3872,20 @@
                           describe-channel-moderator-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-moderator-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-moderator-response-"))
-   (channel-moderator common-lisp:nil :type
-    (common-lisp:or channel-moderator common-lisp:null)))
+ (common-lisp:defclass describe-channel-moderator-response common-lisp:nil
+                       ((channel-moderator :initarg :channel-moderator
+                         :initform common-lisp:nil :type
+                         (common-lisp:or channel-moderator common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-moderator-response-channel-moderator
+                         :shape "ChannelModerator" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-moderator-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-channel-moderator-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-moderator-response
                     'make-describe-channel-moderator-response))
@@ -2833,13 +3912,24 @@
                           describe-channel-moderator-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass describe-channel-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-describe-channel-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-channel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-request 'make-describe-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2862,10 +3952,18 @@
                           describe-channel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-channel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-channel-response-"))
-   (channel common-lisp:nil :type (common-lisp:or channel common-lisp:null)))
+ (common-lisp:defclass describe-channel-response common-lisp:nil
+                       ((channel :initarg :channel :initform common-lisp:nil
+                         :type (common-lisp:or channel common-lisp:null)
+                         :accessor
+                         struct-shape-describe-channel-response-channel :shape
+                         "Channel" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-channel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-channel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-channel-response
                     'make-describe-channel-response))
@@ -2892,15 +3990,32 @@
                           describe-channel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-channel-flow-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-channel-flow-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (channel-flow-arn (common-lisp:error ":channel-flow-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass disassociate-channel-flow-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-disassociate-channel-flow-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (channel-flow-arn :initarg :channel-flow-arn :initform
+                         (common-lisp:error ":channel-flow-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-channel-flow-request-channel-flow-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelFlowArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-disassociate-channel-flow-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-channel-flow-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-channel-flow-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-channel-flow-request
                     'make-disassociate-channel-flow-request))
@@ -2924,18 +4039,45 @@
                           disassociate-channel-flow-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (elastic-channel-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-elastic-channel-configuration-"))
-   (maximum-sub-channels
-    (common-lisp:error ":maximum-sub-channels is required") :type
-    (common-lisp:or maximum-sub-channels common-lisp:null))
-   (target-memberships-per-sub-channel
-    (common-lisp:error ":target-memberships-per-sub-channel is required") :type
-    (common-lisp:or target-memberships-per-sub-channel common-lisp:null))
-   (minimum-membership-percentage
-    (common-lisp:error ":minimum-membership-percentage is required") :type
-    (common-lisp:or minimum-membership-percentage common-lisp:null)))
+ (common-lisp:defclass elastic-channel-configuration common-lisp:nil
+                       ((maximum-sub-channels :initarg :maximum-sub-channels
+                         :initform
+                         (common-lisp:error
+                          ":maximum-sub-channels is required")
+                         :type
+                         (common-lisp:or maximum-sub-channels common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-channel-configuration-maximum-sub-channels
+                         :shape "MaximumSubChannels" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-memberships-per-sub-channel :initarg
+                         :target-memberships-per-sub-channel :initform
+                         (common-lisp:error
+                          ":target-memberships-per-sub-channel is required")
+                         :type
+                         (common-lisp:or target-memberships-per-sub-channel
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-channel-configuration-target-memberships-per-sub-channel
+                         :shape "TargetMembershipsPerSubChannel" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (minimum-membership-percentage :initarg
+                         :minimum-membership-percentage :initform
+                         (common-lisp:error
+                          ":minimum-membership-percentage is required")
+                         :type
+                         (common-lisp:or minimum-membership-percentage
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-channel-configuration-minimum-membership-percentage
+                         :shape "MinimumMembershipPercentage" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-elastic-channel-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'elastic-channel-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'elastic-channel-configuration
                     'make-elastic-channel-configuration))
@@ -2982,14 +4124,30 @@
 (common-lisp:deftype expiration-criterion () 'common-lisp:string)
 (common-lisp:deftype expiration-days () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (expiration-settings (:copier common-lisp:nil)
-      (:conc-name "struct-shape-expiration-settings-"))
-   (expiration-days (common-lisp:error ":expiration-days is required") :type
-    (common-lisp:or expiration-days common-lisp:null))
-   (expiration-criterion
-    (common-lisp:error ":expiration-criterion is required") :type
-    (common-lisp:or expiration-criterion common-lisp:null)))
+ (common-lisp:defclass expiration-settings common-lisp:nil
+                       ((expiration-days :initarg :expiration-days :initform
+                         (common-lisp:error ":expiration-days is required")
+                         :type
+                         (common-lisp:or expiration-days common-lisp:null)
+                         :accessor
+                         struct-shape-expiration-settings-expiration-days
+                         :shape "ExpirationDays" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiration-criterion :initarg :expiration-criterion
+                         :initform
+                         (common-lisp:error
+                          ":expiration-criterion is required")
+                         :type
+                         (common-lisp:or expiration-criterion common-lisp:null)
+                         :accessor
+                         struct-shape-expiration-settings-expiration-criterion
+                         :shape "ExpirationCriterion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-expiration-settings
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'expiration-settings
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'expiration-settings 'make-expiration-settings))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3029,15 +4187,32 @@
   (common-lisp:list 'forbidden-exception 'forbidden-exception-code
                     'forbidden-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-channel-membership-preferences-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-channel-membership-preferences-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member-arn (common-lisp:error ":member-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass get-channel-membership-preferences-request
+                       common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-get-channel-membership-preferences-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (member-arn :initarg :member-arn :initform
+                         (common-lisp:error ":member-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-get-channel-membership-preferences-request-member-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "memberArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-get-channel-membership-preferences-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-channel-membership-preferences-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-channel-membership-preferences-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-channel-membership-preferences-request
                     'make-get-channel-membership-preferences-request))
@@ -3061,14 +4236,34 @@
                           get-channel-membership-preferences-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-channel-membership-preferences-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-channel-membership-preferences-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (preferences common-lisp:nil :type
-    (common-lisp:or channel-membership-preferences common-lisp:null)))
+ (common-lisp:defclass get-channel-membership-preferences-response
+                       common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-get-channel-membership-preferences-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (member :initarg :member :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-membership-preferences-response-member
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (preferences :initarg :preferences :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-membership-preferences
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-membership-preferences-response-preferences
+                         :shape "ChannelMembershipPreferences" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-channel-membership-preferences-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-channel-membership-preferences-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-channel-membership-preferences-response
                     'make-get-channel-membership-preferences-response))
@@ -3109,17 +4304,37 @@
                           get-channel-membership-preferences-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-channel-message-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-channel-message-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or message-id common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass get-channel-message-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-get-channel-message-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (message-id :initarg :message-id :initform
+                         (common-lisp:error ":message-id is required") :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-get-channel-message-request-message-id
+                         :shape "MessageId" :location "uri" :location-name
+                         "messageId")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-get-channel-message-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-message-request-sub-channel-id
+                         :shape "SubChannelId" :location "querystring"
+                         :location-name "sub-channel-id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-channel-message-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-channel-message-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-channel-message-request
                     'make-get-channel-message-request))
@@ -3143,11 +4358,19 @@
                           get-channel-message-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-channel-message-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-channel-message-response-"))
-   (channel-message common-lisp:nil :type
-    (common-lisp:or channel-message common-lisp:null)))
+ (common-lisp:defclass get-channel-message-response common-lisp:nil
+                       ((channel-message :initarg :channel-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-message common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-message-response-channel-message
+                         :shape "ChannelMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-channel-message-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-channel-message-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-channel-message-response
                     'make-get-channel-message-response))
@@ -3174,17 +4397,38 @@
                           get-channel-message-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-channel-message-status-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-channel-message-status-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or message-id common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass get-channel-message-status-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-get-channel-message-status-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (message-id :initarg :message-id :initform
+                         (common-lisp:error ":message-id is required") :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-get-channel-message-status-request-message-id
+                         :shape "MessageId" :location "uri" :location-name
+                         "messageId")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-get-channel-message-status-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-message-status-request-sub-channel-id
+                         :shape "SubChannelId" :location "querystring"
+                         :location-name "sub-channel-id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-channel-message-status-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-channel-message-status-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-channel-message-status-request
                     'make-get-channel-message-status-request))
@@ -3208,11 +4452,21 @@
                           get-channel-message-status-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-channel-message-status-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-channel-message-status-response-"))
-   (status common-lisp:nil :type
-    (common-lisp:or channel-message-status-structure common-lisp:null)))
+ (common-lisp:defclass get-channel-message-status-response common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-message-status-structure
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-message-status-response-status
+                         :shape "ChannelMessageStatusStructure" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-channel-message-status-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-channel-message-status-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-channel-message-status-response
                     'make-get-channel-message-status-response))
@@ -3239,9 +4493,14 @@
                           get-channel-message-status-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-messaging-session-endpoint-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-messaging-session-endpoint-request-")))
+ (common-lisp:defclass get-messaging-session-endpoint-request common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-messaging-session-endpoint-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-messaging-session-endpoint-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-messaging-session-endpoint-request
                     'make-get-messaging-session-endpoint-request))
@@ -3261,11 +4520,21 @@
                           get-messaging-session-endpoint-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-messaging-session-endpoint-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-messaging-session-endpoint-response-"))
-   (endpoint common-lisp:nil :type
-    (common-lisp:or messaging-session-endpoint common-lisp:null)))
+ (common-lisp:defclass get-messaging-session-endpoint-response common-lisp:nil
+                       ((endpoint :initarg :endpoint :initform common-lisp:nil
+                         :type
+                         (common-lisp:or messaging-session-endpoint
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-messaging-session-endpoint-response-endpoint
+                         :shape "MessagingSessionEndpoint" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-messaging-session-endpoint-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-messaging-session-endpoint-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-messaging-session-endpoint-response
                     'make-get-messaging-session-endpoint-response))
@@ -3292,12 +4561,21 @@
                           get-messaging-session-endpoint-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-messaging-streaming-configurations-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-messaging-streaming-configurations-request-"))
-   (app-instance-arn (common-lisp:error ":app-instance-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass get-messaging-streaming-configurations-request
+                       common-lisp:nil
+                       ((app-instance-arn :initarg :app-instance-arn :initform
+                         (common-lisp:error ":app-instance-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-messaging-streaming-configurations-request-app-instance-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "appInstanceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-messaging-streaming-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-messaging-streaming-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-messaging-streaming-configurations-request
                     'make-get-messaging-streaming-configurations-request))
@@ -3317,12 +4595,23 @@
                           get-messaging-streaming-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-messaging-streaming-configurations-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-messaging-streaming-configurations-response-"))
-   (streaming-configurations common-lisp:nil :type
-    (common-lisp:or streaming-configuration-list common-lisp:null)))
+ (common-lisp:defclass get-messaging-streaming-configurations-response
+                       common-lisp:nil
+                       ((streaming-configurations :initarg
+                         :streaming-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or streaming-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-messaging-streaming-configurations-response-streaming-configurations
+                         :shape "StreamingConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-messaging-streaming-configurations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-messaging-streaming-configurations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-messaging-streaming-configurations-response
                     'make-get-messaging-streaming-configurations-response))
@@ -3350,11 +4639,21 @@
                           get-messaging-streaming-configurations-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity (:copier common-lisp:nil) (:conc-name "struct-shape-identity-"))
-   (arn common-lisp:nil :type (common-lisp:or chime-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass identity common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-identity-arn :shape "ChimeArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-identity-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'identity
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'identity 'make-identity))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input identity))
@@ -3381,13 +4680,27 @@
    common-lisp:nil))
 (common-lisp:deftype invocation-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (lambda-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lambda-configuration-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or lambda-function-arn common-lisp:null))
-   (invocation-type (common-lisp:error ":invocation-type is required") :type
-    (common-lisp:or invocation-type common-lisp:null)))
+ (common-lisp:defclass lambda-configuration common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or lambda-function-arn common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-configuration-resource-arn :shape
+                         "LambdaFunctionArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (invocation-type :initarg :invocation-type :initform
+                         (common-lisp:error ":invocation-type is required")
+                         :type
+                         (common-lisp:or invocation-type common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-configuration-invocation-type
+                         :shape "InvocationType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lambda-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'lambda-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lambda-configuration 'make-lambda-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3415,17 +4728,37 @@
    common-lisp:nil))
 (common-lisp:deftype lambda-function-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-bans-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-bans-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass list-channel-bans-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-bans-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-bans-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-bans-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-bans-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-bans-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-channel-bans-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-bans-request
                     'make-list-channel-bans-request))
@@ -3449,15 +4782,32 @@
                           list-channel-bans-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-bans-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-bans-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (channel-bans common-lisp:nil :type
-    (common-lisp:or channel-ban-summary-list common-lisp:null)))
+ (common-lisp:defclass list-channel-bans-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-bans-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-bans-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-bans :initarg :channel-bans :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-ban-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-bans-response-channel-bans
+                         :shape "ChannelBanSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-bans-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-channel-bans-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-bans-response
                     'make-list-channel-bans-response))
@@ -3498,15 +4848,32 @@
                           list-channel-bans-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-flows-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-flows-request-"))
-   (app-instance-arn (common-lisp:error ":app-instance-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-channel-flows-request common-lisp:nil
+                       ((app-instance-arn :initarg :app-instance-arn :initform
+                         (common-lisp:error ":app-instance-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-flows-request-app-instance-arn
+                         :shape "ChimeArn" :location "querystring"
+                         :location-name "app-instance-arn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-flows-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-flows-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-flows-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-channel-flows-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-flows-request
                     'make-list-channel-flows-request))
@@ -3526,13 +4893,26 @@
                           list-channel-flows-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-flows-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-flows-response-"))
-   (channel-flows common-lisp:nil :type
-    (common-lisp:or channel-flow-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-channel-flows-response common-lisp:nil
+                       ((channel-flows :initarg :channel-flows :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-flow-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-flows-response-channel-flows
+                         :shape "ChannelFlowSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-flows-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-flows-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-channel-flows-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-flows-response
                     'make-list-channel-flows-response))
@@ -3566,19 +4946,39 @@
                           list-channel-flows-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-memberships-for-app-instance-user-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-channel-memberships-for-app-instance-user-request-"))
-   (app-instance-user-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass list-channel-memberships-for-app-instance-user-request
+                       common-lisp:nil
+                       ((app-instance-user-arn :initarg :app-instance-user-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-for-app-instance-user-request-app-instance-user-arn
+                         :shape "ChimeArn" :location "querystring"
+                         :location-name "app-instance-user-arn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-memberships-for-app-instance-user-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-for-app-instance-user-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-for-app-instance-user-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-memberships-for-app-instance-user-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channel-memberships-for-app-instance-user-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-memberships-for-app-instance-user-request
                     'make-list-channel-memberships-for-app-instance-user-request))
@@ -3602,16 +5002,31 @@
                           list-channel-memberships-for-app-instance-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-memberships-for-app-instance-user-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-channel-memberships-for-app-instance-user-response-"))
-   (channel-memberships common-lisp:nil :type
-    (common-lisp:or channel-membership-for-app-instance-user-summary-list
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-channel-memberships-for-app-instance-user-response
+                       common-lisp:nil
+                       ((channel-memberships :initarg :channel-memberships
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          channel-membership-for-app-instance-user-summary-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-memberships-for-app-instance-user-response-channel-memberships
+                         :shape
+                         "ChannelMembershipForAppInstanceUserSummaryList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-for-app-instance-user-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-memberships-for-app-instance-user-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channel-memberships-for-app-instance-user-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-memberships-for-app-instance-user-response
                     'make-list-channel-memberships-for-app-instance-user-response))
@@ -3645,21 +5060,52 @@
                           list-channel-memberships-for-app-instance-user-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-memberships-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-memberships-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or channel-membership-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass list-channel-memberships-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or channel-membership-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-memberships-request-type
+                         :shape "ChannelMembershipType" :location "querystring"
+                         :location-name "type")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-memberships-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-memberships-request-sub-channel-id
+                         :shape "SubChannelId" :location "querystring"
+                         :location-name "sub-channel-id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-memberships-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channel-memberships-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-memberships-request
                     'make-list-channel-memberships-request))
@@ -3683,15 +5129,33 @@
                           list-channel-memberships-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-memberships-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-memberships-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (channel-memberships common-lisp:nil :type
-    (common-lisp:or channel-membership-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-channel-memberships-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-memberships :initarg :channel-memberships
+                         :initform common-lisp:nil :type
+                         (common-lisp:or channel-membership-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-memberships-response-channel-memberships
+                         :shape "ChannelMembershipSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-memberships-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-memberships-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channel-memberships-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-memberships-response
                     'make-list-channel-memberships-response))
@@ -3732,25 +5196,63 @@
                           list-channel-memberships-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-messages-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-messages-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sort-order common-lisp:nil :type
-    (common-lisp:or sort-order common-lisp:null))
-   (not-before common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (not-after common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass list-channel-messages-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-messages-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (sort-order :initarg :sort-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sort-order common-lisp:null) :accessor
+                         struct-shape-list-channel-messages-request-sort-order
+                         :shape "SortOrder" :location "querystring"
+                         :location-name "sort-order")
+                        (not-before :initarg :not-before :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-list-channel-messages-request-not-before
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "not-before")
+                        (not-after :initarg :not-after :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-list-channel-messages-request-not-after
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "not-after")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-messages-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-messages-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-messages-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-messages-request-sub-channel-id
+                         :shape "SubChannelId" :location "querystring"
+                         :location-name "sub-channel-id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-messages-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channel-messages-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-messages-request
                     'make-list-channel-messages-request))
@@ -3774,17 +5276,40 @@
                           list-channel-messages-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-messages-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-messages-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (channel-messages common-lisp:nil :type
-    (common-lisp:or channel-message-summary-list common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass list-channel-messages-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-messages-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-messages-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-messages :initarg :channel-messages :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-message-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-messages-response-channel-messages
+                         :shape "ChannelMessageSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-messages-response-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-messages-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channel-messages-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-messages-response
                     'make-list-channel-messages-response))
@@ -3832,17 +5357,38 @@
                           list-channel-messages-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-moderators-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-moderators-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass list-channel-moderators-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-moderators-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-moderators-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-moderators-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-moderators-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-moderators-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channel-moderators-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-moderators-request
                     'make-list-channel-moderators-request))
@@ -3866,15 +5412,33 @@
                           list-channel-moderators-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channel-moderators-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channel-moderators-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (channel-moderators common-lisp:nil :type
-    (common-lisp:or channel-moderator-summary-list common-lisp:null)))
+ (common-lisp:defclass list-channel-moderators-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channel-moderators-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channel-moderators-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-moderators :initarg :channel-moderators
+                         :initform common-lisp:nil :type
+                         (common-lisp:or channel-moderator-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-channel-moderators-response-channel-moderators
+                         :shape "ChannelModeratorSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channel-moderators-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channel-moderators-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channel-moderators-response
                     'make-list-channel-moderators-response))
@@ -3915,17 +5479,34 @@
                           list-channel-moderators-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channels-associated-with-channel-flow-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-channels-associated-with-channel-flow-request-"))
-   (channel-flow-arn (common-lisp:error ":channel-flow-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-channels-associated-with-channel-flow-request
+                       common-lisp:nil
+                       ((channel-flow-arn :initarg :channel-flow-arn :initform
+                         (common-lisp:error ":channel-flow-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-associated-with-channel-flow-request-channel-flow-arn
+                         :shape "ChimeArn" :location "querystring"
+                         :location-name "channel-flow-arn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-associated-with-channel-flow-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channels-associated-with-channel-flow-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channels-associated-with-channel-flow-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channels-associated-with-channel-flow-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channels-associated-with-channel-flow-request
                     'make-list-channels-associated-with-channel-flow-request))
@@ -3945,16 +5526,30 @@
                           list-channels-associated-with-channel-flow-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channels-associated-with-channel-flow-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-channels-associated-with-channel-flow-response-"))
-   (channels common-lisp:nil :type
-    (common-lisp:or channel-associated-with-flow-summary-list
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-channels-associated-with-channel-flow-response
+                       common-lisp:nil
+                       ((channels :initarg :channels :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          channel-associated-with-flow-summary-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-associated-with-channel-flow-response-channels
+                         :shape "ChannelAssociatedWithFlowSummaryList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channels-associated-with-channel-flow-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channels-associated-with-channel-flow-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channels-associated-with-channel-flow-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channels-associated-with-channel-flow-response
                     'make-list-channels-associated-with-channel-flow-response))
@@ -3988,19 +5583,39 @@
                           list-channels-associated-with-channel-flow-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channels-moderated-by-app-instance-user-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-channels-moderated-by-app-instance-user-request-"))
-   (app-instance-user-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass list-channels-moderated-by-app-instance-user-request
+                       common-lisp:nil
+                       ((app-instance-user-arn :initarg :app-instance-user-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channels-moderated-by-app-instance-user-request-app-instance-user-arn
+                         :shape "ChimeArn" :location "querystring"
+                         :location-name "app-instance-user-arn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-moderated-by-app-instance-user-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channels-moderated-by-app-instance-user-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channels-moderated-by-app-instance-user-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channels-moderated-by-app-instance-user-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channels-moderated-by-app-instance-user-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channels-moderated-by-app-instance-user-request
                     'make-list-channels-moderated-by-app-instance-user-request))
@@ -4024,16 +5639,30 @@
                           list-channels-moderated-by-app-instance-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channels-moderated-by-app-instance-user-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-channels-moderated-by-app-instance-user-response-"))
-   (channels common-lisp:nil :type
-    (common-lisp:or channel-moderated-by-app-instance-user-summary-list
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-channels-moderated-by-app-instance-user-response
+                       common-lisp:nil
+                       ((channels :initarg :channels :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          channel-moderated-by-app-instance-user-summary-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-moderated-by-app-instance-user-response-channels
+                         :shape "ChannelModeratedByAppInstanceUserSummaryList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channels-moderated-by-app-instance-user-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channels-moderated-by-app-instance-user-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-channels-moderated-by-app-instance-user-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channels-moderated-by-app-instance-user-response
                     'make-list-channels-moderated-by-app-instance-user-response))
@@ -4067,19 +5696,44 @@
                           list-channels-moderated-by-app-instance-user-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channels-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channels-request-"))
-   (app-instance-arn (common-lisp:error ":app-instance-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (privacy common-lisp:nil :type
-    (common-lisp:or channel-privacy common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass list-channels-request common-lisp:nil
+                       ((app-instance-arn :initarg :app-instance-arn :initform
+                         (common-lisp:error ":app-instance-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-request-app-instance-arn
+                         :shape "ChimeArn" :location "querystring"
+                         :location-name "app-instance-arn")
+                        (privacy :initarg :privacy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-privacy common-lisp:null)
+                         :accessor struct-shape-list-channels-request-privacy
+                         :shape "ChannelPrivacy" :location "querystring"
+                         :location-name "privacy")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-request-max-results :shape
+                         "MaxResults" :location "querystring" :location-name
+                         "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channels-request-next-token :shape
+                         "NextToken" :location "querystring" :location-name
+                         "next-token")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-channels-request-chime-bearer :shape
+                         "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channels-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-channels-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channels-request 'make-list-channels-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4102,13 +5756,24 @@
                           list-channels-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channels-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channels-response-"))
-   (channels common-lisp:nil :type
-    (common-lisp:or channel-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-channels-response common-lisp:nil
+                       ((channels :initarg :channels :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-summary-list common-lisp:null)
+                         :accessor struct-shape-list-channels-response-channels
+                         :shape "ChannelSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-channels-response-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channels-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-channels-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channels-response 'make-list-channels-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4141,17 +5806,37 @@
                           list-channels-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sub-channels-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sub-channels-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-sub-channels-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-sub-channels-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-sub-channels-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-sub-channels-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-sub-channels-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "next-token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sub-channels-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-sub-channels-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sub-channels-request
                     'make-list-sub-channels-request))
@@ -4175,15 +5860,32 @@
                           list-sub-channels-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sub-channels-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sub-channels-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channels common-lisp:nil :type
-    (common-lisp:or sub-channel-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-sub-channels-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-sub-channels-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channels :initarg :sub-channels :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sub-channels-response-sub-channels
+                         :shape "SubChannelSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-sub-channels-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sub-channels-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-sub-channels-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sub-channels-response
                     'make-list-sub-channels-response))
@@ -4224,11 +5926,19 @@
                           list-sub-channels-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "ChimeArn" :location "querystring"
+                         :location-name "arn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -4248,10 +5958,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -4314,11 +6032,20 @@
                             message-attribute-string-value))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (message-attribute-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-message-attribute-value-"))
-   (string-values common-lisp:nil :type
-    (common-lisp:or message-attribute-string-values common-lisp:null)))
+ (common-lisp:defclass message-attribute-value common-lisp:nil
+                       ((string-values :initarg :string-values :initform
+                         common-lisp:nil :type
+                         (common-lisp:or message-attribute-string-values
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-message-attribute-value-string-values
+                         :shape "MessageAttributeStringValues" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-message-attribute-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'message-attribute-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'message-attribute-value 'make-message-attribute-value))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4346,10 +6073,17 @@
 (common-lisp:deftype message-id () 'common-lisp:string)
 (common-lisp:deftype messaging-data-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (messaging-session-endpoint (:copier common-lisp:nil)
-      (:conc-name "struct-shape-messaging-session-endpoint-"))
-   (url common-lisp:nil :type (common-lisp:or url-type common-lisp:null)))
+ (common-lisp:defclass messaging-session-endpoint common-lisp:nil
+                       ((url :initarg :url :initform common-lisp:nil :type
+                         (common-lisp:or url-type common-lisp:null) :accessor
+                         struct-shape-messaging-session-endpoint-url :shape
+                         "UrlType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-messaging-session-endpoint
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'messaging-session-endpoint
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'messaging-session-endpoint
                     'make-messaging-session-endpoint))
@@ -4392,17 +6126,41 @@
   (common-lisp:list 'not-found-exception 'not-found-exception-code
                     'not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (processor (:copier common-lisp:nil)
-      (:conc-name "struct-shape-processor-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (configuration (common-lisp:error ":configuration is required") :type
-    (common-lisp:or processor-configuration common-lisp:null))
-   (execution-order (common-lisp:error ":execution-order is required") :type
-    (common-lisp:or channel-flow-execution-order common-lisp:null))
-   (fallback-action (common-lisp:error ":fallback-action is required") :type
-    (common-lisp:or fallback-action common-lisp:null)))
+ (common-lisp:defclass processor common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor struct-shape-processor-name :shape
+                         "NonEmptyResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration :initarg :configuration :initform
+                         (common-lisp:error ":configuration is required") :type
+                         (common-lisp:or processor-configuration
+                                         common-lisp:null)
+                         :accessor struct-shape-processor-configuration :shape
+                         "ProcessorConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-order :initarg :execution-order :initform
+                         (common-lisp:error ":execution-order is required")
+                         :type
+                         (common-lisp:or channel-flow-execution-order
+                                         common-lisp:null)
+                         :accessor struct-shape-processor-execution-order
+                         :shape "ChannelFlowExecutionOrder" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (fallback-action :initarg :fallback-action :initform
+                         (common-lisp:error ":fallback-action is required")
+                         :type
+                         (common-lisp:or fallback-action common-lisp:null)
+                         :accessor struct-shape-processor-fallback-action
+                         :shape "FallbackAction" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-processor
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'processor
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'processor 'make-processor))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input processor))
@@ -4442,11 +6200,18 @@
                         ((aws-sdk/generator/shape::input processor))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (processor-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-processor-configuration-"))
-   (lambda (common-lisp:error ":lambda is required") :type
-    (common-lisp:or lambda-configuration common-lisp:null)))
+ (common-lisp:defclass processor-configuration common-lisp:nil
+                       ((lambda :initarg :lambda :initform
+                         (common-lisp:error ":lambda is required") :type
+                         (common-lisp:or lambda-configuration common-lisp:null)
+                         :accessor struct-shape-processor-configuration-lambda
+                         :shape "LambdaConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-processor-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'processor-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'processor-configuration 'make-processor-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4480,15 +6245,34 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype push-notification-body () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (push-notification-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-push-notification-configuration-"))
-   (title common-lisp:nil :type
-    (common-lisp:or push-notification-title common-lisp:null))
-   (body common-lisp:nil :type
-    (common-lisp:or push-notification-body common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or push-notification-type common-lisp:null)))
+ (common-lisp:defclass push-notification-configuration common-lisp:nil
+                       ((title :initarg :title :initform common-lisp:nil :type
+                         (common-lisp:or push-notification-title
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-push-notification-configuration-title
+                         :shape "PushNotificationTitle" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (body :initarg :body :initform common-lisp:nil :type
+                         (common-lisp:or push-notification-body
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-push-notification-configuration-body
+                         :shape "PushNotificationBody" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or push-notification-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-push-notification-configuration-type
+                         :shape "PushNotificationType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-push-notification-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'push-notification-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'push-notification-configuration
                     'make-push-notification-configuration))
@@ -4529,13 +6313,29 @@
                           push-notification-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (push-notification-preferences (:copier common-lisp:nil)
-      (:conc-name "struct-shape-push-notification-preferences-"))
-   (allow-notifications (common-lisp:error ":allow-notifications is required")
-    :type (common-lisp:or allow-notifications common-lisp:null))
-   (filter-rule common-lisp:nil :type
-    (common-lisp:or filter-rule common-lisp:null)))
+ (common-lisp:defclass push-notification-preferences common-lisp:nil
+                       ((allow-notifications :initarg :allow-notifications
+                         :initform
+                         (common-lisp:error ":allow-notifications is required")
+                         :type
+                         (common-lisp:or allow-notifications common-lisp:null)
+                         :accessor
+                         struct-shape-push-notification-preferences-allow-notifications
+                         :shape "AllowNotifications" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filter-rule :initarg :filter-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or filter-rule common-lisp:null)
+                         :accessor
+                         struct-shape-push-notification-preferences-filter-rule
+                         :shape "FilterRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-push-notification-preferences
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'push-notification-preferences
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'push-notification-preferences
                     'make-push-notification-preferences))
@@ -4571,15 +6371,32 @@
 (common-lisp:deftype push-notification-title () 'common-lisp:string)
 (common-lisp:deftype push-notification-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-channel-expiration-settings-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-channel-expiration-settings-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (expiration-settings common-lisp:nil :type
-    (common-lisp:or expiration-settings common-lisp:null)))
+ (common-lisp:defclass put-channel-expiration-settings-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-put-channel-expiration-settings-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-put-channel-expiration-settings-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (expiration-settings :initarg :expiration-settings
+                         :initform common-lisp:nil :type
+                         (common-lisp:or expiration-settings common-lisp:null)
+                         :accessor
+                         struct-shape-put-channel-expiration-settings-request-expiration-settings
+                         :shape "ExpirationSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-channel-expiration-settings-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-channel-expiration-settings-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-channel-expiration-settings-request
                     'make-put-channel-expiration-settings-request))
@@ -4610,13 +6427,26 @@
                           put-channel-expiration-settings-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-channel-expiration-settings-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-channel-expiration-settings-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (expiration-settings common-lisp:nil :type
-    (common-lisp:or expiration-settings common-lisp:null)))
+ (common-lisp:defclass put-channel-expiration-settings-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-put-channel-expiration-settings-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiration-settings :initarg :expiration-settings
+                         :initform common-lisp:nil :type
+                         (common-lisp:or expiration-settings common-lisp:null)
+                         :accessor
+                         struct-shape-put-channel-expiration-settings-response-expiration-settings
+                         :shape "ExpirationSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-channel-expiration-settings-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-channel-expiration-settings-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-channel-expiration-settings-response
                     'make-put-channel-expiration-settings-response))
@@ -4650,17 +6480,40 @@
                           put-channel-expiration-settings-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-channel-membership-preferences-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-channel-membership-preferences-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member-arn (common-lisp:error ":member-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (preferences (common-lisp:error ":preferences is required") :type
-    (common-lisp:or channel-membership-preferences common-lisp:null)))
+ (common-lisp:defclass put-channel-membership-preferences-request
+                       common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-put-channel-membership-preferences-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (member-arn :initarg :member-arn :initform
+                         (common-lisp:error ":member-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-put-channel-membership-preferences-request-member-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "memberArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-put-channel-membership-preferences-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (preferences :initarg :preferences :initform
+                         (common-lisp:error ":preferences is required") :type
+                         (common-lisp:or channel-membership-preferences
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-channel-membership-preferences-request-preferences
+                         :shape "ChannelMembershipPreferences" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-channel-membership-preferences-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-channel-membership-preferences-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-channel-membership-preferences-request
                     'make-put-channel-membership-preferences-request))
@@ -4691,14 +6544,34 @@
                           put-channel-membership-preferences-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-channel-membership-preferences-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-channel-membership-preferences-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (member common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (preferences common-lisp:nil :type
-    (common-lisp:or channel-membership-preferences common-lisp:null)))
+ (common-lisp:defclass put-channel-membership-preferences-response
+                       common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-put-channel-membership-preferences-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (member :initarg :member :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-put-channel-membership-preferences-response-member
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (preferences :initarg :preferences :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-membership-preferences
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-channel-membership-preferences-response-preferences
+                         :shape "ChannelMembershipPreferences" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-channel-membership-preferences-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-channel-membership-preferences-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-channel-membership-preferences-response
                     'make-put-channel-membership-preferences-response))
@@ -4739,15 +6612,32 @@
                           put-channel-membership-preferences-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-messaging-streaming-configurations-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-put-messaging-streaming-configurations-request-"))
-   (app-instance-arn (common-lisp:error ":app-instance-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (streaming-configurations
-    (common-lisp:error ":streaming-configurations is required") :type
-    (common-lisp:or streaming-configuration-list common-lisp:null)))
+ (common-lisp:defclass put-messaging-streaming-configurations-request
+                       common-lisp:nil
+                       ((app-instance-arn :initarg :app-instance-arn :initform
+                         (common-lisp:error ":app-instance-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-messaging-streaming-configurations-request-app-instance-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "appInstanceArn")
+                        (streaming-configurations :initarg
+                         :streaming-configurations :initform
+                         (common-lisp:error
+                          ":streaming-configurations is required")
+                         :type
+                         (common-lisp:or streaming-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-messaging-streaming-configurations-request-streaming-configurations
+                         :shape "StreamingConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-messaging-streaming-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-messaging-streaming-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-messaging-streaming-configurations-request
                     'make-put-messaging-streaming-configurations-request))
@@ -4775,12 +6665,23 @@
                           put-messaging-streaming-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-messaging-streaming-configurations-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-put-messaging-streaming-configurations-response-"))
-   (streaming-configurations common-lisp:nil :type
-    (common-lisp:or streaming-configuration-list common-lisp:null)))
+ (common-lisp:defclass put-messaging-streaming-configurations-response
+                       common-lisp:nil
+                       ((streaming-configurations :initarg
+                         :streaming-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or streaming-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-messaging-streaming-configurations-response-streaming-configurations
+                         :shape "StreamingConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-messaging-streaming-configurations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-messaging-streaming-configurations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-messaging-streaming-configurations-response
                     'make-put-messaging-streaming-configurations-response))
@@ -4808,17 +6709,38 @@
                           put-messaging-streaming-configurations-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (redact-channel-message-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-redact-channel-message-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or message-id common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass redact-channel-message-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-redact-channel-message-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (message-id :initarg :message-id :initform
+                         (common-lisp:error ":message-id is required") :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-redact-channel-message-request-message-id
+                         :shape "MessageId" :location "uri" :location-name
+                         "messageId")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-redact-channel-message-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-redact-channel-message-request-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-redact-channel-message-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'redact-channel-message-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'redact-channel-message-request
                     'make-redact-channel-message-request))
@@ -4849,15 +6771,32 @@
                           redact-channel-message-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (redact-channel-message-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-redact-channel-message-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id common-lisp:nil :type
-    (common-lisp:or message-id common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass redact-channel-message-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-redact-channel-message-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (message-id :initarg :message-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-redact-channel-message-response-message-id
+                         :shape "MessageId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-redact-channel-message-response-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-redact-channel-message-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'redact-channel-message-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'redact-channel-message-response
                     'make-redact-channel-message-response))
@@ -4910,17 +6849,37 @@
                     'resource-limit-exceeded-exception-message)))
 (common-lisp:deftype resource-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (search-channels-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-search-channels-request-"))
-   (chime-bearer common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (fields (common-lisp:error ":fields is required") :type
-    (common-lisp:or search-fields common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass search-channels-request common-lisp:nil
+                       ((chime-bearer :initarg :chime-bearer :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-search-channels-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (fields :initarg :fields :initform
+                         (common-lisp:error ":fields is required") :type
+                         (common-lisp:or search-fields common-lisp:null)
+                         :accessor struct-shape-search-channels-request-fields
+                         :shape "SearchFields" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-search-channels-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-search-channels-request-next-token :shape
+                         "NextToken" :location "querystring" :location-name
+                         "next-token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-search-channels-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'search-channels-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'search-channels-request 'make-search-channels-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4950,13 +6909,25 @@
                           search-channels-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (search-channels-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-search-channels-response-"))
-   (channels common-lisp:nil :type
-    (common-lisp:or channel-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass search-channels-response common-lisp:nil
+                       ((channels :initarg :channels :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-summary-list common-lisp:null)
+                         :accessor
+                         struct-shape-search-channels-response-channels :shape
+                         "ChannelSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-search-channels-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-search-channels-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'search-channels-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'search-channels-response 'make-search-channels-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4989,15 +6960,31 @@
                           search-channels-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (search-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-search-field-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or search-field-key common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or search-field-values common-lisp:null))
-   (operator (common-lisp:error ":operator is required") :type
-    (common-lisp:or search-field-operator common-lisp:null)))
+ (common-lisp:defclass search-field common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or search-field-key common-lisp:null)
+                         :accessor struct-shape-search-field-key :shape
+                         "SearchFieldKey" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (values :initarg :values :initform
+                         (common-lisp:error ":values is required") :type
+                         (common-lisp:or search-field-values common-lisp:null)
+                         :accessor struct-shape-search-field-values :shape
+                         "SearchFieldValues" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operator :initarg :operator :initform
+                         (common-lisp:error ":operator is required") :type
+                         (common-lisp:or search-field-operator
+                                         common-lisp:null)
+                         :accessor struct-shape-search-field-operator :shape
+                         "SearchFieldOperator" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-search-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'search-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'search-field 'make-search-field))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input search-field))
@@ -5049,33 +7036,98 @@
                            (trivial-types:proper-list search-field))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (send-channel-message-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-send-channel-message-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or non-empty-content common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or channel-message-type common-lisp:null))
-   (persistence (common-lisp:error ":persistence is required") :type
-    (common-lisp:or channel-message-persistence-type common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (client-request-token
-    (common-lisp:error ":client-request-token is required") :type
-    (common-lisp:or client-request-token common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (push-notification common-lisp:nil :type
-    (common-lisp:or push-notification-configuration common-lisp:null))
-   (message-attributes common-lisp:nil :type
-    (common-lisp:or message-attribute-map common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null))
-   (content-type common-lisp:nil :type
-    (common-lisp:or content-type common-lisp:null))
-   (target common-lisp:nil :type
-    (common-lisp:or target-list common-lisp:null)))
+ (common-lisp:defclass send-channel-message-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-send-channel-message-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (content :initarg :content :initform
+                         (common-lisp:error ":content is required") :type
+                         (common-lisp:or non-empty-content common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-content
+                         :shape "NonEmptyContent" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or channel-message-type common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-type :shape
+                         "ChannelMessageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (persistence :initarg :persistence :initform
+                         (common-lisp:error ":persistence is required") :type
+                         (common-lisp:or channel-message-persistence-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-persistence
+                         :shape "ChannelMessagePersistenceType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-metadata
+                         :shape "Metadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform
+                         (common-lisp:error
+                          ":client-request-token is required")
+                         :type
+                         (common-lisp:or client-request-token common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-client-request-token
+                         :shape "ClientRequestToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-send-channel-message-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (push-notification :initarg :push-notification
+                         :initform common-lisp:nil :type
+                         (common-lisp:or push-notification-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-push-notification
+                         :shape "PushNotificationConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (message-attributes :initarg :message-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or message-attribute-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-message-attributes
+                         :shape "MessageAttributeMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-type common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-content-type
+                         :shape "ContentType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target :initarg :target :initform common-lisp:nil
+                         :type (common-lisp:or target-list common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-request-target
+                         :shape "TargetList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-send-channel-message-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'send-channel-message-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'send-channel-message-request
                     'make-send-channel-message-request))
@@ -5170,17 +7222,40 @@
                           send-channel-message-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (send-channel-message-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-send-channel-message-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id common-lisp:nil :type
-    (common-lisp:or message-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or channel-message-status-structure common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass send-channel-message-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-send-channel-message-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (message-id :initarg :message-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-send-channel-message-response-message-id
+                         :shape "MessageId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-message-status-structure
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-response-status
+                         :shape "ChannelMessageStatusStructure" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-send-channel-message-response-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-send-channel-message-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'send-channel-message-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'send-channel-message-response
                     'make-send-channel-message-response))
@@ -5251,13 +7326,25 @@
 (common-lisp:deftype sort-order () 'common-lisp:string)
 (common-lisp:deftype status-detail () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (streaming-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-streaming-configuration-"))
-   (data-type (common-lisp:error ":data-type is required") :type
-    (common-lisp:or messaging-data-type common-lisp:null))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass streaming-configuration common-lisp:nil
+                       ((data-type :initarg :data-type :initform
+                         (common-lisp:error ":data-type is required") :type
+                         (common-lisp:or messaging-data-type common-lisp:null)
+                         :accessor
+                         struct-shape-streaming-configuration-data-type :shape
+                         "MessagingDataType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-streaming-configuration-resource-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-streaming-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'streaming-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'streaming-configuration 'make-streaming-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5300,13 +7387,26 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype sub-channel-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (sub-channel-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-sub-channel-summary-"))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null))
-   (membership-count common-lisp:nil :type
-    (common-lisp:or membership-count common-lisp:null)))
+ (common-lisp:defclass sub-channel-summary common-lisp:nil
+                       ((sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-sub-channel-summary-sub-channel-id :shape
+                         "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (membership-count :initarg :membership-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or membership-count common-lisp:null)
+                         :accessor
+                         struct-shape-sub-channel-summary-membership-count
+                         :shape "MembershipCount" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-sub-channel-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'sub-channel-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'sub-channel-summary 'make-sub-channel-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5341,12 +7441,21 @@
                            (trivial-types:proper-list sub-channel-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -5387,13 +7496,24 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "ChimeArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5421,10 +7541,18 @@
    common-lisp:nil))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (target (:copier common-lisp:nil) (:conc-name "struct-shape-target-"))
-   (member-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass target common-lisp:nil
+                       ((member-arn :initarg :member-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-target-member-arn :shape "ChimeArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'target
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'target 'make-target))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input target))
@@ -5474,13 +7602,24 @@
                     'unauthorized-client-exception-code
                     'unauthorized-client-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5513,15 +7652,34 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-flow-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-flow-request-"))
-   (channel-flow-arn (common-lisp:error ":channel-flow-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (processors (common-lisp:error ":processors is required") :type
-    (common-lisp:or processor-list common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-empty-resource-name common-lisp:null)))
+ (common-lisp:defclass update-channel-flow-request common-lisp:nil
+                       ((channel-flow-arn :initarg :channel-flow-arn :initform
+                         (common-lisp:error ":channel-flow-arn is required")
+                         :type (common-lisp:or chime-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-flow-request-channel-flow-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelFlowArn")
+                        (processors :initarg :processors :initform
+                         (common-lisp:error ":processors is required") :type
+                         (common-lisp:or processor-list common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-flow-request-processors
+                         :shape "ProcessorList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-flow-request-name :shape
+                         "NonEmptyResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-flow-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-channel-flow-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-flow-request
                     'make-update-channel-flow-request))
@@ -5555,11 +7713,18 @@
                           update-channel-flow-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-flow-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-flow-response-"))
-   (channel-flow-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass update-channel-flow-response common-lisp:nil
+                       ((channel-flow-arn :initarg :channel-flow-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-flow-response-channel-flow-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-flow-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-channel-flow-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-flow-response
                     'make-update-channel-flow-response))
@@ -5586,22 +7751,58 @@
                           update-channel-flow-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-message-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-message-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or message-id common-lisp:null))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or non-empty-content common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null))
-   (content-type common-lisp:nil :type
-    (common-lisp:or content-type common-lisp:null)))
+ (common-lisp:defclass update-channel-message-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-message-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (message-id :initarg :message-id :initform
+                         (common-lisp:error ":message-id is required") :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-update-channel-message-request-message-id
+                         :shape "MessageId" :location "uri" :location-name
+                         "messageId")
+                        (content :initarg :content :initform
+                         (common-lisp:error ":content is required") :type
+                         (common-lisp:or non-empty-content common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-message-request-content
+                         :shape "NonEmptyContent" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-message-request-metadata
+                         :shape "Metadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-message-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer")
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-message-request-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-message-request-content-type
+                         :shape "ContentType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-message-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-channel-message-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-message-request
                     'make-update-channel-message-request))
@@ -5653,17 +7854,40 @@
                           update-channel-message-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-message-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-message-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (message-id common-lisp:nil :type
-    (common-lisp:or message-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or channel-message-status-structure common-lisp:null))
-   (sub-channel-id common-lisp:nil :type
-    (common-lisp:or sub-channel-id common-lisp:null)))
+ (common-lisp:defclass update-channel-message-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-message-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (message-id :initarg :message-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or message-id common-lisp:null) :accessor
+                         struct-shape-update-channel-message-response-message-id
+                         :shape "MessageId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or channel-message-status-structure
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-message-response-status
+                         :shape "ChannelMessageStatusStructure" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sub-channel-id :initarg :sub-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sub-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-message-response-sub-channel-id
+                         :shape "SubChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-message-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-channel-message-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-message-response
                     'make-update-channel-message-response))
@@ -5711,13 +7935,25 @@
                           update-channel-message-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-read-marker-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-read-marker-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass update-channel-read-marker-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-read-marker-request-channel-arn
+                         :shape "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-read-marker-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-read-marker-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-channel-read-marker-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-read-marker-request
                     'make-update-channel-read-marker-request))
@@ -5741,11 +7977,19 @@
                           update-channel-read-marker-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-read-marker-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-read-marker-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass update-channel-read-marker-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-read-marker-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-read-marker-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-channel-read-marker-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-read-marker-response
                     'make-update-channel-read-marker-response))
@@ -5772,17 +8016,40 @@
                           update-channel-read-marker-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or chime-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or non-empty-resource-name common-lisp:null))
-   (mode common-lisp:nil :type (common-lisp:or channel-mode common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (chime-bearer (common-lisp:error ":chime-bearer is required") :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass update-channel-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-request-channel-arn :shape
+                         "ChimeArn" :location "uri" :location-name
+                         "channelArn")
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or non-empty-resource-name
+                                         common-lisp:null)
+                         :accessor struct-shape-update-channel-request-name
+                         :shape "NonEmptyResourceName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (mode :initarg :mode :initform common-lisp:nil :type
+                         (common-lisp:or channel-mode common-lisp:null)
+                         :accessor struct-shape-update-channel-request-mode
+                         :shape "ChannelMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor struct-shape-update-channel-request-metadata
+                         :shape "Metadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chime-bearer :initarg :chime-bearer :initform
+                         (common-lisp:error ":chime-bearer is required") :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-request-chime-bearer
+                         :shape "ChimeArn" :location "header" :location-name
+                         "x-amz-chime-bearer"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-channel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-request 'make-update-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5826,11 +8093,18 @@
                           update-channel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or chime-arn common-lisp:null)))
+ (common-lisp:defclass update-channel-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-arn common-lisp:null) :accessor
+                         struct-shape-update-channel-response-channel-arn
+                         :shape "ChimeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-channel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-response 'make-update-channel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

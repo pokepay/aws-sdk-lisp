@@ -29,13 +29,24 @@
  (common-lisp:export 'sagemaker-metrics-request))
 (common-lisp:defvar *error-map* 'common-lisp:nil)
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-put-metrics-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-put-metrics-error-"))
-   (code common-lisp:nil :type
-    (common-lisp:or put-metrics-error-code common-lisp:null))
-   (metric-index common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass batch-put-metrics-error common-lisp:nil
+                       ((code :initarg :code :initform common-lisp:nil :type
+                         (common-lisp:or put-metrics-error-code
+                                         common-lisp:null)
+                         :accessor struct-shape-batch-put-metrics-error-code
+                         :shape "PutMetricsErrorCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metric-index :initarg :metric-index :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-batch-put-metrics-error-metric-index
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-put-metrics-error
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-put-metrics-error
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-put-metrics-error 'make-batch-put-metrics-error))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -76,14 +87,30 @@
                            (trivial-types:proper-list batch-put-metrics-error))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-put-metrics-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-put-metrics-request-"))
-   (trial-component-name
-    (common-lisp:error ":trial-component-name is required") :type
-    (common-lisp:or experiment-entity-name common-lisp:null))
-   (metric-data (common-lisp:error ":metric-data is required") :type
-    (common-lisp:or raw-metric-data-list common-lisp:null)))
+ (common-lisp:defclass batch-put-metrics-request common-lisp:nil
+                       ((trial-component-name :initarg :trial-component-name
+                         :initform
+                         (common-lisp:error
+                          ":trial-component-name is required")
+                         :type
+                         (common-lisp:or experiment-entity-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-put-metrics-request-trial-component-name
+                         :shape "ExperimentEntityName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (metric-data :initarg :metric-data :initform
+                         (common-lisp:error ":metric-data is required") :type
+                         (common-lisp:or raw-metric-data-list common-lisp:null)
+                         :accessor
+                         struct-shape-batch-put-metrics-request-metric-data
+                         :shape "RawMetricDataList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-put-metrics-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-put-metrics-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-put-metrics-request
                     'make-batch-put-metrics-request))
@@ -118,11 +145,20 @@
                           batch-put-metrics-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-put-metrics-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-put-metrics-response-"))
-   (errors common-lisp:nil :type
-    (common-lisp:or batch-put-metrics-error-list common-lisp:null)))
+ (common-lisp:defclass batch-put-metrics-response common-lisp:nil
+                       ((errors :initarg :errors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or batch-put-metrics-error-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-put-metrics-response-errors :shape
+                         "BatchPutMetricsErrorList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-put-metrics-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-put-metrics-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-put-metrics-response
                     'make-batch-put-metrics-response))
@@ -154,16 +190,35 @@
 (common-lisp:deftype metric-name () 'common-lisp:string)
 (common-lisp:deftype put-metrics-error-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (raw-metric-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-raw-metric-data-"))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (timestamp (common-lisp:error ":timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (step common-lisp:nil :type (common-lisp:or step common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass raw-metric-data common-lisp:nil
+                       ((metric-name :initarg :metric-name :initform
+                         (common-lisp:error ":metric-name is required") :type
+                         (common-lisp:or metric-name common-lisp:null)
+                         :accessor struct-shape-raw-metric-data-metric-name
+                         :shape "MetricName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timestamp :initarg :timestamp :initform
+                         (common-lisp:error ":timestamp is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-raw-metric-data-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (step :initarg :step :initform common-lisp:nil :type
+                         (common-lisp:or step common-lisp:null) :accessor
+                         struct-shape-raw-metric-data-step :shape "Step"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-raw-metric-data-value :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-raw-metric-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'raw-metric-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'raw-metric-data 'make-raw-metric-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input raw-metric-data))

@@ -49,20 +49,51 @@
                     'access-denied-exception-code)))
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (add-profile-permission-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-add-profile-permission-request-"))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null))
-   (profile-version common-lisp:nil :type
-    (common-lisp:or profile-version common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or string common-lisp:null))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or string common-lisp:null))
-   (revision-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (statement-id (common-lisp:error ":statementid is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass add-profile-permission-request common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-add-profile-permission-request-profile-name
+                         :shape "ProfileName" :location "uri" :location-name
+                         "profileName")
+                        (profile-version :initarg :profile-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-version common-lisp:null)
+                         :accessor
+                         struct-shape-add-profile-permission-request-profile-version
+                         :shape "ProfileVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-add-profile-permission-request-action
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         (common-lisp:error ":principal is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-add-profile-permission-request-principal
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revision-id :initarg :revision-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-add-profile-permission-request-revision-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (statement-id :initarg :statement-id :initform
+                         (common-lisp:error ":statementid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-add-profile-permission-request-statement-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-add-profile-permission-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'add-profile-permission-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'add-profile-permission-request
                     'make-add-profile-permission-request))
@@ -117,11 +148,19 @@
                           add-profile-permission-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (add-profile-permission-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-add-profile-permission-response-"))
-   (revision-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass add-profile-permission-response common-lisp:nil
+                       ((revision-id :initarg :revision-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-add-profile-permission-response-revision-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-add-profile-permission-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'add-profile-permission-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'add-profile-permission-response
                     'make-add-profile-permission-response))
@@ -162,11 +201,20 @@
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:deftype bucket-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-signing-profile-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-signing-profile-request-"))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null)))
+ (common-lisp:defclass cancel-signing-profile-request common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-signing-profile-request-profile-name
+                         :shape "ProfileName" :location "uri" :location-name
+                         "profileName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-signing-profile-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cancel-signing-profile-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-signing-profile-request
                     'make-cancel-signing-profile-request))
@@ -207,11 +255,18 @@
   (common-lisp:list 'conflict-exception 'conflict-exception-message
                     'conflict-exception-code)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-signing-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-signing-job-request-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null)))
+ (common-lisp:defclass describe-signing-job-request common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-describe-signing-job-request-job-id
+                         :shape "JobId" :location "uri" :location-name
+                         "jobId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-signing-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-signing-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-signing-job-request
                     'make-describe-signing-job-request))
@@ -231,45 +286,140 @@
                           describe-signing-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-signing-job-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-signing-job-response-"))
-   (job-id common-lisp:nil :type (common-lisp:or job-id common-lisp:null))
-   (source common-lisp:nil :type (common-lisp:or source common-lisp:null))
-   (signing-material common-lisp:nil :type
-    (common-lisp:or signing-material common-lisp:null))
-   (platform-id common-lisp:nil :type
-    (common-lisp:or platform-id common-lisp:null))
-   (platform-display-name common-lisp:nil :type
-    (common-lisp:or display-name common-lisp:null))
-   (profile-name common-lisp:nil :type
-    (common-lisp:or profile-name common-lisp:null))
-   (profile-version common-lisp:nil :type
-    (common-lisp:or profile-version common-lisp:null))
-   (overrides common-lisp:nil :type
-    (common-lisp:or signing-platform-overrides common-lisp:null))
-   (signing-parameters common-lisp:nil :type
-    (common-lisp:or signing-parameters common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (completed-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (signature-expires-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (requested-by common-lisp:nil :type
-    (common-lisp:or requested-by common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or signing-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or status-reason common-lisp:null))
-   (revocation-record common-lisp:nil :type
-    (common-lisp:or signing-job-revocation-record common-lisp:null))
-   (signed-object common-lisp:nil :type
-    (common-lisp:or signed-object common-lisp:null))
-   (job-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (job-invoker common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass describe-signing-job-response common-lisp:nil
+                       ((job-id :initarg :job-id :initform common-lisp:nil
+                         :type (common-lisp:or job-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-job-id
+                         :shape "JobId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source :initarg :source :initform common-lisp:nil
+                         :type (common-lisp:or source common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-source
+                         :shape "Source" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signing-material :initarg :signing-material :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-material common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-signing-material
+                         :shape "SigningMaterial" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (platform-id :initarg :platform-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-platform-id
+                         :shape "PlatformId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (platform-display-name :initarg :platform-display-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or display-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-platform-display-name
+                         :shape "DisplayName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-name :initarg :profile-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-profile-name
+                         :shape "ProfileName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-version :initarg :profile-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-version common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-profile-version
+                         :shape "ProfileVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (overrides :initarg :overrides :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-platform-overrides
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-overrides
+                         :shape "SigningPlatformOverrides" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signing-parameters :initarg :signing-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-parameters common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-signing-parameters
+                         :shape "SigningParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-describe-signing-job-response-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (completed-at :initarg :completed-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-describe-signing-job-response-completed-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signature-expires-at :initarg :signature-expires-at
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-describe-signing-job-response-signature-expires-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (requested-by :initarg :requested-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or requested-by common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-requested-by
+                         :shape "RequestedBy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or signing-status common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-status
+                         :shape "SigningStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-reason common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-status-reason
+                         :shape "StatusReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revocation-record :initarg :revocation-record
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-job-revocation-record
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-revocation-record
+                         :shape "SigningJobRevocationRecord" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signed-object :initarg :signed-object :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signed-object common-lisp:null)
+                         :accessor
+                         struct-shape-describe-signing-job-response-signed-object
+                         :shape "SignedObject" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (job-owner :initarg :job-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-signing-job-response-job-owner
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (job-invoker :initarg :job-invoker :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-signing-job-response-job-invoker
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-signing-job-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-signing-job-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-signing-job-response
                     'make-describe-signing-job-response))
@@ -424,10 +574,17 @@
                           describe-signing-job-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (destination (:copier common-lisp:nil)
-      (:conc-name "struct-shape-destination-"))
-   (s3 common-lisp:nil :type (common-lisp:or s3destination common-lisp:null)))
+ (common-lisp:defclass destination common-lisp:nil
+                       ((s3 :initarg :s3 :initform common-lisp:nil :type
+                         (common-lisp:or s3destination common-lisp:null)
+                         :accessor struct-shape-destination-s3 :shape
+                         "S3Destination" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-destination
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'destination
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'destination 'make-destination))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input destination))
@@ -448,13 +605,27 @@
 (common-lisp:deftype display-name () 'common-lisp:string)
 (common-lisp:deftype encryption-algorithm () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (encryption-algorithm-options (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encryption-algorithm-options-"))
-   (allowed-values (common-lisp:error ":allowedvalues is required") :type
-    (common-lisp:or encryption-algorithms common-lisp:null))
-   (default-value (common-lisp:error ":defaultvalue is required") :type
-    (common-lisp:or encryption-algorithm common-lisp:null)))
+ (common-lisp:defclass encryption-algorithm-options common-lisp:nil
+                       ((allowed-values :initarg :allowed-values :initform
+                         (common-lisp:error ":allowedvalues is required") :type
+                         (common-lisp:or encryption-algorithms
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-encryption-algorithm-options-allowed-values
+                         :shape "EncryptionAlgorithms" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-value :initarg :default-value :initform
+                         (common-lisp:error ":defaultvalue is required") :type
+                         (common-lisp:or encryption-algorithm common-lisp:null)
+                         :accessor
+                         struct-shape-encryption-algorithm-options-default-value
+                         :shape "EncryptionAlgorithm" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-encryption-algorithm-options
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'encryption-algorithm-options
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'encryption-algorithm-options
                     'make-encryption-algorithm-options))
@@ -498,19 +669,50 @@
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-revocation-status-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-revocation-status-request-"))
-   (signature-timestamp (common-lisp:error ":signaturetimestamp is required")
-    :type (common-lisp:or timestamp common-lisp:null))
-   (platform-id (common-lisp:error ":platformid is required") :type
-    (common-lisp:or platform-id common-lisp:null))
-   (profile-version-arn (common-lisp:error ":profileversionarn is required")
-    :type (common-lisp:or arn common-lisp:null))
-   (job-arn (common-lisp:error ":jobarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (certificate-hashes (common-lisp:error ":certificatehashes is required")
-    :type (common-lisp:or certificate-hashes common-lisp:null)))
+ (common-lisp:defclass get-revocation-status-request common-lisp:nil
+                       ((signature-timestamp :initarg :signature-timestamp
+                         :initform
+                         (common-lisp:error ":signaturetimestamp is required")
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-revocation-status-request-signature-timestamp
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "signatureTimestamp")
+                        (platform-id :initarg :platform-id :initform
+                         (common-lisp:error ":platformid is required") :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-revocation-status-request-platform-id
+                         :shape "PlatformId" :location "querystring"
+                         :location-name "platformId")
+                        (profile-version-arn :initarg :profile-version-arn
+                         :initform
+                         (common-lisp:error ":profileversionarn is required")
+                         :type (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-revocation-status-request-profile-version-arn
+                         :shape "Arn" :location "querystring" :location-name
+                         "profileVersionArn")
+                        (job-arn :initarg :job-arn :initform
+                         (common-lisp:error ":jobarn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-revocation-status-request-job-arn
+                         :shape "Arn" :location "querystring" :location-name
+                         "jobArn")
+                        (certificate-hashes :initarg :certificate-hashes
+                         :initform
+                         (common-lisp:error ":certificatehashes is required")
+                         :type
+                         (common-lisp:or certificate-hashes common-lisp:null)
+                         :accessor
+                         struct-shape-get-revocation-status-request-certificate-hashes
+                         :shape "CertificateHashes" :location "querystring"
+                         :location-name "certificateHashes"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-revocation-status-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-revocation-status-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-revocation-status-request
                     'make-get-revocation-status-request))
@@ -530,11 +732,20 @@
                           get-revocation-status-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-revocation-status-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-revocation-status-response-"))
-   (revoked-entities common-lisp:nil :type
-    (common-lisp:or revoked-entities common-lisp:null)))
+ (common-lisp:defclass get-revocation-status-response common-lisp:nil
+                       ((revoked-entities :initarg :revoked-entities :initform
+                         common-lisp:nil :type
+                         (common-lisp:or revoked-entities common-lisp:null)
+                         :accessor
+                         struct-shape-get-revocation-status-response-revoked-entities
+                         :shape "RevokedEntities" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-revocation-status-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-revocation-status-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-revocation-status-response
                     'make-get-revocation-status-response))
@@ -561,11 +772,19 @@
                           get-revocation-status-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-signing-platform-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-signing-platform-request-"))
-   (platform-id (common-lisp:error ":platformid is required") :type
-    (common-lisp:or platform-id common-lisp:null)))
+ (common-lisp:defclass get-signing-platform-request common-lisp:nil
+                       ((platform-id :initarg :platform-id :initform
+                         (common-lisp:error ":platformid is required") :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-request-platform-id
+                         :shape "PlatformId" :location "uri" :location-name
+                         "platformId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-signing-platform-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-signing-platform-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-signing-platform-request
                     'make-get-signing-platform-request))
@@ -585,24 +804,73 @@
                           get-signing-platform-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-signing-platform-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-signing-platform-response-"))
-   (platform-id common-lisp:nil :type
-    (common-lisp:or platform-id common-lisp:null))
-   (display-name common-lisp:nil :type
-    (common-lisp:or display-name common-lisp:null))
-   (partner common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (target common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (category common-lisp:nil :type (common-lisp:or category common-lisp:null))
-   (signing-configuration common-lisp:nil :type
-    (common-lisp:or signing-configuration common-lisp:null))
-   (signing-image-format common-lisp:nil :type
-    (common-lisp:or signing-image-format common-lisp:null))
-   (max-size-in-mb common-lisp:nil :type
-    (common-lisp:or max-size-in-mb common-lisp:null))
-   (revocation-supported common-lisp:nil :type
-    (common-lisp:or |bool| common-lisp:null)))
+ (common-lisp:defclass get-signing-platform-response common-lisp:nil
+                       ((platform-id :initarg :platform-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-response-platform-id
+                         :shape "PlatformId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (display-name :initarg :display-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or display-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-response-display-name
+                         :shape "DisplayName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (partner :initarg :partner :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-response-partner
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target :initarg :target :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-response-target
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (category :initarg :category :initform common-lisp:nil
+                         :type (common-lisp:or category common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-response-category
+                         :shape "Category" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signing-configuration :initarg :signing-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-response-signing-configuration
+                         :shape "SigningConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signing-image-format :initarg :signing-image-format
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-image-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-response-signing-image-format
+                         :shape "SigningImageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-size-in-mb :initarg :max-size-in-mb :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-size-in-mb common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-platform-response-max-size-in-mb
+                         :shape "MaxSizeInMB" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revocation-supported :initarg :revocation-supported
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |bool| common-lisp:null) :accessor
+                         struct-shape-get-signing-platform-response-revocation-supported
+                         :shape "bool" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-signing-platform-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-signing-platform-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-signing-platform-response
                     'make-get-signing-platform-response))
@@ -688,13 +956,25 @@
                           get-signing-platform-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-signing-profile-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-signing-profile-request-"))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null))
-   (profile-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass get-signing-profile-request common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-request-profile-name
+                         :shape "ProfileName" :location "uri" :location-name
+                         "profileName")
+                        (profile-owner :initarg :profile-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-signing-profile-request-profile-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "profileOwner"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-signing-profile-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-signing-profile-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-signing-profile-request
                     'make-get-signing-profile-request))
@@ -714,36 +994,110 @@
                           get-signing-profile-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-signing-profile-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-signing-profile-response-"))
-   (profile-name common-lisp:nil :type
-    (common-lisp:or profile-name common-lisp:null))
-   (profile-version common-lisp:nil :type
-    (common-lisp:or profile-version common-lisp:null))
-   (profile-version-arn common-lisp:nil :type
-    (common-lisp:or arn common-lisp:null))
-   (revocation-record common-lisp:nil :type
-    (common-lisp:or signing-profile-revocation-record common-lisp:null))
-   (signing-material common-lisp:nil :type
-    (common-lisp:or signing-material common-lisp:null))
-   (platform-id common-lisp:nil :type
-    (common-lisp:or platform-id common-lisp:null))
-   (platform-display-name common-lisp:nil :type
-    (common-lisp:or display-name common-lisp:null))
-   (signature-validity-period common-lisp:nil :type
-    (common-lisp:or signature-validity-period common-lisp:null))
-   (overrides common-lisp:nil :type
-    (common-lisp:or signing-platform-overrides common-lisp:null))
-   (signing-parameters common-lisp:nil :type
-    (common-lisp:or signing-parameters common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or signing-profile-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (arn common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass get-signing-profile-response common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-profile-name
+                         :shape "ProfileName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-version :initarg :profile-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-version common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-profile-version
+                         :shape "ProfileVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-version-arn :initarg :profile-version-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-signing-profile-response-profile-version-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (revocation-record :initarg :revocation-record
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-profile-revocation-record
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-revocation-record
+                         :shape "SigningProfileRevocationRecord" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signing-material :initarg :signing-material :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-material common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-signing-material
+                         :shape "SigningMaterial" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (platform-id :initarg :platform-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-platform-id
+                         :shape "PlatformId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (platform-display-name :initarg :platform-display-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or display-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-platform-display-name
+                         :shape "DisplayName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signature-validity-period :initarg
+                         :signature-validity-period :initform common-lisp:nil
+                         :type
+                         (common-lisp:or signature-validity-period
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-signature-validity-period
+                         :shape "SignatureValidityPeriod" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (overrides :initarg :overrides :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-platform-overrides
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-overrides
+                         :shape "SigningPlatformOverrides" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signing-parameters :initarg :signing-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-parameters common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-signing-parameters
+                         :shape "SigningParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or signing-profile-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-status
+                         :shape "SigningProfileStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-signing-profile-response-status-reason
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or common-lisp:string common-lisp:null)
+                         :accessor
+                         struct-shape-get-signing-profile-response-arn :shape
+                         "string" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-signing-profile-response-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-signing-profile-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-signing-profile-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-signing-profile-response
                     'make-get-signing-profile-response))
@@ -864,13 +1218,26 @@
    common-lisp:nil))
 (common-lisp:deftype hash-algorithm () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (hash-algorithm-options (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hash-algorithm-options-"))
-   (allowed-values (common-lisp:error ":allowedvalues is required") :type
-    (common-lisp:or hash-algorithms common-lisp:null))
-   (default-value (common-lisp:error ":defaultvalue is required") :type
-    (common-lisp:or hash-algorithm common-lisp:null)))
+ (common-lisp:defclass hash-algorithm-options common-lisp:nil
+                       ((allowed-values :initarg :allowed-values :initform
+                         (common-lisp:error ":allowedvalues is required") :type
+                         (common-lisp:or hash-algorithms common-lisp:null)
+                         :accessor
+                         struct-shape-hash-algorithm-options-allowed-values
+                         :shape "HashAlgorithms" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-value :initarg :default-value :initform
+                         (common-lisp:error ":defaultvalue is required") :type
+                         (common-lisp:or hash-algorithm common-lisp:null)
+                         :accessor
+                         struct-shape-hash-algorithm-options-default-value
+                         :shape "HashAlgorithm" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-hash-algorithm-options
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'hash-algorithm-options
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'hash-algorithm-options 'make-hash-algorithm-options))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -934,12 +1301,26 @@
 (common-lisp:deftype job-id () 'common-lisp:string)
 (common-lisp:deftype key () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-profile-permissions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-profile-permissions-request-"))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-profile-permissions-request common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-profile-permissions-request-profile-name
+                         :shape "ProfileName" :location "uri" :location-name
+                         "profileName")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-profile-permissions-request-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-profile-permissions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-profile-permissions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-profile-permissions-request
                     'make-list-profile-permissions-request))
@@ -959,15 +1340,39 @@
                           list-profile-permissions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-profile-permissions-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-profile-permissions-response-"))
-   (revision-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (policy-size-bytes common-lisp:nil :type
-    (common-lisp:or policy-size-bytes common-lisp:null))
-   (permissions common-lisp:nil :type
-    (common-lisp:or permissions common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-profile-permissions-response common-lisp:nil
+                       ((revision-id :initarg :revision-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-profile-permissions-response-revision-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-size-bytes :initarg :policy-size-bytes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or policy-size-bytes common-lisp:null)
+                         :accessor
+                         struct-shape-list-profile-permissions-response-policy-size-bytes
+                         :shape "PolicySizeBytes" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (permissions :initarg :permissions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or permissions common-lisp:null)
+                         :accessor
+                         struct-shape-list-profile-permissions-response-permissions
+                         :shape "Permissions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-profile-permissions-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-profile-permissions-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-profile-permissions-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-profile-permissions-response
                     'make-list-profile-permissions-response))
@@ -1015,26 +1420,71 @@
                           list-profile-permissions-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-signing-jobs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-signing-jobs-request-"))
-   (status common-lisp:nil :type
-    (common-lisp:or signing-status common-lisp:null))
-   (platform-id common-lisp:nil :type
-    (common-lisp:or platform-id common-lisp:null))
-   (requested-by common-lisp:nil :type
-    (common-lisp:or requested-by common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (is-revoked common-lisp:nil :type (common-lisp:or |bool| common-lisp:null))
-   (signature-expires-before common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (signature-expires-after common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (job-invoker common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass list-signing-jobs-request common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or signing-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-jobs-request-status :shape
+                         "SigningStatus" :location "querystring" :location-name
+                         "status")
+                        (platform-id :initarg :platform-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-jobs-request-platform-id
+                         :shape "PlatformId" :location "querystring"
+                         :location-name "platformId")
+                        (requested-by :initarg :requested-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or requested-by common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-jobs-request-requested-by
+                         :shape "RequestedBy" :location "querystring"
+                         :location-name "requestedBy")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-jobs-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-signing-jobs-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken")
+                        (is-revoked :initarg :is-revoked :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |bool| common-lisp:null) :accessor
+                         struct-shape-list-signing-jobs-request-is-revoked
+                         :shape "bool" :location "querystring" :location-name
+                         "isRevoked")
+                        (signature-expires-before :initarg
+                         :signature-expires-before :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-jobs-request-signature-expires-before
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "signatureExpiresBefore")
+                        (signature-expires-after :initarg
+                         :signature-expires-after :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-jobs-request-signature-expires-after
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "signatureExpiresAfter")
+                        (job-invoker :initarg :job-invoker :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-signing-jobs-request-job-invoker
+                         :shape "AccountId" :location "querystring"
+                         :location-name "jobInvoker"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-signing-jobs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-signing-jobs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-signing-jobs-request
                     'make-list-signing-jobs-request))
@@ -1054,12 +1504,23 @@
                           list-signing-jobs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-signing-jobs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-signing-jobs-response-"))
-   (jobs common-lisp:nil :type (common-lisp:or signing-jobs common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-signing-jobs-response common-lisp:nil
+                       ((jobs :initarg :jobs :initform common-lisp:nil :type
+                         (common-lisp:or signing-jobs common-lisp:null)
+                         :accessor struct-shape-list-signing-jobs-response-jobs
+                         :shape "SigningJobs" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-signing-jobs-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-signing-jobs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-signing-jobs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-signing-jobs-response
                     'make-list-signing-jobs-response))
@@ -1093,15 +1554,44 @@
                           list-signing-jobs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-signing-platforms-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-signing-platforms-request-"))
-   (category common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (partner common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (target common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-signing-platforms-request common-lisp:nil
+                       ((category :initarg :category :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-platforms-request-category
+                         :shape "String" :location "querystring" :location-name
+                         "category")
+                        (partner :initarg :partner :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-platforms-request-partner
+                         :shape "String" :location "querystring" :location-name
+                         "partner")
+                        (target :initarg :target :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-platforms-request-target
+                         :shape "String" :location "querystring" :location-name
+                         "target")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-platforms-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-signing-platforms-request-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-signing-platforms-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-signing-platforms-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-signing-platforms-request
                     'make-list-signing-platforms-request))
@@ -1121,12 +1611,26 @@
                           list-signing-platforms-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-signing-platforms-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-signing-platforms-response-"))
-   (platforms common-lisp:nil :type
-    (common-lisp:or signing-platforms common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-signing-platforms-response common-lisp:nil
+                       ((platforms :initarg :platforms :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-platforms common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-platforms-response-platforms
+                         :shape "SigningPlatforms" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-signing-platforms-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-signing-platforms-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-signing-platforms-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-signing-platforms-response
                     'make-list-signing-platforms-response))
@@ -1160,18 +1664,45 @@
                           list-signing-platforms-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-signing-profiles-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-signing-profiles-request-"))
-   (include-canceled common-lisp:nil :type
-    (common-lisp:or |bool| common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (platform-id common-lisp:nil :type
-    (common-lisp:or platform-id common-lisp:null))
-   (statuses common-lisp:nil :type (common-lisp:or statuses common-lisp:null)))
+ (common-lisp:defclass list-signing-profiles-request common-lisp:nil
+                       ((include-canceled :initarg :include-canceled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |bool| common-lisp:null) :accessor
+                         struct-shape-list-signing-profiles-request-include-canceled
+                         :shape "bool" :location "querystring" :location-name
+                         "includeCanceled")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-profiles-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-signing-profiles-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken")
+                        (platform-id :initarg :platform-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-profiles-request-platform-id
+                         :shape "PlatformId" :location "querystring"
+                         :location-name "platformId")
+                        (statuses :initarg :statuses :initform common-lisp:nil
+                         :type (common-lisp:or statuses common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-profiles-request-statuses
+                         :shape "Statuses" :location "querystring"
+                         :location-name "statuses"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-signing-profiles-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-signing-profiles-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-signing-profiles-request
                     'make-list-signing-profiles-request))
@@ -1191,13 +1722,26 @@
                           list-signing-profiles-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-signing-profiles-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-signing-profiles-response-"))
-   (profiles common-lisp:nil :type
-    (common-lisp:or signing-profiles common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-signing-profiles-response common-lisp:nil
+                       ((profiles :initarg :profiles :initform common-lisp:nil
+                         :type
+                         (common-lisp:or signing-profiles common-lisp:null)
+                         :accessor
+                         struct-shape-list-signing-profiles-response-profiles
+                         :shape "SigningProfiles" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-signing-profiles-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-signing-profiles-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-signing-profiles-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-signing-profiles-response
                     'make-list-signing-profiles-response))
@@ -1231,11 +1775,19 @@
                           list-signing-profiles-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "String" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -1255,10 +1807,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -1307,15 +1867,35 @@
 (common-lisp:deftype payload ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (permission (:copier common-lisp:nil)
-      (:conc-name "struct-shape-permission-"))
-   (action common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (principal common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (statement-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (profile-version common-lisp:nil :type
-    (common-lisp:or profile-version common-lisp:null)))
+ (common-lisp:defclass permission common-lisp:nil
+                       ((action :initarg :action :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-permission-action :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-permission-principal :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (statement-id :initarg :statement-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-permission-statement-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (profile-version :initarg :profile-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-version common-lisp:null)
+                         :accessor struct-shape-permission-profile-version
+                         :shape "ProfileVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-permission
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'permission
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'permission 'make-permission))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input permission))
@@ -1367,22 +1947,62 @@
 (common-lisp:deftype profile-name () 'common-lisp:string)
 (common-lisp:deftype profile-version () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-signing-profile-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-signing-profile-request-"))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null))
-   (signing-material common-lisp:nil :type
-    (common-lisp:or signing-material common-lisp:null))
-   (signature-validity-period common-lisp:nil :type
-    (common-lisp:or signature-validity-period common-lisp:null))
-   (platform-id (common-lisp:error ":platformid is required") :type
-    (common-lisp:or platform-id common-lisp:null))
-   (overrides common-lisp:nil :type
-    (common-lisp:or signing-platform-overrides common-lisp:null))
-   (signing-parameters common-lisp:nil :type
-    (common-lisp:or signing-parameters common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass put-signing-profile-request common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-put-signing-profile-request-profile-name
+                         :shape "ProfileName" :location "uri" :location-name
+                         "profileName")
+                        (signing-material :initarg :signing-material :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-material common-lisp:null)
+                         :accessor
+                         struct-shape-put-signing-profile-request-signing-material
+                         :shape "SigningMaterial" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signature-validity-period :initarg
+                         :signature-validity-period :initform common-lisp:nil
+                         :type
+                         (common-lisp:or signature-validity-period
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-signing-profile-request-signature-validity-period
+                         :shape "SignatureValidityPeriod" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (platform-id :initarg :platform-id :initform
+                         (common-lisp:error ":platformid is required") :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-signing-profile-request-platform-id
+                         :shape "PlatformId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (overrides :initarg :overrides :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-platform-overrides
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-signing-profile-request-overrides
+                         :shape "SigningPlatformOverrides" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signing-parameters :initarg :signing-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-parameters common-lisp:null)
+                         :accessor
+                         struct-shape-put-signing-profile-request-signing-parameters
+                         :shape "SigningParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-put-signing-profile-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-signing-profile-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-signing-profile-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-signing-profile-request
                     'make-put-signing-profile-request))
@@ -1445,15 +2065,31 @@
                           put-signing-profile-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-signing-profile-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-signing-profile-response-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (profile-version common-lisp:nil :type
-    (common-lisp:or profile-version common-lisp:null))
-   (profile-version-arn common-lisp:nil :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass put-signing-profile-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or common-lisp:string common-lisp:null)
+                         :accessor
+                         struct-shape-put-signing-profile-response-arn :shape
+                         "string" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (profile-version :initarg :profile-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-version common-lisp:null)
+                         :accessor
+                         struct-shape-put-signing-profile-response-profile-version
+                         :shape "ProfileVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-version-arn :initarg :profile-version-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-put-signing-profile-response-profile-version-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-signing-profile-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-signing-profile-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-signing-profile-response
                     'make-put-signing-profile-response))
@@ -1494,15 +2130,32 @@
                           put-signing-profile-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (remove-profile-permission-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-remove-profile-permission-request-"))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null))
-   (revision-id (common-lisp:error ":revisionid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (statement-id (common-lisp:error ":statementid is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass remove-profile-permission-request common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-remove-profile-permission-request-profile-name
+                         :shape "ProfileName" :location "uri" :location-name
+                         "profileName")
+                        (revision-id :initarg :revision-id :initform
+                         (common-lisp:error ":revisionid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-remove-profile-permission-request-revision-id
+                         :shape "String" :location "querystring" :location-name
+                         "revisionId")
+                        (statement-id :initarg :statement-id :initform
+                         (common-lisp:error ":statementid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-remove-profile-permission-request-statement-id
+                         :shape "String" :location "uri" :location-name
+                         "statementId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-remove-profile-permission-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'remove-profile-permission-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'remove-profile-permission-request
                     'make-remove-profile-permission-request))
@@ -1522,11 +2175,19 @@
                           remove-profile-permission-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (remove-profile-permission-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-remove-profile-permission-response-"))
-   (revision-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass remove-profile-permission-response common-lisp:nil
+                       ((revision-id :initarg :revision-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-remove-profile-permission-response-revision-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-remove-profile-permission-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'remove-profile-permission-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'remove-profile-permission-response
                     'make-remove-profile-permission-response))
@@ -1566,15 +2227,30 @@
                     'resource-not-found-exception-code)))
 (common-lisp:deftype revocation-reason-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (revoke-signature-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-revoke-signature-request-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (job-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (reason (common-lisp:error ":reason is required") :type
-    (common-lisp:or revocation-reason-string common-lisp:null)))
+ (common-lisp:defclass revoke-signature-request common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-revoke-signature-request-job-id :shape
+                         "JobId" :location "uri" :location-name "jobId")
+                        (job-owner :initarg :job-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-revoke-signature-request-job-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (reason :initarg :reason :initform
+                         (common-lisp:error ":reason is required") :type
+                         (common-lisp:or revocation-reason-string
+                                         common-lisp:null)
+                         :accessor struct-shape-revoke-signature-request-reason
+                         :shape "RevocationReasonString" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-revoke-signature-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'revoke-signature-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'revoke-signature-request 'make-revoke-signature-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1607,17 +2283,42 @@
                           revoke-signature-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (revoke-signing-profile-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-revoke-signing-profile-request-"))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null))
-   (profile-version (common-lisp:error ":profileversion is required") :type
-    (common-lisp:or profile-version common-lisp:null))
-   (reason (common-lisp:error ":reason is required") :type
-    (common-lisp:or revocation-reason-string common-lisp:null))
-   (effective-time (common-lisp:error ":effectivetime is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass revoke-signing-profile-request common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-revoke-signing-profile-request-profile-name
+                         :shape "ProfileName" :location "uri" :location-name
+                         "profileName")
+                        (profile-version :initarg :profile-version :initform
+                         (common-lisp:error ":profileversion is required")
+                         :type
+                         (common-lisp:or profile-version common-lisp:null)
+                         :accessor
+                         struct-shape-revoke-signing-profile-request-profile-version
+                         :shape "ProfileVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reason :initarg :reason :initform
+                         (common-lisp:error ":reason is required") :type
+                         (common-lisp:or revocation-reason-string
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-revoke-signing-profile-request-reason
+                         :shape "RevocationReasonString" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (effective-time :initarg :effective-time :initform
+                         (common-lisp:error ":effectivetime is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-revoke-signing-profile-request-effective-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-revoke-signing-profile-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'revoke-signing-profile-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'revoke-signing-profile-request
                     'make-revoke-signing-profile-request))
@@ -1665,12 +2366,23 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3destination (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3destination-"))
-   (bucket-name common-lisp:nil :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (prefix common-lisp:nil :type (common-lisp:or prefix common-lisp:null)))
+ (common-lisp:defclass s3destination common-lisp:nil
+                       ((bucket-name :initarg :bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bucket-name common-lisp:null)
+                         :accessor struct-shape-s3destination-bucket-name
+                         :shape "BucketName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or prefix common-lisp:null)
+                         :accessor struct-shape-s3destination-prefix :shape
+                         "Prefix" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-s3destination
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 's3destination
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 's3destination 'make-s3destination))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input s3destination))
@@ -1696,12 +2408,23 @@
                         ((aws-sdk/generator/shape::input s3destination))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3signed-object (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3signed-object-"))
-   (bucket-name common-lisp:nil :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key common-lisp:nil :type (common-lisp:or key common-lisp:null)))
+ (common-lisp:defclass s3signed-object common-lisp:nil
+                       ((bucket-name :initarg :bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bucket-name common-lisp:null)
+                         :accessor struct-shape-s3signed-object-bucket-name
+                         :shape "BucketName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or key common-lisp:null) :accessor
+                         struct-shape-s3signed-object-key :shape "Key"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-s3signed-object
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 's3signed-object
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 's3signed-object 'make-s3signed-object))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input s3signed-object))
@@ -1727,14 +2450,29 @@
                         ((aws-sdk/generator/shape::input s3signed-object))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3source (:copier common-lisp:nil) (:conc-name "struct-shape-s3source-"))
-   (bucket-name (common-lisp:error ":bucketname is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or key common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+ (common-lisp:defclass s3source common-lisp:nil
+                       ((bucket-name :initarg :bucket-name :initform
+                         (common-lisp:error ":bucketname is required") :type
+                         (common-lisp:or bucket-name common-lisp:null)
+                         :accessor struct-shape-s3source-bucket-name :shape
+                         "BucketName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or key common-lisp:null) :accessor
+                         struct-shape-s3source-key :shape "Key" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-s3source-version :shape "Version"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-s3source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 's3source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 's3source 'make-s3source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input s3source))
@@ -1778,17 +2516,37 @@
                     'service-limit-exceeded-exception-message
                     'service-limit-exceeded-exception-code)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (sign-payload-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-sign-payload-request-"))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null))
-   (profile-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (payload (common-lisp:error ":payload is required") :type
-    (common-lisp:or payload common-lisp:null))
-   (payload-format (common-lisp:error ":payloadformat is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass sign-payload-request common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-sign-payload-request-profile-name :shape
+                         "ProfileName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (profile-owner :initarg :profile-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-sign-payload-request-profile-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (payload :initarg :payload :initform
+                         (common-lisp:error ":payload is required") :type
+                         (common-lisp:or payload common-lisp:null) :accessor
+                         struct-shape-sign-payload-request-payload :shape
+                         "Payload" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (payload-format :initarg :payload-format :initform
+                         (common-lisp:error ":payloadformat is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-sign-payload-request-payload-format
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-sign-payload-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'sign-payload-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'sign-payload-request 'make-sign-payload-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1829,14 +2587,34 @@
                         ((aws-sdk/generator/shape::input sign-payload-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (sign-payload-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-sign-payload-response-"))
-   (job-id common-lisp:nil :type (common-lisp:or job-id common-lisp:null))
-   (job-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
-   (signature common-lisp:nil :type (common-lisp:or blob common-lisp:null)))
+ (common-lisp:defclass sign-payload-response common-lisp:nil
+                       ((job-id :initarg :job-id :initform common-lisp:nil
+                         :type (common-lisp:or job-id common-lisp:null)
+                         :accessor struct-shape-sign-payload-response-job-id
+                         :shape "JobId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (job-owner :initarg :job-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-sign-payload-response-job-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type (common-lisp:or metadata common-lisp:null)
+                         :accessor struct-shape-sign-payload-response-metadata
+                         :shape "Metadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signature :initarg :signature :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-sign-payload-response-signature :shape
+                         "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-sign-payload-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'sign-payload-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'sign-payload-response 'make-sign-payload-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1883,12 +2661,22 @@
                           sign-payload-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signature-validity-period (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signature-validity-period-"))
-   (value common-lisp:nil :type (common-lisp:or integer common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or validity-type common-lisp:null)))
+ (common-lisp:defclass signature-validity-period common-lisp:nil
+                       ((value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-signature-validity-period-value :shape
+                         "Integer" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or validity-type common-lisp:null)
+                         :accessor struct-shape-signature-validity-period-type
+                         :shape "ValidityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signature-validity-period
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signature-validity-period
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signature-validity-period
                     'make-signature-validity-period))
@@ -1922,11 +2710,17 @@
                           signature-validity-period))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signed-object (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signed-object-"))
-   (s3 common-lisp:nil :type
-    (common-lisp:or s3signed-object common-lisp:null)))
+ (common-lisp:defclass signed-object common-lisp:nil
+                       ((s3 :initarg :s3 :initform common-lisp:nil :type
+                         (common-lisp:or s3signed-object common-lisp:null)
+                         :accessor struct-shape-signed-object-s3 :shape
+                         "S3SignedObject" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signed-object
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signed-object
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'signed-object 'make-signed-object))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input signed-object))
@@ -1945,15 +2739,34 @@
                         ((aws-sdk/generator/shape::input signed-object))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-configuration-"))
-   (encryption-algorithm-options
-    (common-lisp:error ":encryptionalgorithmoptions is required") :type
-    (common-lisp:or encryption-algorithm-options common-lisp:null))
-   (hash-algorithm-options
-    (common-lisp:error ":hashalgorithmoptions is required") :type
-    (common-lisp:or hash-algorithm-options common-lisp:null)))
+ (common-lisp:defclass signing-configuration common-lisp:nil
+                       ((encryption-algorithm-options :initarg
+                         :encryption-algorithm-options :initform
+                         (common-lisp:error
+                          ":encryptionalgorithmoptions is required")
+                         :type
+                         (common-lisp:or encryption-algorithm-options
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-signing-configuration-encryption-algorithm-options
+                         :shape "EncryptionAlgorithmOptions" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (hash-algorithm-options :initarg
+                         :hash-algorithm-options :initform
+                         (common-lisp:error
+                          ":hashalgorithmoptions is required")
+                         :type
+                         (common-lisp:or hash-algorithm-options
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-signing-configuration-hash-algorithm-options
+                         :shape "HashAlgorithmOptions" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signing-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signing-configuration 'make-signing-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1988,13 +2801,27 @@
                           signing-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-configuration-overrides (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-configuration-overrides-"))
-   (encryption-algorithm common-lisp:nil :type
-    (common-lisp:or encryption-algorithm common-lisp:null))
-   (hash-algorithm common-lisp:nil :type
-    (common-lisp:or hash-algorithm common-lisp:null)))
+ (common-lisp:defclass signing-configuration-overrides common-lisp:nil
+                       ((encryption-algorithm :initarg :encryption-algorithm
+                         :initform common-lisp:nil :type
+                         (common-lisp:or encryption-algorithm common-lisp:null)
+                         :accessor
+                         struct-shape-signing-configuration-overrides-encryption-algorithm
+                         :shape "EncryptionAlgorithm" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (hash-algorithm :initarg :hash-algorithm :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hash-algorithm common-lisp:null)
+                         :accessor
+                         struct-shape-signing-configuration-overrides-hash-algorithm
+                         :shape "HashAlgorithm" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-configuration-overrides
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'signing-configuration-overrides
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signing-configuration-overrides
                     'make-signing-configuration-overrides))
@@ -2029,13 +2856,27 @@
                           signing-configuration-overrides))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-image-format (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-image-format-"))
-   (supported-formats (common-lisp:error ":supportedformats is required") :type
-    (common-lisp:or image-formats common-lisp:null))
-   (default-format (common-lisp:error ":defaultformat is required") :type
-    (common-lisp:or image-format common-lisp:null)))
+ (common-lisp:defclass signing-image-format common-lisp:nil
+                       ((supported-formats :initarg :supported-formats
+                         :initform
+                         (common-lisp:error ":supportedformats is required")
+                         :type (common-lisp:or image-formats common-lisp:null)
+                         :accessor
+                         struct-shape-signing-image-format-supported-formats
+                         :shape "ImageFormats" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-format :initarg :default-format :initform
+                         (common-lisp:error ":defaultformat is required") :type
+                         (common-lisp:or image-format common-lisp:null)
+                         :accessor
+                         struct-shape-signing-image-format-default-format
+                         :shape "ImageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-image-format
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signing-image-format
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signing-image-format 'make-signing-image-format))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2062,34 +2903,94 @@
                         ((aws-sdk/generator/shape::input signing-image-format))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-job (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-job-"))
-   (job-id common-lisp:nil :type (common-lisp:or job-id common-lisp:null))
-   (source common-lisp:nil :type (common-lisp:or source common-lisp:null))
-   (signed-object common-lisp:nil :type
-    (common-lisp:or signed-object common-lisp:null))
-   (signing-material common-lisp:nil :type
-    (common-lisp:or signing-material common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or signing-status common-lisp:null))
-   (is-revoked common-lisp:nil :type (common-lisp:or |bool| common-lisp:null))
-   (profile-name common-lisp:nil :type
-    (common-lisp:or profile-name common-lisp:null))
-   (profile-version common-lisp:nil :type
-    (common-lisp:or profile-version common-lisp:null))
-   (platform-id common-lisp:nil :type
-    (common-lisp:or platform-id common-lisp:null))
-   (platform-display-name common-lisp:nil :type
-    (common-lisp:or display-name common-lisp:null))
-   (signature-expires-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (job-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (job-invoker common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass signing-job common-lisp:nil
+                       ((job-id :initarg :job-id :initform common-lisp:nil
+                         :type (common-lisp:or job-id common-lisp:null)
+                         :accessor struct-shape-signing-job-job-id :shape
+                         "JobId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (source :initarg :source :initform common-lisp:nil
+                         :type (common-lisp:or source common-lisp:null)
+                         :accessor struct-shape-signing-job-source :shape
+                         "Source" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (signed-object :initarg :signed-object :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signed-object common-lisp:null)
+                         :accessor struct-shape-signing-job-signed-object
+                         :shape "SignedObject" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signing-material :initarg :signing-material :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-material common-lisp:null)
+                         :accessor struct-shape-signing-job-signing-material
+                         :shape "SigningMaterial" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-signing-job-created-at :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or signing-status common-lisp:null)
+                         :accessor struct-shape-signing-job-status :shape
+                         "SigningStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (is-revoked :initarg :is-revoked :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |bool| common-lisp:null) :accessor
+                         struct-shape-signing-job-is-revoked :shape "bool"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (profile-name :initarg :profile-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor struct-shape-signing-job-profile-name :shape
+                         "ProfileName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (profile-version :initarg :profile-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-version common-lisp:null)
+                         :accessor struct-shape-signing-job-profile-version
+                         :shape "ProfileVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (platform-id :initarg :platform-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor struct-shape-signing-job-platform-id :shape
+                         "PlatformId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (platform-display-name :initarg :platform-display-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or display-name common-lisp:null)
+                         :accessor
+                         struct-shape-signing-job-platform-display-name :shape
+                         "DisplayName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (signature-expires-at :initarg :signature-expires-at
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-signing-job-signature-expires-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (job-owner :initarg :job-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-signing-job-job-owner :shape "AccountId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (job-invoker :initarg :job-invoker :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-signing-job-job-invoker :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-job
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signing-job
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'signing-job 'make-signing-job))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input signing-job))
@@ -2201,13 +3102,31 @@
                         ((aws-sdk/generator/shape::input signing-job))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-job-revocation-record (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-job-revocation-record-"))
-   (reason common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (revoked-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (revoked-by common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass signing-job-revocation-record common-lisp:nil
+                       ((reason :initarg :reason :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-signing-job-revocation-record-reason
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revoked-at :initarg :revoked-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-signing-job-revocation-record-revoked-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revoked-by :initarg :revoked-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-signing-job-revocation-record-revoked-by
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-job-revocation-record
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'signing-job-revocation-record
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signing-job-revocation-record
                     'make-signing-job-revocation-record))
@@ -2255,11 +3174,20 @@
                            (trivial-types:proper-list signing-job))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-material (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-material-"))
-   (certificate-arn (common-lisp:error ":certificatearn is required") :type
-    (common-lisp:or certificate-arn common-lisp:null)))
+ (common-lisp:defclass signing-material common-lisp:nil
+                       ((certificate-arn :initarg :certificate-arn :initform
+                         (common-lisp:error ":certificatearn is required")
+                         :type
+                         (common-lisp:or certificate-arn common-lisp:null)
+                         :accessor
+                         struct-shape-signing-material-certificate-arn :shape
+                         "CertificateArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-material
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signing-material
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signing-material 'make-signing-material))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2289,23 +3217,66 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-platform (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-platform-"))
-   (platform-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (display-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (partner common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (target common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (category common-lisp:nil :type (common-lisp:or category common-lisp:null))
-   (signing-configuration common-lisp:nil :type
-    (common-lisp:or signing-configuration common-lisp:null))
-   (signing-image-format common-lisp:nil :type
-    (common-lisp:or signing-image-format common-lisp:null))
-   (max-size-in-mb common-lisp:nil :type
-    (common-lisp:or max-size-in-mb common-lisp:null))
-   (revocation-supported common-lisp:nil :type
-    (common-lisp:or |bool| common-lisp:null)))
+ (common-lisp:defclass signing-platform common-lisp:nil
+                       ((platform-id :initarg :platform-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-signing-platform-platform-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (display-name :initarg :display-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-signing-platform-display-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (partner :initarg :partner :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-signing-platform-partner :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (target :initarg :target :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-signing-platform-target :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (category :initarg :category :initform common-lisp:nil
+                         :type (common-lisp:or category common-lisp:null)
+                         :accessor struct-shape-signing-platform-category
+                         :shape "Category" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signing-configuration :initarg :signing-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-signing-platform-signing-configuration
+                         :shape "SigningConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signing-image-format :initarg :signing-image-format
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-image-format common-lisp:null)
+                         :accessor
+                         struct-shape-signing-platform-signing-image-format
+                         :shape "SigningImageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-size-in-mb :initarg :max-size-in-mb :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-size-in-mb common-lisp:null)
+                         :accessor struct-shape-signing-platform-max-size-in-mb
+                         :shape "MaxSizeInMB" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revocation-supported :initarg :revocation-supported
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |bool| common-lisp:null) :accessor
+                         struct-shape-signing-platform-revocation-supported
+                         :shape "bool" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-platform
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signing-platform
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signing-platform 'make-signing-platform))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2384,13 +3355,27 @@
                         ((aws-sdk/generator/shape::input signing-platform))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-platform-overrides (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-platform-overrides-"))
-   (signing-configuration common-lisp:nil :type
-    (common-lisp:or signing-configuration-overrides common-lisp:null))
-   (signing-image-format common-lisp:nil :type
-    (common-lisp:or image-format common-lisp:null)))
+ (common-lisp:defclass signing-platform-overrides common-lisp:nil
+                       ((signing-configuration :initarg :signing-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-configuration-overrides
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-signing-platform-overrides-signing-configuration
+                         :shape "SigningConfigurationOverrides" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signing-image-format :initarg :signing-image-format
+                         :initform common-lisp:nil :type
+                         (common-lisp:or image-format common-lisp:null)
+                         :accessor
+                         struct-shape-signing-platform-overrides-signing-image-format
+                         :shape "ImageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-platform-overrides
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signing-platform-overrides
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signing-platform-overrides
                     'make-signing-platform-overrides))
@@ -2434,30 +3419,83 @@
                            (trivial-types:proper-list signing-platform))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-profile (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-profile-"))
-   (profile-name common-lisp:nil :type
-    (common-lisp:or profile-name common-lisp:null))
-   (profile-version common-lisp:nil :type
-    (common-lisp:or profile-version common-lisp:null))
-   (profile-version-arn common-lisp:nil :type
-    (common-lisp:or arn common-lisp:null))
-   (signing-material common-lisp:nil :type
-    (common-lisp:or signing-material common-lisp:null))
-   (signature-validity-period common-lisp:nil :type
-    (common-lisp:or signature-validity-period common-lisp:null))
-   (platform-id common-lisp:nil :type
-    (common-lisp:or platform-id common-lisp:null))
-   (platform-display-name common-lisp:nil :type
-    (common-lisp:or display-name common-lisp:null))
-   (signing-parameters common-lisp:nil :type
-    (common-lisp:or signing-parameters common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or signing-profile-status common-lisp:null))
-   (arn common-lisp:nil :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass signing-profile common-lisp:nil
+                       ((profile-name :initarg :profile-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor struct-shape-signing-profile-profile-name
+                         :shape "ProfileName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-version :initarg :profile-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or profile-version common-lisp:null)
+                         :accessor struct-shape-signing-profile-profile-version
+                         :shape "ProfileVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-version-arn :initarg :profile-version-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-signing-profile-profile-version-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (signing-material :initarg :signing-material :initform
+                         common-lisp:nil :type
+                         (common-lisp:or signing-material common-lisp:null)
+                         :accessor
+                         struct-shape-signing-profile-signing-material :shape
+                         "SigningMaterial" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signature-validity-period :initarg
+                         :signature-validity-period :initform common-lisp:nil
+                         :type
+                         (common-lisp:or signature-validity-period
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-signing-profile-signature-validity-period
+                         :shape "SignatureValidityPeriod" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (platform-id :initarg :platform-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or platform-id common-lisp:null)
+                         :accessor struct-shape-signing-profile-platform-id
+                         :shape "PlatformId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (platform-display-name :initarg :platform-display-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or display-name common-lisp:null)
+                         :accessor
+                         struct-shape-signing-profile-platform-display-name
+                         :shape "DisplayName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signing-parameters :initarg :signing-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or signing-parameters common-lisp:null)
+                         :accessor
+                         struct-shape-signing-profile-signing-parameters :shape
+                         "SigningParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or signing-profile-status
+                                         common-lisp:null)
+                         :accessor struct-shape-signing-profile-status :shape
+                         "SigningProfileStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or common-lisp:string common-lisp:null)
+                         :accessor struct-shape-signing-profile-arn :shape
+                         "string" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-signing-profile-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-profile
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'signing-profile
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'signing-profile 'make-signing-profile))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input signing-profile))
@@ -2548,14 +3586,32 @@
                         ((aws-sdk/generator/shape::input signing-profile))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signing-profile-revocation-record (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signing-profile-revocation-record-"))
-   (revocation-effective-from common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (revoked-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (revoked-by common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass signing-profile-revocation-record common-lisp:nil
+                       ((revocation-effective-from :initarg
+                         :revocation-effective-from :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-signing-profile-revocation-record-revocation-effective-from
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revoked-at :initarg :revoked-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-signing-profile-revocation-record-revoked-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revoked-by :initarg :revoked-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-signing-profile-revocation-record-revoked-by
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signing-profile-revocation-record
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'signing-profile-revocation-record
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signing-profile-revocation-record
                     'make-signing-profile-revocation-record))
@@ -2607,9 +3663,16 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype signing-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (source (:copier common-lisp:nil) (:conc-name "struct-shape-source-"))
-   (s3 common-lisp:nil :type (common-lisp:or s3source common-lisp:null)))
+ (common-lisp:defclass source common-lisp:nil
+                       ((s3 :initarg :s3 :initform common-lisp:nil :type
+                         (common-lisp:or s3source common-lisp:null) :accessor
+                         struct-shape-source-s3 :shape "S3Source" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'source 'make-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input source))
@@ -2628,19 +3691,47 @@
                         ((aws-sdk/generator/shape::input source))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-signing-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-signing-job-request-"))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or source common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null))
-   (profile-name (common-lisp:error ":profilename is required") :type
-    (common-lisp:or profile-name common-lisp:null))
-   (client-request-token (common-lisp:error ":clientrequesttoken is required")
-    :type (common-lisp:or client-request-token common-lisp:null))
-   (profile-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass start-signing-job-request common-lisp:nil
+                       ((source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or source common-lisp:null) :accessor
+                         struct-shape-start-signing-job-request-source :shape
+                         "Source" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         (common-lisp:error ":destination is required") :type
+                         (common-lisp:or destination common-lisp:null)
+                         :accessor
+                         struct-shape-start-signing-job-request-destination
+                         :shape "Destination" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-name :initarg :profile-name :initform
+                         (common-lisp:error ":profilename is required") :type
+                         (common-lisp:or profile-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-signing-job-request-profile-name
+                         :shape "ProfileName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform
+                         (common-lisp:error ":clientrequesttoken is required")
+                         :type
+                         (common-lisp:or client-request-token common-lisp:null)
+                         :accessor
+                         struct-shape-start-signing-job-request-client-request-token
+                         :shape "ClientRequestToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (profile-owner :initarg :profile-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-start-signing-job-request-profile-owner
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-signing-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-signing-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-signing-job-request
                     'make-start-signing-job-request))
@@ -2696,12 +3787,24 @@
                           start-signing-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-signing-job-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-signing-job-response-"))
-   (job-id common-lisp:nil :type (common-lisp:or job-id common-lisp:null))
-   (job-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass start-signing-job-response common-lisp:nil
+                       ((job-id :initarg :job-id :initform common-lisp:nil
+                         :type (common-lisp:or job-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-signing-job-response-job-id :shape
+                         "JobId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (job-owner :initarg :job-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-start-signing-job-response-job-owner
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-signing-job-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-signing-job-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-signing-job-response
                     'make-start-signing-job-response))
@@ -2760,13 +3863,23 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "String" :location "uri" :location-name "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2786,9 +3899,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2830,13 +3946,24 @@
                     'too-many-requests-exception-message
                     'too-many-requests-exception-code)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "String" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2855,9 +3982,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

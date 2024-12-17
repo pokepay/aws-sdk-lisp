@@ -38,19 +38,48 @@
   (common-lisp:list 'bad-request-exception 'bad-request-exception-message)))
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (event (:copier common-lisp:nil) (:conc-name "struct-shape-event-"))
-   (event-type (common-lisp:error ":eventtype is required") :type
-    (common-lisp:or string50chars common-lisp:null))
-   (timestamp (common-lisp:error ":string is required") :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (session common-lisp:nil :type (common-lisp:or session common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or string10chars common-lisp:null))
-   (attributes common-lisp:nil :type
-    (common-lisp:or map-of-string-to-string common-lisp:null))
-   (metrics common-lisp:nil :type
-    (common-lisp:or map-of-string-to-number common-lisp:null)))
+ (common-lisp:defclass event common-lisp:nil
+                       ((event-type :initarg :event-type :initform
+                         (common-lisp:error ":eventtype is required") :type
+                         (common-lisp:or string50chars common-lisp:null)
+                         :accessor struct-shape-event-event-type :shape
+                         "String50Chars" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timestamp :initarg :timestamp :initform
+                         (common-lisp:error ":string is required") :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-event-timestamp :shape
+                         "ISO8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (session :initarg :session :initform common-lisp:nil
+                         :type (common-lisp:or session common-lisp:null)
+                         :accessor struct-shape-event-session :shape "Session"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type (common-lisp:or string10chars common-lisp:null)
+                         :accessor struct-shape-event-version :shape
+                         "String10Chars" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attributes :initarg :attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or map-of-string-to-string
+                                         common-lisp:null)
+                         :accessor struct-shape-event-attributes :shape
+                         "MapOfStringToString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metrics :initarg :metrics :initform common-lisp:nil
+                         :type
+                         (common-lisp:or map-of-string-to-number
+                                         common-lisp:null)
+                         :accessor struct-shape-event-metrics :shape
+                         "MapOfStringToNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'event 'make-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input event))
@@ -130,15 +159,32 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-events-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-events-input-"))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or event-list-definition common-lisp:null))
-   (client-context (common-lisp:error ":clientcontext is required") :type
-    (common-lisp:or string common-lisp:null))
-   (client-context-encoding common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass put-events-input common-lisp:nil
+                       ((events :initarg :events :initform
+                         (common-lisp:error ":events is required") :type
+                         (common-lisp:or event-list-definition
+                                         common-lisp:null)
+                         :accessor struct-shape-put-events-input-events :shape
+                         "EventListDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-context :initarg :client-context :initform
+                         (common-lisp:error ":clientcontext is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-events-input-client-context :shape
+                         "String" :location "header" :location-name
+                         "x-amz-Client-Context")
+                        (client-context-encoding :initarg
+                         :client-context-encoding :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-put-events-input-client-context-encoding
+                         :shape "String" :location "header" :location-name
+                         "x-amz-Client-Context-Encoding"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-events-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-events-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-events-input 'make-put-events-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -168,14 +214,33 @@
                         ((aws-sdk/generator/shape::input put-events-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (session (:copier common-lisp:nil) (:conc-name "struct-shape-session-"))
-   (id common-lisp:nil :type (common-lisp:or string50chars common-lisp:null))
-   (duration common-lisp:nil :type (common-lisp:or long common-lisp:null))
-   (start-timestamp common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (stop-timestamp common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null)))
+ (common-lisp:defclass session common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or string50chars common-lisp:null)
+                         :accessor struct-shape-session-id :shape
+                         "String50Chars" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (duration :initarg :duration :initform common-lisp:nil
+                         :type (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-session-duration :shape "Long" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-timestamp :initarg :start-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-session-start-timestamp :shape
+                         "ISO8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stop-timestamp :initarg :stop-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-session-stop-timestamp :shape
+                         "ISO8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-session
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'session
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'session 'make-session))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input session))

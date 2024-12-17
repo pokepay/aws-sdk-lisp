@@ -69,22 +69,61 @@
 (common-lisp:deftype client-secret () 'common-lisp:string)
 (common-lisp:deftype client-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-token-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-token-request-"))
-   (client-id (common-lisp:error ":clientid is required") :type
-    (common-lisp:or client-id common-lisp:null))
-   (client-secret (common-lisp:error ":clientsecret is required") :type
-    (common-lisp:or client-secret common-lisp:null))
-   (grant-type (common-lisp:error ":granttype is required") :type
-    (common-lisp:or grant-type common-lisp:null))
-   (device-code common-lisp:nil :type
-    (common-lisp:or device-code common-lisp:null))
-   (code common-lisp:nil :type (common-lisp:or auth-code common-lisp:null))
-   (refresh-token common-lisp:nil :type
-    (common-lisp:or refresh-token common-lisp:null))
-   (scope common-lisp:nil :type (common-lisp:or scopes common-lisp:null))
-   (redirect-uri common-lisp:nil :type (common-lisp:or uri common-lisp:null)))
+ (common-lisp:defclass create-token-request common-lisp:nil
+                       ((client-id :initarg :client-id :initform
+                         (common-lisp:error ":clientid is required") :type
+                         (common-lisp:or client-id common-lisp:null) :accessor
+                         struct-shape-create-token-request-client-id :shape
+                         "ClientId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-secret :initarg :client-secret :initform
+                         (common-lisp:error ":clientsecret is required") :type
+                         (common-lisp:or client-secret common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-request-client-secret :shape
+                         "ClientSecret" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (grant-type :initarg :grant-type :initform
+                         (common-lisp:error ":granttype is required") :type
+                         (common-lisp:or grant-type common-lisp:null) :accessor
+                         struct-shape-create-token-request-grant-type :shape
+                         "GrantType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (device-code :initarg :device-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or device-code common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-request-device-code :shape
+                         "DeviceCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (code :initarg :code :initform common-lisp:nil :type
+                         (common-lisp:or auth-code common-lisp:null) :accessor
+                         struct-shape-create-token-request-code :shape
+                         "AuthCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (refresh-token :initarg :refresh-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or refresh-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-request-refresh-token :shape
+                         "RefreshToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scope :initarg :scope :initform common-lisp:nil :type
+                         (common-lisp:or scopes common-lisp:null) :accessor
+                         struct-shape-create-token-request-scope :shape
+                         "Scopes" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (redirect-uri :initarg :redirect-uri :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uri common-lisp:null) :accessor
+                         struct-shape-create-token-request-redirect-uri :shape
+                         "URI" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-token-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-token-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-token-request 'make-create-token-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -153,18 +192,45 @@
                         ((aws-sdk/generator/shape::input create-token-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-token-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-token-response-"))
-   (access-token common-lisp:nil :type
-    (common-lisp:or access-token common-lisp:null))
-   (token-type common-lisp:nil :type
-    (common-lisp:or token-type common-lisp:null))
-   (expires-in common-lisp:nil :type
-    (common-lisp:or expiration-in-seconds common-lisp:null))
-   (refresh-token common-lisp:nil :type
-    (common-lisp:or refresh-token common-lisp:null))
-   (id-token common-lisp:nil :type (common-lisp:or id-token common-lisp:null)))
+ (common-lisp:defclass create-token-response common-lisp:nil
+                       ((access-token :initarg :access-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or access-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-response-access-token :shape
+                         "AccessToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (token-type :initarg :token-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token-type common-lisp:null) :accessor
+                         struct-shape-create-token-response-token-type :shape
+                         "TokenType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (expires-in :initarg :expires-in :initform
+                         common-lisp:nil :type
+                         (common-lisp:or expiration-in-seconds
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-response-expires-in :shape
+                         "ExpirationInSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (refresh-token :initarg :refresh-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or refresh-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-response-refresh-token
+                         :shape "RefreshToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id-token :initarg :id-token :initform common-lisp:nil
+                         :type (common-lisp:or id-token common-lisp:null)
+                         :accessor struct-shape-create-token-response-id-token
+                         :shape "IdToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-token-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-token-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-token-response 'make-create-token-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -218,26 +284,74 @@
                           create-token-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-token-with-iamrequest (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-token-with-iamrequest-"))
-   (client-id (common-lisp:error ":clientid is required") :type
-    (common-lisp:or client-id common-lisp:null))
-   (grant-type (common-lisp:error ":granttype is required") :type
-    (common-lisp:or grant-type common-lisp:null))
-   (code common-lisp:nil :type (common-lisp:or auth-code common-lisp:null))
-   (refresh-token common-lisp:nil :type
-    (common-lisp:or refresh-token common-lisp:null))
-   (assertion common-lisp:nil :type
-    (common-lisp:or assertion common-lisp:null))
-   (scope common-lisp:nil :type (common-lisp:or scopes common-lisp:null))
-   (redirect-uri common-lisp:nil :type (common-lisp:or uri common-lisp:null))
-   (subject-token common-lisp:nil :type
-    (common-lisp:or subject-token common-lisp:null))
-   (subject-token-type common-lisp:nil :type
-    (common-lisp:or token-type-uri common-lisp:null))
-   (requested-token-type common-lisp:nil :type
-    (common-lisp:or token-type-uri common-lisp:null)))
+ (common-lisp:defclass create-token-with-iamrequest common-lisp:nil
+                       ((client-id :initarg :client-id :initform
+                         (common-lisp:error ":clientid is required") :type
+                         (common-lisp:or client-id common-lisp:null) :accessor
+                         struct-shape-create-token-with-iamrequest-client-id
+                         :shape "ClientId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (grant-type :initarg :grant-type :initform
+                         (common-lisp:error ":granttype is required") :type
+                         (common-lisp:or grant-type common-lisp:null) :accessor
+                         struct-shape-create-token-with-iamrequest-grant-type
+                         :shape "GrantType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (code :initarg :code :initform common-lisp:nil :type
+                         (common-lisp:or auth-code common-lisp:null) :accessor
+                         struct-shape-create-token-with-iamrequest-code :shape
+                         "AuthCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (refresh-token :initarg :refresh-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or refresh-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamrequest-refresh-token
+                         :shape "RefreshToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (assertion :initarg :assertion :initform
+                         common-lisp:nil :type
+                         (common-lisp:or assertion common-lisp:null) :accessor
+                         struct-shape-create-token-with-iamrequest-assertion
+                         :shape "Assertion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scope :initarg :scope :initform common-lisp:nil :type
+                         (common-lisp:or scopes common-lisp:null) :accessor
+                         struct-shape-create-token-with-iamrequest-scope :shape
+                         "Scopes" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (redirect-uri :initarg :redirect-uri :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uri common-lisp:null) :accessor
+                         struct-shape-create-token-with-iamrequest-redirect-uri
+                         :shape "URI" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (subject-token :initarg :subject-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or subject-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamrequest-subject-token
+                         :shape "SubjectToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subject-token-type :initarg :subject-token-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or token-type-uri common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamrequest-subject-token-type
+                         :shape "TokenTypeURI" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (requested-token-type :initarg :requested-token-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or token-type-uri common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamrequest-requested-token-type
+                         :shape "TokenTypeURI" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-token-with-iamrequest
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-token-with-iamrequest
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-token-with-iamrequest
                     'make-create-token-with-iamrequest))
@@ -328,21 +442,59 @@
                           create-token-with-iamrequest))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-token-with-iamresponse (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-token-with-iamresponse-"))
-   (access-token common-lisp:nil :type
-    (common-lisp:or access-token common-lisp:null))
-   (token-type common-lisp:nil :type
-    (common-lisp:or token-type common-lisp:null))
-   (expires-in common-lisp:nil :type
-    (common-lisp:or expiration-in-seconds common-lisp:null))
-   (refresh-token common-lisp:nil :type
-    (common-lisp:or refresh-token common-lisp:null))
-   (id-token common-lisp:nil :type (common-lisp:or id-token common-lisp:null))
-   (issued-token-type common-lisp:nil :type
-    (common-lisp:or token-type-uri common-lisp:null))
-   (scope common-lisp:nil :type (common-lisp:or scopes common-lisp:null)))
+ (common-lisp:defclass create-token-with-iamresponse common-lisp:nil
+                       ((access-token :initarg :access-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or access-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamresponse-access-token
+                         :shape "AccessToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-type :initarg :token-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token-type common-lisp:null) :accessor
+                         struct-shape-create-token-with-iamresponse-token-type
+                         :shape "TokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expires-in :initarg :expires-in :initform
+                         common-lisp:nil :type
+                         (common-lisp:or expiration-in-seconds
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamresponse-expires-in
+                         :shape "ExpirationInSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (refresh-token :initarg :refresh-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or refresh-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamresponse-refresh-token
+                         :shape "RefreshToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id-token :initarg :id-token :initform common-lisp:nil
+                         :type (common-lisp:or id-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamresponse-id-token
+                         :shape "IdToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (issued-token-type :initarg :issued-token-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or token-type-uri common-lisp:null)
+                         :accessor
+                         struct-shape-create-token-with-iamresponse-issued-token-type
+                         :shape "TokenTypeURI" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scope :initarg :scope :initform common-lisp:nil :type
+                         (common-lisp:or scopes common-lisp:null) :accessor
+                         struct-shape-create-token-with-iamresponse-scope
+                         :shape "Scopes" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-token-with-iamresponse
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-token-with-iamresponse
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-token-with-iamresponse
                     'make-create-token-with-iamresponse))
@@ -510,14 +662,31 @@
 (common-lisp:deftype refresh-token () 'common-lisp:string)
 (common-lisp:deftype region () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-client-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-register-client-request-"))
-   (client-name (common-lisp:error ":clientname is required") :type
-    (common-lisp:or client-name common-lisp:null))
-   (client-type (common-lisp:error ":clienttype is required") :type
-    (common-lisp:or client-type common-lisp:null))
-   (scopes common-lisp:nil :type (common-lisp:or scopes common-lisp:null)))
+ (common-lisp:defclass register-client-request common-lisp:nil
+                       ((client-name :initarg :client-name :initform
+                         (common-lisp:error ":clientname is required") :type
+                         (common-lisp:or client-name common-lisp:null)
+                         :accessor
+                         struct-shape-register-client-request-client-name
+                         :shape "ClientName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-type :initarg :client-type :initform
+                         (common-lisp:error ":clienttype is required") :type
+                         (common-lisp:or client-type common-lisp:null)
+                         :accessor
+                         struct-shape-register-client-request-client-type
+                         :shape "ClientType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scopes :initarg :scopes :initform common-lisp:nil
+                         :type (common-lisp:or scopes common-lisp:null)
+                         :accessor struct-shape-register-client-request-scopes
+                         :shape "Scopes" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-client-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'register-client-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-client-request 'make-register-client-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -557,21 +726,52 @@
                           register-client-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-client-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-register-client-response-"))
-   (client-id common-lisp:nil :type
-    (common-lisp:or client-id common-lisp:null))
-   (client-secret common-lisp:nil :type
-    (common-lisp:or client-secret common-lisp:null))
-   (client-id-issued-at common-lisp:nil :type
-    (common-lisp:or long-time-stamp-type common-lisp:null))
-   (client-secret-expires-at common-lisp:nil :type
-    (common-lisp:or long-time-stamp-type common-lisp:null))
-   (authorization-endpoint common-lisp:nil :type
-    (common-lisp:or uri common-lisp:null))
-   (token-endpoint common-lisp:nil :type
-    (common-lisp:or uri common-lisp:null)))
+ (common-lisp:defclass register-client-response common-lisp:nil
+                       ((client-id :initarg :client-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-id common-lisp:null) :accessor
+                         struct-shape-register-client-response-client-id :shape
+                         "ClientId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-secret :initarg :client-secret :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-secret common-lisp:null)
+                         :accessor
+                         struct-shape-register-client-response-client-secret
+                         :shape "ClientSecret" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-id-issued-at :initarg :client-id-issued-at
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long-time-stamp-type common-lisp:null)
+                         :accessor
+                         struct-shape-register-client-response-client-id-issued-at
+                         :shape "LongTimeStampType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-secret-expires-at :initarg
+                         :client-secret-expires-at :initform common-lisp:nil
+                         :type
+                         (common-lisp:or long-time-stamp-type common-lisp:null)
+                         :accessor
+                         struct-shape-register-client-response-client-secret-expires-at
+                         :shape "LongTimeStampType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (authorization-endpoint :initarg
+                         :authorization-endpoint :initform common-lisp:nil
+                         :type (common-lisp:or uri common-lisp:null) :accessor
+                         struct-shape-register-client-response-authorization-endpoint
+                         :shape "URI" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (token-endpoint :initarg :token-endpoint :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uri common-lisp:null) :accessor
+                         struct-shape-register-client-response-token-endpoint
+                         :shape "URI" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-client-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'register-client-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-client-response 'make-register-client-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -652,15 +852,32 @@
   (common-lisp:list 'slow-down-exception 'slow-down-exception-error
                     'slow-down-exception-error-description)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-device-authorization-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-device-authorization-request-"))
-   (client-id (common-lisp:error ":clientid is required") :type
-    (common-lisp:or client-id common-lisp:null))
-   (client-secret (common-lisp:error ":clientsecret is required") :type
-    (common-lisp:or client-secret common-lisp:null))
-   (start-url (common-lisp:error ":starturl is required") :type
-    (common-lisp:or uri common-lisp:null)))
+ (common-lisp:defclass start-device-authorization-request common-lisp:nil
+                       ((client-id :initarg :client-id :initform
+                         (common-lisp:error ":clientid is required") :type
+                         (common-lisp:or client-id common-lisp:null) :accessor
+                         struct-shape-start-device-authorization-request-client-id
+                         :shape "ClientId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-secret :initarg :client-secret :initform
+                         (common-lisp:error ":clientsecret is required") :type
+                         (common-lisp:or client-secret common-lisp:null)
+                         :accessor
+                         struct-shape-start-device-authorization-request-client-secret
+                         :shape "ClientSecret" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-url :initarg :start-url :initform
+                         (common-lisp:error ":starturl is required") :type
+                         (common-lisp:or uri common-lisp:null) :accessor
+                         struct-shape-start-device-authorization-request-start-url
+                         :shape "URI" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-device-authorization-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-device-authorization-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-device-authorization-request
                     'make-start-device-authorization-request))
@@ -701,21 +918,53 @@
                           start-device-authorization-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-device-authorization-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-device-authorization-response-"))
-   (device-code common-lisp:nil :type
-    (common-lisp:or device-code common-lisp:null))
-   (user-code common-lisp:nil :type
-    (common-lisp:or user-code common-lisp:null))
-   (verification-uri common-lisp:nil :type
-    (common-lisp:or uri common-lisp:null))
-   (verification-uri-complete common-lisp:nil :type
-    (common-lisp:or uri common-lisp:null))
-   (expires-in common-lisp:nil :type
-    (common-lisp:or expiration-in-seconds common-lisp:null))
-   (interval common-lisp:nil :type
-    (common-lisp:or interval-in-seconds common-lisp:null)))
+ (common-lisp:defclass start-device-authorization-response common-lisp:nil
+                       ((device-code :initarg :device-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or device-code common-lisp:null)
+                         :accessor
+                         struct-shape-start-device-authorization-response-device-code
+                         :shape "DeviceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-code :initarg :user-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or user-code common-lisp:null) :accessor
+                         struct-shape-start-device-authorization-response-user-code
+                         :shape "UserCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (verification-uri :initarg :verification-uri :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uri common-lisp:null) :accessor
+                         struct-shape-start-device-authorization-response-verification-uri
+                         :shape "URI" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (verification-uri-complete :initarg
+                         :verification-uri-complete :initform common-lisp:nil
+                         :type (common-lisp:or uri common-lisp:null) :accessor
+                         struct-shape-start-device-authorization-response-verification-uri-complete
+                         :shape "URI" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (expires-in :initarg :expires-in :initform
+                         common-lisp:nil :type
+                         (common-lisp:or expiration-in-seconds
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-device-authorization-response-expires-in
+                         :shape "ExpirationInSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (interval :initarg :interval :initform common-lisp:nil
+                         :type
+                         (common-lisp:or interval-in-seconds common-lisp:null)
+                         :accessor
+                         struct-shape-start-device-authorization-response-interval
+                         :shape "IntervalInSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-device-authorization-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-device-authorization-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-device-authorization-response
                     'make-start-device-authorization-response))

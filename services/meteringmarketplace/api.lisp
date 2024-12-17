@@ -48,13 +48,26 @@
     ("TimestampOutOfBoundsException" . timestamp-out-of-bounds-exception)))
 (common-lisp:deftype allocated-usage-quantity () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-meter-usage-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-meter-usage-request-"))
-   (usage-records (common-lisp:error ":usage-records is required") :type
-    (common-lisp:or usage-record-list common-lisp:null))
-   (product-code (common-lisp:error ":product-code is required") :type
-    (common-lisp:or product-code common-lisp:null)))
+ (common-lisp:defclass batch-meter-usage-request common-lisp:nil
+                       ((usage-records :initarg :usage-records :initform
+                         (common-lisp:error ":usage-records is required") :type
+                         (common-lisp:or usage-record-list common-lisp:null)
+                         :accessor
+                         struct-shape-batch-meter-usage-request-usage-records
+                         :shape "UsageRecordList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (product-code :initarg :product-code :initform
+                         (common-lisp:error ":product-code is required") :type
+                         (common-lisp:or product-code common-lisp:null)
+                         :accessor
+                         struct-shape-batch-meter-usage-request-product-code
+                         :shape "ProductCode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-meter-usage-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-meter-usage-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-meter-usage-request
                     'make-batch-meter-usage-request))
@@ -88,13 +101,27 @@
                           batch-meter-usage-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-meter-usage-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-meter-usage-result-"))
-   (results common-lisp:nil :type
-    (common-lisp:or usage-record-result-list common-lisp:null))
-   (unprocessed-records common-lisp:nil :type
-    (common-lisp:or usage-record-list common-lisp:null)))
+ (common-lisp:defclass batch-meter-usage-result common-lisp:nil
+                       ((results :initarg :results :initform common-lisp:nil
+                         :type
+                         (common-lisp:or usage-record-result-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-meter-usage-result-results :shape
+                         "UsageRecordResultList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unprocessed-records :initarg :unprocessed-records
+                         :initform common-lisp:nil :type
+                         (common-lisp:or usage-record-list common-lisp:null)
+                         :accessor
+                         struct-shape-batch-meter-usage-result-unprocessed-records
+                         :shape "UsageRecordList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-meter-usage-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-meter-usage-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-meter-usage-result 'make-batch-meter-usage-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -238,20 +265,52 @@
   (common-lisp:list 'invalid-usage-dimension-exception
                     'invalid-usage-dimension-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (meter-usage-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-meter-usage-request-"))
-   (product-code (common-lisp:error ":product-code is required") :type
-    (common-lisp:or product-code common-lisp:null))
-   (timestamp (common-lisp:error ":timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (usage-dimension (common-lisp:error ":usage-dimension is required") :type
-    (common-lisp:or usage-dimension common-lisp:null))
-   (usage-quantity common-lisp:nil :type
-    (common-lisp:or usage-quantity common-lisp:null))
-   (dry-run common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (usage-allocations common-lisp:nil :type
-    (common-lisp:or usage-allocations common-lisp:null)))
+ (common-lisp:defclass meter-usage-request common-lisp:nil
+                       ((product-code :initarg :product-code :initform
+                         (common-lisp:error ":product-code is required") :type
+                         (common-lisp:or product-code common-lisp:null)
+                         :accessor
+                         struct-shape-meter-usage-request-product-code :shape
+                         "ProductCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (timestamp :initarg :timestamp :initform
+                         (common-lisp:error ":timestamp is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-meter-usage-request-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (usage-dimension :initarg :usage-dimension :initform
+                         (common-lisp:error ":usage-dimension is required")
+                         :type
+                         (common-lisp:or usage-dimension common-lisp:null)
+                         :accessor
+                         struct-shape-meter-usage-request-usage-dimension
+                         :shape "UsageDimension" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-quantity :initarg :usage-quantity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or usage-quantity common-lisp:null)
+                         :accessor
+                         struct-shape-meter-usage-request-usage-quantity :shape
+                         "UsageQuantity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dry-run :initarg :dry-run :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor struct-shape-meter-usage-request-dry-run
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-allocations :initarg :usage-allocations
+                         :initform common-lisp:nil :type
+                         (common-lisp:or usage-allocations common-lisp:null)
+                         :accessor
+                         struct-shape-meter-usage-request-usage-allocations
+                         :shape "UsageAllocations" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-meter-usage-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'meter-usage-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'meter-usage-request 'make-meter-usage-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -306,11 +365,18 @@
                         ((aws-sdk/generator/shape::input meter-usage-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (meter-usage-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-meter-usage-result-"))
-   (metering-record-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass meter-usage-result common-lisp:nil
+                       ((metering-record-id :initarg :metering-record-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-meter-usage-result-metering-record-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-meter-usage-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'meter-usage-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'meter-usage-result 'make-meter-usage-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -341,14 +407,33 @@
                     'platform-not-supported-exception-message)))
 (common-lisp:deftype product-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-usage-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-register-usage-request-"))
-   (product-code (common-lisp:error ":product-code is required") :type
-    (common-lisp:or product-code common-lisp:null))
-   (public-key-version (common-lisp:error ":public-key-version is required")
-    :type (common-lisp:or version-integer common-lisp:null))
-   (nonce common-lisp:nil :type (common-lisp:or nonce common-lisp:null)))
+ (common-lisp:defclass register-usage-request common-lisp:nil
+                       ((product-code :initarg :product-code :initform
+                         (common-lisp:error ":product-code is required") :type
+                         (common-lisp:or product-code common-lisp:null)
+                         :accessor
+                         struct-shape-register-usage-request-product-code
+                         :shape "ProductCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (public-key-version :initarg :public-key-version
+                         :initform
+                         (common-lisp:error ":public-key-version is required")
+                         :type
+                         (common-lisp:or version-integer common-lisp:null)
+                         :accessor
+                         struct-shape-register-usage-request-public-key-version
+                         :shape "VersionInteger" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nonce :initarg :nonce :initform common-lisp:nil :type
+                         (common-lisp:or nonce common-lisp:null) :accessor
+                         struct-shape-register-usage-request-nonce :shape
+                         "Nonce" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-usage-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'register-usage-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-usage-request 'make-register-usage-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -388,13 +473,25 @@
                           register-usage-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-usage-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-register-usage-result-"))
-   (public-key-rotation-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (signature common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:defclass register-usage-result common-lisp:nil
+                       ((public-key-rotation-timestamp :initarg
+                         :public-key-rotation-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-register-usage-result-public-key-rotation-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (signature :initarg :signature :initform
+                         common-lisp:nil :type
+                         (common-lisp:or non-empty-string common-lisp:null)
+                         :accessor struct-shape-register-usage-result-signature
+                         :shape "NonEmptyString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-usage-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'register-usage-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-usage-result 'make-register-usage-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -428,11 +525,21 @@
                           register-usage-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolve-customer-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolve-customer-request-"))
-   (registration-token (common-lisp:error ":registration-token is required")
-    :type (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:defclass resolve-customer-request common-lisp:nil
+                       ((registration-token :initarg :registration-token
+                         :initform
+                         (common-lisp:error ":registration-token is required")
+                         :type
+                         (common-lisp:or non-empty-string common-lisp:null)
+                         :accessor
+                         struct-shape-resolve-customer-request-registration-token
+                         :shape "NonEmptyString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolve-customer-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolve-customer-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolve-customer-request 'make-resolve-customer-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -458,15 +565,35 @@
                           resolve-customer-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolve-customer-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolve-customer-result-"))
-   (customer-identifier common-lisp:nil :type
-    (common-lisp:or customer-identifier common-lisp:null))
-   (product-code common-lisp:nil :type
-    (common-lisp:or product-code common-lisp:null))
-   (customer-awsaccount-id common-lisp:nil :type
-    (common-lisp:or customer-awsaccount-id common-lisp:null)))
+ (common-lisp:defclass resolve-customer-result common-lisp:nil
+                       ((customer-identifier :initarg :customer-identifier
+                         :initform common-lisp:nil :type
+                         (common-lisp:or customer-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-resolve-customer-result-customer-identifier
+                         :shape "CustomerIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (product-code :initarg :product-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or product-code common-lisp:null)
+                         :accessor
+                         struct-shape-resolve-customer-result-product-code
+                         :shape "ProductCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (customer-awsaccount-id :initarg
+                         :customer-awsaccount-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or customer-awsaccount-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolve-customer-result-customer-awsaccount-id
+                         :shape "CustomerAWSAccountId" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolve-customer-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolve-customer-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolve-customer-result 'make-resolve-customer-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -508,12 +635,21 @@
    common-lisp:nil))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -564,13 +700,28 @@
   (common-lisp:list 'timestamp-out-of-bounds-exception
                     'timestamp-out-of-bounds-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (usage-allocation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-usage-allocation-"))
-   (allocated-usage-quantity
-    (common-lisp:error ":allocated-usage-quantity is required") :type
-    (common-lisp:or allocated-usage-quantity common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass usage-allocation common-lisp:nil
+                       ((allocated-usage-quantity :initarg
+                         :allocated-usage-quantity :initform
+                         (common-lisp:error
+                          ":allocated-usage-quantity is required")
+                         :type
+                         (common-lisp:or allocated-usage-quantity
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-usage-allocation-allocated-usage-quantity
+                         :shape "AllocatedUsageQuantity" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-usage-allocation-tags :shape "TagList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-usage-allocation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'usage-allocation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'usage-allocation 'make-usage-allocation))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -608,19 +759,44 @@
 (common-lisp:deftype usage-dimension () 'common-lisp:string)
 (common-lisp:deftype usage-quantity () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (usage-record (:copier common-lisp:nil)
-      (:conc-name "struct-shape-usage-record-"))
-   (timestamp (common-lisp:error ":timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (customer-identifier (common-lisp:error ":customer-identifier is required")
-    :type (common-lisp:or customer-identifier common-lisp:null))
-   (dimension (common-lisp:error ":dimension is required") :type
-    (common-lisp:or usage-dimension common-lisp:null))
-   (quantity common-lisp:nil :type
-    (common-lisp:or usage-quantity common-lisp:null))
-   (usage-allocations common-lisp:nil :type
-    (common-lisp:or usage-allocations common-lisp:null)))
+ (common-lisp:defclass usage-record common-lisp:nil
+                       ((timestamp :initarg :timestamp :initform
+                         (common-lisp:error ":timestamp is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-usage-record-timestamp :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (customer-identifier :initarg :customer-identifier
+                         :initform
+                         (common-lisp:error ":customer-identifier is required")
+                         :type
+                         (common-lisp:or customer-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-usage-record-customer-identifier :shape
+                         "CustomerIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dimension :initarg :dimension :initform
+                         (common-lisp:error ":dimension is required") :type
+                         (common-lisp:or usage-dimension common-lisp:null)
+                         :accessor struct-shape-usage-record-dimension :shape
+                         "UsageDimension" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quantity :initarg :quantity :initform common-lisp:nil
+                         :type (common-lisp:or usage-quantity common-lisp:null)
+                         :accessor struct-shape-usage-record-quantity :shape
+                         "UsageQuantity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-allocations :initarg :usage-allocations
+                         :initform common-lisp:nil :type
+                         (common-lisp:or usage-allocations common-lisp:null)
+                         :accessor struct-shape-usage-record-usage-allocations
+                         :shape "UsageAllocations" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-usage-record
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'usage-record
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'usage-record 'make-usage-record))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input usage-record))
@@ -675,15 +851,32 @@
                            (trivial-types:proper-list usage-record))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (usage-record-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-usage-record-result-"))
-   (usage-record common-lisp:nil :type
-    (common-lisp:or usage-record common-lisp:null))
-   (metering-record-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or usage-record-result-status common-lisp:null)))
+ (common-lisp:defclass usage-record-result common-lisp:nil
+                       ((usage-record :initarg :usage-record :initform
+                         common-lisp:nil :type
+                         (common-lisp:or usage-record common-lisp:null)
+                         :accessor
+                         struct-shape-usage-record-result-usage-record :shape
+                         "UsageRecord" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metering-record-id :initarg :metering-record-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-usage-record-result-metering-record-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or usage-record-result-status
+                                         common-lisp:null)
+                         :accessor struct-shape-usage-record-result-status
+                         :shape "UsageRecordResultStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-usage-record-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'usage-record-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'usage-record-result 'make-usage-record-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

@@ -44,11 +44,20 @@
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-sol-network-operation-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-sol-network-operation-input-"))
-   (ns-lcm-op-occ-id (common-lisp:error ":nslcmopoccid is required") :type
-    (common-lisp:or ns-lcm-op-occ-id common-lisp:null)))
+ (common-lisp:defclass cancel-sol-network-operation-input common-lisp:nil
+                       ((ns-lcm-op-occ-id :initarg :ns-lcm-op-occ-id :initform
+                         (common-lisp:error ":nslcmopoccid is required") :type
+                         (common-lisp:or ns-lcm-op-occ-id common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-sol-network-operation-input-ns-lcm-op-occ-id
+                         :shape "NsLcmOpOccId" :location "uri" :location-name
+                         "nsLcmOpOccId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-sol-network-operation-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cancel-sol-network-operation-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-sol-network-operation-input
                     'make-cancel-sol-network-operation-input))
@@ -68,10 +77,18 @@
                           cancel-sol-network-operation-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-sol-function-package-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-sol-function-package-input-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-sol-function-package-input common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-sol-function-package-input-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-sol-function-package-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-sol-function-package-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-sol-function-package-input
                     'make-create-sol-function-package-input))
@@ -98,20 +115,55 @@
                           create-sol-function-package-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-sol-function-package-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-sol-function-package-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or vnf-pkg-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null))
-   (onboarding-state (common-lisp:error ":onboardingstate is required") :type
-    (common-lisp:or onboarding-state common-lisp:null))
-   (operational-state (common-lisp:error ":operationalstate is required") :type
-    (common-lisp:or operational-state common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (usage-state (common-lisp:error ":usagestate is required") :type
-    (common-lisp:or usage-state common-lisp:null)))
+ (common-lisp:defclass create-sol-function-package-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or vnf-pkg-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-function-package-output-arn
+                         :shape "VnfPkgArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-create-sol-function-package-output-id
+                         :shape "VnfPkgId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (onboarding-state :initarg :onboarding-state :initform
+                         (common-lisp:error ":onboardingstate is required")
+                         :type
+                         (common-lisp:or onboarding-state common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-function-package-output-onboarding-state
+                         :shape "OnboardingState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operational-state :initarg :operational-state
+                         :initform
+                         (common-lisp:error ":operationalstate is required")
+                         :type
+                         (common-lisp:or operational-state common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-function-package-output-operational-state
+                         :shape "OperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-sol-function-package-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-state :initarg :usage-state :initform
+                         (common-lisp:error ":usagestate is required") :type
+                         (common-lisp:or usage-state common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-function-package-output-usage-state
+                         :shape "UsageState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-sol-function-package-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-sol-function-package-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-sol-function-package-output
                     'make-create-sol-function-package-output))
@@ -173,18 +225,46 @@
                           create-sol-function-package-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-sol-network-instance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-sol-network-instance-input-"))
-   (ns-description common-lisp:nil :type
-    (common-lisp:or create-sol-network-instance-input-ns-description-string
-                    common-lisp:null))
-   (ns-name (common-lisp:error ":nsname is required") :type
-    (common-lisp:or create-sol-network-instance-input-ns-name-string
-                    common-lisp:null))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-sol-network-instance-input common-lisp:nil
+                       ((ns-description :initarg :ns-description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          create-sol-network-instance-input-ns-description-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-instance-input-ns-description
+                         :shape
+                         "CreateSolNetworkInstanceInputNsDescriptionString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ns-name :initarg :ns-name :initform
+                         (common-lisp:error ":nsname is required") :type
+                         (common-lisp:or
+                          create-sol-network-instance-input-ns-name-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-instance-input-ns-name
+                         :shape "CreateSolNetworkInstanceInputNsNameString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-instance-input-nsd-info-id
+                         :shape "NsdInfoId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-sol-network-instance-input-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-sol-network-instance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-sol-network-instance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-sol-network-instance-input
                     'make-create-sol-network-instance-input))
@@ -236,18 +316,46 @@
 (common-lisp:deftype create-sol-network-instance-input-ns-name-string ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-sol-network-instance-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-sol-network-instance-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or ns-instance-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (ns-instance-name (common-lisp:error ":nsinstancename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-sol-network-instance-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or ns-instance-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-instance-output-arn
+                         :shape "NsInstanceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-instance-output-id
+                         :shape "NsInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ns-instance-name :initarg :ns-instance-name :initform
+                         (common-lisp:error ":nsinstancename is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-instance-output-ns-instance-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-instance-output-nsd-info-id
+                         :shape "NsdInfoId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-sol-network-instance-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-sol-network-instance-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-sol-network-instance-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-sol-network-instance-output
                     'make-create-sol-network-instance-output))
@@ -302,10 +410,18 @@
                           create-sol-network-instance-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-sol-network-package-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-sol-network-package-input-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-sol-network-package-input common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-sol-network-package-input-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-sol-network-package-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-sol-network-package-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-sol-network-package-input
                     'make-create-sol-network-package-input))
@@ -332,21 +448,58 @@
                           create-sol-network-package-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-sol-network-package-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-sol-network-package-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or nsd-info-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (nsd-onboarding-state (common-lisp:error ":nsdonboardingstate is required")
-    :type (common-lisp:or nsd-onboarding-state common-lisp:null))
-   (nsd-operational-state
-    (common-lisp:error ":nsdoperationalstate is required") :type
-    (common-lisp:or nsd-operational-state common-lisp:null))
-   (nsd-usage-state (common-lisp:error ":nsdusagestate is required") :type
-    (common-lisp:or nsd-usage-state common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-sol-network-package-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or nsd-info-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-package-output-arn
+                         :shape "NsdInfoArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-package-output-id
+                         :shape "NsdInfoId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-onboarding-state :initarg :nsd-onboarding-state
+                         :initform
+                         (common-lisp:error ":nsdonboardingstate is required")
+                         :type
+                         (common-lisp:or nsd-onboarding-state common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-package-output-nsd-onboarding-state
+                         :shape "NsdOnboardingState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-operational-state :initarg :nsd-operational-state
+                         :initform
+                         (common-lisp:error ":nsdoperationalstate is required")
+                         :type
+                         (common-lisp:or nsd-operational-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-package-output-nsd-operational-state
+                         :shape "NsdOperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-usage-state :initarg :nsd-usage-state :initform
+                         (common-lisp:error ":nsdusagestate is required") :type
+                         (common-lisp:or nsd-usage-state common-lisp:null)
+                         :accessor
+                         struct-shape-create-sol-network-package-output-nsd-usage-state
+                         :shape "NsdUsageState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-sol-network-package-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-sol-network-package-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-sol-network-package-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-sol-network-package-output
                     'make-create-sol-network-package-output))
@@ -410,11 +563,19 @@
                           create-sol-network-package-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-sol-function-package-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-sol-function-package-input-"))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null)))
+ (common-lisp:defclass delete-sol-function-package-input common-lisp:nil
+                       ((vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-delete-sol-function-package-input-vnf-pkg-id
+                         :shape "VnfPkgId" :location "uri" :location-name
+                         "vnfPkgId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-sol-function-package-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-sol-function-package-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-sol-function-package-input
                     'make-delete-sol-function-package-input))
@@ -434,11 +595,20 @@
                           delete-sol-function-package-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-sol-network-instance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-sol-network-instance-input-"))
-   (ns-instance-id (common-lisp:error ":nsinstanceid is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null)))
+ (common-lisp:defclass delete-sol-network-instance-input common-lisp:nil
+                       ((ns-instance-id :initarg :ns-instance-id :initform
+                         (common-lisp:error ":nsinstanceid is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-sol-network-instance-input-ns-instance-id
+                         :shape "NsInstanceId" :location "uri" :location-name
+                         "nsInstanceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-sol-network-instance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-sol-network-instance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-sol-network-instance-input
                     'make-delete-sol-network-instance-input))
@@ -458,11 +628,20 @@
                           delete-sol-network-instance-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-sol-network-package-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-sol-network-package-input-"))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null)))
+ (common-lisp:defclass delete-sol-network-package-input common-lisp:nil
+                       ((nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-sol-network-package-input-nsd-info-id
+                         :shape "NsdInfoId" :location "uri" :location-name
+                         "nsdInfoId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-sol-network-package-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-sol-network-package-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-sol-network-package-input
                     'make-delete-sol-network-package-input))
@@ -485,12 +664,22 @@
 (common-lisp:deftype error-cause () 'common-lisp:string)
 (common-lisp:deftype error-details () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (error-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-error-info-"))
-   (cause common-lisp:nil :type (common-lisp:or error-cause common-lisp:null))
-   (details common-lisp:nil :type
-    (common-lisp:or error-details common-lisp:null)))
+ (common-lisp:defclass error-info common-lisp:nil
+                       ((cause :initarg :cause :initform common-lisp:nil :type
+                         (common-lisp:or error-cause common-lisp:null)
+                         :accessor struct-shape-error-info-cause :shape
+                         "ErrorCause" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or error-details common-lisp:null)
+                         :accessor struct-shape-error-info-details :shape
+                         "ErrorDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-error-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'error-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'error-info 'make-error-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input error-info))
@@ -516,11 +705,19 @@
                         ((aws-sdk/generator/shape::input error-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (function-artifact-meta (:copier common-lisp:nil)
-      (:conc-name "struct-shape-function-artifact-meta-"))
-   (overrides common-lisp:nil :type
-    (common-lisp:or override-list common-lisp:null)))
+ (common-lisp:defclass function-artifact-meta common-lisp:nil
+                       ((overrides :initarg :overrides :initform
+                         common-lisp:nil :type
+                         (common-lisp:or override-list common-lisp:null)
+                         :accessor
+                         struct-shape-function-artifact-meta-overrides :shape
+                         "OverrideList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-function-artifact-meta
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'function-artifact-meta
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'function-artifact-meta 'make-function-artifact-meta))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -546,11 +743,20 @@
                           function-artifact-meta))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-instance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-instance-input-"))
-   (vnf-instance-id (common-lisp:error ":vnfinstanceid is required") :type
-    (common-lisp:or vnf-instance-id common-lisp:null)))
+ (common-lisp:defclass get-sol-function-instance-input common-lisp:nil
+                       ((vnf-instance-id :initarg :vnf-instance-id :initform
+                         (common-lisp:error ":vnfinstanceid is required") :type
+                         (common-lisp:or vnf-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-input-vnf-instance-id
+                         :shape "VnfInstanceId" :location "uri" :location-name
+                         "vnfInstanceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-instance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-instance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-instance-input
                     'make-get-sol-function-instance-input))
@@ -570,13 +776,29 @@
                           get-sol-function-instance-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-instance-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-instance-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass get-sol-function-instance-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-instance-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-instance-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-instance-metadata
                     'make-get-sol-function-instance-metadata))
@@ -610,32 +832,94 @@
                           get-sol-function-instance-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-instance-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-instance-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or vnf-instance-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or vnf-instance-id common-lisp:null))
-   (instantiated-vnf-info common-lisp:nil :type
-    (common-lisp:or get-sol-vnf-info common-lisp:null))
-   (instantiation-state (common-lisp:error ":instantiationstate is required")
-    :type (common-lisp:or vnf-instantiation-state common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or get-sol-function-instance-metadata common-lisp:null))
-   (ns-instance-id (common-lisp:error ":nsinstanceid is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null))
-   (vnf-product-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (vnf-provider common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (vnfd-id (common-lisp:error ":vnfdid is required") :type
-    (common-lisp:or vnfd-id common-lisp:null))
-   (vnfd-version common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-sol-function-instance-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or vnf-instance-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-output-arn
+                         :shape "VnfInstanceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or vnf-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-output-id
+                         :shape "VnfInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instantiated-vnf-info :initarg :instantiated-vnf-info
+                         :initform common-lisp:nil :type
+                         (common-lisp:or get-sol-vnf-info common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-output-instantiated-vnf-info
+                         :shape "GetSolVnfInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instantiation-state :initarg :instantiation-state
+                         :initform
+                         (common-lisp:error ":instantiationstate is required")
+                         :type
+                         (common-lisp:or vnf-instantiation-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-output-instantiation-state
+                         :shape "VnfInstantiationState" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or get-sol-function-instance-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-output-metadata
+                         :shape "GetSolFunctionInstanceMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ns-instance-id :initarg :ns-instance-id :initform
+                         (common-lisp:error ":nsinstanceid is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-instance-output-ns-instance-id
+                         :shape "NsInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-sol-function-instance-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-get-sol-function-instance-output-vnf-pkg-id
+                         :shape "VnfPkgId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-product-name :initarg :vnf-product-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-function-instance-output-vnf-product-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-provider :initarg :vnf-provider :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-function-instance-output-vnf-provider
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-id :initarg :vnfd-id :initform
+                         (common-lisp:error ":vnfdid is required") :type
+                         (common-lisp:or vnfd-id common-lisp:null) :accessor
+                         struct-shape-get-sol-function-instance-output-vnfd-id
+                         :shape "VnfdId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-version :initarg :vnfd-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-function-instance-output-vnfd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-instance-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-instance-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-instance-output
                     'make-get-sol-function-instance-output))
@@ -740,13 +1024,26 @@
                           get-sol-function-instance-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-package-content-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-package-content-input-"))
-   (accept (common-lisp:error ":accept is required") :type
-    (common-lisp:or package-content-type common-lisp:null))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null)))
+ (common-lisp:defclass get-sol-function-package-content-input common-lisp:nil
+                       ((accept :initarg :accept :initform
+                         (common-lisp:error ":accept is required") :type
+                         (common-lisp:or package-content-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-content-input-accept
+                         :shape "PackageContentType" :location "header"
+                         :location-name "Accept")
+                        (vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-content-input-vnf-pkg-id
+                         :shape "VnfPkgId" :location "uri" :location-name
+                         "vnfPkgId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-package-content-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-package-content-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-package-content-input
                     'make-get-sol-function-package-content-input))
@@ -770,13 +1067,26 @@
                           get-sol-function-package-content-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-package-content-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-package-content-output-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or package-content-type common-lisp:null))
-   (package-content common-lisp:nil :type
-    (common-lisp:or blob common-lisp:null)))
+ (common-lisp:defclass get-sol-function-package-content-output common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-content-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-content-output-content-type
+                         :shape "PackageContentType" :location "header"
+                         :location-name "Content-Type")
+                        (package-content :initarg :package-content :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-content-output-package-content
+                         :shape "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-package-content-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-package-content-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-package-content-output
                     'make-get-sol-function-package-content-output))
@@ -807,13 +1117,28 @@
                           get-sol-function-package-content-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'package-content)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-package-descriptor-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-package-descriptor-input-"))
-   (accept (common-lisp:error ":accept is required") :type
-    (common-lisp:or descriptor-content-type common-lisp:null))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null)))
+ (common-lisp:defclass get-sol-function-package-descriptor-input
+                       common-lisp:nil
+                       ((accept :initarg :accept :initform
+                         (common-lisp:error ":accept is required") :type
+                         (common-lisp:or descriptor-content-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-descriptor-input-accept
+                         :shape "DescriptorContentType" :location "header"
+                         :location-name "Accept")
+                        (vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-descriptor-input-vnf-pkg-id
+                         :shape "VnfPkgId" :location "uri" :location-name
+                         "vnfPkgId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-package-descriptor-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-package-descriptor-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-package-descriptor-input
                     'make-get-sol-function-package-descriptor-input))
@@ -837,12 +1162,27 @@
                           get-sol-function-package-descriptor-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-package-descriptor-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-package-descriptor-output-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or descriptor-content-type common-lisp:null))
-   (vnfd common-lisp:nil :type (common-lisp:or blob common-lisp:null)))
+ (common-lisp:defclass get-sol-function-package-descriptor-output
+                       common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or descriptor-content-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-descriptor-output-content-type
+                         :shape "DescriptorContentType" :location "header"
+                         :location-name "Content-Type")
+                        (vnfd :initarg :vnfd :initform common-lisp:nil :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-descriptor-output-vnfd
+                         :shape "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-package-descriptor-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-package-descriptor-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-package-descriptor-output
                     'make-get-sol-function-package-descriptor-output))
@@ -873,11 +1213,19 @@
                           get-sol-function-package-descriptor-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'vnfd)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-package-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-package-input-"))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null)))
+ (common-lisp:defclass get-sol-function-package-input common-lisp:nil
+                       ((vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-input-vnf-pkg-id
+                         :shape "VnfPkgId" :location "uri" :location-name
+                         "vnfPkgId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-package-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-package-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-package-input
                     'make-get-sol-function-package-input))
@@ -897,15 +1245,36 @@
                           get-sol-function-package-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-package-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-package-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (vnfd common-lisp:nil :type
-    (common-lisp:or function-artifact-meta common-lisp:null)))
+ (common-lisp:defclass get-sol-function-package-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (vnfd :initarg :vnfd :initform common-lisp:nil :type
+                         (common-lisp:or function-artifact-meta
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-metadata-vnfd
+                         :shape "FunctionArtifactMeta" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-package-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-package-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-package-metadata
                     'make-get-sol-function-package-metadata))
@@ -946,29 +1315,87 @@
                           get-sol-function-package-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-function-package-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-function-package-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or vnf-pkg-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null))
-   (metadata common-lisp:nil :type
-    (common-lisp:or get-sol-function-package-metadata common-lisp:null))
-   (onboarding-state (common-lisp:error ":onboardingstate is required") :type
-    (common-lisp:or onboarding-state common-lisp:null))
-   (operational-state (common-lisp:error ":operationalstate is required") :type
-    (common-lisp:or operational-state common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (usage-state (common-lisp:error ":usagestate is required") :type
-    (common-lisp:or usage-state common-lisp:null))
-   (vnf-product-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (vnf-provider common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (vnfd-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (vnfd-version common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-sol-function-package-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or vnf-pkg-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-output-arn
+                         :shape "VnfPkgArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-output-id :shape
+                         "VnfPkgId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type
+                         (common-lisp:or get-sol-function-package-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-output-metadata
+                         :shape "GetSolFunctionPackageMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (onboarding-state :initarg :onboarding-state :initform
+                         (common-lisp:error ":onboardingstate is required")
+                         :type
+                         (common-lisp:or onboarding-state common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-output-onboarding-state
+                         :shape "OnboardingState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operational-state :initarg :operational-state
+                         :initform
+                         (common-lisp:error ":operationalstate is required")
+                         :type
+                         (common-lisp:or operational-state common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-output-operational-state
+                         :shape "OperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-state :initarg :usage-state :initform
+                         (common-lisp:error ":usagestate is required") :type
+                         (common-lisp:or usage-state common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-output-usage-state
+                         :shape "UsageState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-product-name :initarg :vnf-product-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-output-vnf-product-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-provider :initarg :vnf-provider :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-output-vnf-provider
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-id :initarg :vnfd-id :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-function-package-output-vnfd-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-version :initarg :vnfd-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-function-package-output-vnfd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-function-package-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-function-package-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-function-package-output
                     'make-get-sol-function-package-output))
@@ -1065,11 +1492,21 @@
                           get-sol-function-package-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-instantiated-vnf-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-instantiated-vnf-info-"))
-   (vnf-state common-lisp:nil :type
-    (common-lisp:or vnf-operational-state common-lisp:null)))
+ (common-lisp:defclass get-sol-instantiated-vnf-info common-lisp:nil
+                       ((vnf-state :initarg :vnf-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vnf-operational-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-instantiated-vnf-info-vnf-state
+                         :shape "VnfOperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-instantiated-vnf-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-instantiated-vnf-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-instantiated-vnf-info
                     'make-get-sol-instantiated-vnf-info))
@@ -1096,11 +1533,20 @@
                           get-sol-instantiated-vnf-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-instance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-instance-input-"))
-   (ns-instance-id (common-lisp:error ":nsinstanceid is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null)))
+ (common-lisp:defclass get-sol-network-instance-input common-lisp:nil
+                       ((ns-instance-id :initarg :ns-instance-id :initform
+                         (common-lisp:error ":nsinstanceid is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-input-ns-instance-id
+                         :shape "NsInstanceId" :location "uri" :location-name
+                         "nsInstanceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-instance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-instance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-instance-input
                     'make-get-sol-network-instance-input))
@@ -1120,13 +1566,29 @@
                           get-sol-network-instance-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-instance-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-instance-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass get-sol-network-instance-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-instance-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-instance-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-instance-metadata
                     'make-get-sol-network-instance-metadata))
@@ -1160,28 +1622,82 @@
                           get-sol-network-instance-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-instance-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-instance-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or ns-instance-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (lcm-op-info common-lisp:nil :type
-    (common-lisp:or lcm-operation-info common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or get-sol-network-instance-metadata common-lisp:null))
-   (ns-instance-description
-    (common-lisp:error ":nsinstancedescription is required") :type
-    (common-lisp:or string common-lisp:null))
-   (ns-instance-name (common-lisp:error ":nsinstancename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (ns-state common-lisp:nil :type (common-lisp:or ns-state common-lisp:null))
-   (nsd-id (common-lisp:error ":nsdid is required") :type
-    (common-lisp:or nsd-id common-lisp:null))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass get-sol-network-instance-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or ns-instance-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-output-arn
+                         :shape "NsInstanceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-output-id :shape
+                         "NsInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lcm-op-info :initarg :lcm-op-info :initform
+                         common-lisp:nil :type
+                         (common-lisp:or lcm-operation-info common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-output-lcm-op-info
+                         :shape "LcmOperationInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or get-sol-network-instance-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-output-metadata
+                         :shape "GetSolNetworkInstanceMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ns-instance-description :initarg
+                         :ns-instance-description :initform
+                         (common-lisp:error
+                          ":nsinstancedescription is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-output-ns-instance-description
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ns-instance-name :initarg :ns-instance-name :initform
+                         (common-lisp:error ":nsinstancename is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-output-ns-instance-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ns-state :initarg :ns-state :initform common-lisp:nil
+                         :type (common-lisp:or ns-state common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-output-ns-state
+                         :shape "NsState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-id :initarg :nsd-id :initform
+                         (common-lisp:error ":nsdid is required") :type
+                         (common-lisp:or nsd-id common-lisp:null) :accessor
+                         struct-shape-get-sol-network-instance-output-nsd-id
+                         :shape "NsdId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-instance-output-nsd-info-id
+                         :shape "NsdInfoId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-sol-network-instance-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-instance-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-instance-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-instance-output
                     'make-get-sol-network-instance-output))
@@ -1272,11 +1788,20 @@
                           get-sol-network-instance-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-operation-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-operation-input-"))
-   (ns-lcm-op-occ-id (common-lisp:error ":nslcmopoccid is required") :type
-    (common-lisp:or ns-lcm-op-occ-id common-lisp:null)))
+ (common-lisp:defclass get-sol-network-operation-input common-lisp:nil
+                       ((ns-lcm-op-occ-id :initarg :ns-lcm-op-occ-id :initform
+                         (common-lisp:error ":nslcmopoccid is required") :type
+                         (common-lisp:or ns-lcm-op-occ-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-input-ns-lcm-op-occ-id
+                         :shape "NsLcmOpOccId" :location "uri" :location-name
+                         "nsLcmOpOccId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-operation-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-operation-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-operation-input
                     'make-get-sol-network-operation-input))
@@ -1296,13 +1821,29 @@
                           get-sol-network-operation-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-operation-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-operation-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass get-sol-network-operation-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-operation-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-operation-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-operation-metadata
                     'make-get-sol-network-operation-metadata))
@@ -1336,26 +1877,74 @@
                           get-sol-network-operation-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-operation-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-operation-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or ns-lcm-op-occ-arn common-lisp:null))
-   (error common-lisp:nil :type
-    (common-lisp:or problem-details common-lisp:null))
-   (id common-lisp:nil :type
-    (common-lisp:or ns-lcm-op-occ-id common-lisp:null))
-   (lcm-operation-type common-lisp:nil :type
-    (common-lisp:or lcm-operation-type common-lisp:null))
-   (metadata common-lisp:nil :type
-    (common-lisp:or get-sol-network-operation-metadata common-lisp:null))
-   (ns-instance-id common-lisp:nil :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (operation-state common-lisp:nil :type
-    (common-lisp:or ns-lcm-operation-state common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (tasks common-lisp:nil :type
-    (common-lisp:or get-sol-network-operation-tasks-list common-lisp:null)))
+ (common-lisp:defclass get-sol-network-operation-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or ns-lcm-op-occ-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-output-arn
+                         :shape "NsLcmOpOccArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error :initarg :error :initform common-lisp:nil :type
+                         (common-lisp:or problem-details common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-output-error
+                         :shape "ProblemDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or ns-lcm-op-occ-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-output-id
+                         :shape "NsLcmOpOccId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lcm-operation-type :initarg :lcm-operation-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or lcm-operation-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-output-lcm-operation-type
+                         :shape "LcmOperationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type
+                         (common-lisp:or get-sol-network-operation-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-output-metadata
+                         :shape "GetSolNetworkOperationMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ns-instance-id :initarg :ns-instance-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-output-ns-instance-id
+                         :shape "NsInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operation-state :initarg :operation-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ns-lcm-operation-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-output-operation-state
+                         :shape "NsLcmOperationState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-sol-network-operation-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tasks :initarg :tasks :initform common-lisp:nil :type
+                         (common-lisp:or get-sol-network-operation-tasks-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-output-tasks
+                         :shape "GetSolNetworkOperationTasksList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-operation-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-operation-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-operation-output
                     'make-get-sol-network-operation-output))
@@ -1438,20 +2027,54 @@
                           get-sol-network-operation-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-operation-task-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-operation-task-details-"))
-   (task-context common-lisp:nil :type
-    (common-lisp:or string-map common-lisp:null))
-   (task-end-time common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (task-error-details common-lisp:nil :type
-    (common-lisp:or error-info common-lisp:null))
-   (task-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (task-start-time common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (task-status common-lisp:nil :type
-    (common-lisp:or task-status common-lisp:null)))
+ (common-lisp:defclass get-sol-network-operation-task-details common-lisp:nil
+                       ((task-context :initarg :task-context :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string-map common-lisp:null) :accessor
+                         struct-shape-get-sol-network-operation-task-details-task-context
+                         :shape "StringMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-end-time :initarg :task-end-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-task-details-task-end-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (task-error-details :initarg :task-error-details
+                         :initform common-lisp:nil :type
+                         (common-lisp:or error-info common-lisp:null) :accessor
+                         struct-shape-get-sol-network-operation-task-details-task-error-details
+                         :shape "ErrorInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-name :initarg :task-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-network-operation-task-details-task-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-start-time :initarg :task-start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-task-details-task-start-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (task-status :initarg :task-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-operation-task-details-task-status
+                         :shape "TaskStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-operation-task-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-operation-task-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-operation-task-details
                     'make-get-sol-network-operation-task-details))
@@ -1522,13 +2145,27 @@
                             get-sol-network-operation-task-details))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-package-content-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-package-content-input-"))
-   (accept (common-lisp:error ":accept is required") :type
-    (common-lisp:or package-content-type common-lisp:null))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null)))
+ (common-lisp:defclass get-sol-network-package-content-input common-lisp:nil
+                       ((accept :initarg :accept :initform
+                         (common-lisp:error ":accept is required") :type
+                         (common-lisp:or package-content-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-content-input-accept
+                         :shape "PackageContentType" :location "header"
+                         :location-name "Accept")
+                        (nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-content-input-nsd-info-id
+                         :shape "NsdInfoId" :location "uri" :location-name
+                         "nsdInfoId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-package-content-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-package-content-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-package-content-input
                     'make-get-sol-network-package-content-input))
@@ -1552,12 +2189,26 @@
                           get-sol-network-package-content-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-package-content-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-package-content-output-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or package-content-type common-lisp:null))
-   (nsd-content common-lisp:nil :type (common-lisp:or blob common-lisp:null)))
+ (common-lisp:defclass get-sol-network-package-content-output common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-content-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-content-output-content-type
+                         :shape "PackageContentType" :location "header"
+                         :location-name "Content-Type")
+                        (nsd-content :initarg :nsd-content :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-get-sol-network-package-content-output-nsd-content
+                         :shape "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-package-content-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-package-content-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-package-content-output
                     'make-get-sol-network-package-content-output))
@@ -1588,11 +2239,20 @@
                           get-sol-network-package-content-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'nsd-content)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-package-descriptor-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-package-descriptor-input-"))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null)))
+ (common-lisp:defclass get-sol-network-package-descriptor-input common-lisp:nil
+                       ((nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-descriptor-input-nsd-info-id
+                         :shape "NsdInfoId" :location "uri" :location-name
+                         "nsdInfoId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-package-descriptor-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-package-descriptor-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-package-descriptor-input
                     'make-get-sol-network-package-descriptor-input))
@@ -1612,12 +2272,27 @@
                           get-sol-network-package-descriptor-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-package-descriptor-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-package-descriptor-output-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or descriptor-content-type common-lisp:null))
-   (nsd common-lisp:nil :type (common-lisp:or blob common-lisp:null)))
+ (common-lisp:defclass get-sol-network-package-descriptor-output
+                       common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or descriptor-content-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-descriptor-output-content-type
+                         :shape "DescriptorContentType" :location "header"
+                         :location-name "Content-Type")
+                        (nsd :initarg :nsd :initform common-lisp:nil :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-get-sol-network-package-descriptor-output-nsd
+                         :shape "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-package-descriptor-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-package-descriptor-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-package-descriptor-output
                     'make-get-sol-network-package-descriptor-output))
@@ -1648,11 +2323,20 @@
                           get-sol-network-package-descriptor-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'nsd)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-package-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-package-input-"))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null)))
+ (common-lisp:defclass get-sol-network-package-input common-lisp:nil
+                       ((nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-input-nsd-info-id
+                         :shape "NsdInfoId" :location "uri" :location-name
+                         "nsdInfoId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-package-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-package-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-package-input
                     'make-get-sol-network-package-input))
@@ -1672,15 +2356,36 @@
                           get-sol-network-package-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-package-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-package-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (nsd common-lisp:nil :type
-    (common-lisp:or network-artifact-meta common-lisp:null)))
+ (common-lisp:defclass get-sol-network-package-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (nsd :initarg :nsd :initform common-lisp:nil :type
+                         (common-lisp:or network-artifact-meta
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-metadata-nsd
+                         :shape "NetworkArtifactMeta" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-package-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-package-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-package-metadata
                     'make-get-sol-network-package-metadata))
@@ -1721,31 +2426,91 @@
                           get-sol-network-package-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-network-package-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-network-package-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or nsd-info-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or get-sol-network-package-metadata common-lisp:null))
-   (nsd-id (common-lisp:error ":nsdid is required") :type
-    (common-lisp:or nsd-id common-lisp:null))
-   (nsd-name (common-lisp:error ":nsdname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (nsd-onboarding-state (common-lisp:error ":nsdonboardingstate is required")
-    :type (common-lisp:or nsd-onboarding-state common-lisp:null))
-   (nsd-operational-state
-    (common-lisp:error ":nsdoperationalstate is required") :type
-    (common-lisp:or nsd-operational-state common-lisp:null))
-   (nsd-usage-state (common-lisp:error ":nsdusagestate is required") :type
-    (common-lisp:or nsd-usage-state common-lisp:null))
-   (nsd-version (common-lisp:error ":nsdversion is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (vnf-pkg-ids (common-lisp:error ":vnfpkgids is required") :type
-    (common-lisp:or vnf-pkg-id-list common-lisp:null)))
+ (common-lisp:defclass get-sol-network-package-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or nsd-info-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-output-arn :shape
+                         "NsdInfoArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-output-id :shape
+                         "NsdInfoId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or get-sol-network-package-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-output-metadata
+                         :shape "GetSolNetworkPackageMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (nsd-id :initarg :nsd-id :initform
+                         (common-lisp:error ":nsdid is required") :type
+                         (common-lisp:or nsd-id common-lisp:null) :accessor
+                         struct-shape-get-sol-network-package-output-nsd-id
+                         :shape "NsdId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-name :initarg :nsd-name :initform
+                         (common-lisp:error ":nsdname is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-network-package-output-nsd-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-onboarding-state :initarg :nsd-onboarding-state
+                         :initform
+                         (common-lisp:error ":nsdonboardingstate is required")
+                         :type
+                         (common-lisp:or nsd-onboarding-state common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-output-nsd-onboarding-state
+                         :shape "NsdOnboardingState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-operational-state :initarg :nsd-operational-state
+                         :initform
+                         (common-lisp:error ":nsdoperationalstate is required")
+                         :type
+                         (common-lisp:or nsd-operational-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-output-nsd-operational-state
+                         :shape "NsdOperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-usage-state :initarg :nsd-usage-state :initform
+                         (common-lisp:error ":nsdusagestate is required") :type
+                         (common-lisp:or nsd-usage-state common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-output-nsd-usage-state
+                         :shape "NsdUsageState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-version :initarg :nsd-version :initform
+                         (common-lisp:error ":nsdversion is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-network-package-output-nsd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-sol-network-package-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-pkg-ids :initarg :vnf-pkg-ids :initform
+                         (common-lisp:error ":vnfpkgids is required") :type
+                         (common-lisp:or vnf-pkg-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-network-package-output-vnf-pkg-ids
+                         :shape "VnfPkgIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-network-package-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-network-package-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-network-package-output
                     'make-get-sol-network-package-output))
@@ -1844,13 +2609,27 @@
                           get-sol-network-package-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-vnf-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-vnf-info-"))
-   (vnf-state common-lisp:nil :type
-    (common-lisp:or vnf-operational-state common-lisp:null))
-   (vnfc-resource-info common-lisp:nil :type
-    (common-lisp:or get-sol-vnfc-resource-info-list common-lisp:null)))
+ (common-lisp:defclass get-sol-vnf-info common-lisp:nil
+                       ((vnf-state :initarg :vnf-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vnf-operational-state
+                                         common-lisp:null)
+                         :accessor struct-shape-get-sol-vnf-info-vnf-state
+                         :shape "VnfOperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfc-resource-info :initarg :vnfc-resource-info
+                         :initform common-lisp:nil :type
+                         (common-lisp:or get-sol-vnfc-resource-info-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-vnf-info-vnfc-resource-info
+                         :shape "GetSolVnfcResourceInfoList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-vnf-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-sol-vnf-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-vnf-info 'make-get-sol-vnf-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1877,11 +2656,20 @@
                         ((aws-sdk/generator/shape::input get-sol-vnf-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-vnfc-resource-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-vnfc-resource-info-"))
-   (metadata common-lisp:nil :type
-    (common-lisp:or get-sol-vnfc-resource-info-metadata common-lisp:null)))
+ (common-lisp:defclass get-sol-vnfc-resource-info common-lisp:nil
+                       ((metadata :initarg :metadata :initform common-lisp:nil
+                         :type
+                         (common-lisp:or get-sol-vnfc-resource-info-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-vnfc-resource-info-metadata
+                         :shape "GetSolVnfcResourceInfoMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-vnfc-resource-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-sol-vnfc-resource-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-vnfc-resource-info
                     'make-get-sol-vnfc-resource-info))
@@ -1917,12 +2705,31 @@
                             get-sol-vnfc-resource-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sol-vnfc-resource-info-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sol-vnfc-resource-info-metadata-"))
-   (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (helm-chart common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (node-group common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-sol-vnfc-resource-info-metadata common-lisp:nil
+                       ((cluster :initarg :cluster :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-sol-vnfc-resource-info-metadata-cluster
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (helm-chart :initarg :helm-chart :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-vnfc-resource-info-metadata-helm-chart
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (node-group :initarg :node-group :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sol-vnfc-resource-info-metadata-node-group
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sol-vnfc-resource-info-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-sol-vnfc-resource-info-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sol-vnfc-resource-info-metadata
                     'make-get-sol-vnfc-resource-info-metadata))
@@ -1963,13 +2770,31 @@
                           get-sol-vnfc-resource-info-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (instantiate-sol-network-instance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instantiate-sol-network-instance-input-"))
-   (dry-run common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (ns-instance-id (common-lisp:error ":nsinstanceid is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass instantiate-sol-network-instance-input common-lisp:nil
+                       ((dry-run :initarg :dry-run :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-instantiate-sol-network-instance-input-dry-run
+                         :shape "Boolean" :location "querystring"
+                         :location-name "dry_run")
+                        (ns-instance-id :initarg :ns-instance-id :initform
+                         (common-lisp:error ":nsinstanceid is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-instantiate-sol-network-instance-input-ns-instance-id
+                         :shape "NsInstanceId" :location "uri" :location-name
+                         "nsInstanceId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-instantiate-sol-network-instance-input-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-instantiate-sol-network-instance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'instantiate-sol-network-instance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'instantiate-sol-network-instance-input
                     'make-instantiate-sol-network-instance-input))
@@ -1996,12 +2821,25 @@
                           instantiate-sol-network-instance-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (instantiate-sol-network-instance-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instantiate-sol-network-instance-output-"))
-   (ns-lcm-op-occ-id (common-lisp:error ":nslcmopoccid is required") :type
-    (common-lisp:or ns-lcm-op-occ-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass instantiate-sol-network-instance-output common-lisp:nil
+                       ((ns-lcm-op-occ-id :initarg :ns-lcm-op-occ-id :initform
+                         (common-lisp:error ":nslcmopoccid is required") :type
+                         (common-lisp:or ns-lcm-op-occ-id common-lisp:null)
+                         :accessor
+                         struct-shape-instantiate-sol-network-instance-output-ns-lcm-op-occ-id
+                         :shape "NsLcmOpOccId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-instantiate-sol-network-instance-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-instantiate-sol-network-instance-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'instantiate-sol-network-instance-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'instantiate-sol-network-instance-output
                     'make-instantiate-sol-network-instance-output))
@@ -2043,11 +2881,19 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lcm-operation-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lcm-operation-info-"))
-   (ns-lcm-op-occ-id (common-lisp:error ":nslcmopoccid is required") :type
-    (common-lisp:or ns-lcm-op-occ-id common-lisp:null)))
+ (common-lisp:defclass lcm-operation-info common-lisp:nil
+                       ((ns-lcm-op-occ-id :initarg :ns-lcm-op-occ-id :initform
+                         (common-lisp:error ":nslcmopoccid is required") :type
+                         (common-lisp:or ns-lcm-op-occ-id common-lisp:null)
+                         :accessor
+                         struct-shape-lcm-operation-info-ns-lcm-op-occ-id
+                         :shape "NsLcmOpOccId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lcm-operation-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'lcm-operation-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lcm-operation-info 'make-lcm-operation-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2068,25 +2914,72 @@
    common-lisp:nil))
 (common-lisp:deftype lcm-operation-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-function-instance-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-function-instance-info-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or vnf-instance-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or vnf-instance-id common-lisp:null))
-   (instantiated-vnf-info common-lisp:nil :type
-    (common-lisp:or get-sol-instantiated-vnf-info common-lisp:null))
-   (instantiation-state (common-lisp:error ":instantiationstate is required")
-    :type (common-lisp:or vnf-instantiation-state common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or list-sol-function-instance-metadata common-lisp:null))
-   (ns-instance-id (common-lisp:error ":nsinstanceid is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null))
-   (vnf-pkg-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-sol-function-instance-info common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or vnf-instance-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instance-info-arn
+                         :shape "VnfInstanceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or vnf-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instance-info-id :shape
+                         "VnfInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instantiated-vnf-info :initarg :instantiated-vnf-info
+                         :initform common-lisp:nil :type
+                         (common-lisp:or get-sol-instantiated-vnf-info
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instance-info-instantiated-vnf-info
+                         :shape "GetSolInstantiatedVnfInfo" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (instantiation-state :initarg :instantiation-state
+                         :initform
+                         (common-lisp:error ":instantiationstate is required")
+                         :type
+                         (common-lisp:or vnf-instantiation-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instance-info-instantiation-state
+                         :shape "VnfInstantiationState" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or list-sol-function-instance-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instance-info-metadata
+                         :shape "ListSolFunctionInstanceMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ns-instance-id :initarg :ns-instance-id :initform
+                         (common-lisp:error ":nsinstanceid is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instance-info-ns-instance-id
+                         :shape "NsInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-list-sol-function-instance-info-vnf-pkg-id
+                         :shape "VnfPkgId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-pkg-name :initarg :vnf-pkg-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sol-function-instance-info-vnf-pkg-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-function-instance-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-function-instance-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-function-instance-info
                     'make-list-sol-function-instance-info))
@@ -2163,13 +3056,29 @@
                           list-sol-function-instance-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-function-instance-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-function-instance-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass list-sol-function-instance-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instance-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instance-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-function-instance-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-function-instance-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-function-instance-metadata
                     'make-list-sol-function-instance-metadata))
@@ -2212,14 +3121,30 @@
                             list-sol-function-instance-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-function-instances-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-function-instances-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-sol-function-instances-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-function-instances-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-sol-function-instances-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instances-input-max-results
+                         :shape
+                         "ListSolFunctionInstancesInputMaxResultsInteger"
+                         :location "querystring" :location-name "max_results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instances-input-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextpage_opaque_marker"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-function-instances-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-function-instances-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-function-instances-input
                     'make-list-sol-function-instances-input))
@@ -2241,13 +3166,28 @@
 (common-lisp:deftype list-sol-function-instances-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-function-instances-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-function-instances-output-"))
-   (function-instances common-lisp:nil :type
-    (common-lisp:or list-sol-function-instance-resources common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-function-instances-output common-lisp:nil
+                       ((function-instances :initarg :function-instances
+                         :initform common-lisp:nil :type
+                         (common-lisp:or list-sol-function-instance-resources
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instances-output-function-instances
+                         :shape "ListSolFunctionInstanceResources" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-instances-output-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-function-instances-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-function-instances-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-function-instances-output
                     'make-list-sol-function-instances-output))
@@ -2281,28 +3221,82 @@
                           list-sol-function-instances-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-function-package-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-function-package-info-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or vnf-pkg-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null))
-   (metadata common-lisp:nil :type
-    (common-lisp:or list-sol-function-package-metadata common-lisp:null))
-   (onboarding-state (common-lisp:error ":onboardingstate is required") :type
-    (common-lisp:or onboarding-state common-lisp:null))
-   (operational-state (common-lisp:error ":operationalstate is required") :type
-    (common-lisp:or operational-state common-lisp:null))
-   (usage-state (common-lisp:error ":usagestate is required") :type
-    (common-lisp:or usage-state common-lisp:null))
-   (vnf-product-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (vnf-provider common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (vnfd-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (vnfd-version common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-sol-function-package-info common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or vnf-pkg-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-package-info-arn :shape
+                         "VnfPkgArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-list-sol-function-package-info-id :shape
+                         "VnfPkgId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-sol-function-package-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-package-info-metadata
+                         :shape "ListSolFunctionPackageMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (onboarding-state :initarg :onboarding-state :initform
+                         (common-lisp:error ":onboardingstate is required")
+                         :type
+                         (common-lisp:or onboarding-state common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-package-info-onboarding-state
+                         :shape "OnboardingState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operational-state :initarg :operational-state
+                         :initform
+                         (common-lisp:error ":operationalstate is required")
+                         :type
+                         (common-lisp:or operational-state common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-package-info-operational-state
+                         :shape "OperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-state :initarg :usage-state :initform
+                         (common-lisp:error ":usagestate is required") :type
+                         (common-lisp:or usage-state common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-package-info-usage-state
+                         :shape "UsageState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-product-name :initarg :vnf-product-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sol-function-package-info-vnf-product-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-provider :initarg :vnf-provider :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sol-function-package-info-vnf-provider
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-id :initarg :vnfd-id :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-package-info-vnfd-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-version :initarg :vnfd-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sol-function-package-info-vnfd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-function-package-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-function-package-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-function-package-info
                     'make-list-sol-function-package-info))
@@ -2392,13 +3386,29 @@
                           list-sol-function-package-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-function-package-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-function-package-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass list-sol-function-package-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-package-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-package-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-function-package-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-function-package-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-function-package-metadata
                     'make-list-sol-function-package-metadata))
@@ -2441,14 +3451,29 @@
                             list-sol-function-package-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-function-packages-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-function-packages-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-sol-function-packages-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-function-packages-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-sol-function-packages-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-packages-input-max-results
+                         :shape "ListSolFunctionPackagesInputMaxResultsInteger"
+                         :location "querystring" :location-name "max_results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-packages-input-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextpage_opaque_marker"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-function-packages-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-function-packages-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-function-packages-input
                     'make-list-sol-function-packages-input))
@@ -2470,13 +3495,30 @@
 (common-lisp:deftype list-sol-function-packages-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-function-packages-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-function-packages-output-"))
-   (function-packages (common-lisp:error ":functionpackages is required") :type
-    (common-lisp:or list-sol-function-package-resources common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-function-packages-output common-lisp:nil
+                       ((function-packages :initarg :function-packages
+                         :initform
+                         (common-lisp:error ":functionpackages is required")
+                         :type
+                         (common-lisp:or list-sol-function-package-resources
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-packages-output-function-packages
+                         :shape "ListSolFunctionPackageResources" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-function-packages-output-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-function-packages-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-function-packages-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-function-packages-output
                     'make-list-sol-function-packages-output))
@@ -2510,26 +3552,70 @@
                           list-sol-function-packages-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-instance-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-instance-info-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or ns-instance-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or list-sol-network-instance-metadata common-lisp:null))
-   (ns-instance-description
-    (common-lisp:error ":nsinstancedescription is required") :type
-    (common-lisp:or string common-lisp:null))
-   (ns-instance-name (common-lisp:error ":nsinstancename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (ns-state (common-lisp:error ":nsstate is required") :type
-    (common-lisp:or ns-state common-lisp:null))
-   (nsd-id (common-lisp:error ":nsdid is required") :type
-    (common-lisp:or nsd-id common-lisp:null))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null)))
+ (common-lisp:defclass list-sol-network-instance-info common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or ns-instance-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instance-info-arn :shape
+                         "NsInstanceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instance-info-id :shape
+                         "NsInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or list-sol-network-instance-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instance-info-metadata
+                         :shape "ListSolNetworkInstanceMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ns-instance-description :initarg
+                         :ns-instance-description :initform
+                         (common-lisp:error
+                          ":nsinstancedescription is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instance-info-ns-instance-description
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ns-instance-name :initarg :ns-instance-name :initform
+                         (common-lisp:error ":nsinstancename is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instance-info-ns-instance-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ns-state :initarg :ns-state :initform
+                         (common-lisp:error ":nsstate is required") :type
+                         (common-lisp:or ns-state common-lisp:null) :accessor
+                         struct-shape-list-sol-network-instance-info-ns-state
+                         :shape "NsState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-id :initarg :nsd-id :initform
+                         (common-lisp:error ":nsdid is required") :type
+                         (common-lisp:or nsd-id common-lisp:null) :accessor
+                         struct-shape-list-sol-network-instance-info-nsd-id
+                         :shape "NsdId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instance-info-nsd-info-id
+                         :shape "NsdInfoId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-instance-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-instance-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-instance-info
                     'make-list-sol-network-instance-info))
@@ -2606,13 +3692,29 @@
                           list-sol-network-instance-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-instance-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-instance-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass list-sol-network-instance-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instance-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instance-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-instance-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-instance-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-instance-metadata
                     'make-list-sol-network-instance-metadata))
@@ -2655,14 +3757,29 @@
                             list-sol-network-instance-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-instances-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-instances-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-sol-network-instances-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-network-instances-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-sol-network-instances-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instances-input-max-results
+                         :shape "ListSolNetworkInstancesInputMaxResultsInteger"
+                         :location "querystring" :location-name "max_results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instances-input-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextpage_opaque_marker"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-instances-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-instances-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-instances-input
                     'make-list-sol-network-instances-input))
@@ -2684,13 +3801,28 @@
 (common-lisp:deftype list-sol-network-instances-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-instances-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-instances-output-"))
-   (network-instances common-lisp:nil :type
-    (common-lisp:or list-sol-network-instance-resources common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-network-instances-output common-lisp:nil
+                       ((network-instances :initarg :network-instances
+                         :initform common-lisp:nil :type
+                         (common-lisp:or list-sol-network-instance-resources
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instances-output-network-instances
+                         :shape "ListSolNetworkInstanceResources" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-instances-output-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-instances-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-instances-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-instances-output
                     'make-list-sol-network-instances-output))
@@ -2724,23 +3856,66 @@
                           list-sol-network-instances-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-operations-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-operations-info-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or ns-lcm-op-occ-arn common-lisp:null))
-   (error common-lisp:nil :type
-    (common-lisp:or problem-details common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or ns-lcm-op-occ-id common-lisp:null))
-   (lcm-operation-type (common-lisp:error ":lcmoperationtype is required")
-    :type (common-lisp:or lcm-operation-type common-lisp:null))
-   (metadata common-lisp:nil :type
-    (common-lisp:or list-sol-network-operations-metadata common-lisp:null))
-   (ns-instance-id (common-lisp:error ":nsinstanceid is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (operation-state (common-lisp:error ":operationstate is required") :type
-    (common-lisp:or ns-lcm-operation-state common-lisp:null)))
+ (common-lisp:defclass list-sol-network-operations-info common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or ns-lcm-op-occ-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-info-arn
+                         :shape "NsLcmOpOccArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error :initarg :error :initform common-lisp:nil :type
+                         (common-lisp:or problem-details common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-info-error
+                         :shape "ProblemDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or ns-lcm-op-occ-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-info-id
+                         :shape "NsLcmOpOccId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lcm-operation-type :initarg :lcm-operation-type
+                         :initform
+                         (common-lisp:error ":lcmoperationtype is required")
+                         :type
+                         (common-lisp:or lcm-operation-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-info-lcm-operation-type
+                         :shape "LcmOperationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-sol-network-operations-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-info-metadata
+                         :shape "ListSolNetworkOperationsMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ns-instance-id :initarg :ns-instance-id :initform
+                         (common-lisp:error ":nsinstanceid is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-info-ns-instance-id
+                         :shape "NsInstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operation-state :initarg :operation-state :initform
+                         (common-lisp:error ":operationstate is required")
+                         :type
+                         (common-lisp:or ns-lcm-operation-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-info-operation-state
+                         :shape "NsLcmOperationState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-operations-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-operations-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-operations-info
                     'make-list-sol-network-operations-info))
@@ -2809,14 +3984,30 @@
                           list-sol-network-operations-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-operations-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-operations-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-sol-network-operations-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-network-operations-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-sol-network-operations-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-input-max-results
+                         :shape
+                         "ListSolNetworkOperationsInputMaxResultsInteger"
+                         :location "querystring" :location-name "max_results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-input-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextpage_opaque_marker"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-operations-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-operations-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-operations-input
                     'make-list-sol-network-operations-input))
@@ -2838,13 +4029,29 @@
 (common-lisp:deftype list-sol-network-operations-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-operations-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-operations-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass list-sol-network-operations-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-operations-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-operations-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-operations-metadata
                     'make-list-sol-network-operations-metadata))
@@ -2878,13 +4085,28 @@
                           list-sol-network-operations-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-operations-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-operations-output-"))
-   (network-operations common-lisp:nil :type
-    (common-lisp:or list-sol-network-operations-resources common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-network-operations-output common-lisp:nil
+                       ((network-operations :initarg :network-operations
+                         :initform common-lisp:nil :type
+                         (common-lisp:or list-sol-network-operations-resources
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-output-network-operations
+                         :shape "ListSolNetworkOperationsResources" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-operations-output-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-operations-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-operations-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-operations-output
                     'make-list-sol-network-operations-output))
@@ -2927,31 +4149,98 @@
                             list-sol-network-operations-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-package-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-package-info-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or nsd-info-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or list-sol-network-package-metadata common-lisp:null))
-   (nsd-designer common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (nsd-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (nsd-invariant-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (nsd-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (nsd-onboarding-state (common-lisp:error ":nsdonboardingstate is required")
-    :type (common-lisp:or nsd-onboarding-state common-lisp:null))
-   (nsd-operational-state
-    (common-lisp:error ":nsdoperationalstate is required") :type
-    (common-lisp:or nsd-operational-state common-lisp:null))
-   (nsd-usage-state (common-lisp:error ":nsdusagestate is required") :type
-    (common-lisp:or nsd-usage-state common-lisp:null))
-   (nsd-version common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (vnf-pkg-ids common-lisp:nil :type
-    (common-lisp:or vnf-pkg-id-list common-lisp:null)))
+ (common-lisp:defclass list-sol-network-package-info common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or nsd-info-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-arn :shape
+                         "NsdInfoArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-id :shape
+                         "NsdInfoId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or list-sol-network-package-metadata
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-metadata
+                         :shape "ListSolNetworkPackageMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (nsd-designer :initarg :nsd-designer :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sol-network-package-info-nsd-designer
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-id :initarg :nsd-id :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-nsd-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-invariant-id :initarg :nsd-invariant-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sol-network-package-info-nsd-invariant-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-name :initarg :nsd-name :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-nsd-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-onboarding-state :initarg :nsd-onboarding-state
+                         :initform
+                         (common-lisp:error ":nsdonboardingstate is required")
+                         :type
+                         (common-lisp:or nsd-onboarding-state common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-nsd-onboarding-state
+                         :shape "NsdOnboardingState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-operational-state :initarg :nsd-operational-state
+                         :initform
+                         (common-lisp:error ":nsdoperationalstate is required")
+                         :type
+                         (common-lisp:or nsd-operational-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-nsd-operational-state
+                         :shape "NsdOperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-usage-state :initarg :nsd-usage-state :initform
+                         (common-lisp:error ":nsdusagestate is required") :type
+                         (common-lisp:or nsd-usage-state common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-nsd-usage-state
+                         :shape "NsdUsageState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-version :initarg :nsd-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sol-network-package-info-nsd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-pkg-ids :initarg :vnf-pkg-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vnf-pkg-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-info-vnf-pkg-ids
+                         :shape "VnfPkgIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-package-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-package-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-package-info
                     'make-list-sol-network-package-info))
@@ -3057,13 +4346,29 @@
                           list-sol-network-package-info))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-package-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-package-metadata-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (last-modified (common-lisp:error ":lastmodified is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass list-sol-network-package-metadata common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-metadata-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified :initarg :last-modified :initform
+                         (common-lisp:error ":lastmodified is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-package-metadata-last-modified
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-package-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-package-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-package-metadata
                     'make-list-sol-network-package-metadata))
@@ -3106,14 +4411,29 @@
                             list-sol-network-package-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-packages-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-packages-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-sol-network-packages-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-network-packages-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-sol-network-packages-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-packages-input-max-results
+                         :shape "ListSolNetworkPackagesInputMaxResultsInteger"
+                         :location "querystring" :location-name "max_results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-packages-input-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextpage_opaque_marker"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-packages-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-packages-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-packages-input
                     'make-list-sol-network-packages-input))
@@ -3135,13 +4455,29 @@
 (common-lisp:deftype list-sol-network-packages-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sol-network-packages-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sol-network-packages-output-"))
-   (network-packages (common-lisp:error ":networkpackages is required") :type
-    (common-lisp:or list-sol-network-package-resources common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-sol-network-packages-output common-lisp:nil
+                       ((network-packages :initarg :network-packages :initform
+                         (common-lisp:error ":networkpackages is required")
+                         :type
+                         (common-lisp:or list-sol-network-package-resources
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-packages-output-network-packages
+                         :shape "ListSolNetworkPackageResources" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-sol-network-packages-output-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sol-network-packages-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-sol-network-packages-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sol-network-packages-output
                     'make-list-sol-network-packages-output))
@@ -3175,11 +4511,19 @@
                           list-sol-network-packages-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or tnbresource-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or tnbresource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-input-resource-arn
+                         :shape "TNBResourceArn" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-for-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-input
                     'make-list-tags-for-resource-input))
@@ -3199,11 +4543,19 @@
                           list-tags-for-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-output-"))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-output common-lisp:nil
+                       ((tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-output-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-output
                     'make-list-tags-for-resource-output))
@@ -3230,11 +4582,18 @@
                           list-tags-for-resource-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (network-artifact-meta (:copier common-lisp:nil)
-      (:conc-name "struct-shape-network-artifact-meta-"))
-   (overrides common-lisp:nil :type
-    (common-lisp:or override-list common-lisp:null)))
+ (common-lisp:defclass network-artifact-meta common-lisp:nil
+                       ((overrides :initarg :overrides :initform
+                         common-lisp:nil :type
+                         (common-lisp:or override-list common-lisp:null)
+                         :accessor struct-shape-network-artifact-meta-overrides
+                         :shape "OverrideList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-network-artifact-meta
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'network-artifact-meta
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'network-artifact-meta 'make-network-artifact-meta))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3284,12 +4643,23 @@
 (common-lisp:deftype package-content-type () 'common-lisp:string)
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (problem-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-problem-details-"))
-   (detail (common-lisp:error ":detail is required") :type
-    (common-lisp:or string common-lisp:null))
-   (title common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass problem-details common-lisp:nil
+                       ((detail :initarg :detail :initform
+                         (common-lisp:error ":detail is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-problem-details-detail :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (title :initarg :title :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-problem-details-title :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-problem-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'problem-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'problem-details 'make-problem-details))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input problem-details))
@@ -3315,15 +4685,32 @@
                         ((aws-sdk/generator/shape::input problem-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-sol-function-package-content-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-sol-function-package-content-input-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or package-content-type common-lisp:null))
-   (file (common-lisp:error ":file is required") :type
-    (common-lisp:or blob common-lisp:null))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null)))
+ (common-lisp:defclass put-sol-function-package-content-input common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-content-type common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-function-package-content-input-content-type
+                         :shape "PackageContentType" :location "header"
+                         :location-name "Content-Type")
+                        (file :initarg :file :initform
+                         (common-lisp:error ":file is required") :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-put-sol-function-package-content-input-file
+                         :shape "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-put-sol-function-package-content-input-vnf-pkg-id
+                         :shape "VnfPkgId" :location "uri" :location-name
+                         "vnfPkgId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-sol-function-package-content-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-sol-function-package-content-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-sol-function-package-content-input
                     'make-put-sol-function-package-content-input))
@@ -3354,11 +4741,21 @@
                           put-sol-function-package-content-input))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'file)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-sol-function-package-content-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-sol-function-package-content-metadata-"))
-   (vnfd common-lisp:nil :type
-    (common-lisp:or function-artifact-meta common-lisp:null)))
+ (common-lisp:defclass put-sol-function-package-content-metadata
+                       common-lisp:nil
+                       ((vnfd :initarg :vnfd :initform common-lisp:nil :type
+                         (common-lisp:or function-artifact-meta
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-function-package-content-metadata-vnfd
+                         :shape "FunctionArtifactMeta" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-sol-function-package-content-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-sol-function-package-content-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-sol-function-package-content-metadata
                     'make-put-sol-function-package-content-metadata))
@@ -3385,22 +4782,54 @@
                           put-sol-function-package-content-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-sol-function-package-content-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-sol-function-package-content-output-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or put-sol-function-package-content-metadata
-                    common-lisp:null))
-   (vnf-product-name (common-lisp:error ":vnfproductname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (vnf-provider (common-lisp:error ":vnfprovider is required") :type
-    (common-lisp:or string common-lisp:null))
-   (vnfd-id (common-lisp:error ":vnfdid is required") :type
-    (common-lisp:or vnfd-id common-lisp:null))
-   (vnfd-version (common-lisp:error ":vnfdversion is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass put-sol-function-package-content-output common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-put-sol-function-package-content-output-id
+                         :shape "VnfPkgId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or
+                          put-sol-function-package-content-metadata
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-function-package-content-output-metadata
+                         :shape "PutSolFunctionPackageContentMetadata"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vnf-product-name :initarg :vnf-product-name :initform
+                         (common-lisp:error ":vnfproductname is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-function-package-content-output-vnf-product-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-provider :initarg :vnf-provider :initform
+                         (common-lisp:error ":vnfprovider is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-sol-function-package-content-output-vnf-provider
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-id :initarg :vnfd-id :initform
+                         (common-lisp:error ":vnfdid is required") :type
+                         (common-lisp:or vnfd-id common-lisp:null) :accessor
+                         struct-shape-put-sol-function-package-content-output-vnfd-id
+                         :shape "VnfdId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-version :initarg :vnfd-version :initform
+                         (common-lisp:error ":vnfdversion is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-sol-function-package-content-output-vnfd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-sol-function-package-content-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-sol-function-package-content-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-sol-function-package-content-output
                     'make-put-sol-function-package-content-output))
@@ -3462,15 +4891,33 @@
                           put-sol-function-package-content-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-sol-network-package-content-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-sol-network-package-content-input-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or package-content-type common-lisp:null))
-   (file (common-lisp:error ":file is required") :type
-    (common-lisp:or blob common-lisp:null))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null)))
+ (common-lisp:defclass put-sol-network-package-content-input common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-content-type common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-network-package-content-input-content-type
+                         :shape "PackageContentType" :location "header"
+                         :location-name "Content-Type")
+                        (file :initarg :file :initform
+                         (common-lisp:error ":file is required") :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-put-sol-network-package-content-input-file
+                         :shape "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-network-package-content-input-nsd-info-id
+                         :shape "NsdInfoId" :location "uri" :location-name
+                         "nsdInfoId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-sol-network-package-content-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-sol-network-package-content-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-sol-network-package-content-input
                     'make-put-sol-network-package-content-input))
@@ -3501,11 +4948,20 @@
                           put-sol-network-package-content-input))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'file)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-sol-network-package-content-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-sol-network-package-content-metadata-"))
-   (nsd common-lisp:nil :type
-    (common-lisp:or network-artifact-meta common-lisp:null)))
+ (common-lisp:defclass put-sol-network-package-content-metadata common-lisp:nil
+                       ((nsd :initarg :nsd :initform common-lisp:nil :type
+                         (common-lisp:or network-artifact-meta
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-network-package-content-metadata-nsd
+                         :shape "NetworkArtifactMeta" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-sol-network-package-content-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-sol-network-package-content-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-sol-network-package-content-metadata
                     'make-put-sol-network-package-content-metadata))
@@ -3532,23 +4988,61 @@
                           put-sol-network-package-content-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-sol-network-package-content-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-sol-network-package-content-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or nsd-info-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or put-sol-network-package-content-metadata common-lisp:null))
-   (nsd-id (common-lisp:error ":nsdid is required") :type
-    (common-lisp:or nsd-id common-lisp:null))
-   (nsd-name (common-lisp:error ":nsdname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (nsd-version (common-lisp:error ":nsdversion is required") :type
-    (common-lisp:or string common-lisp:null))
-   (vnf-pkg-ids (common-lisp:error ":vnfpkgids is required") :type
-    (common-lisp:or vnf-pkg-id-list common-lisp:null)))
+ (common-lisp:defclass put-sol-network-package-content-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or nsd-info-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-network-package-content-output-arn
+                         :shape "NsdInfoArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-network-package-content-output-id
+                         :shape "NsdInfoId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or
+                          put-sol-network-package-content-metadata
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-network-package-content-output-metadata
+                         :shape "PutSolNetworkPackageContentMetadata" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (nsd-id :initarg :nsd-id :initform
+                         (common-lisp:error ":nsdid is required") :type
+                         (common-lisp:or nsd-id common-lisp:null) :accessor
+                         struct-shape-put-sol-network-package-content-output-nsd-id
+                         :shape "NsdId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-name :initarg :nsd-name :initform
+                         (common-lisp:error ":nsdname is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-sol-network-package-content-output-nsd-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-version :initarg :nsd-version :initform
+                         (common-lisp:error ":nsdversion is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-sol-network-package-content-output-nsd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-pkg-ids :initarg :vnf-pkg-ids :initform
+                         (common-lisp:error ":vnfpkgids is required") :type
+                         (common-lisp:or vnf-pkg-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-put-sol-network-package-content-output-vnf-pkg-ids
+                         :shape "VnfPkgIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-sol-network-package-content-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-sol-network-package-content-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-sol-network-package-content-output
                     'make-put-sol-network-package-content-output))
@@ -3658,13 +5152,24 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or tnbresource-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or tnbresource-arn common-lisp:null)
+                         :accessor struct-shape-tag-resource-input-resource-arn
+                         :shape "TNBResourceArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3684,9 +5189,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-output-")))
+ (common-lisp:defclass tag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-output 'make-tag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3701,12 +5209,25 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:deftype task-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (terminate-sol-network-instance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-terminate-sol-network-instance-input-"))
-   (ns-instance-id (common-lisp:error ":nsinstanceid is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass terminate-sol-network-instance-input common-lisp:nil
+                       ((ns-instance-id :initarg :ns-instance-id :initform
+                         (common-lisp:error ":nsinstanceid is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-terminate-sol-network-instance-input-ns-instance-id
+                         :shape "NsInstanceId" :location "uri" :location-name
+                         "nsInstanceId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-terminate-sol-network-instance-input-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-terminate-sol-network-instance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'terminate-sol-network-instance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'terminate-sol-network-instance-input
                     'make-terminate-sol-network-instance-input))
@@ -3733,12 +5254,25 @@
                           terminate-sol-network-instance-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (terminate-sol-network-instance-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-terminate-sol-network-instance-output-"))
-   (ns-lcm-op-occ-id common-lisp:nil :type
-    (common-lisp:or ns-lcm-op-occ-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass terminate-sol-network-instance-output common-lisp:nil
+                       ((ns-lcm-op-occ-id :initarg :ns-lcm-op-occ-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ns-lcm-op-occ-id common-lisp:null)
+                         :accessor
+                         struct-shape-terminate-sol-network-instance-output-ns-lcm-op-occ-id
+                         :shape "NsLcmOpOccId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-terminate-sol-network-instance-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-terminate-sol-network-instance-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'terminate-sol-network-instance-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'terminate-sol-network-instance-output
                     'make-terminate-sol-network-instance-output))
@@ -3779,12 +5313,23 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tosca-override (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tosca-override-"))
-   (default-value common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass tosca-override common-lisp:nil
+                       ((default-value :initarg :default-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-tosca-override-default-value :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-tosca-override-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tosca-override
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tosca-override
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tosca-override 'make-tosca-override))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tosca-override))
@@ -3810,13 +5355,25 @@
                         ((aws-sdk/generator/shape::input tosca-override))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or tnbresource-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+ (common-lisp:defclass untag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or tnbresource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-input-resource-arn :shape
+                         "TNBResourceArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-keys common-lisp:null) :accessor
+                         struct-shape-untag-resource-input-tag-keys :shape
+                         "TagKeys" :location "querystring" :location-name
+                         "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3829,9 +5386,12 @@
                         ((aws-sdk/generator/shape::input untag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-output-")))
+ (common-lisp:defclass untag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-output 'make-untag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3850,13 +5410,28 @@
                           untag-resource-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-sol-function-package-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-sol-function-package-input-"))
-   (operational-state (common-lisp:error ":operationalstate is required") :type
-    (common-lisp:or operational-state common-lisp:null))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null)))
+ (common-lisp:defclass update-sol-function-package-input common-lisp:nil
+                       ((operational-state :initarg :operational-state
+                         :initform
+                         (common-lisp:error ":operationalstate is required")
+                         :type
+                         (common-lisp:or operational-state common-lisp:null)
+                         :accessor
+                         struct-shape-update-sol-function-package-input-operational-state
+                         :shape "OperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-update-sol-function-package-input-vnf-pkg-id
+                         :shape "VnfPkgId" :location "uri" :location-name
+                         "vnfPkgId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-sol-function-package-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-sol-function-package-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-sol-function-package-input
                     'make-update-sol-function-package-input))
@@ -3883,11 +5458,22 @@
                           update-sol-function-package-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-sol-function-package-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-sol-function-package-output-"))
-   (operational-state (common-lisp:error ":operationalstate is required") :type
-    (common-lisp:or operational-state common-lisp:null)))
+ (common-lisp:defclass update-sol-function-package-output common-lisp:nil
+                       ((operational-state :initarg :operational-state
+                         :initform
+                         (common-lisp:error ":operationalstate is required")
+                         :type
+                         (common-lisp:or operational-state common-lisp:null)
+                         :accessor
+                         struct-shape-update-sol-function-package-output-operational-state
+                         :shape "OperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-sol-function-package-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-sol-function-package-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-sol-function-package-output
                     'make-update-sol-function-package-output))
@@ -3914,14 +5500,33 @@
                           update-sol-function-package-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-sol-network-instance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-sol-network-instance-input-"))
-   (ns-instance-id (common-lisp:error ":nsinstanceid is required") :type
-    (common-lisp:or ns-instance-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (update-type (common-lisp:error ":updatetype is required") :type
-    (common-lisp:or update-sol-network-type common-lisp:null)))
+ (common-lisp:defclass update-sol-network-instance-input common-lisp:nil
+                       ((ns-instance-id :initarg :ns-instance-id :initform
+                         (common-lisp:error ":nsinstanceid is required") :type
+                         (common-lisp:or ns-instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-sol-network-instance-input-ns-instance-id
+                         :shape "NsInstanceId" :location "uri" :location-name
+                         "nsInstanceId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-update-sol-network-instance-input-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-type :initarg :update-type :initform
+                         (common-lisp:error ":updatetype is required") :type
+                         (common-lisp:or update-sol-network-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-sol-network-instance-input-update-type
+                         :shape "UpdateSolNetworkType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-sol-network-instance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-sol-network-instance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-sol-network-instance-input
                     'make-update-sol-network-instance-input))
@@ -3955,12 +5560,25 @@
                           update-sol-network-instance-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-sol-network-instance-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-sol-network-instance-output-"))
-   (ns-lcm-op-occ-id common-lisp:nil :type
-    (common-lisp:or ns-lcm-op-occ-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass update-sol-network-instance-output common-lisp:nil
+                       ((ns-lcm-op-occ-id :initarg :ns-lcm-op-occ-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ns-lcm-op-occ-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-sol-network-instance-output-ns-lcm-op-occ-id
+                         :shape "NsLcmOpOccId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-update-sol-network-instance-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-sol-network-instance-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-sol-network-instance-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-sol-network-instance-output
                     'make-update-sol-network-instance-output))
@@ -3994,14 +5612,30 @@
                           update-sol-network-instance-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-sol-network-package-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-sol-network-package-input-"))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (nsd-operational-state
-    (common-lisp:error ":nsdoperationalstate is required") :type
-    (common-lisp:or nsd-operational-state common-lisp:null)))
+ (common-lisp:defclass update-sol-network-package-input common-lisp:nil
+                       ((nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-sol-network-package-input-nsd-info-id
+                         :shape "NsdInfoId" :location "uri" :location-name
+                         "nsdInfoId")
+                        (nsd-operational-state :initarg :nsd-operational-state
+                         :initform
+                         (common-lisp:error ":nsdoperationalstate is required")
+                         :type
+                         (common-lisp:or nsd-operational-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-sol-network-package-input-nsd-operational-state
+                         :shape "NsdOperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-sol-network-package-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-sol-network-package-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-sol-network-package-input
                     'make-update-sol-network-package-input))
@@ -4029,12 +5663,23 @@
                           update-sol-network-package-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-sol-network-package-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-sol-network-package-output-"))
-   (nsd-operational-state
-    (common-lisp:error ":nsdoperationalstate is required") :type
-    (common-lisp:or nsd-operational-state common-lisp:null)))
+ (common-lisp:defclass update-sol-network-package-output common-lisp:nil
+                       ((nsd-operational-state :initarg :nsd-operational-state
+                         :initform
+                         (common-lisp:error ":nsdoperationalstate is required")
+                         :type
+                         (common-lisp:or nsd-operational-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-sol-network-package-output-nsd-operational-state
+                         :shape "NsdOperationalState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-sol-network-package-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-sol-network-package-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-sol-network-package-output
                     'make-update-sol-network-package-output))
@@ -4064,15 +5709,33 @@
 (common-lisp:deftype update-sol-network-type () 'common-lisp:string)
 (common-lisp:deftype usage-state () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (validate-sol-function-package-content-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validate-sol-function-package-content-input-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or package-content-type common-lisp:null))
-   (file (common-lisp:error ":file is required") :type
-    (common-lisp:or blob common-lisp:null))
-   (vnf-pkg-id (common-lisp:error ":vnfpkgid is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null)))
+ (common-lisp:defclass validate-sol-function-package-content-input
+                       common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-content-type common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-function-package-content-input-content-type
+                         :shape "PackageContentType" :location "header"
+                         :location-name "Content-Type")
+                        (file :initarg :file :initform
+                         (common-lisp:error ":file is required") :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-validate-sol-function-package-content-input-file
+                         :shape "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vnf-pkg-id :initarg :vnf-pkg-id :initform
+                         (common-lisp:error ":vnfpkgid is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-validate-sol-function-package-content-input-vnf-pkg-id
+                         :shape "VnfPkgId" :location "uri" :location-name
+                         "vnfPkgId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validate-sol-function-package-content-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'validate-sol-function-package-content-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validate-sol-function-package-content-input
                     'make-validate-sol-function-package-content-input))
@@ -4103,12 +5766,21 @@
                           validate-sol-function-package-content-input))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'file)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validate-sol-function-package-content-metadata (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-validate-sol-function-package-content-metadata-"))
-   (vnfd common-lisp:nil :type
-    (common-lisp:or function-artifact-meta common-lisp:null)))
+ (common-lisp:defclass validate-sol-function-package-content-metadata
+                       common-lisp:nil
+                       ((vnfd :initarg :vnfd :initform common-lisp:nil :type
+                         (common-lisp:or function-artifact-meta
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-function-package-content-metadata-vnfd
+                         :shape "FunctionArtifactMeta" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validate-sol-function-package-content-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'validate-sol-function-package-content-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validate-sol-function-package-content-metadata
                     'make-validate-sol-function-package-content-metadata))
@@ -4135,23 +5807,55 @@
                           validate-sol-function-package-content-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validate-sol-function-package-content-output (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-validate-sol-function-package-content-output-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or vnf-pkg-id common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or validate-sol-function-package-content-metadata
-                    common-lisp:null))
-   (vnf-product-name (common-lisp:error ":vnfproductname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (vnf-provider (common-lisp:error ":vnfprovider is required") :type
-    (common-lisp:or string common-lisp:null))
-   (vnfd-id (common-lisp:error ":vnfdid is required") :type
-    (common-lisp:or vnfd-id common-lisp:null))
-   (vnfd-version (common-lisp:error ":vnfdversion is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass validate-sol-function-package-content-output
+                       common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or vnf-pkg-id common-lisp:null) :accessor
+                         struct-shape-validate-sol-function-package-content-output-id
+                         :shape "VnfPkgId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or
+                          validate-sol-function-package-content-metadata
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-function-package-content-output-metadata
+                         :shape "ValidateSolFunctionPackageContentMetadata"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vnf-product-name :initarg :vnf-product-name :initform
+                         (common-lisp:error ":vnfproductname is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-function-package-content-output-vnf-product-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-provider :initarg :vnf-provider :initform
+                         (common-lisp:error ":vnfprovider is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validate-sol-function-package-content-output-vnf-provider
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-id :initarg :vnfd-id :initform
+                         (common-lisp:error ":vnfdid is required") :type
+                         (common-lisp:or vnfd-id common-lisp:null) :accessor
+                         struct-shape-validate-sol-function-package-content-output-vnfd-id
+                         :shape "VnfdId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnfd-version :initarg :vnfd-version :initform
+                         (common-lisp:error ":vnfdversion is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validate-sol-function-package-content-output-vnfd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validate-sol-function-package-content-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'validate-sol-function-package-content-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validate-sol-function-package-content-output
                     'make-validate-sol-function-package-content-output))
@@ -4213,15 +5917,34 @@
                           validate-sol-function-package-content-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validate-sol-network-package-content-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validate-sol-network-package-content-input-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or package-content-type common-lisp:null))
-   (file (common-lisp:error ":file is required") :type
-    (common-lisp:or blob common-lisp:null))
-   (nsd-info-id (common-lisp:error ":nsdinfoid is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null)))
+ (common-lisp:defclass validate-sol-network-package-content-input
+                       common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-content-type common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-network-package-content-input-content-type
+                         :shape "PackageContentType" :location "header"
+                         :location-name "Content-Type")
+                        (file :initarg :file :initform
+                         (common-lisp:error ":file is required") :type
+                         (common-lisp:or blob common-lisp:null) :accessor
+                         struct-shape-validate-sol-network-package-content-input-file
+                         :shape "Blob" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (nsd-info-id :initarg :nsd-info-id :initform
+                         (common-lisp:error ":nsdinfoid is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-network-package-content-input-nsd-info-id
+                         :shape "NsdInfoId" :location "uri" :location-name
+                         "nsdInfoId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validate-sol-network-package-content-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'validate-sol-network-package-content-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validate-sol-network-package-content-input
                     'make-validate-sol-network-package-content-input))
@@ -4252,12 +5975,21 @@
                           validate-sol-network-package-content-input))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'file)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validate-sol-network-package-content-metadata (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-validate-sol-network-package-content-metadata-"))
-   (nsd common-lisp:nil :type
-    (common-lisp:or network-artifact-meta common-lisp:null)))
+ (common-lisp:defclass validate-sol-network-package-content-metadata
+                       common-lisp:nil
+                       ((nsd :initarg :nsd :initform common-lisp:nil :type
+                         (common-lisp:or network-artifact-meta
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-network-package-content-metadata-nsd
+                         :shape "NetworkArtifactMeta" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validate-sol-network-package-content-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'validate-sol-network-package-content-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validate-sol-network-package-content-metadata
                     'make-validate-sol-network-package-content-metadata))
@@ -4284,24 +6016,63 @@
                           validate-sol-network-package-content-metadata))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validate-sol-network-package-content-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validate-sol-network-package-content-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or nsd-info-arn common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or nsd-info-id common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or validate-sol-network-package-content-metadata
-                    common-lisp:null))
-   (nsd-id (common-lisp:error ":nsdid is required") :type
-    (common-lisp:or nsd-id common-lisp:null))
-   (nsd-name (common-lisp:error ":nsdname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (nsd-version (common-lisp:error ":nsdversion is required") :type
-    (common-lisp:or string common-lisp:null))
-   (vnf-pkg-ids (common-lisp:error ":vnfpkgids is required") :type
-    (common-lisp:or vnf-pkg-id-list common-lisp:null)))
+ (common-lisp:defclass validate-sol-network-package-content-output
+                       common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or nsd-info-arn common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-network-package-content-output-arn
+                         :shape "NsdInfoArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or nsd-info-id common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-network-package-content-output-id
+                         :shape "NsdInfoId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or
+                          validate-sol-network-package-content-metadata
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-network-package-content-output-metadata
+                         :shape "ValidateSolNetworkPackageContentMetadata"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (nsd-id :initarg :nsd-id :initform
+                         (common-lisp:error ":nsdid is required") :type
+                         (common-lisp:or nsd-id common-lisp:null) :accessor
+                         struct-shape-validate-sol-network-package-content-output-nsd-id
+                         :shape "NsdId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-name :initarg :nsd-name :initform
+                         (common-lisp:error ":nsdname is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validate-sol-network-package-content-output-nsd-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nsd-version :initarg :nsd-version :initform
+                         (common-lisp:error ":nsdversion is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validate-sol-network-package-content-output-nsd-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vnf-pkg-ids :initarg :vnf-pkg-ids :initform
+                         (common-lisp:error ":vnfpkgids is required") :type
+                         (common-lisp:or vnf-pkg-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-validate-sol-network-package-content-output-vnf-pkg-ids
+                         :shape "VnfPkgIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validate-sol-network-package-content-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'validate-sol-network-package-content-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validate-sol-network-package-content-output
                     'make-validate-sol-network-package-content-output))

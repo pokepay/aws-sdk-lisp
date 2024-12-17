@@ -44,13 +44,26 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assume-role-for-pod-identity-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assume-role-for-pod-identity-request-"))
-   (cluster-name (common-lisp:error ":clustername is required") :type
-    (common-lisp:or cluster-name common-lisp:null))
-   (token (common-lisp:error ":token is required") :type
-    (common-lisp:or jwt-token common-lisp:null)))
+ (common-lisp:defclass assume-role-for-pod-identity-request common-lisp:nil
+                       ((cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":clustername is required") :type
+                         (common-lisp:or cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-for-pod-identity-request-cluster-name
+                         :shape "ClusterName" :location "uri" :location-name
+                         "clusterName")
+                        (token :initarg :token :initform
+                         (common-lisp:error ":token is required") :type
+                         (common-lisp:or jwt-token common-lisp:null) :accessor
+                         struct-shape-assume-role-for-pod-identity-request-token
+                         :shape "JwtToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assume-role-for-pod-identity-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'assume-role-for-pod-identity-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assume-role-for-pod-identity-request
                     'make-assume-role-for-pod-identity-request))
@@ -77,20 +90,52 @@
                           assume-role-for-pod-identity-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assume-role-for-pod-identity-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assume-role-for-pod-identity-response-"))
-   (subject (common-lisp:error ":subject is required") :type
-    (common-lisp:or subject common-lisp:null))
-   (audience (common-lisp:error ":audience is required") :type
-    (common-lisp:or string common-lisp:null))
-   (pod-identity-association
-    (common-lisp:error ":podidentityassociation is required") :type
-    (common-lisp:or pod-identity-association common-lisp:null))
-   (assumed-role-user (common-lisp:error ":assumedroleuser is required") :type
-    (common-lisp:or assumed-role-user common-lisp:null))
-   (credentials (common-lisp:error ":credentials is required") :type
-    (common-lisp:or credentials common-lisp:null)))
+ (common-lisp:defclass assume-role-for-pod-identity-response common-lisp:nil
+                       ((subject :initarg :subject :initform
+                         (common-lisp:error ":subject is required") :type
+                         (common-lisp:or subject common-lisp:null) :accessor
+                         struct-shape-assume-role-for-pod-identity-response-subject
+                         :shape "Subject" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (audience :initarg :audience :initform
+                         (common-lisp:error ":audience is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-assume-role-for-pod-identity-response-audience
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pod-identity-association :initarg
+                         :pod-identity-association :initform
+                         (common-lisp:error
+                          ":podidentityassociation is required")
+                         :type
+                         (common-lisp:or pod-identity-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-for-pod-identity-response-pod-identity-association
+                         :shape "PodIdentityAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (assumed-role-user :initarg :assumed-role-user
+                         :initform
+                         (common-lisp:error ":assumedroleuser is required")
+                         :type
+                         (common-lisp:or assumed-role-user common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-for-pod-identity-response-assumed-role-user
+                         :shape "AssumedRoleUser" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (credentials :initarg :credentials :initform
+                         (common-lisp:error ":credentials is required") :type
+                         (common-lisp:or credentials common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-for-pod-identity-response-credentials
+                         :shape "Credentials" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assume-role-for-pod-identity-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'assume-role-for-pod-identity-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assume-role-for-pod-identity-response
                     'make-assume-role-for-pod-identity-response))
@@ -146,13 +191,24 @@
                           assume-role-for-pod-identity-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assumed-role-user (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assumed-role-user-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (assume-role-id (common-lisp:error ":assumeroleid is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass assumed-role-user common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-assumed-role-user-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (assume-role-id :initarg :assume-role-id :initform
+                         (common-lisp:error ":assumeroleid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-assumed-role-user-assume-role-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assumed-role-user
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'assumed-role-user
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assumed-role-user 'make-assumed-role-user))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -180,17 +236,37 @@
    common-lisp:nil))
 (common-lisp:deftype cluster-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (credentials (:copier common-lisp:nil)
-      (:conc-name "struct-shape-credentials-"))
-   (session-token (common-lisp:error ":sessiontoken is required") :type
-    (common-lisp:or string common-lisp:null))
-   (secret-access-key (common-lisp:error ":secretaccesskey is required") :type
-    (common-lisp:or string common-lisp:null))
-   (access-key-id (common-lisp:error ":accesskeyid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (expiration (common-lisp:error ":expiration is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass credentials common-lisp:nil
+                       ((session-token :initarg :session-token :initform
+                         (common-lisp:error ":sessiontoken is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-credentials-session-token :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (secret-access-key :initarg :secret-access-key
+                         :initform
+                         (common-lisp:error ":secretaccesskey is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-credentials-secret-access-key
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (access-key-id :initarg :access-key-id :initform
+                         (common-lisp:error ":accesskeyid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-credentials-access-key-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (expiration :initarg :expiration :initform
+                         (common-lisp:error ":expiration is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-credentials-expiration :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-credentials
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'credentials
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'credentials 'make-credentials))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input credentials))
@@ -269,13 +345,25 @@
   (common-lisp:list 'invalid-token-exception 'invalid-token-exception-message)))
 (common-lisp:deftype jwt-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pod-identity-association (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pod-identity-association-"))
-   (association-arn (common-lisp:error ":associationarn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (association-id (common-lisp:error ":associationid is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass pod-identity-association common-lisp:nil
+                       ((association-arn :initarg :association-arn :initform
+                         (common-lisp:error ":associationarn is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-pod-identity-association-association-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (association-id :initarg :association-id :initform
+                         (common-lisp:error ":associationid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-pod-identity-association-association-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pod-identity-association
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pod-identity-association
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'pod-identity-association 'make-pod-identity-association))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -325,12 +413,24 @@
                     'service-unavailable-exception-message)))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (subject (:copier common-lisp:nil) (:conc-name "struct-shape-subject-"))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or string common-lisp:null))
-   (service-account (common-lisp:error ":serviceaccount is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass subject common-lisp:nil
+                       ((namespace :initarg :namespace :initform
+                         (common-lisp:error ":namespace is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-subject-namespace :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (service-account :initarg :service-account :initform
+                         (common-lisp:error ":serviceaccount is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-subject-service-account :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-subject
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'subject
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'subject 'make-subject))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input subject))

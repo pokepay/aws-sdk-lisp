@@ -52,15 +52,32 @@
 (common-lisp:deftype autoshift-applied-status () 'common-lisp:string)
 (common-lisp:deftype autoshift-execution-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (autoshift-in-resource (:copier common-lisp:nil)
-      (:conc-name "struct-shape-autoshift-in-resource-"))
-   (applied-status (common-lisp:error ":appliedstatus is required") :type
-    (common-lisp:or autoshift-applied-status common-lisp:null))
-   (away-from (common-lisp:error ":awayfrom is required") :type
-    (common-lisp:or availability-zone common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or start-time common-lisp:null)))
+ (common-lisp:defclass autoshift-in-resource common-lisp:nil
+                       ((applied-status :initarg :applied-status :initform
+                         (common-lisp:error ":appliedstatus is required") :type
+                         (common-lisp:or autoshift-applied-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-autoshift-in-resource-applied-status
+                         :shape "AutoshiftAppliedStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (away-from :initarg :away-from :initform
+                         (common-lisp:error ":awayfrom is required") :type
+                         (common-lisp:or availability-zone common-lisp:null)
+                         :accessor struct-shape-autoshift-in-resource-away-from
+                         :shape "AvailabilityZone" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":starttime is required") :type
+                         (common-lisp:or start-time common-lisp:null) :accessor
+                         struct-shape-autoshift-in-resource-start-time :shape
+                         "StartTime" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-autoshift-in-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'autoshift-in-resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'autoshift-in-resource 'make-autoshift-in-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -108,17 +125,37 @@
                            (trivial-types:proper-list autoshift-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (autoshift-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-autoshift-summary-"))
-   (away-from (common-lisp:error ":awayfrom is required") :type
-    (common-lisp:or availability-zone common-lisp:null))
-   (end-time (common-lisp:error ":endtime is required") :type
-    (common-lisp:or expiry-time common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or start-time common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or autoshift-execution-status common-lisp:null)))
+ (common-lisp:defclass autoshift-summary common-lisp:nil
+                       ((away-from :initarg :away-from :initform
+                         (common-lisp:error ":awayfrom is required") :type
+                         (common-lisp:or availability-zone common-lisp:null)
+                         :accessor struct-shape-autoshift-summary-away-from
+                         :shape "AvailabilityZone" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-time :initarg :end-time :initform
+                         (common-lisp:error ":endtime is required") :type
+                         (common-lisp:or expiry-time common-lisp:null)
+                         :accessor struct-shape-autoshift-summary-end-time
+                         :shape "ExpiryTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":starttime is required") :type
+                         (common-lisp:or start-time common-lisp:null) :accessor
+                         struct-shape-autoshift-summary-start-time :shape
+                         "StartTime" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or autoshift-execution-status
+                                         common-lisp:null)
+                         :accessor struct-shape-autoshift-summary-status :shape
+                         "AutoshiftExecutionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-autoshift-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'autoshift-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'autoshift-summary 'make-autoshift-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -194,11 +231,19 @@
                            (trivial-types:proper-list blocked-window))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-zonal-shift-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-zonal-shift-request-"))
-   (zonal-shift-id (common-lisp:error ":zonalshiftid is required") :type
-    (common-lisp:or zonal-shift-id common-lisp:null)))
+ (common-lisp:defclass cancel-zonal-shift-request common-lisp:nil
+                       ((zonal-shift-id :initarg :zonal-shift-id :initform
+                         (common-lisp:error ":zonalshiftid is required") :type
+                         (common-lisp:or zonal-shift-id common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-zonal-shift-request-zonal-shift-id
+                         :shape "ZonalShiftId" :location "uri" :location-name
+                         "zonalShiftId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-zonal-shift-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cancel-zonal-shift-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-zonal-shift-request
                     'make-cancel-zonal-shift-request))
@@ -232,13 +277,26 @@
                     'conflict-exception-zonal-shift-id)))
 (common-lisp:deftype conflict-exception-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (control-condition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-control-condition-"))
-   (alarm-identifier (common-lisp:error ":alarmidentifier is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or control-condition-type common-lisp:null)))
+ (common-lisp:defclass control-condition common-lisp:nil
+                       ((alarm-identifier :initarg :alarm-identifier :initform
+                         (common-lisp:error ":alarmidentifier is required")
+                         :type (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-control-condition-alarm-identifier :shape
+                         "ResourceArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or control-condition-type
+                                         common-lisp:null)
+                         :accessor struct-shape-control-condition-type :shape
+                         "ControlConditionType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-control-condition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'control-condition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'control-condition 'make-control-condition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -274,19 +332,51 @@
                            (trivial-types:proper-list control-condition))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-practice-run-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-practice-run-configuration-request-"))
-   (blocked-dates common-lisp:nil :type
-    (common-lisp:or blocked-dates common-lisp:null))
-   (blocked-windows common-lisp:nil :type
-    (common-lisp:or blocked-windows common-lisp:null))
-   (blocking-alarms common-lisp:nil :type
-    (common-lisp:or control-conditions common-lisp:null))
-   (outcome-alarms (common-lisp:error ":outcomealarms is required") :type
-    (common-lisp:or control-conditions common-lisp:null))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass create-practice-run-configuration-request
+                       common-lisp:nil
+                       ((blocked-dates :initarg :blocked-dates :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blocked-dates common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-request-blocked-dates
+                         :shape "BlockedDates" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (blocked-windows :initarg :blocked-windows :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blocked-windows common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-request-blocked-windows
+                         :shape "BlockedWindows" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (blocking-alarms :initarg :blocking-alarms :initform
+                         common-lisp:nil :type
+                         (common-lisp:or control-conditions common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-request-blocking-alarms
+                         :shape "ControlConditions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (outcome-alarms :initarg :outcome-alarms :initform
+                         (common-lisp:error ":outcomealarms is required") :type
+                         (common-lisp:or control-conditions common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-request-outcome-alarms
+                         :shape "ControlConditions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-request-resource-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-practice-run-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-practice-run-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-practice-run-configuration-request
                     'make-create-practice-run-configuration-request))
@@ -341,19 +431,50 @@
                           create-practice-run-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-practice-run-configuration-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-practice-run-configuration-response-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (practice-run-configuration
-    (common-lisp:error ":practicerunconfiguration is required") :type
-    (common-lisp:or practice-run-configuration common-lisp:null))
-   (zonal-autoshift-status
-    (common-lisp:error ":zonalautoshiftstatus is required") :type
-    (common-lisp:or zonal-autoshift-status common-lisp:null)))
+ (common-lisp:defclass create-practice-run-configuration-response
+                       common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-response-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-response-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (practice-run-configuration :initarg
+                         :practice-run-configuration :initform
+                         (common-lisp:error
+                          ":practicerunconfiguration is required")
+                         :type
+                         (common-lisp:or practice-run-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-response-practice-run-configuration
+                         :shape "PracticeRunConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (zonal-autoshift-status :initarg
+                         :zonal-autoshift-status :initform
+                         (common-lisp:error
+                          ":zonalautoshiftstatus is required")
+                         :type
+                         (common-lisp:or zonal-autoshift-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-practice-run-configuration-response-zonal-autoshift-status
+                         :shape "ZonalAutoshiftStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-practice-run-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-practice-run-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-practice-run-configuration-response
                     'make-create-practice-run-configuration-response))
@@ -403,11 +524,23 @@
                           create-practice-run-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-practice-run-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-practice-run-configuration-request-"))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass delete-practice-run-configuration-request
+                       common-lisp:nil
+                       ((resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-delete-practice-run-configuration-request-resource-identifier
+                         :shape "ResourceIdentifier" :location "uri"
+                         :location-name "resourceIdentifier"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-practice-run-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-practice-run-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-practice-run-configuration-request
                     'make-delete-practice-run-configuration-request))
@@ -427,16 +560,39 @@
                           delete-practice-run-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-practice-run-configuration-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-practice-run-configuration-response-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (zonal-autoshift-status
-    (common-lisp:error ":zonalautoshiftstatus is required") :type
-    (common-lisp:or zonal-autoshift-status common-lisp:null)))
+ (common-lisp:defclass delete-practice-run-configuration-response
+                       common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-practice-run-configuration-response-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-practice-run-configuration-response-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (zonal-autoshift-status :initarg
+                         :zonal-autoshift-status :initform
+                         (common-lisp:error
+                          ":zonalautoshiftstatus is required")
+                         :type
+                         (common-lisp:or zonal-autoshift-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-practice-run-configuration-response-zonal-autoshift-status
+                         :shape "ZonalAutoshiftStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-practice-run-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-practice-run-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-practice-run-configuration-response
                     'make-delete-practice-run-configuration-response))
@@ -480,11 +636,21 @@
 (common-lisp:deftype expires-in () 'common-lisp:string)
 (common-lisp:deftype expiry-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-managed-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-managed-resource-request-"))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass get-managed-resource-request common-lisp:nil
+                       ((resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-get-managed-resource-request-resource-identifier
+                         :shape "ResourceIdentifier" :location "uri"
+                         :location-name "resourceIdentifier"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-managed-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-managed-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-managed-resource-request
                     'make-get-managed-resource-request))
@@ -504,21 +670,67 @@
                           get-managed-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-managed-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-managed-resource-response-"))
-   (applied-weights (common-lisp:error ":appliedweights is required") :type
-    (common-lisp:or applied-weights common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or resource-arn common-lisp:null))
-   (autoshifts common-lisp:nil :type
-    (common-lisp:or autoshifts-in-resource common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
-   (practice-run-configuration common-lisp:nil :type
-    (common-lisp:or practice-run-configuration common-lisp:null))
-   (zonal-autoshift-status common-lisp:nil :type
-    (common-lisp:or zonal-autoshift-status common-lisp:null))
-   (zonal-shifts (common-lisp:error ":zonalshifts is required") :type
-    (common-lisp:or zonal-shifts-in-resource common-lisp:null)))
+ (common-lisp:defclass get-managed-resource-response common-lisp:nil
+                       ((applied-weights :initarg :applied-weights :initform
+                         (common-lisp:error ":appliedweights is required")
+                         :type
+                         (common-lisp:or applied-weights common-lisp:null)
+                         :accessor
+                         struct-shape-get-managed-resource-response-applied-weights
+                         :shape "AppliedWeights" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-managed-resource-response-arn :shape
+                         "ResourceArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (autoshifts :initarg :autoshifts :initform
+                         common-lisp:nil :type
+                         (common-lisp:or autoshifts-in-resource
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-managed-resource-response-autoshifts
+                         :shape "AutoshiftsInResource" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-managed-resource-response-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (practice-run-configuration :initarg
+                         :practice-run-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or practice-run-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-managed-resource-response-practice-run-configuration
+                         :shape "PracticeRunConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (zonal-autoshift-status :initarg
+                         :zonal-autoshift-status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or zonal-autoshift-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-managed-resource-response-zonal-autoshift-status
+                         :shape "ZonalAutoshiftStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (zonal-shifts :initarg :zonal-shifts :initform
+                         (common-lisp:error ":zonalshifts is required") :type
+                         (common-lisp:or zonal-shifts-in-resource
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-managed-resource-response-zonal-shifts
+                         :shape "ZonalShiftsInResource" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-managed-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-managed-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-managed-resource-response
                     'make-get-managed-resource-response))
@@ -597,14 +809,32 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-autoshifts-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-autoshifts-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or autoshift-execution-status common-lisp:null)))
+ (common-lisp:defclass list-autoshifts-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-autoshifts-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-autoshifts-request-next-token :shape
+                         "String" :location "querystring" :location-name
+                         "nextToken")
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or autoshift-execution-status
+                                         common-lisp:null)
+                         :accessor struct-shape-list-autoshifts-request-status
+                         :shape "AutoshiftExecutionStatus" :location
+                         "querystring" :location-name "status"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-autoshifts-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-autoshifts-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-autoshifts-request 'make-list-autoshifts-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -623,12 +853,23 @@
                           list-autoshifts-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-autoshifts-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-autoshifts-response-"))
-   (items common-lisp:nil :type
-    (common-lisp:or autoshift-summaries common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-autoshifts-response common-lisp:nil
+                       ((items :initarg :items :initform common-lisp:nil :type
+                         (common-lisp:or autoshift-summaries common-lisp:null)
+                         :accessor struct-shape-list-autoshifts-response-items
+                         :shape "AutoshiftSummaries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-autoshifts-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-autoshifts-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-autoshifts-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-autoshifts-response 'make-list-autoshifts-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -661,12 +902,26 @@
                           list-autoshifts-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-managed-resources-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-managed-resources-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-managed-resources-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-managed-resources-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-managed-resources-request-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-managed-resources-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-managed-resources-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-managed-resources-request
                     'make-list-managed-resources-request))
@@ -686,12 +941,27 @@
                           list-managed-resources-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-managed-resources-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-managed-resources-response-"))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or managed-resource-summaries common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-managed-resources-response common-lisp:nil
+                       ((items :initarg :items :initform
+                         (common-lisp:error ":items is required") :type
+                         (common-lisp:or managed-resource-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-managed-resources-response-items
+                         :shape "ManagedResourceSummaries" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-managed-resources-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-managed-resources-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-managed-resources-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-managed-resources-response
                     'make-list-managed-resources-response))
@@ -725,16 +995,39 @@
                           list-managed-resources-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-zonal-shifts-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-zonal-shifts-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (resource-identifier common-lisp:nil :type
-    (common-lisp:or resource-identifier common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or zonal-shift-status common-lisp:null)))
+ (common-lisp:defclass list-zonal-shifts-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-zonal-shifts-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-zonal-shifts-request-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken")
+                        (resource-identifier :initarg :resource-identifier
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-list-zonal-shifts-request-resource-identifier
+                         :shape "ResourceIdentifier" :location "querystring"
+                         :location-name "resourceIdentifier")
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or zonal-shift-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-zonal-shifts-request-status :shape
+                         "ZonalShiftStatus" :location "querystring"
+                         :location-name "status"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-zonal-shifts-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-zonal-shifts-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-zonal-shifts-request
                     'make-list-zonal-shifts-request))
@@ -754,12 +1047,25 @@
                           list-zonal-shifts-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-zonal-shifts-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-zonal-shifts-response-"))
-   (items common-lisp:nil :type
-    (common-lisp:or zonal-shift-summaries common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-zonal-shifts-response common-lisp:nil
+                       ((items :initarg :items :initform common-lisp:nil :type
+                         (common-lisp:or zonal-shift-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-zonal-shifts-response-items :shape
+                         "ZonalShiftSummaries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-zonal-shifts-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-zonal-shifts-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-zonal-shifts-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-zonal-shifts-response
                     'make-list-zonal-shifts-response))
@@ -802,23 +1108,71 @@
                             managed-resource-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (managed-resource-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-managed-resource-summary-"))
-   (applied-weights common-lisp:nil :type
-    (common-lisp:or applied-weights common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or resource-arn common-lisp:null))
-   (autoshifts common-lisp:nil :type
-    (common-lisp:or autoshifts-in-resource common-lisp:null))
-   (availability-zones (common-lisp:error ":availabilityzones is required")
-    :type (common-lisp:or availability-zones common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
-   (practice-run-status common-lisp:nil :type
-    (common-lisp:or zonal-autoshift-status common-lisp:null))
-   (zonal-autoshift-status common-lisp:nil :type
-    (common-lisp:or zonal-autoshift-status common-lisp:null))
-   (zonal-shifts common-lisp:nil :type
-    (common-lisp:or zonal-shifts-in-resource common-lisp:null)))
+ (common-lisp:defclass managed-resource-summary common-lisp:nil
+                       ((applied-weights :initarg :applied-weights :initform
+                         common-lisp:nil :type
+                         (common-lisp:or applied-weights common-lisp:null)
+                         :accessor
+                         struct-shape-managed-resource-summary-applied-weights
+                         :shape "AppliedWeights" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-managed-resource-summary-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (autoshifts :initarg :autoshifts :initform
+                         common-lisp:nil :type
+                         (common-lisp:or autoshifts-in-resource
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-managed-resource-summary-autoshifts
+                         :shape "AutoshiftsInResource" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (availability-zones :initarg :availability-zones
+                         :initform
+                         (common-lisp:error ":availabilityzones is required")
+                         :type
+                         (common-lisp:or availability-zones common-lisp:null)
+                         :accessor
+                         struct-shape-managed-resource-summary-availability-zones
+                         :shape "AvailabilityZones" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-managed-resource-summary-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (practice-run-status :initarg :practice-run-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or zonal-autoshift-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-managed-resource-summary-practice-run-status
+                         :shape "ZonalAutoshiftStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (zonal-autoshift-status :initarg
+                         :zonal-autoshift-status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or zonal-autoshift-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-managed-resource-summary-zonal-autoshift-status
+                         :shape "ZonalAutoshiftStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (zonal-shifts :initarg :zonal-shifts :initform
+                         common-lisp:nil :type
+                         (common-lisp:or zonal-shifts-in-resource
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-managed-resource-summary-zonal-shifts
+                         :shape "ZonalShiftsInResource" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-managed-resource-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'managed-resource-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'managed-resource-summary 'make-managed-resource-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -895,17 +1249,40 @@
    common-lisp:nil))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (practice-run-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-practice-run-configuration-"))
-   (blocked-dates common-lisp:nil :type
-    (common-lisp:or blocked-dates common-lisp:null))
-   (blocked-windows common-lisp:nil :type
-    (common-lisp:or blocked-windows common-lisp:null))
-   (blocking-alarms common-lisp:nil :type
-    (common-lisp:or control-conditions common-lisp:null))
-   (outcome-alarms (common-lisp:error ":outcomealarms is required") :type
-    (common-lisp:or control-conditions common-lisp:null)))
+ (common-lisp:defclass practice-run-configuration common-lisp:nil
+                       ((blocked-dates :initarg :blocked-dates :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blocked-dates common-lisp:null)
+                         :accessor
+                         struct-shape-practice-run-configuration-blocked-dates
+                         :shape "BlockedDates" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (blocked-windows :initarg :blocked-windows :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blocked-windows common-lisp:null)
+                         :accessor
+                         struct-shape-practice-run-configuration-blocked-windows
+                         :shape "BlockedWindows" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (blocking-alarms :initarg :blocking-alarms :initform
+                         common-lisp:nil :type
+                         (common-lisp:or control-conditions common-lisp:null)
+                         :accessor
+                         struct-shape-practice-run-configuration-blocking-alarms
+                         :shape "ControlConditions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (outcome-alarms :initarg :outcome-alarms :initform
+                         (common-lisp:error ":outcomealarms is required") :type
+                         (common-lisp:or control-conditions common-lisp:null)
+                         :accessor
+                         struct-shape-practice-run-configuration-outcome-alarms
+                         :shape "ControlConditions" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-practice-run-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'practice-run-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'practice-run-configuration
                     'make-practice-run-configuration))
@@ -966,17 +1343,41 @@
                     'resource-not-found-exception-message)))
 (common-lisp:deftype start-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-zonal-shift-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-zonal-shift-request-"))
-   (away-from (common-lisp:error ":awayfrom is required") :type
-    (common-lisp:or availability-zone common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or zonal-shift-comment common-lisp:null))
-   (expires-in (common-lisp:error ":expiresin is required") :type
-    (common-lisp:or expires-in common-lisp:null))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass start-zonal-shift-request common-lisp:nil
+                       ((away-from :initarg :away-from :initform
+                         (common-lisp:error ":awayfrom is required") :type
+                         (common-lisp:or availability-zone common-lisp:null)
+                         :accessor
+                         struct-shape-start-zonal-shift-request-away-from
+                         :shape "AvailabilityZone" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (comment :initarg :comment :initform
+                         (common-lisp:error ":comment is required") :type
+                         (common-lisp:or zonal-shift-comment common-lisp:null)
+                         :accessor
+                         struct-shape-start-zonal-shift-request-comment :shape
+                         "ZonalShiftComment" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expires-in :initarg :expires-in :initform
+                         (common-lisp:error ":expiresin is required") :type
+                         (common-lisp:or expires-in common-lisp:null) :accessor
+                         struct-shape-start-zonal-shift-request-expires-in
+                         :shape "ExpiresIn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-start-zonal-shift-request-resource-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-zonal-shift-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-zonal-shift-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-zonal-shift-request
                     'make-start-zonal-shift-request))
@@ -1032,19 +1433,51 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-practice-run-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-practice-run-configuration-request-"))
-   (blocked-dates common-lisp:nil :type
-    (common-lisp:or blocked-dates common-lisp:null))
-   (blocked-windows common-lisp:nil :type
-    (common-lisp:or blocked-windows common-lisp:null))
-   (blocking-alarms common-lisp:nil :type
-    (common-lisp:or control-conditions common-lisp:null))
-   (outcome-alarms common-lisp:nil :type
-    (common-lisp:or control-conditions common-lisp:null))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass update-practice-run-configuration-request
+                       common-lisp:nil
+                       ((blocked-dates :initarg :blocked-dates :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blocked-dates common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-request-blocked-dates
+                         :shape "BlockedDates" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (blocked-windows :initarg :blocked-windows :initform
+                         common-lisp:nil :type
+                         (common-lisp:or blocked-windows common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-request-blocked-windows
+                         :shape "BlockedWindows" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (blocking-alarms :initarg :blocking-alarms :initform
+                         common-lisp:nil :type
+                         (common-lisp:or control-conditions common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-request-blocking-alarms
+                         :shape "ControlConditions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (outcome-alarms :initarg :outcome-alarms :initform
+                         common-lisp:nil :type
+                         (common-lisp:or control-conditions common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-request-outcome-alarms
+                         :shape "ControlConditions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-request-resource-identifier
+                         :shape "ResourceIdentifier" :location "uri"
+                         :location-name "resourceIdentifier"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-practice-run-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-practice-run-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-practice-run-configuration-request
                     'make-update-practice-run-configuration-request))
@@ -1092,19 +1525,50 @@
                           update-practice-run-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-practice-run-configuration-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-practice-run-configuration-response-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (practice-run-configuration
-    (common-lisp:error ":practicerunconfiguration is required") :type
-    (common-lisp:or practice-run-configuration common-lisp:null))
-   (zonal-autoshift-status
-    (common-lisp:error ":zonalautoshiftstatus is required") :type
-    (common-lisp:or zonal-autoshift-status common-lisp:null)))
+ (common-lisp:defclass update-practice-run-configuration-response
+                       common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-response-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-response-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (practice-run-configuration :initarg
+                         :practice-run-configuration :initform
+                         (common-lisp:error
+                          ":practicerunconfiguration is required")
+                         :type
+                         (common-lisp:or practice-run-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-response-practice-run-configuration
+                         :shape "PracticeRunConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (zonal-autoshift-status :initarg
+                         :zonal-autoshift-status :initform
+                         (common-lisp:error
+                          ":zonalautoshiftstatus is required")
+                         :type
+                         (common-lisp:or zonal-autoshift-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-practice-run-configuration-response-zonal-autoshift-status
+                         :shape "ZonalAutoshiftStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-practice-run-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-practice-run-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-practice-run-configuration-response
                     'make-update-practice-run-configuration-response))
@@ -1154,15 +1618,34 @@
                           update-practice-run-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-zonal-autoshift-configuration-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-zonal-autoshift-configuration-request-"))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null))
-   (zonal-autoshift-status
-    (common-lisp:error ":zonalautoshiftstatus is required") :type
-    (common-lisp:or zonal-autoshift-status common-lisp:null)))
+ (common-lisp:defclass update-zonal-autoshift-configuration-request
+                       common-lisp:nil
+                       ((resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-update-zonal-autoshift-configuration-request-resource-identifier
+                         :shape "ResourceIdentifier" :location "uri"
+                         :location-name "resourceIdentifier")
+                        (zonal-autoshift-status :initarg
+                         :zonal-autoshift-status :initform
+                         (common-lisp:error
+                          ":zonalautoshiftstatus is required")
+                         :type
+                         (common-lisp:or zonal-autoshift-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-zonal-autoshift-configuration-request-zonal-autoshift-status
+                         :shape "ZonalAutoshiftStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-zonal-autoshift-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-zonal-autoshift-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-zonal-autoshift-configuration-request
                     'make-update-zonal-autoshift-configuration-request))
@@ -1190,15 +1673,34 @@
                           update-zonal-autoshift-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-zonal-autoshift-configuration-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-zonal-autoshift-configuration-response-"))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null))
-   (zonal-autoshift-status
-    (common-lisp:error ":zonalautoshiftstatus is required") :type
-    (common-lisp:or zonal-autoshift-status common-lisp:null)))
+ (common-lisp:defclass update-zonal-autoshift-configuration-response
+                       common-lisp:nil
+                       ((resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-update-zonal-autoshift-configuration-response-resource-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (zonal-autoshift-status :initarg
+                         :zonal-autoshift-status :initform
+                         (common-lisp:error
+                          ":zonalautoshiftstatus is required")
+                         :type
+                         (common-lisp:or zonal-autoshift-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-zonal-autoshift-configuration-response-zonal-autoshift-status
+                         :shape "ZonalAutoshiftStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-zonal-autoshift-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-zonal-autoshift-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-zonal-autoshift-configuration-response
                     'make-update-zonal-autoshift-configuration-response))
@@ -1233,15 +1735,32 @@
                           update-zonal-autoshift-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-zonal-shift-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-zonal-shift-request-"))
-   (comment common-lisp:nil :type
-    (common-lisp:or zonal-shift-comment common-lisp:null))
-   (expires-in common-lisp:nil :type
-    (common-lisp:or expires-in common-lisp:null))
-   (zonal-shift-id (common-lisp:error ":zonalshiftid is required") :type
-    (common-lisp:or zonal-shift-id common-lisp:null)))
+ (common-lisp:defclass update-zonal-shift-request common-lisp:nil
+                       ((comment :initarg :comment :initform common-lisp:nil
+                         :type
+                         (common-lisp:or zonal-shift-comment common-lisp:null)
+                         :accessor
+                         struct-shape-update-zonal-shift-request-comment :shape
+                         "ZonalShiftComment" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expires-in :initarg :expires-in :initform
+                         common-lisp:nil :type
+                         (common-lisp:or expires-in common-lisp:null) :accessor
+                         struct-shape-update-zonal-shift-request-expires-in
+                         :shape "ExpiresIn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (zonal-shift-id :initarg :zonal-shift-id :initform
+                         (common-lisp:error ":zonalshiftid is required") :type
+                         (common-lisp:or zonal-shift-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-zonal-shift-request-zonal-shift-id
+                         :shape "ZonalShiftId" :location "uri" :location-name
+                         "zonalShiftId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-zonal-shift-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-zonal-shift-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-zonal-shift-request
                     'make-update-zonal-shift-request))
@@ -1288,23 +1807,56 @@
 (common-lisp:deftype weight () 'common-lisp:single-float)
 (common-lisp:deftype zonal-autoshift-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (zonal-shift (:copier common-lisp:nil)
-      (:conc-name "struct-shape-zonal-shift-"))
-   (away-from (common-lisp:error ":awayfrom is required") :type
-    (common-lisp:or availability-zone common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or zonal-shift-comment common-lisp:null))
-   (expiry-time (common-lisp:error ":expirytime is required") :type
-    (common-lisp:or expiry-time common-lisp:null))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or start-time common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or zonal-shift-status common-lisp:null))
-   (zonal-shift-id (common-lisp:error ":zonalshiftid is required") :type
-    (common-lisp:or zonal-shift-id common-lisp:null)))
+ (common-lisp:defclass zonal-shift common-lisp:nil
+                       ((away-from :initarg :away-from :initform
+                         (common-lisp:error ":awayfrom is required") :type
+                         (common-lisp:or availability-zone common-lisp:null)
+                         :accessor struct-shape-zonal-shift-away-from :shape
+                         "AvailabilityZone" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (comment :initarg :comment :initform
+                         (common-lisp:error ":comment is required") :type
+                         (common-lisp:or zonal-shift-comment common-lisp:null)
+                         :accessor struct-shape-zonal-shift-comment :shape
+                         "ZonalShiftComment" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiry-time :initarg :expiry-time :initform
+                         (common-lisp:error ":expirytime is required") :type
+                         (common-lisp:or expiry-time common-lisp:null)
+                         :accessor struct-shape-zonal-shift-expiry-time :shape
+                         "ExpiryTime" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor struct-shape-zonal-shift-resource-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":starttime is required") :type
+                         (common-lisp:or start-time common-lisp:null) :accessor
+                         struct-shape-zonal-shift-start-time :shape "StartTime"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or zonal-shift-status common-lisp:null)
+                         :accessor struct-shape-zonal-shift-status :shape
+                         "ZonalShiftStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (zonal-shift-id :initarg :zonal-shift-id :initform
+                         (common-lisp:error ":zonalshiftid is required") :type
+                         (common-lisp:or zonal-shift-id common-lisp:null)
+                         :accessor struct-shape-zonal-shift-zonal-shift-id
+                         :shape "ZonalShiftId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-zonal-shift
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'zonal-shift
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'zonal-shift 'make-zonal-shift))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input zonal-shift))
@@ -1367,25 +1919,68 @@
 (common-lisp:deftype zonal-shift-comment () 'common-lisp:string)
 (common-lisp:deftype zonal-shift-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (zonal-shift-in-resource (:copier common-lisp:nil)
-      (:conc-name "struct-shape-zonal-shift-in-resource-"))
-   (applied-status (common-lisp:error ":appliedstatus is required") :type
-    (common-lisp:or applied-status common-lisp:null))
-   (away-from (common-lisp:error ":awayfrom is required") :type
-    (common-lisp:or availability-zone common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or zonal-shift-comment common-lisp:null))
-   (expiry-time (common-lisp:error ":expirytime is required") :type
-    (common-lisp:or expiry-time common-lisp:null))
-   (practice-run-outcome common-lisp:nil :type
-    (common-lisp:or practice-run-outcome common-lisp:null))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or start-time common-lisp:null))
-   (zonal-shift-id (common-lisp:error ":zonalshiftid is required") :type
-    (common-lisp:or zonal-shift-id common-lisp:null)))
+ (common-lisp:defclass zonal-shift-in-resource common-lisp:nil
+                       ((applied-status :initarg :applied-status :initform
+                         (common-lisp:error ":appliedstatus is required") :type
+                         (common-lisp:or applied-status common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-in-resource-applied-status
+                         :shape "AppliedStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (away-from :initarg :away-from :initform
+                         (common-lisp:error ":awayfrom is required") :type
+                         (common-lisp:or availability-zone common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-in-resource-away-from :shape
+                         "AvailabilityZone" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (comment :initarg :comment :initform
+                         (common-lisp:error ":comment is required") :type
+                         (common-lisp:or zonal-shift-comment common-lisp:null)
+                         :accessor struct-shape-zonal-shift-in-resource-comment
+                         :shape "ZonalShiftComment" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiry-time :initarg :expiry-time :initform
+                         (common-lisp:error ":expirytime is required") :type
+                         (common-lisp:or expiry-time common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-in-resource-expiry-time
+                         :shape "ExpiryTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (practice-run-outcome :initarg :practice-run-outcome
+                         :initform common-lisp:nil :type
+                         (common-lisp:or practice-run-outcome common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-in-resource-practice-run-outcome
+                         :shape "PracticeRunOutcome" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-in-resource-resource-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":starttime is required") :type
+                         (common-lisp:or start-time common-lisp:null) :accessor
+                         struct-shape-zonal-shift-in-resource-start-time :shape
+                         "StartTime" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (zonal-shift-id :initarg :zonal-shift-id :initform
+                         (common-lisp:error ":zonalshiftid is required") :type
+                         (common-lisp:or zonal-shift-id common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-in-resource-zonal-shift-id
+                         :shape "ZonalShiftId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-zonal-shift-in-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'zonal-shift-in-resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'zonal-shift-in-resource 'make-zonal-shift-in-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1470,25 +2065,65 @@
                            (trivial-types:proper-list zonal-shift-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (zonal-shift-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-zonal-shift-summary-"))
-   (away-from (common-lisp:error ":awayfrom is required") :type
-    (common-lisp:or availability-zone common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or zonal-shift-comment common-lisp:null))
-   (expiry-time (common-lisp:error ":expirytime is required") :type
-    (common-lisp:or expiry-time common-lisp:null))
-   (practice-run-outcome common-lisp:nil :type
-    (common-lisp:or practice-run-outcome common-lisp:null))
-   (resource-identifier (common-lisp:error ":resourceidentifier is required")
-    :type (common-lisp:or resource-identifier common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or start-time common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or zonal-shift-status common-lisp:null))
-   (zonal-shift-id (common-lisp:error ":zonalshiftid is required") :type
-    (common-lisp:or zonal-shift-id common-lisp:null)))
+ (common-lisp:defclass zonal-shift-summary common-lisp:nil
+                       ((away-from :initarg :away-from :initform
+                         (common-lisp:error ":awayfrom is required") :type
+                         (common-lisp:or availability-zone common-lisp:null)
+                         :accessor struct-shape-zonal-shift-summary-away-from
+                         :shape "AvailabilityZone" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (comment :initarg :comment :initform
+                         (common-lisp:error ":comment is required") :type
+                         (common-lisp:or zonal-shift-comment common-lisp:null)
+                         :accessor struct-shape-zonal-shift-summary-comment
+                         :shape "ZonalShiftComment" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiry-time :initarg :expiry-time :initform
+                         (common-lisp:error ":expirytime is required") :type
+                         (common-lisp:or expiry-time common-lisp:null)
+                         :accessor struct-shape-zonal-shift-summary-expiry-time
+                         :shape "ExpiryTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (practice-run-outcome :initarg :practice-run-outcome
+                         :initform common-lisp:nil :type
+                         (common-lisp:or practice-run-outcome common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-summary-practice-run-outcome
+                         :shape "PracticeRunOutcome" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resourceidentifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-summary-resource-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":starttime is required") :type
+                         (common-lisp:or start-time common-lisp:null) :accessor
+                         struct-shape-zonal-shift-summary-start-time :shape
+                         "StartTime" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or zonal-shift-status common-lisp:null)
+                         :accessor struct-shape-zonal-shift-summary-status
+                         :shape "ZonalShiftStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (zonal-shift-id :initarg :zonal-shift-id :initform
+                         (common-lisp:error ":zonalshiftid is required") :type
+                         (common-lisp:or zonal-shift-id common-lisp:null)
+                         :accessor
+                         struct-shape-zonal-shift-summary-zonal-shift-id :shape
+                         "ZonalShiftId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-zonal-shift-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'zonal-shift-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'zonal-shift-summary 'make-zonal-shift-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

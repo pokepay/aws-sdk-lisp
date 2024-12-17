@@ -51,11 +51,20 @@
                            (trivial-types:proper-list content-classifier))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-human-loop-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-human-loop-request-"))
-   (human-loop-name (common-lisp:error ":human-loop-name is required") :type
-    (common-lisp:or human-loop-name common-lisp:null)))
+ (common-lisp:defclass delete-human-loop-request common-lisp:nil
+                       ((human-loop-name :initarg :human-loop-name :initform
+                         (common-lisp:error ":human-loop-name is required")
+                         :type
+                         (common-lisp:or human-loop-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-human-loop-request-human-loop-name
+                         :shape "HumanLoopName" :location "uri" :location-name
+                         "HumanLoopName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-human-loop-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-human-loop-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-human-loop-request
                     'make-delete-human-loop-request))
@@ -75,9 +84,13 @@
                           delete-human-loop-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-human-loop-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-human-loop-response-")))
+ (common-lisp:defclass delete-human-loop-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-human-loop-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-human-loop-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-human-loop-response
                     'make-delete-human-loop-response))
@@ -97,11 +110,20 @@
                           delete-human-loop-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-human-loop-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-human-loop-request-"))
-   (human-loop-name (common-lisp:error ":human-loop-name is required") :type
-    (common-lisp:or human-loop-name common-lisp:null)))
+ (common-lisp:defclass describe-human-loop-request common-lisp:nil
+                       ((human-loop-name :initarg :human-loop-name :initform
+                         (common-lisp:error ":human-loop-name is required")
+                         :type
+                         (common-lisp:or human-loop-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-human-loop-request-human-loop-name
+                         :shape "HumanLoopName" :location "uri" :location-name
+                         "HumanLoopName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-human-loop-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-human-loop-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-human-loop-request
                     'make-describe-human-loop-request))
@@ -121,25 +143,70 @@
                           describe-human-loop-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-human-loop-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-human-loop-response-"))
-   (creation-time (common-lisp:error ":creation-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (failure-reason common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (failure-code common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (human-loop-status (common-lisp:error ":human-loop-status is required")
-    :type (common-lisp:or human-loop-status common-lisp:null))
-   (human-loop-name (common-lisp:error ":human-loop-name is required") :type
-    (common-lisp:or human-loop-name common-lisp:null))
-   (human-loop-arn (common-lisp:error ":human-loop-arn is required") :type
-    (common-lisp:or human-loop-arn common-lisp:null))
-   (flow-definition-arn (common-lisp:error ":flow-definition-arn is required")
-    :type (common-lisp:or flow-definition-arn common-lisp:null))
-   (human-loop-output common-lisp:nil :type
-    (common-lisp:or human-loop-output common-lisp:null)))
+ (common-lisp:defclass describe-human-loop-response common-lisp:nil
+                       ((creation-time :initarg :creation-time :initform
+                         (common-lisp:error ":creation-time is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-describe-human-loop-response-creation-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (failure-reason :initarg :failure-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-human-loop-response-failure-reason
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (failure-code :initarg :failure-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-human-loop-response-failure-code
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (human-loop-status :initarg :human-loop-status
+                         :initform
+                         (common-lisp:error ":human-loop-status is required")
+                         :type
+                         (common-lisp:or human-loop-status common-lisp:null)
+                         :accessor
+                         struct-shape-describe-human-loop-response-human-loop-status
+                         :shape "HumanLoopStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (human-loop-name :initarg :human-loop-name :initform
+                         (common-lisp:error ":human-loop-name is required")
+                         :type
+                         (common-lisp:or human-loop-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-human-loop-response-human-loop-name
+                         :shape "HumanLoopName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (human-loop-arn :initarg :human-loop-arn :initform
+                         (common-lisp:error ":human-loop-arn is required")
+                         :type (common-lisp:or human-loop-arn common-lisp:null)
+                         :accessor
+                         struct-shape-describe-human-loop-response-human-loop-arn
+                         :shape "HumanLoopArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (flow-definition-arn :initarg :flow-definition-arn
+                         :initform
+                         (common-lisp:error ":flow-definition-arn is required")
+                         :type
+                         (common-lisp:or flow-definition-arn common-lisp:null)
+                         :accessor
+                         struct-shape-describe-human-loop-response-flow-definition-arn
+                         :shape "FlowDefinitionArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (human-loop-output :initarg :human-loop-output
+                         :initform common-lisp:nil :type
+                         (common-lisp:or human-loop-output common-lisp:null)
+                         :accessor
+                         struct-shape-describe-human-loop-response-human-loop-output
+                         :shape "HumanLoopOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-human-loop-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-human-loop-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-human-loop-response
                     'make-describe-human-loop-response))
@@ -218,11 +285,21 @@
 (common-lisp:deftype flow-definition-arn () 'common-lisp:string)
 (common-lisp:deftype human-loop-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (human-loop-data-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-human-loop-data-attributes-"))
-   (content-classifiers (common-lisp:error ":content-classifiers is required")
-    :type (common-lisp:or content-classifiers common-lisp:null)))
+ (common-lisp:defclass human-loop-data-attributes common-lisp:nil
+                       ((content-classifiers :initarg :content-classifiers
+                         :initform
+                         (common-lisp:error ":content-classifiers is required")
+                         :type
+                         (common-lisp:or content-classifiers common-lisp:null)
+                         :accessor
+                         struct-shape-human-loop-data-attributes-content-classifiers
+                         :shape "ContentClassifiers" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-human-loop-data-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'human-loop-data-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'human-loop-data-attributes
                     'make-human-loop-data-attributes))
@@ -249,11 +326,18 @@
                           human-loop-data-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (human-loop-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-human-loop-input-"))
-   (input-content (common-lisp:error ":input-content is required") :type
-    (common-lisp:or input-content common-lisp:null)))
+ (common-lisp:defclass human-loop-input common-lisp:nil
+                       ((input-content :initarg :input-content :initform
+                         (common-lisp:error ":input-content is required") :type
+                         (common-lisp:or input-content common-lisp:null)
+                         :accessor struct-shape-human-loop-input-input-content
+                         :shape "InputContent" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-human-loop-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'human-loop-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'human-loop-input 'make-human-loop-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -274,11 +358,18 @@
    common-lisp:nil))
 (common-lisp:deftype human-loop-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (human-loop-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-human-loop-output-"))
-   (output-s3uri (common-lisp:error ":output-s3uri is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass human-loop-output common-lisp:nil
+                       ((output-s3uri :initarg :output-s3uri :initform
+                         (common-lisp:error ":output-s3uri is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-human-loop-output-output-s3uri :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-human-loop-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'human-loop-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'human-loop-output 'make-human-loop-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -307,19 +398,46 @@
                            (trivial-types:proper-list human-loop-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (human-loop-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-human-loop-summary-"))
-   (human-loop-name common-lisp:nil :type
-    (common-lisp:or human-loop-name common-lisp:null))
-   (human-loop-status common-lisp:nil :type
-    (common-lisp:or human-loop-status common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (failure-reason common-lisp:nil :type
-    (common-lisp:or failure-reason common-lisp:null))
-   (flow-definition-arn common-lisp:nil :type
-    (common-lisp:or flow-definition-arn common-lisp:null)))
+ (common-lisp:defclass human-loop-summary common-lisp:nil
+                       ((human-loop-name :initarg :human-loop-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or human-loop-name common-lisp:null)
+                         :accessor
+                         struct-shape-human-loop-summary-human-loop-name :shape
+                         "HumanLoopName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (human-loop-status :initarg :human-loop-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or human-loop-status common-lisp:null)
+                         :accessor
+                         struct-shape-human-loop-summary-human-loop-status
+                         :shape "HumanLoopStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-human-loop-summary-creation-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (failure-reason :initarg :failure-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or failure-reason common-lisp:null)
+                         :accessor
+                         struct-shape-human-loop-summary-failure-reason :shape
+                         "FailureReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (flow-definition-arn :initarg :flow-definition-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or flow-definition-arn common-lisp:null)
+                         :accessor
+                         struct-shape-human-loop-summary-flow-definition-arn
+                         :shape "FlowDefinitionArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-human-loop-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'human-loop-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'human-loop-summary 'make-human-loop-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -376,21 +494,52 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-human-loops-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-human-loops-request-"))
-   (creation-time-after common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (creation-time-before common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (flow-definition-arn (common-lisp:error ":flow-definition-arn is required")
-    :type (common-lisp:or flow-definition-arn common-lisp:null))
-   (sort-order common-lisp:nil :type
-    (common-lisp:or sort-order common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-human-loops-request common-lisp:nil
+                       ((creation-time-after :initarg :creation-time-after
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-list-human-loops-request-creation-time-after
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "CreationTimeAfter")
+                        (creation-time-before :initarg :creation-time-before
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-list-human-loops-request-creation-time-before
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "CreationTimeBefore")
+                        (flow-definition-arn :initarg :flow-definition-arn
+                         :initform
+                         (common-lisp:error ":flow-definition-arn is required")
+                         :type
+                         (common-lisp:or flow-definition-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-human-loops-request-flow-definition-arn
+                         :shape "FlowDefinitionArn" :location "querystring"
+                         :location-name "FlowDefinitionArn")
+                        (sort-order :initarg :sort-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sort-order common-lisp:null) :accessor
+                         struct-shape-list-human-loops-request-sort-order
+                         :shape "SortOrder" :location "querystring"
+                         :location-name "SortOrder")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-human-loops-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "NextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-human-loops-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "MaxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-human-loops-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-human-loops-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-human-loops-request 'make-list-human-loops-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -409,14 +558,28 @@
                           list-human-loops-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-human-loops-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-human-loops-response-"))
-   (human-loop-summaries
-    (common-lisp:error ":human-loop-summaries is required") :type
-    (common-lisp:or human-loop-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-human-loops-response common-lisp:nil
+                       ((human-loop-summaries :initarg :human-loop-summaries
+                         :initform
+                         (common-lisp:error
+                          ":human-loop-summaries is required")
+                         :type
+                         (common-lisp:or human-loop-summaries common-lisp:null)
+                         :accessor
+                         struct-shape-list-human-loops-response-human-loop-summaries
+                         :shape "HumanLoopSummaries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-human-loops-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-human-loops-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-human-loops-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-human-loops-response
                     'make-list-human-loops-response))
@@ -470,17 +633,45 @@
                     'service-quota-exceeded-exception-message)))
 (common-lisp:deftype sort-order () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-human-loop-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-human-loop-request-"))
-   (human-loop-name (common-lisp:error ":human-loop-name is required") :type
-    (common-lisp:or human-loop-name common-lisp:null))
-   (flow-definition-arn (common-lisp:error ":flow-definition-arn is required")
-    :type (common-lisp:or flow-definition-arn common-lisp:null))
-   (human-loop-input (common-lisp:error ":human-loop-input is required") :type
-    (common-lisp:or human-loop-input common-lisp:null))
-   (data-attributes common-lisp:nil :type
-    (common-lisp:or human-loop-data-attributes common-lisp:null)))
+ (common-lisp:defclass start-human-loop-request common-lisp:nil
+                       ((human-loop-name :initarg :human-loop-name :initform
+                         (common-lisp:error ":human-loop-name is required")
+                         :type
+                         (common-lisp:or human-loop-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-human-loop-request-human-loop-name
+                         :shape "HumanLoopName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (flow-definition-arn :initarg :flow-definition-arn
+                         :initform
+                         (common-lisp:error ":flow-definition-arn is required")
+                         :type
+                         (common-lisp:or flow-definition-arn common-lisp:null)
+                         :accessor
+                         struct-shape-start-human-loop-request-flow-definition-arn
+                         :shape "FlowDefinitionArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (human-loop-input :initarg :human-loop-input :initform
+                         (common-lisp:error ":human-loop-input is required")
+                         :type
+                         (common-lisp:or human-loop-input common-lisp:null)
+                         :accessor
+                         struct-shape-start-human-loop-request-human-loop-input
+                         :shape "HumanLoopInput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (data-attributes :initarg :data-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or human-loop-data-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-human-loop-request-data-attributes
+                         :shape "HumanLoopDataAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-human-loop-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-human-loop-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-human-loop-request 'make-start-human-loop-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -527,11 +718,19 @@
                           start-human-loop-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-human-loop-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-human-loop-response-"))
-   (human-loop-arn common-lisp:nil :type
-    (common-lisp:or human-loop-arn common-lisp:null)))
+ (common-lisp:defclass start-human-loop-response common-lisp:nil
+                       ((human-loop-arn :initarg :human-loop-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or human-loop-arn common-lisp:null)
+                         :accessor
+                         struct-shape-start-human-loop-response-human-loop-arn
+                         :shape "HumanLoopArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-human-loop-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-human-loop-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-human-loop-response
                     'make-start-human-loop-response))
@@ -558,11 +757,20 @@
                           start-human-loop-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-human-loop-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-human-loop-request-"))
-   (human-loop-name (common-lisp:error ":human-loop-name is required") :type
-    (common-lisp:or human-loop-name common-lisp:null)))
+ (common-lisp:defclass stop-human-loop-request common-lisp:nil
+                       ((human-loop-name :initarg :human-loop-name :initform
+                         (common-lisp:error ":human-loop-name is required")
+                         :type
+                         (common-lisp:or human-loop-name common-lisp:null)
+                         :accessor
+                         struct-shape-stop-human-loop-request-human-loop-name
+                         :shape "HumanLoopName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-human-loop-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-human-loop-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-human-loop-request 'make-stop-human-loop-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -588,9 +796,12 @@
                           stop-human-loop-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-human-loop-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-human-loop-response-")))
+ (common-lisp:defclass stop-human-loop-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-human-loop-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-human-loop-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-human-loop-response 'make-stop-human-loop-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

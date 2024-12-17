@@ -34,13 +34,28 @@
     ("LimitExceededException" . limit-exceeded-exception)
     ("ServiceUnavailableException" . service-unavailable-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (alternative (:copier common-lisp:nil)
-      (:conc-name "struct-shape-alternative-"))
-   (transcript common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (items common-lisp:nil :type (common-lisp:or item-list common-lisp:null))
-   (entities common-lisp:nil :type
-    (common-lisp:or entity-list common-lisp:null)))
+ (common-lisp:defclass alternative common-lisp:nil
+                       ((transcript :initarg :transcript :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-alternative-transcript :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (items :initarg :items :initform common-lisp:nil :type
+                         (common-lisp:or item-list common-lisp:null) :accessor
+                         struct-shape-alternative-items :shape "ItemList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (entities :initarg :entities :initform common-lisp:nil
+                         :type (common-lisp:or entity-list common-lisp:null)
+                         :accessor struct-shape-alternative-entities :shape
+                         "EntityList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-alternative
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'alternative
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'alternative 'make-alternative))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input alternative))
@@ -83,11 +98,18 @@
 (common-lisp:deftype audio-chunk ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (audio-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audio-event-"))
-   (audio-chunk common-lisp:nil :type
-    (common-lisp:or audio-chunk common-lisp:null)))
+ (common-lisp:defclass audio-event common-lisp:nil
+                       ((audio-chunk :initarg :audio-chunk :initform
+                         common-lisp:nil :type
+                         (common-lisp:or audio-chunk common-lisp:null)
+                         :accessor struct-shape-audio-event-audio-chunk :shape
+                         "AudioChunk" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audio-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audio-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'audio-event 'make-audio-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input audio-event))
@@ -106,13 +128,25 @@
                         ((aws-sdk/generator/shape::input audio-event))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (audio-stream (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audio-stream-"))
-   (audio-event common-lisp:nil :type
-    (common-lisp:or audio-event common-lisp:null))
-   (configuration-event common-lisp:nil :type
-    (common-lisp:or configuration-event common-lisp:null)))
+ (common-lisp:defclass audio-stream common-lisp:nil
+                       ((audio-event :initarg :audio-event :initform
+                         common-lisp:nil :type
+                         (common-lisp:or audio-event common-lisp:null)
+                         :accessor struct-shape-audio-stream-audio-event :shape
+                         "AudioEvent" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (configuration-event :initarg :configuration-event
+                         :initform common-lisp:nil :type
+                         (common-lisp:or configuration-event common-lisp:null)
+                         :accessor
+                         struct-shape-audio-stream-configuration-event :shape
+                         "ConfigurationEvent" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audio-stream
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audio-stream
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'audio-stream 'make-audio-stream))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input audio-stream))
@@ -146,18 +180,45 @@
   (common-lisp:list 'bad-request-exception 'bad-request-exception-message)))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (call-analytics-entity (:copier common-lisp:nil)
-      (:conc-name "struct-shape-call-analytics-entity-"))
-   (begin-offset-millis common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (end-offset-millis common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (category common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (type common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (content common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (confidence common-lisp:nil :type
-    (common-lisp:or confidence common-lisp:null)))
+ (common-lisp:defclass call-analytics-entity common-lisp:nil
+                       ((begin-offset-millis :initarg :begin-offset-millis
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-call-analytics-entity-begin-offset-millis
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-offset-millis :initarg :end-offset-millis
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-call-analytics-entity-end-offset-millis
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (category :initarg :category :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-call-analytics-entity-category
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-call-analytics-entity-type :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-call-analytics-entity-content
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (confidence :initarg :confidence :initform
+                         common-lisp:nil :type
+                         (common-lisp:or confidence common-lisp:null) :accessor
+                         struct-shape-call-analytics-entity-confidence :shape
+                         "Confidence" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-call-analytics-entity
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'call-analytics-entity
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'call-analytics-entity 'make-call-analytics-entity))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -226,20 +287,52 @@
                            (trivial-types:proper-list call-analytics-entity))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (call-analytics-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-call-analytics-item-"))
-   (begin-offset-millis common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (end-offset-millis common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (type common-lisp:nil :type (common-lisp:or item-type common-lisp:null))
-   (content common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (confidence common-lisp:nil :type
-    (common-lisp:or confidence common-lisp:null))
-   (vocabulary-filter-match common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (stable common-lisp:nil :type (common-lisp:or stable common-lisp:null)))
+ (common-lisp:defclass call-analytics-item common-lisp:nil
+                       ((begin-offset-millis :initarg :begin-offset-millis
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-call-analytics-item-begin-offset-millis
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-offset-millis :initarg :end-offset-millis
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-call-analytics-item-end-offset-millis
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or item-type common-lisp:null) :accessor
+                         struct-shape-call-analytics-item-type :shape
+                         "ItemType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-call-analytics-item-content
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (confidence :initarg :confidence :initform
+                         common-lisp:nil :type
+                         (common-lisp:or confidence common-lisp:null) :accessor
+                         struct-shape-call-analytics-item-confidence :shape
+                         "Confidence" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vocabulary-filter-match :initarg
+                         :vocabulary-filter-match :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-call-analytics-item-vocabulary-filter-match
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stable :initarg :stable :initform common-lisp:nil
+                         :type (common-lisp:or stable common-lisp:null)
+                         :accessor struct-shape-call-analytics-item-stable
+                         :shape "Stable" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-call-analytics-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'call-analytics-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'call-analytics-item 'make-call-analytics-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -311,23 +404,69 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype call-analytics-language-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (call-analytics-transcript-result-stream (:copier common-lisp:nil)
-      (:conc-name "struct-shape-call-analytics-transcript-result-stream-"))
-   (utterance-event common-lisp:nil :type
-    (common-lisp:or utterance-event common-lisp:null))
-   (category-event common-lisp:nil :type
-    (common-lisp:or category-event common-lisp:null))
-   (bad-request-exception common-lisp:nil :type
-    (common-lisp:or bad-request-exception common-lisp:null))
-   (limit-exceeded-exception common-lisp:nil :type
-    (common-lisp:or limit-exceeded-exception common-lisp:null))
-   (internal-failure-exception common-lisp:nil :type
-    (common-lisp:or internal-failure-exception common-lisp:null))
-   (conflict-exception common-lisp:nil :type
-    (common-lisp:or conflict-exception common-lisp:null))
-   (service-unavailable-exception common-lisp:nil :type
-    (common-lisp:or service-unavailable-exception common-lisp:null)))
+ (common-lisp:defclass call-analytics-transcript-result-stream common-lisp:nil
+                       ((utterance-event :initarg :utterance-event :initform
+                         common-lisp:nil :type
+                         (common-lisp:or utterance-event common-lisp:null)
+                         :accessor
+                         struct-shape-call-analytics-transcript-result-stream-utterance-event
+                         :shape "UtteranceEvent" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (category-event :initarg :category-event :initform
+                         common-lisp:nil :type
+                         (common-lisp:or category-event common-lisp:null)
+                         :accessor
+                         struct-shape-call-analytics-transcript-result-stream-category-event
+                         :shape "CategoryEvent" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (bad-request-exception :initarg :bad-request-exception
+                         :initform common-lisp:nil :type
+                         (common-lisp:or bad-request-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-call-analytics-transcript-result-stream-bad-request-exception
+                         :shape "BadRequestException" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (limit-exceeded-exception :initarg
+                         :limit-exceeded-exception :initform common-lisp:nil
+                         :type
+                         (common-lisp:or limit-exceeded-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-call-analytics-transcript-result-stream-limit-exceeded-exception
+                         :shape "LimitExceededException" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (internal-failure-exception :initarg
+                         :internal-failure-exception :initform common-lisp:nil
+                         :type
+                         (common-lisp:or internal-failure-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-call-analytics-transcript-result-stream-internal-failure-exception
+                         :shape "InternalFailureException" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (conflict-exception :initarg :conflict-exception
+                         :initform common-lisp:nil :type
+                         (common-lisp:or conflict-exception common-lisp:null)
+                         :accessor
+                         struct-shape-call-analytics-transcript-result-stream-conflict-exception
+                         :shape "ConflictException" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-unavailable-exception :initarg
+                         :service-unavailable-exception :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-unavailable-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-call-analytics-transcript-result-stream-service-unavailable-exception
+                         :shape "ServiceUnavailableException" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-call-analytics-transcript-result-stream
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'call-analytics-transcript-result-stream
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'call-analytics-transcript-result-stream
                     'make-call-analytics-transcript-result-stream))
@@ -400,13 +539,26 @@
                           call-analytics-transcript-result-stream))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (category-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-category-event-"))
-   (matched-categories common-lisp:nil :type
-    (common-lisp:or string-list common-lisp:null))
-   (matched-details common-lisp:nil :type
-    (common-lisp:or matched-category-details common-lisp:null)))
+ (common-lisp:defclass category-event common-lisp:nil
+                       ((matched-categories :initarg :matched-categories
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string-list common-lisp:null)
+                         :accessor
+                         struct-shape-category-event-matched-categories :shape
+                         "StringList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (matched-details :initarg :matched-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or matched-category-details
+                                         common-lisp:null)
+                         :accessor struct-shape-category-event-matched-details
+                         :shape "MatchedCategoryDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-category-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'category-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'category-event 'make-category-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input category-event))
@@ -432,13 +584,26 @@
                         ((aws-sdk/generator/shape::input category-event))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-channel-definition-"))
-   (channel-id (common-lisp:error ":channel-id is required") :type
-    (common-lisp:or channel-id common-lisp:null))
-   (participant-role (common-lisp:error ":participant-role is required") :type
-    (common-lisp:or participant-role common-lisp:null)))
+ (common-lisp:defclass channel-definition common-lisp:nil
+                       ((channel-id :initarg :channel-id :initform
+                         (common-lisp:error ":channel-id is required") :type
+                         (common-lisp:or channel-id common-lisp:null) :accessor
+                         struct-shape-channel-definition-channel-id :shape
+                         "ChannelId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (participant-role :initarg :participant-role :initform
+                         (common-lisp:error ":participant-role is required")
+                         :type
+                         (common-lisp:or participant-role common-lisp:null)
+                         :accessor
+                         struct-shape-channel-definition-participant-role
+                         :shape "ParticipantRole" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'channel-definition 'make-channel-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -474,11 +639,22 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype channel-id () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (character-offsets (:copier common-lisp:nil)
-      (:conc-name "struct-shape-character-offsets-"))
-   (begin common-lisp:nil :type (common-lisp:or integer common-lisp:null))
-   (end common-lisp:nil :type (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass character-offsets common-lisp:nil
+                       ((begin :initarg :begin :initform common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-character-offsets-begin :shape "Integer"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end :initarg :end :initform common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-character-offsets-end :shape "Integer"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-character-offsets
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'character-offsets
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'character-offsets 'make-character-offsets))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -506,13 +682,28 @@
    common-lisp:nil))
 (common-lisp:deftype confidence () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (configuration-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configuration-event-"))
-   (channel-definitions common-lisp:nil :type
-    (common-lisp:or channel-definitions common-lisp:null))
-   (post-call-analytics-settings common-lisp:nil :type
-    (common-lisp:or post-call-analytics-settings common-lisp:null)))
+ (common-lisp:defclass configuration-event common-lisp:nil
+                       ((channel-definitions :initarg :channel-definitions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or channel-definitions common-lisp:null)
+                         :accessor
+                         struct-shape-configuration-event-channel-definitions
+                         :shape "ChannelDefinitions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (post-call-analytics-settings :initarg
+                         :post-call-analytics-settings :initform
+                         common-lisp:nil :type
+                         (common-lisp:or post-call-analytics-settings
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configuration-event-post-call-analytics-settings
+                         :shape "PostCallAnalyticsSettings" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configuration-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'configuration-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configuration-event 'make-configuration-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -551,15 +742,43 @@
 (common-lisp:deftype content-redaction-type () 'common-lisp:string)
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity (:copier common-lisp:nil) (:conc-name "struct-shape-entity-"))
-   (start-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (category common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (type common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (content common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (confidence common-lisp:nil :type
-    (common-lisp:or confidence common-lisp:null)))
+ (common-lisp:defclass entity common-lisp:nil
+                       ((start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-entity-start-time :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor struct-shape-entity-end-time :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (category :initarg :category :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-entity-category :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-entity-type :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-entity-content :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (confidence :initarg :confidence :initform
+                         common-lisp:nil :type
+                         (common-lisp:or confidence common-lisp:null) :accessor
+                         struct-shape-entity-confidence :shape "Confidence"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-entity
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'entity
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'entity 'make-entity))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input entity))
@@ -629,11 +848,19 @@
   (common-lisp:list 'internal-failure-exception
                     'internal-failure-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (issue-detected (:copier common-lisp:nil)
-      (:conc-name "struct-shape-issue-detected-"))
-   (character-offsets common-lisp:nil :type
-    (common-lisp:or character-offsets common-lisp:null)))
+ (common-lisp:defclass issue-detected common-lisp:nil
+                       ((character-offsets :initarg :character-offsets
+                         :initform common-lisp:nil :type
+                         (common-lisp:or character-offsets common-lisp:null)
+                         :accessor
+                         struct-shape-issue-detected-character-offsets :shape
+                         "CharacterOffsets" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-issue-detected
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'issue-detected
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'issue-detected 'make-issue-detected))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input issue-detected))
@@ -660,18 +887,52 @@
                            (trivial-types:proper-list issue-detected))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (item (:copier common-lisp:nil) (:conc-name "struct-shape-item-"))
-   (start-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (type common-lisp:nil :type (common-lisp:or item-type common-lisp:null))
-   (content common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (vocabulary-filter-match common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (speaker common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (confidence common-lisp:nil :type
-    (common-lisp:or confidence common-lisp:null))
-   (stable common-lisp:nil :type (common-lisp:or stable common-lisp:null)))
+ (common-lisp:defclass item common-lisp:nil
+                       ((start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-item-start-time :shape "Double" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor struct-shape-item-end-time :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or item-type common-lisp:null) :accessor
+                         struct-shape-item-type :shape "ItemType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-item-content :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vocabulary-filter-match :initarg
+                         :vocabulary-filter-match :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor struct-shape-item-vocabulary-filter-match
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (speaker :initarg :speaker :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-item-speaker :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (confidence :initarg :confidence :initform
+                         common-lisp:nil :type
+                         (common-lisp:or confidence common-lisp:null) :accessor
+                         struct-shape-item-confidence :shape "Confidence"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (stable :initarg :stable :initform common-lisp:nil
+                         :type (common-lisp:or stable common-lisp:null)
+                         :accessor struct-shape-item-stable :shape "Stable"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-item (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'item 'make-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input item))
@@ -758,12 +1019,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype language-options () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (language-with-score (:copier common-lisp:nil)
-      (:conc-name "struct-shape-language-with-score-"))
-   (language-code common-lisp:nil :type
-    (common-lisp:or language-code common-lisp:null))
-   (score common-lisp:nil :type (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass language-with-score common-lisp:nil
+                       ((language-code :initarg :language-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or language-code common-lisp:null)
+                         :accessor
+                         struct-shape-language-with-score-language-code :shape
+                         "LanguageCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (score :initarg :score :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-language-with-score-score :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-language-with-score
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'language-with-score
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'language-with-score 'make-language-with-score))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -809,14 +1082,29 @@
 (common-lisp:deftype media-encoding () 'common-lisp:string)
 (common-lisp:deftype media-sample-rate-hertz () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (medical-alternative (:copier common-lisp:nil)
-      (:conc-name "struct-shape-medical-alternative-"))
-   (transcript common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (items common-lisp:nil :type
-    (common-lisp:or medical-item-list common-lisp:null))
-   (entities common-lisp:nil :type
-    (common-lisp:or medical-entity-list common-lisp:null)))
+ (common-lisp:defclass medical-alternative common-lisp:nil
+                       ((transcript :initarg :transcript :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-medical-alternative-transcript :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (items :initarg :items :initform common-lisp:nil :type
+                         (common-lisp:or medical-item-list common-lisp:null)
+                         :accessor struct-shape-medical-alternative-items
+                         :shape "MedicalItemList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (entities :initarg :entities :initform common-lisp:nil
+                         :type
+                         (common-lisp:or medical-entity-list common-lisp:null)
+                         :accessor struct-shape-medical-alternative-entities
+                         :shape "MedicalEntityList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-medical-alternative
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'medical-alternative
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'medical-alternative 'make-medical-alternative))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -859,15 +1147,39 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype medical-content-identification-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (medical-entity (:copier common-lisp:nil)
-      (:conc-name "struct-shape-medical-entity-"))
-   (start-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (category common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (content common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (confidence common-lisp:nil :type
-    (common-lisp:or confidence common-lisp:null)))
+ (common-lisp:defclass medical-entity common-lisp:nil
+                       ((start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-medical-entity-start-time :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor struct-shape-medical-entity-end-time :shape
+                         "Double" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (category :initarg :category :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-medical-entity-category :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-medical-entity-content :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (confidence :initarg :confidence :initform
+                         common-lisp:nil :type
+                         (common-lisp:or confidence common-lisp:null) :accessor
+                         struct-shape-medical-entity-confidence :shape
+                         "Confidence" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-medical-entity
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'medical-entity
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'medical-entity 'make-medical-entity))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input medical-entity))
@@ -922,16 +1234,44 @@
                            (trivial-types:proper-list medical-entity))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (medical-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-medical-item-"))
-   (start-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (type common-lisp:nil :type (common-lisp:or item-type common-lisp:null))
-   (content common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (confidence common-lisp:nil :type
-    (common-lisp:or confidence common-lisp:null))
-   (speaker common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass medical-item common-lisp:nil
+                       ((start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-medical-item-start-time :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor struct-shape-medical-item-end-time :shape
+                         "Double" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or item-type common-lisp:null) :accessor
+                         struct-shape-medical-item-type :shape "ItemType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content :initarg :content :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-medical-item-content :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (confidence :initarg :confidence :initform
+                         common-lisp:nil :type
+                         (common-lisp:or confidence common-lisp:null) :accessor
+                         struct-shape-medical-item-confidence :shape
+                         "Confidence" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (speaker :initarg :speaker :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-medical-item-speaker :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-medical-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'medical-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'medical-item 'make-medical-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input medical-item))
@@ -993,16 +1333,48 @@
                            (trivial-types:proper-list medical-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (medical-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-medical-result-"))
-   (result-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (start-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (is-partial common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (alternatives common-lisp:nil :type
-    (common-lisp:or medical-alternative-list common-lisp:null))
-   (channel-id common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass medical-result common-lisp:nil
+                       ((result-id :initarg :result-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-medical-result-result-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-medical-result-start-time :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor struct-shape-medical-result-end-time :shape
+                         "Double" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (is-partial :initarg :is-partial :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-medical-result-is-partial :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (alternatives :initarg :alternatives :initform
+                         common-lisp:nil :type
+                         (common-lisp:or medical-alternative-list
+                                         common-lisp:null)
+                         :accessor struct-shape-medical-result-alternatives
+                         :shape "MedicalAlternativeList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (channel-id :initarg :channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-medical-result-channel-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-medical-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'medical-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'medical-result 'make-medical-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input medical-result))
@@ -1064,11 +1436,18 @@
                            (trivial-types:proper-list medical-result))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (medical-transcript (:copier common-lisp:nil)
-      (:conc-name "struct-shape-medical-transcript-"))
-   (results common-lisp:nil :type
-    (common-lisp:or medical-result-list common-lisp:null)))
+ (common-lisp:defclass medical-transcript common-lisp:nil
+                       ((results :initarg :results :initform common-lisp:nil
+                         :type
+                         (common-lisp:or medical-result-list common-lisp:null)
+                         :accessor struct-shape-medical-transcript-results
+                         :shape "MedicalResultList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-medical-transcript
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'medical-transcript
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'medical-transcript 'make-medical-transcript))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1088,11 +1467,19 @@
                         ((aws-sdk/generator/shape::input medical-transcript))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (medical-transcript-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-medical-transcript-event-"))
-   (transcript common-lisp:nil :type
-    (common-lisp:or medical-transcript common-lisp:null)))
+ (common-lisp:defclass medical-transcript-event common-lisp:nil
+                       ((transcript :initarg :transcript :initform
+                         common-lisp:nil :type
+                         (common-lisp:or medical-transcript common-lisp:null)
+                         :accessor
+                         struct-shape-medical-transcript-event-transcript
+                         :shape "MedicalTranscript" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-medical-transcript-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'medical-transcript-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'medical-transcript-event 'make-medical-transcript-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1118,21 +1505,63 @@
                           medical-transcript-event))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (medical-transcript-result-stream (:copier common-lisp:nil)
-      (:conc-name "struct-shape-medical-transcript-result-stream-"))
-   (transcript-event common-lisp:nil :type
-    (common-lisp:or medical-transcript-event common-lisp:null))
-   (bad-request-exception common-lisp:nil :type
-    (common-lisp:or bad-request-exception common-lisp:null))
-   (limit-exceeded-exception common-lisp:nil :type
-    (common-lisp:or limit-exceeded-exception common-lisp:null))
-   (internal-failure-exception common-lisp:nil :type
-    (common-lisp:or internal-failure-exception common-lisp:null))
-   (conflict-exception common-lisp:nil :type
-    (common-lisp:or conflict-exception common-lisp:null))
-   (service-unavailable-exception common-lisp:nil :type
-    (common-lisp:or service-unavailable-exception common-lisp:null)))
+ (common-lisp:defclass medical-transcript-result-stream common-lisp:nil
+                       ((transcript-event :initarg :transcript-event :initform
+                         common-lisp:nil :type
+                         (common-lisp:or medical-transcript-event
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-medical-transcript-result-stream-transcript-event
+                         :shape "MedicalTranscriptEvent" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (bad-request-exception :initarg :bad-request-exception
+                         :initform common-lisp:nil :type
+                         (common-lisp:or bad-request-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-medical-transcript-result-stream-bad-request-exception
+                         :shape "BadRequestException" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (limit-exceeded-exception :initarg
+                         :limit-exceeded-exception :initform common-lisp:nil
+                         :type
+                         (common-lisp:or limit-exceeded-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-medical-transcript-result-stream-limit-exceeded-exception
+                         :shape "LimitExceededException" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (internal-failure-exception :initarg
+                         :internal-failure-exception :initform common-lisp:nil
+                         :type
+                         (common-lisp:or internal-failure-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-medical-transcript-result-stream-internal-failure-exception
+                         :shape "InternalFailureException" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (conflict-exception :initarg :conflict-exception
+                         :initform common-lisp:nil :type
+                         (common-lisp:or conflict-exception common-lisp:null)
+                         :accessor
+                         struct-shape-medical-transcript-result-stream-conflict-exception
+                         :shape "ConflictException" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-unavailable-exception :initarg
+                         :service-unavailable-exception :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-unavailable-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-medical-transcript-result-stream-service-unavailable-exception
+                         :shape "ServiceUnavailableException" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-medical-transcript-result-stream
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'medical-transcript-result-stream
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'medical-transcript-result-stream
                     'make-medical-transcript-result-stream))
@@ -1203,11 +1632,19 @@
 (common-lisp:deftype participant-role () 'common-lisp:string)
 (common-lisp:deftype pii-entity-types () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (points-of-interest (:copier common-lisp:nil)
-      (:conc-name "struct-shape-points-of-interest-"))
-   (timestamp-ranges common-lisp:nil :type
-    (common-lisp:or timestamp-ranges common-lisp:null)))
+ (common-lisp:defclass points-of-interest common-lisp:nil
+                       ((timestamp-ranges :initarg :timestamp-ranges :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-ranges common-lisp:null)
+                         :accessor
+                         struct-shape-points-of-interest-timestamp-ranges
+                         :shape "TimestampRanges" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-points-of-interest
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'points-of-interest
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'points-of-interest 'make-points-of-interest))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1227,18 +1664,44 @@
                         ((aws-sdk/generator/shape::input points-of-interest))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (post-call-analytics-settings (:copier common-lisp:nil)
-      (:conc-name "struct-shape-post-call-analytics-settings-"))
-   (output-location (common-lisp:error ":output-location is required") :type
-    (common-lisp:or string common-lisp:null))
-   (data-access-role-arn
-    (common-lisp:error ":data-access-role-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (content-redaction-output common-lisp:nil :type
-    (common-lisp:or content-redaction-output common-lisp:null))
-   (output-encryption-kmskey-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass post-call-analytics-settings common-lisp:nil
+                       ((output-location :initarg :output-location :initform
+                         (common-lisp:error ":output-location is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-post-call-analytics-settings-output-location
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (data-access-role-arn :initarg :data-access-role-arn
+                         :initform
+                         (common-lisp:error
+                          ":data-access-role-arn is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-post-call-analytics-settings-data-access-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-redaction-output :initarg
+                         :content-redaction-output :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-redaction-output
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-post-call-analytics-settings-content-redaction-output
+                         :shape "ContentRedactionOutput" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (output-encryption-kmskey-id :initarg
+                         :output-encryption-kmskey-id :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-post-call-analytics-settings-output-encryption-kmskey-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-post-call-analytics-settings
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'post-call-analytics-settings
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'post-call-analytics-settings
                     'make-post-call-analytics-settings))
@@ -1290,19 +1753,61 @@
    common-lisp:nil))
 (common-lisp:deftype request-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (result (:copier common-lisp:nil) (:conc-name "struct-shape-result-"))
-   (result-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (start-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (is-partial common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (alternatives common-lisp:nil :type
-    (common-lisp:or alternative-list common-lisp:null))
-   (channel-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (language-code common-lisp:nil :type
-    (common-lisp:or language-code common-lisp:null))
-   (language-identification common-lisp:nil :type
-    (common-lisp:or language-identification common-lisp:null)))
+ (common-lisp:defclass result common-lisp:nil
+                       ((result-id :initarg :result-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-result-result-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-result-start-time :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor struct-shape-result-end-time :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (is-partial :initarg :is-partial :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-result-is-partial :shape "Boolean"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (alternatives :initarg :alternatives :initform
+                         common-lisp:nil :type
+                         (common-lisp:or alternative-list common-lisp:null)
+                         :accessor struct-shape-result-alternatives :shape
+                         "AlternativeList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-id :initarg :channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-result-channel-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (language-code :initarg :language-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or language-code common-lisp:null)
+                         :accessor struct-shape-result-language-code :shape
+                         "LanguageCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (language-identification :initarg
+                         :language-identification :initform common-lisp:nil
+                         :type
+                         (common-lisp:or language-identification
+                                         common-lisp:null)
+                         :accessor struct-shape-result-language-identification
+                         :shape "LanguageIdentification" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'result 'make-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input result))
@@ -1390,40 +1895,130 @@
 (common-lisp:deftype specialty () 'common-lisp:string)
 (common-lisp:deftype stable () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-call-analytics-stream-transcription-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-start-call-analytics-stream-transcription-request-"))
-   (language-code (common-lisp:error ":language-code is required") :type
-    (common-lisp:or call-analytics-language-code common-lisp:null))
-   (media-sample-rate-hertz
-    (common-lisp:error ":media-sample-rate-hertz is required") :type
-    (common-lisp:or media-sample-rate-hertz common-lisp:null))
-   (media-encoding (common-lisp:error ":media-encoding is required") :type
-    (common-lisp:or media-encoding common-lisp:null))
-   (vocabulary-name common-lisp:nil :type
-    (common-lisp:or vocabulary-name common-lisp:null))
-   (session-id common-lisp:nil :type
-    (common-lisp:or session-id common-lisp:null))
-   (audio-stream (common-lisp:error ":audio-stream is required") :type
-    (common-lisp:or audio-stream common-lisp:null))
-   (vocabulary-filter-name common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-name common-lisp:null))
-   (vocabulary-filter-method common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-method common-lisp:null))
-   (language-model-name common-lisp:nil :type
-    (common-lisp:or model-name common-lisp:null))
-   (enable-partial-results-stabilization common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (partial-results-stability common-lisp:nil :type
-    (common-lisp:or partial-results-stability common-lisp:null))
-   (content-identification-type common-lisp:nil :type
-    (common-lisp:or content-identification-type common-lisp:null))
-   (content-redaction-type common-lisp:nil :type
-    (common-lisp:or content-redaction-type common-lisp:null))
-   (pii-entity-types common-lisp:nil :type
-    (common-lisp:or pii-entity-types common-lisp:null)))
+ (common-lisp:defclass start-call-analytics-stream-transcription-request
+                       common-lisp:nil
+                       ((language-code :initarg :language-code :initform
+                         (common-lisp:error ":language-code is required") :type
+                         (common-lisp:or call-analytics-language-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-language-code
+                         :shape "CallAnalyticsLanguageCode" :location "header"
+                         :location-name "x-amzn-transcribe-language-code")
+                        (media-sample-rate-hertz :initarg
+                         :media-sample-rate-hertz :initform
+                         (common-lisp:error
+                          ":media-sample-rate-hertz is required")
+                         :type
+                         (common-lisp:or media-sample-rate-hertz
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-media-sample-rate-hertz
+                         :shape "MediaSampleRateHertz" :location "header"
+                         :location-name "x-amzn-transcribe-sample-rate")
+                        (media-encoding :initarg :media-encoding :initform
+                         (common-lisp:error ":media-encoding is required")
+                         :type (common-lisp:or media-encoding common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-media-encoding
+                         :shape "MediaEncoding" :location "header"
+                         :location-name "x-amzn-transcribe-media-encoding")
+                        (vocabulary-name :initarg :vocabulary-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vocabulary-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-vocabulary-name
+                         :shape "VocabularyName" :location "header"
+                         :location-name "x-amzn-transcribe-vocabulary-name")
+                        (session-id :initarg :session-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-id common-lisp:null) :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-session-id
+                         :shape "SessionId" :location "header" :location-name
+                         "x-amzn-transcribe-session-id")
+                        (audio-stream :initarg :audio-stream :initform
+                         (common-lisp:error ":audio-stream is required") :type
+                         (common-lisp:or audio-stream common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-audio-stream
+                         :shape "AudioStream" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vocabulary-filter-name :initarg
+                         :vocabulary-filter-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-vocabulary-filter-name
+                         :shape "VocabularyFilterName" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-name")
+                        (vocabulary-filter-method :initarg
+                         :vocabulary-filter-method :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-method
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-vocabulary-filter-method
+                         :shape "VocabularyFilterMethod" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-method")
+                        (language-model-name :initarg :language-model-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or model-name common-lisp:null) :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-language-model-name
+                         :shape "ModelName" :location "header" :location-name
+                         "x-amzn-transcribe-language-model-name")
+                        (enable-partial-results-stabilization :initarg
+                         :enable-partial-results-stabilization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-enable-partial-results-stabilization
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-enable-partial-results-stabilization")
+                        (partial-results-stability :initarg
+                         :partial-results-stability :initform common-lisp:nil
+                         :type
+                         (common-lisp:or partial-results-stability
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-partial-results-stability
+                         :shape "PartialResultsStability" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-partial-results-stability")
+                        (content-identification-type :initarg
+                         :content-identification-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-identification-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-content-identification-type
+                         :shape "ContentIdentificationType" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-content-identification-type")
+                        (content-redaction-type :initarg
+                         :content-redaction-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-redaction-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-content-redaction-type
+                         :shape "ContentRedactionType" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-content-redaction-type")
+                        (pii-entity-types :initarg :pii-entity-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pii-entity-types common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-request-pii-entity-types
+                         :shape "PiiEntityTypes" :location "header"
+                         :location-name "x-amzn-transcribe-pii-entity-types"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-call-analytics-stream-transcription-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-call-analytics-stream-transcription-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-call-analytics-stream-transcription-request
                     'make-start-call-analytics-stream-transcription-request))
@@ -1523,41 +2118,137 @@
                           start-call-analytics-stream-transcription-request))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'audio-stream)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-call-analytics-stream-transcription-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-start-call-analytics-stream-transcription-response-"))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null))
-   (language-code common-lisp:nil :type
-    (common-lisp:or call-analytics-language-code common-lisp:null))
-   (media-sample-rate-hertz common-lisp:nil :type
-    (common-lisp:or media-sample-rate-hertz common-lisp:null))
-   (media-encoding common-lisp:nil :type
-    (common-lisp:or media-encoding common-lisp:null))
-   (vocabulary-name common-lisp:nil :type
-    (common-lisp:or vocabulary-name common-lisp:null))
-   (session-id common-lisp:nil :type
-    (common-lisp:or session-id common-lisp:null))
-   (call-analytics-transcript-result-stream common-lisp:nil :type
-    (common-lisp:or call-analytics-transcript-result-stream common-lisp:null))
-   (vocabulary-filter-name common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-name common-lisp:null))
-   (vocabulary-filter-method common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-method common-lisp:null))
-   (language-model-name common-lisp:nil :type
-    (common-lisp:or model-name common-lisp:null))
-   (enable-partial-results-stabilization common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (partial-results-stability common-lisp:nil :type
-    (common-lisp:or partial-results-stability common-lisp:null))
-   (content-identification-type common-lisp:nil :type
-    (common-lisp:or content-identification-type common-lisp:null))
-   (content-redaction-type common-lisp:nil :type
-    (common-lisp:or content-redaction-type common-lisp:null))
-   (pii-entity-types common-lisp:nil :type
-    (common-lisp:or pii-entity-types common-lisp:null)))
+ (common-lisp:defclass start-call-analytics-stream-transcription-response
+                       common-lisp:nil
+                       ((request-id :initarg :request-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or request-id common-lisp:null) :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-request-id
+                         :shape "RequestId" :location "header" :location-name
+                         "x-amzn-request-id")
+                        (language-code :initarg :language-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or call-analytics-language-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-language-code
+                         :shape "CallAnalyticsLanguageCode" :location "header"
+                         :location-name "x-amzn-transcribe-language-code")
+                        (media-sample-rate-hertz :initarg
+                         :media-sample-rate-hertz :initform common-lisp:nil
+                         :type
+                         (common-lisp:or media-sample-rate-hertz
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-media-sample-rate-hertz
+                         :shape "MediaSampleRateHertz" :location "header"
+                         :location-name "x-amzn-transcribe-sample-rate")
+                        (media-encoding :initarg :media-encoding :initform
+                         common-lisp:nil :type
+                         (common-lisp:or media-encoding common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-media-encoding
+                         :shape "MediaEncoding" :location "header"
+                         :location-name "x-amzn-transcribe-media-encoding")
+                        (vocabulary-name :initarg :vocabulary-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vocabulary-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-vocabulary-name
+                         :shape "VocabularyName" :location "header"
+                         :location-name "x-amzn-transcribe-vocabulary-name")
+                        (session-id :initarg :session-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-id common-lisp:null) :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-session-id
+                         :shape "SessionId" :location "header" :location-name
+                         "x-amzn-transcribe-session-id")
+                        (call-analytics-transcript-result-stream :initarg
+                         :call-analytics-transcript-result-stream :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          call-analytics-transcript-result-stream
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-call-analytics-transcript-result-stream
+                         :shape "CallAnalyticsTranscriptResultStream" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (vocabulary-filter-name :initarg
+                         :vocabulary-filter-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-vocabulary-filter-name
+                         :shape "VocabularyFilterName" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-name")
+                        (vocabulary-filter-method :initarg
+                         :vocabulary-filter-method :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-method
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-vocabulary-filter-method
+                         :shape "VocabularyFilterMethod" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-method")
+                        (language-model-name :initarg :language-model-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or model-name common-lisp:null) :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-language-model-name
+                         :shape "ModelName" :location "header" :location-name
+                         "x-amzn-transcribe-language-model-name")
+                        (enable-partial-results-stabilization :initarg
+                         :enable-partial-results-stabilization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-enable-partial-results-stabilization
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-enable-partial-results-stabilization")
+                        (partial-results-stability :initarg
+                         :partial-results-stability :initform common-lisp:nil
+                         :type
+                         (common-lisp:or partial-results-stability
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-partial-results-stability
+                         :shape "PartialResultsStability" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-partial-results-stability")
+                        (content-identification-type :initarg
+                         :content-identification-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-identification-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-content-identification-type
+                         :shape "ContentIdentificationType" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-content-identification-type")
+                        (content-redaction-type :initarg
+                         :content-redaction-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-redaction-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-content-redaction-type
+                         :shape "ContentRedactionType" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-content-redaction-type")
+                        (pii-entity-types :initarg :pii-entity-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pii-entity-types common-lisp:null)
+                         :accessor
+                         struct-shape-start-call-analytics-stream-transcription-response-pii-entity-types
+                         :shape "PiiEntityTypes" :location "header"
+                         :location-name "x-amzn-transcribe-pii-entity-types"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-call-analytics-stream-transcription-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-call-analytics-stream-transcription-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-call-analytics-stream-transcription-response
                     'make-start-call-analytics-stream-transcription-response))
@@ -1663,34 +2354,101 @@
    (common-lisp:slot-value aws-sdk/generator/shape::input
                            'call-analytics-transcript-result-stream)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-medical-stream-transcription-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-medical-stream-transcription-request-"))
-   (language-code (common-lisp:error ":language-code is required") :type
-    (common-lisp:or language-code common-lisp:null))
-   (media-sample-rate-hertz
-    (common-lisp:error ":media-sample-rate-hertz is required") :type
-    (common-lisp:or media-sample-rate-hertz common-lisp:null))
-   (media-encoding (common-lisp:error ":media-encoding is required") :type
-    (common-lisp:or media-encoding common-lisp:null))
-   (vocabulary-name common-lisp:nil :type
-    (common-lisp:or vocabulary-name common-lisp:null))
-   (specialty (common-lisp:error ":specialty is required") :type
-    (common-lisp:or specialty common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or type common-lisp:null))
-   (show-speaker-label common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (session-id common-lisp:nil :type
-    (common-lisp:or session-id common-lisp:null))
-   (audio-stream (common-lisp:error ":audio-stream is required") :type
-    (common-lisp:or audio-stream common-lisp:null))
-   (enable-channel-identification common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (number-of-channels common-lisp:nil :type
-    (common-lisp:or number-of-channels common-lisp:null))
-   (content-identification-type common-lisp:nil :type
-    (common-lisp:or medical-content-identification-type common-lisp:null)))
+ (common-lisp:defclass start-medical-stream-transcription-request
+                       common-lisp:nil
+                       ((language-code :initarg :language-code :initform
+                         (common-lisp:error ":language-code is required") :type
+                         (common-lisp:or language-code common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-request-language-code
+                         :shape "LanguageCode" :location "header"
+                         :location-name "x-amzn-transcribe-language-code")
+                        (media-sample-rate-hertz :initarg
+                         :media-sample-rate-hertz :initform
+                         (common-lisp:error
+                          ":media-sample-rate-hertz is required")
+                         :type
+                         (common-lisp:or media-sample-rate-hertz
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-request-media-sample-rate-hertz
+                         :shape "MediaSampleRateHertz" :location "header"
+                         :location-name "x-amzn-transcribe-sample-rate")
+                        (media-encoding :initarg :media-encoding :initform
+                         (common-lisp:error ":media-encoding is required")
+                         :type (common-lisp:or media-encoding common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-request-media-encoding
+                         :shape "MediaEncoding" :location "header"
+                         :location-name "x-amzn-transcribe-media-encoding")
+                        (vocabulary-name :initarg :vocabulary-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vocabulary-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-request-vocabulary-name
+                         :shape "VocabularyName" :location "header"
+                         :location-name "x-amzn-transcribe-vocabulary-name")
+                        (specialty :initarg :specialty :initform
+                         (common-lisp:error ":specialty is required") :type
+                         (common-lisp:or specialty common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-request-specialty
+                         :shape "Specialty" :location "header" :location-name
+                         "x-amzn-transcribe-specialty")
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or type common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-request-type
+                         :shape "Type" :location "header" :location-name
+                         "x-amzn-transcribe-type")
+                        (show-speaker-label :initarg :show-speaker-label
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-request-show-speaker-label
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-show-speaker-label")
+                        (session-id :initarg :session-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-id common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-request-session-id
+                         :shape "SessionId" :location "header" :location-name
+                         "x-amzn-transcribe-session-id")
+                        (audio-stream :initarg :audio-stream :initform
+                         (common-lisp:error ":audio-stream is required") :type
+                         (common-lisp:or audio-stream common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-request-audio-stream
+                         :shape "AudioStream" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (enable-channel-identification :initarg
+                         :enable-channel-identification :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-request-enable-channel-identification
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-enable-channel-identification")
+                        (number-of-channels :initarg :number-of-channels
+                         :initform common-lisp:nil :type
+                         (common-lisp:or number-of-channels common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-request-number-of-channels
+                         :shape "NumberOfChannels" :location "header"
+                         :location-name "x-amzn-transcribe-number-of-channels")
+                        (content-identification-type :initarg
+                         :content-identification-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or medical-content-identification-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-request-content-identification-type
+                         :shape "MedicalContentIdentificationType" :location
+                         "header" :location-name
+                         "x-amzn-transcribe-content-identification-type"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-medical-stream-transcription-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-medical-stream-transcription-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-medical-stream-transcription-request
                     'make-start-medical-stream-transcription-request))
@@ -1775,34 +2533,106 @@
                           start-medical-stream-transcription-request))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'audio-stream)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-medical-stream-transcription-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-medical-stream-transcription-response-"))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null))
-   (language-code common-lisp:nil :type
-    (common-lisp:or language-code common-lisp:null))
-   (media-sample-rate-hertz common-lisp:nil :type
-    (common-lisp:or media-sample-rate-hertz common-lisp:null))
-   (media-encoding common-lisp:nil :type
-    (common-lisp:or media-encoding common-lisp:null))
-   (vocabulary-name common-lisp:nil :type
-    (common-lisp:or vocabulary-name common-lisp:null))
-   (specialty common-lisp:nil :type
-    (common-lisp:or specialty common-lisp:null))
-   (type common-lisp:nil :type (common-lisp:or type common-lisp:null))
-   (show-speaker-label common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (session-id common-lisp:nil :type
-    (common-lisp:or session-id common-lisp:null))
-   (transcript-result-stream common-lisp:nil :type
-    (common-lisp:or medical-transcript-result-stream common-lisp:null))
-   (enable-channel-identification common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (number-of-channels common-lisp:nil :type
-    (common-lisp:or number-of-channels common-lisp:null))
-   (content-identification-type common-lisp:nil :type
-    (common-lisp:or medical-content-identification-type common-lisp:null)))
+ (common-lisp:defclass start-medical-stream-transcription-response
+                       common-lisp:nil
+                       ((request-id :initarg :request-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or request-id common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-response-request-id
+                         :shape "RequestId" :location "header" :location-name
+                         "x-amzn-request-id")
+                        (language-code :initarg :language-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or language-code common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-response-language-code
+                         :shape "LanguageCode" :location "header"
+                         :location-name "x-amzn-transcribe-language-code")
+                        (media-sample-rate-hertz :initarg
+                         :media-sample-rate-hertz :initform common-lisp:nil
+                         :type
+                         (common-lisp:or media-sample-rate-hertz
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-response-media-sample-rate-hertz
+                         :shape "MediaSampleRateHertz" :location "header"
+                         :location-name "x-amzn-transcribe-sample-rate")
+                        (media-encoding :initarg :media-encoding :initform
+                         common-lisp:nil :type
+                         (common-lisp:or media-encoding common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-response-media-encoding
+                         :shape "MediaEncoding" :location "header"
+                         :location-name "x-amzn-transcribe-media-encoding")
+                        (vocabulary-name :initarg :vocabulary-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vocabulary-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-response-vocabulary-name
+                         :shape "VocabularyName" :location "header"
+                         :location-name "x-amzn-transcribe-vocabulary-name")
+                        (specialty :initarg :specialty :initform
+                         common-lisp:nil :type
+                         (common-lisp:or specialty common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-response-specialty
+                         :shape "Specialty" :location "header" :location-name
+                         "x-amzn-transcribe-specialty")
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or type common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-response-type
+                         :shape "Type" :location "header" :location-name
+                         "x-amzn-transcribe-type")
+                        (show-speaker-label :initarg :show-speaker-label
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-response-show-speaker-label
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-show-speaker-label")
+                        (session-id :initarg :session-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-id common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-response-session-id
+                         :shape "SessionId" :location "header" :location-name
+                         "x-amzn-transcribe-session-id")
+                        (transcript-result-stream :initarg
+                         :transcript-result-stream :initform common-lisp:nil
+                         :type
+                         (common-lisp:or medical-transcript-result-stream
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-response-transcript-result-stream
+                         :shape "MedicalTranscriptResultStream" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (enable-channel-identification :initarg
+                         :enable-channel-identification :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-medical-stream-transcription-response-enable-channel-identification
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-enable-channel-identification")
+                        (number-of-channels :initarg :number-of-channels
+                         :initform common-lisp:nil :type
+                         (common-lisp:or number-of-channels common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-response-number-of-channels
+                         :shape "NumberOfChannels" :location "header"
+                         :location-name "x-amzn-transcribe-number-of-channels")
+                        (content-identification-type :initarg
+                         :content-identification-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or medical-content-identification-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-medical-stream-transcription-response-content-identification-type
+                         :shape "MedicalContentIdentificationType" :location
+                         "header" :location-name
+                         "x-amzn-transcribe-content-identification-type"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-medical-stream-transcription-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-medical-stream-transcription-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-medical-stream-transcription-response
                     'make-start-medical-stream-transcription-response))
@@ -1893,56 +2723,192 @@
    (common-lisp:slot-value aws-sdk/generator/shape::input
                            'transcript-result-stream)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-stream-transcription-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-stream-transcription-request-"))
-   (language-code common-lisp:nil :type
-    (common-lisp:or language-code common-lisp:null))
-   (media-sample-rate-hertz
-    (common-lisp:error ":media-sample-rate-hertz is required") :type
-    (common-lisp:or media-sample-rate-hertz common-lisp:null))
-   (media-encoding (common-lisp:error ":media-encoding is required") :type
-    (common-lisp:or media-encoding common-lisp:null))
-   (vocabulary-name common-lisp:nil :type
-    (common-lisp:or vocabulary-name common-lisp:null))
-   (session-id common-lisp:nil :type
-    (common-lisp:or session-id common-lisp:null))
-   (audio-stream (common-lisp:error ":audio-stream is required") :type
-    (common-lisp:or audio-stream common-lisp:null))
-   (vocabulary-filter-name common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-name common-lisp:null))
-   (vocabulary-filter-method common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-method common-lisp:null))
-   (show-speaker-label common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (enable-channel-identification common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (number-of-channels common-lisp:nil :type
-    (common-lisp:or number-of-channels common-lisp:null))
-   (enable-partial-results-stabilization common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (partial-results-stability common-lisp:nil :type
-    (common-lisp:or partial-results-stability common-lisp:null))
-   (content-identification-type common-lisp:nil :type
-    (common-lisp:or content-identification-type common-lisp:null))
-   (content-redaction-type common-lisp:nil :type
-    (common-lisp:or content-redaction-type common-lisp:null))
-   (pii-entity-types common-lisp:nil :type
-    (common-lisp:or pii-entity-types common-lisp:null))
-   (language-model-name common-lisp:nil :type
-    (common-lisp:or model-name common-lisp:null))
-   (identify-language common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (language-options common-lisp:nil :type
-    (common-lisp:or language-options common-lisp:null))
-   (preferred-language common-lisp:nil :type
-    (common-lisp:or language-code common-lisp:null))
-   (identify-multiple-languages common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (vocabulary-names common-lisp:nil :type
-    (common-lisp:or vocabulary-names common-lisp:null))
-   (vocabulary-filter-names common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-names common-lisp:null)))
+ (common-lisp:defclass start-stream-transcription-request common-lisp:nil
+                       ((language-code :initarg :language-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or language-code common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-language-code
+                         :shape "LanguageCode" :location "header"
+                         :location-name "x-amzn-transcribe-language-code")
+                        (media-sample-rate-hertz :initarg
+                         :media-sample-rate-hertz :initform
+                         (common-lisp:error
+                          ":media-sample-rate-hertz is required")
+                         :type
+                         (common-lisp:or media-sample-rate-hertz
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-media-sample-rate-hertz
+                         :shape "MediaSampleRateHertz" :location "header"
+                         :location-name "x-amzn-transcribe-sample-rate")
+                        (media-encoding :initarg :media-encoding :initform
+                         (common-lisp:error ":media-encoding is required")
+                         :type (common-lisp:or media-encoding common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-media-encoding
+                         :shape "MediaEncoding" :location "header"
+                         :location-name "x-amzn-transcribe-media-encoding")
+                        (vocabulary-name :initarg :vocabulary-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vocabulary-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-vocabulary-name
+                         :shape "VocabularyName" :location "header"
+                         :location-name "x-amzn-transcribe-vocabulary-name")
+                        (session-id :initarg :session-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-id common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-request-session-id
+                         :shape "SessionId" :location "header" :location-name
+                         "x-amzn-transcribe-session-id")
+                        (audio-stream :initarg :audio-stream :initform
+                         (common-lisp:error ":audio-stream is required") :type
+                         (common-lisp:or audio-stream common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-audio-stream
+                         :shape "AudioStream" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vocabulary-filter-name :initarg
+                         :vocabulary-filter-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-vocabulary-filter-name
+                         :shape "VocabularyFilterName" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-name")
+                        (vocabulary-filter-method :initarg
+                         :vocabulary-filter-method :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-method
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-vocabulary-filter-method
+                         :shape "VocabularyFilterMethod" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-method")
+                        (show-speaker-label :initarg :show-speaker-label
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-request-show-speaker-label
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-show-speaker-label")
+                        (enable-channel-identification :initarg
+                         :enable-channel-identification :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-request-enable-channel-identification
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-enable-channel-identification")
+                        (number-of-channels :initarg :number-of-channels
+                         :initform common-lisp:nil :type
+                         (common-lisp:or number-of-channels common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-number-of-channels
+                         :shape "NumberOfChannels" :location "header"
+                         :location-name "x-amzn-transcribe-number-of-channels")
+                        (enable-partial-results-stabilization :initarg
+                         :enable-partial-results-stabilization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-request-enable-partial-results-stabilization
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-enable-partial-results-stabilization")
+                        (partial-results-stability :initarg
+                         :partial-results-stability :initform common-lisp:nil
+                         :type
+                         (common-lisp:or partial-results-stability
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-partial-results-stability
+                         :shape "PartialResultsStability" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-partial-results-stability")
+                        (content-identification-type :initarg
+                         :content-identification-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-identification-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-content-identification-type
+                         :shape "ContentIdentificationType" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-content-identification-type")
+                        (content-redaction-type :initarg
+                         :content-redaction-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-redaction-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-content-redaction-type
+                         :shape "ContentRedactionType" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-content-redaction-type")
+                        (pii-entity-types :initarg :pii-entity-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pii-entity-types common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-pii-entity-types
+                         :shape "PiiEntityTypes" :location "header"
+                         :location-name "x-amzn-transcribe-pii-entity-types")
+                        (language-model-name :initarg :language-model-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or model-name common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-request-language-model-name
+                         :shape "ModelName" :location "header" :location-name
+                         "x-amzn-transcribe-language-model-name")
+                        (identify-language :initarg :identify-language
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-request-identify-language
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-identify-language")
+                        (language-options :initarg :language-options :initform
+                         common-lisp:nil :type
+                         (common-lisp:or language-options common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-language-options
+                         :shape "LanguageOptions" :location "header"
+                         :location-name "x-amzn-transcribe-language-options")
+                        (preferred-language :initarg :preferred-language
+                         :initform common-lisp:nil :type
+                         (common-lisp:or language-code common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-preferred-language
+                         :shape "LanguageCode" :location "header"
+                         :location-name "x-amzn-transcribe-preferred-language")
+                        (identify-multiple-languages :initarg
+                         :identify-multiple-languages :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-identify-multiple-languages
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-identify-multiple-languages")
+                        (vocabulary-names :initarg :vocabulary-names :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vocabulary-names common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-vocabulary-names
+                         :shape "VocabularyNames" :location "header"
+                         :location-name "x-amzn-transcribe-vocabulary-names")
+                        (vocabulary-filter-names :initarg
+                         :vocabulary-filter-names :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-names
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-request-vocabulary-filter-names
+                         :shape "VocabularyFilterNames" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-names"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-stream-transcription-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-stream-transcription-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-stream-transcription-request
                     'make-start-stream-transcription-request))
@@ -2090,57 +3056,198 @@
                           start-stream-transcription-request))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'audio-stream)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-stream-transcription-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-stream-transcription-response-"))
-   (request-id common-lisp:nil :type
-    (common-lisp:or request-id common-lisp:null))
-   (language-code common-lisp:nil :type
-    (common-lisp:or language-code common-lisp:null))
-   (media-sample-rate-hertz common-lisp:nil :type
-    (common-lisp:or media-sample-rate-hertz common-lisp:null))
-   (media-encoding common-lisp:nil :type
-    (common-lisp:or media-encoding common-lisp:null))
-   (vocabulary-name common-lisp:nil :type
-    (common-lisp:or vocabulary-name common-lisp:null))
-   (session-id common-lisp:nil :type
-    (common-lisp:or session-id common-lisp:null))
-   (transcript-result-stream common-lisp:nil :type
-    (common-lisp:or transcript-result-stream common-lisp:null))
-   (vocabulary-filter-name common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-name common-lisp:null))
-   (vocabulary-filter-method common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-method common-lisp:null))
-   (show-speaker-label common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (enable-channel-identification common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (number-of-channels common-lisp:nil :type
-    (common-lisp:or number-of-channels common-lisp:null))
-   (enable-partial-results-stabilization common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (partial-results-stability common-lisp:nil :type
-    (common-lisp:or partial-results-stability common-lisp:null))
-   (content-identification-type common-lisp:nil :type
-    (common-lisp:or content-identification-type common-lisp:null))
-   (content-redaction-type common-lisp:nil :type
-    (common-lisp:or content-redaction-type common-lisp:null))
-   (pii-entity-types common-lisp:nil :type
-    (common-lisp:or pii-entity-types common-lisp:null))
-   (language-model-name common-lisp:nil :type
-    (common-lisp:or model-name common-lisp:null))
-   (identify-language common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (language-options common-lisp:nil :type
-    (common-lisp:or language-options common-lisp:null))
-   (preferred-language common-lisp:nil :type
-    (common-lisp:or language-code common-lisp:null))
-   (identify-multiple-languages common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (vocabulary-names common-lisp:nil :type
-    (common-lisp:or vocabulary-names common-lisp:null))
-   (vocabulary-filter-names common-lisp:nil :type
-    (common-lisp:or vocabulary-filter-names common-lisp:null)))
+ (common-lisp:defclass start-stream-transcription-response common-lisp:nil
+                       ((request-id :initarg :request-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or request-id common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-response-request-id
+                         :shape "RequestId" :location "header" :location-name
+                         "x-amzn-request-id")
+                        (language-code :initarg :language-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or language-code common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-language-code
+                         :shape "LanguageCode" :location "header"
+                         :location-name "x-amzn-transcribe-language-code")
+                        (media-sample-rate-hertz :initarg
+                         :media-sample-rate-hertz :initform common-lisp:nil
+                         :type
+                         (common-lisp:or media-sample-rate-hertz
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-media-sample-rate-hertz
+                         :shape "MediaSampleRateHertz" :location "header"
+                         :location-name "x-amzn-transcribe-sample-rate")
+                        (media-encoding :initarg :media-encoding :initform
+                         common-lisp:nil :type
+                         (common-lisp:or media-encoding common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-media-encoding
+                         :shape "MediaEncoding" :location "header"
+                         :location-name "x-amzn-transcribe-media-encoding")
+                        (vocabulary-name :initarg :vocabulary-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vocabulary-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-vocabulary-name
+                         :shape "VocabularyName" :location "header"
+                         :location-name "x-amzn-transcribe-vocabulary-name")
+                        (session-id :initarg :session-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-id common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-response-session-id
+                         :shape "SessionId" :location "header" :location-name
+                         "x-amzn-transcribe-session-id")
+                        (transcript-result-stream :initarg
+                         :transcript-result-stream :initform common-lisp:nil
+                         :type
+                         (common-lisp:or transcript-result-stream
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-transcript-result-stream
+                         :shape "TranscriptResultStream" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (vocabulary-filter-name :initarg
+                         :vocabulary-filter-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-vocabulary-filter-name
+                         :shape "VocabularyFilterName" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-name")
+                        (vocabulary-filter-method :initarg
+                         :vocabulary-filter-method :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-method
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-vocabulary-filter-method
+                         :shape "VocabularyFilterMethod" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-method")
+                        (show-speaker-label :initarg :show-speaker-label
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-response-show-speaker-label
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-show-speaker-label")
+                        (enable-channel-identification :initarg
+                         :enable-channel-identification :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-response-enable-channel-identification
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-enable-channel-identification")
+                        (number-of-channels :initarg :number-of-channels
+                         :initform common-lisp:nil :type
+                         (common-lisp:or number-of-channels common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-number-of-channels
+                         :shape "NumberOfChannels" :location "header"
+                         :location-name "x-amzn-transcribe-number-of-channels")
+                        (enable-partial-results-stabilization :initarg
+                         :enable-partial-results-stabilization :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-response-enable-partial-results-stabilization
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-enable-partial-results-stabilization")
+                        (partial-results-stability :initarg
+                         :partial-results-stability :initform common-lisp:nil
+                         :type
+                         (common-lisp:or partial-results-stability
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-partial-results-stability
+                         :shape "PartialResultsStability" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-partial-results-stability")
+                        (content-identification-type :initarg
+                         :content-identification-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-identification-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-content-identification-type
+                         :shape "ContentIdentificationType" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-content-identification-type")
+                        (content-redaction-type :initarg
+                         :content-redaction-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or content-redaction-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-content-redaction-type
+                         :shape "ContentRedactionType" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-content-redaction-type")
+                        (pii-entity-types :initarg :pii-entity-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pii-entity-types common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-pii-entity-types
+                         :shape "PiiEntityTypes" :location "header"
+                         :location-name "x-amzn-transcribe-pii-entity-types")
+                        (language-model-name :initarg :language-model-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or model-name common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-response-language-model-name
+                         :shape "ModelName" :location "header" :location-name
+                         "x-amzn-transcribe-language-model-name")
+                        (identify-language :initarg :identify-language
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-stream-transcription-response-identify-language
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-identify-language")
+                        (language-options :initarg :language-options :initform
+                         common-lisp:nil :type
+                         (common-lisp:or language-options common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-language-options
+                         :shape "LanguageOptions" :location "header"
+                         :location-name "x-amzn-transcribe-language-options")
+                        (preferred-language :initarg :preferred-language
+                         :initform common-lisp:nil :type
+                         (common-lisp:or language-code common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-preferred-language
+                         :shape "LanguageCode" :location "header"
+                         :location-name "x-amzn-transcribe-preferred-language")
+                        (identify-multiple-languages :initarg
+                         :identify-multiple-languages :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-identify-multiple-languages
+                         :shape "Boolean" :location "header" :location-name
+                         "x-amzn-transcribe-identify-multiple-languages")
+                        (vocabulary-names :initarg :vocabulary-names :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vocabulary-names common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-vocabulary-names
+                         :shape "VocabularyNames" :location "header"
+                         :location-name "x-amzn-transcribe-vocabulary-names")
+                        (vocabulary-filter-names :initarg
+                         :vocabulary-filter-names :initform common-lisp:nil
+                         :type
+                         (common-lisp:or vocabulary-filter-names
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-stream-transcription-response-vocabulary-filter-names
+                         :shape "VocabularyFilterNames" :location "header"
+                         :location-name
+                         "x-amzn-transcribe-vocabulary-filter-names"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-stream-transcription-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-stream-transcription-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-stream-transcription-response
                     'make-start-stream-transcription-response))
@@ -2302,13 +3409,24 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (timestamp-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-timestamp-range-"))
-   (begin-offset-millis common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (end-offset-millis common-lisp:nil :type
-    (common-lisp:or long common-lisp:null)))
+ (common-lisp:defclass timestamp-range common-lisp:nil
+                       ((begin-offset-millis :initarg :begin-offset-millis
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-timestamp-range-begin-offset-millis
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-offset-millis :initarg :end-offset-millis
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-timestamp-range-end-offset-millis :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-timestamp-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'timestamp-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'timestamp-range 'make-timestamp-range))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input timestamp-range))
@@ -2342,11 +3460,17 @@
                            (trivial-types:proper-list timestamp-range))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transcript (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transcript-"))
-   (results common-lisp:nil :type
-    (common-lisp:or result-list common-lisp:null)))
+ (common-lisp:defclass transcript common-lisp:nil
+                       ((results :initarg :results :initform common-lisp:nil
+                         :type (common-lisp:or result-list common-lisp:null)
+                         :accessor struct-shape-transcript-results :shape
+                         "ResultList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-transcript
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'transcript
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'transcript 'make-transcript))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input transcript))
@@ -2365,11 +3489,18 @@
                         ((aws-sdk/generator/shape::input transcript))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transcript-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transcript-event-"))
-   (transcript common-lisp:nil :type
-    (common-lisp:or transcript common-lisp:null)))
+ (common-lisp:defclass transcript-event common-lisp:nil
+                       ((transcript :initarg :transcript :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transcript common-lisp:null) :accessor
+                         struct-shape-transcript-event-transcript :shape
+                         "Transcript" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-transcript-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'transcript-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'transcript-event 'make-transcript-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2389,21 +3520,61 @@
                         ((aws-sdk/generator/shape::input transcript-event))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transcript-result-stream (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transcript-result-stream-"))
-   (transcript-event common-lisp:nil :type
-    (common-lisp:or transcript-event common-lisp:null))
-   (bad-request-exception common-lisp:nil :type
-    (common-lisp:or bad-request-exception common-lisp:null))
-   (limit-exceeded-exception common-lisp:nil :type
-    (common-lisp:or limit-exceeded-exception common-lisp:null))
-   (internal-failure-exception common-lisp:nil :type
-    (common-lisp:or internal-failure-exception common-lisp:null))
-   (conflict-exception common-lisp:nil :type
-    (common-lisp:or conflict-exception common-lisp:null))
-   (service-unavailable-exception common-lisp:nil :type
-    (common-lisp:or service-unavailable-exception common-lisp:null)))
+ (common-lisp:defclass transcript-result-stream common-lisp:nil
+                       ((transcript-event :initarg :transcript-event :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transcript-event common-lisp:null)
+                         :accessor
+                         struct-shape-transcript-result-stream-transcript-event
+                         :shape "TranscriptEvent" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (bad-request-exception :initarg :bad-request-exception
+                         :initform common-lisp:nil :type
+                         (common-lisp:or bad-request-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-transcript-result-stream-bad-request-exception
+                         :shape "BadRequestException" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (limit-exceeded-exception :initarg
+                         :limit-exceeded-exception :initform common-lisp:nil
+                         :type
+                         (common-lisp:or limit-exceeded-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-transcript-result-stream-limit-exceeded-exception
+                         :shape "LimitExceededException" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (internal-failure-exception :initarg
+                         :internal-failure-exception :initform common-lisp:nil
+                         :type
+                         (common-lisp:or internal-failure-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-transcript-result-stream-internal-failure-exception
+                         :shape "InternalFailureException" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (conflict-exception :initarg :conflict-exception
+                         :initform common-lisp:nil :type
+                         (common-lisp:or conflict-exception common-lisp:null)
+                         :accessor
+                         struct-shape-transcript-result-stream-conflict-exception
+                         :shape "ConflictException" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-unavailable-exception :initarg
+                         :service-unavailable-exception :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-unavailable-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-transcript-result-stream-service-unavailable-exception
+                         :shape "ServiceUnavailableException" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-transcript-result-stream
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'transcript-result-stream
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'transcript-result-stream 'make-transcript-result-stream))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2469,27 +3640,74 @@
    common-lisp:nil))
 (common-lisp:deftype type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (utterance-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-utterance-event-"))
-   (utterance-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (is-partial common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (participant-role common-lisp:nil :type
-    (common-lisp:or participant-role common-lisp:null))
-   (begin-offset-millis common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (end-offset-millis common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (transcript common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (items common-lisp:nil :type
-    (common-lisp:or call-analytics-item-list common-lisp:null))
-   (entities common-lisp:nil :type
-    (common-lisp:or call-analytics-entity-list common-lisp:null))
-   (sentiment common-lisp:nil :type
-    (common-lisp:or sentiment common-lisp:null))
-   (issues-detected common-lisp:nil :type
-    (common-lisp:or issues-detected common-lisp:null)))
+ (common-lisp:defclass utterance-event common-lisp:nil
+                       ((utterance-id :initarg :utterance-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-utterance-event-utterance-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (is-partial :initarg :is-partial :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-utterance-event-is-partial :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (participant-role :initarg :participant-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or participant-role common-lisp:null)
+                         :accessor
+                         struct-shape-utterance-event-participant-role :shape
+                         "ParticipantRole" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (begin-offset-millis :initarg :begin-offset-millis
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-utterance-event-begin-offset-millis
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-offset-millis :initarg :end-offset-millis
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-utterance-event-end-offset-millis :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (transcript :initarg :transcript :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-utterance-event-transcript :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (items :initarg :items :initform common-lisp:nil :type
+                         (common-lisp:or call-analytics-item-list
+                                         common-lisp:null)
+                         :accessor struct-shape-utterance-event-items :shape
+                         "CallAnalyticsItemList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (entities :initarg :entities :initform common-lisp:nil
+                         :type
+                         (common-lisp:or call-analytics-entity-list
+                                         common-lisp:null)
+                         :accessor struct-shape-utterance-event-entities :shape
+                         "CallAnalyticsEntityList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sentiment :initarg :sentiment :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sentiment common-lisp:null) :accessor
+                         struct-shape-utterance-event-sentiment :shape
+                         "Sentiment" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (issues-detected :initarg :issues-detected :initform
+                         common-lisp:nil :type
+                         (common-lisp:or issues-detected common-lisp:null)
+                         :accessor struct-shape-utterance-event-issues-detected
+                         :shape "IssuesDetected" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-utterance-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'utterance-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'utterance-event 'make-utterance-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input utterance-event))

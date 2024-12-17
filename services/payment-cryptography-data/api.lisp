@@ -42,11 +42,22 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (amex-card-security-code-version1 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-amex-card-security-code-version1-"))
-   (card-expiry-date (common-lisp:error ":card-expiry-date is required") :type
-    (common-lisp:or number-length-equals4 common-lisp:null)))
+ (common-lisp:defclass amex-card-security-code-version1 common-lisp:nil
+                       ((card-expiry-date :initarg :card-expiry-date :initform
+                         (common-lisp:error ":card-expiry-date is required")
+                         :type
+                         (common-lisp:or number-length-equals4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-amex-card-security-code-version1-card-expiry-date
+                         :shape "NumberLengthEquals4" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-amex-card-security-code-version1
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'amex-card-security-code-version1
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'amex-card-security-code-version1
                     'make-amex-card-security-code-version1))
@@ -73,13 +84,30 @@
                           amex-card-security-code-version1))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (amex-card-security-code-version2 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-amex-card-security-code-version2-"))
-   (card-expiry-date (common-lisp:error ":card-expiry-date is required") :type
-    (common-lisp:or number-length-equals4 common-lisp:null))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or number-length-equals3 common-lisp:null)))
+ (common-lisp:defclass amex-card-security-code-version2 common-lisp:nil
+                       ((card-expiry-date :initarg :card-expiry-date :initform
+                         (common-lisp:error ":card-expiry-date is required")
+                         :type
+                         (common-lisp:or number-length-equals4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-amex-card-security-code-version2-card-expiry-date
+                         :shape "NumberLengthEquals4" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or number-length-equals3
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-amex-card-security-code-version2-service-code
+                         :shape "NumberLengthEquals3" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-amex-card-security-code-version2
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'amex-card-security-code-version2
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'amex-card-security-code-version2
                     'make-amex-card-security-code-version2))
@@ -113,11 +141,20 @@
                           amex-card-security-code-version2))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (asymmetric-encryption-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-asymmetric-encryption-attributes-"))
-   (padding-type common-lisp:nil :type
-    (common-lisp:or padding-type common-lisp:null)))
+ (common-lisp:defclass asymmetric-encryption-attributes common-lisp:nil
+                       ((padding-type :initarg :padding-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or padding-type common-lisp:null)
+                         :accessor
+                         struct-shape-asymmetric-encryption-attributes-padding-type
+                         :shape "PaddingType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-asymmetric-encryption-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'asymmetric-encryption-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'asymmetric-encryption-attributes
                     'make-asymmetric-encryption-attributes))
@@ -144,23 +181,75 @@
                           asymmetric-encryption-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (card-generation-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-card-generation-attributes-"))
-   (amex-card-security-code-version1 common-lisp:nil :type
-    (common-lisp:or amex-card-security-code-version1 common-lisp:null))
-   (amex-card-security-code-version2 common-lisp:nil :type
-    (common-lisp:or amex-card-security-code-version2 common-lisp:null))
-   (card-holder-verification-value common-lisp:nil :type
-    (common-lisp:or card-holder-verification-value common-lisp:null))
-   (card-verification-value1 common-lisp:nil :type
-    (common-lisp:or card-verification-value1 common-lisp:null))
-   (card-verification-value2 common-lisp:nil :type
-    (common-lisp:or card-verification-value2 common-lisp:null))
-   (dynamic-card-verification-code common-lisp:nil :type
-    (common-lisp:or dynamic-card-verification-code common-lisp:null))
-   (dynamic-card-verification-value common-lisp:nil :type
-    (common-lisp:or dynamic-card-verification-value common-lisp:null)))
+ (common-lisp:defclass card-generation-attributes common-lisp:nil
+                       ((amex-card-security-code-version1 :initarg
+                         :amex-card-security-code-version1 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amex-card-security-code-version1
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-generation-attributes-amex-card-security-code-version1
+                         :shape "AmexCardSecurityCodeVersion1" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (amex-card-security-code-version2 :initarg
+                         :amex-card-security-code-version2 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amex-card-security-code-version2
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-generation-attributes-amex-card-security-code-version2
+                         :shape "AmexCardSecurityCodeVersion2" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (card-holder-verification-value :initarg
+                         :card-holder-verification-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or card-holder-verification-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-generation-attributes-card-holder-verification-value
+                         :shape "CardHolderVerificationValue" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (card-verification-value1 :initarg
+                         :card-verification-value1 :initform common-lisp:nil
+                         :type
+                         (common-lisp:or card-verification-value1
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-generation-attributes-card-verification-value1
+                         :shape "CardVerificationValue1" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (card-verification-value2 :initarg
+                         :card-verification-value2 :initform common-lisp:nil
+                         :type
+                         (common-lisp:or card-verification-value2
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-generation-attributes-card-verification-value2
+                         :shape "CardVerificationValue2" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (dynamic-card-verification-code :initarg
+                         :dynamic-card-verification-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dynamic-card-verification-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-generation-attributes-dynamic-card-verification-code
+                         :shape "DynamicCardVerificationCode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (dynamic-card-verification-value :initarg
+                         :dynamic-card-verification-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dynamic-card-verification-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-generation-attributes-dynamic-card-verification-value
+                         :shape "DynamicCardVerificationValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-card-generation-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'card-generation-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'card-generation-attributes
                     'make-card-generation-attributes))
@@ -236,17 +325,44 @@
                           card-generation-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (card-holder-verification-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-card-holder-verification-value-"))
-   (application-transaction-counter
-    (common-lisp:error ":application-transaction-counter is required") :type
-    (common-lisp:or hex-length-between2and4 common-lisp:null))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (unpredictable-number
-    (common-lisp:error ":unpredictable-number is required") :type
-    (common-lisp:or hex-length-between2and8 common-lisp:null)))
+ (common-lisp:defclass card-holder-verification-value common-lisp:nil
+                       ((application-transaction-counter :initarg
+                         :application-transaction-counter :initform
+                         (common-lisp:error
+                          ":application-transaction-counter is required")
+                         :type
+                         (common-lisp:or hex-length-between2and4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-holder-verification-value-application-transaction-counter
+                         :shape "HexLengthBetween2And4" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-card-holder-verification-value-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unpredictable-number :initarg :unpredictable-number
+                         :initform
+                         (common-lisp:error
+                          ":unpredictable-number is required")
+                         :type
+                         (common-lisp:or hex-length-between2and8
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-holder-verification-value-unpredictable-number
+                         :shape "HexLengthBetween2And8" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-card-holder-verification-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'card-holder-verification-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'card-holder-verification-value
                     'make-card-holder-verification-value))
@@ -289,25 +405,85 @@
                           card-holder-verification-value))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (card-verification-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-card-verification-attributes-"))
-   (amex-card-security-code-version1 common-lisp:nil :type
-    (common-lisp:or amex-card-security-code-version1 common-lisp:null))
-   (amex-card-security-code-version2 common-lisp:nil :type
-    (common-lisp:or amex-card-security-code-version2 common-lisp:null))
-   (card-holder-verification-value common-lisp:nil :type
-    (common-lisp:or card-holder-verification-value common-lisp:null))
-   (card-verification-value1 common-lisp:nil :type
-    (common-lisp:or card-verification-value1 common-lisp:null))
-   (card-verification-value2 common-lisp:nil :type
-    (common-lisp:or card-verification-value2 common-lisp:null))
-   (discover-dynamic-card-verification-code common-lisp:nil :type
-    (common-lisp:or discover-dynamic-card-verification-code common-lisp:null))
-   (dynamic-card-verification-code common-lisp:nil :type
-    (common-lisp:or dynamic-card-verification-code common-lisp:null))
-   (dynamic-card-verification-value common-lisp:nil :type
-    (common-lisp:or dynamic-card-verification-value common-lisp:null)))
+ (common-lisp:defclass card-verification-attributes common-lisp:nil
+                       ((amex-card-security-code-version1 :initarg
+                         :amex-card-security-code-version1 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amex-card-security-code-version1
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-attributes-amex-card-security-code-version1
+                         :shape "AmexCardSecurityCodeVersion1" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (amex-card-security-code-version2 :initarg
+                         :amex-card-security-code-version2 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amex-card-security-code-version2
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-attributes-amex-card-security-code-version2
+                         :shape "AmexCardSecurityCodeVersion2" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (card-holder-verification-value :initarg
+                         :card-holder-verification-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or card-holder-verification-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-attributes-card-holder-verification-value
+                         :shape "CardHolderVerificationValue" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (card-verification-value1 :initarg
+                         :card-verification-value1 :initform common-lisp:nil
+                         :type
+                         (common-lisp:or card-verification-value1
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-attributes-card-verification-value1
+                         :shape "CardVerificationValue1" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (card-verification-value2 :initarg
+                         :card-verification-value2 :initform common-lisp:nil
+                         :type
+                         (common-lisp:or card-verification-value2
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-attributes-card-verification-value2
+                         :shape "CardVerificationValue2" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (discover-dynamic-card-verification-code :initarg
+                         :discover-dynamic-card-verification-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          discover-dynamic-card-verification-code
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-attributes-discover-dynamic-card-verification-code
+                         :shape "DiscoverDynamicCardVerificationCode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (dynamic-card-verification-code :initarg
+                         :dynamic-card-verification-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dynamic-card-verification-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-attributes-dynamic-card-verification-code
+                         :shape "DynamicCardVerificationCode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (dynamic-card-verification-value :initarg
+                         :dynamic-card-verification-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dynamic-card-verification-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-attributes-dynamic-card-verification-value
+                         :shape "DynamicCardVerificationValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-card-verification-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'card-verification-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'card-verification-attributes
                     'make-card-verification-attributes))
@@ -391,13 +567,29 @@
                           card-verification-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (card-verification-value1 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-card-verification-value1-"))
-   (card-expiry-date (common-lisp:error ":card-expiry-date is required") :type
-    (common-lisp:or number-length-equals4 common-lisp:null))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or number-length-equals3 common-lisp:null)))
+ (common-lisp:defclass card-verification-value1 common-lisp:nil
+                       ((card-expiry-date :initarg :card-expiry-date :initform
+                         (common-lisp:error ":card-expiry-date is required")
+                         :type
+                         (common-lisp:or number-length-equals4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-value1-card-expiry-date
+                         :shape "NumberLengthEquals4" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or number-length-equals3
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-value1-service-code
+                         :shape "NumberLengthEquals3" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-card-verification-value1
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'card-verification-value1
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'card-verification-value1 'make-card-verification-value1))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -430,11 +622,21 @@
                           card-verification-value1))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (card-verification-value2 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-card-verification-value2-"))
-   (card-expiry-date (common-lisp:error ":card-expiry-date is required") :type
-    (common-lisp:or number-length-equals4 common-lisp:null)))
+ (common-lisp:defclass card-verification-value2 common-lisp:nil
+                       ((card-expiry-date :initarg :card-expiry-date :initform
+                         (common-lisp:error ":card-expiry-date is required")
+                         :type
+                         (common-lisp:or number-length-equals4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-card-verification-value2-card-expiry-date
+                         :shape "NumberLengthEquals4" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-card-verification-value2
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'card-verification-value2
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'card-verification-value2 'make-card-verification-value2))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -460,13 +662,28 @@
                           card-verification-value2))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cryptogram-auth-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cryptogram-auth-response-"))
-   (arpc-method1 common-lisp:nil :type
-    (common-lisp:or cryptogram-verification-arpc-method1 common-lisp:null))
-   (arpc-method2 common-lisp:nil :type
-    (common-lisp:or cryptogram-verification-arpc-method2 common-lisp:null)))
+ (common-lisp:defclass cryptogram-auth-response common-lisp:nil
+                       ((arpc-method1 :initarg :arpc-method1 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cryptogram-verification-arpc-method1
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cryptogram-auth-response-arpc-method1
+                         :shape "CryptogramVerificationArpcMethod1" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (arpc-method2 :initarg :arpc-method2 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cryptogram-verification-arpc-method2
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cryptogram-auth-response-arpc-method2
+                         :shape "CryptogramVerificationArpcMethod2" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cryptogram-auth-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cryptogram-auth-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cryptogram-auth-response 'make-cryptogram-auth-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -499,11 +716,22 @@
                           cryptogram-auth-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cryptogram-verification-arpc-method1 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cryptogram-verification-arpc-method1-"))
-   (auth-response-code (common-lisp:error ":auth-response-code is required")
-    :type (common-lisp:or hex-length-equals4 common-lisp:null)))
+ (common-lisp:defclass cryptogram-verification-arpc-method1 common-lisp:nil
+                       ((auth-response-code :initarg :auth-response-code
+                         :initform
+                         (common-lisp:error ":auth-response-code is required")
+                         :type
+                         (common-lisp:or hex-length-equals4 common-lisp:null)
+                         :accessor
+                         struct-shape-cryptogram-verification-arpc-method1-auth-response-code
+                         :shape "HexLengthEquals4" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cryptogram-verification-arpc-method1
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cryptogram-verification-arpc-method1
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cryptogram-verification-arpc-method1
                     'make-cryptogram-verification-arpc-method1))
@@ -530,13 +758,31 @@
                           cryptogram-verification-arpc-method1))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cryptogram-verification-arpc-method2 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cryptogram-verification-arpc-method2-"))
-   (card-status-update (common-lisp:error ":card-status-update is required")
-    :type (common-lisp:or hex-length-equals8 common-lisp:null))
-   (proprietary-authentication-data common-lisp:nil :type
-    (common-lisp:or hex-length-between1and16 common-lisp:null)))
+ (common-lisp:defclass cryptogram-verification-arpc-method2 common-lisp:nil
+                       ((card-status-update :initarg :card-status-update
+                         :initform
+                         (common-lisp:error ":card-status-update is required")
+                         :type
+                         (common-lisp:or hex-length-equals8 common-lisp:null)
+                         :accessor
+                         struct-shape-cryptogram-verification-arpc-method2-card-status-update
+                         :shape "HexLengthEquals8" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (proprietary-authentication-data :initarg
+                         :proprietary-authentication-data :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hex-length-between1and16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cryptogram-verification-arpc-method2-proprietary-authentication-data
+                         :shape "HexLengthBetween1And16" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cryptogram-verification-arpc-method2
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cryptogram-verification-arpc-method2
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cryptogram-verification-arpc-method2
                     'make-cryptogram-verification-arpc-method2))
@@ -571,16 +817,39 @@
                           cryptogram-verification-arpc-method2))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decrypt-data-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decrypt-data-input-"))
-   (cipher-text (common-lisp:error ":cipher-text is required") :type
-    (common-lisp:or hex-even-length-between16and4096 common-lisp:null))
-   (decryption-attributes
-    (common-lisp:error ":decryption-attributes is required") :type
-    (common-lisp:or encryption-decryption-attributes common-lisp:null))
-   (key-identifier (common-lisp:error ":key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null)))
+ (common-lisp:defclass decrypt-data-input common-lisp:nil
+                       ((cipher-text :initarg :cipher-text :initform
+                         (common-lisp:error ":cipher-text is required") :type
+                         (common-lisp:or hex-even-length-between16and4096
+                                         common-lisp:null)
+                         :accessor struct-shape-decrypt-data-input-cipher-text
+                         :shape "HexEvenLengthBetween16And4096" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decryption-attributes :initarg :decryption-attributes
+                         :initform
+                         (common-lisp:error
+                          ":decryption-attributes is required")
+                         :type
+                         (common-lisp:or encryption-decryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decrypt-data-input-decryption-attributes
+                         :shape "EncryptionDecryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (key-identifier :initarg :key-identifier :initform
+                         (common-lisp:error ":key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decrypt-data-input-key-identifier :shape
+                         "KeyArnOrKeyAliasType" :location "uri" :location-name
+                         "KeyIdentifier"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decrypt-data-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'decrypt-data-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'decrypt-data-input 'make-decrypt-data-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -608,15 +877,33 @@
                         ((aws-sdk/generator/shape::input decrypt-data-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decrypt-data-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decrypt-data-output-"))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value (common-lisp:error ":key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null))
-   (plain-text (common-lisp:error ":plain-text is required") :type
-    (common-lisp:or hex-even-length-between16and4096 common-lisp:null)))
+ (common-lisp:defclass decrypt-data-output common-lisp:nil
+                       ((key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-decrypt-data-output-key-arn :shape
+                         "KeyArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         (common-lisp:error ":key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-decrypt-data-output-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (plain-text :initarg :plain-text :initform
+                         (common-lisp:error ":plain-text is required") :type
+                         (common-lisp:or hex-even-length-between16and4096
+                                         common-lisp:null)
+                         :accessor struct-shape-decrypt-data-output-plain-text
+                         :shape "HexEvenLengthBetween16And4096" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decrypt-data-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'decrypt-data-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'decrypt-data-output 'make-decrypt-data-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -650,17 +937,44 @@
                         ((aws-sdk/generator/shape::input decrypt-data-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (discover-dynamic-card-verification-code (:copier common-lisp:nil)
-      (:conc-name "struct-shape-discover-dynamic-card-verification-code-"))
-   (application-transaction-counter
-    (common-lisp:error ":application-transaction-counter is required") :type
-    (common-lisp:or hex-length-between2and4 common-lisp:null))
-   (card-expiry-date (common-lisp:error ":card-expiry-date is required") :type
-    (common-lisp:or number-length-equals4 common-lisp:null))
-   (unpredictable-number
-    (common-lisp:error ":unpredictable-number is required") :type
-    (common-lisp:or hex-length-between2and8 common-lisp:null)))
+ (common-lisp:defclass discover-dynamic-card-verification-code common-lisp:nil
+                       ((application-transaction-counter :initarg
+                         :application-transaction-counter :initform
+                         (common-lisp:error
+                          ":application-transaction-counter is required")
+                         :type
+                         (common-lisp:or hex-length-between2and4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-discover-dynamic-card-verification-code-application-transaction-counter
+                         :shape "HexLengthBetween2And4" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (card-expiry-date :initarg :card-expiry-date :initform
+                         (common-lisp:error ":card-expiry-date is required")
+                         :type
+                         (common-lisp:or number-length-equals4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-discover-dynamic-card-verification-code-card-expiry-date
+                         :shape "NumberLengthEquals4" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unpredictable-number :initarg :unpredictable-number
+                         :initform
+                         (common-lisp:error
+                          ":unpredictable-number is required")
+                         :type
+                         (common-lisp:or hex-length-between2and8
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-discover-dynamic-card-verification-code-unpredictable-number
+                         :shape "HexLengthBetween2And8" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-discover-dynamic-card-verification-code
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'discover-dynamic-card-verification-code
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'discover-dynamic-card-verification-code
                     'make-discover-dynamic-card-verification-code))
@@ -703,14 +1017,33 @@
                           discover-dynamic-card-verification-code))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dukpt-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dukpt-attributes-"))
-   (dukpt-derivation-type
-    (common-lisp:error ":dukpt-derivation-type is required") :type
-    (common-lisp:or dukpt-derivation-type common-lisp:null))
-   (key-serial-number (common-lisp:error ":key-serial-number is required")
-    :type (common-lisp:or hex-length-between10and24 common-lisp:null)))
+ (common-lisp:defclass dukpt-attributes common-lisp:nil
+                       ((dukpt-derivation-type :initarg :dukpt-derivation-type
+                         :initform
+                         (common-lisp:error
+                          ":dukpt-derivation-type is required")
+                         :type
+                         (common-lisp:or dukpt-derivation-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-attributes-dukpt-derivation-type
+                         :shape "DukptDerivationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key-serial-number :initarg :key-serial-number
+                         :initform
+                         (common-lisp:error ":key-serial-number is required")
+                         :type
+                         (common-lisp:or hex-length-between10and24
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-attributes-key-serial-number :shape
+                         "HexLengthBetween10And24" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dukpt-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dukpt-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dukpt-attributes 'make-dukpt-attributes))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -738,15 +1071,38 @@
                         ((aws-sdk/generator/shape::input dukpt-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dukpt-derivation-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dukpt-derivation-attributes-"))
-   (dukpt-key-derivation-type common-lisp:nil :type
-    (common-lisp:or dukpt-derivation-type common-lisp:null))
-   (dukpt-key-variant common-lisp:nil :type
-    (common-lisp:or dukpt-key-variant common-lisp:null))
-   (key-serial-number (common-lisp:error ":key-serial-number is required")
-    :type (common-lisp:or hex-length-between10and24 common-lisp:null)))
+ (common-lisp:defclass dukpt-derivation-attributes common-lisp:nil
+                       ((dukpt-key-derivation-type :initarg
+                         :dukpt-key-derivation-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or dukpt-derivation-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-derivation-attributes-dukpt-key-derivation-type
+                         :shape "DukptDerivationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dukpt-key-variant :initarg :dukpt-key-variant
+                         :initform common-lisp:nil :type
+                         (common-lisp:or dukpt-key-variant common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-derivation-attributes-dukpt-key-variant
+                         :shape "DukptKeyVariant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key-serial-number :initarg :key-serial-number
+                         :initform
+                         (common-lisp:error ":key-serial-number is required")
+                         :type
+                         (common-lisp:or hex-length-between10and24
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-derivation-attributes-key-serial-number
+                         :shape "HexLengthBetween10And24" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dukpt-derivation-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dukpt-derivation-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dukpt-derivation-attributes
                     'make-dukpt-derivation-attributes))
@@ -789,19 +1145,52 @@
    common-lisp:nil))
 (common-lisp:deftype dukpt-derivation-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dukpt-encryption-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dukpt-encryption-attributes-"))
-   (dukpt-key-derivation-type common-lisp:nil :type
-    (common-lisp:or dukpt-derivation-type common-lisp:null))
-   (dukpt-key-variant common-lisp:nil :type
-    (common-lisp:or dukpt-key-variant common-lisp:null))
-   (initialization-vector common-lisp:nil :type
-    (common-lisp:or hex-length16or32 common-lisp:null))
-   (key-serial-number (common-lisp:error ":key-serial-number is required")
-    :type (common-lisp:or hex-length-between10and24 common-lisp:null))
-   (mode common-lisp:nil :type
-    (common-lisp:or dukpt-encryption-mode common-lisp:null)))
+ (common-lisp:defclass dukpt-encryption-attributes common-lisp:nil
+                       ((dukpt-key-derivation-type :initarg
+                         :dukpt-key-derivation-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or dukpt-derivation-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-encryption-attributes-dukpt-key-derivation-type
+                         :shape "DukptDerivationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dukpt-key-variant :initarg :dukpt-key-variant
+                         :initform common-lisp:nil :type
+                         (common-lisp:or dukpt-key-variant common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-encryption-attributes-dukpt-key-variant
+                         :shape "DukptKeyVariant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initialization-vector :initarg :initialization-vector
+                         :initform common-lisp:nil :type
+                         (common-lisp:or hex-length16or32 common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-encryption-attributes-initialization-vector
+                         :shape "HexLength16Or32" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key-serial-number :initarg :key-serial-number
+                         :initform
+                         (common-lisp:error ":key-serial-number is required")
+                         :type
+                         (common-lisp:or hex-length-between10and24
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-encryption-attributes-key-serial-number
+                         :shape "HexLengthBetween10And24" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (mode :initarg :mode :initform common-lisp:nil :type
+                         (common-lisp:or dukpt-encryption-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dukpt-encryption-attributes-mode :shape
+                         "DukptEncryptionMode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dukpt-encryption-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dukpt-encryption-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dukpt-encryption-attributes
                     'make-dukpt-encryption-attributes))
@@ -860,19 +1249,52 @@
 (common-lisp:deftype dukpt-encryption-mode () 'common-lisp:string)
 (common-lisp:deftype dukpt-key-variant () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dynamic-card-verification-code (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dynamic-card-verification-code-"))
-   (application-transaction-counter
-    (common-lisp:error ":application-transaction-counter is required") :type
-    (common-lisp:or hex-length-between2and4 common-lisp:null))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (track-data (common-lisp:error ":track-data is required") :type
-    (common-lisp:or hex-length-between2and160 common-lisp:null))
-   (unpredictable-number
-    (common-lisp:error ":unpredictable-number is required") :type
-    (common-lisp:or hex-length-between2and8 common-lisp:null)))
+ (common-lisp:defclass dynamic-card-verification-code common-lisp:nil
+                       ((application-transaction-counter :initarg
+                         :application-transaction-counter :initform
+                         (common-lisp:error
+                          ":application-transaction-counter is required")
+                         :type
+                         (common-lisp:or hex-length-between2and4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dynamic-card-verification-code-application-transaction-counter
+                         :shape "HexLengthBetween2And4" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-dynamic-card-verification-code-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (track-data :initarg :track-data :initform
+                         (common-lisp:error ":track-data is required") :type
+                         (common-lisp:or hex-length-between2and160
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dynamic-card-verification-code-track-data
+                         :shape "HexLengthBetween2And160" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (unpredictable-number :initarg :unpredictable-number
+                         :initform
+                         (common-lisp:error
+                          ":unpredictable-number is required")
+                         :type
+                         (common-lisp:or hex-length-between2and8
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dynamic-card-verification-code-unpredictable-number
+                         :shape "HexLengthBetween2And8" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dynamic-card-verification-code
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'dynamic-card-verification-code
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dynamic-card-verification-code
                     'make-dynamic-card-verification-code))
@@ -922,18 +1344,50 @@
                           dynamic-card-verification-code))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dynamic-card-verification-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dynamic-card-verification-value-"))
-   (application-transaction-counter
-    (common-lisp:error ":application-transaction-counter is required") :type
-    (common-lisp:or hex-length-between2and4 common-lisp:null))
-   (card-expiry-date (common-lisp:error ":card-expiry-date is required") :type
-    (common-lisp:or number-length-equals4 common-lisp:null))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or number-length-equals3 common-lisp:null)))
+ (common-lisp:defclass dynamic-card-verification-value common-lisp:nil
+                       ((application-transaction-counter :initarg
+                         :application-transaction-counter :initform
+                         (common-lisp:error
+                          ":application-transaction-counter is required")
+                         :type
+                         (common-lisp:or hex-length-between2and4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dynamic-card-verification-value-application-transaction-counter
+                         :shape "HexLengthBetween2And4" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (card-expiry-date :initarg :card-expiry-date :initform
+                         (common-lisp:error ":card-expiry-date is required")
+                         :type
+                         (common-lisp:or number-length-equals4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dynamic-card-verification-value-card-expiry-date
+                         :shape "NumberLengthEquals4" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-dynamic-card-verification-value-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or number-length-equals3
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dynamic-card-verification-value-service-code
+                         :shape "NumberLengthEquals3" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dynamic-card-verification-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'dynamic-card-verification-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dynamic-card-verification-value
                     'make-dynamic-card-verification-value))
@@ -982,24 +1436,65 @@
                           dynamic-card-verification-value))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (emv-encryption-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-emv-encryption-attributes-"))
-   (initialization-vector common-lisp:nil :type
-    (common-lisp:or hex-length16or32 common-lisp:null))
-   (major-key-derivation-mode
-    (common-lisp:error ":major-key-derivation-mode is required") :type
-    (common-lisp:or emv-major-key-derivation-mode common-lisp:null))
-   (mode common-lisp:nil :type
-    (common-lisp:or emv-encryption-mode common-lisp:null))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null))
-   (session-derivation-data
-    (common-lisp:error ":session-derivation-data is required") :type
-    (common-lisp:or hex-length-equals16 common-lisp:null)))
+ (common-lisp:defclass emv-encryption-attributes common-lisp:nil
+                       ((initialization-vector :initarg :initialization-vector
+                         :initform common-lisp:nil :type
+                         (common-lisp:or hex-length16or32 common-lisp:null)
+                         :accessor
+                         struct-shape-emv-encryption-attributes-initialization-vector
+                         :shape "HexLength16Or32" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (major-key-derivation-mode :initarg
+                         :major-key-derivation-mode :initform
+                         (common-lisp:error
+                          ":major-key-derivation-mode is required")
+                         :type
+                         (common-lisp:or emv-major-key-derivation-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-emv-encryption-attributes-major-key-derivation-mode
+                         :shape "EmvMajorKeyDerivationMode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (mode :initarg :mode :initform common-lisp:nil :type
+                         (common-lisp:or emv-encryption-mode common-lisp:null)
+                         :accessor struct-shape-emv-encryption-attributes-mode
+                         :shape "EmvEncryptionMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-emv-encryption-attributes-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-emv-encryption-attributes-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (session-derivation-data :initarg
+                         :session-derivation-data :initform
+                         (common-lisp:error
+                          ":session-derivation-data is required")
+                         :type
+                         (common-lisp:or hex-length-equals16 common-lisp:null)
+                         :accessor
+                         struct-shape-emv-encryption-attributes-session-derivation-data
+                         :shape "HexLengthEquals16" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-emv-encryption-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'emv-encryption-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'emv-encryption-attributes
                     'make-emv-encryption-attributes))
@@ -1067,16 +1562,39 @@
 (common-lisp:deftype emv-encryption-mode () 'common-lisp:string)
 (common-lisp:deftype emv-major-key-derivation-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (encrypt-data-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encrypt-data-input-"))
-   (encryption-attributes
-    (common-lisp:error ":encryption-attributes is required") :type
-    (common-lisp:or encryption-decryption-attributes common-lisp:null))
-   (key-identifier (common-lisp:error ":key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (plain-text (common-lisp:error ":plain-text is required") :type
-    (common-lisp:or hex-even-length-between16and4064 common-lisp:null)))
+ (common-lisp:defclass encrypt-data-input common-lisp:nil
+                       ((encryption-attributes :initarg :encryption-attributes
+                         :initform
+                         (common-lisp:error
+                          ":encryption-attributes is required")
+                         :type
+                         (common-lisp:or encryption-decryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-encrypt-data-input-encryption-attributes
+                         :shape "EncryptionDecryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (key-identifier :initarg :key-identifier :initform
+                         (common-lisp:error ":key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-encrypt-data-input-key-identifier :shape
+                         "KeyArnOrKeyAliasType" :location "uri" :location-name
+                         "KeyIdentifier")
+                        (plain-text :initarg :plain-text :initform
+                         (common-lisp:error ":plain-text is required") :type
+                         (common-lisp:or hex-even-length-between16and4064
+                                         common-lisp:null)
+                         :accessor struct-shape-encrypt-data-input-plain-text
+                         :shape "HexEvenLengthBetween16And4064" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-encrypt-data-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'encrypt-data-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'encrypt-data-input 'make-encrypt-data-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1104,15 +1622,32 @@
                         ((aws-sdk/generator/shape::input encrypt-data-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (encrypt-data-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encrypt-data-output-"))
-   (cipher-text (common-lisp:error ":cipher-text is required") :type
-    (common-lisp:or hex-even-length-between16and4096 common-lisp:null))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value common-lisp:nil :type
-    (common-lisp:or key-check-value common-lisp:null)))
+ (common-lisp:defclass encrypt-data-output common-lisp:nil
+                       ((cipher-text :initarg :cipher-text :initform
+                         (common-lisp:error ":cipher-text is required") :type
+                         (common-lisp:or hex-even-length-between16and4096
+                                         common-lisp:null)
+                         :accessor struct-shape-encrypt-data-output-cipher-text
+                         :shape "HexEvenLengthBetween16And4096" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-encrypt-data-output-key-arn :shape
+                         "KeyArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-encrypt-data-output-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-encrypt-data-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'encrypt-data-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'encrypt-data-output 'make-encrypt-data-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1146,17 +1681,43 @@
                         ((aws-sdk/generator/shape::input encrypt-data-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (encryption-decryption-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-encryption-decryption-attributes-"))
-   (asymmetric common-lisp:nil :type
-    (common-lisp:or asymmetric-encryption-attributes common-lisp:null))
-   (dukpt common-lisp:nil :type
-    (common-lisp:or dukpt-encryption-attributes common-lisp:null))
-   (emv common-lisp:nil :type
-    (common-lisp:or emv-encryption-attributes common-lisp:null))
-   (symmetric common-lisp:nil :type
-    (common-lisp:or symmetric-encryption-attributes common-lisp:null)))
+ (common-lisp:defclass encryption-decryption-attributes common-lisp:nil
+                       ((asymmetric :initarg :asymmetric :initform
+                         common-lisp:nil :type
+                         (common-lisp:or asymmetric-encryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-encryption-decryption-attributes-asymmetric
+                         :shape "AsymmetricEncryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (dukpt :initarg :dukpt :initform common-lisp:nil :type
+                         (common-lisp:or dukpt-encryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-encryption-decryption-attributes-dukpt
+                         :shape "DukptEncryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (emv :initarg :emv :initform common-lisp:nil :type
+                         (common-lisp:or emv-encryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-encryption-decryption-attributes-emv
+                         :shape "EmvEncryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (symmetric :initarg :symmetric :initform
+                         common-lisp:nil :type
+                         (common-lisp:or symmetric-encryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-encryption-decryption-attributes-symmetric
+                         :shape "SymmetricEncryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-encryption-decryption-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'encryption-decryption-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'encryption-decryption-attributes
                     'make-encryption-decryption-attributes))
@@ -1205,19 +1766,53 @@
    common-lisp:nil))
 (common-lisp:deftype encryption-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (generate-card-validation-data-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-generate-card-validation-data-input-"))
-   (generation-attributes
-    (common-lisp:error ":generation-attributes is required") :type
-    (common-lisp:or card-generation-attributes common-lisp:null))
-   (key-identifier (common-lisp:error ":key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null))
-   (validation-data-length common-lisp:nil :type
-    (common-lisp:or integer-range-between3and5type common-lisp:null)))
+ (common-lisp:defclass generate-card-validation-data-input common-lisp:nil
+                       ((generation-attributes :initarg :generation-attributes
+                         :initform
+                         (common-lisp:error
+                          ":generation-attributes is required")
+                         :type
+                         (common-lisp:or card-generation-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-card-validation-data-input-generation-attributes
+                         :shape "CardGenerationAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (key-identifier :initarg :key-identifier :initform
+                         (common-lisp:error ":key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-card-validation-data-input-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-card-validation-data-input-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (validation-data-length :initarg
+                         :validation-data-length :initform common-lisp:nil
+                         :type
+                         (common-lisp:or integer-range-between3and5type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-card-validation-data-input-validation-data-length
+                         :shape "IntegerRangeBetween3And5Type" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-generate-card-validation-data-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'generate-card-validation-data-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'generate-card-validation-data-input
                     'make-generate-card-validation-data-input))
@@ -1268,15 +1863,36 @@
                           generate-card-validation-data-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (generate-card-validation-data-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-generate-card-validation-data-output-"))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value (common-lisp:error ":key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null))
-   (validation-data (common-lisp:error ":validation-data is required") :type
-    (common-lisp:or number-length-between3and5 common-lisp:null)))
+ (common-lisp:defclass generate-card-validation-data-output common-lisp:nil
+                       ((key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-generate-card-validation-data-output-key-arn
+                         :shape "KeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         (common-lisp:error ":key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-generate-card-validation-data-output-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (validation-data :initarg :validation-data :initform
+                         (common-lisp:error ":validation-data is required")
+                         :type
+                         (common-lisp:or number-length-between3and5
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-card-validation-data-output-validation-data
+                         :shape "NumberLengthBetween3And5" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-generate-card-validation-data-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'generate-card-validation-data-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'generate-card-validation-data-output
                     'make-generate-card-validation-data-output))
@@ -1317,18 +1933,44 @@
                           generate-card-validation-data-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (generate-mac-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-generate-mac-input-"))
-   (generation-attributes
-    (common-lisp:error ":generation-attributes is required") :type
-    (common-lisp:or mac-attributes common-lisp:null))
-   (key-identifier (common-lisp:error ":key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (mac-length common-lisp:nil :type
-    (common-lisp:or integer-range-between4and16 common-lisp:null))
-   (message-data (common-lisp:error ":message-data is required") :type
-    (common-lisp:or hex-even-length-between2and4096 common-lisp:null)))
+ (common-lisp:defclass generate-mac-input common-lisp:nil
+                       ((generation-attributes :initarg :generation-attributes
+                         :initform
+                         (common-lisp:error
+                          ":generation-attributes is required")
+                         :type (common-lisp:or mac-attributes common-lisp:null)
+                         :accessor
+                         struct-shape-generate-mac-input-generation-attributes
+                         :shape "MacAttributes" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key-identifier :initarg :key-identifier :initform
+                         (common-lisp:error ":key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-mac-input-key-identifier :shape
+                         "KeyArnOrKeyAliasType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mac-length :initarg :mac-length :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer-range-between4and16
+                                         common-lisp:null)
+                         :accessor struct-shape-generate-mac-input-mac-length
+                         :shape "IntegerRangeBetween4And16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (message-data :initarg :message-data :initform
+                         (common-lisp:error ":message-data is required") :type
+                         (common-lisp:or hex-even-length-between2and4096
+                                         common-lisp:null)
+                         :accessor struct-shape-generate-mac-input-message-data
+                         :shape "HexEvenLengthBetween2And4096" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-generate-mac-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'generate-mac-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'generate-mac-input 'make-generate-mac-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1370,15 +2012,33 @@
                         ((aws-sdk/generator/shape::input generate-mac-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (generate-mac-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-generate-mac-output-"))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value (common-lisp:error ":key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null))
-   (mac (common-lisp:error ":mac is required") :type
-    (common-lisp:or hex-length-between4and128 common-lisp:null)))
+ (common-lisp:defclass generate-mac-output common-lisp:nil
+                       ((key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-generate-mac-output-key-arn :shape
+                         "KeyArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         (common-lisp:error ":key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-generate-mac-output-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mac :initarg :mac :initform
+                         (common-lisp:error ":mac is required") :type
+                         (common-lisp:or hex-length-between4and128
+                                         common-lisp:null)
+                         :accessor struct-shape-generate-mac-output-mac :shape
+                         "HexLengthBetween4And128" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-generate-mac-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'generate-mac-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'generate-mac-output 'make-generate-mac-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1412,25 +2072,73 @@
                         ((aws-sdk/generator/shape::input generate-mac-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (generate-pin-data-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-generate-pin-data-input-"))
-   (encryption-key-identifier
-    (common-lisp:error ":encryption-key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (generation-attributes
-    (common-lisp:error ":generation-attributes is required") :type
-    (common-lisp:or pin-generation-attributes common-lisp:null))
-   (generation-key-identifier
-    (common-lisp:error ":generation-key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (pin-block-format (common-lisp:error ":pin-block-format is required") :type
-    (common-lisp:or pin-block-format-for-pin-data common-lisp:null))
-   (pin-data-length common-lisp:nil :type
-    (common-lisp:or integer-range-between4and12 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null)))
+ (common-lisp:defclass generate-pin-data-input common-lisp:nil
+                       ((encryption-key-identifier :initarg
+                         :encryption-key-identifier :initform
+                         (common-lisp:error
+                          ":encryption-key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-input-encryption-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (generation-attributes :initarg :generation-attributes
+                         :initform
+                         (common-lisp:error
+                          ":generation-attributes is required")
+                         :type
+                         (common-lisp:or pin-generation-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-input-generation-attributes
+                         :shape "PinGenerationAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (generation-key-identifier :initarg
+                         :generation-key-identifier :initform
+                         (common-lisp:error
+                          ":generation-key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-input-generation-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-block-format :initarg :pin-block-format :initform
+                         (common-lisp:error ":pin-block-format is required")
+                         :type
+                         (common-lisp:or pin-block-format-for-pin-data
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-input-pin-block-format
+                         :shape "PinBlockFormatForPinData" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-data-length :initarg :pin-data-length :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer-range-between4and12
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-input-pin-data-length
+                         :shape "IntegerRangeBetween4And12" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-input-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-generate-pin-data-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'generate-pin-data-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'generate-pin-data-input 'make-generate-pin-data-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1495,23 +2203,64 @@
                           generate-pin-data-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (generate-pin-data-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-generate-pin-data-output-"))
-   (encrypted-pin-block (common-lisp:error ":encrypted-pin-block is required")
-    :type (common-lisp:or hex-length-between16and32 common-lisp:null))
-   (encryption-key-arn (common-lisp:error ":encryption-key-arn is required")
-    :type (common-lisp:or key-arn common-lisp:null))
-   (encryption-key-check-value
-    (common-lisp:error ":encryption-key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null))
-   (generation-key-arn (common-lisp:error ":generation-key-arn is required")
-    :type (common-lisp:or key-arn common-lisp:null))
-   (generation-key-check-value
-    (common-lisp:error ":generation-key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null))
-   (pin-data (common-lisp:error ":pin-data is required") :type
-    (common-lisp:or pin-data common-lisp:null)))
+ (common-lisp:defclass generate-pin-data-output common-lisp:nil
+                       ((encrypted-pin-block :initarg :encrypted-pin-block
+                         :initform
+                         (common-lisp:error ":encrypted-pin-block is required")
+                         :type
+                         (common-lisp:or hex-length-between16and32
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-output-encrypted-pin-block
+                         :shape "HexLengthBetween16And32" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (encryption-key-arn :initarg :encryption-key-arn
+                         :initform
+                         (common-lisp:error ":encryption-key-arn is required")
+                         :type (common-lisp:or key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-output-encryption-key-arn
+                         :shape "KeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (encryption-key-check-value :initarg
+                         :encryption-key-check-value :initform
+                         (common-lisp:error
+                          ":encryption-key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-output-encryption-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (generation-key-arn :initarg :generation-key-arn
+                         :initform
+                         (common-lisp:error ":generation-key-arn is required")
+                         :type (common-lisp:or key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-output-generation-key-arn
+                         :shape "KeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (generation-key-check-value :initarg
+                         :generation-key-check-value :initform
+                         (common-lisp:error
+                          ":generation-key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-generate-pin-data-output-generation-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pin-data :initarg :pin-data :initform
+                         (common-lisp:error ":pin-data is required") :type
+                         (common-lisp:or pin-data common-lisp:null) :accessor
+                         struct-shape-generate-pin-data-output-pin-data :shape
+                         "PinData" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-generate-pin-data-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'generate-pin-data-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'generate-pin-data-output 'make-generate-pin-data-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1593,17 +2342,43 @@
 (common-lisp:deftype hex-length-equals4 () 'common-lisp:string)
 (common-lisp:deftype hex-length-equals8 () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (ibm3624natural-pin (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ibm3624natural-pin-"))
-   (decimalization-table
-    (common-lisp:error ":decimalization-table is required") :type
-    (common-lisp:or number-length-equals16 common-lisp:null))
-   (pin-validation-data (common-lisp:error ":pin-validation-data is required")
-    :type (common-lisp:or number-length-between4and16 common-lisp:null))
-   (pin-validation-data-pad-character
-    (common-lisp:error ":pin-validation-data-pad-character is required") :type
-    (common-lisp:or hex-length-equals1 common-lisp:null)))
+ (common-lisp:defclass ibm3624natural-pin common-lisp:nil
+                       ((decimalization-table :initarg :decimalization-table
+                         :initform
+                         (common-lisp:error
+                          ":decimalization-table is required")
+                         :type
+                         (common-lisp:or number-length-equals16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624natural-pin-decimalization-table
+                         :shape "NumberLengthEquals16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-validation-data :initarg :pin-validation-data
+                         :initform
+                         (common-lisp:error ":pin-validation-data is required")
+                         :type
+                         (common-lisp:or number-length-between4and16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624natural-pin-pin-validation-data
+                         :shape "NumberLengthBetween4And16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-validation-data-pad-character :initarg
+                         :pin-validation-data-pad-character :initform
+                         (common-lisp:error
+                          ":pin-validation-data-pad-character is required")
+                         :type
+                         (common-lisp:or hex-length-equals1 common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624natural-pin-pin-validation-data-pad-character
+                         :shape "HexLengthEquals1" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ibm3624natural-pin
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ibm3624natural-pin
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ibm3624natural-pin 'make-ibm3624natural-pin))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1639,19 +2414,51 @@
                         ((aws-sdk/generator/shape::input ibm3624natural-pin))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ibm3624pin-from-offset (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ibm3624pin-from-offset-"))
-   (decimalization-table
-    (common-lisp:error ":decimalization-table is required") :type
-    (common-lisp:or number-length-equals16 common-lisp:null))
-   (pin-offset (common-lisp:error ":pin-offset is required") :type
-    (common-lisp:or number-length-between4and12 common-lisp:null))
-   (pin-validation-data (common-lisp:error ":pin-validation-data is required")
-    :type (common-lisp:or number-length-between4and16 common-lisp:null))
-   (pin-validation-data-pad-character
-    (common-lisp:error ":pin-validation-data-pad-character is required") :type
-    (common-lisp:or hex-length-equals1 common-lisp:null)))
+ (common-lisp:defclass ibm3624pin-from-offset common-lisp:nil
+                       ((decimalization-table :initarg :decimalization-table
+                         :initform
+                         (common-lisp:error
+                          ":decimalization-table is required")
+                         :type
+                         (common-lisp:or number-length-equals16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-from-offset-decimalization-table
+                         :shape "NumberLengthEquals16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-offset :initarg :pin-offset :initform
+                         (common-lisp:error ":pin-offset is required") :type
+                         (common-lisp:or number-length-between4and12
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-from-offset-pin-offset :shape
+                         "NumberLengthBetween4And12" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pin-validation-data :initarg :pin-validation-data
+                         :initform
+                         (common-lisp:error ":pin-validation-data is required")
+                         :type
+                         (common-lisp:or number-length-between4and16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-from-offset-pin-validation-data
+                         :shape "NumberLengthBetween4And16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-validation-data-pad-character :initarg
+                         :pin-validation-data-pad-character :initform
+                         (common-lisp:error
+                          ":pin-validation-data-pad-character is required")
+                         :type
+                         (common-lisp:or hex-length-equals1 common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-from-offset-pin-validation-data-pad-character
+                         :shape "HexLengthEquals1" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ibm3624pin-from-offset
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ibm3624pin-from-offset
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ibm3624pin-from-offset 'make-ibm3624pin-from-offset))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1700,19 +2507,53 @@
                           ibm3624pin-from-offset))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ibm3624pin-offset (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ibm3624pin-offset-"))
-   (decimalization-table
-    (common-lisp:error ":decimalization-table is required") :type
-    (common-lisp:or number-length-equals16 common-lisp:null))
-   (encrypted-pin-block (common-lisp:error ":encrypted-pin-block is required")
-    :type (common-lisp:or hex-length-between16and32 common-lisp:null))
-   (pin-validation-data (common-lisp:error ":pin-validation-data is required")
-    :type (common-lisp:or number-length-between4and16 common-lisp:null))
-   (pin-validation-data-pad-character
-    (common-lisp:error ":pin-validation-data-pad-character is required") :type
-    (common-lisp:or hex-length-equals1 common-lisp:null)))
+ (common-lisp:defclass ibm3624pin-offset common-lisp:nil
+                       ((decimalization-table :initarg :decimalization-table
+                         :initform
+                         (common-lisp:error
+                          ":decimalization-table is required")
+                         :type
+                         (common-lisp:or number-length-equals16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-offset-decimalization-table
+                         :shape "NumberLengthEquals16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (encrypted-pin-block :initarg :encrypted-pin-block
+                         :initform
+                         (common-lisp:error ":encrypted-pin-block is required")
+                         :type
+                         (common-lisp:or hex-length-between16and32
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-offset-encrypted-pin-block
+                         :shape "HexLengthBetween16And32" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-validation-data :initarg :pin-validation-data
+                         :initform
+                         (common-lisp:error ":pin-validation-data is required")
+                         :type
+                         (common-lisp:or number-length-between4and16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-offset-pin-validation-data
+                         :shape "NumberLengthBetween4And16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-validation-data-pad-character :initarg
+                         :pin-validation-data-pad-character :initform
+                         (common-lisp:error
+                          ":pin-validation-data-pad-character is required")
+                         :type
+                         (common-lisp:or hex-length-equals1 common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-offset-pin-validation-data-pad-character
+                         :shape "HexLengthEquals1" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ibm3624pin-offset
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ibm3624pin-offset
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ibm3624pin-offset 'make-ibm3624pin-offset))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1755,19 +2596,51 @@
                         ((aws-sdk/generator/shape::input ibm3624pin-offset))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ibm3624pin-verification (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ibm3624pin-verification-"))
-   (decimalization-table
-    (common-lisp:error ":decimalization-table is required") :type
-    (common-lisp:or number-length-equals16 common-lisp:null))
-   (pin-offset (common-lisp:error ":pin-offset is required") :type
-    (common-lisp:or number-length-between4and12 common-lisp:null))
-   (pin-validation-data (common-lisp:error ":pin-validation-data is required")
-    :type (common-lisp:or number-length-between4and16 common-lisp:null))
-   (pin-validation-data-pad-character
-    (common-lisp:error ":pin-validation-data-pad-character is required") :type
-    (common-lisp:or hex-length-equals1 common-lisp:null)))
+ (common-lisp:defclass ibm3624pin-verification common-lisp:nil
+                       ((decimalization-table :initarg :decimalization-table
+                         :initform
+                         (common-lisp:error
+                          ":decimalization-table is required")
+                         :type
+                         (common-lisp:or number-length-equals16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-verification-decimalization-table
+                         :shape "NumberLengthEquals16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-offset :initarg :pin-offset :initform
+                         (common-lisp:error ":pin-offset is required") :type
+                         (common-lisp:or number-length-between4and12
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-verification-pin-offset :shape
+                         "NumberLengthBetween4And12" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pin-validation-data :initarg :pin-validation-data
+                         :initform
+                         (common-lisp:error ":pin-validation-data is required")
+                         :type
+                         (common-lisp:or number-length-between4and16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-verification-pin-validation-data
+                         :shape "NumberLengthBetween4And16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-validation-data-pad-character :initarg
+                         :pin-validation-data-pad-character :initform
+                         (common-lisp:error
+                          ":pin-validation-data-pad-character is required")
+                         :type
+                         (common-lisp:or hex-length-equals1 common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624pin-verification-pin-validation-data-pad-character
+                         :shape "HexLengthEquals1" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ibm3624pin-verification
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ibm3624pin-verification
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ibm3624pin-verification 'make-ibm3624pin-verification))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1816,17 +2689,43 @@
                           ibm3624pin-verification))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ibm3624random-pin (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ibm3624random-pin-"))
-   (decimalization-table
-    (common-lisp:error ":decimalization-table is required") :type
-    (common-lisp:or number-length-equals16 common-lisp:null))
-   (pin-validation-data (common-lisp:error ":pin-validation-data is required")
-    :type (common-lisp:or number-length-between4and16 common-lisp:null))
-   (pin-validation-data-pad-character
-    (common-lisp:error ":pin-validation-data-pad-character is required") :type
-    (common-lisp:or hex-length-equals1 common-lisp:null)))
+ (common-lisp:defclass ibm3624random-pin common-lisp:nil
+                       ((decimalization-table :initarg :decimalization-table
+                         :initform
+                         (common-lisp:error
+                          ":decimalization-table is required")
+                         :type
+                         (common-lisp:or number-length-equals16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624random-pin-decimalization-table
+                         :shape "NumberLengthEquals16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-validation-data :initarg :pin-validation-data
+                         :initform
+                         (common-lisp:error ":pin-validation-data is required")
+                         :type
+                         (common-lisp:or number-length-between4and16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624random-pin-pin-validation-data
+                         :shape "NumberLengthBetween4And16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-validation-data-pad-character :initarg
+                         :pin-validation-data-pad-character :initform
+                         (common-lisp:error
+                          ":pin-validation-data-pad-character is required")
+                         :type
+                         (common-lisp:or hex-length-equals1 common-lisp:null)
+                         :accessor
+                         struct-shape-ibm3624random-pin-pin-validation-data-pad-character
+                         :shape "HexLengthEquals1" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ibm3624random-pin
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ibm3624random-pin
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ibm3624random-pin 'make-ibm3624random-pin))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1878,15 +2777,39 @@
 (common-lisp:deftype key-check-value () 'common-lisp:string)
 (common-lisp:deftype mac-algorithm () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (mac-algorithm-dukpt (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mac-algorithm-dukpt-"))
-   (dukpt-derivation-type common-lisp:nil :type
-    (common-lisp:or dukpt-derivation-type common-lisp:null))
-   (dukpt-key-variant (common-lisp:error ":dukpt-key-variant is required")
-    :type (common-lisp:or dukpt-key-variant common-lisp:null))
-   (key-serial-number (common-lisp:error ":key-serial-number is required")
-    :type (common-lisp:or hex-length-between10and24 common-lisp:null)))
+ (common-lisp:defclass mac-algorithm-dukpt common-lisp:nil
+                       ((dukpt-derivation-type :initarg :dukpt-derivation-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or dukpt-derivation-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-mac-algorithm-dukpt-dukpt-derivation-type
+                         :shape "DukptDerivationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dukpt-key-variant :initarg :dukpt-key-variant
+                         :initform
+                         (common-lisp:error ":dukpt-key-variant is required")
+                         :type
+                         (common-lisp:or dukpt-key-variant common-lisp:null)
+                         :accessor
+                         struct-shape-mac-algorithm-dukpt-dukpt-key-variant
+                         :shape "DukptKeyVariant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key-serial-number :initarg :key-serial-number
+                         :initform
+                         (common-lisp:error ":key-serial-number is required")
+                         :type
+                         (common-lisp:or hex-length-between10and24
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-mac-algorithm-dukpt-key-serial-number
+                         :shape "HexLengthBetween10And24" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mac-algorithm-dukpt
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mac-algorithm-dukpt
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'mac-algorithm-dukpt 'make-mac-algorithm-dukpt))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1921,23 +2844,65 @@
                         ((aws-sdk/generator/shape::input mac-algorithm-dukpt))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mac-algorithm-emv (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mac-algorithm-emv-"))
-   (major-key-derivation-mode
-    (common-lisp:error ":major-key-derivation-mode is required") :type
-    (common-lisp:or major-key-derivation-mode common-lisp:null))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null))
-   (session-key-derivation-mode
-    (common-lisp:error ":session-key-derivation-mode is required") :type
-    (common-lisp:or session-key-derivation-mode common-lisp:null))
-   (session-key-derivation-value
-    (common-lisp:error ":session-key-derivation-value is required") :type
-    (common-lisp:or session-key-derivation-value common-lisp:null)))
+ (common-lisp:defclass mac-algorithm-emv common-lisp:nil
+                       ((major-key-derivation-mode :initarg
+                         :major-key-derivation-mode :initform
+                         (common-lisp:error
+                          ":major-key-derivation-mode is required")
+                         :type
+                         (common-lisp:or major-key-derivation-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-mac-algorithm-emv-major-key-derivation-mode
+                         :shape "MajorKeyDerivationMode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-mac-algorithm-emv-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-mac-algorithm-emv-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (session-key-derivation-mode :initarg
+                         :session-key-derivation-mode :initform
+                         (common-lisp:error
+                          ":session-key-derivation-mode is required")
+                         :type
+                         (common-lisp:or session-key-derivation-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-mac-algorithm-emv-session-key-derivation-mode
+                         :shape "SessionKeyDerivationMode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (session-key-derivation-value :initarg
+                         :session-key-derivation-value :initform
+                         (common-lisp:error
+                          ":session-key-derivation-value is required")
+                         :type
+                         (common-lisp:or session-key-derivation-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-mac-algorithm-emv-session-key-derivation-value
+                         :shape "SessionKeyDerivationValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mac-algorithm-emv
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mac-algorithm-emv
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'mac-algorithm-emv 'make-mac-algorithm-emv))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1989,19 +2954,46 @@
                         ((aws-sdk/generator/shape::input mac-algorithm-emv))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mac-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mac-attributes-"))
-   (algorithm common-lisp:nil :type
-    (common-lisp:or mac-algorithm common-lisp:null))
-   (dukpt-cmac common-lisp:nil :type
-    (common-lisp:or mac-algorithm-dukpt common-lisp:null))
-   (dukpt-iso9797algorithm1 common-lisp:nil :type
-    (common-lisp:or mac-algorithm-dukpt common-lisp:null))
-   (dukpt-iso9797algorithm3 common-lisp:nil :type
-    (common-lisp:or mac-algorithm-dukpt common-lisp:null))
-   (emv-mac common-lisp:nil :type
-    (common-lisp:or mac-algorithm-emv common-lisp:null)))
+ (common-lisp:defclass mac-attributes common-lisp:nil
+                       ((algorithm :initarg :algorithm :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mac-algorithm common-lisp:null)
+                         :accessor struct-shape-mac-attributes-algorithm :shape
+                         "MacAlgorithm" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dukpt-cmac :initarg :dukpt-cmac :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mac-algorithm-dukpt common-lisp:null)
+                         :accessor struct-shape-mac-attributes-dukpt-cmac
+                         :shape "MacAlgorithmDukpt" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dukpt-iso9797algorithm1 :initarg
+                         :dukpt-iso9797algorithm1 :initform common-lisp:nil
+                         :type
+                         (common-lisp:or mac-algorithm-dukpt common-lisp:null)
+                         :accessor
+                         struct-shape-mac-attributes-dukpt-iso9797algorithm1
+                         :shape "MacAlgorithmDukpt" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dukpt-iso9797algorithm3 :initarg
+                         :dukpt-iso9797algorithm3 :initform common-lisp:nil
+                         :type
+                         (common-lisp:or mac-algorithm-dukpt common-lisp:null)
+                         :accessor
+                         struct-shape-mac-attributes-dukpt-iso9797algorithm3
+                         :shape "MacAlgorithmDukpt" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (emv-mac :initarg :emv-mac :initform common-lisp:nil
+                         :type
+                         (common-lisp:or mac-algorithm-emv common-lisp:null)
+                         :accessor struct-shape-mac-attributes-emv-mac :shape
+                         "MacAlgorithmEmv" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mac-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mac-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mac-attributes 'make-mac-attributes))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mac-attributes))
@@ -2060,12 +3052,26 @@
 (common-lisp:deftype padding-type () 'common-lisp:string)
 (common-lisp:deftype pin-block-format-for-pin-data () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pin-data (:copier common-lisp:nil) (:conc-name "struct-shape-pin-data-"))
-   (pin-offset common-lisp:nil :type
-    (common-lisp:or number-length-between4and12 common-lisp:null))
-   (verification-value common-lisp:nil :type
-    (common-lisp:or number-length-between4and12 common-lisp:null)))
+ (common-lisp:defclass pin-data common-lisp:nil
+                       ((pin-offset :initarg :pin-offset :initform
+                         common-lisp:nil :type
+                         (common-lisp:or number-length-between4and12
+                                         common-lisp:null)
+                         :accessor struct-shape-pin-data-pin-offset :shape
+                         "NumberLengthBetween4And12" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (verification-value :initarg :verification-value
+                         :initform common-lisp:nil :type
+                         (common-lisp:or number-length-between4and12
+                                         common-lisp:null)
+                         :accessor struct-shape-pin-data-verification-value
+                         :shape "NumberLengthBetween4And12" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pin-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pin-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'pin-data 'make-pin-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input pin-data))
@@ -2091,20 +3097,57 @@
                         ((aws-sdk/generator/shape::input pin-data))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (pin-generation-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pin-generation-attributes-"))
-   (ibm3624natural-pin common-lisp:nil :type
-    (common-lisp:or ibm3624natural-pin common-lisp:null))
-   (ibm3624pin-from-offset common-lisp:nil :type
-    (common-lisp:or ibm3624pin-from-offset common-lisp:null))
-   (ibm3624pin-offset common-lisp:nil :type
-    (common-lisp:or ibm3624pin-offset common-lisp:null))
-   (ibm3624random-pin common-lisp:nil :type
-    (common-lisp:or ibm3624random-pin common-lisp:null))
-   (visa-pin common-lisp:nil :type (common-lisp:or visa-pin common-lisp:null))
-   (visa-pin-verification-value common-lisp:nil :type
-    (common-lisp:or visa-pin-verification-value common-lisp:null)))
+ (common-lisp:defclass pin-generation-attributes common-lisp:nil
+                       ((ibm3624natural-pin :initarg :ibm3624natural-pin
+                         :initform common-lisp:nil :type
+                         (common-lisp:or ibm3624natural-pin common-lisp:null)
+                         :accessor
+                         struct-shape-pin-generation-attributes-ibm3624natural-pin
+                         :shape "Ibm3624NaturalPin" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ibm3624pin-from-offset :initarg
+                         :ibm3624pin-from-offset :initform common-lisp:nil
+                         :type
+                         (common-lisp:or ibm3624pin-from-offset
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-pin-generation-attributes-ibm3624pin-from-offset
+                         :shape "Ibm3624PinFromOffset" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ibm3624pin-offset :initarg :ibm3624pin-offset
+                         :initform common-lisp:nil :type
+                         (common-lisp:or ibm3624pin-offset common-lisp:null)
+                         :accessor
+                         struct-shape-pin-generation-attributes-ibm3624pin-offset
+                         :shape "Ibm3624PinOffset" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ibm3624random-pin :initarg :ibm3624random-pin
+                         :initform common-lisp:nil :type
+                         (common-lisp:or ibm3624random-pin common-lisp:null)
+                         :accessor
+                         struct-shape-pin-generation-attributes-ibm3624random-pin
+                         :shape "Ibm3624RandomPin" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (visa-pin :initarg :visa-pin :initform common-lisp:nil
+                         :type (common-lisp:or visa-pin common-lisp:null)
+                         :accessor
+                         struct-shape-pin-generation-attributes-visa-pin :shape
+                         "VisaPin" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (visa-pin-verification-value :initarg
+                         :visa-pin-verification-value :initform common-lisp:nil
+                         :type
+                         (common-lisp:or visa-pin-verification-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-pin-generation-attributes-visa-pin-verification-value
+                         :shape "VisaPinVerificationValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pin-generation-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pin-generation-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'pin-generation-attributes
                     'make-pin-generation-attributes))
@@ -2168,13 +3211,28 @@
                           pin-generation-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (pin-verification-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pin-verification-attributes-"))
-   (ibm3624pin common-lisp:nil :type
-    (common-lisp:or ibm3624pin-verification common-lisp:null))
-   (visa-pin common-lisp:nil :type
-    (common-lisp:or visa-pin-verification common-lisp:null)))
+ (common-lisp:defclass pin-verification-attributes common-lisp:nil
+                       ((ibm3624pin :initarg :ibm3624pin :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ibm3624pin-verification
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-pin-verification-attributes-ibm3624pin
+                         :shape "Ibm3624PinVerification" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (visa-pin :initarg :visa-pin :initform common-lisp:nil
+                         :type
+                         (common-lisp:or visa-pin-verification
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-pin-verification-attributes-visa-pin
+                         :shape "VisaPinVerification" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pin-verification-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pin-verification-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'pin-verification-attributes
                     'make-pin-verification-attributes))
@@ -2208,23 +3266,64 @@
                           pin-verification-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (re-encrypt-data-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-re-encrypt-data-input-"))
-   (cipher-text (common-lisp:error ":cipher-text is required") :type
-    (common-lisp:or hex-even-length-between16and4096 common-lisp:null))
-   (incoming-encryption-attributes
-    (common-lisp:error ":incoming-encryption-attributes is required") :type
-    (common-lisp:or re-encryption-attributes common-lisp:null))
-   (incoming-key-identifier
-    (common-lisp:error ":incoming-key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (outgoing-encryption-attributes
-    (common-lisp:error ":outgoing-encryption-attributes is required") :type
-    (common-lisp:or re-encryption-attributes common-lisp:null))
-   (outgoing-key-identifier
-    (common-lisp:error ":outgoing-key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null)))
+ (common-lisp:defclass re-encrypt-data-input common-lisp:nil
+                       ((cipher-text :initarg :cipher-text :initform
+                         (common-lisp:error ":cipher-text is required") :type
+                         (common-lisp:or hex-even-length-between16and4096
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-re-encrypt-data-input-cipher-text :shape
+                         "HexEvenLengthBetween16And4096" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (incoming-encryption-attributes :initarg
+                         :incoming-encryption-attributes :initform
+                         (common-lisp:error
+                          ":incoming-encryption-attributes is required")
+                         :type
+                         (common-lisp:or re-encryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-re-encrypt-data-input-incoming-encryption-attributes
+                         :shape "ReEncryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (incoming-key-identifier :initarg
+                         :incoming-key-identifier :initform
+                         (common-lisp:error
+                          ":incoming-key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-re-encrypt-data-input-incoming-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location "uri"
+                         :location-name "IncomingKeyIdentifier")
+                        (outgoing-encryption-attributes :initarg
+                         :outgoing-encryption-attributes :initform
+                         (common-lisp:error
+                          ":outgoing-encryption-attributes is required")
+                         :type
+                         (common-lisp:or re-encryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-re-encrypt-data-input-outgoing-encryption-attributes
+                         :shape "ReEncryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (outgoing-key-identifier :initarg
+                         :outgoing-key-identifier :initform
+                         (common-lisp:error
+                          ":outgoing-key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-re-encrypt-data-input-outgoing-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-re-encrypt-data-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 're-encrypt-data-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 're-encrypt-data-input 'make-re-encrypt-data-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2274,15 +3373,34 @@
                           re-encrypt-data-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (re-encrypt-data-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-re-encrypt-data-output-"))
-   (cipher-text (common-lisp:error ":cipher-text is required") :type
-    (common-lisp:or hex-even-length-between16and4096 common-lisp:null))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value (common-lisp:error ":key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null)))
+ (common-lisp:defclass re-encrypt-data-output common-lisp:nil
+                       ((cipher-text :initarg :cipher-text :initform
+                         (common-lisp:error ":cipher-text is required") :type
+                         (common-lisp:or hex-even-length-between16and4096
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-re-encrypt-data-output-cipher-text :shape
+                         "HexEvenLengthBetween16And4096" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-re-encrypt-data-output-key-arn :shape
+                         "KeyArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         (common-lisp:error ":key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-re-encrypt-data-output-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-re-encrypt-data-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 're-encrypt-data-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 're-encrypt-data-output 'make-re-encrypt-data-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2322,13 +3440,26 @@
                           re-encrypt-data-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (re-encryption-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-re-encryption-attributes-"))
-   (dukpt common-lisp:nil :type
-    (common-lisp:or dukpt-encryption-attributes common-lisp:null))
-   (symmetric common-lisp:nil :type
-    (common-lisp:or symmetric-encryption-attributes common-lisp:null)))
+ (common-lisp:defclass re-encryption-attributes common-lisp:nil
+                       ((dukpt :initarg :dukpt :initform common-lisp:nil :type
+                         (common-lisp:or dukpt-encryption-attributes
+                                         common-lisp:null)
+                         :accessor struct-shape-re-encryption-attributes-dukpt
+                         :shape "DukptEncryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (symmetric :initarg :symmetric :initform
+                         common-lisp:nil :type
+                         (common-lisp:or symmetric-encryption-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-re-encryption-attributes-symmetric :shape
+                         "SymmetricEncryptionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-re-encryption-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 're-encryption-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 're-encryption-attributes 'make-re-encryption-attributes))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2369,14 +3500,32 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-resource-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (session-key-amex (:copier common-lisp:nil)
-      (:conc-name "struct-shape-session-key-amex-"))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null)))
+ (common-lisp:defclass session-key-amex common-lisp:nil
+                       ((pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-amex-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-amex-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-session-key-amex
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'session-key-amex
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'session-key-amex 'make-session-key-amex))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2404,19 +3553,44 @@
                         ((aws-sdk/generator/shape::input session-key-amex))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (session-key-derivation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-session-key-derivation-"))
-   (amex common-lisp:nil :type
-    (common-lisp:or session-key-amex common-lisp:null))
-   (emv2000 common-lisp:nil :type
-    (common-lisp:or session-key-emv2000 common-lisp:null))
-   (emv-common common-lisp:nil :type
-    (common-lisp:or session-key-emv-common common-lisp:null))
-   (mastercard common-lisp:nil :type
-    (common-lisp:or session-key-mastercard common-lisp:null))
-   (visa common-lisp:nil :type
-    (common-lisp:or session-key-visa common-lisp:null)))
+ (common-lisp:defclass session-key-derivation common-lisp:nil
+                       ((amex :initarg :amex :initform common-lisp:nil :type
+                         (common-lisp:or session-key-amex common-lisp:null)
+                         :accessor struct-shape-session-key-derivation-amex
+                         :shape "SessionKeyAmex" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (emv2000 :initarg :emv2000 :initform common-lisp:nil
+                         :type
+                         (common-lisp:or session-key-emv2000 common-lisp:null)
+                         :accessor struct-shape-session-key-derivation-emv2000
+                         :shape "SessionKeyEmv2000" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (emv-common :initarg :emv-common :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-key-emv-common
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-derivation-emv-common :shape
+                         "SessionKeyEmvCommon" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mastercard :initarg :mastercard :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-key-mastercard
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-derivation-mastercard :shape
+                         "SessionKeyMastercard" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (visa :initarg :visa :initform common-lisp:nil :type
+                         (common-lisp:or session-key-visa common-lisp:null)
+                         :accessor struct-shape-session-key-derivation-visa
+                         :shape "SessionKeyVisa" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-session-key-derivation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'session-key-derivation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'session-key-derivation 'make-session-key-derivation))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2471,13 +3645,29 @@
    common-lisp:nil))
 (common-lisp:deftype session-key-derivation-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (session-key-derivation-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-session-key-derivation-value-"))
-   (application-cryptogram common-lisp:nil :type
-    (common-lisp:or hex-length-equals16 common-lisp:null))
-   (application-transaction-counter common-lisp:nil :type
-    (common-lisp:or hex-length-between2and4 common-lisp:null)))
+ (common-lisp:defclass session-key-derivation-value common-lisp:nil
+                       ((application-cryptogram :initarg
+                         :application-cryptogram :initform common-lisp:nil
+                         :type
+                         (common-lisp:or hex-length-equals16 common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-derivation-value-application-cryptogram
+                         :shape "HexLengthEquals16" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (application-transaction-counter :initarg
+                         :application-transaction-counter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hex-length-between2and4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-derivation-value-application-transaction-counter
+                         :shape "HexLengthBetween2And4" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-session-key-derivation-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'session-key-derivation-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'session-key-derivation-value
                     'make-session-key-derivation-value))
@@ -2513,17 +3703,43 @@
                           session-key-derivation-value))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (session-key-emv2000 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-session-key-emv2000-"))
-   (application-transaction-counter
-    (common-lisp:error ":application-transaction-counter is required") :type
-    (common-lisp:or hex-length-between2and4 common-lisp:null))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null)))
+ (common-lisp:defclass session-key-emv2000 common-lisp:nil
+                       ((application-transaction-counter :initarg
+                         :application-transaction-counter :initform
+                         (common-lisp:error
+                          ":application-transaction-counter is required")
+                         :type
+                         (common-lisp:or hex-length-between2and4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-emv2000-application-transaction-counter
+                         :shape "HexLengthBetween2And4" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-emv2000-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-emv2000-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-session-key-emv2000
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'session-key-emv2000
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'session-key-emv2000 'make-session-key-emv2000))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2559,17 +3775,43 @@
                         ((aws-sdk/generator/shape::input session-key-emv2000))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (session-key-emv-common (:copier common-lisp:nil)
-      (:conc-name "struct-shape-session-key-emv-common-"))
-   (application-transaction-counter
-    (common-lisp:error ":application-transaction-counter is required") :type
-    (common-lisp:or hex-length-between2and4 common-lisp:null))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null)))
+ (common-lisp:defclass session-key-emv-common common-lisp:nil
+                       ((application-transaction-counter :initarg
+                         :application-transaction-counter :initform
+                         (common-lisp:error
+                          ":application-transaction-counter is required")
+                         :type
+                         (common-lisp:or hex-length-between2and4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-emv-common-application-transaction-counter
+                         :shape "HexLengthBetween2And4" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-emv-common-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-emv-common-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-session-key-emv-common
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'session-key-emv-common
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'session-key-emv-common 'make-session-key-emv-common))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2611,20 +3853,54 @@
                           session-key-emv-common))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (session-key-mastercard (:copier common-lisp:nil)
-      (:conc-name "struct-shape-session-key-mastercard-"))
-   (application-transaction-counter
-    (common-lisp:error ":application-transaction-counter is required") :type
-    (common-lisp:or hex-length-between2and4 common-lisp:null))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null))
-   (unpredictable-number
-    (common-lisp:error ":unpredictable-number is required") :type
-    (common-lisp:or hex-length-between2and8 common-lisp:null)))
+ (common-lisp:defclass session-key-mastercard common-lisp:nil
+                       ((application-transaction-counter :initarg
+                         :application-transaction-counter :initform
+                         (common-lisp:error
+                          ":application-transaction-counter is required")
+                         :type
+                         (common-lisp:or hex-length-between2and4
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-mastercard-application-transaction-counter
+                         :shape "HexLengthBetween2And4" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-mastercard-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-mastercard-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (unpredictable-number :initarg :unpredictable-number
+                         :initform
+                         (common-lisp:error
+                          ":unpredictable-number is required")
+                         :type
+                         (common-lisp:or hex-length-between2and8
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-mastercard-unpredictable-number
+                         :shape "HexLengthBetween2And8" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-session-key-mastercard
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'session-key-mastercard
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'session-key-mastercard 'make-session-key-mastercard))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2674,14 +3950,32 @@
                           session-key-mastercard))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (session-key-visa (:copier common-lisp:nil)
-      (:conc-name "struct-shape-session-key-visa-"))
-   (pan-sequence-number (common-lisp:error ":pan-sequence-number is required")
-    :type (common-lisp:or hex-length-equals2 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null)))
+ (common-lisp:defclass session-key-visa common-lisp:nil
+                       ((pan-sequence-number :initarg :pan-sequence-number
+                         :initform
+                         (common-lisp:error ":pan-sequence-number is required")
+                         :type
+                         (common-lisp:or hex-length-equals2 common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-visa-pan-sequence-number
+                         :shape "HexLengthEquals2" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-session-key-visa-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-session-key-visa
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'session-key-visa
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'session-key-visa 'make-session-key-visa))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2710,15 +4004,34 @@
    common-lisp:nil))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (symmetric-encryption-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-symmetric-encryption-attributes-"))
-   (initialization-vector common-lisp:nil :type
-    (common-lisp:or hex-length16or32 common-lisp:null))
-   (mode (common-lisp:error ":mode is required") :type
-    (common-lisp:or encryption-mode common-lisp:null))
-   (padding-type common-lisp:nil :type
-    (common-lisp:or padding-type common-lisp:null)))
+ (common-lisp:defclass symmetric-encryption-attributes common-lisp:nil
+                       ((initialization-vector :initarg :initialization-vector
+                         :initform common-lisp:nil :type
+                         (common-lisp:or hex-length16or32 common-lisp:null)
+                         :accessor
+                         struct-shape-symmetric-encryption-attributes-initialization-vector
+                         :shape "HexLength16Or32" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mode :initarg :mode :initform
+                         (common-lisp:error ":mode is required") :type
+                         (common-lisp:or encryption-mode common-lisp:null)
+                         :accessor
+                         struct-shape-symmetric-encryption-attributes-mode
+                         :shape "EncryptionMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (padding-type :initarg :padding-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or padding-type common-lisp:null)
+                         :accessor
+                         struct-shape-symmetric-encryption-attributes-padding-type
+                         :shape "PaddingType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-symmetric-encryption-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'symmetric-encryption-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'symmetric-encryption-attributes
                     'make-symmetric-encryption-attributes))
@@ -2767,27 +4080,84 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (translate-pin-data-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-translate-pin-data-input-"))
-   (encrypted-pin-block (common-lisp:error ":encrypted-pin-block is required")
-    :type (common-lisp:or hex-even-length-between16and32 common-lisp:null))
-   (incoming-dukpt-attributes common-lisp:nil :type
-    (common-lisp:or dukpt-derivation-attributes common-lisp:null))
-   (incoming-key-identifier
-    (common-lisp:error ":incoming-key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (incoming-translation-attributes
-    (common-lisp:error ":incoming-translation-attributes is required") :type
-    (common-lisp:or translation-iso-formats common-lisp:null))
-   (outgoing-dukpt-attributes common-lisp:nil :type
-    (common-lisp:or dukpt-derivation-attributes common-lisp:null))
-   (outgoing-key-identifier
-    (common-lisp:error ":outgoing-key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (outgoing-translation-attributes
-    (common-lisp:error ":outgoing-translation-attributes is required") :type
-    (common-lisp:or translation-iso-formats common-lisp:null)))
+ (common-lisp:defclass translate-pin-data-input common-lisp:nil
+                       ((encrypted-pin-block :initarg :encrypted-pin-block
+                         :initform
+                         (common-lisp:error ":encrypted-pin-block is required")
+                         :type
+                         (common-lisp:or hex-even-length-between16and32
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-input-encrypted-pin-block
+                         :shape "HexEvenLengthBetween16And32" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (incoming-dukpt-attributes :initarg
+                         :incoming-dukpt-attributes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or dukpt-derivation-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-input-incoming-dukpt-attributes
+                         :shape "DukptDerivationAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (incoming-key-identifier :initarg
+                         :incoming-key-identifier :initform
+                         (common-lisp:error
+                          ":incoming-key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-input-incoming-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (incoming-translation-attributes :initarg
+                         :incoming-translation-attributes :initform
+                         (common-lisp:error
+                          ":incoming-translation-attributes is required")
+                         :type
+                         (common-lisp:or translation-iso-formats
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-input-incoming-translation-attributes
+                         :shape "TranslationIsoFormats" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (outgoing-dukpt-attributes :initarg
+                         :outgoing-dukpt-attributes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or dukpt-derivation-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-input-outgoing-dukpt-attributes
+                         :shape "DukptDerivationAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (outgoing-key-identifier :initarg
+                         :outgoing-key-identifier :initform
+                         (common-lisp:error
+                          ":outgoing-key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-input-outgoing-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (outgoing-translation-attributes :initarg
+                         :outgoing-translation-attributes :initform
+                         (common-lisp:error
+                          ":outgoing-translation-attributes is required")
+                         :type
+                         (common-lisp:or translation-iso-formats
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-input-outgoing-translation-attributes
+                         :shape "TranslationIsoFormats" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-translate-pin-data-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'translate-pin-data-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'translate-pin-data-input 'make-translate-pin-data-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2861,15 +4231,34 @@
                           translate-pin-data-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (translate-pin-data-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-translate-pin-data-output-"))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value (common-lisp:error ":key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null))
-   (pin-block (common-lisp:error ":pin-block is required") :type
-    (common-lisp:or hex-length-between16and32 common-lisp:null)))
+ (common-lisp:defclass translate-pin-data-output common-lisp:nil
+                       ((key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-translate-pin-data-output-key-arn :shape
+                         "KeyArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         (common-lisp:error ":key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-output-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pin-block :initarg :pin-block :initform
+                         (common-lisp:error ":pin-block is required") :type
+                         (common-lisp:or hex-length-between16and32
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translate-pin-data-output-pin-block
+                         :shape "HexLengthBetween16And32" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-translate-pin-data-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'translate-pin-data-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'translate-pin-data-output
                     'make-translate-pin-data-output))
@@ -2910,17 +4299,44 @@
                           translate-pin-data-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (translation-iso-formats (:copier common-lisp:nil)
-      (:conc-name "struct-shape-translation-iso-formats-"))
-   (iso-format0 common-lisp:nil :type
-    (common-lisp:or translation-pin-data-iso-format034 common-lisp:null))
-   (iso-format1 common-lisp:nil :type
-    (common-lisp:or translation-pin-data-iso-format1 common-lisp:null))
-   (iso-format3 common-lisp:nil :type
-    (common-lisp:or translation-pin-data-iso-format034 common-lisp:null))
-   (iso-format4 common-lisp:nil :type
-    (common-lisp:or translation-pin-data-iso-format034 common-lisp:null)))
+ (common-lisp:defclass translation-iso-formats common-lisp:nil
+                       ((iso-format0 :initarg :iso-format0 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or translation-pin-data-iso-format034
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translation-iso-formats-iso-format0
+                         :shape "TranslationPinDataIsoFormat034" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (iso-format1 :initarg :iso-format1 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or translation-pin-data-iso-format1
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translation-iso-formats-iso-format1
+                         :shape "TranslationPinDataIsoFormat1" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (iso-format3 :initarg :iso-format3 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or translation-pin-data-iso-format034
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translation-iso-formats-iso-format3
+                         :shape "TranslationPinDataIsoFormat034" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (iso-format4 :initarg :iso-format4 :initform
+                         common-lisp:nil :type
+                         (common-lisp:or translation-pin-data-iso-format034
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translation-iso-formats-iso-format4
+                         :shape "TranslationPinDataIsoFormat034" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-translation-iso-formats
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'translation-iso-formats
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'translation-iso-formats 'make-translation-iso-formats))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2967,12 +4383,24 @@
                           translation-iso-formats))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (translation-pin-data-iso-format034 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-translation-pin-data-iso-format034-"))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null)))
+ (common-lisp:defclass translation-pin-data-iso-format034 common-lisp:nil
+                       ((primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-translation-pin-data-iso-format034-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-translation-pin-data-iso-format034
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'translation-pin-data-iso-format034
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'translation-pin-data-iso-format034
                     'make-translation-pin-data-iso-format034))
@@ -3000,9 +4428,14 @@
                           translation-pin-data-iso-format034))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (translation-pin-data-iso-format1 (:copier common-lisp:nil)
-      (:conc-name "struct-shape-translation-pin-data-iso-format1-")))
+ (common-lisp:defclass translation-pin-data-iso-format1 common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-translation-pin-data-iso-format1
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'translation-pin-data-iso-format1
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'translation-pin-data-iso-format1
                     'make-translation-pin-data-iso-format1))
@@ -3032,13 +4465,24 @@
   (common-lisp:list 'validation-exception 'validation-exception-field-list
                     'validation-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-field-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass validation-exception-field common-lisp:nil
+                       ((message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-message :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (path :initarg :path :initform
+                         (common-lisp:error ":path is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-path :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-field
                     'make-validation-exception-field))
@@ -3093,24 +4537,72 @@
                     'verification-failed-exception-reason)))
 (common-lisp:deftype verification-failed-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (verify-auth-request-cryptogram-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-verify-auth-request-cryptogram-input-"))
-   (auth-request-cryptogram
-    (common-lisp:error ":auth-request-cryptogram is required") :type
-    (common-lisp:or hex-length-equals16 common-lisp:null))
-   (auth-response-attributes common-lisp:nil :type
-    (common-lisp:or cryptogram-auth-response common-lisp:null))
-   (key-identifier (common-lisp:error ":key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (major-key-derivation-mode
-    (common-lisp:error ":major-key-derivation-mode is required") :type
-    (common-lisp:or major-key-derivation-mode common-lisp:null))
-   (session-key-derivation-attributes
-    (common-lisp:error ":session-key-derivation-attributes is required") :type
-    (common-lisp:or session-key-derivation common-lisp:null))
-   (transaction-data (common-lisp:error ":transaction-data is required") :type
-    (common-lisp:or hex-length-between2and1024 common-lisp:null)))
+ (common-lisp:defclass verify-auth-request-cryptogram-input common-lisp:nil
+                       ((auth-request-cryptogram :initarg
+                         :auth-request-cryptogram :initform
+                         (common-lisp:error
+                          ":auth-request-cryptogram is required")
+                         :type
+                         (common-lisp:or hex-length-equals16 common-lisp:null)
+                         :accessor
+                         struct-shape-verify-auth-request-cryptogram-input-auth-request-cryptogram
+                         :shape "HexLengthEquals16" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (auth-response-attributes :initarg
+                         :auth-response-attributes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or cryptogram-auth-response
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-auth-request-cryptogram-input-auth-response-attributes
+                         :shape "CryptogramAuthResponse" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (key-identifier :initarg :key-identifier :initform
+                         (common-lisp:error ":key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-auth-request-cryptogram-input-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (major-key-derivation-mode :initarg
+                         :major-key-derivation-mode :initform
+                         (common-lisp:error
+                          ":major-key-derivation-mode is required")
+                         :type
+                         (common-lisp:or major-key-derivation-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-auth-request-cryptogram-input-major-key-derivation-mode
+                         :shape "MajorKeyDerivationMode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (session-key-derivation-attributes :initarg
+                         :session-key-derivation-attributes :initform
+                         (common-lisp:error
+                          ":session-key-derivation-attributes is required")
+                         :type
+                         (common-lisp:or session-key-derivation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-auth-request-cryptogram-input-session-key-derivation-attributes
+                         :shape "SessionKeyDerivation" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (transaction-data :initarg :transaction-data :initform
+                         (common-lisp:error ":transaction-data is required")
+                         :type
+                         (common-lisp:or hex-length-between2and1024
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-auth-request-cryptogram-input-transaction-data
+                         :shape "HexLengthBetween2And1024" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-verify-auth-request-cryptogram-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'verify-auth-request-cryptogram-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'verify-auth-request-cryptogram-input
                     'make-verify-auth-request-cryptogram-input))
@@ -3176,15 +4668,35 @@
                           verify-auth-request-cryptogram-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (verify-auth-request-cryptogram-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-verify-auth-request-cryptogram-output-"))
-   (auth-response-value common-lisp:nil :type
-    (common-lisp:or hex-length-between1and16 common-lisp:null))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value (common-lisp:error ":key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null)))
+ (common-lisp:defclass verify-auth-request-cryptogram-output common-lisp:nil
+                       ((auth-response-value :initarg :auth-response-value
+                         :initform common-lisp:nil :type
+                         (common-lisp:or hex-length-between1and16
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-auth-request-cryptogram-output-auth-response-value
+                         :shape "HexLengthBetween1And16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-verify-auth-request-cryptogram-output-key-arn
+                         :shape "KeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         (common-lisp:error ":key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-verify-auth-request-cryptogram-output-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-verify-auth-request-cryptogram-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'verify-auth-request-cryptogram-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'verify-auth-request-cryptogram-output
                     'make-verify-auth-request-cryptogram-output))
@@ -3225,19 +4737,53 @@
                           verify-auth-request-cryptogram-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (verify-card-validation-data-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-verify-card-validation-data-input-"))
-   (key-identifier (common-lisp:error ":key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null))
-   (validation-data (common-lisp:error ":validation-data is required") :type
-    (common-lisp:or number-length-between3and5 common-lisp:null))
-   (verification-attributes
-    (common-lisp:error ":verification-attributes is required") :type
-    (common-lisp:or card-verification-attributes common-lisp:null)))
+ (common-lisp:defclass verify-card-validation-data-input common-lisp:nil
+                       ((key-identifier :initarg :key-identifier :initform
+                         (common-lisp:error ":key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-card-validation-data-input-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-card-validation-data-input-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (validation-data :initarg :validation-data :initform
+                         (common-lisp:error ":validation-data is required")
+                         :type
+                         (common-lisp:or number-length-between3and5
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-card-validation-data-input-validation-data
+                         :shape "NumberLengthBetween3And5" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (verification-attributes :initarg
+                         :verification-attributes :initform
+                         (common-lisp:error
+                          ":verification-attributes is required")
+                         :type
+                         (common-lisp:or card-verification-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-card-validation-data-input-verification-attributes
+                         :shape "CardVerificationAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-verify-card-validation-data-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'verify-card-validation-data-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'verify-card-validation-data-input
                     'make-verify-card-validation-data-input))
@@ -3287,13 +4833,27 @@
                           verify-card-validation-data-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (verify-card-validation-data-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-verify-card-validation-data-output-"))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value (common-lisp:error ":key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null)))
+ (common-lisp:defclass verify-card-validation-data-output common-lisp:nil
+                       ((key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-verify-card-validation-data-output-key-arn
+                         :shape "KeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         (common-lisp:error ":key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-verify-card-validation-data-output-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-verify-card-validation-data-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'verify-card-validation-data-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'verify-card-validation-data-output
                     'make-verify-card-validation-data-output))
@@ -3327,20 +4887,50 @@
                           verify-card-validation-data-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (verify-mac-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-verify-mac-input-"))
-   (key-identifier (common-lisp:error ":key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (mac (common-lisp:error ":mac is required") :type
-    (common-lisp:or hex-even-length-between4and128 common-lisp:null))
-   (mac-length common-lisp:nil :type
-    (common-lisp:or integer-range-between4and16 common-lisp:null))
-   (message-data (common-lisp:error ":message-data is required") :type
-    (common-lisp:or hex-even-length-between2and4096 common-lisp:null))
-   (verification-attributes
-    (common-lisp:error ":verification-attributes is required") :type
-    (common-lisp:or mac-attributes common-lisp:null)))
+ (common-lisp:defclass verify-mac-input common-lisp:nil
+                       ((key-identifier :initarg :key-identifier :initform
+                         (common-lisp:error ":key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor struct-shape-verify-mac-input-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (mac :initarg :mac :initform
+                         (common-lisp:error ":mac is required") :type
+                         (common-lisp:or hex-even-length-between4and128
+                                         common-lisp:null)
+                         :accessor struct-shape-verify-mac-input-mac :shape
+                         "HexEvenLengthBetween4And128" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (mac-length :initarg :mac-length :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer-range-between4and16
+                                         common-lisp:null)
+                         :accessor struct-shape-verify-mac-input-mac-length
+                         :shape "IntegerRangeBetween4And16" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (message-data :initarg :message-data :initform
+                         (common-lisp:error ":message-data is required") :type
+                         (common-lisp:or hex-even-length-between2and4096
+                                         common-lisp:null)
+                         :accessor struct-shape-verify-mac-input-message-data
+                         :shape "HexEvenLengthBetween2And4096" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (verification-attributes :initarg
+                         :verification-attributes :initform
+                         (common-lisp:error
+                          ":verification-attributes is required")
+                         :type (common-lisp:or mac-attributes common-lisp:null)
+                         :accessor
+                         struct-shape-verify-mac-input-verification-attributes
+                         :shape "MacAttributes" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-verify-mac-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'verify-mac-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'verify-mac-input 'make-verify-mac-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3389,13 +4979,26 @@
                         ((aws-sdk/generator/shape::input verify-mac-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (verify-mac-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-verify-mac-output-"))
-   (key-arn (common-lisp:error ":key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (key-check-value (common-lisp:error ":key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null)))
+ (common-lisp:defclass verify-mac-output common-lisp:nil
+                       ((key-arn :initarg :key-arn :initform
+                         (common-lisp:error ":key-arn is required") :type
+                         (common-lisp:or key-arn common-lisp:null) :accessor
+                         struct-shape-verify-mac-output-key-arn :shape "KeyArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (key-check-value :initarg :key-check-value :initform
+                         (common-lisp:error ":key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-verify-mac-output-key-check-value :shape
+                         "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-verify-mac-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'verify-mac-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'verify-mac-output 'make-verify-mac-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3422,29 +5025,90 @@
                         ((aws-sdk/generator/shape::input verify-mac-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (verify-pin-data-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-verify-pin-data-input-"))
-   (dukpt-attributes common-lisp:nil :type
-    (common-lisp:or dukpt-attributes common-lisp:null))
-   (encrypted-pin-block (common-lisp:error ":encrypted-pin-block is required")
-    :type (common-lisp:or hex-length-between16and32 common-lisp:null))
-   (encryption-key-identifier
-    (common-lisp:error ":encryption-key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null))
-   (pin-block-format (common-lisp:error ":pin-block-format is required") :type
-    (common-lisp:or pin-block-format-for-pin-data common-lisp:null))
-   (pin-data-length common-lisp:nil :type
-    (common-lisp:or integer-range-between4and12 common-lisp:null))
-   (primary-account-number
-    (common-lisp:error ":primary-account-number is required") :type
-    (common-lisp:or number-length-between12and19 common-lisp:null))
-   (verification-attributes
-    (common-lisp:error ":verification-attributes is required") :type
-    (common-lisp:or pin-verification-attributes common-lisp:null))
-   (verification-key-identifier
-    (common-lisp:error ":verification-key-identifier is required") :type
-    (common-lisp:or key-arn-or-key-alias-type common-lisp:null)))
+ (common-lisp:defclass verify-pin-data-input common-lisp:nil
+                       ((dukpt-attributes :initarg :dukpt-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dukpt-attributes common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-input-dukpt-attributes
+                         :shape "DukptAttributes" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (encrypted-pin-block :initarg :encrypted-pin-block
+                         :initform
+                         (common-lisp:error ":encrypted-pin-block is required")
+                         :type
+                         (common-lisp:or hex-length-between16and32
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-input-encrypted-pin-block
+                         :shape "HexLengthBetween16And32" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (encryption-key-identifier :initarg
+                         :encryption-key-identifier :initform
+                         (common-lisp:error
+                          ":encryption-key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-input-encryption-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-block-format :initarg :pin-block-format :initform
+                         (common-lisp:error ":pin-block-format is required")
+                         :type
+                         (common-lisp:or pin-block-format-for-pin-data
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-input-pin-block-format
+                         :shape "PinBlockFormatForPinData" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-data-length :initarg :pin-data-length :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer-range-between4and12
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-input-pin-data-length
+                         :shape "IntegerRangeBetween4And12" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (primary-account-number :initarg
+                         :primary-account-number :initform
+                         (common-lisp:error
+                          ":primary-account-number is required")
+                         :type
+                         (common-lisp:or number-length-between12and19
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-input-primary-account-number
+                         :shape "NumberLengthBetween12And19" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (verification-attributes :initarg
+                         :verification-attributes :initform
+                         (common-lisp:error
+                          ":verification-attributes is required")
+                         :type
+                         (common-lisp:or pin-verification-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-input-verification-attributes
+                         :shape "PinVerificationAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (verification-key-identifier :initarg
+                         :verification-key-identifier :initform
+                         (common-lisp:error
+                          ":verification-key-identifier is required")
+                         :type
+                         (common-lisp:or key-arn-or-key-alias-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-input-verification-key-identifier
+                         :shape "KeyArnOrKeyAliasType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-verify-pin-data-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'verify-pin-data-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'verify-pin-data-input 'make-verify-pin-data-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3523,20 +5187,49 @@
                           verify-pin-data-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (verify-pin-data-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-verify-pin-data-output-"))
-   (encryption-key-arn (common-lisp:error ":encryption-key-arn is required")
-    :type (common-lisp:or key-arn common-lisp:null))
-   (encryption-key-check-value
-    (common-lisp:error ":encryption-key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null))
-   (verification-key-arn
-    (common-lisp:error ":verification-key-arn is required") :type
-    (common-lisp:or key-arn common-lisp:null))
-   (verification-key-check-value
-    (common-lisp:error ":verification-key-check-value is required") :type
-    (common-lisp:or key-check-value common-lisp:null)))
+ (common-lisp:defclass verify-pin-data-output common-lisp:nil
+                       ((encryption-key-arn :initarg :encryption-key-arn
+                         :initform
+                         (common-lisp:error ":encryption-key-arn is required")
+                         :type (common-lisp:or key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-output-encryption-key-arn
+                         :shape "KeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (encryption-key-check-value :initarg
+                         :encryption-key-check-value :initform
+                         (common-lisp:error
+                          ":encryption-key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-output-encryption-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (verification-key-arn :initarg :verification-key-arn
+                         :initform
+                         (common-lisp:error
+                          ":verification-key-arn is required")
+                         :type (common-lisp:or key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-output-verification-key-arn
+                         :shape "KeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (verification-key-check-value :initarg
+                         :verification-key-check-value :initform
+                         (common-lisp:error
+                          ":verification-key-check-value is required")
+                         :type
+                         (common-lisp:or key-check-value common-lisp:null)
+                         :accessor
+                         struct-shape-verify-pin-data-output-verification-key-check-value
+                         :shape "KeyCheckValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-verify-pin-data-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'verify-pin-data-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'verify-pin-data-output 'make-verify-pin-data-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3586,11 +5279,23 @@
                           verify-pin-data-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (visa-pin (:copier common-lisp:nil) (:conc-name "struct-shape-visa-pin-"))
-   (pin-verification-key-index
-    (common-lisp:error ":pin-verification-key-index is required") :type
-    (common-lisp:or integer-range-between0and9 common-lisp:null)))
+ (common-lisp:defclass visa-pin common-lisp:nil
+                       ((pin-verification-key-index :initarg
+                         :pin-verification-key-index :initform
+                         (common-lisp:error
+                          ":pin-verification-key-index is required")
+                         :type
+                         (common-lisp:or integer-range-between0and9
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-visa-pin-pin-verification-key-index
+                         :shape "IntegerRangeBetween0And9" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-visa-pin
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'visa-pin
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'visa-pin 'make-visa-pin))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input visa-pin))
@@ -3610,14 +5315,33 @@
                         ((aws-sdk/generator/shape::input visa-pin))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (visa-pin-verification (:copier common-lisp:nil)
-      (:conc-name "struct-shape-visa-pin-verification-"))
-   (pin-verification-key-index
-    (common-lisp:error ":pin-verification-key-index is required") :type
-    (common-lisp:or integer-range-between0and9 common-lisp:null))
-   (verification-value (common-lisp:error ":verification-value is required")
-    :type (common-lisp:or number-length-between4and12 common-lisp:null)))
+ (common-lisp:defclass visa-pin-verification common-lisp:nil
+                       ((pin-verification-key-index :initarg
+                         :pin-verification-key-index :initform
+                         (common-lisp:error
+                          ":pin-verification-key-index is required")
+                         :type
+                         (common-lisp:or integer-range-between0and9
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-visa-pin-verification-pin-verification-key-index
+                         :shape "IntegerRangeBetween0And9" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (verification-value :initarg :verification-value
+                         :initform
+                         (common-lisp:error ":verification-value is required")
+                         :type
+                         (common-lisp:or number-length-between4and12
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-visa-pin-verification-verification-value
+                         :shape "NumberLengthBetween4And12" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-visa-pin-verification
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'visa-pin-verification
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'visa-pin-verification 'make-visa-pin-verification))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3651,14 +5375,33 @@
                           visa-pin-verification))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (visa-pin-verification-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-visa-pin-verification-value-"))
-   (encrypted-pin-block (common-lisp:error ":encrypted-pin-block is required")
-    :type (common-lisp:or hex-length-between16and32 common-lisp:null))
-   (pin-verification-key-index
-    (common-lisp:error ":pin-verification-key-index is required") :type
-    (common-lisp:or integer-range-between0and9 common-lisp:null)))
+ (common-lisp:defclass visa-pin-verification-value common-lisp:nil
+                       ((encrypted-pin-block :initarg :encrypted-pin-block
+                         :initform
+                         (common-lisp:error ":encrypted-pin-block is required")
+                         :type
+                         (common-lisp:or hex-length-between16and32
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-visa-pin-verification-value-encrypted-pin-block
+                         :shape "HexLengthBetween16And32" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pin-verification-key-index :initarg
+                         :pin-verification-key-index :initform
+                         (common-lisp:error
+                          ":pin-verification-key-index is required")
+                         :type
+                         (common-lisp:or integer-range-between0and9
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-visa-pin-verification-value-pin-verification-key-index
+                         :shape "IntegerRangeBetween0And9" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-visa-pin-verification-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'visa-pin-verification-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'visa-pin-verification-value
                     'make-visa-pin-verification-value))

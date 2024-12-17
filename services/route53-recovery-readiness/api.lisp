@@ -43,19 +43,45 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cell-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cell-output-"))
-   (cell-arn (common-lisp:error ":cell-arn is required") :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (cell-name (common-lisp:error ":cell-name is required") :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (cells (common-lisp:error ":cells is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (parent-readiness-scopes
-    (common-lisp:error ":parent-readiness-scopes is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass cell-output common-lisp:nil
+                       ((cell-arn :initarg :cell-arn :initform
+                         (common-lisp:error ":cell-arn is required") :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor struct-shape-cell-output-cell-arn :shape
+                         "__stringMax256" :location common-lisp:nil
+                         :location-name "cellArn")
+                        (cell-name :initarg :cell-name :initform
+                         (common-lisp:error ":cell-name is required") :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor struct-shape-cell-output-cell-name :shape
+                         "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "cellName")
+                        (cells :initarg :cells :initform
+                         (common-lisp:error ":cells is required") :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-cell-output-cells :shape
+                         "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (parent-readiness-scopes :initarg
+                         :parent-readiness-scopes :initform
+                         (common-lisp:error
+                          ":parent-readiness-scopes is required")
+                         :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-cell-output-parent-readiness-scopes
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "parentReadinessScopes")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-cell-output-tags :shape "Tags" :location
+                         common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cell-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cell-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'cell-output 'make-cell-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input cell-output))
@@ -110,14 +136,27 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-cell-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-cell-request-"))
-   (cell-name (common-lisp:error ":cell-name is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-cell-request common-lisp:nil
+                       ((cell-name :initarg :cell-name :initform
+                         (common-lisp:error ":cell-name is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-create-cell-request-cell-name :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "cellName")
+                        (cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-create-cell-request-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-cell-request-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-cell-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-cell-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-cell-request 'make-create-cell-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -151,18 +190,42 @@
                         ((aws-sdk/generator/shape::input create-cell-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-cell-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-cell-response-"))
-   (cell-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (cell-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (parent-readiness-scopes common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-cell-response common-lisp:nil
+                       ((cell-arn :initarg :cell-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor struct-shape-create-cell-response-cell-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "cellArn")
+                        (cell-name :initarg :cell-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor struct-shape-create-cell-response-cell-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "cellName")
+                        (cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-create-cell-response-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (parent-readiness-scopes :initarg
+                         :parent-readiness-scopes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-cell-response-parent-readiness-scopes
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "parentReadinessScopes")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-cell-response-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-cell-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-cell-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-cell-response 'make-create-cell-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -211,12 +274,26 @@
                         ((aws-sdk/generator/shape::input create-cell-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-cross-account-authorization-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-cross-account-authorization-request-"))
-   (cross-account-authorization
-    (common-lisp:error ":cross-account-authorization is required") :type
-    (common-lisp:or cross-account-authorization common-lisp:null)))
+ (common-lisp:defclass create-cross-account-authorization-request
+                       common-lisp:nil
+                       ((cross-account-authorization :initarg
+                         :cross-account-authorization :initform
+                         (common-lisp:error
+                          ":cross-account-authorization is required")
+                         :type
+                         (common-lisp:or cross-account-authorization
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-cross-account-authorization-request-cross-account-authorization
+                         :shape "CrossAccountAuthorization" :location
+                         common-lisp:nil :location-name
+                         "crossAccountAuthorization"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-cross-account-authorization-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-cross-account-authorization-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-cross-account-authorization-request
                     'make-create-cross-account-authorization-request))
@@ -244,11 +321,24 @@
                           create-cross-account-authorization-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-cross-account-authorization-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-cross-account-authorization-response-"))
-   (cross-account-authorization common-lisp:nil :type
-    (common-lisp:or cross-account-authorization common-lisp:null)))
+ (common-lisp:defclass create-cross-account-authorization-response
+                       common-lisp:nil
+                       ((cross-account-authorization :initarg
+                         :cross-account-authorization :initform common-lisp:nil
+                         :type
+                         (common-lisp:or cross-account-authorization
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-cross-account-authorization-response-cross-account-authorization
+                         :shape "CrossAccountAuthorization" :location
+                         common-lisp:nil :location-name
+                         "crossAccountAuthorization"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-cross-account-authorization-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-cross-account-authorization-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-cross-account-authorization-response
                     'make-create-cross-account-authorization-response))
@@ -276,15 +366,35 @@
                           create-cross-account-authorization-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-readiness-check-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-readiness-check-request-"))
-   (readiness-check-name
-    (common-lisp:error ":readiness-check-name is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-set-name (common-lisp:error ":resource-set-name is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-readiness-check-request common-lisp:nil
+                       ((readiness-check-name :initarg :readiness-check-name
+                         :initform
+                         (common-lisp:error
+                          ":readiness-check-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-readiness-check-request-readiness-check-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "readinessCheckName")
+                        (resource-set-name :initarg :resource-set-name
+                         :initform
+                         (common-lisp:error ":resource-set-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-readiness-check-request-resource-set-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "resourceSetName")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-readiness-check-request-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-readiness-check-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-readiness-check-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-readiness-check-request
                     'make-create-readiness-check-request))
@@ -326,16 +436,41 @@
                           create-readiness-check-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-readiness-check-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-readiness-check-response-"))
-   (readiness-check-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (readiness-check-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (resource-set common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-readiness-check-response common-lisp:nil
+                       ((readiness-check-arn :initarg :readiness-check-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-create-readiness-check-response-readiness-check-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "readinessCheckArn")
+                        (readiness-check-name :initarg :readiness-check-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-readiness-check-response-readiness-check-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "readinessCheckName")
+                        (resource-set :initarg :resource-set :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-readiness-check-response-resource-set
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "resourceSet")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-readiness-check-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-readiness-check-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-readiness-check-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-readiness-check-response
                     'make-create-readiness-check-response))
@@ -384,14 +519,32 @@
                           create-readiness-check-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-recovery-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-recovery-group-request-"))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (recovery-group-name (common-lisp:error ":recovery-group-name is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-recovery-group-request common-lisp:nil
+                       ((cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-recovery-group-request-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (recovery-group-name :initarg :recovery-group-name
+                         :initform
+                         (common-lisp:error ":recovery-group-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-recovery-group-request-recovery-group-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "recoveryGroupName")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-recovery-group-request-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-recovery-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-recovery-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-recovery-group-request
                     'make-create-recovery-group-request))
@@ -432,16 +585,39 @@
                           create-recovery-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-recovery-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-recovery-group-response-"))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (recovery-group-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (recovery-group-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-recovery-group-response common-lisp:nil
+                       ((cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-recovery-group-response-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (recovery-group-arn :initarg :recovery-group-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-create-recovery-group-response-recovery-group-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "recoveryGroupArn")
+                        (recovery-group-name :initarg :recovery-group-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-recovery-group-response-recovery-group-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "recoveryGroupName")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-recovery-group-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-recovery-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-recovery-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-recovery-group-response
                     'make-create-recovery-group-response))
@@ -489,16 +665,42 @@
                           create-recovery-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-resource-set-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-resource-set-request-"))
-   (resource-set-name (common-lisp:error ":resource-set-name is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (resource-set-type (common-lisp:error ":resource-set-type is required")
-    :type (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09| common-lisp:null))
-   (resources (common-lisp:error ":resources is required") :type
-    (common-lisp:or |__listOfResource| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-resource-set-request common-lisp:nil
+                       ((resource-set-name :initarg :resource-set-name
+                         :initform
+                         (common-lisp:error ":resource-set-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-create-resource-set-request-resource-set-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "resourceSetName")
+                        (resource-set-type :initarg :resource-set-type
+                         :initform
+                         (common-lisp:error ":resource-set-type is required")
+                         :type
+                         (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-resource-set-request-resource-set-type
+                         :shape "__stringPatternAWSAZaZ09AZaZ09" :location
+                         common-lisp:nil :location-name "resourceSetType")
+                        (resources :initarg :resources :initform
+                         (common-lisp:error ":resources is required") :type
+                         (common-lisp:or |__listOfResource| common-lisp:null)
+                         :accessor
+                         struct-shape-create-resource-set-request-resources
+                         :shape "__listOfResource" :location common-lisp:nil
+                         :location-name "resources")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-resource-set-request-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-resource-set-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-resource-set-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-resource-set-request
                     'make-create-resource-set-request))
@@ -546,18 +748,47 @@
                           create-resource-set-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-resource-set-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-resource-set-response-"))
-   (resource-set-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (resource-set-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (resource-set-type common-lisp:nil :type
-    (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09| common-lisp:null))
-   (resources common-lisp:nil :type
-    (common-lisp:or |__listOfResource| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass create-resource-set-response common-lisp:nil
+                       ((resource-set-arn :initarg :resource-set-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-create-resource-set-response-resource-set-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "resourceSetArn")
+                        (resource-set-name :initarg :resource-set-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-resource-set-response-resource-set-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "resourceSetName")
+                        (resource-set-type :initarg :resource-set-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-resource-set-response-resource-set-type
+                         :shape "__stringPatternAWSAZaZ09AZaZ09" :location
+                         common-lisp:nil :location-name "resourceSetType")
+                        (resources :initarg :resources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfResource| common-lisp:null)
+                         :accessor
+                         struct-shape-create-resource-set-response-resources
+                         :shape "__listOfResource" :location common-lisp:nil
+                         :location-name "resources")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-resource-set-response-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-resource-set-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-resource-set-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-resource-set-response
                     'make-create-resource-set-response))
@@ -613,19 +844,43 @@
    common-lisp:nil))
 (common-lisp:deftype cross-account-authorization () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dnstarget-resource (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dnstarget-resource-"))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (hosted-zone-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (record-set-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (record-type common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (target-resource common-lisp:nil :type
-    (common-lisp:or target-resource common-lisp:null)))
+ (common-lisp:defclass dnstarget-resource common-lisp:nil
+                       ((domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-dnstarget-resource-domain-name :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "domainName")
+                        (hosted-zone-arn :initarg :hosted-zone-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-dnstarget-resource-hosted-zone-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "hostedZoneArn")
+                        (record-set-id :initarg :record-set-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-dnstarget-resource-record-set-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "recordSetId")
+                        (record-type :initarg :record-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-dnstarget-resource-record-type :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "recordType")
+                        (target-resource :initarg :target-resource :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource common-lisp:null)
+                         :accessor
+                         struct-shape-dnstarget-resource-target-resource :shape
+                         "TargetResource" :location common-lisp:nil
+                         :location-name "targetResource"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dnstarget-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dnstarget-resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dnstarget-resource 'make-dnstarget-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -673,11 +928,17 @@
                         ((aws-sdk/generator/shape::input dnstarget-resource))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-cell-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-cell-request-"))
-   (cell-name (common-lisp:error ":cell-name is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-cell-request common-lisp:nil
+                       ((cell-name :initarg :cell-name :initform
+                         (common-lisp:error ":cell-name is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-delete-cell-request-cell-name :shape
+                         "__string" :location "uri" :location-name "cellName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-cell-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-cell-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-cell-request 'make-delete-cell-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -690,12 +951,23 @@
                         ((aws-sdk/generator/shape::input delete-cell-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-cross-account-authorization-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-cross-account-authorization-request-"))
-   (cross-account-authorization
-    (common-lisp:error ":cross-account-authorization is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-cross-account-authorization-request
+                       common-lisp:nil
+                       ((cross-account-authorization :initarg
+                         :cross-account-authorization :initform
+                         (common-lisp:error
+                          ":cross-account-authorization is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-delete-cross-account-authorization-request-cross-account-authorization
+                         :shape "__string" :location "uri" :location-name
+                         "crossAccountAuthorization"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-cross-account-authorization-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-cross-account-authorization-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-cross-account-authorization-request
                     'make-delete-cross-account-authorization-request))
@@ -715,10 +987,14 @@
                           delete-cross-account-authorization-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-cross-account-authorization-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-cross-account-authorization-response-")))
+ (common-lisp:defclass delete-cross-account-authorization-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-cross-account-authorization-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-cross-account-authorization-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-cross-account-authorization-response
                     'make-delete-cross-account-authorization-response))
@@ -738,12 +1014,22 @@
                           delete-cross-account-authorization-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-readiness-check-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-readiness-check-request-"))
-   (readiness-check-name
-    (common-lisp:error ":readiness-check-name is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-readiness-check-request common-lisp:nil
+                       ((readiness-check-name :initarg :readiness-check-name
+                         :initform
+                         (common-lisp:error
+                          ":readiness-check-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-delete-readiness-check-request-readiness-check-name
+                         :shape "__string" :location "uri" :location-name
+                         "readinessCheckName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-readiness-check-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-readiness-check-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-readiness-check-request
                     'make-delete-readiness-check-request))
@@ -763,11 +1049,21 @@
                           delete-readiness-check-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-recovery-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-recovery-group-request-"))
-   (recovery-group-name (common-lisp:error ":recovery-group-name is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-recovery-group-request common-lisp:nil
+                       ((recovery-group-name :initarg :recovery-group-name
+                         :initform
+                         (common-lisp:error ":recovery-group-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-delete-recovery-group-request-recovery-group-name
+                         :shape "__string" :location "uri" :location-name
+                         "recoveryGroupName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-recovery-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-recovery-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-recovery-group-request
                     'make-delete-recovery-group-request))
@@ -787,11 +1083,20 @@
                           delete-recovery-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resource-set-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resource-set-request-"))
-   (resource-set-name (common-lisp:error ":resource-set-name is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-resource-set-request common-lisp:nil
+                       ((resource-set-name :initarg :resource-set-name
+                         :initform
+                         (common-lisp:error ":resource-set-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resource-set-request-resource-set-name
+                         :shape "__string" :location "uri" :location-name
+                         "resourceSetName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resource-set-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-resource-set-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resource-set-request
                     'make-delete-resource-set-request))
@@ -811,15 +1116,34 @@
                           delete-resource-set-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-architecture-recommendations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-architecture-recommendations-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (recovery-group-name (common-lisp:error ":recovery-group-name is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-architecture-recommendations-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-architecture-recommendations-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-architecture-recommendations-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken")
+                        (recovery-group-name :initarg :recovery-group-name
+                         :initform
+                         (common-lisp:error ":recovery-group-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-architecture-recommendations-request-recovery-group-name
+                         :shape "__string" :location "uri" :location-name
+                         "recoveryGroupName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-architecture-recommendations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-architecture-recommendations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-architecture-recommendations-request
                     'make-get-architecture-recommendations-request))
@@ -839,15 +1163,35 @@
                           get-architecture-recommendations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-architecture-recommendations-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-architecture-recommendations-response-"))
-   (last-audit-timestamp common-lisp:nil :type
-    (common-lisp:or last-audit-timestamp common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (recommendations common-lisp:nil :type
-    (common-lisp:or |__listOfRecommendation| common-lisp:null)))
+ (common-lisp:defclass get-architecture-recommendations-response
+                       common-lisp:nil
+                       ((last-audit-timestamp :initarg :last-audit-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-audit-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-architecture-recommendations-response-last-audit-timestamp
+                         :shape "LastAuditTimestamp" :location common-lisp:nil
+                         :location-name "lastAuditTimestamp")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-architecture-recommendations-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (recommendations :initarg :recommendations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfRecommendation|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-architecture-recommendations-response-recommendations
+                         :shape "__listOfRecommendation" :location
+                         common-lisp:nil :location-name "recommendations"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-architecture-recommendations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-architecture-recommendations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-architecture-recommendations-response
                     'make-get-architecture-recommendations-response))
@@ -889,15 +1233,32 @@
                           get-architecture-recommendations-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-cell-readiness-summary-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-cell-readiness-summary-request-"))
-   (cell-name (common-lisp:error ":cell-name is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-cell-readiness-summary-request common-lisp:nil
+                       ((cell-name :initarg :cell-name :initform
+                         (common-lisp:error ":cell-name is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-cell-readiness-summary-request-cell-name
+                         :shape "__string" :location "uri" :location-name
+                         "cellName")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-cell-readiness-summary-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-cell-readiness-summary-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-cell-readiness-summary-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-cell-readiness-summary-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-cell-readiness-summary-request
                     'make-get-cell-readiness-summary-request))
@@ -917,15 +1278,33 @@
                           get-cell-readiness-summary-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-cell-readiness-summary-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-cell-readiness-summary-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (readiness common-lisp:nil :type
-    (common-lisp:or readiness common-lisp:null))
-   (readiness-checks common-lisp:nil :type
-    (common-lisp:or |__listOfReadinessCheckSummary| common-lisp:null)))
+ (common-lisp:defclass get-cell-readiness-summary-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-cell-readiness-summary-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (readiness :initarg :readiness :initform
+                         common-lisp:nil :type
+                         (common-lisp:or readiness common-lisp:null) :accessor
+                         struct-shape-get-cell-readiness-summary-response-readiness
+                         :shape "Readiness" :location common-lisp:nil
+                         :location-name "readiness")
+                        (readiness-checks :initarg :readiness-checks :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfReadinessCheckSummary|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-cell-readiness-summary-response-readiness-checks
+                         :shape "__listOfReadinessCheckSummary" :location
+                         common-lisp:nil :location-name "readinessChecks"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-cell-readiness-summary-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-cell-readiness-summary-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-cell-readiness-summary-response
                     'make-get-cell-readiness-summary-response))
@@ -966,11 +1345,17 @@
                           get-cell-readiness-summary-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-cell-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-cell-request-"))
-   (cell-name (common-lisp:error ":cell-name is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-cell-request common-lisp:nil
+                       ((cell-name :initarg :cell-name :initform
+                         (common-lisp:error ":cell-name is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-cell-request-cell-name :shape
+                         "__string" :location "uri" :location-name "cellName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-cell-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-cell-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-cell-request 'make-get-cell-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -983,18 +1368,42 @@
                         ((aws-sdk/generator/shape::input get-cell-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-cell-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-cell-response-"))
-   (cell-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (cell-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (parent-readiness-scopes common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass get-cell-response common-lisp:nil
+                       ((cell-arn :initarg :cell-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor struct-shape-get-cell-response-cell-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "cellArn")
+                        (cell-name :initarg :cell-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor struct-shape-get-cell-response-cell-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "cellName")
+                        (cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-get-cell-response-cells :shape
+                         "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (parent-readiness-scopes :initarg
+                         :parent-readiness-scopes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-cell-response-parent-readiness-scopes
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "parentReadinessScopes")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-get-cell-response-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-cell-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-cell-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-cell-response 'make-get-cell-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1043,12 +1452,21 @@
                         ((aws-sdk/generator/shape::input get-cell-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-readiness-check-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-readiness-check-request-"))
-   (readiness-check-name
-    (common-lisp:error ":readiness-check-name is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-readiness-check-request common-lisp:nil
+                       ((readiness-check-name :initarg :readiness-check-name
+                         :initform
+                         (common-lisp:error
+                          ":readiness-check-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-request-readiness-check-name
+                         :shape "__string" :location "uri" :location-name
+                         "readinessCheckName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-readiness-check-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-readiness-check-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-readiness-check-request
                     'make-get-readiness-check-request))
@@ -1068,18 +1486,44 @@
                           get-readiness-check-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-readiness-check-resource-status-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-readiness-check-resource-status-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (readiness-check-name
-    (common-lisp:error ":readiness-check-name is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-identifier (common-lisp:error ":resource-identifier is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-readiness-check-resource-status-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-resource-status-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-readiness-check-resource-status-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken")
+                        (readiness-check-name :initarg :readiness-check-name
+                         :initform
+                         (common-lisp:error
+                          ":readiness-check-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-resource-status-request-readiness-check-name
+                         :shape "__string" :location "uri" :location-name
+                         "readinessCheckName")
+                        (resource-identifier :initarg :resource-identifier
+                         :initform
+                         (common-lisp:error ":resource-identifier is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-resource-status-request-resource-identifier
+                         :shape "__string" :location "uri" :location-name
+                         "resourceIdentifier"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-readiness-check-resource-status-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-readiness-check-resource-status-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-readiness-check-resource-status-request
                     'make-get-readiness-check-resource-status-request))
@@ -1099,16 +1543,32 @@
                           get-readiness-check-resource-status-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-readiness-check-resource-status-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-readiness-check-resource-status-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (readiness common-lisp:nil :type
-    (common-lisp:or readiness common-lisp:null))
-   (rules common-lisp:nil :type
-    (common-lisp:or |__listOfRuleResult| common-lisp:null)))
+ (common-lisp:defclass get-readiness-check-resource-status-response
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-readiness-check-resource-status-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (readiness :initarg :readiness :initform
+                         common-lisp:nil :type
+                         (common-lisp:or readiness common-lisp:null) :accessor
+                         struct-shape-get-readiness-check-resource-status-response-readiness
+                         :shape "Readiness" :location common-lisp:nil
+                         :location-name "readiness")
+                        (rules :initarg :rules :initform common-lisp:nil :type
+                         (common-lisp:or |__listOfRuleResult| common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-resource-status-response-rules
+                         :shape "__listOfRuleResult" :location common-lisp:nil
+                         :location-name "rules"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-readiness-check-resource-status-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-readiness-check-resource-status-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-readiness-check-resource-status-response
                     'make-get-readiness-check-resource-status-response))
@@ -1149,16 +1609,40 @@
                           get-readiness-check-resource-status-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-readiness-check-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-readiness-check-response-"))
-   (readiness-check-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (readiness-check-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (resource-set common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass get-readiness-check-response common-lisp:nil
+                       ((readiness-check-arn :initarg :readiness-check-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-response-readiness-check-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "readinessCheckArn")
+                        (readiness-check-name :initarg :readiness-check-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-response-readiness-check-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "readinessCheckName")
+                        (resource-set :initarg :resource-set :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-response-resource-set
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "resourceSet")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-get-readiness-check-response-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-readiness-check-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-readiness-check-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-readiness-check-response
                     'make-get-readiness-check-response))
@@ -1207,16 +1691,35 @@
                           get-readiness-check-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-readiness-check-status-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-readiness-check-status-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (readiness-check-name
-    (common-lisp:error ":readiness-check-name is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-readiness-check-status-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-status-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-readiness-check-status-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken")
+                        (readiness-check-name :initarg :readiness-check-name
+                         :initform
+                         (common-lisp:error
+                          ":readiness-check-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-status-request-readiness-check-name
+                         :shape "__string" :location "uri" :location-name
+                         "readinessCheckName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-readiness-check-status-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-readiness-check-status-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-readiness-check-status-request
                     'make-get-readiness-check-status-request))
@@ -1236,17 +1739,40 @@
                           get-readiness-check-status-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-readiness-check-status-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-readiness-check-status-response-"))
-   (messages common-lisp:nil :type
-    (common-lisp:or |__listOfMessage| common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (readiness common-lisp:nil :type
-    (common-lisp:or readiness common-lisp:null))
-   (resources common-lisp:nil :type
-    (common-lisp:or |__listOfResourceResult| common-lisp:null)))
+ (common-lisp:defclass get-readiness-check-status-response common-lisp:nil
+                       ((messages :initarg :messages :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOfMessage| common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-status-response-messages
+                         :shape "__listOfMessage" :location common-lisp:nil
+                         :location-name "messages")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-readiness-check-status-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (readiness :initarg :readiness :initform
+                         common-lisp:nil :type
+                         (common-lisp:or readiness common-lisp:null) :accessor
+                         struct-shape-get-readiness-check-status-response-readiness
+                         :shape "Readiness" :location common-lisp:nil
+                         :location-name "readiness")
+                        (resources :initarg :resources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfResourceResult|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-readiness-check-status-response-resources
+                         :shape "__listOfResourceResult" :location
+                         common-lisp:nil :location-name "resources"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-readiness-check-status-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-readiness-check-status-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-readiness-check-status-response
                     'make-get-readiness-check-status-response))
@@ -1294,16 +1820,35 @@
                           get-readiness-check-status-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-recovery-group-readiness-summary-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-recovery-group-readiness-summary-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (recovery-group-name (common-lisp:error ":recovery-group-name is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-recovery-group-readiness-summary-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-recovery-group-readiness-summary-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-recovery-group-readiness-summary-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken")
+                        (recovery-group-name :initarg :recovery-group-name
+                         :initform
+                         (common-lisp:error ":recovery-group-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-recovery-group-readiness-summary-request-recovery-group-name
+                         :shape "__string" :location "uri" :location-name
+                         "recoveryGroupName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-recovery-group-readiness-summary-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-recovery-group-readiness-summary-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-recovery-group-readiness-summary-request
                     'make-get-recovery-group-readiness-summary-request))
@@ -1323,16 +1868,34 @@
                           get-recovery-group-readiness-summary-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-recovery-group-readiness-summary-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-recovery-group-readiness-summary-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (readiness common-lisp:nil :type
-    (common-lisp:or readiness common-lisp:null))
-   (readiness-checks common-lisp:nil :type
-    (common-lisp:or |__listOfReadinessCheckSummary| common-lisp:null)))
+ (common-lisp:defclass get-recovery-group-readiness-summary-response
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-recovery-group-readiness-summary-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (readiness :initarg :readiness :initform
+                         common-lisp:nil :type
+                         (common-lisp:or readiness common-lisp:null) :accessor
+                         struct-shape-get-recovery-group-readiness-summary-response-readiness
+                         :shape "Readiness" :location common-lisp:nil
+                         :location-name "readiness")
+                        (readiness-checks :initarg :readiness-checks :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfReadinessCheckSummary|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-recovery-group-readiness-summary-response-readiness-checks
+                         :shape "__listOfReadinessCheckSummary" :location
+                         common-lisp:nil :location-name "readinessChecks"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-recovery-group-readiness-summary-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-recovery-group-readiness-summary-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-recovery-group-readiness-summary-response
                     'make-get-recovery-group-readiness-summary-response))
@@ -1373,11 +1936,20 @@
                           get-recovery-group-readiness-summary-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-recovery-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-recovery-group-request-"))
-   (recovery-group-name (common-lisp:error ":recovery-group-name is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-recovery-group-request common-lisp:nil
+                       ((recovery-group-name :initarg :recovery-group-name
+                         :initform
+                         (common-lisp:error ":recovery-group-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-recovery-group-request-recovery-group-name
+                         :shape "__string" :location "uri" :location-name
+                         "recoveryGroupName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-recovery-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-recovery-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-recovery-group-request
                     'make-get-recovery-group-request))
@@ -1397,16 +1969,38 @@
                           get-recovery-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-recovery-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-recovery-group-response-"))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (recovery-group-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (recovery-group-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass get-recovery-group-response common-lisp:nil
+                       ((cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-recovery-group-response-cells :shape
+                         "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (recovery-group-arn :initarg :recovery-group-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-get-recovery-group-response-recovery-group-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "recoveryGroupArn")
+                        (recovery-group-name :initarg :recovery-group-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-recovery-group-response-recovery-group-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "recoveryGroupName")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-get-recovery-group-response-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-recovery-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-recovery-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-recovery-group-response
                     'make-get-recovery-group-response))
@@ -1454,11 +2048,20 @@
                           get-recovery-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resource-set-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resource-set-request-"))
-   (resource-set-name (common-lisp:error ":resource-set-name is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-resource-set-request common-lisp:nil
+                       ((resource-set-name :initarg :resource-set-name
+                         :initform
+                         (common-lisp:error ":resource-set-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-set-request-resource-set-name
+                         :shape "__string" :location "uri" :location-name
+                         "resourceSetName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resource-set-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resource-set-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resource-set-request 'make-get-resource-set-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1477,18 +2080,47 @@
                           get-resource-set-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resource-set-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resource-set-response-"))
-   (resource-set-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (resource-set-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (resource-set-type common-lisp:nil :type
-    (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09| common-lisp:null))
-   (resources common-lisp:nil :type
-    (common-lisp:or |__listOfResource| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass get-resource-set-response common-lisp:nil
+                       ((resource-set-arn :initarg :resource-set-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-set-response-resource-set-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "resourceSetArn")
+                        (resource-set-name :initarg :resource-set-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-set-response-resource-set-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "resourceSetName")
+                        (resource-set-type :initarg :resource-set-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-set-response-resource-set-type
+                         :shape "__stringPatternAWSAZaZ09AZaZ09" :location
+                         common-lisp:nil :location-name "resourceSetType")
+                        (resources :initarg :resources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfResource| common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-set-response-resources
+                         :shape "__listOfResource" :location common-lisp:nil
+                         :location-name "resources")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-get-resource-set-response-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resource-set-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resource-set-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resource-set-response
                     'make-get-resource-set-response))
@@ -1552,13 +2184,24 @@
                     'internal-server-exception-message)))
 (common-lisp:deftype last-audit-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-cells-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-cells-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-cells-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor struct-shape-list-cells-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-cells-request-next-token :shape
+                         "__string" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-cells-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-cells-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-cells-request 'make-list-cells-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1571,13 +2214,23 @@
                         ((aws-sdk/generator/shape::input list-cells-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-cells-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-cells-response-"))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOfCellOutput| common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-cells-response common-lisp:nil
+                       ((cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOfCellOutput| common-lisp:null)
+                         :accessor struct-shape-list-cells-response-cells
+                         :shape "__listOfCellOutput" :location common-lisp:nil
+                         :location-name "cells")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-cells-response-next-token :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-cells-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-cells-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-cells-response 'make-list-cells-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1604,13 +2257,27 @@
                         ((aws-sdk/generator/shape::input list-cells-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-cross-account-authorizations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-cross-account-authorizations-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-cross-account-authorizations-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-cross-account-authorizations-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-cross-account-authorizations-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-cross-account-authorizations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-cross-account-authorizations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-cross-account-authorizations-request
                     'make-list-cross-account-authorizations-request))
@@ -1630,13 +2297,30 @@
                           list-cross-account-authorizations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-cross-account-authorizations-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-cross-account-authorizations-response-"))
-   (cross-account-authorizations common-lisp:nil :type
-    (common-lisp:or |__listOfCrossAccountAuthorization| common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-cross-account-authorizations-response
+                       common-lisp:nil
+                       ((cross-account-authorizations :initarg
+                         :cross-account-authorizations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfCrossAccountAuthorization|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-cross-account-authorizations-response-cross-account-authorizations
+                         :shape "__listOfCrossAccountAuthorization" :location
+                         common-lisp:nil :location-name
+                         "crossAccountAuthorizations")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-cross-account-authorizations-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-cross-account-authorizations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-cross-account-authorizations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-cross-account-authorizations-response
                     'make-list-cross-account-authorizations-response))
@@ -1671,13 +2355,26 @@
                           list-cross-account-authorizations-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-readiness-checks-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-readiness-checks-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-readiness-checks-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-readiness-checks-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-readiness-checks-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-readiness-checks-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-readiness-checks-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-readiness-checks-request
                     'make-list-readiness-checks-request))
@@ -1697,13 +2394,27 @@
                           list-readiness-checks-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-readiness-checks-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-readiness-checks-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (readiness-checks common-lisp:nil :type
-    (common-lisp:or |__listOfReadinessCheckOutput| common-lisp:null)))
+ (common-lisp:defclass list-readiness-checks-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-readiness-checks-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (readiness-checks :initarg :readiness-checks :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfReadinessCheckOutput|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-readiness-checks-response-readiness-checks
+                         :shape "__listOfReadinessCheckOutput" :location
+                         common-lisp:nil :location-name "readinessChecks"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-readiness-checks-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-readiness-checks-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-readiness-checks-response
                     'make-list-readiness-checks-response))
@@ -1737,13 +2448,25 @@
                           list-readiness-checks-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recovery-groups-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recovery-groups-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-recovery-groups-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-recovery-groups-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-recovery-groups-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recovery-groups-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-recovery-groups-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recovery-groups-request
                     'make-list-recovery-groups-request))
@@ -1763,13 +2486,27 @@
                           list-recovery-groups-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recovery-groups-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recovery-groups-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (recovery-groups common-lisp:nil :type
-    (common-lisp:or |__listOfRecoveryGroupOutput| common-lisp:null)))
+ (common-lisp:defclass list-recovery-groups-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-recovery-groups-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (recovery-groups :initarg :recovery-groups :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfRecoveryGroupOutput|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recovery-groups-response-recovery-groups
+                         :shape "__listOfRecoveryGroupOutput" :location
+                         common-lisp:nil :location-name "recoveryGroups"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recovery-groups-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-recovery-groups-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recovery-groups-response
                     'make-list-recovery-groups-response))
@@ -1803,13 +2540,25 @@
                           list-recovery-groups-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resource-sets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resource-sets-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-resource-sets-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resource-sets-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-resource-sets-request-next-token
+                         :shape "__string" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resource-sets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-resource-sets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resource-sets-request
                     'make-list-resource-sets-request))
@@ -1829,13 +2578,26 @@
                           list-resource-sets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resource-sets-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resource-sets-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-sets common-lisp:nil :type
-    (common-lisp:or |__listOfResourceSetOutput| common-lisp:null)))
+ (common-lisp:defclass list-resource-sets-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-resource-sets-response-next-token
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "nextToken")
+                        (resource-sets :initarg :resource-sets :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfResourceSetOutput|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-resource-sets-response-resource-sets
+                         :shape "__listOfResourceSetOutput" :location
+                         common-lisp:nil :location-name "resourceSets"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resource-sets-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-resource-sets-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resource-sets-response
                     'make-list-resource-sets-response))
@@ -1869,15 +2631,32 @@
                           list-resource-sets-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-rules-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-rules-output-"))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or |__stringMax64| common-lisp:null))
-   (rule-description (common-lisp:error ":rule-description is required") :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or |__stringMax64| common-lisp:null)))
+ (common-lisp:defclass list-rules-output common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         (common-lisp:error ":resource-type is required") :type
+                         (common-lisp:or |__stringMax64| common-lisp:null)
+                         :accessor struct-shape-list-rules-output-resource-type
+                         :shape "__stringMax64" :location common-lisp:nil
+                         :location-name "resourceType")
+                        (rule-description :initarg :rule-description :initform
+                         (common-lisp:error ":rule-description is required")
+                         :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-list-rules-output-rule-description :shape
+                         "__stringMax256" :location common-lisp:nil
+                         :location-name "ruleDescription")
+                        (rule-id :initarg :rule-id :initform
+                         (common-lisp:error ":rule-id is required") :type
+                         (common-lisp:or |__stringMax64| common-lisp:null)
+                         :accessor struct-shape-list-rules-output-rule-id
+                         :shape "__stringMax64" :location common-lisp:nil
+                         :location-name "ruleId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-rules-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-rules-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-rules-output 'make-list-rules-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1911,15 +2690,30 @@
                         ((aws-sdk/generator/shape::input list-rules-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-rules-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-rules-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-rules-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor struct-shape-list-rules-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-rules-request-next-token :shape
+                         "__string" :location "querystring" :location-name
+                         "nextToken")
+                        (resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-rules-request-resource-type :shape
+                         "__string" :location "querystring" :location-name
+                         "resourceType"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-rules-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-rules-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-rules-request 'make-list-rules-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1932,13 +2726,24 @@
                         ((aws-sdk/generator/shape::input list-rules-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-rules-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-rules-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (rules common-lisp:nil :type
-    (common-lisp:or |__listOfListRulesOutput| common-lisp:null)))
+ (common-lisp:defclass list-rules-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-rules-response-next-token :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "nextToken")
+                        (rules :initarg :rules :initform common-lisp:nil :type
+                         (common-lisp:or |__listOfListRulesOutput|
+                                         common-lisp:null)
+                         :accessor struct-shape-list-rules-response-rules
+                         :shape "__listOfListRulesOutput" :location
+                         common-lisp:nil :location-name "rules"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-rules-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-rules-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-rules-response 'make-list-rules-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1965,11 +2770,19 @@
                         ((aws-sdk/generator/shape::input list-rules-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resources-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resources-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resources-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resources-request-resource-arn
+                         :shape "__string" :location "uri" :location-name
+                         "resource-arn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resources-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resources-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resources-request
                     'make-list-tags-for-resources-request))
@@ -1989,10 +2802,18 @@
                           list-tags-for-resources-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resources-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resources-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resources-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resources-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resources-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resources-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resources-response
                     'make-list-tags-for-resources-response))
@@ -2020,10 +2841,18 @@
    common-lisp:nil))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (message (:copier common-lisp:nil) (:conc-name "struct-shape-message-"))
-   (message-text common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass message common-lisp:nil
+                       ((message-text :initarg :message-text :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-message-message-text :shape "__string"
+                         :location common-lisp:nil :location-name
+                         "messageText"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-message
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'message
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'message 'make-message))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input message))
@@ -2042,10 +2871,16 @@
                         ((aws-sdk/generator/shape::input message))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (nlbresource (:copier common-lisp:nil)
-      (:conc-name "struct-shape-nlbresource-"))
-   (arn common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass nlbresource common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-nlbresource-arn :shape "__string"
+                         :location common-lisp:nil :location-name "arn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-nlbresource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'nlbresource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'nlbresource 'make-nlbresource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input nlbresource))
@@ -2064,13 +2899,24 @@
                         ((aws-sdk/generator/shape::input nlbresource))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (r53resource-record (:copier common-lisp:nil)
-      (:conc-name "struct-shape-r53resource-record-"))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (record-set-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass r53resource-record common-lisp:nil
+                       ((domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-r53resource-record-domain-name :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "domainName")
+                        (record-set-id :initarg :record-set-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-r53resource-record-record-set-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "recordSetId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-r53resource-record
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'r53resource-record
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'r53resource-record 'make-r53resource-record))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2098,16 +2944,41 @@
    common-lisp:nil))
 (common-lisp:deftype readiness () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (readiness-check-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-readiness-check-output-"))
-   (readiness-check-arn (common-lisp:error ":readiness-check-arn is required")
-    :type (common-lisp:or |__stringMax256| common-lisp:null))
-   (readiness-check-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (resource-set (common-lisp:error ":resource-set is required") :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass readiness-check-output common-lisp:nil
+                       ((readiness-check-arn :initarg :readiness-check-arn
+                         :initform
+                         (common-lisp:error ":readiness-check-arn is required")
+                         :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-readiness-check-output-readiness-check-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "readinessCheckArn")
+                        (readiness-check-name :initarg :readiness-check-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-readiness-check-output-readiness-check-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "readinessCheckName")
+                        (resource-set :initarg :resource-set :initform
+                         (common-lisp:error ":resource-set is required") :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-readiness-check-output-resource-set
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "resourceSet")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-readiness-check-output-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-readiness-check-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'readiness-check-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'readiness-check-output 'make-readiness-check-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2155,13 +3026,24 @@
                           readiness-check-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (readiness-check-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-readiness-check-summary-"))
-   (readiness common-lisp:nil :type
-    (common-lisp:or readiness common-lisp:null))
-   (readiness-check-name common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass readiness-check-summary common-lisp:nil
+                       ((readiness :initarg :readiness :initform
+                         common-lisp:nil :type
+                         (common-lisp:or readiness common-lisp:null) :accessor
+                         struct-shape-readiness-check-summary-readiness :shape
+                         "Readiness" :location common-lisp:nil :location-name
+                         "readiness")
+                        (readiness-check-name :initarg :readiness-check-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-readiness-check-summary-readiness-check-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "readinessCheckName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-readiness-check-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'readiness-check-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'readiness-check-summary 'make-readiness-check-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2196,11 +3078,20 @@
    common-lisp:nil))
 (common-lisp:deftype readiness-check-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-"))
-   (recommendation-text (common-lisp:error ":recommendation-text is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass recommendation common-lisp:nil
+                       ((recommendation-text :initarg :recommendation-text
+                         :initform
+                         (common-lisp:error ":recommendation-text is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-recommendation-text :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "recommendationText"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'recommendation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'recommendation 'make-recommendation))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input recommendation))
@@ -2219,16 +3110,41 @@
                         ((aws-sdk/generator/shape::input recommendation))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (recovery-group-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recovery-group-output-"))
-   (cells (common-lisp:error ":cells is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (recovery-group-arn (common-lisp:error ":recovery-group-arn is required")
-    :type (common-lisp:or |__stringMax256| common-lisp:null))
-   (recovery-group-name (common-lisp:error ":recovery-group-name is required")
-    :type (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass recovery-group-output common-lisp:nil
+                       ((cells :initarg :cells :initform
+                         (common-lisp:error ":cells is required") :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-recovery-group-output-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (recovery-group-arn :initarg :recovery-group-arn
+                         :initform
+                         (common-lisp:error ":recovery-group-arn is required")
+                         :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-recovery-group-output-recovery-group-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "recoveryGroupArn")
+                        (recovery-group-name :initarg :recovery-group-name
+                         :initform
+                         (common-lisp:error ":recovery-group-name is required")
+                         :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recovery-group-output-recovery-group-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "recoveryGroupName")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-recovery-group-output-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recovery-group-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'recovery-group-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'recovery-group-output 'make-recovery-group-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2275,16 +3191,36 @@
                           recovery-group-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource (:copier common-lisp:nil) (:conc-name "struct-shape-resource-"))
-   (component-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (dns-target-resource common-lisp:nil :type
-    (common-lisp:or dnstarget-resource common-lisp:null))
-   (readiness-scopes common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (resource-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass resource common-lisp:nil
+                       ((component-id :initarg :component-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-resource-component-id :shape "__string"
+                         :location common-lisp:nil :location-name
+                         "componentId")
+                        (dns-target-resource :initarg :dns-target-resource
+                         :initform common-lisp:nil :type
+                         (common-lisp:or dnstarget-resource common-lisp:null)
+                         :accessor struct-shape-resource-dns-target-resource
+                         :shape "DNSTargetResource" :location common-lisp:nil
+                         :location-name "dnsTargetResource")
+                        (readiness-scopes :initarg :readiness-scopes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-resource-readiness-scopes
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "readinessScopes")
+                        (resource-arn :initarg :resource-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-resource-resource-arn :shape "__string"
+                         :location common-lisp:nil :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resource 'make-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resource))
@@ -2332,18 +3268,41 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-result-"))
-   (component-id common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null))
-   (last-checked-timestamp
-    (common-lisp:error ":last-checked-timestamp is required") :type
-    (common-lisp:or readiness-check-timestamp common-lisp:null))
-   (readiness (common-lisp:error ":readiness is required") :type
-    (common-lisp:or readiness common-lisp:null))
-   (resource-arn common-lisp:nil :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass resource-result common-lisp:nil
+                       ((component-id :initarg :component-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-resource-result-component-id :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "componentId")
+                        (last-checked-timestamp :initarg
+                         :last-checked-timestamp :initform
+                         (common-lisp:error
+                          ":last-checked-timestamp is required")
+                         :type
+                         (common-lisp:or readiness-check-timestamp
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-result-last-checked-timestamp
+                         :shape "ReadinessCheckTimestamp" :location
+                         common-lisp:nil :location-name "lastCheckedTimestamp")
+                        (readiness :initarg :readiness :initform
+                         (common-lisp:error ":readiness is required") :type
+                         (common-lisp:or readiness common-lisp:null) :accessor
+                         struct-shape-resource-result-readiness :shape
+                         "Readiness" :location common-lisp:nil :location-name
+                         "readiness")
+                        (resource-arn :initarg :resource-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-resource-result-resource-arn :shape
+                         "__string" :location common-lisp:nil :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resource-result 'make-resource-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resource-result))
@@ -2384,18 +3343,50 @@
                         ((aws-sdk/generator/shape::input resource-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-set-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-set-output-"))
-   (resource-set-arn (common-lisp:error ":resource-set-arn is required") :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (resource-set-name (common-lisp:error ":resource-set-name is required")
-    :type (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (resource-set-type (common-lisp:error ":resource-set-type is required")
-    :type (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09| common-lisp:null))
-   (resources (common-lisp:error ":resources is required") :type
-    (common-lisp:or |__listOfResource| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass resource-set-output common-lisp:nil
+                       ((resource-set-arn :initarg :resource-set-arn :initform
+                         (common-lisp:error ":resource-set-arn is required")
+                         :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-resource-set-output-resource-set-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "resourceSetArn")
+                        (resource-set-name :initarg :resource-set-name
+                         :initform
+                         (common-lisp:error ":resource-set-name is required")
+                         :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-set-output-resource-set-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "resourceSetName")
+                        (resource-set-type :initarg :resource-set-type
+                         :initform
+                         (common-lisp:error ":resource-set-type is required")
+                         :type
+                         (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-set-output-resource-set-type
+                         :shape "__stringPatternAWSAZaZ09AZaZ09" :location
+                         common-lisp:nil :location-name "resourceSetType")
+                        (resources :initarg :resources :initform
+                         (common-lisp:error ":resources is required") :type
+                         (common-lisp:or |__listOfResource| common-lisp:null)
+                         :accessor struct-shape-resource-set-output-resources
+                         :shape "__listOfResource" :location common-lisp:nil
+                         :location-name "resources")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-resource-set-output-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-set-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-set-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resource-set-output 'make-resource-set-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2443,18 +3434,39 @@
                         ((aws-sdk/generator/shape::input resource-set-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rule-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rule-result-"))
-   (last-checked-timestamp
-    (common-lisp:error ":last-checked-timestamp is required") :type
-    (common-lisp:or readiness-check-timestamp common-lisp:null))
-   (messages (common-lisp:error ":messages is required") :type
-    (common-lisp:or |__listOfMessage| common-lisp:null))
-   (readiness (common-lisp:error ":readiness is required") :type
-    (common-lisp:or readiness common-lisp:null))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass rule-result common-lisp:nil
+                       ((last-checked-timestamp :initarg
+                         :last-checked-timestamp :initform
+                         (common-lisp:error
+                          ":last-checked-timestamp is required")
+                         :type
+                         (common-lisp:or readiness-check-timestamp
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rule-result-last-checked-timestamp :shape
+                         "ReadinessCheckTimestamp" :location common-lisp:nil
+                         :location-name "lastCheckedTimestamp")
+                        (messages :initarg :messages :initform
+                         (common-lisp:error ":messages is required") :type
+                         (common-lisp:or |__listOfMessage| common-lisp:null)
+                         :accessor struct-shape-rule-result-messages :shape
+                         "__listOfMessage" :location common-lisp:nil
+                         :location-name "messages")
+                        (readiness :initarg :readiness :initform
+                         (common-lisp:error ":readiness is required") :type
+                         (common-lisp:or readiness common-lisp:null) :accessor
+                         struct-shape-rule-result-readiness :shape "Readiness"
+                         :location common-lisp:nil :location-name "readiness")
+                        (rule-id :initarg :rule-id :initform
+                         (common-lisp:error ":rule-id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-rule-result-rule-id :shape "__string"
+                         :location common-lisp:nil :location-name "ruleId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rule-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rule-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'rule-result 'make-rule-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input rule-result))
@@ -2495,13 +3507,23 @@
                         ((aws-sdk/generator/shape::input rule-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "__string" :location "uri" :location-name
+                         "resource-arn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2521,9 +3543,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2549,13 +3574,24 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-resource (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-resource-"))
-   (nlbresource common-lisp:nil :type
-    (common-lisp:or nlbresource common-lisp:null))
-   (r53resource common-lisp:nil :type
-    (common-lisp:or r53resource-record common-lisp:null)))
+ (common-lisp:defclass target-resource common-lisp:nil
+                       ((nlbresource :initarg :nlbresource :initform
+                         common-lisp:nil :type
+                         (common-lisp:or nlbresource common-lisp:null)
+                         :accessor struct-shape-target-resource-nlbresource
+                         :shape "NLBResource" :location common-lisp:nil
+                         :location-name "nLBResource")
+                        (r53resource :initarg :r53resource :initform
+                         common-lisp:nil :type
+                         (common-lisp:or r53resource-record common-lisp:null)
+                         :accessor struct-shape-target-resource-r53resource
+                         :shape "R53ResourceRecord" :location common-lisp:nil
+                         :location-name "r53Resource"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'target-resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'target-resource 'make-target-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input target-resource))
@@ -2588,13 +3624,24 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "__string" :location "uri" :location-name
+                         "resource-arn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "__listOf__string" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2613,13 +3660,23 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-cell-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-cell-request-"))
-   (cell-name (common-lisp:error ":cell-name is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (cells (common-lisp:error ":cells is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null)))
+ (common-lisp:defclass update-cell-request common-lisp:nil
+                       ((cell-name :initarg :cell-name :initform
+                         (common-lisp:error ":cell-name is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-update-cell-request-cell-name :shape
+                         "__string" :location "uri" :location-name "cellName")
+                        (cells :initarg :cells :initform
+                         (common-lisp:error ":cells is required") :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-update-cell-request-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-cell-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-cell-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-cell-request 'make-update-cell-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2639,18 +3696,42 @@
                         ((aws-sdk/generator/shape::input update-cell-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-cell-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-cell-response-"))
-   (cell-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (cell-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (parent-readiness-scopes common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass update-cell-response common-lisp:nil
+                       ((cell-arn :initarg :cell-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor struct-shape-update-cell-response-cell-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "cellArn")
+                        (cell-name :initarg :cell-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor struct-shape-update-cell-response-cell-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "cellName")
+                        (cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor struct-shape-update-cell-response-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (parent-readiness-scopes :initarg
+                         :parent-readiness-scopes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-update-cell-response-parent-readiness-scopes
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "parentReadinessScopes")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-update-cell-response-tags :shape "Tags"
+                         :location common-lisp:nil :location-name "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-cell-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-cell-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-cell-response 'make-update-cell-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2699,14 +3780,30 @@
                         ((aws-sdk/generator/shape::input update-cell-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-readiness-check-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-readiness-check-request-"))
-   (readiness-check-name
-    (common-lisp:error ":readiness-check-name is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (resource-set-name (common-lisp:error ":resource-set-name is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass update-readiness-check-request common-lisp:nil
+                       ((readiness-check-name :initarg :readiness-check-name
+                         :initform
+                         (common-lisp:error
+                          ":readiness-check-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-update-readiness-check-request-readiness-check-name
+                         :shape "__string" :location "uri" :location-name
+                         "readinessCheckName")
+                        (resource-set-name :initarg :resource-set-name
+                         :initform
+                         (common-lisp:error ":resource-set-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-update-readiness-check-request-resource-set-name
+                         :shape "__string" :location common-lisp:nil
+                         :location-name "resourceSetName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-readiness-check-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-readiness-check-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-readiness-check-request
                     'make-update-readiness-check-request))
@@ -2733,16 +3830,41 @@
                           update-readiness-check-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-readiness-check-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-readiness-check-response-"))
-   (readiness-check-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (readiness-check-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (resource-set common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass update-readiness-check-response common-lisp:nil
+                       ((readiness-check-arn :initarg :readiness-check-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-update-readiness-check-response-readiness-check-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "readinessCheckArn")
+                        (readiness-check-name :initarg :readiness-check-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-readiness-check-response-readiness-check-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "readinessCheckName")
+                        (resource-set :initarg :resource-set :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-readiness-check-response-resource-set
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "resourceSet")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-update-readiness-check-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-readiness-check-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-readiness-check-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-readiness-check-response
                     'make-update-readiness-check-response))
@@ -2791,13 +3913,28 @@
                           update-readiness-check-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-recovery-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-recovery-group-request-"))
-   (cells (common-lisp:error ":cells is required") :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (recovery-group-name (common-lisp:error ":recovery-group-name is required")
-    :type (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass update-recovery-group-request common-lisp:nil
+                       ((cells :initarg :cells :initform
+                         (common-lisp:error ":cells is required") :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-update-recovery-group-request-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (recovery-group-name :initarg :recovery-group-name
+                         :initform
+                         (common-lisp:error ":recovery-group-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-update-recovery-group-request-recovery-group-name
+                         :shape "__string" :location "uri" :location-name
+                         "recoveryGroupName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-recovery-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-recovery-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-recovery-group-request
                     'make-update-recovery-group-request))
@@ -2824,16 +3961,39 @@
                           update-recovery-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-recovery-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-recovery-group-response-"))
-   (cells common-lisp:nil :type
-    (common-lisp:or |__listOf__string| common-lisp:null))
-   (recovery-group-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (recovery-group-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass update-recovery-group-response common-lisp:nil
+                       ((cells :initarg :cells :initform common-lisp:nil :type
+                         (common-lisp:or |__listOf__string| common-lisp:null)
+                         :accessor
+                         struct-shape-update-recovery-group-response-cells
+                         :shape "__listOf__string" :location common-lisp:nil
+                         :location-name "cells")
+                        (recovery-group-arn :initarg :recovery-group-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-update-recovery-group-response-recovery-group-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "recoveryGroupArn")
+                        (recovery-group-name :initarg :recovery-group-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-recovery-group-response-recovery-group-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "recoveryGroupName")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-update-recovery-group-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-recovery-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-recovery-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-recovery-group-response
                     'make-update-recovery-group-response))
@@ -2881,15 +4041,37 @@
                           update-recovery-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resource-set-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resource-set-request-"))
-   (resource-set-name (common-lisp:error ":resource-set-name is required")
-    :type (common-lisp:or |__string| common-lisp:null))
-   (resource-set-type (common-lisp:error ":resource-set-type is required")
-    :type (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09| common-lisp:null))
-   (resources (common-lisp:error ":resources is required") :type
-    (common-lisp:or |__listOfResource| common-lisp:null)))
+ (common-lisp:defclass update-resource-set-request common-lisp:nil
+                       ((resource-set-name :initarg :resource-set-name
+                         :initform
+                         (common-lisp:error ":resource-set-name is required")
+                         :type (common-lisp:or |__string| common-lisp:null)
+                         :accessor
+                         struct-shape-update-resource-set-request-resource-set-name
+                         :shape "__string" :location "uri" :location-name
+                         "resourceSetName")
+                        (resource-set-type :initarg :resource-set-type
+                         :initform
+                         (common-lisp:error ":resource-set-type is required")
+                         :type
+                         (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-resource-set-request-resource-set-type
+                         :shape "__stringPatternAWSAZaZ09AZaZ09" :location
+                         common-lisp:nil :location-name "resourceSetType")
+                        (resources :initarg :resources :initform
+                         (common-lisp:error ":resources is required") :type
+                         (common-lisp:or |__listOfResource| common-lisp:null)
+                         :accessor
+                         struct-shape-update-resource-set-request-resources
+                         :shape "__listOfResource" :location common-lisp:nil
+                         :location-name "resources"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resource-set-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-resource-set-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resource-set-request
                     'make-update-resource-set-request))
@@ -2923,18 +4105,47 @@
                           update-resource-set-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resource-set-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resource-set-response-"))
-   (resource-set-arn common-lisp:nil :type
-    (common-lisp:or |__stringMax256| common-lisp:null))
-   (resource-set-name common-lisp:nil :type
-    (common-lisp:or |__stringMax64PatternAAZAZ09Z| common-lisp:null))
-   (resource-set-type common-lisp:nil :type
-    (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09| common-lisp:null))
-   (resources common-lisp:nil :type
-    (common-lisp:or |__listOfResource| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass update-resource-set-response common-lisp:nil
+                       ((resource-set-arn :initarg :resource-set-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__stringMax256| common-lisp:null)
+                         :accessor
+                         struct-shape-update-resource-set-response-resource-set-arn
+                         :shape "__stringMax256" :location common-lisp:nil
+                         :location-name "resourceSetArn")
+                        (resource-set-name :initarg :resource-set-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringMax64PatternAAZAZ09Z|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-resource-set-response-resource-set-name
+                         :shape "__stringMax64PatternAAZAZ09Z" :location
+                         common-lisp:nil :location-name "resourceSetName")
+                        (resource-set-type :initarg :resource-set-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |__stringPatternAWSAZaZ09AZaZ09|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-resource-set-response-resource-set-type
+                         :shape "__stringPatternAWSAZaZ09AZaZ09" :location
+                         common-lisp:nil :location-name "resourceSetType")
+                        (resources :initarg :resources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__listOfResource| common-lisp:null)
+                         :accessor
+                         struct-shape-update-resource-set-response-resources
+                         :shape "__listOfResource" :location common-lisp:nil
+                         :location-name "resources")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-update-resource-set-response-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         "tags"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resource-set-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-resource-set-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resource-set-response
                     'make-update-resource-set-response))

@@ -56,14 +56,28 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype asset-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (asset-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-asset-summary-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or asset-name common-lisp:null))
-   (size common-lisp:nil :type (common-lisp:or long-optional common-lisp:null))
-   (hashes common-lisp:nil :type
-    (common-lisp:or asset-hashes common-lisp:null)))
+ (common-lisp:defclass asset-summary common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or asset-name common-lisp:null) :accessor
+                         struct-shape-asset-summary-name :shape "AssetName"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (size :initarg :size :initform common-lisp:nil :type
+                         (common-lisp:or long-optional common-lisp:null)
+                         :accessor struct-shape-asset-summary-size :shape
+                         "LongOptional" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (hashes :initarg :hashes :initform common-lisp:nil
+                         :type (common-lisp:or asset-hashes common-lisp:null)
+                         :accessor struct-shape-asset-summary-hashes :shape
+                         "AssetHashes" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-asset-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'asset-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'asset-summary 'make-asset-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input asset-summary))
@@ -104,17 +118,43 @@
                            (trivial-types:proper-list asset-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-external-connection-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-external-connection-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (external-connection (common-lisp:error ":externalconnection is required")
-    :type (common-lisp:or external-connection-name common-lisp:null)))
+ (common-lisp:defclass associate-external-connection-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-associate-external-connection-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-associate-external-connection-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-associate-external-connection-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (external-connection :initarg :external-connection
+                         :initform
+                         (common-lisp:error ":externalconnection is required")
+                         :type
+                         (common-lisp:or external-connection-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-external-connection-request-external-connection
+                         :shape "ExternalConnectionName" :location
+                         "querystring" :location-name "external-connection"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-external-connection-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-external-connection-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-external-connection-request
                     'make-associate-external-connection-request))
@@ -134,11 +174,21 @@
                           associate-external-connection-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-external-connection-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-external-connection-result-"))
-   (repository common-lisp:nil :type
-    (common-lisp:or repository-description common-lisp:null)))
+ (common-lisp:defclass associate-external-connection-result common-lisp:nil
+                       ((repository :initarg :repository :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-external-connection-result-repository
+                         :shape "RepositoryDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-external-connection-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-external-connection-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-external-connection-result
                     'make-associate-external-connection-result))
@@ -181,32 +231,95 @@
                     'conflict-exception-resource-id
                     'conflict-exception-resource-type)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (copy-package-versions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-copy-package-versions-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (source-repository (common-lisp:error ":sourcerepository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (destination-repository
-    (common-lisp:error ":destinationrepository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (versions common-lisp:nil :type
-    (common-lisp:or package-version-list common-lisp:null))
-   (version-revisions common-lisp:nil :type
-    (common-lisp:or package-version-revision-map common-lisp:null))
-   (allow-overwrite common-lisp:nil :type
-    (common-lisp:or boolean-optional common-lisp:null))
-   (include-from-upstream common-lisp:nil :type
-    (common-lisp:or boolean-optional common-lisp:null)))
+ (common-lisp:defclass copy-package-versions-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-copy-package-versions-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (source-repository :initarg :source-repository
+                         :initform
+                         (common-lisp:error ":sourcerepository is required")
+                         :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-source-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "source-repository")
+                        (destination-repository :initarg
+                         :destination-repository :initform
+                         (common-lisp:error
+                          ":destinationrepository is required")
+                         :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-destination-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "destination-repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (versions :initarg :versions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-list common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-versions
+                         :shape "PackageVersionList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-revisions :initarg :version-revisions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or package-version-revision-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-version-revisions
+                         :shape "PackageVersionRevisionMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (allow-overwrite :initarg :allow-overwrite :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean-optional common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-allow-overwrite
+                         :shape "BooleanOptional" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-from-upstream :initarg :include-from-upstream
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean-optional common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-request-include-from-upstream
+                         :shape "BooleanOptional" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-copy-package-versions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'copy-package-versions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'copy-package-versions-request
                     'make-copy-package-versions-request))
@@ -255,13 +368,28 @@
                           copy-package-versions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (copy-package-versions-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-copy-package-versions-result-"))
-   (successful-versions common-lisp:nil :type
-    (common-lisp:or successful-package-version-info-map common-lisp:null))
-   (failed-versions common-lisp:nil :type
-    (common-lisp:or package-version-error-map common-lisp:null)))
+ (common-lisp:defclass copy-package-versions-result common-lisp:nil
+                       ((successful-versions :initarg :successful-versions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or successful-package-version-info-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-result-successful-versions
+                         :shape "SuccessfulPackageVersionInfoMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (failed-versions :initarg :failed-versions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-error-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-copy-package-versions-result-failed-versions
+                         :shape "PackageVersionErrorMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-copy-package-versions-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'copy-package-versions-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'copy-package-versions-result
                     'make-copy-package-versions-result))
@@ -295,13 +423,29 @@
                           copy-package-versions-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-domain-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-domain-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (encryption-key common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass create-domain-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-create-domain-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (encryption-key :initarg :encryption-key :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-create-domain-request-encryption-key
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-domain-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-domain-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-domain-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-domain-request 'make-create-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -334,11 +478,18 @@
                           create-domain-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-domain-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-domain-result-"))
-   (domain common-lisp:nil :type
-    (common-lisp:or domain-description common-lisp:null)))
+ (common-lisp:defclass create-domain-result common-lisp:nil
+                       ((domain :initarg :domain :initform common-lisp:nil
+                         :type
+                         (common-lisp:or domain-description common-lisp:null)
+                         :accessor struct-shape-create-domain-result-domain
+                         :shape "DomainDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-domain-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-domain-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-domain-result 'make-create-domain-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -358,20 +509,52 @@
                         ((aws-sdk/generator/shape::input create-domain-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-repository-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-repository-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (upstreams common-lisp:nil :type
-    (common-lisp:or upstream-repository-list common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass create-repository-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-repository-request-domain :shape
+                         "DomainName" :location "querystring" :location-name
+                         "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-repository-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-repository-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-repository-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upstreams :initarg :upstreams :initform
+                         common-lisp:nil :type
+                         (common-lisp:or upstream-repository-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-repository-request-upstreams
+                         :shape "UpstreamRepositoryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-repository-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-repository-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-repository-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-repository-request
                     'make-create-repository-request))
@@ -412,11 +595,20 @@
                           create-repository-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-repository-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-repository-result-"))
-   (repository common-lisp:nil :type
-    (common-lisp:or repository-description common-lisp:null)))
+ (common-lisp:defclass create-repository-result common-lisp:nil
+                       ((repository :initarg :repository :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-repository-result-repository
+                         :shape "RepositoryDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-repository-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-repository-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-repository-result 'make-create-repository-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -442,15 +634,33 @@
                           create-repository-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-domain-permissions-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-domain-permissions-policy-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (policy-revision common-lisp:nil :type
-    (common-lisp:or policy-revision common-lisp:null)))
+ (common-lisp:defclass delete-domain-permissions-policy-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-domain-permissions-policy-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-domain-permissions-policy-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (policy-revision :initarg :policy-revision :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-revision common-lisp:null)
+                         :accessor
+                         struct-shape-delete-domain-permissions-policy-request-policy-revision
+                         :shape "PolicyRevision" :location "querystring"
+                         :location-name "policy-revision"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-domain-permissions-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-domain-permissions-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-domain-permissions-policy-request
                     'make-delete-domain-permissions-policy-request))
@@ -470,11 +680,20 @@
                           delete-domain-permissions-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-domain-permissions-policy-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-domain-permissions-policy-result-"))
-   (policy common-lisp:nil :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass delete-domain-permissions-policy-result common-lisp:nil
+                       ((policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-delete-domain-permissions-policy-result-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-domain-permissions-policy-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-domain-permissions-policy-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-domain-permissions-policy-result
                     'make-delete-domain-permissions-policy-result))
@@ -501,13 +720,24 @@
                           delete-domain-permissions-policy-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-domain-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-domain-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass delete-domain-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-delete-domain-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-domain-request-domain-owner :shape
+                         "AccountId" :location "querystring" :location-name
+                         "domain-owner"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-domain-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-domain-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-domain-request 'make-delete-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -526,11 +756,18 @@
                           delete-domain-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-domain-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-domain-result-"))
-   (domain common-lisp:nil :type
-    (common-lisp:or domain-description common-lisp:null)))
+ (common-lisp:defclass delete-domain-result common-lisp:nil
+                       ((domain :initarg :domain :initform common-lisp:nil
+                         :type
+                         (common-lisp:or domain-description common-lisp:null)
+                         :accessor struct-shape-delete-domain-result-domain
+                         :shape "DomainDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-domain-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-domain-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-domain-result 'make-delete-domain-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -550,21 +787,50 @@
                         ((aws-sdk/generator/shape::input delete-domain-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-package-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-package-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null)))
+ (common-lisp:defclass delete-package-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-delete-package-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-package-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-request-repository :shape
+                         "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor struct-shape-delete-package-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-request-namespace :shape
+                         "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor struct-shape-delete-package-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-package-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-package-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-package-request 'make-delete-package-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -583,11 +849,19 @@
                           delete-package-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-package-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-package-result-"))
-   (deleted-package common-lisp:nil :type
-    (common-lisp:or package-summary common-lisp:null)))
+ (common-lisp:defclass delete-package-result common-lisp:nil
+                       ((deleted-package :initarg :deleted-package :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-summary common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-result-deleted-package
+                         :shape "PackageSummary" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-package-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-package-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-package-result 'make-delete-package-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -613,25 +887,69 @@
                           delete-package-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-package-versions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-package-versions-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (versions (common-lisp:error ":versions is required") :type
-    (common-lisp:or package-version-list common-lisp:null))
-   (expected-status common-lisp:nil :type
-    (common-lisp:or package-version-status common-lisp:null)))
+ (common-lisp:defclass delete-package-versions-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-package-versions-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (versions :initarg :versions :initform
+                         (common-lisp:error ":versions is required") :type
+                         (common-lisp:or package-version-list common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-request-versions
+                         :shape "PackageVersionList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expected-status :initarg :expected-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-request-expected-status
+                         :shape "PackageVersionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-package-versions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-package-versions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-package-versions-request
                     'make-delete-package-versions-request))
@@ -665,13 +983,29 @@
                           delete-package-versions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-package-versions-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-package-versions-result-"))
-   (successful-versions common-lisp:nil :type
-    (common-lisp:or successful-package-version-info-map common-lisp:null))
-   (failed-versions common-lisp:nil :type
-    (common-lisp:or package-version-error-map common-lisp:null)))
+ (common-lisp:defclass delete-package-versions-result common-lisp:nil
+                       ((successful-versions :initarg :successful-versions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or successful-package-version-info-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-result-successful-versions
+                         :shape "SuccessfulPackageVersionInfoMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (failed-versions :initarg :failed-versions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-error-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-package-versions-result-failed-versions
+                         :shape "PackageVersionErrorMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-package-versions-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-package-versions-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-package-versions-result
                     'make-delete-package-versions-result))
@@ -705,18 +1039,41 @@
                           delete-package-versions-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-repository-permissions-policy-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-repository-permissions-policy-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (policy-revision common-lisp:nil :type
-    (common-lisp:or policy-revision common-lisp:null)))
+ (common-lisp:defclass delete-repository-permissions-policy-request
+                       common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-repository-permissions-policy-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-repository-permissions-policy-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-repository-permissions-policy-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (policy-revision :initarg :policy-revision :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-revision common-lisp:null)
+                         :accessor
+                         struct-shape-delete-repository-permissions-policy-request-policy-revision
+                         :shape "PolicyRevision" :location "querystring"
+                         :location-name "policy-revision"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-repository-permissions-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-repository-permissions-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-repository-permissions-policy-request
                     'make-delete-repository-permissions-policy-request))
@@ -736,11 +1093,21 @@
                           delete-repository-permissions-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-repository-permissions-policy-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-repository-permissions-policy-result-"))
-   (policy common-lisp:nil :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass delete-repository-permissions-policy-result
+                       common-lisp:nil
+                       ((policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-delete-repository-permissions-policy-result-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-repository-permissions-policy-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-repository-permissions-policy-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-repository-permissions-policy-result
                     'make-delete-repository-permissions-policy-result))
@@ -767,15 +1134,32 @@
                           delete-repository-permissions-policy-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-repository-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-repository-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+ (common-lisp:defclass delete-repository-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-repository-request-domain :shape
+                         "DomainName" :location "querystring" :location-name
+                         "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-repository-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-repository-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-repository-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-repository-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-repository-request
                     'make-delete-repository-request))
@@ -795,11 +1179,20 @@
                           delete-repository-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-repository-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-repository-result-"))
-   (repository common-lisp:nil :type
-    (common-lisp:or repository-description common-lisp:null)))
+ (common-lisp:defclass delete-repository-result common-lisp:nil
+                       ((repository :initarg :repository :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-repository-result-repository
+                         :shape "RepositoryDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-repository-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-repository-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-repository-result 'make-delete-repository-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -825,13 +1218,24 @@
                           delete-repository-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-domain-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-domain-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass describe-domain-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-describe-domain-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-domain-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-domain-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-domain-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-domain-request 'make-describe-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -850,11 +1254,18 @@
                           describe-domain-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-domain-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-domain-result-"))
-   (domain common-lisp:nil :type
-    (common-lisp:or domain-description common-lisp:null)))
+ (common-lisp:defclass describe-domain-result common-lisp:nil
+                       ((domain :initarg :domain :initform common-lisp:nil
+                         :type
+                         (common-lisp:or domain-description common-lisp:null)
+                         :accessor struct-shape-describe-domain-result-domain
+                         :shape "DomainDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-domain-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-domain-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-domain-result 'make-describe-domain-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -880,21 +1291,51 @@
                           describe-domain-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-package-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-package-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null)))
+ (common-lisp:defclass describe-package-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-describe-package-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-package-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor struct-shape-describe-package-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-request-namespace :shape
+                         "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-request-package :shape
+                         "PackageName" :location "querystring" :location-name
+                         "package"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-package-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-package-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-package-request 'make-describe-package-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -913,11 +1354,18 @@
                           describe-package-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-package-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-package-result-"))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-description common-lisp:null)))
+ (common-lisp:defclass describe-package-result common-lisp:nil
+                       ((package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-description common-lisp:null)
+                         :accessor struct-shape-describe-package-result-package
+                         :shape "PackageDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-package-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-package-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-package-result 'make-describe-package-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -943,23 +1391,62 @@
                           describe-package-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-package-version-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-package-version-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (package-version (common-lisp:error ":packageversion is required") :type
-    (common-lisp:or package-version common-lisp:null)))
+ (common-lisp:defclass describe-package-version-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-version-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-package-version-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-version-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-version-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-version-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-version-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (package-version :initarg :package-version :initform
+                         (common-lisp:error ":packageversion is required")
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-version-request-package-version
+                         :shape "PackageVersion" :location "querystring"
+                         :location-name "version"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-package-version-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-package-version-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-package-version-request
                     'make-describe-package-version-request))
@@ -979,11 +1466,22 @@
                           describe-package-version-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-package-version-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-package-version-result-"))
-   (package-version (common-lisp:error ":packageversion is required") :type
-    (common-lisp:or package-version-description common-lisp:null)))
+ (common-lisp:defclass describe-package-version-result common-lisp:nil
+                       ((package-version :initarg :package-version :initform
+                         (common-lisp:error ":packageversion is required")
+                         :type
+                         (common-lisp:or package-version-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-package-version-result-package-version
+                         :shape "PackageVersionDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-package-version-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-package-version-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-package-version-result
                     'make-describe-package-version-result))
@@ -1010,15 +1508,32 @@
                           describe-package-version-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-repository-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-repository-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+ (common-lisp:defclass describe-repository-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-repository-request-domain :shape
+                         "DomainName" :location "querystring" :location-name
+                         "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-repository-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-repository-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-repository-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-repository-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-repository-request
                     'make-describe-repository-request))
@@ -1038,11 +1553,20 @@
                           describe-repository-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-repository-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-repository-result-"))
-   (repository common-lisp:nil :type
-    (common-lisp:or repository-description common-lisp:null)))
+ (common-lisp:defclass describe-repository-result common-lisp:nil
+                       ((repository :initarg :repository :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-repository-result-repository
+                         :shape "RepositoryDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-repository-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-repository-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-repository-result
                     'make-describe-repository-result))
@@ -1070,17 +1594,43 @@
    common-lisp:nil))
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-external-connection-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-external-connection-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (external-connection (common-lisp:error ":externalconnection is required")
-    :type (common-lisp:or external-connection-name common-lisp:null)))
+ (common-lisp:defclass disassociate-external-connection-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-external-connection-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-disassociate-external-connection-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-external-connection-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (external-connection :initarg :external-connection
+                         :initform
+                         (common-lisp:error ":externalconnection is required")
+                         :type
+                         (common-lisp:or external-connection-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-external-connection-request-external-connection
+                         :shape "ExternalConnectionName" :location
+                         "querystring" :location-name "external-connection"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-external-connection-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-external-connection-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-external-connection-request
                     'make-disassociate-external-connection-request))
@@ -1100,11 +1650,21 @@
                           disassociate-external-connection-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-external-connection-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-external-connection-result-"))
-   (repository common-lisp:nil :type
-    (common-lisp:or repository-description common-lisp:null)))
+ (common-lisp:defclass disassociate-external-connection-result common-lisp:nil
+                       ((repository :initarg :repository :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-external-connection-result-repository
+                         :shape "RepositoryDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-external-connection-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-external-connection-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-external-connection-result
                     'make-disassociate-external-connection-result))
@@ -1131,27 +1691,77 @@
                           disassociate-external-connection-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dispose-package-versions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dispose-package-versions-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (versions (common-lisp:error ":versions is required") :type
-    (common-lisp:or package-version-list common-lisp:null))
-   (version-revisions common-lisp:nil :type
-    (common-lisp:or package-version-revision-map common-lisp:null))
-   (expected-status common-lisp:nil :type
-    (common-lisp:or package-version-status common-lisp:null)))
+ (common-lisp:defclass dispose-package-versions-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-dispose-package-versions-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (versions :initarg :versions :initform
+                         (common-lisp:error ":versions is required") :type
+                         (common-lisp:or package-version-list common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-request-versions
+                         :shape "PackageVersionList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-revisions :initarg :version-revisions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or package-version-revision-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-request-version-revisions
+                         :shape "PackageVersionRevisionMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expected-status :initarg :expected-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-request-expected-status
+                         :shape "PackageVersionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dispose-package-versions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'dispose-package-versions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dispose-package-versions-request
                     'make-dispose-package-versions-request))
@@ -1192,13 +1802,29 @@
                           dispose-package-versions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dispose-package-versions-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dispose-package-versions-result-"))
-   (successful-versions common-lisp:nil :type
-    (common-lisp:or successful-package-version-info-map common-lisp:null))
-   (failed-versions common-lisp:nil :type
-    (common-lisp:or package-version-error-map common-lisp:null)))
+ (common-lisp:defclass dispose-package-versions-result common-lisp:nil
+                       ((successful-versions :initarg :successful-versions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or successful-package-version-info-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-result-successful-versions
+                         :shape "SuccessfulPackageVersionInfoMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (failed-versions :initarg :failed-versions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-error-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dispose-package-versions-result-failed-versions
+                         :shape "PackageVersionErrorMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dispose-package-versions-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'dispose-package-versions-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dispose-package-versions-result
                     'make-dispose-package-versions-result))
@@ -1232,22 +1858,62 @@
                           dispose-package-versions-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-description (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-description-"))
-   (name common-lisp:nil :type (common-lisp:or domain-name common-lisp:null))
-   (owner common-lisp:nil :type (common-lisp:or account-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or domain-status common-lisp:null))
-   (created-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (encryption-key common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (repository-count common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (asset-size-bytes common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (s3bucket-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass domain-description common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-domain-description-name :shape
+                         "DomainName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (owner :initarg :owner :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-domain-description-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-domain-description-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or domain-status common-lisp:null)
+                         :accessor struct-shape-domain-description-status
+                         :shape "DomainStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-time :initarg :created-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-domain-description-created-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (encryption-key :initarg :encryption-key :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-domain-description-encryption-key :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (repository-count :initarg :repository-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-domain-description-repository-count
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (asset-size-bytes :initarg :asset-size-bytes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-domain-description-asset-size-bytes
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3bucket-arn :initarg :s3bucket-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-domain-description-s3bucket-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-domain-description
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'domain-description
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'domain-description 'make-domain-description))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1323,13 +1989,28 @@
                         ((aws-sdk/generator/shape::input domain-description))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-entry-point (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-entry-point-"))
-   (repository-name common-lisp:nil :type
-    (common-lisp:or repository-name common-lisp:null))
-   (external-connection-name common-lisp:nil :type
-    (common-lisp:or external-connection-name common-lisp:null)))
+ (common-lisp:defclass domain-entry-point common-lisp:nil
+                       ((repository-name :initarg :repository-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-domain-entry-point-repository-name :shape
+                         "RepositoryName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (external-connection-name :initarg
+                         :external-connection-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or external-connection-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-domain-entry-point-external-connection-name
+                         :shape "ExternalConnectionName" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-domain-entry-point
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'domain-entry-point
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'domain-entry-point 'make-domain-entry-point))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1359,18 +2040,43 @@
 (common-lisp:deftype domain-name () 'common-lisp:string)
 (common-lisp:deftype domain-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-summary-"))
-   (name common-lisp:nil :type (common-lisp:or domain-name common-lisp:null))
-   (owner common-lisp:nil :type (common-lisp:or account-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or domain-status common-lisp:null))
-   (created-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (encryption-key common-lisp:nil :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass domain-summary common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-domain-summary-name :shape
+                         "DomainName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (owner :initarg :owner :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-domain-summary-owner :shape "AccountId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-domain-summary-arn :shape "Arn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or domain-status common-lisp:null)
+                         :accessor struct-shape-domain-summary-status :shape
+                         "DomainStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-time :initarg :created-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-domain-summary-created-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (encryption-key :initarg :encryption-key :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-domain-summary-encryption-key :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-domain-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'domain-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'domain-summary 'make-domain-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input domain-summary))
@@ -1435,15 +2141,34 @@
 (common-lisp:deftype external-connection-name () 'common-lisp:string)
 (common-lisp:deftype external-connection-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-authorization-token-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-authorization-token-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (duration-seconds common-lisp:nil :type
-    (common-lisp:or authorization-token-duration-seconds common-lisp:null)))
+ (common-lisp:defclass get-authorization-token-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-authorization-token-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-authorization-token-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (duration-seconds :initarg :duration-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or authorization-token-duration-seconds
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-authorization-token-request-duration-seconds
+                         :shape "AuthorizationTokenDurationSeconds" :location
+                         "querystring" :location-name "duration"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-authorization-token-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-authorization-token-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-authorization-token-request
                     'make-get-authorization-token-request))
@@ -1463,13 +2188,25 @@
                           get-authorization-token-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-authorization-token-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-authorization-token-result-"))
-   (authorization-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (expiration common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass get-authorization-token-result common-lisp:nil
+                       ((authorization-token :initarg :authorization-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-authorization-token-result-authorization-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiration :initarg :expiration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-authorization-token-result-expiration
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-authorization-token-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-authorization-token-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-authorization-token-result
                     'make-get-authorization-token-result))
@@ -1503,13 +2240,26 @@
                           get-authorization-token-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-domain-permissions-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-domain-permissions-policy-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass get-domain-permissions-policy-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-domain-permissions-policy-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-domain-permissions-policy-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-domain-permissions-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-domain-permissions-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-domain-permissions-policy-request
                     'make-get-domain-permissions-policy-request))
@@ -1529,11 +2279,20 @@
                           get-domain-permissions-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-domain-permissions-policy-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-domain-permissions-policy-result-"))
-   (policy common-lisp:nil :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass get-domain-permissions-policy-result common-lisp:nil
+                       ((policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-get-domain-permissions-policy-result-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-domain-permissions-policy-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-domain-permissions-policy-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-domain-permissions-policy-result
                     'make-get-domain-permissions-policy-result))
@@ -1560,27 +2319,77 @@
                           get-domain-permissions-policy-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-package-version-asset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-package-version-asset-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (package-version (common-lisp:error ":packageversion is required") :type
-    (common-lisp:or package-version common-lisp:null))
-   (asset (common-lisp:error ":asset is required") :type
-    (common-lisp:or asset-name common-lisp:null))
-   (package-version-revision common-lisp:nil :type
-    (common-lisp:or package-version-revision common-lisp:null)))
+ (common-lisp:defclass get-package-version-asset-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-package-version-asset-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (package-version :initarg :package-version :initform
+                         (common-lisp:error ":packageversion is required")
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-request-package-version
+                         :shape "PackageVersion" :location "querystring"
+                         :location-name "version")
+                        (asset :initarg :asset :initform
+                         (common-lisp:error ":asset is required") :type
+                         (common-lisp:or asset-name common-lisp:null) :accessor
+                         struct-shape-get-package-version-asset-request-asset
+                         :shape "AssetName" :location "querystring"
+                         :location-name "asset")
+                        (package-version-revision :initarg
+                         :package-version-revision :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-revision
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-request-package-version-revision
+                         :shape "PackageVersionRevision" :location
+                         "querystring" :location-name "revision"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-package-version-asset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-package-version-asset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-package-version-asset-request
                     'make-get-package-version-asset-request))
@@ -1600,16 +2409,40 @@
                           get-package-version-asset-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-package-version-asset-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-package-version-asset-result-"))
-   (asset common-lisp:nil :type (common-lisp:or asset common-lisp:null))
-   (asset-name common-lisp:nil :type
-    (common-lisp:or asset-name common-lisp:null))
-   (package-version common-lisp:nil :type
-    (common-lisp:or package-version common-lisp:null))
-   (package-version-revision common-lisp:nil :type
-    (common-lisp:or package-version-revision common-lisp:null)))
+ (common-lisp:defclass get-package-version-asset-result common-lisp:nil
+                       ((asset :initarg :asset :initform common-lisp:nil :type
+                         (common-lisp:or asset common-lisp:null) :accessor
+                         struct-shape-get-package-version-asset-result-asset
+                         :shape "Asset" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (asset-name :initarg :asset-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or asset-name common-lisp:null) :accessor
+                         struct-shape-get-package-version-asset-result-asset-name
+                         :shape "AssetName" :location "header" :location-name
+                         "X-AssetName")
+                        (package-version :initarg :package-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-result-package-version
+                         :shape "PackageVersion" :location "header"
+                         :location-name "X-PackageVersion")
+                        (package-version-revision :initarg
+                         :package-version-revision :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-revision
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-asset-result-package-version-revision
+                         :shape "PackageVersionRevision" :location "header"
+                         :location-name "X-PackageVersionRevision"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-package-version-asset-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-package-version-asset-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-package-version-asset-result
                     'make-get-package-version-asset-result))
@@ -1650,23 +2483,62 @@
                           get-package-version-asset-result))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'asset)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-package-version-readme-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-package-version-readme-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (package-version (common-lisp:error ":packageversion is required") :type
-    (common-lisp:or package-version common-lisp:null)))
+ (common-lisp:defclass get-package-version-readme-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-package-version-readme-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (package-version :initarg :package-version :initform
+                         (common-lisp:error ":packageversion is required")
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-request-package-version
+                         :shape "PackageVersion" :location "querystring"
+                         :location-name "version"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-package-version-readme-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-package-version-readme-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-package-version-readme-request
                     'make-get-package-version-readme-request))
@@ -1686,20 +2558,53 @@
                           get-package-version-readme-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-package-version-readme-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-package-version-readme-result-"))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or package-version common-lisp:null))
-   (version-revision common-lisp:nil :type
-    (common-lisp:or package-version-revision common-lisp:null))
-   (readme common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-package-version-readme-result common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-result-format
+                         :shape "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-result-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (package :initarg :package :initform common-lisp:nil
+                         :type (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-result-package
+                         :shape "PackageName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-result-version
+                         :shape "PackageVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-revision :initarg :version-revision :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-revision
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-result-version-revision
+                         :shape "PackageVersionRevision" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (readme :initarg :readme :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-package-version-readme-result-readme
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-package-version-readme-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-package-version-readme-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-package-version-readme-result
                     'make-get-package-version-readme-result))
@@ -1761,17 +2666,40 @@
                           get-package-version-readme-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-repository-endpoint-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-repository-endpoint-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null)))
+ (common-lisp:defclass get-repository-endpoint-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-repository-endpoint-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-repository-endpoint-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-repository-endpoint-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-repository-endpoint-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-repository-endpoint-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-repository-endpoint-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-repository-endpoint-request
                     'make-get-repository-endpoint-request))
@@ -1791,11 +2719,19 @@
                           get-repository-endpoint-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-repository-endpoint-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-repository-endpoint-result-"))
-   (repository-endpoint common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-repository-endpoint-result common-lisp:nil
+                       ((repository-endpoint :initarg :repository-endpoint
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-repository-endpoint-result-repository-endpoint
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-repository-endpoint-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-repository-endpoint-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-repository-endpoint-result
                     'make-get-repository-endpoint-result))
@@ -1822,15 +2758,34 @@
                           get-repository-endpoint-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-repository-permissions-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-repository-permissions-policy-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+ (common-lisp:defclass get-repository-permissions-policy-request
+                       common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-repository-permissions-policy-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-repository-permissions-policy-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-repository-permissions-policy-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-repository-permissions-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-repository-permissions-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-repository-permissions-policy-request
                     'make-get-repository-permissions-policy-request))
@@ -1850,11 +2805,20 @@
                           get-repository-permissions-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-repository-permissions-policy-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-repository-permissions-policy-result-"))
-   (policy common-lisp:nil :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass get-repository-permissions-policy-result common-lisp:nil
+                       ((policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-get-repository-permissions-policy-result-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-repository-permissions-policy-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-repository-permissions-policy-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-repository-permissions-policy-result
                     'make-get-repository-permissions-policy-result))
@@ -1892,11 +2856,22 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (license-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-license-info-"))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (url common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass license-info common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-license-info-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (url :initarg :url :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-license-info-url :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-license-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'license-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'license-info 'make-license-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input license-info))
@@ -1931,13 +2906,26 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype list-domains-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-domains-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-domains-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-domains-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-domains-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-domains-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-domains-request-max-results :shape
+                         "ListDomainsMaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor struct-shape-list-domains-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-domains-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-domains-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-domains-request 'make-list-domains-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1964,13 +2952,24 @@
                         ((aws-sdk/generator/shape::input list-domains-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-domains-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-domains-result-"))
-   (domains common-lisp:nil :type
-    (common-lisp:or domain-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-domains-result common-lisp:nil
+                       ((domains :initarg :domains :initform common-lisp:nil
+                         :type
+                         (common-lisp:or domain-summary-list common-lisp:null)
+                         :accessor struct-shape-list-domains-result-domains
+                         :shape "DomainSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor struct-shape-list-domains-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-domains-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-domains-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-domains-result 'make-list-domains-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1999,27 +2998,78 @@
 (common-lisp:deftype list-package-version-assets-max-results ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-package-version-assets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-package-version-assets-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (package-version (common-lisp:error ":packageversion is required") :type
-    (common-lisp:or package-version common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-package-version-assets-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-package-version-assets-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-package-version-assets-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (package-version :initarg :package-version :initform
+                         (common-lisp:error ":packageversion is required")
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-request-package-version
+                         :shape "PackageVersion" :location "querystring"
+                         :location-name "version")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-package-version-assets-max-results
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-request-max-results
+                         :shape "ListPackageVersionAssetsMaxResults" :location
+                         "querystring" :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "next-token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-package-version-assets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-package-version-assets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-package-version-assets-request
                     'make-list-package-version-assets-request))
@@ -2039,23 +3089,61 @@
                           list-package-version-assets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-package-version-assets-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-package-version-assets-result-"))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or package-version common-lisp:null))
-   (version-revision common-lisp:nil :type
-    (common-lisp:or package-version-revision common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (assets common-lisp:nil :type
-    (common-lisp:or asset-summary-list common-lisp:null)))
+ (common-lisp:defclass list-package-version-assets-result common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-result-format
+                         :shape "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-result-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (package :initarg :package :initform common-lisp:nil
+                         :type (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-result-package
+                         :shape "PackageName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-result-version
+                         :shape "PackageVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-revision :initarg :version-revision :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-revision
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-result-version-revision
+                         :shape "PackageVersionRevision" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (assets :initarg :assets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or asset-summary-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-assets-result-assets
+                         :shape "AssetSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-package-version-assets-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-package-version-assets-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-package-version-assets-result
                     'make-list-package-version-assets-result))
@@ -2124,25 +3212,70 @@
                           list-package-version-assets-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-package-version-dependencies-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-package-version-dependencies-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (package-version (common-lisp:error ":packageversion is required") :type
-    (common-lisp:or package-version common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-package-version-dependencies-request
+                       common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-package-version-dependencies-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (package-version :initarg :package-version :initform
+                         (common-lisp:error ":packageversion is required")
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-request-package-version
+                         :shape "PackageVersion" :location "querystring"
+                         :location-name "version")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "next-token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-package-version-dependencies-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-package-version-dependencies-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-package-version-dependencies-request
                     'make-list-package-version-dependencies-request))
@@ -2162,23 +3295,62 @@
                           list-package-version-dependencies-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-package-version-dependencies-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-package-version-dependencies-result-"))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or package-version common-lisp:null))
-   (version-revision common-lisp:nil :type
-    (common-lisp:or package-version-revision common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (dependencies common-lisp:nil :type
-    (common-lisp:or package-dependency-list common-lisp:null)))
+ (common-lisp:defclass list-package-version-dependencies-result common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-result-format
+                         :shape "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-result-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (package :initarg :package :initform common-lisp:nil
+                         :type (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-result-package
+                         :shape "PackageName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-result-version
+                         :shape "PackageVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-revision :initarg :version-revision :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-revision
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-result-version-revision
+                         :shape "PackageVersionRevision" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dependencies :initarg :dependencies :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-dependency-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-version-dependencies-result-dependencies
+                         :shape "PackageDependencyList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-package-version-dependencies-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-package-version-dependencies-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-package-version-dependencies-result
                     'make-list-package-version-dependencies-result))
@@ -2248,31 +3420,93 @@
    common-lisp:nil))
 (common-lisp:deftype list-package-versions-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-package-versions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-package-versions-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or package-version-status common-lisp:null))
-   (sort-by common-lisp:nil :type
-    (common-lisp:or package-version-sort-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-package-versions-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (origin-type common-lisp:nil :type
-    (common-lisp:or package-version-origin-type common-lisp:null)))
+ (common-lisp:defclass list-package-versions-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-package-versions-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-status
+                         :shape "PackageVersionStatus" :location "querystring"
+                         :location-name "status")
+                        (sort-by :initarg :sort-by :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-sort-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-sort-by
+                         :shape "PackageVersionSortType" :location
+                         "querystring" :location-name "sortBy")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-package-versions-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-max-results
+                         :shape "ListPackageVersionsMaxResults" :location
+                         "querystring" :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "next-token")
+                        (origin-type :initarg :origin-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-origin-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-request-origin-type
+                         :shape "PackageVersionOriginType" :location
+                         "querystring" :location-name "originType"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-package-versions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-package-versions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-package-versions-request
                     'make-list-package-versions-request))
@@ -2292,21 +3526,54 @@
                           list-package-versions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-package-versions-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-package-versions-result-"))
-   (default-display-version common-lisp:nil :type
-    (common-lisp:or package-version common-lisp:null))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (versions common-lisp:nil :type
-    (common-lisp:or package-version-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-package-versions-result common-lisp:nil
+                       ((default-display-version :initarg
+                         :default-display-version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-result-default-display-version
+                         :shape "PackageVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-result-format
+                         :shape "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-result-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (package :initarg :package :initform common-lisp:nil
+                         :type (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-result-package
+                         :shape "PackageName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (versions :initarg :versions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-result-versions
+                         :shape "PackageVersionSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-package-versions-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-package-versions-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-package-versions-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-package-versions-result
                     'make-list-package-versions-result))
@@ -2370,29 +3637,74 @@
    common-lisp:nil))
 (common-lisp:deftype list-packages-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-packages-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-packages-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package-prefix common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-packages-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (publish common-lisp:nil :type
-    (common-lisp:or allow-publish common-lisp:null))
-   (upstream common-lisp:nil :type
-    (common-lisp:or allow-upstream common-lisp:null)))
+ (common-lisp:defclass list-packages-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-list-packages-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-packages-request-domain-owner :shape
+                         "AccountId" :location "querystring" :location-name
+                         "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-packages-request-repository :shape
+                         "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor struct-shape-list-packages-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor struct-shape-list-packages-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package-prefix :initarg :package-prefix :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-packages-request-package-prefix
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package-prefix")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-packages-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-packages-request-max-results :shape
+                         "ListPackagesMaxResults" :location "querystring"
+                         :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-packages-request-next-token :shape
+                         "PaginationToken" :location "querystring"
+                         :location-name "next-token")
+                        (publish :initarg :publish :initform common-lisp:nil
+                         :type (common-lisp:or allow-publish common-lisp:null)
+                         :accessor struct-shape-list-packages-request-publish
+                         :shape "AllowPublish" :location "querystring"
+                         :location-name "publish")
+                        (upstream :initarg :upstream :initform common-lisp:nil
+                         :type (common-lisp:or allow-upstream common-lisp:null)
+                         :accessor struct-shape-list-packages-request-upstream
+                         :shape "AllowUpstream" :location "querystring"
+                         :location-name "upstream"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-packages-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-packages-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-packages-request 'make-list-packages-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2411,13 +3723,24 @@
                           list-packages-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-packages-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-packages-result-"))
-   (packages common-lisp:nil :type
-    (common-lisp:or package-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-packages-result common-lisp:nil
+                       ((packages :initarg :packages :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-summary-list common-lisp:null)
+                         :accessor struct-shape-list-packages-result-packages
+                         :shape "PackageSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor struct-shape-list-packages-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-packages-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-packages-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-packages-result 'make-list-packages-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2446,21 +3769,55 @@
 (common-lisp:deftype list-repositories-in-domain-max-results ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-repositories-in-domain-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-repositories-in-domain-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (administrator-account common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository-prefix common-lisp:nil :type
-    (common-lisp:or repository-name common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-repositories-in-domain-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-repositories-in-domain-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-in-domain-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-repositories-in-domain-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (administrator-account :initarg :administrator-account
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-repositories-in-domain-request-administrator-account
+                         :shape "AccountId" :location "querystring"
+                         :location-name "administrator-account")
+                        (repository-prefix :initarg :repository-prefix
+                         :initform common-lisp:nil :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-in-domain-request-repository-prefix
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository-prefix")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-repositories-in-domain-max-results
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-in-domain-request-max-results
+                         :shape "ListRepositoriesInDomainMaxResults" :location
+                         "querystring" :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-in-domain-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "next-token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-repositories-in-domain-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-repositories-in-domain-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-repositories-in-domain-request
                     'make-list-repositories-in-domain-request))
@@ -2480,13 +3837,28 @@
                           list-repositories-in-domain-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-repositories-in-domain-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-repositories-in-domain-result-"))
-   (repositories common-lisp:nil :type
-    (common-lisp:or repository-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-repositories-in-domain-result common-lisp:nil
+                       ((repositories :initarg :repositories :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-in-domain-result-repositories
+                         :shape "RepositorySummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-in-domain-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-repositories-in-domain-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-repositories-in-domain-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-repositories-in-domain-result
                     'make-list-repositories-in-domain-result))
@@ -2521,15 +3893,34 @@
    common-lisp:nil))
 (common-lisp:deftype list-repositories-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-repositories-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-repositories-request-"))
-   (repository-prefix common-lisp:nil :type
-    (common-lisp:or repository-name common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-repositories-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-repositories-request common-lisp:nil
+                       ((repository-prefix :initarg :repository-prefix
+                         :initform common-lisp:nil :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-request-repository-prefix
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository-prefix")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-repositories-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-request-max-results
+                         :shape "ListRepositoriesMaxResults" :location
+                         "querystring" :location-name "max-results")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "next-token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-repositories-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-repositories-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-repositories-request
                     'make-list-repositories-request))
@@ -2549,13 +3940,27 @@
                           list-repositories-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-repositories-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-repositories-result-"))
-   (repositories common-lisp:nil :type
-    (common-lisp:or repository-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-repositories-result common-lisp:nil
+                       ((repositories :initarg :repositories :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-result-repositories
+                         :shape "RepositorySummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-repositories-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-repositories-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-repositories-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-repositories-result 'make-list-repositories-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2588,11 +3993,19 @@
                           list-repositories-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "Arn" :location "querystring" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -2612,10 +4025,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-result-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-result common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-result-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-result
                     'make-list-tags-for-resource-result))
@@ -2644,17 +4065,35 @@
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:deftype long-optional () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-dependency (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-dependency-"))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (dependency-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (version-requirement common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass package-dependency common-lisp:nil
+                       ((namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor struct-shape-package-dependency-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (package :initarg :package :initform common-lisp:nil
+                         :type (common-lisp:or package-name common-lisp:null)
+                         :accessor struct-shape-package-dependency-package
+                         :shape "PackageName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dependency-type :initarg :dependency-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-package-dependency-dependency-type :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version-requirement :initarg :version-requirement
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-package-dependency-version-requirement
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-dependency
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-dependency
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'package-dependency 'make-package-dependency))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2703,16 +4142,36 @@
                            (trivial-types:proper-list package-dependency))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-description (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-description-"))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or package-name common-lisp:null))
-   (origin-configuration common-lisp:nil :type
-    (common-lisp:or package-origin-configuration common-lisp:null)))
+ (common-lisp:defclass package-description common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor struct-shape-package-description-format
+                         :shape "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor struct-shape-package-description-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor struct-shape-package-description-name :shape
+                         "PackageName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (origin-configuration :initarg :origin-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or package-origin-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-description-origin-configuration
+                         :shape "PackageOriginConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-description
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-description
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'package-description 'make-package-description))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2757,11 +4216,20 @@
 (common-lisp:deftype package-name () 'common-lisp:string)
 (common-lisp:deftype package-namespace () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-origin-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-origin-configuration-"))
-   (restrictions common-lisp:nil :type
-    (common-lisp:or package-origin-restrictions common-lisp:null)))
+ (common-lisp:defclass package-origin-configuration common-lisp:nil
+                       ((restrictions :initarg :restrictions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-origin-restrictions
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-origin-configuration-restrictions
+                         :shape "PackageOriginRestrictions" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-origin-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-origin-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'package-origin-configuration
                     'make-package-origin-configuration))
@@ -2788,13 +4256,26 @@
                           package-origin-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-origin-restrictions (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-origin-restrictions-"))
-   (publish (common-lisp:error ":publish is required") :type
-    (common-lisp:or allow-publish common-lisp:null))
-   (upstream (common-lisp:error ":upstream is required") :type
-    (common-lisp:or allow-upstream common-lisp:null)))
+ (common-lisp:defclass package-origin-restrictions common-lisp:nil
+                       ((publish :initarg :publish :initform
+                         (common-lisp:error ":publish is required") :type
+                         (common-lisp:or allow-publish common-lisp:null)
+                         :accessor
+                         struct-shape-package-origin-restrictions-publish
+                         :shape "AllowPublish" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upstream :initarg :upstream :initform
+                         (common-lisp:error ":upstream is required") :type
+                         (common-lisp:or allow-upstream common-lisp:null)
+                         :accessor
+                         struct-shape-package-origin-restrictions-upstream
+                         :shape "AllowUpstream" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-origin-restrictions
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-origin-restrictions
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'package-origin-restrictions
                     'make-package-origin-restrictions))
@@ -2828,17 +4309,36 @@
                           package-origin-restrictions))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-summary-"))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (origin-configuration common-lisp:nil :type
-    (common-lisp:or package-origin-configuration common-lisp:null)))
+ (common-lisp:defclass package-summary common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor struct-shape-package-summary-format :shape
+                         "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor struct-shape-package-summary-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (package :initarg :package :initform common-lisp:nil
+                         :type (common-lisp:or package-name common-lisp:null)
+                         :accessor struct-shape-package-summary-package :shape
+                         "PackageName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (origin-configuration :initarg :origin-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or package-origin-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-summary-origin-configuration
+                         :shape "PackageOriginConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'package-summary 'make-package-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input package-summary))
@@ -2888,33 +4388,101 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype package-version () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-version-description (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-version-description-"))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package-name common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (display-name common-lisp:nil :type
-    (common-lisp:or string255 common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or package-version common-lisp:null))
-   (summary common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (home-page common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (source-code-repository common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (published-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (licenses common-lisp:nil :type
-    (common-lisp:or license-info-list common-lisp:null))
-   (revision common-lisp:nil :type
-    (common-lisp:or package-version-revision common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or package-version-status common-lisp:null))
-   (origin common-lisp:nil :type
-    (common-lisp:or package-version-origin common-lisp:null)))
+ (common-lisp:defclass package-version-description common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-format :shape
+                         "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (package-name :initarg :package-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-package-name
+                         :shape "PackageName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (display-name :initarg :display-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string255 common-lisp:null) :accessor
+                         struct-shape-package-version-description-display-name
+                         :shape "String255" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-version
+                         :shape "PackageVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (summary :initarg :summary :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-summary
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (home-page :initarg :home-page :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-package-version-description-home-page
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source-code-repository :initarg
+                         :source-code-repository :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-source-code-repository
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (published-time :initarg :published-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-package-version-description-published-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (licenses :initarg :licenses :initform common-lisp:nil
+                         :type
+                         (common-lisp:or license-info-list common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-licenses
+                         :shape "LicenseInfoList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revision :initarg :revision :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-revision
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-revision
+                         :shape "PackageVersionRevision" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-status :shape
+                         "PackageVersionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (origin :initarg :origin :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-origin
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-description-origin :shape
+                         "PackageVersionOrigin" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-version-description
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-version-description
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'package-version-description
                     'make-package-version-description))
@@ -3026,13 +4594,27 @@
                           package-version-description))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-version-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-version-error-"))
-   (error-code common-lisp:nil :type
-    (common-lisp:or package-version-error-code common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:defclass package-version-error common-lisp:nil
+                       ((error-code :initarg :error-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-error-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-error-error-code :shape
+                         "PackageVersionErrorCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-message common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-error-error-message
+                         :shape "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-version-error
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-version-error
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'package-version-error 'make-package-version-error))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3082,13 +4664,27 @@
                            (trivial-types:proper-list package-version))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-version-origin (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-version-origin-"))
-   (domain-entry-point common-lisp:nil :type
-    (common-lisp:or domain-entry-point common-lisp:null))
-   (origin-type common-lisp:nil :type
-    (common-lisp:or package-version-origin-type common-lisp:null)))
+ (common-lisp:defclass package-version-origin common-lisp:nil
+                       ((domain-entry-point :initarg :domain-entry-point
+                         :initform common-lisp:nil :type
+                         (common-lisp:or domain-entry-point common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-origin-domain-entry-point
+                         :shape "DomainEntryPoint" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (origin-type :initarg :origin-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-origin-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-origin-origin-type :shape
+                         "PackageVersionOriginType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-version-origin
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-version-origin
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'package-version-origin 'make-package-version-origin))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3133,17 +4729,40 @@
 (common-lisp:deftype package-version-sort-type () 'common-lisp:string)
 (common-lisp:deftype package-version-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (package-version-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-package-version-summary-"))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or package-version common-lisp:null))
-   (revision common-lisp:nil :type
-    (common-lisp:or package-version-revision common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or package-version-status common-lisp:null))
-   (origin common-lisp:nil :type
-    (common-lisp:or package-version-origin common-lisp:null)))
+ (common-lisp:defclass package-version-summary common-lisp:nil
+                       ((version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor struct-shape-package-version-summary-version
+                         :shape "PackageVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revision :initarg :revision :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-revision
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-package-version-summary-revision :shape
+                         "PackageVersionRevision" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor struct-shape-package-version-summary-status
+                         :shape "PackageVersionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (origin :initarg :origin :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-origin
+                                         common-lisp:null)
+                         :accessor struct-shape-package-version-summary-origin
+                         :shape "PackageVersionOrigin" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-package-version-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'package-version-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'package-version-summary 'make-package-version-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3201,31 +4820,87 @@
 (common-lisp:deftype policy-document () 'common-lisp:string)
 (common-lisp:deftype policy-revision () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (publish-package-version-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-publish-package-version-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (package-version (common-lisp:error ":packageversion is required") :type
-    (common-lisp:or package-version common-lisp:null))
-   (asset-content (common-lisp:error ":assetcontent is required") :type
-    (common-lisp:or asset common-lisp:null))
-   (asset-name (common-lisp:error ":assetname is required") :type
-    (common-lisp:or asset-name common-lisp:null))
-   (asset-sha256 (common-lisp:error ":assetsha256 is required") :type
-    (common-lisp:or sha256 common-lisp:null))
-   (unfinished common-lisp:nil :type
-    (common-lisp:or boolean-optional common-lisp:null)))
+ (common-lisp:defclass publish-package-version-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-publish-package-version-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (package-version :initarg :package-version :initform
+                         (common-lisp:error ":packageversion is required")
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-request-package-version
+                         :shape "PackageVersion" :location "querystring"
+                         :location-name "version")
+                        (asset-content :initarg :asset-content :initform
+                         (common-lisp:error ":assetcontent is required") :type
+                         (common-lisp:or asset common-lisp:null) :accessor
+                         struct-shape-publish-package-version-request-asset-content
+                         :shape "Asset" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (asset-name :initarg :asset-name :initform
+                         (common-lisp:error ":assetname is required") :type
+                         (common-lisp:or asset-name common-lisp:null) :accessor
+                         struct-shape-publish-package-version-request-asset-name
+                         :shape "AssetName" :location "querystring"
+                         :location-name "asset")
+                        (asset-sha256 :initarg :asset-sha256 :initform
+                         (common-lisp:error ":assetsha256 is required") :type
+                         (common-lisp:or sha256 common-lisp:null) :accessor
+                         struct-shape-publish-package-version-request-asset-sha256
+                         :shape "SHA256" :location "header" :location-name
+                         "x-amz-content-sha256")
+                        (unfinished :initarg :unfinished :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean-optional common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-request-unfinished
+                         :shape "BooleanOptional" :location "querystring"
+                         :location-name "unfinished"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-publish-package-version-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'publish-package-version-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'publish-package-version-request
                     'make-publish-package-version-request))
@@ -3257,23 +4932,61 @@
                           publish-package-version-request))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'asset-content)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (publish-package-version-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-publish-package-version-result-"))
-   (format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package common-lisp:nil :type
-    (common-lisp:or package-name common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or package-version common-lisp:null))
-   (version-revision common-lisp:nil :type
-    (common-lisp:or package-version-revision common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or package-version-status common-lisp:null))
-   (asset common-lisp:nil :type
-    (common-lisp:or asset-summary common-lisp:null)))
+ (common-lisp:defclass publish-package-version-result common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-result-format
+                         :shape "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-result-namespace
+                         :shape "PackageNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (package :initarg :package :initform common-lisp:nil
+                         :type (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-result-package
+                         :shape "PackageName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-result-version
+                         :shape "PackageVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-revision :initarg :version-revision :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-revision
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-result-version-revision
+                         :shape "PackageVersionRevision" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-result-status
+                         :shape "PackageVersionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (asset :initarg :asset :initform common-lisp:nil :type
+                         (common-lisp:or asset-summary common-lisp:null)
+                         :accessor
+                         struct-shape-publish-package-version-result-asset
+                         :shape "AssetSummary" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-publish-package-version-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'publish-package-version-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'publish-package-version-result
                     'make-publish-package-version-result))
@@ -3342,17 +5055,41 @@
                           publish-package-version-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-domain-permissions-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-domain-permissions-policy-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (policy-revision common-lisp:nil :type
-    (common-lisp:or policy-revision common-lisp:null))
-   (policy-document (common-lisp:error ":policydocument is required") :type
-    (common-lisp:or policy-document common-lisp:null)))
+ (common-lisp:defclass put-domain-permissions-policy-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-put-domain-permissions-policy-request-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-put-domain-permissions-policy-request-domain-owner
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-revision :initarg :policy-revision :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-revision common-lisp:null)
+                         :accessor
+                         struct-shape-put-domain-permissions-policy-request-policy-revision
+                         :shape "PolicyRevision" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-document :initarg :policy-document :initform
+                         (common-lisp:error ":policydocument is required")
+                         :type
+                         (common-lisp:or policy-document common-lisp:null)
+                         :accessor
+                         struct-shape-put-domain-permissions-policy-request-policy-document
+                         :shape "PolicyDocument" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-domain-permissions-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-domain-permissions-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-domain-permissions-policy-request
                     'make-put-domain-permissions-policy-request))
@@ -3400,11 +5137,20 @@
                           put-domain-permissions-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-domain-permissions-policy-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-domain-permissions-policy-result-"))
-   (policy common-lisp:nil :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass put-domain-permissions-policy-result common-lisp:nil
+                       ((policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-put-domain-permissions-policy-result-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-domain-permissions-policy-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-domain-permissions-policy-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-domain-permissions-policy-result
                     'make-put-domain-permissions-policy-result))
@@ -3431,23 +5177,62 @@
                           put-domain-permissions-policy-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-package-origin-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-package-origin-configuration-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (restrictions (common-lisp:error ":restrictions is required") :type
-    (common-lisp:or package-origin-restrictions common-lisp:null)))
+ (common-lisp:defclass put-package-origin-configuration-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-put-package-origin-configuration-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-put-package-origin-configuration-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-put-package-origin-configuration-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-put-package-origin-configuration-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-put-package-origin-configuration-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-put-package-origin-configuration-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (restrictions :initarg :restrictions :initform
+                         (common-lisp:error ":restrictions is required") :type
+                         (common-lisp:or package-origin-restrictions
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-package-origin-configuration-request-restrictions
+                         :shape "PackageOriginRestrictions" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-package-origin-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-package-origin-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-package-origin-configuration-request
                     'make-put-package-origin-configuration-request))
@@ -3474,11 +5259,21 @@
                           put-package-origin-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-package-origin-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-package-origin-configuration-result-"))
-   (origin-configuration common-lisp:nil :type
-    (common-lisp:or package-origin-configuration common-lisp:null)))
+ (common-lisp:defclass put-package-origin-configuration-result common-lisp:nil
+                       ((origin-configuration :initarg :origin-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or package-origin-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-package-origin-configuration-result-origin-configuration
+                         :shape "PackageOriginConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-package-origin-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-package-origin-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-package-origin-configuration-result
                     'make-put-package-origin-configuration-result))
@@ -3506,19 +5301,49 @@
                           put-package-origin-configuration-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-repository-permissions-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-repository-permissions-policy-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (policy-revision common-lisp:nil :type
-    (common-lisp:or policy-revision common-lisp:null))
-   (policy-document (common-lisp:error ":policydocument is required") :type
-    (common-lisp:or policy-document common-lisp:null)))
+ (common-lisp:defclass put-repository-permissions-policy-request
+                       common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-put-repository-permissions-policy-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-put-repository-permissions-policy-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-put-repository-permissions-policy-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (policy-revision :initarg :policy-revision :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-revision common-lisp:null)
+                         :accessor
+                         struct-shape-put-repository-permissions-policy-request-policy-revision
+                         :shape "PolicyRevision" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-document :initarg :policy-document :initform
+                         (common-lisp:error ":policydocument is required")
+                         :type
+                         (common-lisp:or policy-document common-lisp:null)
+                         :accessor
+                         struct-shape-put-repository-permissions-policy-request-policy-document
+                         :shape "PolicyDocument" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-repository-permissions-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-repository-permissions-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-repository-permissions-policy-request
                     'make-put-repository-permissions-policy-request))
@@ -3552,11 +5377,20 @@
                           put-repository-permissions-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-repository-permissions-policy-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-repository-permissions-policy-result-"))
-   (policy common-lisp:nil :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass put-repository-permissions-policy-result common-lisp:nil
+                       ((policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-put-repository-permissions-policy-result-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-repository-permissions-policy-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-repository-permissions-policy-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-repository-permissions-policy-result
                     'make-put-repository-permissions-policy-result))
@@ -3583,26 +5417,72 @@
                           put-repository-permissions-policy-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-description (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-description-"))
-   (name common-lisp:nil :type
-    (common-lisp:or repository-name common-lisp:null))
-   (administrator-account common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (upstreams common-lisp:nil :type
-    (common-lisp:or upstream-repository-info-list common-lisp:null))
-   (external-connections common-lisp:nil :type
-    (common-lisp:or repository-external-connection-info-list common-lisp:null))
-   (created-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass repository-description common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor struct-shape-repository-description-name
+                         :shape "RepositoryName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (administrator-account :initarg :administrator-account
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-repository-description-administrator-account
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-repository-description-domain-name :shape
+                         "DomainName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-repository-description-domain-owner
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-repository-description-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-repository-description-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (upstreams :initarg :upstreams :initform
+                         common-lisp:nil :type
+                         (common-lisp:or upstream-repository-info-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-repository-description-upstreams :shape
+                         "UpstreamRepositoryInfoList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (external-connections :initarg :external-connections
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          repository-external-connection-info-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-repository-description-external-connections
+                         :shape "RepositoryExternalConnectionInfoList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-time :initarg :created-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-repository-description-created-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-repository-description
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'repository-description
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'repository-description 'make-repository-description))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3686,15 +5566,37 @@
                           repository-description))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-external-connection-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-external-connection-info-"))
-   (external-connection-name common-lisp:nil :type
-    (common-lisp:or external-connection-name common-lisp:null))
-   (package-format common-lisp:nil :type
-    (common-lisp:or package-format common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or external-connection-status common-lisp:null)))
+ (common-lisp:defclass repository-external-connection-info common-lisp:nil
+                       ((external-connection-name :initarg
+                         :external-connection-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or external-connection-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-repository-external-connection-info-external-connection-name
+                         :shape "ExternalConnectionName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (package-format :initarg :package-format :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-repository-external-connection-info-package-format
+                         :shape "PackageFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or external-connection-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-repository-external-connection-info-status
+                         :shape "ExternalConnectionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-repository-external-connection-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'repository-external-connection-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'repository-external-connection-info
                     'make-repository-external-connection-info))
@@ -3746,22 +5648,52 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype repository-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (repository-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-repository-summary-"))
-   (name common-lisp:nil :type
-    (common-lisp:or repository-name common-lisp:null))
-   (administrator-account common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (created-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass repository-summary common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor struct-shape-repository-summary-name :shape
+                         "RepositoryName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (administrator-account :initarg :administrator-account
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-repository-summary-administrator-account
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-repository-summary-domain-name
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-repository-summary-domain-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-repository-summary-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-repository-summary-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-time :initarg :created-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-repository-summary-created-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-repository-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'repository-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'repository-summary 'make-repository-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3846,14 +5778,30 @@
                     'resource-not-found-exception-resource-id
                     'resource-not-found-exception-resource-type)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-policy-"))
-   (resource-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (revision common-lisp:nil :type
-    (common-lisp:or policy-revision common-lisp:null))
-   (document common-lisp:nil :type
-    (common-lisp:or policy-document common-lisp:null)))
+ (common-lisp:defclass resource-policy common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-resource-policy-resource-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (revision :initarg :revision :initform common-lisp:nil
+                         :type
+                         (common-lisp:or policy-revision common-lisp:null)
+                         :accessor struct-shape-resource-policy-revision :shape
+                         "PolicyRevision" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (document :initarg :document :initform common-lisp:nil
+                         :type
+                         (common-lisp:or policy-document common-lisp:null)
+                         :accessor struct-shape-resource-policy-document :shape
+                         "PolicyDocument" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-policy
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-policy
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resource-policy 'make-resource-policy))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resource-policy))
@@ -3905,12 +5853,27 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype string255 () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (successful-package-version-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-successful-package-version-info-"))
-   (revision common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or package-version-status common-lisp:null)))
+ (common-lisp:defclass successful-package-version-info common-lisp:nil
+                       ((revision :initarg :revision :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-successful-package-version-info-revision
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-successful-package-version-info-status
+                         :shape "PackageVersionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-successful-package-version-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'successful-package-version-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'successful-package-version-info
                     'make-successful-package-version-info))
@@ -3953,12 +5916,21 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -3999,13 +5971,24 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "Arn" :location "querystring" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4025,9 +6008,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-result-")))
+ (common-lisp:defclass tag-resource-result common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-result 'make-tag-resource-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4052,13 +6038,24 @@
                     'throttling-exception-retry-after-seconds)))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "Arn" :location "querystring" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4084,9 +6081,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-result-")))
+ (common-lisp:defclass untag-resource-result common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-result 'make-untag-resource-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4105,29 +6105,85 @@
                           untag-resource-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-package-versions-status-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-package-versions-status-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or package-format common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or package-namespace common-lisp:null))
-   (package (common-lisp:error ":package is required") :type
-    (common-lisp:or package-name common-lisp:null))
-   (versions (common-lisp:error ":versions is required") :type
-    (common-lisp:or package-version-list common-lisp:null))
-   (version-revisions common-lisp:nil :type
-    (common-lisp:or package-version-revision-map common-lisp:null))
-   (expected-status common-lisp:nil :type
-    (common-lisp:or package-version-status common-lisp:null))
-   (target-status (common-lisp:error ":targetstatus is required") :type
-    (common-lisp:or package-version-status common-lisp:null)))
+ (common-lisp:defclass update-package-versions-status-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-domain
+                         :shape "DomainName" :location "querystring"
+                         :location-name "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-package-versions-status-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or package-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-format
+                         :shape "PackageFormat" :location "querystring"
+                         :location-name "format")
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-namespace
+                         :shape "PackageNamespace" :location "querystring"
+                         :location-name "namespace")
+                        (package :initarg :package :initform
+                         (common-lisp:error ":package is required") :type
+                         (common-lisp:or package-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-package
+                         :shape "PackageName" :location "querystring"
+                         :location-name "package")
+                        (versions :initarg :versions :initform
+                         (common-lisp:error ":versions is required") :type
+                         (common-lisp:or package-version-list common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-versions
+                         :shape "PackageVersionList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-revisions :initarg :version-revisions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or package-version-revision-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-version-revisions
+                         :shape "PackageVersionRevisionMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expected-status :initarg :expected-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-expected-status
+                         :shape "PackageVersionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (target-status :initarg :target-status :initform
+                         (common-lisp:error ":targetstatus is required") :type
+                         (common-lisp:or package-version-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-request-target-status
+                         :shape "PackageVersionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-package-versions-status-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-package-versions-status-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-package-versions-status-request
                     'make-update-package-versions-status-request))
@@ -4175,13 +6231,29 @@
                           update-package-versions-status-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-package-versions-status-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-package-versions-status-result-"))
-   (successful-versions common-lisp:nil :type
-    (common-lisp:or successful-package-version-info-map common-lisp:null))
-   (failed-versions common-lisp:nil :type
-    (common-lisp:or package-version-error-map common-lisp:null)))
+ (common-lisp:defclass update-package-versions-status-result common-lisp:nil
+                       ((successful-versions :initarg :successful-versions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or successful-package-version-info-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-result-successful-versions
+                         :shape "SuccessfulPackageVersionInfoMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (failed-versions :initarg :failed-versions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or package-version-error-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-package-versions-status-result-failed-versions
+                         :shape "PackageVersionErrorMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-package-versions-status-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-package-versions-status-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-package-versions-status-result
                     'make-update-package-versions-status-result))
@@ -4215,19 +6287,47 @@
                           update-package-versions-status-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-repository-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-repository-request-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (repository (common-lisp:error ":repository is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (upstreams common-lisp:nil :type
-    (common-lisp:or upstream-repository-list common-lisp:null)))
+ (common-lisp:defclass update-repository-request common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-repository-request-domain :shape
+                         "DomainName" :location "querystring" :location-name
+                         "domain")
+                        (domain-owner :initarg :domain-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-repository-request-domain-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "domain-owner")
+                        (repository :initarg :repository :initform
+                         (common-lisp:error ":repository is required") :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-repository-request-repository
+                         :shape "RepositoryName" :location "querystring"
+                         :location-name "repository")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-repository-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upstreams :initarg :upstreams :initform
+                         common-lisp:nil :type
+                         (common-lisp:or upstream-repository-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-repository-request-upstreams
+                         :shape "UpstreamRepositoryList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-repository-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-repository-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-repository-request
                     'make-update-repository-request))
@@ -4261,11 +6361,20 @@
                           update-repository-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-repository-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-repository-result-"))
-   (repository common-lisp:nil :type
-    (common-lisp:or repository-description common-lisp:null)))
+ (common-lisp:defclass update-repository-result common-lisp:nil
+                       ((repository :initarg :repository :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-repository-result-repository
+                         :shape "RepositoryDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-repository-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-repository-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-repository-result 'make-update-repository-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4291,11 +6400,20 @@
                           update-repository-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (upstream-repository (:copier common-lisp:nil)
-      (:conc-name "struct-shape-upstream-repository-"))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+ (common-lisp:defclass upstream-repository common-lisp:nil
+                       ((repository-name :initarg :repository-name :initform
+                         (common-lisp:error ":repositoryname is required")
+                         :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-upstream-repository-repository-name
+                         :shape "RepositoryName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-upstream-repository
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'upstream-repository
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'upstream-repository 'make-upstream-repository))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4315,11 +6433,19 @@
                         ((aws-sdk/generator/shape::input upstream-repository))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (upstream-repository-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-upstream-repository-info-"))
-   (repository-name common-lisp:nil :type
-    (common-lisp:or repository-name common-lisp:null)))
+ (common-lisp:defclass upstream-repository-info common-lisp:nil
+                       ((repository-name :initarg :repository-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or repository-name common-lisp:null)
+                         :accessor
+                         struct-shape-upstream-repository-info-repository-name
+                         :shape "RepositoryName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-upstream-repository-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'upstream-repository-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'upstream-repository-info 'make-upstream-repository-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

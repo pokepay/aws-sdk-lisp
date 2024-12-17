@@ -34,13 +34,23 @@
 (common-lisp:deftype client-access-token () 'common-lisp:string)
 (common-lisp:deftype client-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (close-tunnel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-close-tunnel-request-"))
-   (tunnel-id (common-lisp:error ":tunnelid is required") :type
-    (common-lisp:or tunnel-id common-lisp:null))
-   (delete common-lisp:nil :type
-    (common-lisp:or delete-flag common-lisp:null)))
+ (common-lisp:defclass close-tunnel-request common-lisp:nil
+                       ((tunnel-id :initarg :tunnel-id :initform
+                         (common-lisp:error ":tunnelid is required") :type
+                         (common-lisp:or tunnel-id common-lisp:null) :accessor
+                         struct-shape-close-tunnel-request-tunnel-id :shape
+                         "TunnelId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (delete :initarg :delete :initform common-lisp:nil
+                         :type (common-lisp:or delete-flag common-lisp:null)
+                         :accessor struct-shape-close-tunnel-request-delete
+                         :shape "DeleteFlag" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-close-tunnel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'close-tunnel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'close-tunnel-request 'make-close-tunnel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -67,9 +77,12 @@
                         ((aws-sdk/generator/shape::input close-tunnel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (close-tunnel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-close-tunnel-response-")))
+ (common-lisp:defclass close-tunnel-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-close-tunnel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'close-tunnel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'close-tunnel-response 'make-close-tunnel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -88,13 +101,24 @@
                           close-tunnel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (connection-state (:copier common-lisp:nil)
-      (:conc-name "struct-shape-connection-state-"))
-   (status common-lisp:nil :type
-    (common-lisp:or connection-status common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or date-type common-lisp:null)))
+ (common-lisp:defclass connection-state common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or connection-status common-lisp:null)
+                         :accessor struct-shape-connection-state-status :shape
+                         "ConnectionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-type common-lisp:null) :accessor
+                         struct-shape-connection-state-last-updated-at :shape
+                         "DateType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-connection-state
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'connection-state
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'connection-state 'make-connection-state))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -124,11 +148,18 @@
 (common-lisp:deftype date-type () 'common-lisp:string)
 (common-lisp:deftype delete-flag () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-tunnel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-tunnel-request-"))
-   (tunnel-id (common-lisp:error ":tunnelid is required") :type
-    (common-lisp:or tunnel-id common-lisp:null)))
+ (common-lisp:defclass describe-tunnel-request common-lisp:nil
+                       ((tunnel-id :initarg :tunnel-id :initform
+                         (common-lisp:error ":tunnelid is required") :type
+                         (common-lisp:or tunnel-id common-lisp:null) :accessor
+                         struct-shape-describe-tunnel-request-tunnel-id :shape
+                         "TunnelId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-tunnel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-tunnel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-tunnel-request 'make-describe-tunnel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -154,10 +185,17 @@
                           describe-tunnel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-tunnel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-tunnel-response-"))
-   (tunnel common-lisp:nil :type (common-lisp:or tunnel common-lisp:null)))
+ (common-lisp:defclass describe-tunnel-response common-lisp:nil
+                       ((tunnel :initarg :tunnel :initform common-lisp:nil
+                         :type (common-lisp:or tunnel common-lisp:null)
+                         :accessor struct-shape-describe-tunnel-response-tunnel
+                         :shape "Tunnel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-tunnel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-tunnel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-tunnel-response 'make-describe-tunnel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -184,13 +222,24 @@
    common-lisp:nil))
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (destination-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-destination-config-"))
-   (thing-name common-lisp:nil :type
-    (common-lisp:or thing-name common-lisp:null))
-   (services (common-lisp:error ":services is required") :type
-    (common-lisp:or service-list common-lisp:null)))
+ (common-lisp:defclass destination-config common-lisp:nil
+                       ((thing-name :initarg :thing-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or thing-name common-lisp:null) :accessor
+                         struct-shape-destination-config-thing-name :shape
+                         "ThingName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (services :initarg :services :initform
+                         (common-lisp:error ":services is required") :type
+                         (common-lisp:or service-list common-lisp:null)
+                         :accessor struct-shape-destination-config-services
+                         :shape "ServiceList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-destination-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'destination-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'destination-config 'make-destination-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -226,11 +275,20 @@
   (common-lisp:list 'limit-exceeded-exception
                     'limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -257,10 +315,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -287,15 +353,31 @@
                           list-tags-for-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tunnels-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tunnels-request-"))
-   (thing-name common-lisp:nil :type
-    (common-lisp:or thing-name common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-tunnels-request common-lisp:nil
+                       ((thing-name :initarg :thing-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or thing-name common-lisp:null) :accessor
+                         struct-shape-list-tunnels-request-thing-name :shape
+                         "ThingName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-tunnels-request-max-results :shape
+                         "MaxResults" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-tunnels-request-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tunnels-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tunnels-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tunnels-request 'make-list-tunnels-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -329,13 +411,25 @@
                         ((aws-sdk/generator/shape::input list-tunnels-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tunnels-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tunnels-response-"))
-   (tunnel-summaries common-lisp:nil :type
-    (common-lisp:or tunnel-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-tunnels-response common-lisp:nil
+                       ((tunnel-summaries :initarg :tunnel-summaries :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tunnel-summary-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-tunnels-response-tunnel-summaries
+                         :shape "TunnelSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-tunnels-response-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tunnels-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tunnels-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tunnels-response 'make-list-tunnels-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -370,16 +464,37 @@
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (open-tunnel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-open-tunnel-request-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (destination-config common-lisp:nil :type
-    (common-lisp:or destination-config common-lisp:null))
-   (timeout-config common-lisp:nil :type
-    (common-lisp:or timeout-config common-lisp:null)))
+ (common-lisp:defclass open-tunnel-request common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-open-tunnel-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-open-tunnel-request-tags :shape "TagList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination-config :initarg :destination-config
+                         :initform common-lisp:nil :type
+                         (common-lisp:or destination-config common-lisp:null)
+                         :accessor
+                         struct-shape-open-tunnel-request-destination-config
+                         :shape "DestinationConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timeout-config :initarg :timeout-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timeout-config common-lisp:null)
+                         :accessor
+                         struct-shape-open-tunnel-request-timeout-config :shape
+                         "TimeoutConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-open-tunnel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'open-tunnel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'open-tunnel-request 'make-open-tunnel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -420,17 +535,39 @@
                         ((aws-sdk/generator/shape::input open-tunnel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (open-tunnel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-open-tunnel-response-"))
-   (tunnel-id common-lisp:nil :type
-    (common-lisp:or tunnel-id common-lisp:null))
-   (tunnel-arn common-lisp:nil :type
-    (common-lisp:or tunnel-arn common-lisp:null))
-   (source-access-token common-lisp:nil :type
-    (common-lisp:or client-access-token common-lisp:null))
-   (destination-access-token common-lisp:nil :type
-    (common-lisp:or client-access-token common-lisp:null)))
+ (common-lisp:defclass open-tunnel-response common-lisp:nil
+                       ((tunnel-id :initarg :tunnel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tunnel-id common-lisp:null) :accessor
+                         struct-shape-open-tunnel-response-tunnel-id :shape
+                         "TunnelId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tunnel-arn :initarg :tunnel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tunnel-arn common-lisp:null) :accessor
+                         struct-shape-open-tunnel-response-tunnel-arn :shape
+                         "TunnelArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (source-access-token :initarg :source-access-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-access-token common-lisp:null)
+                         :accessor
+                         struct-shape-open-tunnel-response-source-access-token
+                         :shape "ClientAccessToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-access-token :initarg
+                         :destination-access-token :initform common-lisp:nil
+                         :type
+                         (common-lisp:or client-access-token common-lisp:null)
+                         :accessor
+                         struct-shape-open-tunnel-response-destination-access-token
+                         :shape "ClientAccessToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-open-tunnel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'open-tunnel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'open-tunnel-response 'make-open-tunnel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -480,15 +617,33 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rotate-tunnel-access-token-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rotate-tunnel-access-token-request-"))
-   (tunnel-id (common-lisp:error ":tunnelid is required") :type
-    (common-lisp:or tunnel-id common-lisp:null))
-   (client-mode (common-lisp:error ":clientmode is required") :type
-    (common-lisp:or client-mode common-lisp:null))
-   (destination-config common-lisp:nil :type
-    (common-lisp:or destination-config common-lisp:null)))
+ (common-lisp:defclass rotate-tunnel-access-token-request common-lisp:nil
+                       ((tunnel-id :initarg :tunnel-id :initform
+                         (common-lisp:error ":tunnelid is required") :type
+                         (common-lisp:or tunnel-id common-lisp:null) :accessor
+                         struct-shape-rotate-tunnel-access-token-request-tunnel-id
+                         :shape "TunnelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-mode :initarg :client-mode :initform
+                         (common-lisp:error ":clientmode is required") :type
+                         (common-lisp:or client-mode common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-tunnel-access-token-request-client-mode
+                         :shape "ClientMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-config :initarg :destination-config
+                         :initform common-lisp:nil :type
+                         (common-lisp:or destination-config common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-tunnel-access-token-request-destination-config
+                         :shape "DestinationConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rotate-tunnel-access-token-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'rotate-tunnel-access-token-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rotate-tunnel-access-token-request
                     'make-rotate-tunnel-access-token-request))
@@ -529,15 +684,34 @@
                           rotate-tunnel-access-token-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rotate-tunnel-access-token-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rotate-tunnel-access-token-response-"))
-   (tunnel-arn common-lisp:nil :type
-    (common-lisp:or tunnel-arn common-lisp:null))
-   (source-access-token common-lisp:nil :type
-    (common-lisp:or client-access-token common-lisp:null))
-   (destination-access-token common-lisp:nil :type
-    (common-lisp:or client-access-token common-lisp:null)))
+ (common-lisp:defclass rotate-tunnel-access-token-response common-lisp:nil
+                       ((tunnel-arn :initarg :tunnel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tunnel-arn common-lisp:null) :accessor
+                         struct-shape-rotate-tunnel-access-token-response-tunnel-arn
+                         :shape "TunnelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source-access-token :initarg :source-access-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-access-token common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-tunnel-access-token-response-source-access-token
+                         :shape "ClientAccessToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-access-token :initarg
+                         :destination-access-token :initform common-lisp:nil
+                         :type
+                         (common-lisp:or client-access-token common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-tunnel-access-token-response-destination-access-token
+                         :shape "ClientAccessToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rotate-tunnel-access-token-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'rotate-tunnel-access-token-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rotate-tunnel-access-token-response
                     'make-rotate-tunnel-access-token-response))
@@ -587,12 +761,21 @@
                            (trivial-types:proper-list service))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -633,13 +816,25 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -666,9 +861,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -689,11 +887,20 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:deftype thing-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (timeout-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-timeout-config-"))
-   (max-lifetime-timeout-minutes common-lisp:nil :type
-    (common-lisp:or timeout-in-min common-lisp:null)))
+ (common-lisp:defclass timeout-config common-lisp:nil
+                       ((max-lifetime-timeout-minutes :initarg
+                         :max-lifetime-timeout-minutes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timeout-in-min common-lisp:null)
+                         :accessor
+                         struct-shape-timeout-config-max-lifetime-timeout-minutes
+                         :shape "TimeoutInMin" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-timeout-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'timeout-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'timeout-config 'make-timeout-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input timeout-config))
@@ -714,29 +921,78 @@
    common-lisp:nil))
 (common-lisp:deftype timeout-in-min () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tunnel (:copier common-lisp:nil) (:conc-name "struct-shape-tunnel-"))
-   (tunnel-id common-lisp:nil :type
-    (common-lisp:or tunnel-id common-lisp:null))
-   (tunnel-arn common-lisp:nil :type
-    (common-lisp:or tunnel-arn common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or tunnel-status common-lisp:null))
-   (source-connection-state common-lisp:nil :type
-    (common-lisp:or connection-state common-lisp:null))
-   (destination-connection-state common-lisp:nil :type
-    (common-lisp:or connection-state common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (destination-config common-lisp:nil :type
-    (common-lisp:or destination-config common-lisp:null))
-   (timeout-config common-lisp:nil :type
-    (common-lisp:or timeout-config common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or date-type common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or date-type common-lisp:null)))
+ (common-lisp:defclass tunnel common-lisp:nil
+                       ((tunnel-id :initarg :tunnel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tunnel-id common-lisp:null) :accessor
+                         struct-shape-tunnel-tunnel-id :shape "TunnelId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tunnel-arn :initarg :tunnel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tunnel-arn common-lisp:null) :accessor
+                         struct-shape-tunnel-tunnel-arn :shape "TunnelArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or tunnel-status common-lisp:null)
+                         :accessor struct-shape-tunnel-status :shape
+                         "TunnelStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source-connection-state :initarg
+                         :source-connection-state :initform common-lisp:nil
+                         :type
+                         (common-lisp:or connection-state common-lisp:null)
+                         :accessor struct-shape-tunnel-source-connection-state
+                         :shape "ConnectionState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-connection-state :initarg
+                         :destination-connection-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or connection-state common-lisp:null)
+                         :accessor
+                         struct-shape-tunnel-destination-connection-state
+                         :shape "ConnectionState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-tunnel-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination-config :initarg :destination-config
+                         :initform common-lisp:nil :type
+                         (common-lisp:or destination-config common-lisp:null)
+                         :accessor struct-shape-tunnel-destination-config
+                         :shape "DestinationConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timeout-config :initarg :timeout-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timeout-config common-lisp:null)
+                         :accessor struct-shape-tunnel-timeout-config :shape
+                         "TimeoutConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-tunnel-tags :shape "TagList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-type common-lisp:null) :accessor
+                         struct-shape-tunnel-created-at :shape "DateType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-type common-lisp:null) :accessor
+                         struct-shape-tunnel-last-updated-at :shape "DateType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tunnel
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tunnel
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tunnel 'make-tunnel))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tunnel))
@@ -830,21 +1086,47 @@
 (common-lisp:deftype tunnel-id () 'common-lisp:string)
 (common-lisp:deftype tunnel-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tunnel-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tunnel-summary-"))
-   (tunnel-id common-lisp:nil :type
-    (common-lisp:or tunnel-id common-lisp:null))
-   (tunnel-arn common-lisp:nil :type
-    (common-lisp:or tunnel-arn common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or tunnel-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or date-type common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or date-type common-lisp:null)))
+ (common-lisp:defclass tunnel-summary common-lisp:nil
+                       ((tunnel-id :initarg :tunnel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tunnel-id common-lisp:null) :accessor
+                         struct-shape-tunnel-summary-tunnel-id :shape
+                         "TunnelId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tunnel-arn :initarg :tunnel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tunnel-arn common-lisp:null) :accessor
+                         struct-shape-tunnel-summary-tunnel-arn :shape
+                         "TunnelArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or tunnel-status common-lisp:null)
+                         :accessor struct-shape-tunnel-summary-status :shape
+                         "TunnelStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-tunnel-summary-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-type common-lisp:null) :accessor
+                         struct-shape-tunnel-summary-created-at :shape
+                         "DateType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-type common-lisp:null) :accessor
+                         struct-shape-tunnel-summary-last-updated-at :shape
+                         "DateType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tunnel-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tunnel-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tunnel-summary 'make-tunnel-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tunnel-summary))
@@ -906,13 +1188,25 @@
                            (trivial-types:proper-list tunnel-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -945,9 +1239,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

@@ -42,18 +42,45 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (bill-of-materials-import-job (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bill-of-materials-import-job-"))
-   (instance-id (common-lisp:error ":instanceid is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or configuration-job-status common-lisp:null))
-   (s3uri (common-lisp:error ":s3uri is required") :type
-    (common-lisp:or configuration-s3uri common-lisp:null))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass bill-of-materials-import-job common-lisp:nil
+                       ((instance-id :initarg :instance-id :initform
+                         (common-lisp:error ":instanceid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-bill-of-materials-import-job-instance-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-bill-of-materials-import-job-job-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or configuration-job-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-bill-of-materials-import-job-status
+                         :shape "ConfigurationJobStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (s3uri :initarg :s3uri :initform
+                         (common-lisp:error ":s3uri is required") :type
+                         (common-lisp:or configuration-s3uri common-lisp:null)
+                         :accessor
+                         struct-shape-bill-of-materials-import-job-s3uri :shape
+                         "ConfigurationS3Uri" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (message :initarg :message :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-bill-of-materials-import-job-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-bill-of-materials-import-job
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'bill-of-materials-import-job
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'bill-of-materials-import-job
                     'make-bill-of-materials-import-job))
@@ -118,15 +145,34 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-bill-of-materials-import-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-bill-of-materials-import-job-request-"))
-   (instance-id (common-lisp:error ":instanceid is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (s3uri (common-lisp:error ":s3uri is required") :type
-    (common-lisp:or configuration-s3uri common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null)))
+ (common-lisp:defclass create-bill-of-materials-import-job-request
+                       common-lisp:nil
+                       ((instance-id :initarg :instance-id :initform
+                         (common-lisp:error ":instanceid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-create-bill-of-materials-import-job-request-instance-id
+                         :shape "UUID" :location "uri" :location-name
+                         "instanceId")
+                        (s3uri :initarg :s3uri :initform
+                         (common-lisp:error ":s3uri is required") :type
+                         (common-lisp:or configuration-s3uri common-lisp:null)
+                         :accessor
+                         struct-shape-create-bill-of-materials-import-job-request-s3uri
+                         :shape "ConfigurationS3Uri" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-bill-of-materials-import-job-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-bill-of-materials-import-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-bill-of-materials-import-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-bill-of-materials-import-job-request
                     'make-create-bill-of-materials-import-job-request))
@@ -160,12 +206,20 @@
                           create-bill-of-materials-import-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-bill-of-materials-import-job-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-create-bill-of-materials-import-job-response-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass create-bill-of-materials-import-job-response
+                       common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-create-bill-of-materials-import-job-response-job-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-bill-of-materials-import-job-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-bill-of-materials-import-job-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-bill-of-materials-import-job-response
                     'make-create-bill-of-materials-import-job-response))
@@ -192,13 +246,24 @@
                           create-bill-of-materials-import-job-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-bill-of-materials-import-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-bill-of-materials-import-job-request-"))
-   (instance-id (common-lisp:error ":instanceid is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass get-bill-of-materials-import-job-request common-lisp:nil
+                       ((instance-id :initarg :instance-id :initform
+                         (common-lisp:error ":instanceid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-bill-of-materials-import-job-request-instance-id
+                         :shape "UUID" :location "uri" :location-name
+                         "instanceId")
+                        (job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-bill-of-materials-import-job-request-job-id
+                         :shape "UUID" :location "uri" :location-name "jobId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-bill-of-materials-import-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-bill-of-materials-import-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-bill-of-materials-import-job-request
                     'make-get-bill-of-materials-import-job-request))
@@ -218,11 +283,22 @@
                           get-bill-of-materials-import-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-bill-of-materials-import-job-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-bill-of-materials-import-job-response-"))
-   (job (common-lisp:error ":job is required") :type
-    (common-lisp:or bill-of-materials-import-job common-lisp:null)))
+ (common-lisp:defclass get-bill-of-materials-import-job-response
+                       common-lisp:nil
+                       ((job :initarg :job :initform
+                         (common-lisp:error ":job is required") :type
+                         (common-lisp:or bill-of-materials-import-job
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-bill-of-materials-import-job-response-job
+                         :shape "BillOfMaterialsImportJob" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-bill-of-materials-import-job-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-bill-of-materials-import-job-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-bill-of-materials-import-job-response
                     'make-get-bill-of-materials-import-job-response))

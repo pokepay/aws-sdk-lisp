@@ -62,25 +62,70 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-id-mapping-workflow-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-id-mapping-workflow-input-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (id-mapping-techniques
-    (common-lisp:error ":idmappingtechniques is required") :type
-    (common-lisp:or id-mapping-techniques common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-output-source-config common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass create-id-mapping-workflow-input common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-input-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id-mapping-techniques :initarg :id-mapping-techniques
+                         :initform
+                         (common-lisp:error ":idmappingtechniques is required")
+                         :type
+                         (common-lisp:or id-mapping-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-input-id-mapping-techniques
+                         :shape "IdMappingTechniques" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-input-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-input-input-source-config
+                         :shape "IdMappingWorkflowInputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-output-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-input-output-source-config
+                         :shape "IdMappingWorkflowOutputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-create-id-mapping-workflow-input-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-id-mapping-workflow-input-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-input-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-id-mapping-workflow-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-id-mapping-workflow-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-id-mapping-workflow-input
                     'make-create-id-mapping-workflow-input))
@@ -151,26 +196,73 @@
                           create-id-mapping-workflow-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-id-mapping-workflow-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-id-mapping-workflow-output-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (id-mapping-techniques
-    (common-lisp:error ":idmappingtechniques is required") :type
-    (common-lisp:or id-mapping-techniques common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-output-source-config common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (workflow-arn (common-lisp:error ":workflowarn is required") :type
-    (common-lisp:or id-mapping-workflow-arn common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass create-id-mapping-workflow-output common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id-mapping-techniques :initarg :id-mapping-techniques
+                         :initform
+                         (common-lisp:error ":idmappingtechniques is required")
+                         :type
+                         (common-lisp:or id-mapping-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-output-id-mapping-techniques
+                         :shape "IdMappingTechniques" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-input-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-output-input-source-config
+                         :shape "IdMappingWorkflowInputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-output-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-output-output-source-config
+                         :shape "IdMappingWorkflowOutputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-create-id-mapping-workflow-output-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-arn :initarg :workflow-arn :initform
+                         (common-lisp:error ":workflowarn is required") :type
+                         (common-lisp:or id-mapping-workflow-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-output-workflow-arn
+                         :shape "IdMappingWorkflowArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-id-mapping-workflow-output-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-id-mapping-workflow-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-id-mapping-workflow-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-id-mapping-workflow-output
                     'make-create-id-mapping-workflow-output))
@@ -241,25 +333,76 @@
                           create-id-mapping-workflow-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-matching-workflow-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-matching-workflow-input-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (incremental-run-config common-lisp:nil :type
-    (common-lisp:or incremental-run-config common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type (common-lisp:or input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type (common-lisp:or output-source-config common-lisp:null))
-   (resolution-techniques
-    (common-lisp:error ":resolutiontechniques is required") :type
-    (common-lisp:or resolution-techniques common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass create-matching-workflow-input common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-input-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (incremental-run-config :initarg
+                         :incremental-run-config :initform common-lisp:nil
+                         :type
+                         (common-lisp:or incremental-run-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-input-incremental-run-config
+                         :shape "IncrementalRunConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or input-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-input-input-source-config
+                         :shape "InputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or output-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-input-output-source-config
+                         :shape "OutputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolution-techniques :initarg :resolution-techniques
+                         :initform
+                         (common-lisp:error
+                          ":resolutiontechniques is required")
+                         :type
+                         (common-lisp:or resolution-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-input-resolution-techniques
+                         :shape "ResolutionTechniques" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-matching-workflow-input-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-matching-workflow-input-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-input-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-matching-workflow-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-matching-workflow-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-matching-workflow-input
                     'make-create-matching-workflow-input))
@@ -338,26 +481,79 @@
                           create-matching-workflow-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-matching-workflow-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-matching-workflow-output-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (incremental-run-config common-lisp:nil :type
-    (common-lisp:or incremental-run-config common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type (common-lisp:or input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type (common-lisp:or output-source-config common-lisp:null))
-   (resolution-techniques
-    (common-lisp:error ":resolutiontechniques is required") :type
-    (common-lisp:or resolution-techniques common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (workflow-arn (common-lisp:error ":workflowarn is required") :type
-    (common-lisp:or matching-workflow-arn common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass create-matching-workflow-output common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (incremental-run-config :initarg
+                         :incremental-run-config :initform common-lisp:nil
+                         :type
+                         (common-lisp:or incremental-run-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-output-incremental-run-config
+                         :shape "IncrementalRunConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or input-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-output-input-source-config
+                         :shape "InputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or output-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-output-output-source-config
+                         :shape "OutputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolution-techniques :initarg :resolution-techniques
+                         :initform
+                         (common-lisp:error
+                          ":resolutiontechniques is required")
+                         :type
+                         (common-lisp:or resolution-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-output-resolution-techniques
+                         :shape "ResolutionTechniques" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-matching-workflow-output-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-arn :initarg :workflow-arn :initform
+                         (common-lisp:error ":workflowarn is required") :type
+                         (common-lisp:or matching-workflow-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-output-workflow-arn
+                         :shape "MatchingWorkflowArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-matching-workflow-output-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-matching-workflow-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-matching-workflow-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-matching-workflow-output
                     'make-create-matching-workflow-output))
@@ -436,16 +632,41 @@
                           create-matching-workflow-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-schema-mapping-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-schema-mapping-input-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (mapped-input-fields (common-lisp:error ":mappedinputfields is required")
-    :type (common-lisp:or schema-input-attributes common-lisp:null))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-schema-mapping-input common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-schema-mapping-input-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mapped-input-fields :initarg :mapped-input-fields
+                         :initform
+                         (common-lisp:error ":mappedinputfields is required")
+                         :type
+                         (common-lisp:or schema-input-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-schema-mapping-input-mapped-input-fields
+                         :shape "SchemaInputAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-schema-mapping-input-schema-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-schema-mapping-input-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-schema-mapping-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-schema-mapping-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-schema-mapping-input
                     'make-create-schema-mapping-input))
@@ -493,17 +714,43 @@
                           create-schema-mapping-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-schema-mapping-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-schema-mapping-output-"))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or description common-lisp:null))
-   (mapped-input-fields (common-lisp:error ":mappedinputfields is required")
-    :type (common-lisp:or schema-input-attributes common-lisp:null))
-   (schema-arn (common-lisp:error ":schemaarn is required") :type
-    (common-lisp:or schema-mapping-arn common-lisp:null))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass create-schema-mapping-output common-lisp:nil
+                       ((description :initarg :description :initform
+                         (common-lisp:error ":description is required") :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-schema-mapping-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mapped-input-fields :initarg :mapped-input-fields
+                         :initform
+                         (common-lisp:error ":mappedinputfields is required")
+                         :type
+                         (common-lisp:or schema-input-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-schema-mapping-output-mapped-input-fields
+                         :shape "SchemaInputAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (schema-arn :initarg :schema-arn :initform
+                         (common-lisp:error ":schemaarn is required") :type
+                         (common-lisp:or schema-mapping-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-schema-mapping-output-schema-arn
+                         :shape "SchemaMappingArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-schema-mapping-output-schema-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-schema-mapping-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-schema-mapping-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-schema-mapping-output
                     'make-create-schema-mapping-output))
@@ -551,11 +798,20 @@
                           create-schema-mapping-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-id-mapping-workflow-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-id-mapping-workflow-input-"))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass delete-id-mapping-workflow-input common-lisp:nil
+                       ((workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-id-mapping-workflow-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-id-mapping-workflow-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-id-mapping-workflow-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-id-mapping-workflow-input
                     'make-delete-id-mapping-workflow-input))
@@ -575,11 +831,19 @@
                           delete-id-mapping-workflow-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-id-mapping-workflow-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-id-mapping-workflow-output-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass delete-id-mapping-workflow-output common-lisp:nil
+                       ((message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-delete-id-mapping-workflow-output-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-id-mapping-workflow-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-id-mapping-workflow-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-id-mapping-workflow-output
                     'make-delete-id-mapping-workflow-output))
@@ -606,11 +870,20 @@
                           delete-id-mapping-workflow-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-matching-workflow-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-matching-workflow-input-"))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass delete-matching-workflow-input common-lisp:nil
+                       ((workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-matching-workflow-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-matching-workflow-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-matching-workflow-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-matching-workflow-input
                     'make-delete-matching-workflow-input))
@@ -630,11 +903,19 @@
                           delete-matching-workflow-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-matching-workflow-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-matching-workflow-output-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass delete-matching-workflow-output common-lisp:nil
+                       ((message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-delete-matching-workflow-output-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-matching-workflow-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-matching-workflow-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-matching-workflow-output
                     'make-delete-matching-workflow-output))
@@ -661,11 +942,19 @@
                           delete-matching-workflow-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-schema-mapping-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-schema-mapping-input-"))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass delete-schema-mapping-input common-lisp:nil
+                       ((schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-schema-mapping-input-schema-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "schemaName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-schema-mapping-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-schema-mapping-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-schema-mapping-input
                     'make-delete-schema-mapping-input))
@@ -685,11 +974,18 @@
                           delete-schema-mapping-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-schema-mapping-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-schema-mapping-output-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass delete-schema-mapping-output common-lisp:nil
+                       ((message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-delete-schema-mapping-output-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-schema-mapping-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-schema-mapping-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-schema-mapping-output
                     'make-delete-schema-mapping-output))
@@ -718,11 +1014,18 @@
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:deftype entity-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (error-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-error-details-"))
-   (error-message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:defclass error-details common-lisp:nil
+                       ((error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-message common-lisp:null)
+                         :accessor struct-shape-error-details-error-message
+                         :shape "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-error-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'error-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'error-details 'make-error-details))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input error-details))
@@ -755,13 +1058,24 @@
                     'exceeds-limit-exception-quota-name
                     'exceeds-limit-exception-quota-value)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-id-mapping-job-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-id-mapping-job-input-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass get-id-mapping-job-input common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-get-id-mapping-job-input-job-id :shape
+                         "JobId" :location "uri" :location-name "jobId")
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-job-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-id-mapping-job-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-id-mapping-job-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-id-mapping-job-input 'make-get-id-mapping-job-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -780,20 +1094,51 @@
                           get-id-mapping-job-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-id-mapping-job-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-id-mapping-job-output-"))
-   (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
-   (error-details common-lisp:nil :type
-    (common-lisp:or error-details common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (metrics common-lisp:nil :type
-    (common-lisp:or id-mapping-job-metrics common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or job-status common-lisp:null)))
+ (common-lisp:defclass get-id-mapping-job-output common-lisp:nil
+                       ((end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-job-output-end-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (error-details :initarg :error-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-details common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-job-output-error-details
+                         :shape "ErrorDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-get-id-mapping-job-output-job-id :shape
+                         "JobId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metrics :initarg :metrics :initform common-lisp:nil
+                         :type
+                         (common-lisp:or id-mapping-job-metrics
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-job-output-metrics :shape
+                         "IdMappingJobMetrics" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":starttime is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-id-mapping-job-output-start-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or job-status common-lisp:null) :accessor
+                         struct-shape-get-id-mapping-job-output-status :shape
+                         "JobStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-id-mapping-job-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-id-mapping-job-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-id-mapping-job-output
                     'make-get-id-mapping-job-output))
@@ -855,11 +1200,20 @@
                           get-id-mapping-job-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-id-mapping-workflow-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-id-mapping-workflow-input-"))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass get-id-mapping-workflow-input common-lisp:nil
+                       ((workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-workflow-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-id-mapping-workflow-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-id-mapping-workflow-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-id-mapping-workflow-input
                     'make-get-id-mapping-workflow-input))
@@ -879,31 +1233,90 @@
                           get-id-mapping-workflow-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-id-mapping-workflow-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-id-mapping-workflow-output-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (id-mapping-techniques
-    (common-lisp:error ":idmappingtechniques is required") :type
-    (common-lisp:or id-mapping-techniques common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-output-source-config common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (workflow-arn (common-lisp:error ":workflowarn is required") :type
-    (common-lisp:or id-mapping-workflow-arn common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass get-id-mapping-workflow-output common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-id-mapping-workflow-output-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-workflow-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id-mapping-techniques :initarg :id-mapping-techniques
+                         :initform
+                         (common-lisp:error ":idmappingtechniques is required")
+                         :type
+                         (common-lisp:or id-mapping-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-workflow-output-id-mapping-techniques
+                         :shape "IdMappingTechniques" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-input-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-workflow-output-input-source-config
+                         :shape "IdMappingWorkflowInputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-output-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-workflow-output-output-source-config
+                         :shape "IdMappingWorkflowOutputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-get-id-mapping-workflow-output-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-id-mapping-workflow-output-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-id-mapping-workflow-output-updated-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-arn :initarg :workflow-arn :initform
+                         (common-lisp:error ":workflowarn is required") :type
+                         (common-lisp:or id-mapping-workflow-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-workflow-output-workflow-arn
+                         :shape "IdMappingWorkflowArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-id-mapping-workflow-output-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-id-mapping-workflow-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-id-mapping-workflow-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-id-mapping-workflow-output
                     'make-get-id-mapping-workflow-output))
@@ -995,13 +1408,25 @@
                           get-id-mapping-workflow-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-match-id-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-match-id-input-"))
-   (record (common-lisp:error ":record is required") :type
-    (common-lisp:or record-attribute-map common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass get-match-id-input common-lisp:nil
+                       ((record :initarg :record :initform
+                         (common-lisp:error ":record is required") :type
+                         (common-lisp:or record-attribute-map common-lisp:null)
+                         :accessor struct-shape-get-match-id-input-record
+                         :shape "RecordAttributeMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-match-id-input-workflow-name :shape
+                         "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-match-id-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-match-id-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-match-id-input 'make-get-match-id-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1021,10 +1446,17 @@
                         ((aws-sdk/generator/shape::input get-match-id-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-match-id-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-match-id-output-"))
-   (match-id common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-match-id-output common-lisp:nil
+                       ((match-id :initarg :match-id :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-get-match-id-output-match-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-match-id-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-match-id-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-match-id-output 'make-get-match-id-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1044,13 +1476,24 @@
                         ((aws-sdk/generator/shape::input get-match-id-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-matching-job-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-matching-job-input-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass get-matching-job-input common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-get-matching-job-input-job-id :shape
+                         "JobId" :location "uri" :location-name "jobId")
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-job-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-matching-job-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-matching-job-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-matching-job-input 'make-get-matching-job-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1069,20 +1512,48 @@
                           get-matching-job-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-matching-job-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-matching-job-output-"))
-   (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
-   (error-details common-lisp:nil :type
-    (common-lisp:or error-details common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (metrics common-lisp:nil :type
-    (common-lisp:or job-metrics common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or job-status common-lisp:null)))
+ (common-lisp:defclass get-matching-job-output common-lisp:nil
+                       ((end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-job-output-end-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (error-details :initarg :error-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-details common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-job-output-error-details
+                         :shape "ErrorDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-get-matching-job-output-job-id :shape
+                         "JobId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metrics :initarg :metrics :initform common-lisp:nil
+                         :type (common-lisp:or job-metrics common-lisp:null)
+                         :accessor struct-shape-get-matching-job-output-metrics
+                         :shape "JobMetrics" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":starttime is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-matching-job-output-start-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or job-status common-lisp:null) :accessor
+                         struct-shape-get-matching-job-output-status :shape
+                         "JobStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-matching-job-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-matching-job-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-matching-job-output 'make-get-matching-job-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1143,11 +1614,19 @@
                           get-matching-job-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-matching-workflow-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-matching-workflow-input-"))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass get-matching-workflow-input common-lisp:nil
+                       ((workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-workflow-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-matching-workflow-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-matching-workflow-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-matching-workflow-input
                     'make-get-matching-workflow-input))
@@ -1167,31 +1646,95 @@
                           get-matching-workflow-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-matching-workflow-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-matching-workflow-output-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (incremental-run-config common-lisp:nil :type
-    (common-lisp:or incremental-run-config common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type (common-lisp:or input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type (common-lisp:or output-source-config common-lisp:null))
-   (resolution-techniques
-    (common-lisp:error ":resolutiontechniques is required") :type
-    (common-lisp:or resolution-techniques common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (workflow-arn (common-lisp:error ":workflowarn is required") :type
-    (common-lisp:or matching-workflow-arn common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass get-matching-workflow-output common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-matching-workflow-output-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-workflow-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (incremental-run-config :initarg
+                         :incremental-run-config :initform common-lisp:nil
+                         :type
+                         (common-lisp:or incremental-run-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-workflow-output-incremental-run-config
+                         :shape "IncrementalRunConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or input-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-workflow-output-input-source-config
+                         :shape "InputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or output-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-workflow-output-output-source-config
+                         :shape "OutputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolution-techniques :initarg :resolution-techniques
+                         :initform
+                         (common-lisp:error
+                          ":resolutiontechniques is required")
+                         :type
+                         (common-lisp:or resolution-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-workflow-output-resolution-techniques
+                         :shape "ResolutionTechniques" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-matching-workflow-output-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-matching-workflow-output-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-matching-workflow-output-updated-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-arn :initarg :workflow-arn :initform
+                         (common-lisp:error ":workflowarn is required") :type
+                         (common-lisp:or matching-workflow-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-workflow-output-workflow-arn
+                         :shape "MatchingWorkflowArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-matching-workflow-output-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-matching-workflow-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-matching-workflow-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-matching-workflow-output
                     'make-get-matching-workflow-output))
@@ -1291,14 +1834,28 @@
                           get-matching-workflow-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-provider-service-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-provider-service-input-"))
-   (provider-name (common-lisp:error ":providername is required") :type
-    (common-lisp:or entity-name common-lisp:null))
-   (provider-service-name
-    (common-lisp:error ":providerservicename is required") :type
-    (common-lisp:or provider-service-arn common-lisp:null)))
+ (common-lisp:defclass get-provider-service-input common-lisp:nil
+                       ((provider-name :initarg :provider-name :initform
+                         (common-lisp:error ":providername is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-provider-service-input-provider-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "providerName")
+                        (provider-service-name :initarg :provider-service-name
+                         :initform
+                         (common-lisp:error ":providerservicename is required")
+                         :type
+                         (common-lisp:or provider-service-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-provider-service-input-provider-service-name
+                         :shape "ProviderServiceArn" :location "uri"
+                         :location-name "providerServiceName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-provider-service-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-provider-service-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-provider-service-input
                     'make-get-provider-service-input))
@@ -1318,11 +1875,19 @@
                           get-provider-service-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-schema-mapping-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-schema-mapping-input-"))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass get-schema-mapping-input common-lisp:nil
+                       ((schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-schema-mapping-input-schema-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "schemaName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-schema-mapping-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-schema-mapping-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-schema-mapping-input 'make-get-schema-mapping-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1341,24 +1906,66 @@
                           get-schema-mapping-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-schema-mapping-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-schema-mapping-output-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (has-workflows (common-lisp:error ":hasworkflows is required") :type
-    (common-lisp:or boolean common-lisp:null))
-   (mapped-input-fields (common-lisp:error ":mappedinputfields is required")
-    :type (common-lisp:or schema-input-attributes common-lisp:null))
-   (schema-arn (common-lisp:error ":schemaarn is required") :type
-    (common-lisp:or schema-mapping-arn common-lisp:null))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass get-schema-mapping-output common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-schema-mapping-output-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-get-schema-mapping-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (has-workflows :initarg :has-workflows :initform
+                         (common-lisp:error ":hasworkflows is required") :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-get-schema-mapping-output-has-workflows
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mapped-input-fields :initarg :mapped-input-fields
+                         :initform
+                         (common-lisp:error ":mappedinputfields is required")
+                         :type
+                         (common-lisp:or schema-input-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-schema-mapping-output-mapped-input-fields
+                         :shape "SchemaInputAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (schema-arn :initarg :schema-arn :initform
+                         (common-lisp:error ":schemaarn is required") :type
+                         (common-lisp:or schema-mapping-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-schema-mapping-output-schema-arn
+                         :shape "SchemaMappingArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-schema-mapping-output-schema-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-schema-mapping-output-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-schema-mapping-output-updated-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-schema-mapping-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-schema-mapping-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-schema-mapping-output
                     'make-get-schema-mapping-output))
@@ -1434,15 +2041,31 @@
                           get-schema-mapping-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (id-mapping-job-metrics (:copier common-lisp:nil)
-      (:conc-name "struct-shape-id-mapping-job-metrics-"))
-   (input-records common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (records-not-processed common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (total-records-processed common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass id-mapping-job-metrics common-lisp:nil
+                       ((input-records :initarg :input-records :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-id-mapping-job-metrics-input-records
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (records-not-processed :initarg :records-not-processed
+                         :initform common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-id-mapping-job-metrics-records-not-processed
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (total-records-processed :initarg
+                         :total-records-processed :initform common-lisp:nil
+                         :type (common-lisp:or integer common-lisp:null)
+                         :accessor
+                         struct-shape-id-mapping-job-metrics-total-records-processed
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-id-mapping-job-metrics
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'id-mapping-job-metrics
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'id-mapping-job-metrics 'make-id-mapping-job-metrics))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1484,13 +2107,28 @@
                           id-mapping-job-metrics))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (id-mapping-techniques (:copier common-lisp:nil)
-      (:conc-name "struct-shape-id-mapping-techniques-"))
-   (id-mapping-type (common-lisp:error ":idmappingtype is required") :type
-    (common-lisp:or id-mapping-type common-lisp:null))
-   (provider-properties (common-lisp:error ":providerproperties is required")
-    :type (common-lisp:or provider-properties common-lisp:null)))
+ (common-lisp:defclass id-mapping-techniques common-lisp:nil
+                       ((id-mapping-type :initarg :id-mapping-type :initform
+                         (common-lisp:error ":idmappingtype is required") :type
+                         (common-lisp:or id-mapping-type common-lisp:null)
+                         :accessor
+                         struct-shape-id-mapping-techniques-id-mapping-type
+                         :shape "IdMappingType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (provider-properties :initarg :provider-properties
+                         :initform
+                         (common-lisp:error ":providerproperties is required")
+                         :type
+                         (common-lisp:or provider-properties common-lisp:null)
+                         :accessor
+                         struct-shape-id-mapping-techniques-provider-properties
+                         :shape "ProviderProperties" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-id-mapping-techniques
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'id-mapping-techniques
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'id-mapping-techniques 'make-id-mapping-techniques))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1525,14 +2163,32 @@
 (common-lisp:deftype id-mapping-type () 'common-lisp:string)
 (common-lisp:deftype id-mapping-workflow-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (id-mapping-workflow-input-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-id-mapping-workflow-input-source-"))
-   (input-source-arn (common-lisp:error ":inputsourcearn is required") :type
-    (common-lisp:or id-mapping-workflow-input-source-input-source-arnstring
-                    common-lisp:null))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass id-mapping-workflow-input-source common-lisp:nil
+                       ((input-source-arn :initarg :input-source-arn :initform
+                         (common-lisp:error ":inputsourcearn is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-input-source-input-source-arnstring
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-id-mapping-workflow-input-source-input-source-arn
+                         :shape
+                         "IdMappingWorkflowInputSourceInputSourceARNString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-id-mapping-workflow-input-source-schema-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-id-mapping-workflow-input-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'id-mapping-workflow-input-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'id-mapping-workflow-input-source
                     'make-id-mapping-workflow-input-source))
@@ -1586,12 +2242,25 @@
                             id-mapping-workflow-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (id-mapping-workflow-output-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-id-mapping-workflow-output-source-"))
-   (kmsarn common-lisp:nil :type (common-lisp:or kmsarn common-lisp:null))
-   (output-s3path (common-lisp:error ":outputs3path is required") :type
-    (common-lisp:or s3path common-lisp:null)))
+ (common-lisp:defclass id-mapping-workflow-output-source common-lisp:nil
+                       ((kmsarn :initarg :kmsarn :initform common-lisp:nil
+                         :type (common-lisp:or kmsarn common-lisp:null)
+                         :accessor
+                         struct-shape-id-mapping-workflow-output-source-kmsarn
+                         :shape "KMSArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-s3path :initarg :output-s3path :initform
+                         (common-lisp:error ":outputs3path is required") :type
+                         (common-lisp:or s3path common-lisp:null) :accessor
+                         struct-shape-id-mapping-workflow-output-source-output-s3path
+                         :shape "S3Path" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-id-mapping-workflow-output-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'id-mapping-workflow-output-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'id-mapping-workflow-output-source
                     'make-id-mapping-workflow-output-source))
@@ -1634,17 +2303,39 @@
                             id-mapping-workflow-output-source))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (id-mapping-workflow-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-id-mapping-workflow-summary-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (workflow-arn (common-lisp:error ":workflowarn is required") :type
-    (common-lisp:or id-mapping-workflow-arn common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass id-mapping-workflow-summary common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-id-mapping-workflow-summary-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-id-mapping-workflow-summary-updated-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-arn :initarg :workflow-arn :initform
+                         (common-lisp:error ":workflowarn is required") :type
+                         (common-lisp:or id-mapping-workflow-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-id-mapping-workflow-summary-workflow-arn
+                         :shape "IdMappingWorkflowArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-id-mapping-workflow-summary-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-id-mapping-workflow-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'id-mapping-workflow-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'id-mapping-workflow-summary
                     'make-id-mapping-workflow-summary))
@@ -1692,11 +2383,19 @@
                           id-mapping-workflow-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (incremental-run-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-incremental-run-config-"))
-   (incremental-run-type common-lisp:nil :type
-    (common-lisp:or incremental-run-type common-lisp:null)))
+ (common-lisp:defclass incremental-run-config common-lisp:nil
+                       ((incremental-run-type :initarg :incremental-run-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or incremental-run-type common-lisp:null)
+                         :accessor
+                         struct-shape-incremental-run-config-incremental-run-type
+                         :shape "IncrementalRunType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-incremental-run-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'incremental-run-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'incremental-run-config 'make-incremental-run-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1724,15 +2423,32 @@
    common-lisp:nil))
 (common-lisp:deftype incremental-run-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (input-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-input-source-"))
-   (apply-normalization common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (input-source-arn (common-lisp:error ":inputsourcearn is required") :type
-    (common-lisp:or input-source-input-source-arnstring common-lisp:null))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass input-source common-lisp:nil
+                       ((apply-normalization :initarg :apply-normalization
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-input-source-apply-normalization :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (input-source-arn :initarg :input-source-arn :initform
+                         (common-lisp:error ":inputsourcearn is required")
+                         :type
+                         (common-lisp:or input-source-input-source-arnstring
+                                         common-lisp:null)
+                         :accessor struct-shape-input-source-input-source-arn
+                         :shape "InputSourceInputSourceARNString" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor struct-shape-input-source-schema-name :shape
+                         "EntityName" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-input-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'input-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'input-source 'make-input-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input input-source))
@@ -1775,11 +2491,21 @@
 (common-lisp:deftype input-source-input-source-arnstring () 'common-lisp:string)
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (intermediate-source-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-intermediate-source-configuration-"))
-   (intermediate-s3path (common-lisp:error ":intermediates3path is required")
-    :type (common-lisp:or s3path common-lisp:null)))
+ (common-lisp:defclass intermediate-source-configuration common-lisp:nil
+                       ((intermediate-s3path :initarg :intermediate-s3path
+                         :initform
+                         (common-lisp:error ":intermediates3path is required")
+                         :type (common-lisp:or s3path common-lisp:null)
+                         :accessor
+                         struct-shape-intermediate-source-configuration-intermediate-s3path
+                         :shape "S3Path" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-intermediate-source-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'intermediate-source-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'intermediate-source-configuration
                     'make-intermediate-source-configuration))
@@ -1822,16 +2548,37 @@
                            (trivial-types:proper-list job-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (job-metrics (:copier common-lisp:nil)
-      (:conc-name "struct-shape-job-metrics-"))
-   (input-records common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (match-ids common-lisp:nil :type (common-lisp:or integer common-lisp:null))
-   (records-not-processed common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (total-records-processed common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass job-metrics common-lisp:nil
+                       ((input-records :initarg :input-records :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-job-metrics-input-records :shape
+                         "Integer" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (match-ids :initarg :match-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-job-metrics-match-ids :shape "Integer"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (records-not-processed :initarg :records-not-processed
+                         :initform common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-job-metrics-records-not-processed :shape
+                         "Integer" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (total-records-processed :initarg
+                         :total-records-processed :initform common-lisp:nil
+                         :type (common-lisp:or integer common-lisp:null)
+                         :accessor
+                         struct-shape-job-metrics-total-records-processed
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-job-metrics
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'job-metrics
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'job-metrics 'make-job-metrics))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input job-metrics))
@@ -1874,16 +2621,35 @@
    common-lisp:nil))
 (common-lisp:deftype job-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (job-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-job-summary-"))
-   (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or job-status common-lisp:null)))
+ (common-lisp:defclass job-summary common-lisp:nil
+                       ((end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-job-summary-end-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-job-summary-job-id :shape "JobId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":starttime is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-job-summary-start-time :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or job-status common-lisp:null) :accessor
+                         struct-shape-job-summary-status :shape "JobStatus"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-job-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'job-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'job-summary 'make-job-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input job-summary))
@@ -1924,16 +2690,34 @@
    common-lisp:nil))
 (common-lisp:deftype kmsarn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-id-mapping-jobs-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-id-mapping-jobs-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-id-mapping-jobs-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass list-id-mapping-jobs-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-id-mapping-jobs-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-id-mapping-jobs-input-max-results
+                         :shape "ListIdMappingJobsInputMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-id-mapping-jobs-input-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken")
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-id-mapping-jobs-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-id-mapping-jobs-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-id-mapping-jobs-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-id-mapping-jobs-input
                     'make-list-id-mapping-jobs-input))
@@ -1955,12 +2739,23 @@
 (common-lisp:deftype list-id-mapping-jobs-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-id-mapping-jobs-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-id-mapping-jobs-output-"))
-   (jobs common-lisp:nil :type (common-lisp:or job-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-id-mapping-jobs-output common-lisp:nil
+                       ((jobs :initarg :jobs :initform common-lisp:nil :type
+                         (common-lisp:or job-list common-lisp:null) :accessor
+                         struct-shape-list-id-mapping-jobs-output-jobs :shape
+                         "JobList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-id-mapping-jobs-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-id-mapping-jobs-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-id-mapping-jobs-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-id-mapping-jobs-output
                     'make-list-id-mapping-jobs-output))
@@ -1994,14 +2789,28 @@
                           list-id-mapping-jobs-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-id-mapping-workflows-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-id-mapping-workflows-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-id-mapping-workflows-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-id-mapping-workflows-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-id-mapping-workflows-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-id-mapping-workflows-input-max-results
+                         :shape "ListIdMappingWorkflowsInputMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-id-mapping-workflows-input-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-id-mapping-workflows-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-id-mapping-workflows-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-id-mapping-workflows-input
                     'make-list-id-mapping-workflows-input))
@@ -2023,13 +2832,27 @@
 (common-lisp:deftype list-id-mapping-workflows-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-id-mapping-workflows-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-id-mapping-workflows-output-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (workflow-summaries common-lisp:nil :type
-    (common-lisp:or id-mapping-workflow-list common-lisp:null)))
+ (common-lisp:defclass list-id-mapping-workflows-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-id-mapping-workflows-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-summaries :initarg :workflow-summaries
+                         :initform common-lisp:nil :type
+                         (common-lisp:or id-mapping-workflow-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-id-mapping-workflows-output-workflow-summaries
+                         :shape "IdMappingWorkflowList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-id-mapping-workflows-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-id-mapping-workflows-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-id-mapping-workflows-output
                     'make-list-id-mapping-workflows-output))
@@ -2063,16 +2886,34 @@
                           list-id-mapping-workflows-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-matching-jobs-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-matching-jobs-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-matching-jobs-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass list-matching-jobs-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-matching-jobs-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-matching-jobs-input-max-results
+                         :shape "ListMatchingJobsInputMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-matching-jobs-input-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken")
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-matching-jobs-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-matching-jobs-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-matching-jobs-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-matching-jobs-input 'make-list-matching-jobs-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2093,12 +2934,23 @@
 (common-lisp:deftype list-matching-jobs-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-matching-jobs-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-matching-jobs-output-"))
-   (jobs common-lisp:nil :type (common-lisp:or job-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-matching-jobs-output common-lisp:nil
+                       ((jobs :initarg :jobs :initform common-lisp:nil :type
+                         (common-lisp:or job-list common-lisp:null) :accessor
+                         struct-shape-list-matching-jobs-output-jobs :shape
+                         "JobList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-matching-jobs-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-matching-jobs-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-matching-jobs-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-matching-jobs-output
                     'make-list-matching-jobs-output))
@@ -2132,14 +2984,28 @@
                           list-matching-jobs-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-matching-workflows-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-matching-workflows-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-matching-workflows-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-matching-workflows-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-matching-workflows-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-matching-workflows-input-max-results
+                         :shape "ListMatchingWorkflowsInputMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-matching-workflows-input-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-matching-workflows-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-matching-workflows-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-matching-workflows-input
                     'make-list-matching-workflows-input))
@@ -2161,13 +3027,27 @@
 (common-lisp:deftype list-matching-workflows-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-matching-workflows-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-matching-workflows-output-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (workflow-summaries common-lisp:nil :type
-    (common-lisp:or matching-workflow-list common-lisp:null)))
+ (common-lisp:defclass list-matching-workflows-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-matching-workflows-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-summaries :initarg :workflow-summaries
+                         :initform common-lisp:nil :type
+                         (common-lisp:or matching-workflow-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-matching-workflows-output-workflow-summaries
+                         :shape "MatchingWorkflowList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-matching-workflows-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-matching-workflows-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-matching-workflows-output
                     'make-list-matching-workflows-output))
@@ -2201,16 +3081,34 @@
                           list-matching-workflows-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-provider-services-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-provider-services-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-provider-services-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (provider-name common-lisp:nil :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass list-provider-services-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-provider-services-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-provider-services-input-max-results
+                         :shape "ListProviderServicesInputMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-provider-services-input-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken")
+                        (provider-name :initarg :provider-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-provider-services-input-provider-name
+                         :shape "EntityName" :location "querystring"
+                         :location-name "providerName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-provider-services-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-provider-services-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-provider-services-input
                     'make-list-provider-services-input))
@@ -2232,13 +3130,28 @@
 (common-lisp:deftype list-provider-services-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-provider-services-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-provider-services-output-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (provider-service-summaries common-lisp:nil :type
-    (common-lisp:or provider-service-list common-lisp:null)))
+ (common-lisp:defclass list-provider-services-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-provider-services-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (provider-service-summaries :initarg
+                         :provider-service-summaries :initform common-lisp:nil
+                         :type
+                         (common-lisp:or provider-service-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-provider-services-output-provider-service-summaries
+                         :shape "ProviderServiceList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-provider-services-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-provider-services-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-provider-services-output
                     'make-list-provider-services-output))
@@ -2273,14 +3186,27 @@
                           list-provider-services-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-schema-mappings-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-schema-mappings-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-schema-mappings-input-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-schema-mappings-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-schema-mappings-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-schema-mappings-input-max-results
+                         :shape "ListSchemaMappingsInputMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-schema-mappings-input-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-schema-mappings-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-schema-mappings-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-schema-mappings-input
                     'make-list-schema-mappings-input))
@@ -2302,13 +3228,25 @@
 (common-lisp:deftype list-schema-mappings-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-schema-mappings-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-schema-mappings-output-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (schema-list common-lisp:nil :type
-    (common-lisp:or schema-mapping-list common-lisp:null)))
+ (common-lisp:defclass list-schema-mappings-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-schema-mappings-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schema-list :initarg :schema-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or schema-mapping-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-schema-mappings-output-schema-list
+                         :shape "SchemaMappingList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-schema-mappings-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-schema-mappings-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-schema-mappings-output
                     'make-list-schema-mappings-output))
@@ -2342,11 +3280,19 @@
                           list-schema-mappings-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or venice-global-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or venice-global-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-input-resource-arn
+                         :shape "VeniceGlobalArn" :location "uri"
+                         :location-name "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-for-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-input
                     'make-list-tags-for-resource-input))
@@ -2366,11 +3312,19 @@
                           list-tags-for-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-output-"))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-output common-lisp:nil
+                       ((tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-output-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-output
                     'make-list-tags-for-resource-output))
@@ -2407,19 +3361,47 @@
                             matching-workflow-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (matching-workflow-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-matching-workflow-summary-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (resolution-type (common-lisp:error ":resolutiontype is required") :type
-    (common-lisp:or resolution-type common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (workflow-arn (common-lisp:error ":workflowarn is required") :type
-    (common-lisp:or matching-workflow-arn common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass matching-workflow-summary common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-matching-workflow-summary-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolution-type :initarg :resolution-type :initform
+                         (common-lisp:error ":resolutiontype is required")
+                         :type
+                         (common-lisp:or resolution-type common-lisp:null)
+                         :accessor
+                         struct-shape-matching-workflow-summary-resolution-type
+                         :shape "ResolutionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-matching-workflow-summary-updated-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-arn :initarg :workflow-arn :initform
+                         (common-lisp:error ":workflowarn is required") :type
+                         (common-lisp:or matching-workflow-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-matching-workflow-summary-workflow-arn
+                         :shape "MatchingWorkflowArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-matching-workflow-summary-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-matching-workflow-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'matching-workflow-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'matching-workflow-summary
                     'make-matching-workflow-summary))
@@ -2475,12 +3457,23 @@
    common-lisp:nil))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (output-attribute (:copier common-lisp:nil)
-      (:conc-name "struct-shape-output-attribute-"))
-   (hashed common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or attribute-name common-lisp:null)))
+ (common-lisp:defclass output-attribute common-lisp:nil
+                       ((hashed :initarg :hashed :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor struct-shape-output-attribute-hashed :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or attribute-name common-lisp:null)
+                         :accessor struct-shape-output-attribute-name :shape
+                         "AttributeName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-output-attribute
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'output-attribute
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'output-attribute 'make-output-attribute))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2507,16 +3500,36 @@
                         ((aws-sdk/generator/shape::input output-attribute))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (output-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-output-source-"))
-   (kmsarn common-lisp:nil :type (common-lisp:or kmsarn common-lisp:null))
-   (apply-normalization common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (output (common-lisp:error ":output is required") :type
-    (common-lisp:or output-source-output-list common-lisp:null))
-   (output-s3path (common-lisp:error ":outputs3path is required") :type
-    (common-lisp:or s3path common-lisp:null)))
+ (common-lisp:defclass output-source common-lisp:nil
+                       ((kmsarn :initarg :kmsarn :initform common-lisp:nil
+                         :type (common-lisp:or kmsarn common-lisp:null)
+                         :accessor struct-shape-output-source-kmsarn :shape
+                         "KMSArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (apply-normalization :initarg :apply-normalization
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-output-source-apply-normalization :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (output :initarg :output :initform
+                         (common-lisp:error ":output is required") :type
+                         (common-lisp:or output-source-output-list
+                                         common-lisp:null)
+                         :accessor struct-shape-output-source-output :shape
+                         "OutputSourceOutputList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-s3path :initarg :output-s3path :initform
+                         (common-lisp:error ":outputs3path is required") :type
+                         (common-lisp:or s3path common-lisp:null) :accessor
+                         struct-shape-output-source-output-s3path :shape
+                         "S3Path" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-output-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'output-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'output-source 'make-output-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input output-source))
@@ -2572,11 +3585,22 @@
                            (trivial-types:proper-list output-attribute))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provider-endpoint-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provider-endpoint-configuration-"))
-   (marketplace-configuration common-lisp:nil :type
-    (common-lisp:or provider-marketplace-configuration common-lisp:null)))
+ (common-lisp:defclass provider-endpoint-configuration common-lisp:nil
+                       ((marketplace-configuration :initarg
+                         :marketplace-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or provider-marketplace-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-provider-endpoint-configuration-marketplace-configuration
+                         :shape "ProviderMarketplaceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-provider-endpoint-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'provider-endpoint-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'provider-endpoint-configuration
                     'make-provider-endpoint-configuration))
@@ -2604,14 +3628,30 @@
                           provider-endpoint-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provider-intermediate-data-access-configuration (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-provider-intermediate-data-access-configuration-"))
-   (aws-account-ids common-lisp:nil :type
-    (common-lisp:or aws-account-id-list common-lisp:null))
-   (required-bucket-actions common-lisp:nil :type
-    (common-lisp:or required-bucket-actions-list common-lisp:null)))
+ (common-lisp:defclass provider-intermediate-data-access-configuration
+                       common-lisp:nil
+                       ((aws-account-ids :initarg :aws-account-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or aws-account-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-provider-intermediate-data-access-configuration-aws-account-ids
+                         :shape "AwsAccountIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (required-bucket-actions :initarg
+                         :required-bucket-actions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or required-bucket-actions-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-provider-intermediate-data-access-configuration-required-bucket-actions
+                         :shape "RequiredBucketActionsList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-provider-intermediate-data-access-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'provider-intermediate-data-access-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'provider-intermediate-data-access-configuration
                     'make-provider-intermediate-data-access-configuration))
@@ -2646,17 +3686,37 @@
                           provider-intermediate-data-access-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provider-marketplace-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provider-marketplace-configuration-"))
-   (asset-id (common-lisp:error ":assetid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (data-set-id (common-lisp:error ":datasetid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (listing-id (common-lisp:error ":listingid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (revision-id (common-lisp:error ":revisionid is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass provider-marketplace-configuration common-lisp:nil
+                       ((asset-id :initarg :asset-id :initform
+                         (common-lisp:error ":assetid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-provider-marketplace-configuration-asset-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (data-set-id :initarg :data-set-id :initform
+                         (common-lisp:error ":datasetid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-provider-marketplace-configuration-data-set-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (listing-id :initarg :listing-id :initform
+                         (common-lisp:error ":listingid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-provider-marketplace-configuration-listing-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (revision-id :initarg :revision-id :initform
+                         (common-lisp:error ":revisionid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-provider-marketplace-configuration-revision-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-provider-marketplace-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'provider-marketplace-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'provider-marketplace-configuration
                     'make-provider-marketplace-configuration))
@@ -2704,13 +3764,30 @@
                           provider-marketplace-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provider-properties (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provider-properties-"))
-   (intermediate-source-configuration common-lisp:nil :type
-    (common-lisp:or intermediate-source-configuration common-lisp:null))
-   (provider-service-arn (common-lisp:error ":providerservicearn is required")
-    :type (common-lisp:or provider-service-arn common-lisp:null)))
+ (common-lisp:defclass provider-properties common-lisp:nil
+                       ((intermediate-source-configuration :initarg
+                         :intermediate-source-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or intermediate-source-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-provider-properties-intermediate-source-configuration
+                         :shape "IntermediateSourceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (provider-service-arn :initarg :provider-service-arn
+                         :initform
+                         (common-lisp:error ":providerservicearn is required")
+                         :type
+                         (common-lisp:or provider-service-arn common-lisp:null)
+                         :accessor
+                         struct-shape-provider-properties-provider-service-arn
+                         :shape "ProviderServiceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-provider-properties
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'provider-properties
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'provider-properties 'make-provider-properties))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2750,22 +3827,55 @@
                             provider-service-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provider-service-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provider-service-summary-"))
-   (provider-name (common-lisp:error ":providername is required") :type
-    (common-lisp:or entity-name common-lisp:null))
-   (provider-service-arn (common-lisp:error ":providerservicearn is required")
-    :type (common-lisp:or provider-service-arn common-lisp:null))
-   (provider-service-display-name
-    (common-lisp:error ":providerservicedisplayname is required") :type
-    (common-lisp:or provider-service-display-name common-lisp:null))
-   (provider-service-name
-    (common-lisp:error ":providerservicename is required") :type
-    (common-lisp:or entity-name common-lisp:null))
-   (provider-service-type
-    (common-lisp:error ":providerservicetype is required") :type
-    (common-lisp:or service-type common-lisp:null)))
+ (common-lisp:defclass provider-service-summary common-lisp:nil
+                       ((provider-name :initarg :provider-name :initform
+                         (common-lisp:error ":providername is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-provider-service-summary-provider-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (provider-service-arn :initarg :provider-service-arn
+                         :initform
+                         (common-lisp:error ":providerservicearn is required")
+                         :type
+                         (common-lisp:or provider-service-arn common-lisp:null)
+                         :accessor
+                         struct-shape-provider-service-summary-provider-service-arn
+                         :shape "ProviderServiceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (provider-service-display-name :initarg
+                         :provider-service-display-name :initform
+                         (common-lisp:error
+                          ":providerservicedisplayname is required")
+                         :type
+                         (common-lisp:or provider-service-display-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-provider-service-summary-provider-service-display-name
+                         :shape "ProviderServiceDisplayName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (provider-service-name :initarg :provider-service-name
+                         :initform
+                         (common-lisp:error ":providerservicename is required")
+                         :type (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-provider-service-summary-provider-service-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (provider-service-type :initarg :provider-service-type
+                         :initform
+                         (common-lisp:error ":providerservicetype is required")
+                         :type (common-lisp:or service-type common-lisp:null)
+                         :accessor
+                         struct-shape-provider-service-summary-provider-service-type
+                         :shape "ServiceType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-provider-service-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'provider-service-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'provider-service-summary 'make-provider-service-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2841,15 +3951,35 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolution-techniques (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolution-techniques-"))
-   (provider-properties common-lisp:nil :type
-    (common-lisp:or provider-properties common-lisp:null))
-   (resolution-type (common-lisp:error ":resolutiontype is required") :type
-    (common-lisp:or resolution-type common-lisp:null))
-   (rule-based-properties common-lisp:nil :type
-    (common-lisp:or rule-based-properties common-lisp:null)))
+ (common-lisp:defclass resolution-techniques common-lisp:nil
+                       ((provider-properties :initarg :provider-properties
+                         :initform common-lisp:nil :type
+                         (common-lisp:or provider-properties common-lisp:null)
+                         :accessor
+                         struct-shape-resolution-techniques-provider-properties
+                         :shape "ProviderProperties" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolution-type :initarg :resolution-type :initform
+                         (common-lisp:error ":resolutiontype is required")
+                         :type
+                         (common-lisp:or resolution-type common-lisp:null)
+                         :accessor
+                         struct-shape-resolution-techniques-resolution-type
+                         :shape "ResolutionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rule-based-properties :initarg :rule-based-properties
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rule-based-properties
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolution-techniques-rule-based-properties
+                         :shape "RuleBasedProperties" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolution-techniques
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolution-techniques
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolution-techniques 'make-resolution-techniques))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2900,12 +4030,25 @@
                     'resource-not-found-exception-message)))
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (rule (:copier common-lisp:nil) (:conc-name "struct-shape-rule-"))
-   (matching-keys (common-lisp:error ":matchingkeys is required") :type
-    (common-lisp:or rule-matching-keys-list common-lisp:null))
-   (rule-name (common-lisp:error ":rulename is required") :type
-    (common-lisp:or rule-rule-name-string common-lisp:null)))
+ (common-lisp:defclass rule common-lisp:nil
+                       ((matching-keys :initarg :matching-keys :initform
+                         (common-lisp:error ":matchingkeys is required") :type
+                         (common-lisp:or rule-matching-keys-list
+                                         common-lisp:null)
+                         :accessor struct-shape-rule-matching-keys :shape
+                         "RuleMatchingKeysList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rule-name :initarg :rule-name :initform
+                         (common-lisp:error ":rulename is required") :type
+                         (common-lisp:or rule-rule-name-string
+                                         common-lisp:null)
+                         :accessor struct-shape-rule-rule-name :shape
+                         "RuleRuleNameString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rule (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'rule 'make-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input rule))
@@ -2931,14 +4074,30 @@
                         ((aws-sdk/generator/shape::input rule))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rule-based-properties (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rule-based-properties-"))
-   (attribute-matching-model
-    (common-lisp:error ":attributematchingmodel is required") :type
-    (common-lisp:or attribute-matching-model common-lisp:null))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or rule-based-properties-rules-list common-lisp:null)))
+ (common-lisp:defclass rule-based-properties common-lisp:nil
+                       ((attribute-matching-model :initarg
+                         :attribute-matching-model :initform
+                         (common-lisp:error
+                          ":attributematchingmodel is required")
+                         :type
+                         (common-lisp:or attribute-matching-model
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rule-based-properties-attribute-matching-model
+                         :shape "AttributeMatchingModel" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (rules :initarg :rules :initform
+                         (common-lisp:error ":rules is required") :type
+                         (common-lisp:or rule-based-properties-rules-list
+                                         common-lisp:null)
+                         :accessor struct-shape-rule-based-properties-rules
+                         :shape "RuleBasedPropertiesRulesList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rule-based-properties
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rule-based-properties
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rule-based-properties 'make-rule-based-properties))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2991,19 +4150,45 @@
 (common-lisp:deftype s3path () 'common-lisp:string)
 (common-lisp:deftype schema-attribute-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (schema-input-attribute (:copier common-lisp:nil)
-      (:conc-name "struct-shape-schema-input-attribute-"))
-   (field-name (common-lisp:error ":fieldname is required") :type
-    (common-lisp:or attribute-name common-lisp:null))
-   (group-name common-lisp:nil :type
-    (common-lisp:or attribute-name common-lisp:null))
-   (match-key common-lisp:nil :type
-    (common-lisp:or attribute-name common-lisp:null))
-   (sub-type common-lisp:nil :type
-    (common-lisp:or attribute-name common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or schema-attribute-type common-lisp:null)))
+ (common-lisp:defclass schema-input-attribute common-lisp:nil
+                       ((field-name :initarg :field-name :initform
+                         (common-lisp:error ":fieldname is required") :type
+                         (common-lisp:or attribute-name common-lisp:null)
+                         :accessor
+                         struct-shape-schema-input-attribute-field-name :shape
+                         "AttributeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (group-name :initarg :group-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or attribute-name common-lisp:null)
+                         :accessor
+                         struct-shape-schema-input-attribute-group-name :shape
+                         "AttributeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (match-key :initarg :match-key :initform
+                         common-lisp:nil :type
+                         (common-lisp:or attribute-name common-lisp:null)
+                         :accessor
+                         struct-shape-schema-input-attribute-match-key :shape
+                         "AttributeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sub-type :initarg :sub-type :initform common-lisp:nil
+                         :type (common-lisp:or attribute-name common-lisp:null)
+                         :accessor struct-shape-schema-input-attribute-sub-type
+                         :shape "AttributeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or schema-attribute-type
+                                         common-lisp:null)
+                         :accessor struct-shape-schema-input-attribute-type
+                         :shape "SchemaAttributeType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-schema-input-attribute
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'schema-input-attribute
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'schema-input-attribute 'make-schema-input-attribute))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3074,19 +4259,44 @@
                            (trivial-types:proper-list schema-mapping-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (schema-mapping-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-schema-mapping-summary-"))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (has-workflows (common-lisp:error ":hasworkflows is required") :type
-    (common-lisp:or boolean common-lisp:null))
-   (schema-arn (common-lisp:error ":schemaarn is required") :type
-    (common-lisp:or schema-mapping-arn common-lisp:null))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass schema-mapping-summary common-lisp:nil
+                       ((created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-schema-mapping-summary-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (has-workflows :initarg :has-workflows :initform
+                         (common-lisp:error ":hasworkflows is required") :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-schema-mapping-summary-has-workflows
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schema-arn :initarg :schema-arn :initform
+                         (common-lisp:error ":schemaarn is required") :type
+                         (common-lisp:or schema-mapping-arn common-lisp:null)
+                         :accessor
+                         struct-shape-schema-mapping-summary-schema-arn :shape
+                         "SchemaMappingArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-schema-mapping-summary-schema-name :shape
+                         "EntityName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-schema-mapping-summary-updated-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-schema-mapping-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'schema-mapping-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'schema-mapping-summary 'make-schema-mapping-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3141,11 +4351,19 @@
    common-lisp:nil))
 (common-lisp:deftype service-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-id-mapping-job-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-id-mapping-job-input-"))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass start-id-mapping-job-input common-lisp:nil
+                       ((workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-id-mapping-job-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-id-mapping-job-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-id-mapping-job-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-id-mapping-job-input
                     'make-start-id-mapping-job-input))
@@ -3165,11 +4383,18 @@
                           start-id-mapping-job-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-id-mapping-job-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-id-mapping-job-output-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null)))
+ (common-lisp:defclass start-id-mapping-job-output common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-start-id-mapping-job-output-job-id :shape
+                         "JobId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-id-mapping-job-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-id-mapping-job-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-id-mapping-job-output
                     'make-start-id-mapping-job-output))
@@ -3196,11 +4421,19 @@
                           start-id-mapping-job-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-matching-job-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-matching-job-input-"))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass start-matching-job-input common-lisp:nil
+                       ((workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-matching-job-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-matching-job-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-matching-job-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-matching-job-input 'make-start-matching-job-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3219,11 +4452,18 @@
                           start-matching-job-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-matching-job-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-matching-job-output-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null)))
+ (common-lisp:defclass start-matching-job-output common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-start-matching-job-output-job-id :shape
+                         "JobId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-matching-job-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-matching-job-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-matching-job-output
                     'make-start-matching-job-output))
@@ -3266,13 +4506,24 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or venice-global-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or venice-global-arn common-lisp:null)
+                         :accessor struct-shape-tag-resource-input-resource-arn
+                         :shape "VeniceGlobalArn" :location "uri"
+                         :location-name "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3292,9 +4543,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-output-")))
+ (common-lisp:defclass tag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-output 'make-tag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3316,13 +4570,25 @@
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or venice-global-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or venice-global-arn common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-input-resource-arn :shape
+                         "VeniceGlobalArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-input-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3335,9 +4601,12 @@
                         ((aws-sdk/generator/shape::input untag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-output-")))
+ (common-lisp:defclass untag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-output 'make-untag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3356,24 +4625,65 @@
                           untag-resource-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-id-mapping-workflow-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-id-mapping-workflow-input-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (id-mapping-techniques
-    (common-lisp:error ":idmappingtechniques is required") :type
-    (common-lisp:or id-mapping-techniques common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-output-source-config common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass update-id-mapping-workflow-input common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-input-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id-mapping-techniques :initarg :id-mapping-techniques
+                         :initform
+                         (common-lisp:error ":idmappingtechniques is required")
+                         :type
+                         (common-lisp:or id-mapping-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-input-id-mapping-techniques
+                         :shape "IdMappingTechniques" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-input-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-input-input-source-config
+                         :shape "IdMappingWorkflowInputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-output-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-input-output-source-config
+                         :shape "IdMappingWorkflowOutputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-update-id-mapping-workflow-input-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-id-mapping-workflow-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-id-mapping-workflow-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-id-mapping-workflow-input
                     'make-update-id-mapping-workflow-input))
@@ -3430,26 +4740,73 @@
                           update-id-mapping-workflow-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-id-mapping-workflow-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-id-mapping-workflow-output-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (id-mapping-techniques
-    (common-lisp:error ":idmappingtechniques is required") :type
-    (common-lisp:or id-mapping-techniques common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type
-    (common-lisp:or id-mapping-workflow-output-source-config common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (workflow-arn (common-lisp:error ":workflowarn is required") :type
-    (common-lisp:or id-mapping-workflow-arn common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass update-id-mapping-workflow-output common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id-mapping-techniques :initarg :id-mapping-techniques
+                         :initform
+                         (common-lisp:error ":idmappingtechniques is required")
+                         :type
+                         (common-lisp:or id-mapping-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-output-id-mapping-techniques
+                         :shape "IdMappingTechniques" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-input-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-output-input-source-config
+                         :shape "IdMappingWorkflowInputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or
+                          id-mapping-workflow-output-source-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-output-output-source-config
+                         :shape "IdMappingWorkflowOutputSourceConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-update-id-mapping-workflow-output-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-arn :initarg :workflow-arn :initform
+                         (common-lisp:error ":workflowarn is required") :type
+                         (common-lisp:or id-mapping-workflow-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-output-workflow-arn
+                         :shape "IdMappingWorkflowArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-id-mapping-workflow-output-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-id-mapping-workflow-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-id-mapping-workflow-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-id-mapping-workflow-output
                     'make-update-id-mapping-workflow-output))
@@ -3520,24 +4877,71 @@
                           update-id-mapping-workflow-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-matching-workflow-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-matching-workflow-input-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (incremental-run-config common-lisp:nil :type
-    (common-lisp:or incremental-run-config common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type (common-lisp:or input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type (common-lisp:or output-source-config common-lisp:null))
-   (resolution-techniques
-    (common-lisp:error ":resolutiontechniques is required") :type
-    (common-lisp:or resolution-techniques common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass update-matching-workflow-input common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-input-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (incremental-run-config :initarg
+                         :incremental-run-config :initform common-lisp:nil
+                         :type
+                         (common-lisp:or incremental-run-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-input-incremental-run-config
+                         :shape "IncrementalRunConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or input-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-input-input-source-config
+                         :shape "InputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or output-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-input-output-source-config
+                         :shape "OutputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolution-techniques :initarg :resolution-techniques
+                         :initform
+                         (common-lisp:error
+                          ":resolutiontechniques is required")
+                         :type
+                         (common-lisp:or resolution-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-input-resolution-techniques
+                         :shape "ResolutionTechniques" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-matching-workflow-input-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-input-workflow-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "workflowName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-matching-workflow-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-matching-workflow-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-matching-workflow-input
                     'make-update-matching-workflow-input))
@@ -3602,24 +5006,71 @@
                           update-matching-workflow-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-matching-workflow-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-matching-workflow-output-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (incremental-run-config common-lisp:nil :type
-    (common-lisp:or incremental-run-config common-lisp:null))
-   (input-source-config (common-lisp:error ":inputsourceconfig is required")
-    :type (common-lisp:or input-source-config common-lisp:null))
-   (output-source-config (common-lisp:error ":outputsourceconfig is required")
-    :type (common-lisp:or output-source-config common-lisp:null))
-   (resolution-techniques
-    (common-lisp:error ":resolutiontechniques is required") :type
-    (common-lisp:or resolution-techniques common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (workflow-name (common-lisp:error ":workflowname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass update-matching-workflow-output common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (incremental-run-config :initarg
+                         :incremental-run-config :initform common-lisp:nil
+                         :type
+                         (common-lisp:or incremental-run-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-output-incremental-run-config
+                         :shape "IncrementalRunConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (input-source-config :initarg :input-source-config
+                         :initform
+                         (common-lisp:error ":inputsourceconfig is required")
+                         :type
+                         (common-lisp:or input-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-output-input-source-config
+                         :shape "InputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-source-config :initarg :output-source-config
+                         :initform
+                         (common-lisp:error ":outputsourceconfig is required")
+                         :type
+                         (common-lisp:or output-source-config common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-output-output-source-config
+                         :shape "OutputSourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolution-techniques :initarg :resolution-techniques
+                         :initform
+                         (common-lisp:error
+                          ":resolutiontechniques is required")
+                         :type
+                         (common-lisp:or resolution-techniques
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-output-resolution-techniques
+                         :shape "ResolutionTechniques" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-matching-workflow-output-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-name :initarg :workflow-name :initform
+                         (common-lisp:error ":workflowname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-matching-workflow-output-workflow-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-matching-workflow-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-matching-workflow-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-matching-workflow-output
                     'make-update-matching-workflow-output))
@@ -3691,15 +5142,36 @@
                           update-matching-workflow-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-schema-mapping-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-schema-mapping-input-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (mapped-input-fields (common-lisp:error ":mappedinputfields is required")
-    :type (common-lisp:or schema-input-attributes common-lisp:null))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass update-schema-mapping-input common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-schema-mapping-input-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mapped-input-fields :initarg :mapped-input-fields
+                         :initform
+                         (common-lisp:error ":mappedinputfields is required")
+                         :type
+                         (common-lisp:or schema-input-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-schema-mapping-input-mapped-input-fields
+                         :shape "SchemaInputAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-schema-mapping-input-schema-name
+                         :shape "EntityName" :location "uri" :location-name
+                         "schemaName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-schema-mapping-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-schema-mapping-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-schema-mapping-input
                     'make-update-schema-mapping-input))
@@ -3733,17 +5205,43 @@
                           update-schema-mapping-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-schema-mapping-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-schema-mapping-output-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (mapped-input-fields (common-lisp:error ":mappedinputfields is required")
-    :type (common-lisp:or schema-input-attributes common-lisp:null))
-   (schema-arn (common-lisp:error ":schemaarn is required") :type
-    (common-lisp:or schema-mapping-arn common-lisp:null))
-   (schema-name (common-lisp:error ":schemaname is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+ (common-lisp:defclass update-schema-mapping-output common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-schema-mapping-output-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mapped-input-fields :initarg :mapped-input-fields
+                         :initform
+                         (common-lisp:error ":mappedinputfields is required")
+                         :type
+                         (common-lisp:or schema-input-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-schema-mapping-output-mapped-input-fields
+                         :shape "SchemaInputAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (schema-arn :initarg :schema-arn :initform
+                         (common-lisp:error ":schemaarn is required") :type
+                         (common-lisp:or schema-mapping-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-schema-mapping-output-schema-arn
+                         :shape "SchemaMappingArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schema-name :initarg :schema-name :initform
+                         (common-lisp:error ":schemaname is required") :type
+                         (common-lisp:or entity-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-schema-mapping-output-schema-name
+                         :shape "EntityName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-schema-mapping-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-schema-mapping-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-schema-mapping-output
                     'make-update-schema-mapping-output))

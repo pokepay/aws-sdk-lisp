@@ -49,15 +49,37 @@
 (common-lisp:deftype claim-value () 'common-lisp:string)
 (common-lisp:deftype classic-flow () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cognito-identity-provider (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cognito-identity-provider-"))
-   (provider-name common-lisp:nil :type
-    (common-lisp:or cognito-identity-provider-name common-lisp:null))
-   (client-id common-lisp:nil :type
-    (common-lisp:or cognito-identity-provider-client-id common-lisp:null))
-   (server-side-token-check common-lisp:nil :type
-    (common-lisp:or cognito-identity-provider-token-check common-lisp:null)))
+ (common-lisp:defclass cognito-identity-provider common-lisp:nil
+                       ((provider-name :initarg :provider-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cognito-identity-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cognito-identity-provider-provider-name
+                         :shape "CognitoIdentityProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (client-id :initarg :client-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cognito-identity-provider-client-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cognito-identity-provider-client-id
+                         :shape "CognitoIdentityProviderClientId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (server-side-token-check :initarg
+                         :server-side-token-check :initform common-lisp:nil
+                         :type
+                         (common-lisp:or cognito-identity-provider-token-check
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cognito-identity-provider-server-side-token-check
+                         :shape "CognitoIdentityProviderTokenCheck" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cognito-identity-provider
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cognito-identity-provider
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cognito-identity-provider
                     'make-cognito-identity-provider))
@@ -120,28 +142,88 @@
   (common-lisp:list 'concurrent-modification-exception
                     'concurrent-modification-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-identity-pool-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-identity-pool-input-"))
-   (identity-pool-name (common-lisp:error ":identity-pool-name is required")
-    :type (common-lisp:or identity-pool-name common-lisp:null))
-   (allow-unauthenticated-identities
-    (common-lisp:error ":allow-unauthenticated-identities is required") :type
-    (common-lisp:or identity-pool-unauthenticated common-lisp:null))
-   (allow-classic-flow common-lisp:nil :type
-    (common-lisp:or classic-flow common-lisp:null))
-   (supported-login-providers common-lisp:nil :type
-    (common-lisp:or identity-providers common-lisp:null))
-   (developer-provider-name common-lisp:nil :type
-    (common-lisp:or developer-provider-name common-lisp:null))
-   (open-id-connect-provider-arns common-lisp:nil :type
-    (common-lisp:or oidcprovider-list common-lisp:null))
-   (cognito-identity-providers common-lisp:nil :type
-    (common-lisp:or cognito-identity-provider-list common-lisp:null))
-   (saml-provider-arns common-lisp:nil :type
-    (common-lisp:or samlprovider-list common-lisp:null))
-   (identity-pool-tags common-lisp:nil :type
-    (common-lisp:or identity-pool-tags-type common-lisp:null)))
+ (common-lisp:defclass create-identity-pool-input common-lisp:nil
+                       ((identity-pool-name :initarg :identity-pool-name
+                         :initform
+                         (common-lisp:error ":identity-pool-name is required")
+                         :type
+                         (common-lisp:or identity-pool-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-identity-pool-name
+                         :shape "IdentityPoolName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (allow-unauthenticated-identities :initarg
+                         :allow-unauthenticated-identities :initform
+                         (common-lisp:error
+                          ":allow-unauthenticated-identities is required")
+                         :type
+                         (common-lisp:or identity-pool-unauthenticated
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-allow-unauthenticated-identities
+                         :shape "IdentityPoolUnauthenticated" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (allow-classic-flow :initarg :allow-classic-flow
+                         :initform common-lisp:nil :type
+                         (common-lisp:or classic-flow common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-allow-classic-flow
+                         :shape "ClassicFlow" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (supported-login-providers :initarg
+                         :supported-login-providers :initform common-lisp:nil
+                         :type
+                         (common-lisp:or identity-providers common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-supported-login-providers
+                         :shape "IdentityProviders" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (developer-provider-name :initarg
+                         :developer-provider-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or developer-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-developer-provider-name
+                         :shape "DeveloperProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (open-id-connect-provider-arns :initarg
+                         :open-id-connect-provider-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or oidcprovider-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-open-id-connect-provider-arns
+                         :shape "OIDCProviderList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cognito-identity-providers :initarg
+                         :cognito-identity-providers :initform common-lisp:nil
+                         :type
+                         (common-lisp:or cognito-identity-provider-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-cognito-identity-providers
+                         :shape "CognitoIdentityProviderList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (saml-provider-arns :initarg :saml-provider-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or samlprovider-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-saml-provider-arns
+                         :shape "SAMLProviderList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-pool-tags :initarg :identity-pool-tags
+                         :initform common-lisp:nil :type
+                         (common-lisp:or identity-pool-tags-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-pool-input-identity-pool-tags
+                         :shape "IdentityPoolTagsType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-identity-pool-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-identity-pool-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-identity-pool-input
                     'make-create-identity-pool-input))
@@ -229,17 +311,36 @@
                           create-identity-pool-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (credentials (:copier common-lisp:nil)
-      (:conc-name "struct-shape-credentials-"))
-   (access-key-id common-lisp:nil :type
-    (common-lisp:or access-key-string common-lisp:null))
-   (secret-key common-lisp:nil :type
-    (common-lisp:or secret-key-string common-lisp:null))
-   (session-token common-lisp:nil :type
-    (common-lisp:or session-token-string common-lisp:null))
-   (expiration common-lisp:nil :type
-    (common-lisp:or date-type common-lisp:null)))
+ (common-lisp:defclass credentials common-lisp:nil
+                       ((access-key-id :initarg :access-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or access-key-string common-lisp:null)
+                         :accessor struct-shape-credentials-access-key-id
+                         :shape "AccessKeyString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-key :initarg :secret-key :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-key-string common-lisp:null)
+                         :accessor struct-shape-credentials-secret-key :shape
+                         "SecretKeyString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (session-token :initarg :session-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-token-string common-lisp:null)
+                         :accessor struct-shape-credentials-session-token
+                         :shape "SessionTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiration :initarg :expiration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-type common-lisp:null) :accessor
+                         struct-shape-credentials-expiration :shape "DateType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-credentials
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'credentials
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'credentials 'make-credentials))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input credentials))
@@ -280,12 +381,22 @@
    common-lisp:nil))
 (common-lisp:deftype date-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-identities-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-identities-input-"))
-   (identity-ids-to-delete
-    (common-lisp:error ":identity-ids-to-delete is required") :type
-    (common-lisp:or identity-id-list common-lisp:null)))
+ (common-lisp:defclass delete-identities-input common-lisp:nil
+                       ((identity-ids-to-delete :initarg
+                         :identity-ids-to-delete :initform
+                         (common-lisp:error
+                          ":identity-ids-to-delete is required")
+                         :type
+                         (common-lisp:or identity-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-delete-identities-input-identity-ids-to-delete
+                         :shape "IdentityIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-identities-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-identities-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-identities-input 'make-delete-identities-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -312,11 +423,21 @@
                           delete-identities-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-identities-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-identities-response-"))
-   (unprocessed-identity-ids common-lisp:nil :type
-    (common-lisp:or unprocessed-identity-id-list common-lisp:null)))
+ (common-lisp:defclass delete-identities-response common-lisp:nil
+                       ((unprocessed-identity-ids :initarg
+                         :unprocessed-identity-ids :initform common-lisp:nil
+                         :type
+                         (common-lisp:or unprocessed-identity-id-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-identities-response-unprocessed-identity-ids
+                         :shape "UnprocessedIdentityIdList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-identities-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-identities-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-identities-response
                     'make-delete-identities-response))
@@ -344,11 +465,20 @@
                           delete-identities-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-identity-pool-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-identity-pool-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+ (common-lisp:defclass delete-identity-pool-input common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-identity-pool-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-identity-pool-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-identity-pool-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-identity-pool-input
                     'make-delete-identity-pool-input))
@@ -375,11 +505,19 @@
                           delete-identity-pool-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-identity-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-identity-input-"))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null)))
+ (common-lisp:defclass describe-identity-input common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         (common-lisp:error ":identity-id is required") :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-identity-input-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-identity-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-identity-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-identity-input 'make-describe-identity-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -405,11 +543,20 @@
                           describe-identity-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-identity-pool-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-identity-pool-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+ (common-lisp:defclass describe-identity-pool-input common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-identity-pool-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-identity-pool-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-identity-pool-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-identity-pool-input
                     'make-describe-identity-pool-input))
@@ -464,14 +611,32 @@
   (common-lisp:list 'external-service-exception
                     'external-service-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-credentials-for-identity-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-credentials-for-identity-input-"))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (logins common-lisp:nil :type (common-lisp:or logins-map common-lisp:null))
-   (custom-role-arn common-lisp:nil :type
-    (common-lisp:or arnstring common-lisp:null)))
+ (common-lisp:defclass get-credentials-for-identity-input common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         (common-lisp:error ":identity-id is required") :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-credentials-for-identity-input-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logins :initarg :logins :initform common-lisp:nil
+                         :type (common-lisp:or logins-map common-lisp:null)
+                         :accessor
+                         struct-shape-get-credentials-for-identity-input-logins
+                         :shape "LoginsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (custom-role-arn :initarg :custom-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arnstring common-lisp:null) :accessor
+                         struct-shape-get-credentials-for-identity-input-custom-role-arn
+                         :shape "ARNString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-credentials-for-identity-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-credentials-for-identity-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-credentials-for-identity-input
                     'make-get-credentials-for-identity-input))
@@ -512,13 +677,27 @@
                           get-credentials-for-identity-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-credentials-for-identity-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-credentials-for-identity-response-"))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null))
-   (credentials common-lisp:nil :type
-    (common-lisp:or credentials common-lisp:null)))
+ (common-lisp:defclass get-credentials-for-identity-response common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-credentials-for-identity-response-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (credentials :initarg :credentials :initform
+                         common-lisp:nil :type
+                         (common-lisp:or credentials common-lisp:null)
+                         :accessor
+                         struct-shape-get-credentials-for-identity-response-credentials
+                         :shape "Credentials" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-credentials-for-identity-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-credentials-for-identity-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-credentials-for-identity-response
                     'make-get-credentials-for-identity-response))
@@ -552,14 +731,30 @@
                           get-credentials-for-identity-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-id-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-id-input-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (logins common-lisp:nil :type (common-lisp:or logins-map common-lisp:null)))
+ (common-lisp:defclass get-id-input common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-id-input-account-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor struct-shape-get-id-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logins :initarg :logins :initform common-lisp:nil
+                         :type (common-lisp:or logins-map common-lisp:null)
+                         :accessor struct-shape-get-id-input-logins :shape
+                         "LoginsMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-id-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-id-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-id-input 'make-get-id-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-id-input))
@@ -592,11 +787,18 @@
                         ((aws-sdk/generator/shape::input get-id-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-id-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-id-response-"))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null)))
+ (common-lisp:defclass get-id-response common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor struct-shape-get-id-response-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-id-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-id-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-id-response 'make-get-id-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-id-response))
@@ -615,11 +817,21 @@
                         ((aws-sdk/generator/shape::input get-id-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-identity-pool-roles-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-identity-pool-roles-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+ (common-lisp:defclass get-identity-pool-roles-input common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-pool-roles-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-identity-pool-roles-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-identity-pool-roles-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-identity-pool-roles-input
                     'make-get-identity-pool-roles-input))
@@ -646,14 +858,32 @@
                           get-identity-pool-roles-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-identity-pool-roles-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-identity-pool-roles-response-"))
-   (identity-pool-id common-lisp:nil :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (roles common-lisp:nil :type (common-lisp:or roles-map common-lisp:null))
-   (role-mappings common-lisp:nil :type
-    (common-lisp:or role-mapping-map common-lisp:null)))
+ (common-lisp:defclass get-identity-pool-roles-response common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-pool-roles-response-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (roles :initarg :roles :initform common-lisp:nil :type
+                         (common-lisp:or roles-map common-lisp:null) :accessor
+                         struct-shape-get-identity-pool-roles-response-roles
+                         :shape "RolesMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-mappings :initarg :role-mappings :initform
+                         common-lisp:nil :type
+                         (common-lisp:or role-mapping-map common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-pool-roles-response-role-mappings
+                         :shape "RoleMappingMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-identity-pool-roles-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-identity-pool-roles-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-identity-pool-roles-response
                     'make-get-identity-pool-roles-response))
@@ -694,20 +924,49 @@
                           get-identity-pool-roles-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-open-id-token-for-developer-identity-input (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-open-id-token-for-developer-identity-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null))
-   (logins (common-lisp:error ":logins is required") :type
-    (common-lisp:or logins-map common-lisp:null))
-   (principal-tags common-lisp:nil :type
-    (common-lisp:or principal-tags common-lisp:null))
-   (token-duration common-lisp:nil :type
-    (common-lisp:or token-duration common-lisp:null)))
+ (common-lisp:defclass get-open-id-token-for-developer-identity-input
+                       common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-open-id-token-for-developer-identity-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-open-id-token-for-developer-identity-input-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logins :initarg :logins :initform
+                         (common-lisp:error ":logins is required") :type
+                         (common-lisp:or logins-map common-lisp:null) :accessor
+                         struct-shape-get-open-id-token-for-developer-identity-input-logins
+                         :shape "LoginsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-tags :initarg :principal-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or principal-tags common-lisp:null)
+                         :accessor
+                         struct-shape-get-open-id-token-for-developer-identity-input-principal-tags
+                         :shape "PrincipalTags" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-duration :initarg :token-duration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token-duration common-lisp:null)
+                         :accessor
+                         struct-shape-get-open-id-token-for-developer-identity-input-token-duration
+                         :shape "TokenDuration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-open-id-token-for-developer-identity-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-open-id-token-for-developer-identity-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-open-id-token-for-developer-identity-input
                     'make-get-open-id-token-for-developer-identity-input))
@@ -762,14 +1021,26 @@
                           get-open-id-token-for-developer-identity-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-open-id-token-for-developer-identity-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-open-id-token-for-developer-identity-response-"))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null))
-   (token common-lisp:nil :type (common-lisp:or oidctoken common-lisp:null)))
+ (common-lisp:defclass get-open-id-token-for-developer-identity-response
+                       common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-open-id-token-for-developer-identity-response-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token :initarg :token :initform common-lisp:nil :type
+                         (common-lisp:or oidctoken common-lisp:null) :accessor
+                         struct-shape-get-open-id-token-for-developer-identity-response-token
+                         :shape "OIDCToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-open-id-token-for-developer-identity-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-open-id-token-for-developer-identity-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-open-id-token-for-developer-identity-response
                     'make-get-open-id-token-for-developer-identity-response))
@@ -803,12 +1074,24 @@
                           get-open-id-token-for-developer-identity-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-open-id-token-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-open-id-token-input-"))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (logins common-lisp:nil :type (common-lisp:or logins-map common-lisp:null)))
+ (common-lisp:defclass get-open-id-token-input common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         (common-lisp:error ":identity-id is required") :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-open-id-token-input-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logins :initarg :logins :initform common-lisp:nil
+                         :type (common-lisp:or logins-map common-lisp:null)
+                         :accessor struct-shape-get-open-id-token-input-logins
+                         :shape "LoginsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-open-id-token-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-open-id-token-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-open-id-token-input 'make-get-open-id-token-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -841,12 +1124,24 @@
                           get-open-id-token-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-open-id-token-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-open-id-token-response-"))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null))
-   (token common-lisp:nil :type (common-lisp:or oidctoken common-lisp:null)))
+ (common-lisp:defclass get-open-id-token-response common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-open-id-token-response-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token :initarg :token :initform common-lisp:nil :type
+                         (common-lisp:or oidctoken common-lisp:null) :accessor
+                         struct-shape-get-open-id-token-response-token :shape
+                         "OIDCToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-open-id-token-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-open-id-token-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-open-id-token-response
                     'make-get-open-id-token-response))
@@ -880,14 +1175,32 @@
                           get-open-id-token-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-principal-tag-attribute-map-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-principal-tag-attribute-map-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-provider-name
-    (common-lisp:error ":identity-provider-name is required") :type
-    (common-lisp:or identity-provider-name common-lisp:null)))
+ (common-lisp:defclass get-principal-tag-attribute-map-input common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-principal-tag-attribute-map-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-provider-name :initarg
+                         :identity-provider-name :initform
+                         (common-lisp:error
+                          ":identity-provider-name is required")
+                         :type
+                         (common-lisp:or identity-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-principal-tag-attribute-map-input-identity-provider-name
+                         :shape "IdentityProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-principal-tag-attribute-map-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-principal-tag-attribute-map-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-principal-tag-attribute-map-input
                     'make-get-principal-tag-attribute-map-input))
@@ -922,17 +1235,43 @@
                           get-principal-tag-attribute-map-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-principal-tag-attribute-map-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-principal-tag-attribute-map-response-"))
-   (identity-pool-id common-lisp:nil :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-provider-name common-lisp:nil :type
-    (common-lisp:or identity-provider-name common-lisp:null))
-   (use-defaults common-lisp:nil :type
-    (common-lisp:or use-defaults common-lisp:null))
-   (principal-tags common-lisp:nil :type
-    (common-lisp:or principal-tags common-lisp:null)))
+ (common-lisp:defclass get-principal-tag-attribute-map-response common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-principal-tag-attribute-map-response-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-provider-name :initarg
+                         :identity-provider-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or identity-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-principal-tag-attribute-map-response-identity-provider-name
+                         :shape "IdentityProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (use-defaults :initarg :use-defaults :initform
+                         common-lisp:nil :type
+                         (common-lisp:or use-defaults common-lisp:null)
+                         :accessor
+                         struct-shape-get-principal-tag-attribute-map-response-use-defaults
+                         :shape "UseDefaults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-tags :initarg :principal-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or principal-tags common-lisp:null)
+                         :accessor
+                         struct-shape-get-principal-tag-attribute-map-response-principal-tags
+                         :shape "PrincipalTags" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-principal-tag-attribute-map-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-principal-tag-attribute-map-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-principal-tag-attribute-map-response
                     'make-get-principal-tag-attribute-map-response))
@@ -990,16 +1329,36 @@
                            (trivial-types:proper-list identity-description))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity-description (:copier common-lisp:nil)
-      (:conc-name "struct-shape-identity-description-"))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null))
-   (logins common-lisp:nil :type (common-lisp:or logins-list common-lisp:null))
-   (creation-date common-lisp:nil :type
-    (common-lisp:or date-type common-lisp:null))
-   (last-modified-date common-lisp:nil :type
-    (common-lisp:or date-type common-lisp:null)))
+ (common-lisp:defclass identity-description common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-identity-description-identity-id :shape
+                         "IdentityId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (logins :initarg :logins :initform common-lisp:nil
+                         :type (common-lisp:or logins-list common-lisp:null)
+                         :accessor struct-shape-identity-description-logins
+                         :shape "LoginsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-date :initarg :creation-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-type common-lisp:null) :accessor
+                         struct-shape-identity-description-creation-date :shape
+                         "DateType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-modified-date :initarg :last-modified-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date-type common-lisp:null) :accessor
+                         struct-shape-identity-description-last-modified-date
+                         :shape "DateType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity-description
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'identity-description
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'identity-description 'make-identity-description))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1049,30 +1408,95 @@
                            (trivial-types:proper-list identity-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-identity-pool-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-pool-name (common-lisp:error ":identity-pool-name is required")
-    :type (common-lisp:or identity-pool-name common-lisp:null))
-   (allow-unauthenticated-identities
-    (common-lisp:error ":allow-unauthenticated-identities is required") :type
-    (common-lisp:or identity-pool-unauthenticated common-lisp:null))
-   (allow-classic-flow common-lisp:nil :type
-    (common-lisp:or classic-flow common-lisp:null))
-   (supported-login-providers common-lisp:nil :type
-    (common-lisp:or identity-providers common-lisp:null))
-   (developer-provider-name common-lisp:nil :type
-    (common-lisp:or developer-provider-name common-lisp:null))
-   (open-id-connect-provider-arns common-lisp:nil :type
-    (common-lisp:or oidcprovider-list common-lisp:null))
-   (cognito-identity-providers common-lisp:nil :type
-    (common-lisp:or cognito-identity-provider-list common-lisp:null))
-   (saml-provider-arns common-lisp:nil :type
-    (common-lisp:or samlprovider-list common-lisp:null))
-   (identity-pool-tags common-lisp:nil :type
-    (common-lisp:or identity-pool-tags-type common-lisp:null)))
+ (common-lisp:defclass identity-pool common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor struct-shape-identity-pool-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-pool-name :initarg :identity-pool-name
+                         :initform
+                         (common-lisp:error ":identity-pool-name is required")
+                         :type
+                         (common-lisp:or identity-pool-name common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-identity-pool-name :shape
+                         "IdentityPoolName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (allow-unauthenticated-identities :initarg
+                         :allow-unauthenticated-identities :initform
+                         (common-lisp:error
+                          ":allow-unauthenticated-identities is required")
+                         :type
+                         (common-lisp:or identity-pool-unauthenticated
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-allow-unauthenticated-identities
+                         :shape "IdentityPoolUnauthenticated" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (allow-classic-flow :initarg :allow-classic-flow
+                         :initform common-lisp:nil :type
+                         (common-lisp:or classic-flow common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-allow-classic-flow :shape
+                         "ClassicFlow" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (supported-login-providers :initarg
+                         :supported-login-providers :initform common-lisp:nil
+                         :type
+                         (common-lisp:or identity-providers common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-supported-login-providers
+                         :shape "IdentityProviders" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (developer-provider-name :initarg
+                         :developer-provider-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or developer-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-developer-provider-name
+                         :shape "DeveloperProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (open-id-connect-provider-arns :initarg
+                         :open-id-connect-provider-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or oidcprovider-list common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-open-id-connect-provider-arns
+                         :shape "OIDCProviderList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cognito-identity-providers :initarg
+                         :cognito-identity-providers :initform common-lisp:nil
+                         :type
+                         (common-lisp:or cognito-identity-provider-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-cognito-identity-providers
+                         :shape "CognitoIdentityProviderList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (saml-provider-arns :initarg :saml-provider-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or samlprovider-list common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-saml-provider-arns :shape
+                         "SAMLProviderList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-pool-tags :initarg :identity-pool-tags
+                         :initform common-lisp:nil :type
+                         (common-lisp:or identity-pool-tags-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-identity-pool-tags :shape
+                         "IdentityPoolTagsType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'identity-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'identity-pool 'make-identity-pool))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input identity-pool))
@@ -1161,13 +1585,27 @@
 (common-lisp:deftype identity-pool-id () 'common-lisp:string)
 (common-lisp:deftype identity-pool-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity-pool-short-description (:copier common-lisp:nil)
-      (:conc-name "struct-shape-identity-pool-short-description-"))
-   (identity-pool-id common-lisp:nil :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-pool-name common-lisp:nil :type
-    (common-lisp:or identity-pool-name common-lisp:null)))
+ (common-lisp:defclass identity-pool-short-description common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-short-description-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-pool-name :initarg :identity-pool-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or identity-pool-name common-lisp:null)
+                         :accessor
+                         struct-shape-identity-pool-short-description-identity-pool-name
+                         :shape "IdentityPoolName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity-pool-short-description
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'identity-pool-short-description
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'identity-pool-short-description
                     'make-identity-pool-short-description))
@@ -1270,17 +1708,41 @@
   (common-lisp:list 'limit-exceeded-exception
                     'limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-identities-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-identities-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (max-results (common-lisp:error ":max-results is required") :type
-    (common-lisp:or query-limit common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-key common-lisp:null))
-   (hide-disabled common-lisp:nil :type
-    (common-lisp:or hide-disabled common-lisp:null)))
+ (common-lisp:defclass list-identities-input common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-identities-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         (common-lisp:error ":max-results is required") :type
+                         (common-lisp:or query-limit common-lisp:null)
+                         :accessor
+                         struct-shape-list-identities-input-max-results :shape
+                         "QueryLimit" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-key common-lisp:null)
+                         :accessor
+                         struct-shape-list-identities-input-next-token :shape
+                         "PaginationKey" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (hide-disabled :initarg :hide-disabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hide-disabled common-lisp:null)
+                         :accessor
+                         struct-shape-list-identities-input-hide-disabled
+                         :shape "HideDisabled" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-identities-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-identities-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-identities-input 'make-list-identities-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1327,15 +1789,33 @@
                           list-identities-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-identities-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-identities-response-"))
-   (identity-pool-id common-lisp:nil :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identities common-lisp:nil :type
-    (common-lisp:or identities-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-key common-lisp:null)))
+ (common-lisp:defclass list-identities-response common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-identities-response-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identities :initarg :identities :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identities-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-identities-response-identities
+                         :shape "IdentitiesList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-key common-lisp:null)
+                         :accessor
+                         struct-shape-list-identities-response-next-token
+                         :shape "PaginationKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-identities-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-identities-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-identities-response 'make-list-identities-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1375,13 +1855,26 @@
                           list-identities-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-identity-pools-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-identity-pools-input-"))
-   (max-results (common-lisp:error ":max-results is required") :type
-    (common-lisp:or query-limit common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-key common-lisp:null)))
+ (common-lisp:defclass list-identity-pools-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         (common-lisp:error ":max-results is required") :type
+                         (common-lisp:or query-limit common-lisp:null)
+                         :accessor
+                         struct-shape-list-identity-pools-input-max-results
+                         :shape "QueryLimit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-key common-lisp:null)
+                         :accessor
+                         struct-shape-list-identity-pools-input-next-token
+                         :shape "PaginationKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-identity-pools-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-identity-pools-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-identity-pools-input
                     'make-list-identity-pools-input))
@@ -1415,13 +1908,26 @@
                           list-identity-pools-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-identity-pools-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-identity-pools-response-"))
-   (identity-pools common-lisp:nil :type
-    (common-lisp:or identity-pools-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-key common-lisp:null)))
+ (common-lisp:defclass list-identity-pools-response common-lisp:nil
+                       ((identity-pools :initarg :identity-pools :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-pools-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-identity-pools-response-identity-pools
+                         :shape "IdentityPoolsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-key common-lisp:null)
+                         :accessor
+                         struct-shape-list-identity-pools-response-next-token
+                         :shape "PaginationKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-identity-pools-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-identity-pools-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-identity-pools-response
                     'make-list-identity-pools-response))
@@ -1455,11 +1961,18 @@
                           list-identity-pools-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-input-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arnstring common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arnstring common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-input-resource-arn
+                         :shape "ARNString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-for-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-input
                     'make-list-tags-for-resource-input))
@@ -1486,11 +1999,20 @@
                           list-tags-for-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type
-    (common-lisp:or identity-pool-tags-type common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or identity-pool-tags-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "IdentityPoolTagsType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -1532,19 +2054,51 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lookup-developer-identity-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lookup-developer-identity-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null))
-   (developer-user-identifier common-lisp:nil :type
-    (common-lisp:or developer-user-identifier common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or query-limit common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-key common-lisp:null)))
+ (common-lisp:defclass lookup-developer-identity-input common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-developer-identity-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-developer-identity-input-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (developer-user-identifier :initarg
+                         :developer-user-identifier :initform common-lisp:nil
+                         :type
+                         (common-lisp:or developer-user-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-developer-identity-input-developer-user-identifier
+                         :shape "DeveloperUserIdentifier" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-limit common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-developer-identity-input-max-results
+                         :shape "QueryLimit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-key common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-developer-identity-input-next-token
+                         :shape "PaginationKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lookup-developer-identity-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'lookup-developer-identity-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lookup-developer-identity-input
                     'make-lookup-developer-identity-input))
@@ -1600,15 +2154,36 @@
                           lookup-developer-identity-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lookup-developer-identity-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lookup-developer-identity-response-"))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null))
-   (developer-user-identifier-list common-lisp:nil :type
-    (common-lisp:or developer-user-identifier-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-key common-lisp:null)))
+ (common-lisp:defclass lookup-developer-identity-response common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-developer-identity-response-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (developer-user-identifier-list :initarg
+                         :developer-user-identifier-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or developer-user-identifier-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-developer-identity-response-developer-user-identifier-list
+                         :shape "DeveloperUserIdentifierList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-key common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-developer-identity-response-next-token
+                         :shape "PaginationKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lookup-developer-identity-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'lookup-developer-identity-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lookup-developer-identity-response
                     'make-lookup-developer-identity-response))
@@ -1650,17 +2225,37 @@
                           lookup-developer-identity-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mapping-rule (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mapping-rule-"))
-   (claim (common-lisp:error ":claim is required") :type
-    (common-lisp:or claim-name common-lisp:null))
-   (match-type (common-lisp:error ":match-type is required") :type
-    (common-lisp:or mapping-rule-match-type common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or claim-value common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or arnstring common-lisp:null)))
+ (common-lisp:defclass mapping-rule common-lisp:nil
+                       ((claim :initarg :claim :initform
+                         (common-lisp:error ":claim is required") :type
+                         (common-lisp:or claim-name common-lisp:null) :accessor
+                         struct-shape-mapping-rule-claim :shape "ClaimName"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (match-type :initarg :match-type :initform
+                         (common-lisp:error ":match-type is required") :type
+                         (common-lisp:or mapping-rule-match-type
+                                         common-lisp:null)
+                         :accessor struct-shape-mapping-rule-match-type :shape
+                         "MappingRuleMatchType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or claim-value common-lisp:null)
+                         :accessor struct-shape-mapping-rule-value :shape
+                         "ClaimValue" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":role-arn is required") :type
+                         (common-lisp:or arnstring common-lisp:null) :accessor
+                         struct-shape-mapping-rule-role-arn :shape "ARNString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mapping-rule
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mapping-rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mapping-rule 'make-mapping-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mapping-rule))
@@ -1709,20 +2304,54 @@
                            (trivial-types:proper-list mapping-rule))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (merge-developer-identities-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-merge-developer-identities-input-"))
-   (source-user-identifier
-    (common-lisp:error ":source-user-identifier is required") :type
-    (common-lisp:or developer-user-identifier common-lisp:null))
-   (destination-user-identifier
-    (common-lisp:error ":destination-user-identifier is required") :type
-    (common-lisp:or developer-user-identifier common-lisp:null))
-   (developer-provider-name
-    (common-lisp:error ":developer-provider-name is required") :type
-    (common-lisp:or developer-provider-name common-lisp:null))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+ (common-lisp:defclass merge-developer-identities-input common-lisp:nil
+                       ((source-user-identifier :initarg
+                         :source-user-identifier :initform
+                         (common-lisp:error
+                          ":source-user-identifier is required")
+                         :type
+                         (common-lisp:or developer-user-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-merge-developer-identities-input-source-user-identifier
+                         :shape "DeveloperUserIdentifier" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (destination-user-identifier :initarg
+                         :destination-user-identifier :initform
+                         (common-lisp:error
+                          ":destination-user-identifier is required")
+                         :type
+                         (common-lisp:or developer-user-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-merge-developer-identities-input-destination-user-identifier
+                         :shape "DeveloperUserIdentifier" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (developer-provider-name :initarg
+                         :developer-provider-name :initform
+                         (common-lisp:error
+                          ":developer-provider-name is required")
+                         :type
+                         (common-lisp:or developer-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-merge-developer-identities-input-developer-provider-name
+                         :shape "DeveloperProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-merge-developer-identities-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-merge-developer-identities-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'merge-developer-identities-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'merge-developer-identities-input
                     'make-merge-developer-identities-input))
@@ -1773,11 +2402,20 @@
                           merge-developer-identities-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (merge-developer-identities-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-merge-developer-identities-response-"))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null)))
+ (common-lisp:defclass merge-developer-identities-response common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-merge-developer-identities-response-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-merge-developer-identities-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'merge-developer-identities-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'merge-developer-identities-response
                     'make-merge-developer-identities-response))
@@ -1848,15 +2486,35 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (role-mapping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-role-mapping-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or role-mapping-type common-lisp:null))
-   (ambiguous-role-resolution common-lisp:nil :type
-    (common-lisp:or ambiguous-role-resolution-type common-lisp:null))
-   (rules-configuration common-lisp:nil :type
-    (common-lisp:or rules-configuration-type common-lisp:null)))
+ (common-lisp:defclass role-mapping common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or role-mapping-type common-lisp:null)
+                         :accessor struct-shape-role-mapping-type :shape
+                         "RoleMappingType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ambiguous-role-resolution :initarg
+                         :ambiguous-role-resolution :initform common-lisp:nil
+                         :type
+                         (common-lisp:or ambiguous-role-resolution-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-role-mapping-ambiguous-role-resolution
+                         :shape "AmbiguousRoleResolutionType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (rules-configuration :initarg :rules-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rules-configuration-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-role-mapping-rules-configuration :shape
+                         "RulesConfigurationType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-role-mapping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'role-mapping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'role-mapping 'make-role-mapping))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input role-mapping))
@@ -1906,11 +2564,18 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rules-configuration-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rules-configuration-type-"))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or mapping-rules-list common-lisp:null)))
+ (common-lisp:defclass rules-configuration-type common-lisp:nil
+                       ((rules :initarg :rules :initform
+                         (common-lisp:error ":rules is required") :type
+                         (common-lisp:or mapping-rules-list common-lisp:null)
+                         :accessor struct-shape-rules-configuration-type-rules
+                         :shape "MappingRulesList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rules-configuration-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rules-configuration-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rules-configuration-type 'make-rules-configuration-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1946,15 +2611,34 @@
 (common-lisp:deftype secret-key-string () 'common-lisp:string)
 (common-lisp:deftype session-token-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (set-identity-pool-roles-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-set-identity-pool-roles-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (roles (common-lisp:error ":roles is required") :type
-    (common-lisp:or roles-map common-lisp:null))
-   (role-mappings common-lisp:nil :type
-    (common-lisp:or role-mapping-map common-lisp:null)))
+ (common-lisp:defclass set-identity-pool-roles-input common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-set-identity-pool-roles-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (roles :initarg :roles :initform
+                         (common-lisp:error ":roles is required") :type
+                         (common-lisp:or roles-map common-lisp:null) :accessor
+                         struct-shape-set-identity-pool-roles-input-roles
+                         :shape "RolesMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-mappings :initarg :role-mappings :initform
+                         common-lisp:nil :type
+                         (common-lisp:or role-mapping-map common-lisp:null)
+                         :accessor
+                         struct-shape-set-identity-pool-roles-input-role-mappings
+                         :shape "RoleMappingMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-set-identity-pool-roles-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'set-identity-pool-roles-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'set-identity-pool-roles-input
                     'make-set-identity-pool-roles-input))
@@ -1995,18 +2679,46 @@
                           set-identity-pool-roles-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (set-principal-tag-attribute-map-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-set-principal-tag-attribute-map-input-"))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-provider-name
-    (common-lisp:error ":identity-provider-name is required") :type
-    (common-lisp:or identity-provider-name common-lisp:null))
-   (use-defaults common-lisp:nil :type
-    (common-lisp:or use-defaults common-lisp:null))
-   (principal-tags common-lisp:nil :type
-    (common-lisp:or principal-tags common-lisp:null)))
+ (common-lisp:defclass set-principal-tag-attribute-map-input common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-set-principal-tag-attribute-map-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-provider-name :initarg
+                         :identity-provider-name :initform
+                         (common-lisp:error
+                          ":identity-provider-name is required")
+                         :type
+                         (common-lisp:or identity-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-set-principal-tag-attribute-map-input-identity-provider-name
+                         :shape "IdentityProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (use-defaults :initarg :use-defaults :initform
+                         common-lisp:nil :type
+                         (common-lisp:or use-defaults common-lisp:null)
+                         :accessor
+                         struct-shape-set-principal-tag-attribute-map-input-use-defaults
+                         :shape "UseDefaults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-tags :initarg :principal-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or principal-tags common-lisp:null)
+                         :accessor
+                         struct-shape-set-principal-tag-attribute-map-input-principal-tags
+                         :shape "PrincipalTags" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-set-principal-tag-attribute-map-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'set-principal-tag-attribute-map-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'set-principal-tag-attribute-map-input
                     'make-set-principal-tag-attribute-map-input))
@@ -2055,17 +2767,43 @@
                           set-principal-tag-attribute-map-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (set-principal-tag-attribute-map-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-set-principal-tag-attribute-map-response-"))
-   (identity-pool-id common-lisp:nil :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-provider-name common-lisp:nil :type
-    (common-lisp:or identity-provider-name common-lisp:null))
-   (use-defaults common-lisp:nil :type
-    (common-lisp:or use-defaults common-lisp:null))
-   (principal-tags common-lisp:nil :type
-    (common-lisp:or principal-tags common-lisp:null)))
+ (common-lisp:defclass set-principal-tag-attribute-map-response common-lisp:nil
+                       ((identity-pool-id :initarg :identity-pool-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-set-principal-tag-attribute-map-response-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-provider-name :initarg
+                         :identity-provider-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or identity-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-set-principal-tag-attribute-map-response-identity-provider-name
+                         :shape "IdentityProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (use-defaults :initarg :use-defaults :initform
+                         common-lisp:nil :type
+                         (common-lisp:or use-defaults common-lisp:null)
+                         :accessor
+                         struct-shape-set-principal-tag-attribute-map-response-use-defaults
+                         :shape "UseDefaults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-tags :initarg :principal-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or principal-tags common-lisp:null)
+                         :accessor
+                         struct-shape-set-principal-tag-attribute-map-response-principal-tags
+                         :shape "PrincipalTags" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-set-principal-tag-attribute-map-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'set-principal-tag-attribute-map-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'set-principal-tag-attribute-map-response
                     'make-set-principal-tag-attribute-map-response))
@@ -2116,13 +2854,25 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype tag-keys-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-input-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arnstring common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or identity-pool-tags-type common-lisp:null)))
+ (common-lisp:defclass tag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arnstring common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-resource-arn :shape
+                         "ARNString" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or identity-pool-tags-type
+                                         common-lisp:null)
+                         :accessor struct-shape-tag-resource-input-tags :shape
+                         "IdentityPoolTagsType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2149,9 +2899,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2180,19 +2933,50 @@
   (common-lisp:list 'too-many-requests-exception
                     'too-many-requests-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unlink-developer-identity-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unlink-developer-identity-input-"))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (developer-provider-name
-    (common-lisp:error ":developer-provider-name is required") :type
-    (common-lisp:or developer-provider-name common-lisp:null))
-   (developer-user-identifier
-    (common-lisp:error ":developer-user-identifier is required") :type
-    (common-lisp:or developer-user-identifier common-lisp:null)))
+ (common-lisp:defclass unlink-developer-identity-input common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         (common-lisp:error ":identity-id is required") :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-unlink-developer-identity-input-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-pool-id :initarg :identity-pool-id :initform
+                         (common-lisp:error ":identity-pool-id is required")
+                         :type
+                         (common-lisp:or identity-pool-id common-lisp:null)
+                         :accessor
+                         struct-shape-unlink-developer-identity-input-identity-pool-id
+                         :shape "IdentityPoolId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (developer-provider-name :initarg
+                         :developer-provider-name :initform
+                         (common-lisp:error
+                          ":developer-provider-name is required")
+                         :type
+                         (common-lisp:or developer-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-unlink-developer-identity-input-developer-provider-name
+                         :shape "DeveloperProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (developer-user-identifier :initarg
+                         :developer-user-identifier :initform
+                         (common-lisp:error
+                          ":developer-user-identifier is required")
+                         :type
+                         (common-lisp:or developer-user-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-unlink-developer-identity-input-developer-user-identifier
+                         :shape "DeveloperUserIdentifier" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-unlink-developer-identity-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'unlink-developer-identity-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'unlink-developer-identity-input
                     'make-unlink-developer-identity-input))
@@ -2242,15 +3026,32 @@
                           unlink-developer-identity-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unlink-identity-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unlink-identity-input-"))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (logins (common-lisp:error ":logins is required") :type
-    (common-lisp:or logins-map common-lisp:null))
-   (logins-to-remove (common-lisp:error ":logins-to-remove is required") :type
-    (common-lisp:or logins-list common-lisp:null)))
+ (common-lisp:defclass unlink-identity-input common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         (common-lisp:error ":identity-id is required") :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-unlink-identity-input-identity-id :shape
+                         "IdentityId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (logins :initarg :logins :initform
+                         (common-lisp:error ":logins is required") :type
+                         (common-lisp:or logins-map common-lisp:null) :accessor
+                         struct-shape-unlink-identity-input-logins :shape
+                         "LoginsMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (logins-to-remove :initarg :logins-to-remove :initform
+                         (common-lisp:error ":logins-to-remove is required")
+                         :type (common-lisp:or logins-list common-lisp:null)
+                         :accessor
+                         struct-shape-unlink-identity-input-logins-to-remove
+                         :shape "LoginsList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-unlink-identity-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'unlink-identity-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'unlink-identity-input 'make-unlink-identity-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2290,13 +3091,25 @@
                           unlink-identity-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unprocessed-identity-id (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unprocessed-identity-id-"))
-   (identity-id common-lisp:nil :type
-    (common-lisp:or identity-id common-lisp:null))
-   (error-code common-lisp:nil :type
-    (common-lisp:or error-code common-lisp:null)))
+ (common-lisp:defclass unprocessed-identity-id common-lisp:nil
+                       ((identity-id :initarg :identity-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or identity-id common-lisp:null)
+                         :accessor
+                         struct-shape-unprocessed-identity-id-identity-id
+                         :shape "IdentityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-code :initarg :error-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-code common-lisp:null) :accessor
+                         struct-shape-unprocessed-identity-id-error-code :shape
+                         "ErrorCode" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-unprocessed-identity-id
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'unprocessed-identity-id
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'unprocessed-identity-id 'make-unprocessed-identity-id))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2337,13 +3150,25 @@
                            (trivial-types:proper-list unprocessed-identity-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-input-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arnstring common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or identity-pool-tags-list-type common-lisp:null)))
+ (common-lisp:defclass untag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arnstring common-lisp:null) :accessor
+                         struct-shape-untag-resource-input-resource-arn :shape
+                         "ARNString" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or identity-pool-tags-list-type
+                                         common-lisp:null)
+                         :accessor struct-shape-untag-resource-input-tag-keys
+                         :shape "IdentityPoolTagsListType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2370,9 +3195,12 @@
                         ((aws-sdk/generator/shape::input untag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

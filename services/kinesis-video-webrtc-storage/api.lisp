@@ -57,11 +57,19 @@
   (common-lisp:list 'invalid-argument-exception
                     'invalid-argument-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (join-storage-session-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-join-storage-session-input-"))
-   (channel-arn (common-lisp:error ":channelarn is required") :type
-    (common-lisp:or channel-arn common-lisp:null)))
+ (common-lisp:defclass join-storage-session-input common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channelarn is required") :type
+                         (common-lisp:or channel-arn common-lisp:null)
+                         :accessor
+                         struct-shape-join-storage-session-input-channel-arn
+                         :shape "ChannelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-join-storage-session-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'join-storage-session-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'join-storage-session-input
                     'make-join-storage-session-input))

@@ -33,16 +33,38 @@
     ("ValidationException" . validation-exception)))
 (common-lisp:deftype account-targeting () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (action (:copier common-lisp:nil) (:conc-name "struct-shape-action-"))
-   (id common-lisp:nil :type (common-lisp:or action-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or action-description common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or action-parameter-map common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or action-target-map common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass action common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-action-id :shape "ActionId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-description common-lisp:null)
+                         :accessor struct-shape-action-description :shape
+                         "ActionDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-parameter-map common-lisp:null)
+                         :accessor struct-shape-action-parameters :shape
+                         "ActionParameterMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or action-target-map common-lisp:null)
+                         :accessor struct-shape-action-targets :shape
+                         "ActionTargetMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-action-tags :shape "TagMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'action 'make-action))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input action))
@@ -91,13 +113,26 @@
 (common-lisp:deftype action-description () 'common-lisp:string)
 (common-lisp:deftype action-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-parameter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-parameter-"))
-   (description common-lisp:nil :type
-    (common-lisp:or action-parameter-description common-lisp:null))
-   (required common-lisp:nil :type
-    (common-lisp:or action-parameter-required common-lisp:null)))
+ (common-lisp:defclass action-parameter common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-parameter-description
+                                         common-lisp:null)
+                         :accessor struct-shape-action-parameter-description
+                         :shape "ActionParameterDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (required :initarg :required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or action-parameter-required
+                                         common-lisp:null)
+                         :accessor struct-shape-action-parameter-required
+                         :shape "ActionParameterRequired" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-parameter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-parameter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'action-parameter 'make-action-parameter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -135,15 +170,34 @@
 (common-lisp:deftype action-parameter-name () 'common-lisp:string)
 (common-lisp:deftype action-parameter-required () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-summary-"))
-   (id common-lisp:nil :type (common-lisp:or action-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or action-description common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or action-target-map common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass action-summary common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-action-summary-id :shape "ActionId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-description common-lisp:null)
+                         :accessor struct-shape-action-summary-description
+                         :shape "ActionDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or action-target-map common-lisp:null)
+                         :accessor struct-shape-action-summary-targets :shape
+                         "ActionTargetMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-action-summary-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'action-summary 'make-action-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input action-summary))
@@ -191,11 +245,19 @@
                            (trivial-types:proper-list action-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-target (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-target-"))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or target-resource-type-id common-lisp:null)))
+ (common-lisp:defclass action-target common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor struct-shape-action-target-resource-type
+                         :shape "TargetResourceTypeId" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-target
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-target
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'action-target 'make-action-target))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input action-target))
@@ -232,20 +294,55 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-experiment-template-action-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-experiment-template-action-input-"))
-   (action-id (common-lisp:error ":actionid is required") :type
-    (common-lisp:or action-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or experiment-template-action-description common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or experiment-template-action-parameter-map common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or experiment-template-action-target-map common-lisp:null))
-   (start-after common-lisp:nil :type
-    (common-lisp:or experiment-template-action-start-after-list
-                    common-lisp:null)))
+ (common-lisp:defclass create-experiment-template-action-input common-lisp:nil
+                       ((action-id :initarg :action-id :initform
+                         (common-lisp:error ":actionid is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-create-experiment-template-action-input-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-template-action-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-action-input-description
+                         :shape "ExperimentTemplateActionDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-action-parameter-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-action-input-parameters
+                         :shape "ExperimentTemplateActionParameterMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-template-action-target-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-action-input-targets
+                         :shape "ExperimentTemplateActionTargetMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-after :initarg :start-after :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-action-start-after-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-action-input-start-after
+                         :shape "ExperimentTemplateActionStartAfterList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-experiment-template-action-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-experiment-template-action-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-experiment-template-action-input
                     'make-create-experiment-template-action-input))
@@ -309,15 +406,30 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-experiment-template-experiment-options-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-create-experiment-template-experiment-options-input-"))
-   (account-targeting common-lisp:nil :type
-    (common-lisp:or account-targeting common-lisp:null))
-   (empty-target-resolution-mode common-lisp:nil :type
-    (common-lisp:or empty-target-resolution-mode common-lisp:null)))
+ (common-lisp:defclass create-experiment-template-experiment-options-input
+                       common-lisp:nil
+                       ((account-targeting :initarg :account-targeting
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-targeting common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-experiment-options-input-account-targeting
+                         :shape "AccountTargeting" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (empty-target-resolution-mode :initarg
+                         :empty-target-resolution-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or empty-target-resolution-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-experiment-options-input-empty-target-resolution-mode
+                         :shape "EmptyTargetResolutionMode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-experiment-template-experiment-options-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-experiment-template-experiment-options-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-experiment-template-experiment-options-input
                     'make-create-experiment-template-experiment-options-input))
@@ -352,20 +464,45 @@
                           create-experiment-template-experiment-options-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-experiment-template-log-configuration-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-create-experiment-template-log-configuration-input-"))
-   (cloud-watch-logs-configuration common-lisp:nil :type
-    (common-lisp:or
-     experiment-template-cloud-watch-logs-log-configuration-input
-     common-lisp:null))
-   (s3configuration common-lisp:nil :type
-    (common-lisp:or experiment-template-s3log-configuration-input
-                    common-lisp:null))
-   (log-schema-version (common-lisp:error ":logschemaversion is required")
-    :type (common-lisp:or log-schema-version common-lisp:null)))
+ (common-lisp:defclass create-experiment-template-log-configuration-input
+                       common-lisp:nil
+                       ((cloud-watch-logs-configuration :initarg
+                         :cloud-watch-logs-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-cloud-watch-logs-log-configuration-input
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-log-configuration-input-cloud-watch-logs-configuration
+                         :shape
+                         "ExperimentTemplateCloudWatchLogsLogConfigurationInput"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3configuration :initarg :s3configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-s3log-configuration-input
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-log-configuration-input-s3configuration
+                         :shape "ExperimentTemplateS3LogConfigurationInput"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (log-schema-version :initarg :log-schema-version
+                         :initform
+                         (common-lisp:error ":logschemaversion is required")
+                         :type
+                         (common-lisp:or log-schema-version common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-log-configuration-input-log-schema-version
+                         :shape "LogSchemaVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-experiment-template-log-configuration-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-experiment-template-log-configuration-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-experiment-template-log-configuration-input
                     'make-create-experiment-template-log-configuration-input))
@@ -407,31 +544,92 @@
                           create-experiment-template-log-configuration-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-experiment-template-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-experiment-template-request-"))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or experiment-template-description common-lisp:null))
-   (stop-conditions (common-lisp:error ":stopconditions is required") :type
-    (common-lisp:or create-experiment-template-stop-condition-input-list
-                    common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or create-experiment-template-target-input-map
-                    common-lisp:null))
-   (actions (common-lisp:error ":actions is required") :type
-    (common-lisp:or create-experiment-template-action-input-map
-                    common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (log-configuration common-lisp:nil :type
-    (common-lisp:or create-experiment-template-log-configuration-input
-                    common-lisp:null))
-   (experiment-options common-lisp:nil :type
-    (common-lisp:or create-experiment-template-experiment-options-input
-                    common-lisp:null)))
+ (common-lisp:defclass create-experiment-template-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         (common-lisp:error ":description is required") :type
+                         (common-lisp:or experiment-template-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-request-description
+                         :shape "ExperimentTemplateDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (stop-conditions :initarg :stop-conditions :initform
+                         (common-lisp:error ":stopconditions is required")
+                         :type
+                         (common-lisp:or
+                          create-experiment-template-stop-condition-input-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-request-stop-conditions
+                         :shape
+                         "CreateExperimentTemplateStopConditionInputList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          create-experiment-template-target-input-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-request-targets
+                         :shape "CreateExperimentTemplateTargetInputMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (actions :initarg :actions :initform
+                         (common-lisp:error ":actions is required") :type
+                         (common-lisp:or
+                          create-experiment-template-action-input-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-request-actions
+                         :shape "CreateExperimentTemplateActionInputMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-create-experiment-template-request-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-experiment-template-request-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (log-configuration :initarg :log-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          create-experiment-template-log-configuration-input
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-request-log-configuration
+                         :shape "CreateExperimentTemplateLogConfigurationInput"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (experiment-options :initarg :experiment-options
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          create-experiment-template-experiment-options-input
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-request-experiment-options
+                         :shape
+                         "CreateExperimentTemplateExperimentOptionsInput"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-experiment-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-experiment-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-experiment-template-request
                     'make-create-experiment-template-request))
@@ -514,11 +712,20 @@
                           create-experiment-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-experiment-template-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-experiment-template-response-"))
-   (experiment-template common-lisp:nil :type
-    (common-lisp:or experiment-template common-lisp:null)))
+ (common-lisp:defclass create-experiment-template-response common-lisp:nil
+                       ((experiment-template :initarg :experiment-template
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-response-experiment-template
+                         :shape "ExperimentTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-experiment-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-experiment-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-experiment-template-response
                     'make-create-experiment-template-response))
@@ -545,14 +752,28 @@
                           create-experiment-template-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-experiment-template-stop-condition-input (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-create-experiment-template-stop-condition-input-"))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or stop-condition-source common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or stop-condition-value common-lisp:null)))
+ (common-lisp:defclass create-experiment-template-stop-condition-input
+                       common-lisp:nil
+                       ((source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or stop-condition-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-stop-condition-input-source
+                         :shape "StopConditionSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or stop-condition-value common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-stop-condition-input-value
+                         :shape "StopConditionValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-experiment-template-stop-condition-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-experiment-template-stop-condition-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-experiment-template-stop-condition-input
                     'make-create-experiment-template-stop-condition-input))
@@ -596,24 +817,64 @@
                             create-experiment-template-stop-condition-input))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-experiment-template-target-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-experiment-template-target-input-"))
-   (resource-type (common-lisp:error ":resourcetype is required") :type
-    (common-lisp:or target-resource-type-id common-lisp:null))
-   (resource-arns common-lisp:nil :type
-    (common-lisp:or resource-arn-list common-lisp:null))
-   (resource-tags common-lisp:nil :type
-    (common-lisp:or tag-map common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or experiment-template-target-filter-input-list
-                    common-lisp:null))
-   (selection-mode (common-lisp:error ":selectionmode is required") :type
-    (common-lisp:or experiment-template-target-selection-mode
-                    common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or experiment-template-target-parameter-map
-                    common-lisp:null)))
+ (common-lisp:defclass create-experiment-template-target-input common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         (common-lisp:error ":resourcetype is required") :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-target-input-resource-type
+                         :shape "TargetResourceTypeId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resource-arns :initarg :resource-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-target-input-resource-arns
+                         :shape "ResourceArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-tags :initarg :resource-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-experiment-template-target-input-resource-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          experiment-template-target-filter-input-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-target-input-filters
+                         :shape "ExperimentTemplateTargetFilterInputList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (selection-mode :initarg :selection-mode :initform
+                         (common-lisp:error ":selectionmode is required") :type
+                         (common-lisp:or
+                          experiment-template-target-selection-mode
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-target-input-selection-mode
+                         :shape "ExperimentTemplateTargetSelectionMode"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-target-parameter-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-experiment-template-target-input-parameters
+                         :shape "ExperimentTemplateTargetParameterMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-experiment-template-target-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-experiment-template-target-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-experiment-template-target-input
                     'make-create-experiment-template-target-input))
@@ -684,21 +945,55 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-target-account-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-target-account-configuration-request-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (experiment-template-id
-    (common-lisp:error ":experimenttemplateid is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or target-account-id common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or target-account-configuration-description
-                    common-lisp:null)))
+ (common-lisp:defclass create-target-account-configuration-request
+                       common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-target-account-configuration-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (experiment-template-id :initarg
+                         :experiment-template-id :initform
+                         (common-lisp:error
+                          ":experimenttemplateid is required")
+                         :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-target-account-configuration-request-experiment-template-id
+                         :shape "ExperimentTemplateId" :location "uri"
+                         :location-name "id")
+                        (account-id :initarg :account-id :initform
+                         (common-lisp:error ":accountid is required") :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-target-account-configuration-request-account-id
+                         :shape "TargetAccountId" :location "uri"
+                         :location-name "accountId")
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-create-target-account-configuration-request-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          target-account-configuration-description
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-target-account-configuration-request-description
+                         :shape "TargetAccountConfigurationDescription"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-target-account-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-target-account-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-target-account-configuration-request
                     'make-create-target-account-configuration-request))
@@ -739,12 +1034,23 @@
                           create-target-account-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-target-account-configuration-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-create-target-account-configuration-response-"))
-   (target-account-configuration common-lisp:nil :type
-    (common-lisp:or target-account-configuration common-lisp:null)))
+ (common-lisp:defclass create-target-account-configuration-response
+                       common-lisp:nil
+                       ((target-account-configuration :initarg
+                         :target-account-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-target-account-configuration-response-target-account-configuration
+                         :shape "TargetAccountConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-target-account-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-target-account-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-target-account-configuration-response
                     'make-create-target-account-configuration-response))
@@ -773,11 +1079,21 @@
    common-lisp:nil))
 (common-lisp:deftype creation-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-experiment-template-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-experiment-template-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null)))
+ (common-lisp:defclass delete-experiment-template-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-experiment-template-request-id
+                         :shape "ExperimentTemplateId" :location "uri"
+                         :location-name "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-experiment-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-experiment-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-experiment-template-request
                     'make-delete-experiment-template-request))
@@ -797,11 +1113,20 @@
                           delete-experiment-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-experiment-template-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-experiment-template-response-"))
-   (experiment-template common-lisp:nil :type
-    (common-lisp:or experiment-template common-lisp:null)))
+ (common-lisp:defclass delete-experiment-template-response common-lisp:nil
+                       ((experiment-template :initarg :experiment-template
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template common-lisp:null)
+                         :accessor
+                         struct-shape-delete-experiment-template-response-experiment-template
+                         :shape "ExperimentTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-experiment-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-experiment-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-experiment-template-response
                     'make-delete-experiment-template-response))
@@ -828,14 +1153,32 @@
                           delete-experiment-template-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-target-account-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-target-account-configuration-request-"))
-   (experiment-template-id
-    (common-lisp:error ":experimenttemplateid is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or target-account-id common-lisp:null)))
+ (common-lisp:defclass delete-target-account-configuration-request
+                       common-lisp:nil
+                       ((experiment-template-id :initarg
+                         :experiment-template-id :initform
+                         (common-lisp:error
+                          ":experimenttemplateid is required")
+                         :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-target-account-configuration-request-experiment-template-id
+                         :shape "ExperimentTemplateId" :location "uri"
+                         :location-name "id")
+                        (account-id :initarg :account-id :initform
+                         (common-lisp:error ":accountid is required") :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-target-account-configuration-request-account-id
+                         :shape "TargetAccountId" :location "uri"
+                         :location-name "accountId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-target-account-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-target-account-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-target-account-configuration-request
                     'make-delete-target-account-configuration-request))
@@ -855,12 +1198,23 @@
                           delete-target-account-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-target-account-configuration-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-target-account-configuration-response-"))
-   (target-account-configuration common-lisp:nil :type
-    (common-lisp:or target-account-configuration common-lisp:null)))
+ (common-lisp:defclass delete-target-account-configuration-response
+                       common-lisp:nil
+                       ((target-account-configuration :initarg
+                         :target-account-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-target-account-configuration-response-target-account-configuration
+                         :shape "TargetAccountConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-target-account-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-target-account-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-target-account-configuration-response
                     'make-delete-target-account-configuration-response))
@@ -890,34 +1244,102 @@
 (common-lisp:deftype empty-target-resolution-mode () 'common-lisp:string)
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-"))
-   (id common-lisp:nil :type (common-lisp:or experiment-id common-lisp:null))
-   (experiment-template-id common-lisp:nil :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (state common-lisp:nil :type
-    (common-lisp:or experiment-state common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or experiment-target-map common-lisp:null))
-   (actions common-lisp:nil :type
-    (common-lisp:or experiment-action-map common-lisp:null))
-   (stop-conditions common-lisp:nil :type
-    (common-lisp:or experiment-stop-condition-list common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or creation-time common-lisp:null))
-   (start-time common-lisp:nil :type
-    (common-lisp:or experiment-start-time common-lisp:null))
-   (end-time common-lisp:nil :type
-    (common-lisp:or experiment-end-time common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (log-configuration common-lisp:nil :type
-    (common-lisp:or experiment-log-configuration common-lisp:null))
-   (experiment-options common-lisp:nil :type
-    (common-lisp:or experiment-options common-lisp:null))
-   (target-account-configurations-count common-lisp:nil :type
-    (common-lisp:or target-account-configurations-count common-lisp:null)))
+ (common-lisp:defclass experiment common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or experiment-id common-lisp:null)
+                         :accessor struct-shape-experiment-id :shape
+                         "ExperimentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (experiment-template-id :initarg
+                         :experiment-template-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-experiment-template-id :shape
+                         "ExperimentTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor struct-shape-experiment-role-arn :shape
+                         "RoleArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or experiment-state common-lisp:null)
+                         :accessor struct-shape-experiment-state :shape
+                         "ExperimentState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-target-map
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-targets :shape
+                         "ExperimentTargetMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (actions :initarg :actions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-action-map
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-actions :shape
+                         "ExperimentActionMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stop-conditions :initarg :stop-conditions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-stop-condition-list
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-stop-conditions
+                         :shape "ExperimentStopConditionList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or creation-time common-lisp:null)
+                         :accessor struct-shape-experiment-creation-time :shape
+                         "CreationTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-start-time
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-start-time :shape
+                         "ExperimentStartTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-end-time common-lisp:null)
+                         :accessor struct-shape-experiment-end-time :shape
+                         "ExperimentEndTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-experiment-tags :shape "TagMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (log-configuration :initarg :log-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-log-configuration
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-log-configuration
+                         :shape "ExperimentLogConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (experiment-options :initarg :experiment-options
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-options common-lisp:null)
+                         :accessor struct-shape-experiment-experiment-options
+                         :shape "ExperimentOptions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-account-configurations-count :initarg
+                         :target-account-configurations-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-configurations-count
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-target-account-configurations-count
+                         :shape "TargetAccountConfigurationsCount" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'experiment 'make-experiment))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input experiment))
@@ -1029,25 +1451,66 @@
                         ((aws-sdk/generator/shape::input experiment))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-action (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-action-"))
-   (action-id common-lisp:nil :type
-    (common-lisp:or action-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or experiment-action-description common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or experiment-action-parameter-map common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or experiment-action-target-map common-lisp:null))
-   (start-after common-lisp:nil :type
-    (common-lisp:or experiment-action-start-after-list common-lisp:null))
-   (state common-lisp:nil :type
-    (common-lisp:or experiment-action-state common-lisp:null))
-   (start-time common-lisp:nil :type
-    (common-lisp:or experiment-action-start-time common-lisp:null))
-   (end-time common-lisp:nil :type
-    (common-lisp:or experiment-action-end-time common-lisp:null)))
+ (common-lisp:defclass experiment-action common-lisp:nil
+                       ((action-id :initarg :action-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-experiment-action-action-id :shape
+                         "ActionId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-action-description
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-description
+                         :shape "ExperimentActionDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-action-parameter-map
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-parameters
+                         :shape "ExperimentActionParameterMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-action-target-map
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-targets
+                         :shape "ExperimentActionTargetMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-after :initarg :start-after :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-action-start-after-list
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-start-after
+                         :shape "ExperimentActionStartAfterList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or experiment-action-state
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-state :shape
+                         "ExperimentActionState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-action-start-time
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-start-time
+                         :shape "ExperimentActionStartTime" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-action-end-time
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-end-time
+                         :shape "ExperimentActionEndTime" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-action 'make-experiment-action))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1149,13 +1612,26 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype experiment-action-start-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-action-state (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-action-state-"))
-   (status common-lisp:nil :type
-    (common-lisp:or experiment-action-status common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or experiment-action-status-reason common-lisp:null)))
+ (common-lisp:defclass experiment-action-state common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-action-status
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-state-status
+                         :shape "ExperimentActionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (reason :initarg :reason :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-action-status-reason
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-action-state-reason
+                         :shape "ExperimentActionStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-action-state
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-action-state
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-action-state 'make-experiment-action-state))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1199,12 +1675,22 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype experiment-action-target-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-cloud-watch-logs-log-configuration (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-experiment-cloud-watch-logs-log-configuration-"))
-   (log-group-arn common-lisp:nil :type
-    (common-lisp:or cloud-watch-log-group-arn common-lisp:null)))
+ (common-lisp:defclass experiment-cloud-watch-logs-log-configuration
+                       common-lisp:nil
+                       ((log-group-arn :initarg :log-group-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cloud-watch-log-group-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-cloud-watch-logs-log-configuration-log-group-arn
+                         :shape "CloudWatchLogGroupArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-cloud-watch-logs-log-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-cloud-watch-logs-log-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-cloud-watch-logs-log-configuration
                     'make-experiment-cloud-watch-logs-log-configuration))
@@ -1233,16 +1719,38 @@
 (common-lisp:deftype experiment-end-time () 'common-lisp:string)
 (common-lisp:deftype experiment-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-log-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-log-configuration-"))
-   (cloud-watch-logs-configuration common-lisp:nil :type
-    (common-lisp:or experiment-cloud-watch-logs-log-configuration
-                    common-lisp:null))
-   (s3configuration common-lisp:nil :type
-    (common-lisp:or experiment-s3log-configuration common-lisp:null))
-   (log-schema-version common-lisp:nil :type
-    (common-lisp:or log-schema-version common-lisp:null)))
+ (common-lisp:defclass experiment-log-configuration common-lisp:nil
+                       ((cloud-watch-logs-configuration :initarg
+                         :cloud-watch-logs-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-cloud-watch-logs-log-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-log-configuration-cloud-watch-logs-configuration
+                         :shape "ExperimentCloudWatchLogsLogConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3configuration :initarg :s3configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-s3log-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-log-configuration-s3configuration
+                         :shape "ExperimentS3LogConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (log-schema-version :initarg :log-schema-version
+                         :initform common-lisp:nil :type
+                         (common-lisp:or log-schema-version common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-log-configuration-log-schema-version
+                         :shape "LogSchemaVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-log-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-log-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-log-configuration
                     'make-experiment-log-configuration))
@@ -1284,13 +1792,28 @@
                           experiment-log-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-options (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-options-"))
-   (account-targeting common-lisp:nil :type
-    (common-lisp:or account-targeting common-lisp:null))
-   (empty-target-resolution-mode common-lisp:nil :type
-    (common-lisp:or empty-target-resolution-mode common-lisp:null)))
+ (common-lisp:defclass experiment-options common-lisp:nil
+                       ((account-targeting :initarg :account-targeting
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-targeting common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-options-account-targeting
+                         :shape "AccountTargeting" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (empty-target-resolution-mode :initarg
+                         :empty-target-resolution-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or empty-target-resolution-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-options-empty-target-resolution-mode
+                         :shape "EmptyTargetResolutionMode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-options
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-options
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-options 'make-experiment-options))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1318,13 +1841,26 @@
                         ((aws-sdk/generator/shape::input experiment-options))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-s3log-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-s3log-configuration-"))
-   (bucket-name common-lisp:nil :type
-    (common-lisp:or s3bucket-name common-lisp:null))
-   (prefix common-lisp:nil :type
-    (common-lisp:or s3object-key common-lisp:null)))
+ (common-lisp:defclass experiment-s3log-configuration common-lisp:nil
+                       ((bucket-name :initarg :bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or s3bucket-name common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-s3log-configuration-bucket-name
+                         :shape "S3BucketName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or s3object-key common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-s3log-configuration-prefix
+                         :shape "S3ObjectKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-s3log-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-s3log-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-s3log-configuration
                     'make-experiment-s3log-configuration))
@@ -1359,13 +1895,25 @@
    common-lisp:nil))
 (common-lisp:deftype experiment-start-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-state (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-state-"))
-   (status common-lisp:nil :type
-    (common-lisp:or experiment-status common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or experiment-status-reason common-lisp:null)))
+ (common-lisp:defclass experiment-state common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-status common-lisp:null)
+                         :accessor struct-shape-experiment-state-status :shape
+                         "ExperimentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reason :initarg :reason :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-status-reason
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-state-reason :shape
+                         "ExperimentStatusReason" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-state
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-state
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-state 'make-experiment-state))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1394,13 +1942,25 @@
 (common-lisp:deftype experiment-status () 'common-lisp:string)
 (common-lisp:deftype experiment-status-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-stop-condition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-stop-condition-"))
-   (source common-lisp:nil :type
-    (common-lisp:or stop-condition-source common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or stop-condition-value common-lisp:null)))
+ (common-lisp:defclass experiment-stop-condition common-lisp:nil
+                       ((source :initarg :source :initform common-lisp:nil
+                         :type
+                         (common-lisp:or stop-condition-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-stop-condition-source :shape
+                         "StopConditionSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or stop-condition-value common-lisp:null)
+                         :accessor struct-shape-experiment-stop-condition-value
+                         :shape "StopConditionValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-stop-condition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-stop-condition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-stop-condition
                     'make-experiment-stop-condition))
@@ -1443,17 +2003,43 @@
                             experiment-stop-condition))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-summary-"))
-   (id common-lisp:nil :type (common-lisp:or experiment-id common-lisp:null))
-   (experiment-template-id common-lisp:nil :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (state common-lisp:nil :type
-    (common-lisp:or experiment-state common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or creation-time common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass experiment-summary common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or experiment-id common-lisp:null)
+                         :accessor struct-shape-experiment-summary-id :shape
+                         "ExperimentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (experiment-template-id :initarg
+                         :experiment-template-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-summary-experiment-template-id
+                         :shape "ExperimentTemplateId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or experiment-state common-lisp:null)
+                         :accessor struct-shape-experiment-summary-state :shape
+                         "ExperimentState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or creation-time common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-summary-creation-time :shape
+                         "CreationTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-experiment-summary-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-summary 'make-experiment-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1510,21 +2096,53 @@
                            (trivial-types:proper-list experiment-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-target (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-target-"))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or target-resource-type-id common-lisp:null))
-   (resource-arns common-lisp:nil :type
-    (common-lisp:or resource-arn-list common-lisp:null))
-   (resource-tags common-lisp:nil :type
-    (common-lisp:or tag-map common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or experiment-target-filter-list common-lisp:null))
-   (selection-mode common-lisp:nil :type
-    (common-lisp:or experiment-target-selection-mode common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or experiment-target-parameter-map common-lisp:null)))
+ (common-lisp:defclass experiment-target common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-target-resource-type
+                         :shape "TargetResourceTypeId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resource-arns :initarg :resource-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn-list common-lisp:null)
+                         :accessor struct-shape-experiment-target-resource-arns
+                         :shape "ResourceArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-tags :initarg :resource-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-experiment-target-resource-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-target-filter-list
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-target-filters
+                         :shape "ExperimentTargetFilterList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (selection-mode :initarg :selection-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-target-selection-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-target-selection-mode :shape
+                         "ExperimentTargetSelectionMode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-target-parameter-map
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-target-parameters
+                         :shape "ExperimentTargetParameterMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-target
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-target
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-target 'make-experiment-target))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1579,15 +2197,36 @@
                         ((aws-sdk/generator/shape::input experiment-target))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-target-account-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-target-account-configuration-"))
-   (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or target-account-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or target-account-configuration-description
-                    common-lisp:null)))
+ (common-lisp:defclass experiment-target-account-configuration common-lisp:nil
+                       ((role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-target-account-configuration-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-target-account-configuration-account-id
+                         :shape "TargetAccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          target-account-configuration-description
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-target-account-configuration-description
+                         :shape "TargetAccountConfigurationDescription"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-target-account-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-target-account-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-target-account-configuration
                     'make-experiment-target-account-configuration))
@@ -1638,16 +2277,37 @@
                             experiment-target-account-configuration-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-target-account-configuration-summary (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-experiment-target-account-configuration-summary-"))
-   (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or target-account-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or target-account-configuration-description
-                    common-lisp:null)))
+ (common-lisp:defclass experiment-target-account-configuration-summary
+                       common-lisp:nil
+                       ((role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-target-account-configuration-summary-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-target-account-configuration-summary-account-id
+                         :shape "TargetAccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          target-account-configuration-description
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-target-account-configuration-summary-description
+                         :shape "TargetAccountConfigurationDescription"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-target-account-configuration-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-target-account-configuration-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-target-account-configuration-summary
                     'make-experiment-target-account-configuration-summary))
@@ -1688,13 +2348,25 @@
                           experiment-target-account-configuration-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-target-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-target-filter-"))
-   (path common-lisp:nil :type
-    (common-lisp:or experiment-target-filter-path common-lisp:null))
-   (values common-lisp:nil :type
-    (common-lisp:or experiment-target-filter-values common-lisp:null)))
+ (common-lisp:defclass experiment-target-filter common-lisp:nil
+                       ((path :initarg :path :initform common-lisp:nil :type
+                         (common-lisp:or experiment-target-filter-path
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-target-filter-path
+                         :shape "ExperimentTargetFilterPath" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-target-filter-values
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-target-filter-values
+                         :shape "ExperimentTargetFilterValues" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-target-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-target-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-target-filter 'make-experiment-target-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1768,31 +2440,97 @@
 (common-lisp:deftype experiment-target-parameter-value () 'common-lisp:string)
 (common-lisp:deftype experiment-target-selection-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-"))
-   (id common-lisp:nil :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or experiment-template-description common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or experiment-template-target-map common-lisp:null))
-   (actions common-lisp:nil :type
-    (common-lisp:or experiment-template-action-map common-lisp:null))
-   (stop-conditions common-lisp:nil :type
-    (common-lisp:or experiment-template-stop-condition-list common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or creation-time common-lisp:null))
-   (last-update-time common-lisp:nil :type
-    (common-lisp:or last-update-time common-lisp:null))
-   (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (log-configuration common-lisp:nil :type
-    (common-lisp:or experiment-template-log-configuration common-lisp:null))
-   (experiment-options common-lisp:nil :type
-    (common-lisp:or experiment-template-experiment-options common-lisp:null))
-   (target-account-configurations-count common-lisp:nil :type
-    (common-lisp:or target-account-configurations-count common-lisp:null)))
+ (common-lisp:defclass experiment-template common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-template-id :shape
+                         "ExperimentTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-template-description
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-template-description
+                         :shape "ExperimentTemplateDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-template-target-map
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-template-targets
+                         :shape "ExperimentTemplateTargetMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (actions :initarg :actions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-template-action-map
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-template-actions
+                         :shape "ExperimentTemplateActionMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (stop-conditions :initarg :stop-conditions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-stop-condition-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-stop-conditions
+                         :shape "ExperimentTemplateStopConditionList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or creation-time common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-creation-time :shape
+                         "CreationTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-update-time :initarg :last-update-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or last-update-time common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-last-update-time
+                         :shape "LastUpdateTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor struct-shape-experiment-template-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-experiment-template-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (log-configuration :initarg :log-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template-log-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-log-configuration
+                         :shape "ExperimentTemplateLogConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (experiment-options :initarg :experiment-options
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template-experiment-options
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-experiment-options
+                         :shape "ExperimentTemplateExperimentOptions" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (target-account-configurations-count :initarg
+                         :target-account-configurations-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-configurations-count
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-account-configurations-count
+                         :shape "TargetAccountConfigurationsCount" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-template
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template 'make-experiment-template))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1890,20 +2628,54 @@
                         ((aws-sdk/generator/shape::input experiment-template))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-action (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-action-"))
-   (action-id common-lisp:nil :type
-    (common-lisp:or action-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or experiment-template-action-description common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or experiment-template-action-parameter-map common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or experiment-template-action-target-map common-lisp:null))
-   (start-after common-lisp:nil :type
-    (common-lisp:or experiment-template-action-start-after-list
-                    common-lisp:null)))
+ (common-lisp:defclass experiment-template-action common-lisp:nil
+                       ((action-id :initarg :action-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-experiment-template-action-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-template-action-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-action-description
+                         :shape "ExperimentTemplateActionDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-action-parameter-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-action-parameters
+                         :shape "ExperimentTemplateActionParameterMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-template-action-target-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-action-targets :shape
+                         "ExperimentTemplateActionTargetMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-after :initarg :start-after :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-action-start-after-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-action-start-after
+                         :shape "ExperimentTemplateActionStartAfterList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-template-action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-action
                     'make-experiment-template-action))
@@ -2005,13 +2777,22 @@
 (common-lisp:deftype experiment-template-action-target-name ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-cloud-watch-logs-log-configuration
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-experiment-template-cloud-watch-logs-log-configuration-"))
-   (log-group-arn common-lisp:nil :type
-    (common-lisp:or cloud-watch-log-group-arn common-lisp:null)))
+ (common-lisp:defclass experiment-template-cloud-watch-logs-log-configuration
+                       common-lisp:nil
+                       ((log-group-arn :initarg :log-group-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cloud-watch-log-group-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-cloud-watch-logs-log-configuration-log-group-arn
+                         :shape "CloudWatchLogGroupArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-cloud-watch-logs-log-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-cloud-watch-logs-log-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-cloud-watch-logs-log-configuration
                     'make-experiment-template-cloud-watch-logs-log-configuration))
@@ -2038,13 +2819,20 @@
                           experiment-template-cloud-watch-logs-log-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-cloud-watch-logs-log-configuration-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-experiment-template-cloud-watch-logs-log-configuration-input-"))
-   (log-group-arn (common-lisp:error ":loggrouparn is required") :type
-    (common-lisp:or cloud-watch-log-group-arn common-lisp:null)))
+ (common-lisp:defclass
+  experiment-template-cloud-watch-logs-log-configuration-input common-lisp:nil
+  ((log-group-arn :initarg :log-group-arn :initform
+    (common-lisp:error ":loggrouparn is required") :type
+    (common-lisp:or cloud-watch-log-group-arn common-lisp:null) :accessor
+    struct-shape-experiment-template-cloud-watch-logs-log-configuration-input-log-group-arn
+    :shape "CloudWatchLogGroupArn" :location common-lisp:nil :location-name
+    common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-cloud-watch-logs-log-configuration-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-cloud-watch-logs-log-configuration-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'experiment-template-cloud-watch-logs-log-configuration-input
@@ -2073,13 +2861,29 @@
    common-lisp:nil))
 (common-lisp:deftype experiment-template-description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-experiment-options (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-experiment-options-"))
-   (account-targeting common-lisp:nil :type
-    (common-lisp:or account-targeting common-lisp:null))
-   (empty-target-resolution-mode common-lisp:nil :type
-    (common-lisp:or empty-target-resolution-mode common-lisp:null)))
+ (common-lisp:defclass experiment-template-experiment-options common-lisp:nil
+                       ((account-targeting :initarg :account-targeting
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-targeting common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-experiment-options-account-targeting
+                         :shape "AccountTargeting" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (empty-target-resolution-mode :initarg
+                         :empty-target-resolution-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or empty-target-resolution-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-experiment-options-empty-target-resolution-mode
+                         :shape "EmptyTargetResolutionMode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-experiment-options
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-experiment-options
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-experiment-options
                     'make-experiment-template-experiment-options))
@@ -2115,16 +2919,42 @@
    common-lisp:nil))
 (common-lisp:deftype experiment-template-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-log-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-log-configuration-"))
-   (cloud-watch-logs-configuration common-lisp:nil :type
-    (common-lisp:or experiment-template-cloud-watch-logs-log-configuration
-                    common-lisp:null))
-   (s3configuration common-lisp:nil :type
-    (common-lisp:or experiment-template-s3log-configuration common-lisp:null))
-   (log-schema-version common-lisp:nil :type
-    (common-lisp:or log-schema-version common-lisp:null)))
+ (common-lisp:defclass experiment-template-log-configuration common-lisp:nil
+                       ((cloud-watch-logs-configuration :initarg
+                         :cloud-watch-logs-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-cloud-watch-logs-log-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-log-configuration-cloud-watch-logs-configuration
+                         :shape
+                         "ExperimentTemplateCloudWatchLogsLogConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3configuration :initarg :s3configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-s3log-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-log-configuration-s3configuration
+                         :shape "ExperimentTemplateS3LogConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (log-schema-version :initarg :log-schema-version
+                         :initform common-lisp:nil :type
+                         (common-lisp:or log-schema-version common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-log-configuration-log-schema-version
+                         :shape "LogSchemaVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-log-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-log-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-log-configuration
                     'make-experiment-template-log-configuration))
@@ -2166,13 +2996,26 @@
                           experiment-template-log-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-s3log-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-s3log-configuration-"))
-   (bucket-name common-lisp:nil :type
-    (common-lisp:or s3bucket-name common-lisp:null))
-   (prefix common-lisp:nil :type
-    (common-lisp:or s3object-key common-lisp:null)))
+ (common-lisp:defclass experiment-template-s3log-configuration common-lisp:nil
+                       ((bucket-name :initarg :bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or s3bucket-name common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-s3log-configuration-bucket-name
+                         :shape "S3BucketName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or s3object-key common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-s3log-configuration-prefix
+                         :shape "S3ObjectKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-s3log-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-s3log-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-s3log-configuration
                     'make-experiment-template-s3log-configuration))
@@ -2206,14 +3049,27 @@
                           experiment-template-s3log-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-s3log-configuration-input (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-experiment-template-s3log-configuration-input-"))
-   (bucket-name (common-lisp:error ":bucketname is required") :type
-    (common-lisp:or s3bucket-name common-lisp:null))
-   (prefix common-lisp:nil :type
-    (common-lisp:or s3object-key common-lisp:null)))
+ (common-lisp:defclass experiment-template-s3log-configuration-input
+                       common-lisp:nil
+                       ((bucket-name :initarg :bucket-name :initform
+                         (common-lisp:error ":bucketname is required") :type
+                         (common-lisp:or s3bucket-name common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-s3log-configuration-input-bucket-name
+                         :shape "S3BucketName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or s3object-key common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-s3log-configuration-input-prefix
+                         :shape "S3ObjectKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-s3log-configuration-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-s3log-configuration-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-s3log-configuration-input
                     'make-experiment-template-s3log-configuration-input))
@@ -2247,13 +3103,27 @@
                           experiment-template-s3log-configuration-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-stop-condition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-stop-condition-"))
-   (source common-lisp:nil :type
-    (common-lisp:or stop-condition-source common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or stop-condition-value common-lisp:null)))
+ (common-lisp:defclass experiment-template-stop-condition common-lisp:nil
+                       ((source :initarg :source :initform common-lisp:nil
+                         :type
+                         (common-lisp:or stop-condition-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-stop-condition-source
+                         :shape "StopConditionSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or stop-condition-value common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-stop-condition-value
+                         :shape "StopConditionValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-stop-condition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-stop-condition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-stop-condition
                     'make-experiment-template-stop-condition))
@@ -2296,18 +3166,45 @@
                             experiment-template-stop-condition))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-summary-"))
-   (id common-lisp:nil :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or experiment-template-description common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or creation-time common-lisp:null))
-   (last-update-time common-lisp:nil :type
-    (common-lisp:or last-update-time common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass experiment-template-summary common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor struct-shape-experiment-template-summary-id
+                         :shape "ExperimentTemplateId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-template-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-summary-description
+                         :shape "ExperimentTemplateDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or creation-time common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-summary-creation-time
+                         :shape "CreationTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-update-time :initarg :last-update-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or last-update-time common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-summary-last-update-time
+                         :shape "LastUpdateTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-experiment-template-summary-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-template-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-summary
                     'make-experiment-template-summary))
@@ -2371,23 +3268,61 @@
                             experiment-template-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-target (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-target-"))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or target-resource-type-id common-lisp:null))
-   (resource-arns common-lisp:nil :type
-    (common-lisp:or resource-arn-list common-lisp:null))
-   (resource-tags common-lisp:nil :type
-    (common-lisp:or tag-map common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or experiment-template-target-filter-list common-lisp:null))
-   (selection-mode common-lisp:nil :type
-    (common-lisp:or experiment-template-target-selection-mode
-                    common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or experiment-template-target-parameter-map
-                    common-lisp:null)))
+ (common-lisp:defclass experiment-template-target common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-resource-type
+                         :shape "TargetResourceTypeId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resource-arns :initarg :resource-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-resource-arns
+                         :shape "ResourceArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-tags :initarg :resource-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-experiment-template-target-resource-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-template-target-filter-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-filters :shape
+                         "ExperimentTemplateTargetFilterList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (selection-mode :initarg :selection-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-target-selection-mode
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-selection-mode
+                         :shape "ExperimentTemplateTargetSelectionMode"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-target-parameter-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-parameters
+                         :shape "ExperimentTemplateTargetParameterMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-target
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'experiment-template-target
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-target
                     'make-experiment-template-target))
@@ -2449,14 +3384,30 @@
                           experiment-template-target))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-target-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-target-filter-"))
-   (path common-lisp:nil :type
-    (common-lisp:or experiment-template-target-filter-path common-lisp:null))
-   (values common-lisp:nil :type
-    (common-lisp:or experiment-template-target-filter-values
-                    common-lisp:null)))
+ (common-lisp:defclass experiment-template-target-filter common-lisp:nil
+                       ((path :initarg :path :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template-target-filter-path
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-filter-path
+                         :shape "ExperimentTemplateTargetFilterPath" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          experiment-template-target-filter-values
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-filter-values
+                         :shape "ExperimentTemplateTargetFilterValues"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-target-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-target-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-target-filter
                     'make-experiment-template-target-filter))
@@ -2521,14 +3472,31 @@
                             experiment-template-target-filter-value))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (experiment-template-target-input-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-experiment-template-target-input-filter-"))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or experiment-template-target-filter-path common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or experiment-template-target-filter-values
-                    common-lisp:null)))
+ (common-lisp:defclass experiment-template-target-input-filter common-lisp:nil
+                       ((path :initarg :path :initform
+                         (common-lisp:error ":path is required") :type
+                         (common-lisp:or experiment-template-target-filter-path
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-input-filter-path
+                         :shape "ExperimentTemplateTargetFilterPath" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (values :initarg :values :initform
+                         (common-lisp:error ":values is required") :type
+                         (common-lisp:or
+                          experiment-template-target-filter-values
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-experiment-template-target-input-filter-values
+                         :shape "ExperimentTemplateTargetFilterValues"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-experiment-template-target-input-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'experiment-template-target-input-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'experiment-template-target-input-filter
                     'make-experiment-template-target-input-filter))
@@ -2587,11 +3555,17 @@
 (common-lisp:deftype experiment-template-target-selection-mode ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-action-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-action-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or action-id common-lisp:null)))
+ (common-lisp:defclass get-action-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-get-action-request-id :shape "ActionId"
+                         :location "uri" :location-name "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-action-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-action-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-action-request 'make-get-action-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2604,10 +3578,17 @@
                         ((aws-sdk/generator/shape::input get-action-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-action-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-action-response-"))
-   (action common-lisp:nil :type (common-lisp:or action common-lisp:null)))
+ (common-lisp:defclass get-action-response common-lisp:nil
+                       ((action :initarg :action :initform common-lisp:nil
+                         :type (common-lisp:or action common-lisp:null)
+                         :accessor struct-shape-get-action-response-action
+                         :shape "Action" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-action-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-action-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-action-response 'make-get-action-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2627,11 +3608,18 @@
                         ((aws-sdk/generator/shape::input get-action-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-experiment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-experiment-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or experiment-id common-lisp:null)))
+ (common-lisp:defclass get-experiment-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or experiment-id common-lisp:null)
+                         :accessor struct-shape-get-experiment-request-id
+                         :shape "ExperimentId" :location "uri" :location-name
+                         "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-experiment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-experiment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-experiment-request 'make-get-experiment-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2650,11 +3638,18 @@
                           get-experiment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-experiment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-experiment-response-"))
-   (experiment common-lisp:nil :type
-    (common-lisp:or experiment common-lisp:null)))
+ (common-lisp:defclass get-experiment-response common-lisp:nil
+                       ((experiment :initarg :experiment :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment common-lisp:null) :accessor
+                         struct-shape-get-experiment-response-experiment :shape
+                         "Experiment" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-experiment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-experiment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-experiment-response 'make-get-experiment-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2680,15 +3675,28 @@
                           get-experiment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-experiment-target-account-configuration-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-experiment-target-account-configuration-request-"))
-   (experiment-id (common-lisp:error ":experimentid is required") :type
-    (common-lisp:or experiment-id common-lisp:null))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or target-account-id common-lisp:null)))
+ (common-lisp:defclass get-experiment-target-account-configuration-request
+                       common-lisp:nil
+                       ((experiment-id :initarg :experiment-id :initform
+                         (common-lisp:error ":experimentid is required") :type
+                         (common-lisp:or experiment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-experiment-target-account-configuration-request-experiment-id
+                         :shape "ExperimentId" :location "uri" :location-name
+                         "id")
+                        (account-id :initarg :account-id :initform
+                         (common-lisp:error ":accountid is required") :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-experiment-target-account-configuration-request-account-id
+                         :shape "TargetAccountId" :location "uri"
+                         :location-name "accountId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-experiment-target-account-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-experiment-target-account-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-experiment-target-account-configuration-request
                     'make-get-experiment-target-account-configuration-request))
@@ -2708,13 +3716,25 @@
                           get-experiment-target-account-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-experiment-target-account-configuration-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-experiment-target-account-configuration-response-"))
-   (target-account-configuration common-lisp:nil :type
-    (common-lisp:or experiment-target-account-configuration common-lisp:null)))
+ (common-lisp:defclass get-experiment-target-account-configuration-response
+                       common-lisp:nil
+                       ((target-account-configuration :initarg
+                         :target-account-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-target-account-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-get-experiment-target-account-configuration-response-target-account-configuration
+                         :shape "ExperimentTargetAccountConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-experiment-target-account-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-experiment-target-account-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-experiment-target-account-configuration-response
                     'make-get-experiment-target-account-configuration-response))
@@ -2742,11 +3762,21 @@
                           get-experiment-target-account-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-experiment-template-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-experiment-template-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null)))
+ (common-lisp:defclass get-experiment-template-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-experiment-template-request-id :shape
+                         "ExperimentTemplateId" :location "uri" :location-name
+                         "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-experiment-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-experiment-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-experiment-template-request
                     'make-get-experiment-template-request))
@@ -2766,11 +3796,20 @@
                           get-experiment-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-experiment-template-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-experiment-template-response-"))
-   (experiment-template common-lisp:nil :type
-    (common-lisp:or experiment-template common-lisp:null)))
+ (common-lisp:defclass get-experiment-template-response common-lisp:nil
+                       ((experiment-template :initarg :experiment-template
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template common-lisp:null)
+                         :accessor
+                         struct-shape-get-experiment-template-response-experiment-template
+                         :shape "ExperimentTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-experiment-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-experiment-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-experiment-template-response
                     'make-get-experiment-template-response))
@@ -2797,14 +3836,31 @@
                           get-experiment-template-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-target-account-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-target-account-configuration-request-"))
-   (experiment-template-id
-    (common-lisp:error ":experimenttemplateid is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or target-account-id common-lisp:null)))
+ (common-lisp:defclass get-target-account-configuration-request common-lisp:nil
+                       ((experiment-template-id :initarg
+                         :experiment-template-id :initform
+                         (common-lisp:error
+                          ":experimenttemplateid is required")
+                         :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-target-account-configuration-request-experiment-template-id
+                         :shape "ExperimentTemplateId" :location "uri"
+                         :location-name "id")
+                        (account-id :initarg :account-id :initform
+                         (common-lisp:error ":accountid is required") :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-target-account-configuration-request-account-id
+                         :shape "TargetAccountId" :location "uri"
+                         :location-name "accountId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-target-account-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-target-account-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-target-account-configuration-request
                     'make-get-target-account-configuration-request))
@@ -2824,11 +3880,23 @@
                           get-target-account-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-target-account-configuration-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-target-account-configuration-response-"))
-   (target-account-configuration common-lisp:nil :type
-    (common-lisp:or target-account-configuration common-lisp:null)))
+ (common-lisp:defclass get-target-account-configuration-response
+                       common-lisp:nil
+                       ((target-account-configuration :initarg
+                         :target-account-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-target-account-configuration-response-target-account-configuration
+                         :shape "TargetAccountConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-target-account-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-target-account-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-target-account-configuration-response
                     'make-get-target-account-configuration-response))
@@ -2856,11 +3924,21 @@
                           get-target-account-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-target-resource-type-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-target-resource-type-request-"))
-   (resource-type (common-lisp:error ":resourcetype is required") :type
-    (common-lisp:or target-resource-type-id common-lisp:null)))
+ (common-lisp:defclass get-target-resource-type-request common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         (common-lisp:error ":resourcetype is required") :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-target-resource-type-request-resource-type
+                         :shape "TargetResourceTypeId" :location "uri"
+                         :location-name "resourceType"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-target-resource-type-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-target-resource-type-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-target-resource-type-request
                     'make-get-target-resource-type-request))
@@ -2880,11 +3958,20 @@
                           get-target-resource-type-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-target-resource-type-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-target-resource-type-response-"))
-   (target-resource-type common-lisp:nil :type
-    (common-lisp:or target-resource-type common-lisp:null)))
+ (common-lisp:defclass get-target-resource-type-response common-lisp:nil
+                       ((target-resource-type :initarg :target-resource-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or target-resource-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-target-resource-type-response-target-resource-type
+                         :shape "TargetResourceType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-target-resource-type-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-target-resource-type-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-target-resource-type-response
                     'make-get-target-resource-type-response))
@@ -2914,13 +4001,26 @@
 (common-lisp:deftype last-update-time () 'common-lisp:string)
 (common-lisp:deftype list-actions-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-actions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-actions-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-actions-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-actions-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-actions-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-actions-request-max-results :shape
+                         "ListActionsMaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-actions-request-next-token :shape
+                         "NextToken" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-actions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-actions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-actions-request 'make-list-actions-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2933,13 +4033,24 @@
                         ((aws-sdk/generator/shape::input list-actions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-actions-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-actions-response-"))
-   (actions common-lisp:nil :type
-    (common-lisp:or action-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-actions-response common-lisp:nil
+                       ((actions :initarg :actions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or action-summary-list common-lisp:null)
+                         :accessor struct-shape-list-actions-response-actions
+                         :shape "ActionSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-actions-response-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-actions-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-actions-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-actions-response 'make-list-actions-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2974,18 +4085,42 @@
 (common-lisp:deftype list-experiment-resolved-targets-max-results ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-experiment-resolved-targets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-experiment-resolved-targets-request-"))
-   (experiment-id (common-lisp:error ":experimentid is required") :type
-    (common-lisp:or experiment-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-experiment-resolved-targets-max-results
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (target-name common-lisp:nil :type
-    (common-lisp:or target-name common-lisp:null)))
+ (common-lisp:defclass list-experiment-resolved-targets-request common-lisp:nil
+                       ((experiment-id :initarg :experiment-id :initform
+                         (common-lisp:error ":experimentid is required") :type
+                         (common-lisp:or experiment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiment-resolved-targets-request-experiment-id
+                         :shape "ExperimentId" :location "uri" :location-name
+                         "id")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-experiment-resolved-targets-max-results
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiment-resolved-targets-request-max-results
+                         :shape "ListExperimentResolvedTargetsMaxResults"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-experiment-resolved-targets-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken")
+                        (target-name :initarg :target-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiment-resolved-targets-request-target-name
+                         :shape "TargetName" :location "querystring"
+                         :location-name "targetName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-experiment-resolved-targets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-experiment-resolved-targets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-experiment-resolved-targets-request
                     'make-list-experiment-resolved-targets-request))
@@ -3005,13 +4140,27 @@
                           list-experiment-resolved-targets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-experiment-resolved-targets-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-experiment-resolved-targets-response-"))
-   (resolved-targets common-lisp:nil :type
-    (common-lisp:or resolved-target-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-experiment-resolved-targets-response
+                       common-lisp:nil
+                       ((resolved-targets :initarg :resolved-targets :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolved-target-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiment-resolved-targets-response-resolved-targets
+                         :shape "ResolvedTargetList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-experiment-resolved-targets-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-experiment-resolved-targets-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-experiment-resolved-targets-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-experiment-resolved-targets-response
                     'make-list-experiment-resolved-targets-response))
@@ -3045,15 +4194,27 @@
                           list-experiment-resolved-targets-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-experiment-target-account-configurations-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-experiment-target-account-configurations-request-"))
-   (experiment-id (common-lisp:error ":experimentid is required") :type
-    (common-lisp:or experiment-id common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-experiment-target-account-configurations-request
+                       common-lisp:nil
+                       ((experiment-id :initarg :experiment-id :initform
+                         (common-lisp:error ":experimentid is required") :type
+                         (common-lisp:or experiment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiment-target-account-configurations-request-experiment-id
+                         :shape "ExperimentId" :location "uri" :location-name
+                         "id")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-experiment-target-account-configurations-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-experiment-target-account-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-experiment-target-account-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-experiment-target-account-configurations-request
                     'make-list-experiment-target-account-configurations-request))
@@ -3073,16 +4234,31 @@
                           list-experiment-target-account-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-experiment-target-account-configurations-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-experiment-target-account-configurations-response-"))
-   (target-account-configurations common-lisp:nil :type
-    (common-lisp:or experiment-target-account-configuration-list
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-experiment-target-account-configurations-response
+                       common-lisp:nil
+                       ((target-account-configurations :initarg
+                         :target-account-configurations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-target-account-configuration-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiment-target-account-configurations-response-target-account-configurations
+                         :shape "ExperimentTargetAccountConfigurationList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-experiment-target-account-configurations-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-experiment-target-account-configurations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-experiment-target-account-configurations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-experiment-target-account-configurations-response
                     'make-list-experiment-target-account-configurations-response))
@@ -3119,13 +4295,27 @@
 (common-lisp:deftype list-experiment-templates-max-results ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-experiment-templates-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-experiment-templates-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-experiment-templates-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-experiment-templates-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-experiment-templates-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiment-templates-request-max-results
+                         :shape "ListExperimentTemplatesMaxResults" :location
+                         "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-experiment-templates-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-experiment-templates-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-experiment-templates-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-experiment-templates-request
                     'make-list-experiment-templates-request))
@@ -3145,13 +4335,27 @@
                           list-experiment-templates-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-experiment-templates-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-experiment-templates-response-"))
-   (experiment-templates common-lisp:nil :type
-    (common-lisp:or experiment-template-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-experiment-templates-response common-lisp:nil
+                       ((experiment-templates :initarg :experiment-templates
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiment-templates-response-experiment-templates
+                         :shape "ExperimentTemplateSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-experiment-templates-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-experiment-templates-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-experiment-templates-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-experiment-templates-response
                     'make-list-experiment-templates-response))
@@ -3187,13 +4391,26 @@
    common-lisp:nil))
 (common-lisp:deftype list-experiments-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-experiments-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-experiments-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-experiments-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-experiments-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-experiments-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiments-request-max-results
+                         :shape "ListExperimentsMaxResults" :location
+                         "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-experiments-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-experiments-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-experiments-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-experiments-request 'make-list-experiments-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3212,13 +4429,26 @@
                           list-experiments-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-experiments-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-experiments-response-"))
-   (experiments common-lisp:nil :type
-    (common-lisp:or experiment-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-experiments-response common-lisp:nil
+                       ((experiments :initarg :experiments :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-experiments-response-experiments
+                         :shape "ExperimentSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-experiments-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-experiments-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-experiments-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-experiments-response
                     'make-list-experiments-response))
@@ -3252,11 +4482,20 @@
                           list-experiments-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "ResourceArn" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -3276,10 +4515,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -3308,17 +4555,40 @@
 (common-lisp:deftype list-target-account-configurations-max-results ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-target-account-configurations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-target-account-configurations-request-"))
-   (experiment-template-id
-    (common-lisp:error ":experimenttemplateid is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-target-account-configurations-max-results
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-target-account-configurations-request
+                       common-lisp:nil
+                       ((experiment-template-id :initarg
+                         :experiment-template-id :initform
+                         (common-lisp:error
+                          ":experimenttemplateid is required")
+                         :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-target-account-configurations-request-experiment-template-id
+                         :shape "ExperimentTemplateId" :location "uri"
+                         :location-name "id")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-target-account-configurations-max-results
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-target-account-configurations-request-max-results
+                         :shape "ListTargetAccountConfigurationsMaxResults"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-target-account-configurations-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-target-account-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-target-account-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-target-account-configurations-request
                     'make-list-target-account-configurations-request))
@@ -3338,13 +4608,29 @@
                           list-target-account-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-target-account-configurations-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-target-account-configurations-response-"))
-   (target-account-configurations common-lisp:nil :type
-    (common-lisp:or target-account-configuration-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-target-account-configurations-response
+                       common-lisp:nil
+                       ((target-account-configurations :initarg
+                         :target-account-configurations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-target-account-configurations-response-target-account-configurations
+                         :shape "TargetAccountConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-target-account-configurations-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-target-account-configurations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-target-account-configurations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-target-account-configurations-response
                     'make-list-target-account-configurations-response))
@@ -3381,13 +4667,27 @@
 (common-lisp:deftype list-target-resource-types-max-results ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-target-resource-types-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-target-resource-types-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-target-resource-types-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-target-resource-types-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-target-resource-types-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-target-resource-types-request-max-results
+                         :shape "ListTargetResourceTypesMaxResults" :location
+                         "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-target-resource-types-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-target-resource-types-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-target-resource-types-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-target-resource-types-request
                     'make-list-target-resource-types-request))
@@ -3407,13 +4707,27 @@
                           list-target-resource-types-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-target-resource-types-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-target-resource-types-response-"))
-   (target-resource-types common-lisp:nil :type
-    (common-lisp:or target-resource-type-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-target-resource-types-response common-lisp:nil
+                       ((target-resource-types :initarg :target-resource-types
+                         :initform common-lisp:nil :type
+                         (common-lisp:or target-resource-type-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-target-resource-types-response-target-resource-types
+                         :shape "TargetResourceTypeSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-target-resource-types-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-target-resource-types-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-target-resource-types-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-target-resource-types-response
                     'make-list-target-resource-types-response))
@@ -3450,15 +4764,33 @@
 (common-lisp:deftype log-schema-version () 'common-lisp:integer)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolved-target (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolved-target-"))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or target-resource-type-id common-lisp:null))
-   (target-name common-lisp:nil :type
-    (common-lisp:or target-name common-lisp:null))
-   (target-information common-lisp:nil :type
-    (common-lisp:or target-information-map common-lisp:null)))
+ (common-lisp:defclass resolved-target common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor struct-shape-resolved-target-resource-type
+                         :shape "TargetResourceTypeId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (target-name :initarg :target-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-name common-lisp:null)
+                         :accessor struct-shape-resolved-target-target-name
+                         :shape "TargetName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-information :initarg :target-information
+                         :initform common-lisp:nil :type
+                         (common-lisp:or target-information-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolved-target-target-information :shape
+                         "TargetInformationMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolved-target
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolved-target
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resolved-target 'make-resolved-target))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resolved-target))
@@ -3527,15 +4859,35 @@
   (common-lisp:list 'service-quota-exceeded-exception
                     'service-quota-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-experiment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-experiment-request-"))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token common-lisp:null))
-   (experiment-template-id
-    (common-lisp:error ":experimenttemplateid is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass start-experiment-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-start-experiment-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (experiment-template-id :initarg
+                         :experiment-template-id :initform
+                         (common-lisp:error
+                          ":experimenttemplateid is required")
+                         :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-experiment-request-experiment-template-id
+                         :shape "ExperimentTemplateId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-start-experiment-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-experiment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-experiment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-experiment-request 'make-start-experiment-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3576,11 +4928,18 @@
                           start-experiment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-experiment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-experiment-response-"))
-   (experiment common-lisp:nil :type
-    (common-lisp:or experiment common-lisp:null)))
+ (common-lisp:defclass start-experiment-response common-lisp:nil
+                       ((experiment :initarg :experiment :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment common-lisp:null) :accessor
+                         struct-shape-start-experiment-response-experiment
+                         :shape "Experiment" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-experiment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-experiment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-experiment-response
                     'make-start-experiment-response))
@@ -3609,11 +4968,18 @@
 (common-lisp:deftype stop-condition-source () 'common-lisp:string)
 (common-lisp:deftype stop-condition-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-experiment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-experiment-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or experiment-id common-lisp:null)))
+ (common-lisp:defclass stop-experiment-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or experiment-id common-lisp:null)
+                         :accessor struct-shape-stop-experiment-request-id
+                         :shape "ExperimentId" :location "uri" :location-name
+                         "id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-experiment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-experiment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-experiment-request 'make-stop-experiment-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3632,11 +4998,18 @@
                           stop-experiment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-experiment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-experiment-response-"))
-   (experiment common-lisp:nil :type
-    (common-lisp:or experiment common-lisp:null)))
+ (common-lisp:defclass stop-experiment-response common-lisp:nil
+                       ((experiment :initarg :experiment :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment common-lisp:null) :accessor
+                         struct-shape-stop-experiment-response-experiment
+                         :shape "Experiment" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-experiment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-experiment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-experiment-response 'make-stop-experiment-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3677,13 +5050,25 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "ResourceArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3703,9 +5088,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3725,15 +5113,35 @@
    common-lisp:nil))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-account-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-account-configuration-"))
-   (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or target-account-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or target-account-configuration-description
-                    common-lisp:null)))
+ (common-lisp:defclass target-account-configuration common-lisp:nil
+                       ((role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-target-account-configuration-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-target-account-configuration-account-id
+                         :shape "TargetAccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          target-account-configuration-description
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-target-account-configuration-description
+                         :shape "TargetAccountConfigurationDescription"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-account-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'target-account-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'target-account-configuration
                     'make-target-account-configuration))
@@ -3785,15 +5193,36 @@
                             target-account-configuration-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-account-configuration-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-account-configuration-summary-"))
-   (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or target-account-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or target-account-configuration-description
-                    common-lisp:null)))
+ (common-lisp:defclass target-account-configuration-summary common-lisp:nil
+                       ((role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-target-account-configuration-summary-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-target-account-configuration-summary-account-id
+                         :shape "TargetAccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          target-account-configuration-description
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-target-account-configuration-summary-description
+                         :shape "TargetAccountConfigurationDescription"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-account-configuration-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'target-account-configuration-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'target-account-configuration-summary
                     'make-target-account-configuration-summary))
@@ -3848,15 +5277,35 @@
 (common-lisp:deftype target-information-value () 'common-lisp:string)
 (common-lisp:deftype target-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-resource-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-resource-type-"))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or target-resource-type-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or target-resource-type-description common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or target-resource-type-parameter-map common-lisp:null)))
+ (common-lisp:defclass target-resource-type common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-target-resource-type-resource-type :shape
+                         "TargetResourceTypeId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-target-resource-type-description :shape
+                         "TargetResourceTypeDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-parameter-map
+                                         common-lisp:null)
+                         :accessor struct-shape-target-resource-type-parameters
+                         :shape "TargetResourceTypeParameterMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-resource-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'target-resource-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'target-resource-type 'make-target-resource-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3892,14 +5341,32 @@
 (common-lisp:deftype target-resource-type-description () 'common-lisp:string)
 (common-lisp:deftype target-resource-type-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-resource-type-parameter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-resource-type-parameter-"))
-   (description common-lisp:nil :type
-    (common-lisp:or target-resource-type-parameter-description
-                    common-lisp:null))
-   (required common-lisp:nil :type
-    (common-lisp:or target-resource-type-parameter-required common-lisp:null)))
+ (common-lisp:defclass target-resource-type-parameter common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          target-resource-type-parameter-description
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-target-resource-type-parameter-description
+                         :shape "TargetResourceTypeParameterDescription"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (required :initarg :required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          target-resource-type-parameter-required
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-target-resource-type-parameter-required
+                         :shape "TargetResourceTypeParameterRequired" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-resource-type-parameter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'target-resource-type-parameter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'target-resource-type-parameter
                     'make-target-resource-type-parameter))
@@ -3947,13 +5414,28 @@
 (common-lisp:deftype target-resource-type-parameter-required ()
   'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-resource-type-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-resource-type-summary-"))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or target-resource-type-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or target-resource-type-description common-lisp:null)))
+ (common-lisp:defclass target-resource-type-summary common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-target-resource-type-summary-resource-type
+                         :shape "TargetResourceTypeId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-resource-type-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-target-resource-type-summary-description
+                         :shape "TargetResourceTypeDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-resource-type-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'target-resource-type-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'target-resource-type-summary
                     'make-target-resource-type-summary))
@@ -3996,13 +5478,24 @@
                             target-resource-type-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tag-keys common-lisp:nil :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "ResourceArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform common-lisp:nil
+                         :type (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4021,9 +5514,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4042,21 +5538,56 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-experiment-template-action-input-item (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-experiment-template-action-input-item-"))
-   (action-id common-lisp:nil :type
-    (common-lisp:or action-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or experiment-template-action-description common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or experiment-template-action-parameter-map common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or experiment-template-action-target-map common-lisp:null))
-   (start-after common-lisp:nil :type
-    (common-lisp:or experiment-template-action-start-after-list
-                    common-lisp:null)))
+ (common-lisp:defclass update-experiment-template-action-input-item
+                       common-lisp:nil
+                       ((action-id :initarg :action-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-update-experiment-template-action-input-item-action-id
+                         :shape "ActionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-template-action-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-action-input-item-description
+                         :shape "ExperimentTemplateActionDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-action-parameter-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-action-input-item-parameters
+                         :shape "ExperimentTemplateActionParameterMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or experiment-template-action-target-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-action-input-item-targets
+                         :shape "ExperimentTemplateActionTargetMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-after :initarg :start-after :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-action-start-after-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-action-input-item-start-after
+                         :shape "ExperimentTemplateActionStartAfterList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-experiment-template-action-input-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-experiment-template-action-input-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-experiment-template-action-input-item
                     'make-update-experiment-template-action-input-item))
@@ -4120,13 +5651,23 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-experiment-template-experiment-options-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-experiment-template-experiment-options-input-"))
-   (empty-target-resolution-mode common-lisp:nil :type
-    (common-lisp:or empty-target-resolution-mode common-lisp:null)))
+ (common-lisp:defclass update-experiment-template-experiment-options-input
+                       common-lisp:nil
+                       ((empty-target-resolution-mode :initarg
+                         :empty-target-resolution-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or empty-target-resolution-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-experiment-options-input-empty-target-resolution-mode
+                         :shape "EmptyTargetResolutionMode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-experiment-template-experiment-options-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-experiment-template-experiment-options-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-experiment-template-experiment-options-input
                     'make-update-experiment-template-experiment-options-input))
@@ -4154,20 +5695,43 @@
                           update-experiment-template-experiment-options-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-experiment-template-log-configuration-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-experiment-template-log-configuration-input-"))
-   (cloud-watch-logs-configuration common-lisp:nil :type
-    (common-lisp:or
-     experiment-template-cloud-watch-logs-log-configuration-input
-     common-lisp:null))
-   (s3configuration common-lisp:nil :type
-    (common-lisp:or experiment-template-s3log-configuration-input
-                    common-lisp:null))
-   (log-schema-version common-lisp:nil :type
-    (common-lisp:or log-schema-version common-lisp:null)))
+ (common-lisp:defclass update-experiment-template-log-configuration-input
+                       common-lisp:nil
+                       ((cloud-watch-logs-configuration :initarg
+                         :cloud-watch-logs-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-cloud-watch-logs-log-configuration-input
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-log-configuration-input-cloud-watch-logs-configuration
+                         :shape
+                         "ExperimentTemplateCloudWatchLogsLogConfigurationInput"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3configuration :initarg :s3configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-s3log-configuration-input
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-log-configuration-input-s3configuration
+                         :shape "ExperimentTemplateS3LogConfigurationInput"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (log-schema-version :initarg :log-schema-version
+                         :initform common-lisp:nil :type
+                         (common-lisp:or log-schema-version common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-log-configuration-input-log-schema-version
+                         :shape "LogSchemaVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-experiment-template-log-configuration-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-experiment-template-log-configuration-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-experiment-template-log-configuration-input
                     'make-update-experiment-template-log-configuration-input))
@@ -4209,29 +5773,87 @@
                           update-experiment-template-log-configuration-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-experiment-template-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-experiment-template-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or experiment-template-description common-lisp:null))
-   (stop-conditions common-lisp:nil :type
-    (common-lisp:or update-experiment-template-stop-condition-input-list
-                    common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or update-experiment-template-target-input-map
-                    common-lisp:null))
-   (actions common-lisp:nil :type
-    (common-lisp:or update-experiment-template-action-input-map
-                    common-lisp:null))
-   (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (log-configuration common-lisp:nil :type
-    (common-lisp:or update-experiment-template-log-configuration-input
-                    common-lisp:null))
-   (experiment-options common-lisp:nil :type
-    (common-lisp:or update-experiment-template-experiment-options-input
-                    common-lisp:null)))
+ (common-lisp:defclass update-experiment-template-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-request-id
+                         :shape "ExperimentTemplateId" :location "uri"
+                         :location-name "id")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or experiment-template-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-request-description
+                         :shape "ExperimentTemplateDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (stop-conditions :initarg :stop-conditions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          update-experiment-template-stop-condition-input-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-request-stop-conditions
+                         :shape
+                         "UpdateExperimentTemplateStopConditionInputList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          update-experiment-template-target-input-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-request-targets
+                         :shape "UpdateExperimentTemplateTargetInputMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (actions :initarg :actions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          update-experiment-template-action-input-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-request-actions
+                         :shape "UpdateExperimentTemplateActionInputMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-request-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (log-configuration :initarg :log-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          update-experiment-template-log-configuration-input
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-request-log-configuration
+                         :shape "UpdateExperimentTemplateLogConfigurationInput"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (experiment-options :initarg :experiment-options
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          update-experiment-template-experiment-options-input
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-request-experiment-options
+                         :shape
+                         "UpdateExperimentTemplateExperimentOptionsInput"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-experiment-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-experiment-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-experiment-template-request
                     'make-update-experiment-template-request))
@@ -4300,11 +5922,20 @@
                           update-experiment-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-experiment-template-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-experiment-template-response-"))
-   (experiment-template common-lisp:nil :type
-    (common-lisp:or experiment-template common-lisp:null)))
+ (common-lisp:defclass update-experiment-template-response common-lisp:nil
+                       ((experiment-template :initarg :experiment-template
+                         :initform common-lisp:nil :type
+                         (common-lisp:or experiment-template common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-response-experiment-template
+                         :shape "ExperimentTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-experiment-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-experiment-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-experiment-template-response
                     'make-update-experiment-template-response))
@@ -4331,14 +5962,28 @@
                           update-experiment-template-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-experiment-template-stop-condition-input (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-experiment-template-stop-condition-input-"))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or stop-condition-source common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or stop-condition-value common-lisp:null)))
+ (common-lisp:defclass update-experiment-template-stop-condition-input
+                       common-lisp:nil
+                       ((source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or stop-condition-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-stop-condition-input-source
+                         :shape "StopConditionSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or stop-condition-value common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-stop-condition-input-value
+                         :shape "StopConditionValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-experiment-template-stop-condition-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-experiment-template-stop-condition-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-experiment-template-stop-condition-input
                     'make-update-experiment-template-stop-condition-input))
@@ -4382,24 +6027,64 @@
                             update-experiment-template-stop-condition-input))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-experiment-template-target-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-experiment-template-target-input-"))
-   (resource-type (common-lisp:error ":resourcetype is required") :type
-    (common-lisp:or target-resource-type-id common-lisp:null))
-   (resource-arns common-lisp:nil :type
-    (common-lisp:or resource-arn-list common-lisp:null))
-   (resource-tags common-lisp:nil :type
-    (common-lisp:or tag-map common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or experiment-template-target-filter-input-list
-                    common-lisp:null))
-   (selection-mode (common-lisp:error ":selectionmode is required") :type
-    (common-lisp:or experiment-template-target-selection-mode
-                    common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or experiment-template-target-parameter-map
-                    common-lisp:null)))
+ (common-lisp:defclass update-experiment-template-target-input common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         (common-lisp:error ":resourcetype is required") :type
+                         (common-lisp:or target-resource-type-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-target-input-resource-type
+                         :shape "TargetResourceTypeId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resource-arns :initarg :resource-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-target-input-resource-arns
+                         :shape "ResourceArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-tags :initarg :resource-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-update-experiment-template-target-input-resource-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          experiment-template-target-filter-input-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-target-input-filters
+                         :shape "ExperimentTemplateTargetFilterInputList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (selection-mode :initarg :selection-mode :initform
+                         (common-lisp:error ":selectionmode is required") :type
+                         (common-lisp:or
+                          experiment-template-target-selection-mode
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-target-input-selection-mode
+                         :shape "ExperimentTemplateTargetSelectionMode"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          experiment-template-target-parameter-map
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-experiment-template-target-input-parameters
+                         :shape "ExperimentTemplateTargetParameterMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-experiment-template-target-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-experiment-template-target-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-experiment-template-target-input
                     'make-update-experiment-template-target-input))
@@ -4470,18 +6155,48 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-target-account-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-target-account-configuration-request-"))
-   (experiment-template-id
-    (common-lisp:error ":experimenttemplateid is required") :type
-    (common-lisp:or experiment-template-id common-lisp:null))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or target-account-id common-lisp:null))
-   (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or target-account-configuration-description
-                    common-lisp:null)))
+ (common-lisp:defclass update-target-account-configuration-request
+                       common-lisp:nil
+                       ((experiment-template-id :initarg
+                         :experiment-template-id :initform
+                         (common-lisp:error
+                          ":experimenttemplateid is required")
+                         :type
+                         (common-lisp:or experiment-template-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-target-account-configuration-request-experiment-template-id
+                         :shape "ExperimentTemplateId" :location "uri"
+                         :location-name "id")
+                        (account-id :initarg :account-id :initform
+                         (common-lisp:error ":accountid is required") :type
+                         (common-lisp:or target-account-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-target-account-configuration-request-account-id
+                         :shape "TargetAccountId" :location "uri"
+                         :location-name "accountId")
+                        (role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-target-account-configuration-request-role-arn
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          target-account-configuration-description
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-target-account-configuration-request-description
+                         :shape "TargetAccountConfigurationDescription"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-target-account-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-target-account-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-target-account-configuration-request
                     'make-update-target-account-configuration-request))
@@ -4515,12 +6230,23 @@
                           update-target-account-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-target-account-configuration-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-target-account-configuration-response-"))
-   (target-account-configuration common-lisp:nil :type
-    (common-lisp:or target-account-configuration common-lisp:null)))
+ (common-lisp:defclass update-target-account-configuration-response
+                       common-lisp:nil
+                       ((target-account-configuration :initarg
+                         :target-account-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-account-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-target-account-configuration-response-target-account-configuration
+                         :shape "TargetAccountConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-target-account-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-target-account-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-target-account-configuration-response
                     'make-update-target-account-configuration-response))

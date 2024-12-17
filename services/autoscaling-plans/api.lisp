@@ -36,13 +36,25 @@
     ("ObjectNotFoundException" . object-not-found-exception)
     ("ValidationException" . validation-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (application-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-application-source-"))
-   (cloud-formation-stack-arn common-lisp:nil :type
-    (common-lisp:or xml-string common-lisp:null))
-   (tag-filters common-lisp:nil :type
-    (common-lisp:or tag-filters common-lisp:null)))
+ (common-lisp:defclass application-source common-lisp:nil
+                       ((cloud-formation-stack-arn :initarg
+                         :cloud-formation-stack-arn :initform common-lisp:nil
+                         :type (common-lisp:or xml-string common-lisp:null)
+                         :accessor
+                         struct-shape-application-source-cloud-formation-stack-arn
+                         :shape "XmlString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-filters :initarg :tag-filters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-filters common-lisp:null)
+                         :accessor struct-shape-application-source-tag-filters
+                         :shape "TagFilters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-application-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'application-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'application-source 'make-application-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -87,16 +99,40 @@
                     'concurrent-update-exception-message)))
 (common-lisp:deftype cooldown () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-scaling-plan-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-scaling-plan-request-"))
-   (scaling-plan-name (common-lisp:error ":scaling-plan-name is required")
-    :type (common-lisp:or scaling-plan-name common-lisp:null))
-   (application-source (common-lisp:error ":application-source is required")
-    :type (common-lisp:or application-source common-lisp:null))
-   (scaling-instructions
-    (common-lisp:error ":scaling-instructions is required") :type
-    (common-lisp:or scaling-instructions common-lisp:null)))
+ (common-lisp:defclass create-scaling-plan-request common-lisp:nil
+                       ((scaling-plan-name :initarg :scaling-plan-name
+                         :initform
+                         (common-lisp:error ":scaling-plan-name is required")
+                         :type
+                         (common-lisp:or scaling-plan-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-scaling-plan-request-scaling-plan-name
+                         :shape "ScalingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (application-source :initarg :application-source
+                         :initform
+                         (common-lisp:error ":application-source is required")
+                         :type
+                         (common-lisp:or application-source common-lisp:null)
+                         :accessor
+                         struct-shape-create-scaling-plan-request-application-source
+                         :shape "ApplicationSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-instructions :initarg :scaling-instructions
+                         :initform
+                         (common-lisp:error
+                          ":scaling-instructions is required")
+                         :type
+                         (common-lisp:or scaling-instructions common-lisp:null)
+                         :accessor
+                         struct-shape-create-scaling-plan-request-scaling-instructions
+                         :shape "ScalingInstructions" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-scaling-plan-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-scaling-plan-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-scaling-plan-request
                     'make-create-scaling-plan-request))
@@ -138,12 +174,22 @@
                           create-scaling-plan-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-scaling-plan-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-scaling-plan-response-"))
-   (scaling-plan-version
-    (common-lisp:error ":scaling-plan-version is required") :type
-    (common-lisp:or scaling-plan-version common-lisp:null)))
+ (common-lisp:defclass create-scaling-plan-response common-lisp:nil
+                       ((scaling-plan-version :initarg :scaling-plan-version
+                         :initform
+                         (common-lisp:error
+                          ":scaling-plan-version is required")
+                         :type
+                         (common-lisp:or scaling-plan-version common-lisp:null)
+                         :accessor
+                         struct-shape-create-scaling-plan-response-scaling-plan-version
+                         :shape "ScalingPlanVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-scaling-plan-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-scaling-plan-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-scaling-plan-response
                     'make-create-scaling-plan-response))
@@ -171,18 +217,47 @@
                           create-scaling-plan-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (customized-load-metric-specification (:copier common-lisp:nil)
-      (:conc-name "struct-shape-customized-load-metric-specification-"))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or metric-namespace common-lisp:null))
-   (dimensions common-lisp:nil :type
-    (common-lisp:or metric-dimensions common-lisp:null))
-   (statistic (common-lisp:error ":statistic is required") :type
-    (common-lisp:or metric-statistic common-lisp:null))
-   (unit common-lisp:nil :type (common-lisp:or metric-unit common-lisp:null)))
+ (common-lisp:defclass customized-load-metric-specification common-lisp:nil
+                       ((metric-name :initarg :metric-name :initform
+                         (common-lisp:error ":metric-name is required") :type
+                         (common-lisp:or metric-name common-lisp:null)
+                         :accessor
+                         struct-shape-customized-load-metric-specification-metric-name
+                         :shape "MetricName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         (common-lisp:error ":namespace is required") :type
+                         (common-lisp:or metric-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-customized-load-metric-specification-namespace
+                         :shape "MetricNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dimensions :initarg :dimensions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or metric-dimensions common-lisp:null)
+                         :accessor
+                         struct-shape-customized-load-metric-specification-dimensions
+                         :shape "MetricDimensions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (statistic :initarg :statistic :initform
+                         (common-lisp:error ":statistic is required") :type
+                         (common-lisp:or metric-statistic common-lisp:null)
+                         :accessor
+                         struct-shape-customized-load-metric-specification-statistic
+                         :shape "MetricStatistic" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unit :initarg :unit :initform common-lisp:nil :type
+                         (common-lisp:or metric-unit common-lisp:null)
+                         :accessor
+                         struct-shape-customized-load-metric-specification-unit
+                         :shape "MetricUnit" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-customized-load-metric-specification
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'customized-load-metric-specification
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'customized-load-metric-specification
                     'make-customized-load-metric-specification))
@@ -237,18 +312,47 @@
                           customized-load-metric-specification))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (customized-scaling-metric-specification (:copier common-lisp:nil)
-      (:conc-name "struct-shape-customized-scaling-metric-specification-"))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or metric-namespace common-lisp:null))
-   (dimensions common-lisp:nil :type
-    (common-lisp:or metric-dimensions common-lisp:null))
-   (statistic (common-lisp:error ":statistic is required") :type
-    (common-lisp:or metric-statistic common-lisp:null))
-   (unit common-lisp:nil :type (common-lisp:or metric-unit common-lisp:null)))
+ (common-lisp:defclass customized-scaling-metric-specification common-lisp:nil
+                       ((metric-name :initarg :metric-name :initform
+                         (common-lisp:error ":metric-name is required") :type
+                         (common-lisp:or metric-name common-lisp:null)
+                         :accessor
+                         struct-shape-customized-scaling-metric-specification-metric-name
+                         :shape "MetricName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         (common-lisp:error ":namespace is required") :type
+                         (common-lisp:or metric-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-customized-scaling-metric-specification-namespace
+                         :shape "MetricNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dimensions :initarg :dimensions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or metric-dimensions common-lisp:null)
+                         :accessor
+                         struct-shape-customized-scaling-metric-specification-dimensions
+                         :shape "MetricDimensions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (statistic :initarg :statistic :initform
+                         (common-lisp:error ":statistic is required") :type
+                         (common-lisp:or metric-statistic common-lisp:null)
+                         :accessor
+                         struct-shape-customized-scaling-metric-specification-statistic
+                         :shape "MetricStatistic" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unit :initarg :unit :initform common-lisp:nil :type
+                         (common-lisp:or metric-unit common-lisp:null)
+                         :accessor
+                         struct-shape-customized-scaling-metric-specification-unit
+                         :shape "MetricUnit" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-customized-scaling-metric-specification
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'customized-scaling-metric-specification
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'customized-scaling-metric-specification
                     'make-customized-scaling-metric-specification))
@@ -303,13 +407,23 @@
                           customized-scaling-metric-specification))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (datapoint (:copier common-lisp:nil)
-      (:conc-name "struct-shape-datapoint-"))
-   (timestamp common-lisp:nil :type
-    (common-lisp:or timestamp-type common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or metric-scale common-lisp:null)))
+ (common-lisp:defclass datapoint common-lisp:nil
+                       ((timestamp :initarg :timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-type common-lisp:null)
+                         :accessor struct-shape-datapoint-timestamp :shape
+                         "TimestampType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or metric-scale common-lisp:null)
+                         :accessor struct-shape-datapoint-value :shape
+                         "MetricScale" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-datapoint
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'datapoint
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'datapoint 'make-datapoint))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input datapoint))
@@ -342,14 +456,31 @@
                            (trivial-types:proper-list datapoint))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-scaling-plan-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-scaling-plan-request-"))
-   (scaling-plan-name (common-lisp:error ":scaling-plan-name is required")
-    :type (common-lisp:or scaling-plan-name common-lisp:null))
-   (scaling-plan-version
-    (common-lisp:error ":scaling-plan-version is required") :type
-    (common-lisp:or scaling-plan-version common-lisp:null)))
+ (common-lisp:defclass delete-scaling-plan-request common-lisp:nil
+                       ((scaling-plan-name :initarg :scaling-plan-name
+                         :initform
+                         (common-lisp:error ":scaling-plan-name is required")
+                         :type
+                         (common-lisp:or scaling-plan-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-scaling-plan-request-scaling-plan-name
+                         :shape "ScalingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-plan-version :initarg :scaling-plan-version
+                         :initform
+                         (common-lisp:error
+                          ":scaling-plan-version is required")
+                         :type
+                         (common-lisp:or scaling-plan-version common-lisp:null)
+                         :accessor
+                         struct-shape-delete-scaling-plan-request-scaling-plan-version
+                         :shape "ScalingPlanVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-scaling-plan-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-scaling-plan-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-scaling-plan-request
                     'make-delete-scaling-plan-request))
@@ -384,9 +515,13 @@
                           delete-scaling-plan-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-scaling-plan-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-scaling-plan-response-")))
+ (common-lisp:defclass delete-scaling-plan-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-scaling-plan-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-scaling-plan-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-scaling-plan-response
                     'make-delete-scaling-plan-response))
@@ -406,18 +541,45 @@
                           delete-scaling-plan-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-scaling-plan-resources-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-scaling-plan-resources-request-"))
-   (scaling-plan-name (common-lisp:error ":scaling-plan-name is required")
-    :type (common-lisp:or scaling-plan-name common-lisp:null))
-   (scaling-plan-version
-    (common-lisp:error ":scaling-plan-version is required") :type
-    (common-lisp:or scaling-plan-version common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass describe-scaling-plan-resources-request common-lisp:nil
+                       ((scaling-plan-name :initarg :scaling-plan-name
+                         :initform
+                         (common-lisp:error ":scaling-plan-name is required")
+                         :type
+                         (common-lisp:or scaling-plan-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plan-resources-request-scaling-plan-name
+                         :shape "ScalingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-plan-version :initarg :scaling-plan-version
+                         :initform
+                         (common-lisp:error
+                          ":scaling-plan-version is required")
+                         :type
+                         (common-lisp:or scaling-plan-version common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plan-resources-request-scaling-plan-version
+                         :shape "ScalingPlanVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plan-resources-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-describe-scaling-plan-resources-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-scaling-plan-resources-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-scaling-plan-resources-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-scaling-plan-resources-request
                     'make-describe-scaling-plan-resources-request))
@@ -466,13 +628,28 @@
                           describe-scaling-plan-resources-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-scaling-plan-resources-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-scaling-plan-resources-response-"))
-   (scaling-plan-resources common-lisp:nil :type
-    (common-lisp:or scaling-plan-resources common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass describe-scaling-plan-resources-response common-lisp:nil
+                       ((scaling-plan-resources :initarg
+                         :scaling-plan-resources :initform common-lisp:nil
+                         :type
+                         (common-lisp:or scaling-plan-resources
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plan-resources-response-scaling-plan-resources
+                         :shape "ScalingPlanResources" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-describe-scaling-plan-resources-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-scaling-plan-resources-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-scaling-plan-resources-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-scaling-plan-resources-response
                     'make-describe-scaling-plan-resources-response))
@@ -507,19 +684,47 @@
                           describe-scaling-plan-resources-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-scaling-plans-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-scaling-plans-request-"))
-   (scaling-plan-names common-lisp:nil :type
-    (common-lisp:or scaling-plan-names common-lisp:null))
-   (scaling-plan-version common-lisp:nil :type
-    (common-lisp:or scaling-plan-version common-lisp:null))
-   (application-sources common-lisp:nil :type
-    (common-lisp:or application-sources common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass describe-scaling-plans-request common-lisp:nil
+                       ((scaling-plan-names :initarg :scaling-plan-names
+                         :initform common-lisp:nil :type
+                         (common-lisp:or scaling-plan-names common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plans-request-scaling-plan-names
+                         :shape "ScalingPlanNames" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-plan-version :initarg :scaling-plan-version
+                         :initform common-lisp:nil :type
+                         (common-lisp:or scaling-plan-version common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plans-request-scaling-plan-version
+                         :shape "ScalingPlanVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (application-sources :initarg :application-sources
+                         :initform common-lisp:nil :type
+                         (common-lisp:or application-sources common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plans-request-application-sources
+                         :shape "ApplicationSources" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plans-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-describe-scaling-plans-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-scaling-plans-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-scaling-plans-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-scaling-plans-request
                     'make-describe-scaling-plans-request))
@@ -575,13 +780,26 @@
                           describe-scaling-plans-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-scaling-plans-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-scaling-plans-response-"))
-   (scaling-plans common-lisp:nil :type
-    (common-lisp:or scaling-plans common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass describe-scaling-plans-response common-lisp:nil
+                       ((scaling-plans :initarg :scaling-plans :initform
+                         common-lisp:nil :type
+                         (common-lisp:or scaling-plans common-lisp:null)
+                         :accessor
+                         struct-shape-describe-scaling-plans-response-scaling-plans
+                         :shape "ScalingPlans" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-describe-scaling-plans-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-scaling-plans-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-scaling-plans-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-scaling-plans-response
                     'make-describe-scaling-plans-response))
@@ -619,27 +837,80 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype forecast-data-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-scaling-plan-resource-forecast-data-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-scaling-plan-resource-forecast-data-request-"))
-   (scaling-plan-name (common-lisp:error ":scaling-plan-name is required")
-    :type (common-lisp:or scaling-plan-name common-lisp:null))
-   (scaling-plan-version
-    (common-lisp:error ":scaling-plan-version is required") :type
-    (common-lisp:or scaling-plan-version common-lisp:null))
-   (service-namespace (common-lisp:error ":service-namespace is required")
-    :type (common-lisp:or service-namespace common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or xml-string common-lisp:null))
-   (scalable-dimension (common-lisp:error ":scalable-dimension is required")
-    :type (common-lisp:or scalable-dimension common-lisp:null))
-   (forecast-data-type (common-lisp:error ":forecast-data-type is required")
-    :type (common-lisp:or forecast-data-type common-lisp:null))
-   (start-time (common-lisp:error ":start-time is required") :type
-    (common-lisp:or timestamp-type common-lisp:null))
-   (end-time (common-lisp:error ":end-time is required") :type
-    (common-lisp:or timestamp-type common-lisp:null)))
+ (common-lisp:defclass get-scaling-plan-resource-forecast-data-request
+                       common-lisp:nil
+                       ((scaling-plan-name :initarg :scaling-plan-name
+                         :initform
+                         (common-lisp:error ":scaling-plan-name is required")
+                         :type
+                         (common-lisp:or scaling-plan-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-request-scaling-plan-name
+                         :shape "ScalingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-plan-version :initarg :scaling-plan-version
+                         :initform
+                         (common-lisp:error
+                          ":scaling-plan-version is required")
+                         :type
+                         (common-lisp:or scaling-plan-version common-lisp:null)
+                         :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-request-scaling-plan-version
+                         :shape "ScalingPlanVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-namespace :initarg :service-namespace
+                         :initform
+                         (common-lisp:error ":service-namespace is required")
+                         :type
+                         (common-lisp:or service-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-request-service-namespace
+                         :shape "ServiceNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or xml-string common-lisp:null) :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-request-resource-id
+                         :shape "XmlString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scalable-dimension :initarg :scalable-dimension
+                         :initform
+                         (common-lisp:error ":scalable-dimension is required")
+                         :type
+                         (common-lisp:or scalable-dimension common-lisp:null)
+                         :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-request-scalable-dimension
+                         :shape "ScalableDimension" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (forecast-data-type :initarg :forecast-data-type
+                         :initform
+                         (common-lisp:error ":forecast-data-type is required")
+                         :type
+                         (common-lisp:or forecast-data-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-request-forecast-data-type
+                         :shape "ForecastDataType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         (common-lisp:error ":start-time is required") :type
+                         (common-lisp:or timestamp-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-request-start-time
+                         :shape "TimestampType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-time :initarg :end-time :initform
+                         (common-lisp:error ":end-time is required") :type
+                         (common-lisp:or timestamp-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-request-end-time
+                         :shape "TimestampType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-scaling-plan-resource-forecast-data-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-scaling-plan-resource-forecast-data-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-scaling-plan-resource-forecast-data-request
                     'make-get-scaling-plan-resource-forecast-data-request))
@@ -716,13 +987,20 @@
                           get-scaling-plan-resource-forecast-data-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-scaling-plan-resource-forecast-data-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-scaling-plan-resource-forecast-data-response-"))
-   (datapoints (common-lisp:error ":datapoints is required") :type
-    (common-lisp:or datapoints common-lisp:null)))
+ (common-lisp:defclass get-scaling-plan-resource-forecast-data-response
+                       common-lisp:nil
+                       ((datapoints :initarg :datapoints :initform
+                         (common-lisp:error ":datapoints is required") :type
+                         (common-lisp:or datapoints common-lisp:null) :accessor
+                         struct-shape-get-scaling-plan-resource-forecast-data-response-datapoints
+                         :shape "Datapoints" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-scaling-plan-resource-forecast-data-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-scaling-plan-resource-forecast-data-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-scaling-plan-resource-forecast-data-response
                     'make-get-scaling-plan-resource-forecast-data-response))
@@ -775,13 +1053,26 @@
 (common-lisp:deftype load-metric-type () 'common-lisp:string)
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (metric-dimension (:copier common-lisp:nil)
-      (:conc-name "struct-shape-metric-dimension-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or metric-dimension-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or metric-dimension-value common-lisp:null)))
+ (common-lisp:defclass metric-dimension common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or metric-dimension-name
+                                         common-lisp:null)
+                         :accessor struct-shape-metric-dimension-name :shape
+                         "MetricDimensionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or metric-dimension-value
+                                         common-lisp:null)
+                         :accessor struct-shape-metric-dimension-value :shape
+                         "MetricDimensionValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-metric-dimension
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'metric-dimension
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'metric-dimension 'make-metric-dimension))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -834,14 +1125,30 @@
 (common-lisp:deftype policy-name () 'common-lisp:string)
 (common-lisp:deftype policy-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (predefined-load-metric-specification (:copier common-lisp:nil)
-      (:conc-name "struct-shape-predefined-load-metric-specification-"))
-   (predefined-load-metric-type
-    (common-lisp:error ":predefined-load-metric-type is required") :type
-    (common-lisp:or load-metric-type common-lisp:null))
-   (resource-label common-lisp:nil :type
-    (common-lisp:or resource-label common-lisp:null)))
+ (common-lisp:defclass predefined-load-metric-specification common-lisp:nil
+                       ((predefined-load-metric-type :initarg
+                         :predefined-load-metric-type :initform
+                         (common-lisp:error
+                          ":predefined-load-metric-type is required")
+                         :type
+                         (common-lisp:or load-metric-type common-lisp:null)
+                         :accessor
+                         struct-shape-predefined-load-metric-specification-predefined-load-metric-type
+                         :shape "LoadMetricType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-label :initarg :resource-label :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-label common-lisp:null)
+                         :accessor
+                         struct-shape-predefined-load-metric-specification-resource-label
+                         :shape "ResourceLabel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-predefined-load-metric-specification
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'predefined-load-metric-specification
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'predefined-load-metric-specification
                     'make-predefined-load-metric-specification))
@@ -876,14 +1183,30 @@
                           predefined-load-metric-specification))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (predefined-scaling-metric-specification (:copier common-lisp:nil)
-      (:conc-name "struct-shape-predefined-scaling-metric-specification-"))
-   (predefined-scaling-metric-type
-    (common-lisp:error ":predefined-scaling-metric-type is required") :type
-    (common-lisp:or scaling-metric-type common-lisp:null))
-   (resource-label common-lisp:nil :type
-    (common-lisp:or resource-label common-lisp:null)))
+ (common-lisp:defclass predefined-scaling-metric-specification common-lisp:nil
+                       ((predefined-scaling-metric-type :initarg
+                         :predefined-scaling-metric-type :initform
+                         (common-lisp:error
+                          ":predefined-scaling-metric-type is required")
+                         :type
+                         (common-lisp:or scaling-metric-type common-lisp:null)
+                         :accessor
+                         struct-shape-predefined-scaling-metric-specification-predefined-scaling-metric-type
+                         :shape "ScalingMetricType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-label :initarg :resource-label :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-label common-lisp:null)
+                         :accessor
+                         struct-shape-predefined-scaling-metric-specification-resource-label
+                         :shape "ResourceLabel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-predefined-scaling-metric-specification
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'predefined-scaling-metric-specification
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'predefined-scaling-metric-specification
                     'make-predefined-scaling-metric-specification))
@@ -925,38 +1248,135 @@
 (common-lisp:deftype resource-label () 'common-lisp:string)
 (common-lisp:deftype scalable-dimension () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (scaling-instruction (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scaling-instruction-"))
-   (service-namespace (common-lisp:error ":service-namespace is required")
-    :type (common-lisp:or service-namespace common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-max-len1600 common-lisp:null))
-   (scalable-dimension (common-lisp:error ":scalable-dimension is required")
-    :type (common-lisp:or scalable-dimension common-lisp:null))
-   (min-capacity (common-lisp:error ":min-capacity is required") :type
-    (common-lisp:or resource-capacity common-lisp:null))
-   (max-capacity (common-lisp:error ":max-capacity is required") :type
-    (common-lisp:or resource-capacity common-lisp:null))
-   (target-tracking-configurations
-    (common-lisp:error ":target-tracking-configurations is required") :type
-    (common-lisp:or target-tracking-configurations common-lisp:null))
-   (predefined-load-metric-specification common-lisp:nil :type
-    (common-lisp:or predefined-load-metric-specification common-lisp:null))
-   (customized-load-metric-specification common-lisp:nil :type
-    (common-lisp:or customized-load-metric-specification common-lisp:null))
-   (scheduled-action-buffer-time common-lisp:nil :type
-    (common-lisp:or scheduled-action-buffer-time common-lisp:null))
-   (predictive-scaling-max-capacity-behavior common-lisp:nil :type
-    (common-lisp:or predictive-scaling-max-capacity-behavior common-lisp:null))
-   (predictive-scaling-max-capacity-buffer common-lisp:nil :type
-    (common-lisp:or resource-capacity common-lisp:null))
-   (predictive-scaling-mode common-lisp:nil :type
-    (common-lisp:or predictive-scaling-mode common-lisp:null))
-   (scaling-policy-update-behavior common-lisp:nil :type
-    (common-lisp:or scaling-policy-update-behavior common-lisp:null))
-   (disable-dynamic-scaling common-lisp:nil :type
-    (common-lisp:or disable-dynamic-scaling common-lisp:null)))
+ (common-lisp:defclass scaling-instruction common-lisp:nil
+                       ((service-namespace :initarg :service-namespace
+                         :initform
+                         (common-lisp:error ":service-namespace is required")
+                         :type
+                         (common-lisp:or service-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-service-namespace
+                         :shape "ServiceNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id-max-len1600
+                                         common-lisp:null)
+                         :accessor struct-shape-scaling-instruction-resource-id
+                         :shape "ResourceIdMaxLen1600" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scalable-dimension :initarg :scalable-dimension
+                         :initform
+                         (common-lisp:error ":scalable-dimension is required")
+                         :type
+                         (common-lisp:or scalable-dimension common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-scalable-dimension
+                         :shape "ScalableDimension" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (min-capacity :initarg :min-capacity :initform
+                         (common-lisp:error ":min-capacity is required") :type
+                         (common-lisp:or resource-capacity common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-min-capacity :shape
+                         "ResourceCapacity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-capacity :initarg :max-capacity :initform
+                         (common-lisp:error ":max-capacity is required") :type
+                         (common-lisp:or resource-capacity common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-max-capacity :shape
+                         "ResourceCapacity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-tracking-configurations :initarg
+                         :target-tracking-configurations :initform
+                         (common-lisp:error
+                          ":target-tracking-configurations is required")
+                         :type
+                         (common-lisp:or target-tracking-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-target-tracking-configurations
+                         :shape "TargetTrackingConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (predefined-load-metric-specification :initarg
+                         :predefined-load-metric-specification :initform
+                         common-lisp:nil :type
+                         (common-lisp:or predefined-load-metric-specification
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-predefined-load-metric-specification
+                         :shape "PredefinedLoadMetricSpecification" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (customized-load-metric-specification :initarg
+                         :customized-load-metric-specification :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customized-load-metric-specification
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-customized-load-metric-specification
+                         :shape "CustomizedLoadMetricSpecification" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scheduled-action-buffer-time :initarg
+                         :scheduled-action-buffer-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or scheduled-action-buffer-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-scheduled-action-buffer-time
+                         :shape "ScheduledActionBufferTime" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (predictive-scaling-max-capacity-behavior :initarg
+                         :predictive-scaling-max-capacity-behavior :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          predictive-scaling-max-capacity-behavior
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-predictive-scaling-max-capacity-behavior
+                         :shape "PredictiveScalingMaxCapacityBehavior"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (predictive-scaling-max-capacity-buffer :initarg
+                         :predictive-scaling-max-capacity-buffer :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-capacity common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-predictive-scaling-max-capacity-buffer
+                         :shape "ResourceCapacity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (predictive-scaling-mode :initarg
+                         :predictive-scaling-mode :initform common-lisp:nil
+                         :type
+                         (common-lisp:or predictive-scaling-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-predictive-scaling-mode
+                         :shape "PredictiveScalingMode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scaling-policy-update-behavior :initarg
+                         :scaling-policy-update-behavior :initform
+                         common-lisp:nil :type
+                         (common-lisp:or scaling-policy-update-behavior
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-scaling-policy-update-behavior
+                         :shape "ScalingPolicyUpdateBehavior" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (disable-dynamic-scaling :initarg
+                         :disable-dynamic-scaling :initform common-lisp:nil
+                         :type
+                         (common-lisp:or disable-dynamic-scaling
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-instruction-disable-dynamic-scaling
+                         :shape "DisableDynamicScaling" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-scaling-instruction
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'scaling-instruction
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'scaling-instruction 'make-scaling-instruction))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1085,27 +1505,73 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype scaling-metric-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (scaling-plan (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scaling-plan-"))
-   (scaling-plan-name (common-lisp:error ":scaling-plan-name is required")
-    :type (common-lisp:or scaling-plan-name common-lisp:null))
-   (scaling-plan-version
-    (common-lisp:error ":scaling-plan-version is required") :type
-    (common-lisp:or scaling-plan-version common-lisp:null))
-   (application-source (common-lisp:error ":application-source is required")
-    :type (common-lisp:or application-source common-lisp:null))
-   (scaling-instructions
-    (common-lisp:error ":scaling-instructions is required") :type
-    (common-lisp:or scaling-instructions common-lisp:null))
-   (status-code (common-lisp:error ":status-code is required") :type
-    (common-lisp:or scaling-plan-status-code common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or xml-string common-lisp:null))
-   (status-start-time common-lisp:nil :type
-    (common-lisp:or timestamp-type common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or timestamp-type common-lisp:null)))
+ (common-lisp:defclass scaling-plan common-lisp:nil
+                       ((scaling-plan-name :initarg :scaling-plan-name
+                         :initform
+                         (common-lisp:error ":scaling-plan-name is required")
+                         :type
+                         (common-lisp:or scaling-plan-name common-lisp:null)
+                         :accessor struct-shape-scaling-plan-scaling-plan-name
+                         :shape "ScalingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-plan-version :initarg :scaling-plan-version
+                         :initform
+                         (common-lisp:error
+                          ":scaling-plan-version is required")
+                         :type
+                         (common-lisp:or scaling-plan-version common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-scaling-plan-version :shape
+                         "ScalingPlanVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (application-source :initarg :application-source
+                         :initform
+                         (common-lisp:error ":application-source is required")
+                         :type
+                         (common-lisp:or application-source common-lisp:null)
+                         :accessor struct-shape-scaling-plan-application-source
+                         :shape "ApplicationSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-instructions :initarg :scaling-instructions
+                         :initform
+                         (common-lisp:error
+                          ":scaling-instructions is required")
+                         :type
+                         (common-lisp:or scaling-instructions common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-scaling-instructions :shape
+                         "ScalingInstructions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-code :initarg :status-code :initform
+                         (common-lisp:error ":status-code is required") :type
+                         (common-lisp:or scaling-plan-status-code
+                                         common-lisp:null)
+                         :accessor struct-shape-scaling-plan-status-code :shape
+                         "ScalingPlanStatusCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or xml-string common-lisp:null) :accessor
+                         struct-shape-scaling-plan-status-message :shape
+                         "XmlString" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status-start-time :initarg :status-start-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp-type common-lisp:null)
+                         :accessor struct-shape-scaling-plan-status-start-time
+                         :shape "TimestampType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-type common-lisp:null)
+                         :accessor struct-shape-scaling-plan-creation-time
+                         :shape "TimestampType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-scaling-plan
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'scaling-plan
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'scaling-plan 'make-scaling-plan))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input scaling-plan))
@@ -1184,26 +1650,80 @@
                            (trivial-types:proper-list scaling-plan-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (scaling-plan-resource (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scaling-plan-resource-"))
-   (scaling-plan-name (common-lisp:error ":scaling-plan-name is required")
-    :type (common-lisp:or scaling-plan-name common-lisp:null))
-   (scaling-plan-version
-    (common-lisp:error ":scaling-plan-version is required") :type
-    (common-lisp:or scaling-plan-version common-lisp:null))
-   (service-namespace (common-lisp:error ":service-namespace is required")
-    :type (common-lisp:or service-namespace common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-max-len1600 common-lisp:null))
-   (scalable-dimension (common-lisp:error ":scalable-dimension is required")
-    :type (common-lisp:or scalable-dimension common-lisp:null))
-   (scaling-policies common-lisp:nil :type
-    (common-lisp:or scaling-policies common-lisp:null))
-   (scaling-status-code (common-lisp:error ":scaling-status-code is required")
-    :type (common-lisp:or scaling-status-code common-lisp:null))
-   (scaling-status-message common-lisp:nil :type
-    (common-lisp:or xml-string common-lisp:null)))
+ (common-lisp:defclass scaling-plan-resource common-lisp:nil
+                       ((scaling-plan-name :initarg :scaling-plan-name
+                         :initform
+                         (common-lisp:error ":scaling-plan-name is required")
+                         :type
+                         (common-lisp:or scaling-plan-name common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-resource-scaling-plan-name
+                         :shape "ScalingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-plan-version :initarg :scaling-plan-version
+                         :initform
+                         (common-lisp:error
+                          ":scaling-plan-version is required")
+                         :type
+                         (common-lisp:or scaling-plan-version common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-resource-scaling-plan-version
+                         :shape "ScalingPlanVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-namespace :initarg :service-namespace
+                         :initform
+                         (common-lisp:error ":service-namespace is required")
+                         :type
+                         (common-lisp:or service-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-resource-service-namespace
+                         :shape "ServiceNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id-max-len1600
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-resource-resource-id :shape
+                         "ResourceIdMaxLen1600" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scalable-dimension :initarg :scalable-dimension
+                         :initform
+                         (common-lisp:error ":scalable-dimension is required")
+                         :type
+                         (common-lisp:or scalable-dimension common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-resource-scalable-dimension
+                         :shape "ScalableDimension" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-policies :initarg :scaling-policies :initform
+                         common-lisp:nil :type
+                         (common-lisp:or scaling-policies common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-resource-scaling-policies
+                         :shape "ScalingPolicies" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-status-code :initarg :scaling-status-code
+                         :initform
+                         (common-lisp:error ":scaling-status-code is required")
+                         :type
+                         (common-lisp:or scaling-status-code common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-resource-scaling-status-code
+                         :shape "ScalingStatusCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-status-message :initarg
+                         :scaling-status-message :initform common-lisp:nil
+                         :type (common-lisp:or xml-string common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-plan-resource-scaling-status-message
+                         :shape "XmlString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-scaling-plan-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'scaling-plan-resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'scaling-plan-resource 'make-scaling-plan-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1306,15 +1826,33 @@
                            (trivial-types:proper-list scaling-policy))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (scaling-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-scaling-policy-"))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (policy-type (common-lisp:error ":policy-type is required") :type
-    (common-lisp:or policy-type common-lisp:null))
-   (target-tracking-configuration common-lisp:nil :type
-    (common-lisp:or target-tracking-configuration common-lisp:null)))
+ (common-lisp:defclass scaling-policy common-lisp:nil
+                       ((policy-name :initarg :policy-name :initform
+                         (common-lisp:error ":policy-name is required") :type
+                         (common-lisp:or policy-name common-lisp:null)
+                         :accessor struct-shape-scaling-policy-policy-name
+                         :shape "PolicyName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-type :initarg :policy-type :initform
+                         (common-lisp:error ":policy-type is required") :type
+                         (common-lisp:or policy-type common-lisp:null)
+                         :accessor struct-shape-scaling-policy-policy-type
+                         :shape "PolicyType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-tracking-configuration :initarg
+                         :target-tracking-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-tracking-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-scaling-policy-target-tracking-configuration
+                         :shape "TargetTrackingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-scaling-policy
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'scaling-policy
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'scaling-policy 'make-scaling-policy))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input scaling-policy))
@@ -1352,12 +1890,23 @@
 (common-lisp:deftype scheduled-action-buffer-time () 'common-lisp:integer)
 (common-lisp:deftype service-namespace () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-filter-"))
-   (key common-lisp:nil :type
-    (common-lisp:or xml-string-max-len128 common-lisp:null))
-   (values common-lisp:nil :type (common-lisp:or tag-values common-lisp:null)))
+ (common-lisp:defclass tag-filter common-lisp:nil
+                       ((key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or xml-string-max-len128
+                                         common-lisp:null)
+                         :accessor struct-shape-tag-filter-key :shape
+                         "XmlStringMaxLen128" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type (common-lisp:or tag-values common-lisp:null)
+                         :accessor struct-shape-tag-filter-values :shape
+                         "TagValues" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag-filter 'make-tag-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag-filter))
@@ -1398,23 +1947,68 @@
                            (trivial-types:proper-list xml-string-max-len256))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-tracking-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-tracking-configuration-"))
-   (predefined-scaling-metric-specification common-lisp:nil :type
-    (common-lisp:or predefined-scaling-metric-specification common-lisp:null))
-   (customized-scaling-metric-specification common-lisp:nil :type
-    (common-lisp:or customized-scaling-metric-specification common-lisp:null))
-   (target-value (common-lisp:error ":target-value is required") :type
-    (common-lisp:or metric-scale common-lisp:null))
-   (disable-scale-in common-lisp:nil :type
-    (common-lisp:or disable-scale-in common-lisp:null))
-   (scale-out-cooldown common-lisp:nil :type
-    (common-lisp:or cooldown common-lisp:null))
-   (scale-in-cooldown common-lisp:nil :type
-    (common-lisp:or cooldown common-lisp:null))
-   (estimated-instance-warmup common-lisp:nil :type
-    (common-lisp:or cooldown common-lisp:null)))
+ (common-lisp:defclass target-tracking-configuration common-lisp:nil
+                       ((predefined-scaling-metric-specification :initarg
+                         :predefined-scaling-metric-specification :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          predefined-scaling-metric-specification
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-target-tracking-configuration-predefined-scaling-metric-specification
+                         :shape "PredefinedScalingMetricSpecification"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (customized-scaling-metric-specification :initarg
+                         :customized-scaling-metric-specification :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          customized-scaling-metric-specification
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-target-tracking-configuration-customized-scaling-metric-specification
+                         :shape "CustomizedScalingMetricSpecification"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (target-value :initarg :target-value :initform
+                         (common-lisp:error ":target-value is required") :type
+                         (common-lisp:or metric-scale common-lisp:null)
+                         :accessor
+                         struct-shape-target-tracking-configuration-target-value
+                         :shape "MetricScale" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (disable-scale-in :initarg :disable-scale-in :initform
+                         common-lisp:nil :type
+                         (common-lisp:or disable-scale-in common-lisp:null)
+                         :accessor
+                         struct-shape-target-tracking-configuration-disable-scale-in
+                         :shape "DisableScaleIn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scale-out-cooldown :initarg :scale-out-cooldown
+                         :initform common-lisp:nil :type
+                         (common-lisp:or cooldown common-lisp:null) :accessor
+                         struct-shape-target-tracking-configuration-scale-out-cooldown
+                         :shape "Cooldown" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scale-in-cooldown :initarg :scale-in-cooldown
+                         :initform common-lisp:nil :type
+                         (common-lisp:or cooldown common-lisp:null) :accessor
+                         struct-shape-target-tracking-configuration-scale-in-cooldown
+                         :shape "Cooldown" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-instance-warmup :initarg
+                         :estimated-instance-warmup :initform common-lisp:nil
+                         :type (common-lisp:or cooldown common-lisp:null)
+                         :accessor
+                         struct-shape-target-tracking-configuration-estimated-instance-warmup
+                         :shape "Cooldown" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-tracking-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'target-tracking-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'target-tracking-configuration
                     'make-target-tracking-configuration))
@@ -1496,18 +2090,45 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype timestamp-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-scaling-plan-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-scaling-plan-request-"))
-   (scaling-plan-name (common-lisp:error ":scaling-plan-name is required")
-    :type (common-lisp:or scaling-plan-name common-lisp:null))
-   (scaling-plan-version
-    (common-lisp:error ":scaling-plan-version is required") :type
-    (common-lisp:or scaling-plan-version common-lisp:null))
-   (application-source common-lisp:nil :type
-    (common-lisp:or application-source common-lisp:null))
-   (scaling-instructions common-lisp:nil :type
-    (common-lisp:or scaling-instructions common-lisp:null)))
+ (common-lisp:defclass update-scaling-plan-request common-lisp:nil
+                       ((scaling-plan-name :initarg :scaling-plan-name
+                         :initform
+                         (common-lisp:error ":scaling-plan-name is required")
+                         :type
+                         (common-lisp:or scaling-plan-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-scaling-plan-request-scaling-plan-name
+                         :shape "ScalingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-plan-version :initarg :scaling-plan-version
+                         :initform
+                         (common-lisp:error
+                          ":scaling-plan-version is required")
+                         :type
+                         (common-lisp:or scaling-plan-version common-lisp:null)
+                         :accessor
+                         struct-shape-update-scaling-plan-request-scaling-plan-version
+                         :shape "ScalingPlanVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (application-source :initarg :application-source
+                         :initform common-lisp:nil :type
+                         (common-lisp:or application-source common-lisp:null)
+                         :accessor
+                         struct-shape-update-scaling-plan-request-application-source
+                         :shape "ApplicationSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-instructions :initarg :scaling-instructions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or scaling-instructions common-lisp:null)
+                         :accessor
+                         struct-shape-update-scaling-plan-request-scaling-instructions
+                         :shape "ScalingInstructions" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-scaling-plan-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-scaling-plan-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-scaling-plan-request
                     'make-update-scaling-plan-request))
@@ -1557,9 +2178,13 @@
                           update-scaling-plan-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-scaling-plan-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-scaling-plan-response-")))
+ (common-lisp:defclass update-scaling-plan-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-scaling-plan-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-scaling-plan-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-scaling-plan-response
                     'make-update-scaling-plan-response))

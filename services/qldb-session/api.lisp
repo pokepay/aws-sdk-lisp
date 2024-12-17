@@ -34,9 +34,13 @@
     ("OccConflictException" . occ-conflict-exception)
     ("RateExceededException" . rate-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (abort-transaction-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-abort-transaction-request-")))
+ (common-lisp:defclass abort-transaction-request common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-abort-transaction-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'abort-transaction-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'abort-transaction-request
                     'make-abort-transaction-request))
@@ -56,11 +60,19 @@
                           abort-transaction-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (abort-transaction-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-abort-transaction-result-"))
-   (timing-information common-lisp:nil :type
-    (common-lisp:or timing-information common-lisp:null)))
+ (common-lisp:defclass abort-transaction-result common-lisp:nil
+                       ((timing-information :initarg :timing-information
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timing-information common-lisp:null)
+                         :accessor
+                         struct-shape-abort-transaction-result-timing-information
+                         :shape "TimingInformation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-abort-transaction-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'abort-transaction-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'abort-transaction-result 'make-abort-transaction-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -106,13 +118,26 @@
 (common-lisp:deftype commit-digest ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (commit-transaction-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-commit-transaction-request-"))
-   (transaction-id (common-lisp:error ":transaction-id is required") :type
-    (common-lisp:or transaction-id common-lisp:null))
-   (commit-digest (common-lisp:error ":commit-digest is required") :type
-    (common-lisp:or commit-digest common-lisp:null)))
+ (common-lisp:defclass commit-transaction-request common-lisp:nil
+                       ((transaction-id :initarg :transaction-id :initform
+                         (common-lisp:error ":transaction-id is required")
+                         :type (common-lisp:or transaction-id common-lisp:null)
+                         :accessor
+                         struct-shape-commit-transaction-request-transaction-id
+                         :shape "TransactionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (commit-digest :initarg :commit-digest :initform
+                         (common-lisp:error ":commit-digest is required") :type
+                         (common-lisp:or commit-digest common-lisp:null)
+                         :accessor
+                         struct-shape-commit-transaction-request-commit-digest
+                         :shape "CommitDigest" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-commit-transaction-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'commit-transaction-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'commit-transaction-request
                     'make-commit-transaction-request))
@@ -146,17 +171,39 @@
                           commit-transaction-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (commit-transaction-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-commit-transaction-result-"))
-   (transaction-id common-lisp:nil :type
-    (common-lisp:or transaction-id common-lisp:null))
-   (commit-digest common-lisp:nil :type
-    (common-lisp:or commit-digest common-lisp:null))
-   (timing-information common-lisp:nil :type
-    (common-lisp:or timing-information common-lisp:null))
-   (consumed-ios common-lisp:nil :type
-    (common-lisp:or iousage common-lisp:null)))
+ (common-lisp:defclass commit-transaction-result common-lisp:nil
+                       ((transaction-id :initarg :transaction-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transaction-id common-lisp:null)
+                         :accessor
+                         struct-shape-commit-transaction-result-transaction-id
+                         :shape "TransactionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (commit-digest :initarg :commit-digest :initform
+                         common-lisp:nil :type
+                         (common-lisp:or commit-digest common-lisp:null)
+                         :accessor
+                         struct-shape-commit-transaction-result-commit-digest
+                         :shape "CommitDigest" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timing-information :initarg :timing-information
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timing-information common-lisp:null)
+                         :accessor
+                         struct-shape-commit-transaction-result-timing-information
+                         :shape "TimingInformation" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (consumed-ios :initarg :consumed-ios :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iousage common-lisp:null) :accessor
+                         struct-shape-commit-transaction-result-consumed-ios
+                         :shape "IOUsage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-commit-transaction-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'commit-transaction-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'commit-transaction-result
                     'make-commit-transaction-result))
@@ -204,9 +251,12 @@
                           commit-transaction-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (end-session-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-end-session-request-")))
+ (common-lisp:defclass end-session-request common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-end-session-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'end-session-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'end-session-request 'make-end-session-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -219,11 +269,19 @@
                         ((aws-sdk/generator/shape::input end-session-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (end-session-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-end-session-result-"))
-   (timing-information common-lisp:nil :type
-    (common-lisp:or timing-information common-lisp:null)))
+ (common-lisp:defclass end-session-result common-lisp:nil
+                       ((timing-information :initarg :timing-information
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timing-information common-lisp:null)
+                         :accessor
+                         struct-shape-end-session-result-timing-information
+                         :shape "TimingInformation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-end-session-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'end-session-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'end-session-result 'make-end-session-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -245,15 +303,32 @@
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (execute-statement-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-execute-statement-request-"))
-   (transaction-id (common-lisp:error ":transaction-id is required") :type
-    (common-lisp:or transaction-id common-lisp:null))
-   (statement (common-lisp:error ":statement is required") :type
-    (common-lisp:or statement common-lisp:null))
-   (parameters common-lisp:nil :type
-    (common-lisp:or statement-parameters common-lisp:null)))
+ (common-lisp:defclass execute-statement-request common-lisp:nil
+                       ((transaction-id :initarg :transaction-id :initform
+                         (common-lisp:error ":transaction-id is required")
+                         :type (common-lisp:or transaction-id common-lisp:null)
+                         :accessor
+                         struct-shape-execute-statement-request-transaction-id
+                         :shape "TransactionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (statement :initarg :statement :initform
+                         (common-lisp:error ":statement is required") :type
+                         (common-lisp:or statement common-lisp:null) :accessor
+                         struct-shape-execute-statement-request-statement
+                         :shape "Statement" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parameters :initarg :parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or statement-parameters common-lisp:null)
+                         :accessor
+                         struct-shape-execute-statement-request-parameters
+                         :shape "StatementParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-execute-statement-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'execute-statement-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'execute-statement-request
                     'make-execute-statement-request))
@@ -294,14 +369,31 @@
                           execute-statement-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (execute-statement-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-execute-statement-result-"))
-   (first-page common-lisp:nil :type (common-lisp:or page common-lisp:null))
-   (timing-information common-lisp:nil :type
-    (common-lisp:or timing-information common-lisp:null))
-   (consumed-ios common-lisp:nil :type
-    (common-lisp:or iousage common-lisp:null)))
+ (common-lisp:defclass execute-statement-result common-lisp:nil
+                       ((first-page :initarg :first-page :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page common-lisp:null) :accessor
+                         struct-shape-execute-statement-result-first-page
+                         :shape "Page" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (timing-information :initarg :timing-information
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timing-information common-lisp:null)
+                         :accessor
+                         struct-shape-execute-statement-result-timing-information
+                         :shape "TimingInformation" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (consumed-ios :initarg :consumed-ios :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iousage common-lisp:null) :accessor
+                         struct-shape-execute-statement-result-consumed-ios
+                         :shape "IOUsage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-execute-statement-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'execute-statement-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'execute-statement-result 'make-execute-statement-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -341,13 +433,26 @@
                           execute-statement-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (fetch-page-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-fetch-page-request-"))
-   (transaction-id (common-lisp:error ":transaction-id is required") :type
-    (common-lisp:or transaction-id common-lisp:null))
-   (next-page-token (common-lisp:error ":next-page-token is required") :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass fetch-page-request common-lisp:nil
+                       ((transaction-id :initarg :transaction-id :initform
+                         (common-lisp:error ":transaction-id is required")
+                         :type (common-lisp:or transaction-id common-lisp:null)
+                         :accessor
+                         struct-shape-fetch-page-request-transaction-id :shape
+                         "TransactionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         (common-lisp:error ":next-page-token is required")
+                         :type (common-lisp:or page-token common-lisp:null)
+                         :accessor
+                         struct-shape-fetch-page-request-next-page-token :shape
+                         "PageToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-fetch-page-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'fetch-page-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'fetch-page-request 'make-fetch-page-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -374,14 +479,30 @@
                         ((aws-sdk/generator/shape::input fetch-page-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (fetch-page-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-fetch-page-result-"))
-   (page common-lisp:nil :type (common-lisp:or page common-lisp:null))
-   (timing-information common-lisp:nil :type
-    (common-lisp:or timing-information common-lisp:null))
-   (consumed-ios common-lisp:nil :type
-    (common-lisp:or iousage common-lisp:null)))
+ (common-lisp:defclass fetch-page-result common-lisp:nil
+                       ((page :initarg :page :initform common-lisp:nil :type
+                         (common-lisp:or page common-lisp:null) :accessor
+                         struct-shape-fetch-page-result-page :shape "Page"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (timing-information :initarg :timing-information
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timing-information common-lisp:null)
+                         :accessor
+                         struct-shape-fetch-page-result-timing-information
+                         :shape "TimingInformation" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (consumed-ios :initarg :consumed-ios :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iousage common-lisp:null) :accessor
+                         struct-shape-fetch-page-result-consumed-ios :shape
+                         "IOUsage" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-fetch-page-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'fetch-page-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'fetch-page-result 'make-fetch-page-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -415,11 +536,23 @@
                         ((aws-sdk/generator/shape::input fetch-page-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (iousage (:copier common-lisp:nil) (:conc-name "struct-shape-iousage-"))
-   (read-ios common-lisp:nil :type (common-lisp:or read-ios common-lisp:null))
-   (write-ios common-lisp:nil :type
-    (common-lisp:or write-ios common-lisp:null)))
+ (common-lisp:defclass iousage common-lisp:nil
+                       ((read-ios :initarg :read-ios :initform common-lisp:nil
+                         :type (common-lisp:or read-ios common-lisp:null)
+                         :accessor struct-shape-iousage-read-ios :shape
+                         "ReadIOs" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (write-ios :initarg :write-ios :initform
+                         common-lisp:nil :type
+                         (common-lisp:or write-ios common-lisp:null) :accessor
+                         struct-shape-iousage-write-ios :shape "WriteIOs"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-iousage
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'iousage
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'iousage 'make-iousage))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input iousage))
@@ -475,12 +608,22 @@
  (common-lisp:export
   (common-lisp:list 'occ-conflict-exception 'occ-conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (page (:copier common-lisp:nil) (:conc-name "struct-shape-page-"))
-   (values common-lisp:nil :type
-    (common-lisp:or value-holders common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass page common-lisp:nil
+                       ((values :initarg :values :initform common-lisp:nil
+                         :type (common-lisp:or value-holders common-lisp:null)
+                         :accessor struct-shape-page-values :shape
+                         "ValueHolders" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-page-next-page-token :shape "PageToken"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-page (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'page
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'page 'make-page))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input page))
@@ -516,25 +659,72 @@
   (common-lisp:list 'rate-exceeded-exception 'rate-exceeded-exception-message)))
 (common-lisp:deftype read-ios () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (send-command-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-send-command-request-"))
-   (session-token common-lisp:nil :type
-    (common-lisp:or session-token common-lisp:null))
-   (start-session common-lisp:nil :type
-    (common-lisp:or start-session-request common-lisp:null))
-   (start-transaction common-lisp:nil :type
-    (common-lisp:or start-transaction-request common-lisp:null))
-   (end-session common-lisp:nil :type
-    (common-lisp:or end-session-request common-lisp:null))
-   (commit-transaction common-lisp:nil :type
-    (common-lisp:or commit-transaction-request common-lisp:null))
-   (abort-transaction common-lisp:nil :type
-    (common-lisp:or abort-transaction-request common-lisp:null))
-   (execute-statement common-lisp:nil :type
-    (common-lisp:or execute-statement-request common-lisp:null))
-   (fetch-page common-lisp:nil :type
-    (common-lisp:or fetch-page-request common-lisp:null)))
+ (common-lisp:defclass send-command-request common-lisp:nil
+                       ((session-token :initarg :session-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-token common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-request-session-token :shape
+                         "SessionToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-session :initarg :start-session :initform
+                         common-lisp:nil :type
+                         (common-lisp:or start-session-request
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-request-start-session :shape
+                         "StartSessionRequest" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-transaction :initarg :start-transaction
+                         :initform common-lisp:nil :type
+                         (common-lisp:or start-transaction-request
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-request-start-transaction
+                         :shape "StartTransactionRequest" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (end-session :initarg :end-session :initform
+                         common-lisp:nil :type
+                         (common-lisp:or end-session-request common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-request-end-session :shape
+                         "EndSessionRequest" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (commit-transaction :initarg :commit-transaction
+                         :initform common-lisp:nil :type
+                         (common-lisp:or commit-transaction-request
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-request-commit-transaction
+                         :shape "CommitTransactionRequest" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (abort-transaction :initarg :abort-transaction
+                         :initform common-lisp:nil :type
+                         (common-lisp:or abort-transaction-request
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-request-abort-transaction
+                         :shape "AbortTransactionRequest" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (execute-statement :initarg :execute-statement
+                         :initform common-lisp:nil :type
+                         (common-lisp:or execute-statement-request
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-request-execute-statement
+                         :shape "ExecuteStatementRequest" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (fetch-page :initarg :fetch-page :initform
+                         common-lisp:nil :type
+                         (common-lisp:or fetch-page-request common-lisp:null)
+                         :accessor struct-shape-send-command-request-fetch-page
+                         :shape "FetchPageRequest" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-send-command-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'send-command-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'send-command-request 'make-send-command-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -603,23 +793,63 @@
                         ((aws-sdk/generator/shape::input send-command-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (send-command-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-send-command-result-"))
-   (start-session common-lisp:nil :type
-    (common-lisp:or start-session-result common-lisp:null))
-   (start-transaction common-lisp:nil :type
-    (common-lisp:or start-transaction-result common-lisp:null))
-   (end-session common-lisp:nil :type
-    (common-lisp:or end-session-result common-lisp:null))
-   (commit-transaction common-lisp:nil :type
-    (common-lisp:or commit-transaction-result common-lisp:null))
-   (abort-transaction common-lisp:nil :type
-    (common-lisp:or abort-transaction-result common-lisp:null))
-   (execute-statement common-lisp:nil :type
-    (common-lisp:or execute-statement-result common-lisp:null))
-   (fetch-page common-lisp:nil :type
-    (common-lisp:or fetch-page-result common-lisp:null)))
+ (common-lisp:defclass send-command-result common-lisp:nil
+                       ((start-session :initarg :start-session :initform
+                         common-lisp:nil :type
+                         (common-lisp:or start-session-result common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-result-start-session :shape
+                         "StartSessionResult" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-transaction :initarg :start-transaction
+                         :initform common-lisp:nil :type
+                         (common-lisp:or start-transaction-result
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-result-start-transaction
+                         :shape "StartTransactionResult" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (end-session :initarg :end-session :initform
+                         common-lisp:nil :type
+                         (common-lisp:or end-session-result common-lisp:null)
+                         :accessor struct-shape-send-command-result-end-session
+                         :shape "EndSessionResult" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (commit-transaction :initarg :commit-transaction
+                         :initform common-lisp:nil :type
+                         (common-lisp:or commit-transaction-result
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-result-commit-transaction
+                         :shape "CommitTransactionResult" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (abort-transaction :initarg :abort-transaction
+                         :initform common-lisp:nil :type
+                         (common-lisp:or abort-transaction-result
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-result-abort-transaction
+                         :shape "AbortTransactionResult" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (execute-statement :initarg :execute-statement
+                         :initform common-lisp:nil :type
+                         (common-lisp:or execute-statement-result
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-send-command-result-execute-statement
+                         :shape "ExecuteStatementResult" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (fetch-page :initarg :fetch-page :initform
+                         common-lisp:nil :type
+                         (common-lisp:or fetch-page-result common-lisp:null)
+                         :accessor struct-shape-send-command-result-fetch-page
+                         :shape "FetchPageResult" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-send-command-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'send-command-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'send-command-result 'make-send-command-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -682,11 +912,19 @@
    common-lisp:nil))
 (common-lisp:deftype session-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-session-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-session-request-"))
-   (ledger-name (common-lisp:error ":ledger-name is required") :type
-    (common-lisp:or ledger-name common-lisp:null)))
+ (common-lisp:defclass start-session-request common-lisp:nil
+                       ((ledger-name :initarg :ledger-name :initform
+                         (common-lisp:error ":ledger-name is required") :type
+                         (common-lisp:or ledger-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-session-request-ledger-name :shape
+                         "LedgerName" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-session-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-session-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-session-request 'make-start-session-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -712,13 +950,26 @@
                           start-session-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-session-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-session-result-"))
-   (session-token common-lisp:nil :type
-    (common-lisp:or session-token common-lisp:null))
-   (timing-information common-lisp:nil :type
-    (common-lisp:or timing-information common-lisp:null)))
+ (common-lisp:defclass start-session-result common-lisp:nil
+                       ((session-token :initarg :session-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-token common-lisp:null)
+                         :accessor
+                         struct-shape-start-session-result-session-token :shape
+                         "SessionToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timing-information :initarg :timing-information
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timing-information common-lisp:null)
+                         :accessor
+                         struct-shape-start-session-result-timing-information
+                         :shape "TimingInformation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-session-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-session-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-session-result 'make-start-session-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -745,9 +996,13 @@
                         ((aws-sdk/generator/shape::input start-session-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-transaction-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-transaction-request-")))
+ (common-lisp:defclass start-transaction-request common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-transaction-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-transaction-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-transaction-request
                     'make-start-transaction-request))
@@ -767,13 +1022,26 @@
                           start-transaction-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-transaction-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-transaction-result-"))
-   (transaction-id common-lisp:nil :type
-    (common-lisp:or transaction-id common-lisp:null))
-   (timing-information common-lisp:nil :type
-    (common-lisp:or timing-information common-lisp:null)))
+ (common-lisp:defclass start-transaction-result common-lisp:nil
+                       ((transaction-id :initarg :transaction-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transaction-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-transaction-result-transaction-id
+                         :shape "TransactionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timing-information :initarg :timing-information
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timing-information common-lisp:null)
+                         :accessor
+                         struct-shape-start-transaction-result-timing-information
+                         :shape "TimingInformation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-transaction-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-transaction-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-transaction-result 'make-start-transaction-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -815,11 +1083,21 @@
                            (trivial-types:proper-list value-holder))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (timing-information (:copier common-lisp:nil)
-      (:conc-name "struct-shape-timing-information-"))
-   (processing-time-milliseconds common-lisp:nil :type
-    (common-lisp:or processing-time-milliseconds common-lisp:null)))
+ (common-lisp:defclass timing-information common-lisp:nil
+                       ((processing-time-milliseconds :initarg
+                         :processing-time-milliseconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or processing-time-milliseconds
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-timing-information-processing-time-milliseconds
+                         :shape "ProcessingTimeMilliseconds" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-timing-information
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'timing-information
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'timing-information 'make-timing-information))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -841,12 +1119,23 @@
    common-lisp:nil))
 (common-lisp:deftype transaction-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (value-holder (:copier common-lisp:nil)
-      (:conc-name "struct-shape-value-holder-"))
-   (ion-binary common-lisp:nil :type
-    (common-lisp:or ion-binary common-lisp:null))
-   (ion-text common-lisp:nil :type (common-lisp:or ion-text common-lisp:null)))
+ (common-lisp:defclass value-holder common-lisp:nil
+                       ((ion-binary :initarg :ion-binary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ion-binary common-lisp:null) :accessor
+                         struct-shape-value-holder-ion-binary :shape
+                         "IonBinary" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ion-text :initarg :ion-text :initform common-lisp:nil
+                         :type (common-lisp:or ion-text common-lisp:null)
+                         :accessor struct-shape-value-holder-ion-text :shape
+                         "IonText" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-value-holder
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'value-holder
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'value-holder 'make-value-holder))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input value-holder))

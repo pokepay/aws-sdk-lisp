@@ -165,13 +165,24 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'account-registered-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (add-tags-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-add-tags-request-"))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags-list (common-lisp:error ":tags-list is required") :type
-    (common-lisp:or tags-list common-lisp:null)))
+ (common-lisp:defclass add-tags-request common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-add-tags-request-resource-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags-list :initarg :tags-list :initform
+                         (common-lisp:error ":tags-list is required") :type
+                         (common-lisp:or tags-list common-lisp:null) :accessor
+                         struct-shape-add-tags-request-tags-list :shape
+                         "TagsList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-add-tags-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'add-tags-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'add-tags-request 'make-add-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -198,9 +209,12 @@
                         ((aws-sdk/generator/shape::input add-tags-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (add-tags-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-add-tags-response-")))
+ (common-lisp:defclass add-tags-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-add-tags-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'add-tags-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'add-tags-response 'make-add-tags-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -213,12 +227,26 @@
                         ((aws-sdk/generator/shape::input add-tags-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (advanced-event-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-advanced-event-selector-"))
-   (name common-lisp:nil :type (common-lisp:or selector-name common-lisp:null))
-   (field-selectors (common-lisp:error ":field-selectors is required") :type
-    (common-lisp:or advanced-field-selectors common-lisp:null)))
+ (common-lisp:defclass advanced-event-selector common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or selector-name common-lisp:null)
+                         :accessor struct-shape-advanced-event-selector-name
+                         :shape "SelectorName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (field-selectors :initarg :field-selectors :initform
+                         (common-lisp:error ":field-selectors is required")
+                         :type
+                         (common-lisp:or advanced-field-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-advanced-event-selector-field-selectors
+                         :shape "AdvancedFieldSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-advanced-event-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'advanced-event-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'advanced-event-selector 'make-advanced-event-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -259,21 +287,53 @@
                            (trivial-types:proper-list advanced-event-selector))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (advanced-field-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-advanced-field-selector-"))
-   (field (common-lisp:error ":field is required") :type
-    (common-lisp:or selector-field common-lisp:null))
-   (equals common-lisp:nil :type (common-lisp:or operator common-lisp:null))
-   (starts-with common-lisp:nil :type
-    (common-lisp:or operator common-lisp:null))
-   (ends-with common-lisp:nil :type (common-lisp:or operator common-lisp:null))
-   (not-equals common-lisp:nil :type
-    (common-lisp:or operator common-lisp:null))
-   (not-starts-with common-lisp:nil :type
-    (common-lisp:or operator common-lisp:null))
-   (not-ends-with common-lisp:nil :type
-    (common-lisp:or operator common-lisp:null)))
+ (common-lisp:defclass advanced-field-selector common-lisp:nil
+                       ((field :initarg :field :initform
+                         (common-lisp:error ":field is required") :type
+                         (common-lisp:or selector-field common-lisp:null)
+                         :accessor struct-shape-advanced-field-selector-field
+                         :shape "SelectorField" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (equals :initarg :equals :initform common-lisp:nil
+                         :type (common-lisp:or operator common-lisp:null)
+                         :accessor struct-shape-advanced-field-selector-equals
+                         :shape "Operator" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (starts-with :initarg :starts-with :initform
+                         common-lisp:nil :type
+                         (common-lisp:or operator common-lisp:null) :accessor
+                         struct-shape-advanced-field-selector-starts-with
+                         :shape "Operator" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ends-with :initarg :ends-with :initform
+                         common-lisp:nil :type
+                         (common-lisp:or operator common-lisp:null) :accessor
+                         struct-shape-advanced-field-selector-ends-with :shape
+                         "Operator" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (not-equals :initarg :not-equals :initform
+                         common-lisp:nil :type
+                         (common-lisp:or operator common-lisp:null) :accessor
+                         struct-shape-advanced-field-selector-not-equals :shape
+                         "Operator" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (not-starts-with :initarg :not-starts-with :initform
+                         common-lisp:nil :type
+                         (common-lisp:or operator common-lisp:null) :accessor
+                         struct-shape-advanced-field-selector-not-starts-with
+                         :shape "Operator" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (not-ends-with :initarg :not-ends-with :initform
+                         common-lisp:nil :type
+                         (common-lisp:or operator common-lisp:null) :accessor
+                         struct-shape-advanced-field-selector-not-ends-with
+                         :shape "Operator" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-advanced-field-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'advanced-field-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'advanced-field-selector 'make-advanced-field-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -353,13 +413,25 @@
 (common-lisp:deftype byte-buffer ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-query-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-query-request-"))
-   (event-data-store common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (query-id (common-lisp:error ":query-id is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass cancel-query-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-query-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-id :initarg :query-id :initform
+                         (common-lisp:error ":query-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-cancel-query-request-query-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-query-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cancel-query-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-query-request 'make-cancel-query-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -386,13 +458,25 @@
                         ((aws-sdk/generator/shape::input cancel-query-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-query-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-query-response-"))
-   (query-id (common-lisp:error ":query-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (query-status (common-lisp:error ":query-status is required") :type
-    (common-lisp:or query-status common-lisp:null)))
+ (common-lisp:defclass cancel-query-response common-lisp:nil
+                       ((query-id :initarg :query-id :initform
+                         (common-lisp:error ":query-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-cancel-query-response-query-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (query-status :initarg :query-status :initform
+                         (common-lisp:error ":query-status is required") :type
+                         (common-lisp:or query-status common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-query-response-query-status :shape
+                         "QueryStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-query-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cancel-query-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-query-response 'make-cancel-query-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -431,11 +515,23 @@
  (common-lisp:export
   (common-lisp:list 'cannot-delegate-management-account-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (channel (:copier common-lisp:nil) (:conc-name "struct-shape-channel-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or channel-arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or channel-name common-lisp:null)))
+ (common-lisp:defclass channel common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-arn common-lisp:null)
+                         :accessor struct-shape-channel-channel-arn :shape
+                         "ChannelArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or channel-name common-lisp:null)
+                         :accessor struct-shape-channel-name :shape
+                         "ChannelName" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-channel
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'channel
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'channel 'make-channel))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input channel))
@@ -528,16 +624,36 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'conflict-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or channel-name common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or source common-lisp:null))
-   (destinations (common-lisp:error ":destinations is required") :type
-    (common-lisp:or destinations common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags-list common-lisp:null)))
+ (common-lisp:defclass create-channel-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or channel-name common-lisp:null)
+                         :accessor struct-shape-create-channel-request-name
+                         :shape "ChannelName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or source common-lisp:null) :accessor
+                         struct-shape-create-channel-request-source :shape
+                         "Source" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         (common-lisp:error ":destinations is required") :type
+                         (common-lisp:or destinations common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-request-destinations
+                         :shape "Destinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags-list common-lisp:null) :accessor
+                         struct-shape-create-channel-request-tags :shape
+                         "TagsList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-channel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-request 'make-create-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -584,16 +700,41 @@
                           create-channel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-channel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-channel-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or channel-arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or channel-name common-lisp:null))
-   (source common-lisp:nil :type (common-lisp:or source common-lisp:null))
-   (destinations common-lisp:nil :type
-    (common-lisp:or destinations common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags-list common-lisp:null)))
+ (common-lisp:defclass create-channel-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-response-channel-arn
+                         :shape "ChannelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or channel-name common-lisp:null)
+                         :accessor struct-shape-create-channel-response-name
+                         :shape "ChannelName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source :initarg :source :initform common-lisp:nil
+                         :type (common-lisp:or source common-lisp:null)
+                         :accessor struct-shape-create-channel-response-source
+                         :shape "Source" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or destinations common-lisp:null)
+                         :accessor
+                         struct-shape-create-channel-response-destinations
+                         :shape "Destinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags-list common-lisp:null) :accessor
+                         struct-shape-create-channel-response-tags :shape
+                         "TagsList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-channel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-channel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-channel-response 'make-create-channel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -647,29 +788,85 @@
                           create-channel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-event-data-store-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-event-data-store-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or event-data-store-name common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null))
-   (multi-region-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (organization-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (retention-period common-lisp:nil :type
-    (common-lisp:or retention-period common-lisp:null))
-   (termination-protection-enabled common-lisp:nil :type
-    (common-lisp:or termination-protection-enabled common-lisp:null))
-   (tags-list common-lisp:nil :type
-    (common-lisp:or tags-list common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or event-data-store-kms-key-id common-lisp:null))
-   (start-ingestion common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (billing-mode common-lisp:nil :type
-    (common-lisp:or billing-mode common-lisp:null)))
+ (common-lisp:defclass create-event-data-store-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or event-data-store-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-request-name
+                         :shape "EventDataStoreName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-request-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (multi-region-enabled :initarg :multi-region-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-request-multi-region-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (organization-enabled :initarg :organization-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-request-organization-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retention-period :initarg :retention-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or retention-period common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-request-retention-period
+                         :shape "RetentionPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (termination-protection-enabled :initarg
+                         :termination-protection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or termination-protection-enabled
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-request-termination-protection-enabled
+                         :shape "TerminationProtectionEnabled" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags-list :initarg :tags-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tags-list common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-request-tags-list
+                         :shape "TagsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-kms-key-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-request-kms-key-id
+                         :shape "EventDataStoreKmsKeyId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-ingestion :initarg :start-ingestion :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-request-start-ingestion
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (billing-mode :initarg :billing-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-mode common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-request-billing-mode
+                         :shape "BillingMode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-event-data-store-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-event-data-store-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-event-data-store-request
                     'make-create-event-data-store-request))
@@ -763,35 +960,105 @@
                           create-event-data-store-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-event-data-store-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-event-data-store-response-"))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or event-data-store-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or event-data-store-status common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null))
-   (multi-region-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (organization-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (retention-period common-lisp:nil :type
-    (common-lisp:or retention-period common-lisp:null))
-   (termination-protection-enabled common-lisp:nil :type
-    (common-lisp:or termination-protection-enabled common-lisp:null))
-   (tags-list common-lisp:nil :type
-    (common-lisp:or tags-list common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or event-data-store-kms-key-id common-lisp:null))
-   (billing-mode common-lisp:nil :type
-    (common-lisp:or billing-mode common-lisp:null)))
+ (common-lisp:defclass create-event-data-store-response common-lisp:nil
+                       ((event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-response-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-response-name
+                         :shape "EventDataStoreName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or event-data-store-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-response-status
+                         :shape "EventDataStoreStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-response-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (multi-region-enabled :initarg :multi-region-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-response-multi-region-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (organization-enabled :initarg :organization-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-response-organization-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retention-period :initarg :retention-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or retention-period common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-response-retention-period
+                         :shape "RetentionPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (termination-protection-enabled :initarg
+                         :termination-protection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or termination-protection-enabled
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-response-termination-protection-enabled
+                         :shape "TerminationProtectionEnabled" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags-list :initarg :tags-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tags-list common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-response-tags-list
+                         :shape "TagsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-response-created-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-create-event-data-store-response-updated-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-kms-key-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-response-kms-key-id
+                         :shape "EventDataStoreKmsKeyId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-mode :initarg :billing-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-mode common-lisp:null)
+                         :accessor
+                         struct-shape-create-event-data-store-response-billing-mode
+                         :shape "BillingMode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-event-data-store-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-event-data-store-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-event-data-store-response
                     'make-create-event-data-store-response))
@@ -907,32 +1174,88 @@
                           create-event-data-store-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-trail-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-trail-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (s3bucket-name (common-lisp:error ":s3bucket-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (s3key-prefix common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (sns-topic-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (include-global-service-events common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (is-multi-region-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (enable-log-file-validation common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (cloud-watch-logs-log-group-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (cloud-watch-logs-role-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (is-organization-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (tags-list common-lisp:nil :type
-    (common-lisp:or tags-list common-lisp:null)))
+ (common-lisp:defclass create-trail-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-request-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3bucket-name :initarg :s3bucket-name :initform
+                         (common-lisp:error ":s3bucket-name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-request-s3bucket-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3key-prefix :initarg :s3key-prefix :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-request-s3key-prefix :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-name :initarg :sns-topic-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-request-sns-topic-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-global-service-events :initarg
+                         :include-global-service-events :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-trail-request-include-global-service-events
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (is-multi-region-trail :initarg :is-multi-region-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-trail-request-is-multi-region-trail
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (enable-log-file-validation :initarg
+                         :enable-log-file-validation :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-create-trail-request-enable-log-file-validation
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-log-group-arn :initarg
+                         :cloud-watch-logs-log-group-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-request-cloud-watch-logs-log-group-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-role-arn :initarg
+                         :cloud-watch-logs-role-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-create-trail-request-cloud-watch-logs-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-request-kms-key-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (is-organization-trail :initarg :is-organization-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-trail-request-is-organization-trail
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags-list :initarg :tags-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tags-list common-lisp:null) :accessor
+                         struct-shape-create-trail-request-tags-list :shape
+                         "TagsList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-trail-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-trail-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-trail-request 'make-create-trail-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1035,32 +1358,93 @@
                         ((aws-sdk/generator/shape::input create-trail-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-trail-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-trail-response-"))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (s3bucket-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (s3key-prefix common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (sns-topic-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (sns-topic-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (include-global-service-events common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (is-multi-region-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (trail-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (log-file-validation-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (cloud-watch-logs-log-group-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (cloud-watch-logs-role-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (is-organization-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass create-trail-response common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-response-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3bucket-name :initarg :s3bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-response-s3bucket-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (s3key-prefix :initarg :s3key-prefix :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-response-s3key-prefix :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-name :initarg :sns-topic-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-response-sns-topic-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sns-topic-arn :initarg :sns-topic-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-response-sns-topic-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-global-service-events :initarg
+                         :include-global-service-events :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-trail-response-include-global-service-events
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (is-multi-region-trail :initarg :is-multi-region-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-trail-response-is-multi-region-trail
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (trail-arn :initarg :trail-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-response-trail-arn :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (log-file-validation-enabled :initarg
+                         :log-file-validation-enabled :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-create-trail-response-log-file-validation-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-log-group-arn :initarg
+                         :cloud-watch-logs-log-group-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-response-cloud-watch-logs-log-group-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-role-arn :initarg
+                         :cloud-watch-logs-role-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-create-trail-response-cloud-watch-logs-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-trail-response-kms-key-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (is-organization-trail :initarg :is-organization-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-create-trail-response-is-organization-trail
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-trail-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-trail-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-trail-response 'make-create-trail-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1176,12 +1560,23 @@
                           create-trail-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (data-resource (:copier common-lisp:nil)
-      (:conc-name "struct-shape-data-resource-"))
-   (type common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (values common-lisp:nil :type
-    (common-lisp:or data-resource-values common-lisp:null)))
+ (common-lisp:defclass data-resource common-lisp:nil
+                       ((type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-data-resource-type :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type
+                         (common-lisp:or data-resource-values common-lisp:null)
+                         :accessor struct-shape-data-resource-values :shape
+                         "DataResourceValues" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-data-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'data-resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'data-resource 'make-data-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input data-resource))
@@ -1230,11 +1625,18 @@
  (common-lisp:export
   (common-lisp:list 'delegated-admin-account-limit-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-channel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-channel-request-"))
-   (channel (common-lisp:error ":channel is required") :type
-    (common-lisp:or channel-arn common-lisp:null)))
+ (common-lisp:defclass delete-channel-request common-lisp:nil
+                       ((channel :initarg :channel :initform
+                         (common-lisp:error ":channel is required") :type
+                         (common-lisp:or channel-arn common-lisp:null)
+                         :accessor struct-shape-delete-channel-request-channel
+                         :shape "ChannelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-channel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-channel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-channel-request 'make-delete-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1260,9 +1662,12 @@
                           delete-channel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-channel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-channel-response-")))
+ (common-lisp:defclass delete-channel-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-channel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-channel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-channel-response 'make-delete-channel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1281,11 +1686,21 @@
                           delete-channel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-event-data-store-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-event-data-store-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass delete-event-data-store-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-event-data-store-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-event-data-store-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-event-data-store-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-event-data-store-request
                     'make-delete-event-data-store-request))
@@ -1312,9 +1727,14 @@
                           delete-event-data-store-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-event-data-store-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-event-data-store-response-")))
+ (common-lisp:defclass delete-event-data-store-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-event-data-store-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-event-data-store-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-event-data-store-response
                     'make-delete-event-data-store-response))
@@ -1334,11 +1754,20 @@
                           delete-event-data-store-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resource-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resource-policy-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null)))
+ (common-lisp:defclass delete-resource-policy-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resource-policy-request-resource-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resource-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resource-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resource-policy-request
                     'make-delete-resource-policy-request))
@@ -1365,9 +1794,14 @@
                           delete-resource-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resource-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resource-policy-response-")))
+ (common-lisp:defclass delete-resource-policy-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resource-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resource-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resource-policy-response
                     'make-delete-resource-policy-response))
@@ -1387,11 +1821,18 @@
                           delete-resource-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-trail-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-trail-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass delete-trail-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-delete-trail-request-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-trail-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-trail-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-trail-request 'make-delete-trail-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1411,9 +1852,12 @@
                         ((aws-sdk/generator/shape::input delete-trail-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-trail-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-trail-response-")))
+ (common-lisp:defclass delete-trail-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-trail-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-trail-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-trail-response 'make-delete-trail-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1434,13 +1878,23 @@
 (common-lisp:deftype delivery-s3uri () 'common-lisp:string)
 (common-lisp:deftype delivery-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (deregister-organization-delegated-admin-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-deregister-organization-delegated-admin-request-"))
-   (delegated-admin-account-id
-    (common-lisp:error ":delegated-admin-account-id is required") :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass deregister-organization-delegated-admin-request
+                       common-lisp:nil
+                       ((delegated-admin-account-id :initarg
+                         :delegated-admin-account-id :initform
+                         (common-lisp:error
+                          ":delegated-admin-account-id is required")
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor
+                         struct-shape-deregister-organization-delegated-admin-request-delegated-admin-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-deregister-organization-delegated-admin-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'deregister-organization-delegated-admin-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'deregister-organization-delegated-admin-request
                     'make-deregister-organization-delegated-admin-request))
@@ -1468,11 +1922,14 @@
                           deregister-organization-delegated-admin-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deregister-organization-delegated-admin-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-deregister-organization-delegated-admin-response-")))
+ (common-lisp:defclass deregister-organization-delegated-admin-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-deregister-organization-delegated-admin-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'deregister-organization-delegated-admin-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'deregister-organization-delegated-admin-response
                     'make-deregister-organization-delegated-admin-response))
@@ -1492,14 +1949,31 @@
                           deregister-organization-delegated-admin-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-query-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-query-request-"))
-   (event-data-store common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (query-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (query-alias common-lisp:nil :type
-    (common-lisp:or query-alias common-lisp:null)))
+ (common-lisp:defclass describe-query-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-describe-query-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-id :initarg :query-id :initform common-lisp:nil
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-describe-query-request-query-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (query-alias :initarg :query-alias :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-alias common-lisp:null)
+                         :accessor
+                         struct-shape-describe-query-request-query-alias :shape
+                         "QueryAlias" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-query-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-query-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-query-request 'make-describe-query-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1539,22 +2013,60 @@
                           describe-query-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-query-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-query-response-"))
-   (query-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (query-string common-lisp:nil :type
-    (common-lisp:or query-statement common-lisp:null))
-   (query-status common-lisp:nil :type
-    (common-lisp:or query-status common-lisp:null))
-   (query-statistics common-lisp:nil :type
-    (common-lisp:or query-statistics-for-describe-query common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (delivery-s3uri common-lisp:nil :type
-    (common-lisp:or delivery-s3uri common-lisp:null))
-   (delivery-status common-lisp:nil :type
-    (common-lisp:or delivery-status common-lisp:null)))
+ (common-lisp:defclass describe-query-response common-lisp:nil
+                       ((query-id :initarg :query-id :initform common-lisp:nil
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-describe-query-response-query-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (query-string :initarg :query-string :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-statement common-lisp:null)
+                         :accessor
+                         struct-shape-describe-query-response-query-string
+                         :shape "QueryStatement" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-status :initarg :query-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-status common-lisp:null)
+                         :accessor
+                         struct-shape-describe-query-response-query-status
+                         :shape "QueryStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-statistics :initarg :query-statistics :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-statistics-for-describe-query
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-query-response-query-statistics
+                         :shape "QueryStatisticsForDescribeQuery" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-message common-lisp:null)
+                         :accessor
+                         struct-shape-describe-query-response-error-message
+                         :shape "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (delivery-s3uri :initarg :delivery-s3uri :initform
+                         common-lisp:nil :type
+                         (common-lisp:or delivery-s3uri common-lisp:null)
+                         :accessor
+                         struct-shape-describe-query-response-delivery-s3uri
+                         :shape "DeliveryS3Uri" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (delivery-status :initarg :delivery-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or delivery-status common-lisp:null)
+                         :accessor
+                         struct-shape-describe-query-response-delivery-status
+                         :shape "DeliveryStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-query-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-query-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-query-response 'make-describe-query-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1622,13 +2134,25 @@
                           describe-query-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-trails-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-trails-request-"))
-   (trail-name-list common-lisp:nil :type
-    (common-lisp:or trail-name-list common-lisp:null))
-   (include-shadow-trails common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass describe-trails-request common-lisp:nil
+                       ((trail-name-list :initarg :trail-name-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or trail-name-list common-lisp:null)
+                         :accessor
+                         struct-shape-describe-trails-request-trail-name-list
+                         :shape "TrailNameList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-shadow-trails :initarg :include-shadow-trails
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-describe-trails-request-include-shadow-trails
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-trails-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-trails-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-trails-request 'make-describe-trails-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1662,11 +2186,18 @@
                           describe-trails-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-trails-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-trails-response-"))
-   (trail-list common-lisp:nil :type
-    (common-lisp:or trail-list common-lisp:null)))
+ (common-lisp:defclass describe-trails-response common-lisp:nil
+                       ((trail-list :initarg :trail-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or trail-list common-lisp:null) :accessor
+                         struct-shape-describe-trails-response-trail-list
+                         :shape "TrailList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-trails-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-trails-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-trails-response 'make-describe-trails-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1692,13 +2223,24 @@
                           describe-trails-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (destination (:copier common-lisp:nil)
-      (:conc-name "struct-shape-destination-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or destination-type common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or location common-lisp:null)))
+ (common-lisp:defclass destination common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or destination-type common-lisp:null)
+                         :accessor struct-shape-destination-type :shape
+                         "DestinationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (location :initarg :location :initform
+                         (common-lisp:error ":location is required") :type
+                         (common-lisp:or location common-lisp:null) :accessor
+                         struct-shape-destination-location :shape "Location"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-destination
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'destination
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'destination 'make-destination))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input destination))
@@ -1732,11 +2274,20 @@
                            (trivial-types:proper-list destination))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disable-federation-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disable-federation-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass disable-federation-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-disable-federation-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disable-federation-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'disable-federation-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disable-federation-request
                     'make-disable-federation-request))
@@ -1763,13 +2314,26 @@
                           disable-federation-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disable-federation-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disable-federation-response-"))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (federation-status common-lisp:nil :type
-    (common-lisp:or federation-status common-lisp:null)))
+ (common-lisp:defclass disable-federation-response common-lisp:nil
+                       ((event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-disable-federation-response-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-status :initarg :federation-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-status common-lisp:null)
+                         :accessor
+                         struct-shape-disable-federation-response-federation-status
+                         :shape "FederationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disable-federation-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'disable-federation-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disable-federation-response
                     'make-disable-federation-response))
@@ -1805,13 +2369,29 @@
    common-lisp:nil))
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (enable-federation-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-enable-federation-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (federation-role-arn (common-lisp:error ":federation-role-arn is required")
-    :type (common-lisp:or federation-role-arn common-lisp:null)))
+ (common-lisp:defclass enable-federation-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-enable-federation-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-role-arn :initarg :federation-role-arn
+                         :initform
+                         (common-lisp:error ":federation-role-arn is required")
+                         :type
+                         (common-lisp:or federation-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-enable-federation-request-federation-role-arn
+                         :shape "FederationRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-enable-federation-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'enable-federation-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'enable-federation-request
                     'make-enable-federation-request))
@@ -1845,15 +2425,33 @@
                           enable-federation-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (enable-federation-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-enable-federation-response-"))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (federation-status common-lisp:nil :type
-    (common-lisp:or federation-status common-lisp:null))
-   (federation-role-arn common-lisp:nil :type
-    (common-lisp:or federation-role-arn common-lisp:null)))
+ (common-lisp:defclass enable-federation-response common-lisp:nil
+                       ((event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-enable-federation-response-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-status :initarg :federation-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-status common-lisp:null)
+                         :accessor
+                         struct-shape-enable-federation-response-federation-status
+                         :shape "FederationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-role-arn :initarg :federation-role-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-enable-federation-response-federation-role-arn
+                         :shape "FederationRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-enable-federation-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'enable-federation-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'enable-federation-response
                     'make-enable-federation-response))
@@ -1897,21 +2495,62 @@
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (event (:copier common-lisp:nil) (:conc-name "struct-shape-event-"))
-   (event-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (event-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (read-only common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (access-key-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (event-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (event-source common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (username common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (resources common-lisp:nil :type
-    (common-lisp:or resource-list common-lisp:null))
-   (cloud-trail-event common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass event common-lisp:nil
+                       ((event-id :initarg :event-id :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-event-event-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (event-name :initarg :event-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-event-event-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (read-only :initarg :read-only :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-event-read-only :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (access-key-id :initarg :access-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-event-access-key-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (event-time :initarg :event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-event-event-time :shape "Date" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (event-source :initarg :event-source :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-event-event-source :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (username :initarg :username :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-event-username :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resources :initarg :resources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-list common-lisp:null)
+                         :accessor struct-shape-event-resources :shape
+                         "ResourceList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-trail-event :initarg :cloud-trail-event
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-event-cloud-trail-event :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'event 'make-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input event))
@@ -1987,29 +2626,81 @@
    common-lisp:nil))
 (common-lisp:deftype event-category () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (event-data-store (:copier common-lisp:nil)
-      (:conc-name "struct-shape-event-data-store-"))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or event-data-store-name common-lisp:null))
-   (termination-protection-enabled common-lisp:nil :type
-    (common-lisp:or termination-protection-enabled common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or event-data-store-status common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null))
-   (multi-region-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (organization-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (retention-period common-lisp:nil :type
-    (common-lisp:or retention-period common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null)))
+ (common-lisp:defclass event-data-store common-lisp:nil
+                       ((event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-event-data-store-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-name
+                                         common-lisp:null)
+                         :accessor struct-shape-event-data-store-name :shape
+                         "EventDataStoreName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (termination-protection-enabled :initarg
+                         :termination-protection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or termination-protection-enabled
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-event-data-store-termination-protection-enabled
+                         :shape "TerminationProtectionEnabled" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or event-data-store-status
+                                         common-lisp:null)
+                         :accessor struct-shape-event-data-store-status :shape
+                         "EventDataStoreStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-event-data-store-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (multi-region-enabled :initarg :multi-region-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-event-data-store-multi-region-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (organization-enabled :initarg :organization-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-event-data-store-organization-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retention-period :initarg :retention-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or retention-period common-lisp:null)
+                         :accessor
+                         struct-shape-event-data-store-retention-period :shape
+                         "RetentionPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-event-data-store-created-timestamp :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-event-data-store-updated-timestamp :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-event-data-store
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'event-data-store
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'event-data-store 'make-event-data-store))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2150,17 +2841,40 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype event-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (event-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-event-selector-"))
-   (read-write-type common-lisp:nil :type
-    (common-lisp:or read-write-type common-lisp:null))
-   (include-management-events common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (data-resources common-lisp:nil :type
-    (common-lisp:or data-resources common-lisp:null))
-   (exclude-management-event-sources common-lisp:nil :type
-    (common-lisp:or exclude-management-event-sources common-lisp:null)))
+ (common-lisp:defclass event-selector common-lisp:nil
+                       ((read-write-type :initarg :read-write-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or read-write-type common-lisp:null)
+                         :accessor struct-shape-event-selector-read-write-type
+                         :shape "ReadWriteType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-management-events :initarg
+                         :include-management-events :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-event-selector-include-management-events
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (data-resources :initarg :data-resources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or data-resources common-lisp:null)
+                         :accessor struct-shape-event-selector-data-resources
+                         :shape "DataResources" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (exclude-management-event-sources :initarg
+                         :exclude-management-event-sources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or exclude-management-event-sources
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-event-selector-exclude-management-event-sources
+                         :shape "ExcludeManagementEventSources" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-event-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'event-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'event-selector 'make-event-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input event-selector))
@@ -2228,11 +2942,18 @@
 (common-lisp:deftype federation-role-arn () 'common-lisp:string)
 (common-lisp:deftype federation-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-channel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-channel-request-"))
-   (channel (common-lisp:error ":channel is required") :type
-    (common-lisp:or channel-arn common-lisp:null)))
+ (common-lisp:defclass get-channel-request common-lisp:nil
+                       ((channel :initarg :channel :initform
+                         (common-lisp:error ":channel is required") :type
+                         (common-lisp:or channel-arn common-lisp:null)
+                         :accessor struct-shape-get-channel-request-channel
+                         :shape "ChannelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-channel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-channel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-channel-request 'make-get-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2252,19 +2973,50 @@
                         ((aws-sdk/generator/shape::input get-channel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-channel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-channel-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or channel-arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or channel-name common-lisp:null))
-   (source common-lisp:nil :type (common-lisp:or source common-lisp:null))
-   (source-config common-lisp:nil :type
-    (common-lisp:or source-config common-lisp:null))
-   (destinations common-lisp:nil :type
-    (common-lisp:or destinations common-lisp:null))
-   (ingestion-status common-lisp:nil :type
-    (common-lisp:or ingestion-status common-lisp:null)))
+ (common-lisp:defclass get-channel-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-response-channel-arn :shape
+                         "ChannelArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or channel-name common-lisp:null)
+                         :accessor struct-shape-get-channel-response-name
+                         :shape "ChannelName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source :initarg :source :initform common-lisp:nil
+                         :type (common-lisp:or source common-lisp:null)
+                         :accessor struct-shape-get-channel-response-source
+                         :shape "Source" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source-config :initarg :source-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or source-config common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-response-source-config :shape
+                         "SourceConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or destinations common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-response-destinations :shape
+                         "Destinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ingestion-status :initarg :ingestion-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ingestion-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-channel-response-ingestion-status
+                         :shape "IngestionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-channel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-channel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-channel-response 'make-get-channel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2319,11 +3071,20 @@
                         ((aws-sdk/generator/shape::input get-channel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-event-data-store-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-event-data-store-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass get-event-data-store-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-event-data-store-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-event-data-store-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-event-data-store-request
                     'make-get-event-data-store-request))
@@ -2350,37 +3111,113 @@
                           get-event-data-store-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-event-data-store-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-event-data-store-response-"))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or event-data-store-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or event-data-store-status common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null))
-   (multi-region-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (organization-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (retention-period common-lisp:nil :type
-    (common-lisp:or retention-period common-lisp:null))
-   (termination-protection-enabled common-lisp:nil :type
-    (common-lisp:or termination-protection-enabled common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or event-data-store-kms-key-id common-lisp:null))
-   (billing-mode common-lisp:nil :type
-    (common-lisp:or billing-mode common-lisp:null))
-   (federation-status common-lisp:nil :type
-    (common-lisp:or federation-status common-lisp:null))
-   (federation-role-arn common-lisp:nil :type
-    (common-lisp:or federation-role-arn common-lisp:null)))
+ (common-lisp:defclass get-event-data-store-response common-lisp:nil
+                       ((event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-name :shape
+                         "EventDataStoreName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or event-data-store-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-status
+                         :shape "EventDataStoreStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (multi-region-enabled :initarg :multi-region-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-get-event-data-store-response-multi-region-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (organization-enabled :initarg :organization-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-get-event-data-store-response-organization-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retention-period :initarg :retention-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or retention-period common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-retention-period
+                         :shape "RetentionPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (termination-protection-enabled :initarg
+                         :termination-protection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or termination-protection-enabled
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-termination-protection-enabled
+                         :shape "TerminationProtectionEnabled" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-event-data-store-response-created-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-event-data-store-response-updated-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-kms-key-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-kms-key-id
+                         :shape "EventDataStoreKmsKeyId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-mode :initarg :billing-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-mode common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-billing-mode
+                         :shape "BillingMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-status :initarg :federation-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-federation-status
+                         :shape "FederationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-role-arn :initarg :federation-role-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-data-store-response-federation-role-arn
+                         :shape "FederationRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-event-data-store-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-event-data-store-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-event-data-store-response
                     'make-get-event-data-store-response))
@@ -2503,11 +3340,18 @@
                           get-event-data-store-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-event-selectors-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-event-selectors-request-"))
-   (trail-name (common-lisp:error ":trail-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-event-selectors-request common-lisp:nil
+                       ((trail-name :initarg :trail-name :initform
+                         (common-lisp:error ":trail-name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-event-selectors-request-trail-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-event-selectors-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-event-selectors-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-event-selectors-request
                     'make-get-event-selectors-request))
@@ -2534,14 +3378,34 @@
                           get-event-selectors-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-event-selectors-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-event-selectors-response-"))
-   (trail-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (event-selectors common-lisp:nil :type
-    (common-lisp:or event-selectors common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null)))
+ (common-lisp:defclass get-event-selectors-response common-lisp:nil
+                       ((trail-arn :initarg :trail-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-event-selectors-response-trail-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-selectors :initarg :event-selectors :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-selectors common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-selectors-response-event-selectors
+                         :shape "EventSelectors" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-event-selectors-response-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-event-selectors-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-event-selectors-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-event-selectors-response
                     'make-get-event-selectors-response))
@@ -2583,11 +3447,18 @@
                           get-event-selectors-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-import-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-import-request-"))
-   (import-id (common-lisp:error ":import-id is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass get-import-request common-lisp:nil
+                       ((import-id :initarg :import-id :initform
+                         (common-lisp:error ":import-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-import-request-import-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-import-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-import-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-import-request 'make-get-import-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2607,26 +3478,70 @@
                         ((aws-sdk/generator/shape::input get-import-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-import-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-import-response-"))
-   (import-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (destinations common-lisp:nil :type
-    (common-lisp:or import-destinations common-lisp:null))
-   (import-source common-lisp:nil :type
-    (common-lisp:or import-source common-lisp:null))
-   (start-event-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (end-event-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (import-status common-lisp:nil :type
-    (common-lisp:or import-status common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (import-statistics common-lisp:nil :type
-    (common-lisp:or import-statistics common-lisp:null)))
+ (common-lisp:defclass get-import-response common-lisp:nil
+                       ((import-id :initarg :import-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-import-response-import-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-destinations common-lisp:null)
+                         :accessor
+                         struct-shape-get-import-response-destinations :shape
+                         "ImportDestinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (import-source :initarg :import-source :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-source common-lisp:null)
+                         :accessor
+                         struct-shape-get-import-response-import-source :shape
+                         "ImportSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-event-time :initarg :start-event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-import-response-start-event-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-event-time :initarg :end-event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-import-response-end-event-time :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (import-status :initarg :import-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-import-response-import-status :shape
+                         "ImportStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-import-response-created-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-import-response-updated-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (import-statistics :initarg :import-statistics
+                         :initform common-lisp:nil :type
+                         (common-lisp:or import-statistics common-lisp:null)
+                         :accessor
+                         struct-shape-get-import-response-import-statistics
+                         :shape "ImportStatistics" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-import-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-import-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-import-response 'make-get-import-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2702,12 +3617,26 @@
                         ((aws-sdk/generator/shape::input get-import-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-insight-selectors-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-insight-selectors-request-"))
-   (trail-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (event-data-store common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass get-insight-selectors-request common-lisp:nil
+                       ((trail-name :initarg :trail-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-insight-selectors-request-trail-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-data-store :initarg :event-data-store :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-insight-selectors-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-insight-selectors-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-insight-selectors-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-insight-selectors-request
                     'make-get-insight-selectors-request))
@@ -2741,16 +3670,40 @@
                           get-insight-selectors-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-insight-selectors-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-insight-selectors-response-"))
-   (trail-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (insight-selectors common-lisp:nil :type
-    (common-lisp:or insight-selectors common-lisp:null))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (insights-destination common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass get-insight-selectors-response common-lisp:nil
+                       ((trail-arn :initarg :trail-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-insight-selectors-response-trail-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (insight-selectors :initarg :insight-selectors
+                         :initform common-lisp:nil :type
+                         (common-lisp:or insight-selectors common-lisp:null)
+                         :accessor
+                         struct-shape-get-insight-selectors-response-insight-selectors
+                         :shape "InsightSelectors" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-insight-selectors-response-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (insights-destination :initarg :insights-destination
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-insight-selectors-response-insights-destination
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-insight-selectors-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-insight-selectors-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-insight-selectors-response
                     'make-get-insight-selectors-response))
@@ -2800,17 +3753,39 @@
                           get-insight-selectors-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-query-results-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-query-results-request-"))
-   (event-data-store common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (query-id (common-lisp:error ":query-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-query-results common-lisp:nil :type
-    (common-lisp:or max-query-results common-lisp:null)))
+ (common-lisp:defclass get-query-results-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-query-results-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-id :initarg :query-id :initform
+                         (common-lisp:error ":query-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-query-results-request-query-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-get-query-results-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-query-results :initarg :max-query-results
+                         :initform common-lisp:nil :type
+                         (common-lisp:or max-query-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-query-results-request-max-query-results
+                         :shape "MaxQueryResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-query-results-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-query-results-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-query-results-request
                     'make-get-query-results-request))
@@ -2858,19 +3833,47 @@
                           get-query-results-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-query-results-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-query-results-response-"))
-   (query-status common-lisp:nil :type
-    (common-lisp:or query-status common-lisp:null))
-   (query-statistics common-lisp:nil :type
-    (common-lisp:or query-statistics common-lisp:null))
-   (query-result-rows common-lisp:nil :type
-    (common-lisp:or query-result-rows common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:defclass get-query-results-response common-lisp:nil
+                       ((query-status :initarg :query-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-query-results-response-query-status
+                         :shape "QueryStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-statistics :initarg :query-statistics :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-statistics common-lisp:null)
+                         :accessor
+                         struct-shape-get-query-results-response-query-statistics
+                         :shape "QueryStatistics" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-result-rows :initarg :query-result-rows
+                         :initform common-lisp:nil :type
+                         (common-lisp:or query-result-rows common-lisp:null)
+                         :accessor
+                         struct-shape-get-query-results-response-query-result-rows
+                         :shape "QueryResultRows" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-get-query-results-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-message common-lisp:null)
+                         :accessor
+                         struct-shape-get-query-results-response-error-message
+                         :shape "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-query-results-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-query-results-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-query-results-response
                     'make-get-query-results-response))
@@ -2925,11 +3928,19 @@
                           get-query-results-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resource-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resource-policy-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null)))
+ (common-lisp:defclass get-resource-policy-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-policy-request-resource-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resource-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resource-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resource-policy-request
                     'make-get-resource-policy-request))
@@ -2956,13 +3967,26 @@
                           get-resource-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resource-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resource-policy-response-"))
-   (resource-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (resource-policy common-lisp:nil :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass get-resource-policy-response common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-policy-response-resource-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-policy :initarg :resource-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-policy-response-resource-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resource-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resource-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resource-policy-response
                     'make-get-resource-policy-response))
@@ -2996,11 +4020,18 @@
                           get-resource-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-trail-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-trail-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-trail-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-request-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-trail-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-trail-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-trail-request 'make-get-trail-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3020,10 +4051,17 @@
                         ((aws-sdk/generator/shape::input get-trail-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-trail-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-trail-response-"))
-   (trail common-lisp:nil :type (common-lisp:or trail common-lisp:null)))
+ (common-lisp:defclass get-trail-response common-lisp:nil
+                       ((trail :initarg :trail :initform common-lisp:nil :type
+                         (common-lisp:or trail common-lisp:null) :accessor
+                         struct-shape-get-trail-response-trail :shape "Trail"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-trail-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-trail-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-trail-response 'make-get-trail-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3043,11 +4081,18 @@
                         ((aws-sdk/generator/shape::input get-trail-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-trail-status-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-trail-status-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-trail-status-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-request-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-trail-status-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-trail-status-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-trail-status-request 'make-get-trail-status-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3073,42 +4118,122 @@
                           get-trail-status-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-trail-status-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-trail-status-response-"))
-   (is-logging common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (latest-delivery-error common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (latest-notification-error common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (latest-delivery-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (latest-notification-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (start-logging-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (stop-logging-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (latest-cloud-watch-logs-delivery-error common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (latest-cloud-watch-logs-delivery-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (latest-digest-delivery-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (latest-digest-delivery-error common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (latest-delivery-attempt-time common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (latest-notification-attempt-time common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (latest-notification-attempt-succeeded common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (latest-delivery-attempt-succeeded common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (time-logging-started common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (time-logging-stopped common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-trail-status-response common-lisp:nil
+                       ((is-logging :initarg :is-logging :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-is-logging
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-delivery-error :initarg :latest-delivery-error
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-delivery-error
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-notification-error :initarg
+                         :latest-notification-error :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-trail-status-response-latest-notification-error
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-delivery-time :initarg :latest-delivery-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-delivery-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (latest-notification-time :initarg
+                         :latest-notification-time :initform common-lisp:nil
+                         :type (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-notification-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-logging-time :initarg :start-logging-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-start-logging-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (stop-logging-time :initarg :stop-logging-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-stop-logging-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (latest-cloud-watch-logs-delivery-error :initarg
+                         :latest-cloud-watch-logs-delivery-error :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-cloud-watch-logs-delivery-error
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-cloud-watch-logs-delivery-time :initarg
+                         :latest-cloud-watch-logs-delivery-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-cloud-watch-logs-delivery-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (latest-digest-delivery-time :initarg
+                         :latest-digest-delivery-time :initform common-lisp:nil
+                         :type (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-digest-delivery-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (latest-digest-delivery-error :initarg
+                         :latest-digest-delivery-error :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-digest-delivery-error
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-delivery-attempt-time :initarg
+                         :latest-delivery-attempt-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-delivery-attempt-time
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-notification-attempt-time :initarg
+                         :latest-notification-attempt-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-notification-attempt-time
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-notification-attempt-succeeded :initarg
+                         :latest-notification-attempt-succeeded :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-notification-attempt-succeeded
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-delivery-attempt-succeeded :initarg
+                         :latest-delivery-attempt-succeeded :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-latest-delivery-attempt-succeeded
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (time-logging-started :initarg :time-logging-started
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-time-logging-started
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (time-logging-stopped :initarg :time-logging-stopped
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-trail-status-response-time-logging-stopped
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-trail-status-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-trail-status-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-trail-status-response
                     'make-get-trail-status-response))
@@ -3278,17 +4403,43 @@
                             import-failure-list-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (import-failure-list-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-import-failure-list-item-"))
-   (location common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or import-failure-status common-lisp:null))
-   (error-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (last-updated-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null)))
+ (common-lisp:defclass import-failure-list-item common-lisp:nil
+                       ((location :initarg :location :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-import-failure-list-item-location :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or import-failure-status
+                                         common-lisp:null)
+                         :accessor struct-shape-import-failure-list-item-status
+                         :shape "ImportFailureStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-type :initarg :error-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-import-failure-list-item-error-type
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-import-failure-list-item-error-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-time :initarg :last-updated-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-import-failure-list-item-last-updated-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-import-failure-list-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'import-failure-list-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'import-failure-list-item 'make-import-failure-list-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3348,11 +4499,18 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'import-not-found-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (import-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-import-source-"))
-   (s3 (common-lisp:error ":s3 is required") :type
-    (common-lisp:or s3import-source common-lisp:null)))
+ (common-lisp:defclass import-source common-lisp:nil
+                       ((s3 :initarg :s3 :initform
+                         (common-lisp:error ":s3 is required") :type
+                         (common-lisp:or s3import-source common-lisp:null)
+                         :accessor struct-shape-import-source-s3 :shape
+                         "S3ImportSource" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-import-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'import-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'import-source 'make-import-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input import-source))
@@ -3371,19 +4529,42 @@
                         ((aws-sdk/generator/shape::input import-source))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (import-statistics (:copier common-lisp:nil)
-      (:conc-name "struct-shape-import-statistics-"))
-   (prefixes-found common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (prefixes-completed common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (files-completed common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (events-completed common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (failed-entries common-lisp:nil :type
-    (common-lisp:or long common-lisp:null)))
+ (common-lisp:defclass import-statistics common-lisp:nil
+                       ((prefixes-found :initarg :prefixes-found :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-import-statistics-prefixes-found :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (prefixes-completed :initarg :prefixes-completed
+                         :initform common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-import-statistics-prefixes-completed
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (files-completed :initarg :files-completed :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-import-statistics-files-completed :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (events-completed :initarg :events-completed :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-import-statistics-events-completed :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (failed-entries :initarg :failed-entries :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-import-statistics-failed-entries :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-import-statistics
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'import-statistics
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'import-statistics 'make-import-statistics))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3440,18 +4621,42 @@
                            (trivial-types:proper-list imports-list-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (imports-list-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-imports-list-item-"))
-   (import-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (import-status common-lisp:nil :type
-    (common-lisp:or import-status common-lisp:null))
-   (destinations common-lisp:nil :type
-    (common-lisp:or import-destinations common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null)))
+ (common-lisp:defclass imports-list-item common-lisp:nil
+                       ((import-id :initarg :import-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-imports-list-item-import-id :shape "UUID"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (import-status :initarg :import-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-status common-lisp:null)
+                         :accessor struct-shape-imports-list-item-import-status
+                         :shape "ImportStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-destinations common-lisp:null)
+                         :accessor struct-shape-imports-list-item-destinations
+                         :shape "ImportDestinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-imports-list-item-created-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-imports-list-item-updated-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-imports-list-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'imports-list-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'imports-list-item 'make-imports-list-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3509,19 +4714,47 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'inactive-query-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ingestion-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ingestion-status-"))
-   (latest-ingestion-success-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (latest-ingestion-success-event-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (latest-ingestion-error-code common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (latest-ingestion-attempt-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (latest-ingestion-attempt-event-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass ingestion-status common-lisp:nil
+                       ((latest-ingestion-success-time :initarg
+                         :latest-ingestion-success-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-ingestion-status-latest-ingestion-success-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (latest-ingestion-success-event-id :initarg
+                         :latest-ingestion-success-event-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-ingestion-status-latest-ingestion-success-event-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (latest-ingestion-error-code :initarg
+                         :latest-ingestion-error-code :initform common-lisp:nil
+                         :type (common-lisp:or error-message common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-status-latest-ingestion-error-code
+                         :shape "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-ingestion-attempt-time :initarg
+                         :latest-ingestion-attempt-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-ingestion-status-latest-ingestion-attempt-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (latest-ingestion-attempt-event-id :initarg
+                         :latest-ingestion-attempt-event-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-ingestion-status-latest-ingestion-attempt-event-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ingestion-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ingestion-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ingestion-status 'make-ingestion-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3579,11 +4812,18 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'insight-not-enabled-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (insight-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-insight-selector-"))
-   (insight-type common-lisp:nil :type
-    (common-lisp:or insight-type common-lisp:null)))
+ (common-lisp:defclass insight-selector common-lisp:nil
+                       ((insight-type :initarg :insight-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or insight-type common-lisp:null)
+                         :accessor struct-shape-insight-selector-insight-type
+                         :shape "InsightType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-insight-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'insight-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'insight-selector 'make-insight-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3801,13 +5041,27 @@
  (common-lisp:export (common-lisp:list 'kms-key-not-found-exception)))
 (common-lisp:deftype list-channels-max-results-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channels-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channels-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-channels-max-results-count common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-channels-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-channels-max-results-count
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-request-max-results :shape
+                         "ListChannelsMaxResultsCount" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-request-next-token :shape
+                         "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channels-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-channels-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channels-request 'make-list-channels-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3840,12 +5094,24 @@
                           list-channels-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-channels-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-channels-response-"))
-   (channels common-lisp:nil :type (common-lisp:or channels common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-channels-response common-lisp:nil
+                       ((channels :initarg :channels :initform common-lisp:nil
+                         :type (common-lisp:or channels common-lisp:null)
+                         :accessor struct-shape-list-channels-response-channels
+                         :shape "Channels" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-channels-response-next-token :shape
+                         "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-channels-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-channels-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-channels-response 'make-list-channels-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3880,14 +5146,29 @@
 (common-lisp:deftype list-event-data-stores-max-results-count ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-event-data-stores-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-event-data-stores-request-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-event-data-stores-max-results-count
-                    common-lisp:null)))
+ (common-lisp:defclass list-event-data-stores-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-event-data-stores-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-event-data-stores-max-results-count
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-event-data-stores-request-max-results
+                         :shape "ListEventDataStoresMaxResultsCount" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-event-data-stores-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-event-data-stores-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-event-data-stores-request
                     'make-list-event-data-stores-request))
@@ -3921,13 +5202,27 @@
                           list-event-data-stores-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-event-data-stores-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-event-data-stores-response-"))
-   (event-data-stores common-lisp:nil :type
-    (common-lisp:or event-data-stores common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-event-data-stores-response common-lisp:nil
+                       ((event-data-stores :initarg :event-data-stores
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-stores common-lisp:null)
+                         :accessor
+                         struct-shape-list-event-data-stores-response-event-data-stores
+                         :shape "EventDataStores" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-event-data-stores-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-event-data-stores-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-event-data-stores-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-event-data-stores-response
                     'make-list-event-data-stores-response))
@@ -3963,15 +5258,33 @@
 (common-lisp:deftype list-import-failures-max-results-count ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-import-failures-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-import-failures-request-"))
-   (import-id (common-lisp:error ":import-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-import-failures-max-results-count common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-import-failures-request common-lisp:nil
+                       ((import-id :initarg :import-id :initform
+                         (common-lisp:error ":import-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-list-import-failures-request-import-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-import-failures-max-results-count
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-import-failures-request-max-results
+                         :shape "ListImportFailuresMaxResultsCount" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-import-failures-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-import-failures-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-import-failures-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-import-failures-request
                     'make-list-import-failures-request))
@@ -4012,13 +5325,27 @@
                           list-import-failures-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-import-failures-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-import-failures-response-"))
-   (failures common-lisp:nil :type
-    (common-lisp:or import-failure-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-import-failures-response common-lisp:nil
+                       ((failures :initarg :failures :initform common-lisp:nil
+                         :type
+                         (common-lisp:or import-failure-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-import-failures-response-failures
+                         :shape "ImportFailureList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-import-failures-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-import-failures-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-import-failures-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-import-failures-response
                     'make-list-import-failures-response))
@@ -4053,17 +5380,40 @@
    common-lisp:nil))
 (common-lisp:deftype list-imports-max-results-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-imports-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-imports-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-imports-max-results-count common-lisp:null))
-   (destination common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (import-status common-lisp:nil :type
-    (common-lisp:or import-status common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-imports-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-imports-max-results-count
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-imports-request-max-results :shape
+                         "ListImportsMaxResultsCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-imports-request-destination :shape
+                         "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (import-status :initarg :import-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-imports-request-import-status :shape
+                         "ImportStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor struct-shape-list-imports-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-imports-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-imports-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-imports-request 'make-list-imports-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4104,13 +5454,24 @@
                         ((aws-sdk/generator/shape::input list-imports-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-imports-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-imports-response-"))
-   (imports common-lisp:nil :type
-    (common-lisp:or imports-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-imports-response common-lisp:nil
+                       ((imports :initarg :imports :initform common-lisp:nil
+                         :type (common-lisp:or imports-list common-lisp:null)
+                         :accessor struct-shape-list-imports-response-imports
+                         :shape "ImportsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-imports-response-next-token :shape
+                         "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-imports-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-imports-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-imports-response 'make-list-imports-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4143,27 +5504,82 @@
                           list-imports-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-insights-metric-data-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-insights-metric-data-request-"))
-   (event-source (common-lisp:error ":event-source is required") :type
-    (common-lisp:or event-source common-lisp:null))
-   (event-name (common-lisp:error ":event-name is required") :type
-    (common-lisp:or event-name common-lisp:null))
-   (insight-type (common-lisp:error ":insight-type is required") :type
-    (common-lisp:or insight-type common-lisp:null))
-   (error-code common-lisp:nil :type
-    (common-lisp:or error-code common-lisp:null))
-   (start-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (period common-lisp:nil :type
-    (common-lisp:or insights-metric-period common-lisp:null))
-   (data-type common-lisp:nil :type
-    (common-lisp:or insights-metric-data-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or insights-metric-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or insights-metric-next-token common-lisp:null)))
+ (common-lisp:defclass list-insights-metric-data-request common-lisp:nil
+                       ((event-source :initarg :event-source :initform
+                         (common-lisp:error ":event-source is required") :type
+                         (common-lisp:or event-source common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-request-event-source
+                         :shape "EventSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-name :initarg :event-name :initform
+                         (common-lisp:error ":event-name is required") :type
+                         (common-lisp:or event-name common-lisp:null) :accessor
+                         struct-shape-list-insights-metric-data-request-event-name
+                         :shape "EventName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (insight-type :initarg :insight-type :initform
+                         (common-lisp:error ":insight-type is required") :type
+                         (common-lisp:or insight-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-request-insight-type
+                         :shape "InsightType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-code :initarg :error-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-code common-lisp:null) :accessor
+                         struct-shape-list-insights-metric-data-request-error-code
+                         :shape "ErrorCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-list-insights-metric-data-request-start-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-list-insights-metric-data-request-end-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (period :initarg :period :initform common-lisp:nil
+                         :type
+                         (common-lisp:or insights-metric-period
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-request-period
+                         :shape "InsightsMetricPeriod" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (data-type :initarg :data-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or insights-metric-data-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-request-data-type
+                         :shape "InsightsMetricDataType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or insights-metric-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-request-max-results
+                         :shape "InsightsMetricMaxResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or insights-metric-next-token
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-request-next-token
+                         :shape "InsightsMetricNextToken" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-insights-metric-data-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-insights-metric-data-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-insights-metric-data-request
                     'make-list-insights-metric-data-request))
@@ -4253,23 +5669,61 @@
                           list-insights-metric-data-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-insights-metric-data-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-insights-metric-data-response-"))
-   (event-source common-lisp:nil :type
-    (common-lisp:or event-source common-lisp:null))
-   (event-name common-lisp:nil :type
-    (common-lisp:or event-name common-lisp:null))
-   (insight-type common-lisp:nil :type
-    (common-lisp:or insight-type common-lisp:null))
-   (error-code common-lisp:nil :type
-    (common-lisp:or error-code common-lisp:null))
-   (timestamps common-lisp:nil :type
-    (common-lisp:or timestamps common-lisp:null))
-   (values common-lisp:nil :type
-    (common-lisp:or insights-metric-values common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or insights-metric-next-token common-lisp:null)))
+ (common-lisp:defclass list-insights-metric-data-response common-lisp:nil
+                       ((event-source :initarg :event-source :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-source common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-response-event-source
+                         :shape "EventSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-name :initarg :event-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-name common-lisp:null) :accessor
+                         struct-shape-list-insights-metric-data-response-event-name
+                         :shape "EventName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (insight-type :initarg :insight-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or insight-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-response-insight-type
+                         :shape "InsightType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-code :initarg :error-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-code common-lisp:null) :accessor
+                         struct-shape-list-insights-metric-data-response-error-code
+                         :shape "ErrorCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timestamps :initarg :timestamps :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamps common-lisp:null) :accessor
+                         struct-shape-list-insights-metric-data-response-timestamps
+                         :shape "Timestamps" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type
+                         (common-lisp:or insights-metric-values
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-response-values
+                         :shape "InsightsMetricValues" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or insights-metric-next-token
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-insights-metric-data-response-next-token
+                         :shape "InsightsMetricNextToken" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-insights-metric-data-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-insights-metric-data-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-insights-metric-data-response
                     'make-list-insights-metric-data-response))
@@ -4338,12 +5792,29 @@
                           list-insights-metric-data-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-public-keys-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-public-keys-request-"))
-   (start-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-public-keys-request common-lisp:nil
+                       ((start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-list-public-keys-request-start-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-list-public-keys-request-end-time :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-public-keys-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-public-keys-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-public-keys-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-public-keys-request 'make-list-public-keys-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4383,12 +5854,25 @@
                           list-public-keys-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-public-keys-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-public-keys-response-"))
-   (public-key-list common-lisp:nil :type
-    (common-lisp:or public-key-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-public-keys-response common-lisp:nil
+                       ((public-key-list :initarg :public-key-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or public-key-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-public-keys-response-public-key-list
+                         :shape "PublicKeyList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-public-keys-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-public-keys-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-public-keys-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-public-keys-response
                     'make-list-public-keys-response))
@@ -4423,19 +5907,52 @@
    common-lisp:nil))
 (common-lisp:deftype list-queries-max-results-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-queries-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-queries-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-queries-max-results-count common-lisp:null))
-   (start-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (query-status common-lisp:nil :type
-    (common-lisp:or query-status common-lisp:null)))
+ (common-lisp:defclass list-queries-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-queries-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor struct-shape-list-queries-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-queries-max-results-count
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-queries-request-max-results :shape
+                         "ListQueriesMaxResultsCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-list-queries-request-start-time :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-list-queries-request-end-time :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (query-status :initarg :query-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-queries-request-query-status :shape
+                         "QueryStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-queries-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-queries-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-queries-request 'make-list-queries-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4490,12 +6007,24 @@
                         ((aws-sdk/generator/shape::input list-queries-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-queries-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-queries-response-"))
-   (queries common-lisp:nil :type (common-lisp:or queries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-queries-response common-lisp:nil
+                       ((queries :initarg :queries :initform common-lisp:nil
+                         :type (common-lisp:or queries common-lisp:null)
+                         :accessor struct-shape-list-queries-response-queries
+                         :shape "Queries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-queries-response-next-token :shape
+                         "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-queries-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-queries-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-queries-response 'make-list-queries-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4528,12 +6057,26 @@
                           list-queries-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-request-"))
-   (resource-id-list (common-lisp:error ":resource-id-list is required") :type
-    (common-lisp:or resource-id-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-tags-request common-lisp:nil
+                       ((resource-id-list :initarg :resource-id-list :initform
+                         (common-lisp:error ":resource-id-list is required")
+                         :type
+                         (common-lisp:or resource-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-request-resource-id-list :shape
+                         "ResourceIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-tags-request-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-request 'make-list-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4560,12 +6103,25 @@
                         ((aws-sdk/generator/shape::input list-tags-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-response-"))
-   (resource-tag-list common-lisp:nil :type
-    (common-lisp:or resource-tag-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-tags-response common-lisp:nil
+                       ((resource-tag-list :initarg :resource-tag-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resource-tag-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-response-resource-tag-list
+                         :shape "ResourceTagList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-tags-response-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-response 'make-list-tags-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4592,10 +6148,18 @@
                         ((aws-sdk/generator/shape::input list-tags-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-trails-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-trails-request-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-trails-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-trails-request-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-trails-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-trails-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-trails-request 'make-list-trails-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4615,11 +6179,23 @@
                         ((aws-sdk/generator/shape::input list-trails-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-trails-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-trails-response-"))
-   (trails common-lisp:nil :type (common-lisp:or trails common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-trails-response common-lisp:nil
+                       ((trails :initarg :trails :initform common-lisp:nil
+                         :type (common-lisp:or trails common-lisp:null)
+                         :accessor struct-shape-list-trails-response-trails
+                         :shape "Trails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-trails-response-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-trails-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-trails-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-trails-response 'make-list-trails-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4648,13 +6224,27 @@
 (common-lisp:deftype location () 'common-lisp:string)
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (lookup-attribute (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lookup-attribute-"))
-   (attribute-key (common-lisp:error ":attribute-key is required") :type
-    (common-lisp:or lookup-attribute-key common-lisp:null))
-   (attribute-value (common-lisp:error ":attribute-value is required") :type
-    (common-lisp:or lookup-attribute-value common-lisp:null)))
+ (common-lisp:defclass lookup-attribute common-lisp:nil
+                       ((attribute-key :initarg :attribute-key :initform
+                         (common-lisp:error ":attribute-key is required") :type
+                         (common-lisp:or lookup-attribute-key common-lisp:null)
+                         :accessor struct-shape-lookup-attribute-attribute-key
+                         :shape "LookupAttributeKey" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attribute-value :initarg :attribute-value :initform
+                         (common-lisp:error ":attribute-value is required")
+                         :type
+                         (common-lisp:or lookup-attribute-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-attribute-attribute-value :shape
+                         "LookupAttributeValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lookup-attribute
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'lookup-attribute
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lookup-attribute 'make-lookup-attribute))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4691,19 +6281,51 @@
                            (trivial-types:proper-list lookup-attribute))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lookup-events-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lookup-events-request-"))
-   (lookup-attributes common-lisp:nil :type
-    (common-lisp:or lookup-attributes-list common-lisp:null))
-   (start-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or date common-lisp:null))
-   (event-category common-lisp:nil :type
-    (common-lisp:or event-category common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass lookup-events-request common-lisp:nil
+                       ((lookup-attributes :initarg :lookup-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or lookup-attributes-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-events-request-lookup-attributes
+                         :shape "LookupAttributesList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-lookup-events-request-start-time :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-lookup-events-request-end-time :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (event-category :initarg :event-category :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-category common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-events-request-event-category
+                         :shape "EventCategory" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-lookup-events-request-max-results :shape
+                         "MaxResults" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-lookup-events-request-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lookup-events-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'lookup-events-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lookup-events-request 'make-lookup-events-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4764,12 +6386,23 @@
                           lookup-events-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lookup-events-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lookup-events-response-"))
-   (events common-lisp:nil :type (common-lisp:or events-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass lookup-events-response common-lisp:nil
+                       ((events :initarg :events :initform common-lisp:nil
+                         :type (common-lisp:or events-list common-lisp:null)
+                         :accessor struct-shape-lookup-events-response-events
+                         :shape "EventsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-lookup-events-response-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lookup-events-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'lookup-events-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lookup-events-response 'make-lookup-events-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4859,16 +6492,35 @@
  (common-lisp:export (common-lisp:list 'organizations-not-in-use-exception)))
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (public-key (:copier common-lisp:nil)
-      (:conc-name "struct-shape-public-key-"))
-   (value common-lisp:nil :type (common-lisp:or byte-buffer common-lisp:null))
-   (validity-start-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (validity-end-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (fingerprint common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass public-key common-lisp:nil
+                       ((value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or byte-buffer common-lisp:null)
+                         :accessor struct-shape-public-key-value :shape
+                         "ByteBuffer" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (validity-start-time :initarg :validity-start-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-public-key-validity-start-time :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (validity-end-time :initarg :validity-end-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-public-key-validity-end-time :shape
+                         "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (fingerprint :initarg :fingerprint :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-public-key-fingerprint :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-public-key
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'public-key
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'public-key 'make-public-key))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input public-key))
@@ -4916,15 +6568,34 @@
                            (trivial-types:proper-list public-key))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-event-selectors-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-event-selectors-request-"))
-   (trail-name (common-lisp:error ":trail-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (event-selectors common-lisp:nil :type
-    (common-lisp:or event-selectors common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null)))
+ (common-lisp:defclass put-event-selectors-request common-lisp:nil
+                       ((trail-name :initarg :trail-name :initform
+                         (common-lisp:error ":trail-name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-event-selectors-request-trail-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-selectors :initarg :event-selectors :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-selectors common-lisp:null)
+                         :accessor
+                         struct-shape-put-event-selectors-request-event-selectors
+                         :shape "EventSelectors" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-event-selectors-request-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-event-selectors-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-event-selectors-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-event-selectors-request
                     'make-put-event-selectors-request))
@@ -4966,14 +6637,34 @@
                           put-event-selectors-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-event-selectors-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-event-selectors-response-"))
-   (trail-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (event-selectors common-lisp:nil :type
-    (common-lisp:or event-selectors common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null)))
+ (common-lisp:defclass put-event-selectors-response common-lisp:nil
+                       ((trail-arn :initarg :trail-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-event-selectors-response-trail-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-selectors :initarg :event-selectors :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-selectors common-lisp:null)
+                         :accessor
+                         struct-shape-put-event-selectors-response-event-selectors
+                         :shape "EventSelectors" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-event-selectors-response-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-event-selectors-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-event-selectors-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-event-selectors-response
                     'make-put-event-selectors-response))
@@ -5015,16 +6706,42 @@
                           put-event-selectors-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-insight-selectors-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-insight-selectors-request-"))
-   (trail-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (insight-selectors (common-lisp:error ":insight-selectors is required")
-    :type (common-lisp:or insight-selectors common-lisp:null))
-   (event-data-store common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (insights-destination common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass put-insight-selectors-request common-lisp:nil
+                       ((trail-name :initarg :trail-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-insight-selectors-request-trail-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (insight-selectors :initarg :insight-selectors
+                         :initform
+                         (common-lisp:error ":insight-selectors is required")
+                         :type
+                         (common-lisp:or insight-selectors common-lisp:null)
+                         :accessor
+                         struct-shape-put-insight-selectors-request-insight-selectors
+                         :shape "InsightSelectors" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-data-store :initarg :event-data-store :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-insight-selectors-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (insights-destination :initarg :insights-destination
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-insight-selectors-request-insights-destination
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-insight-selectors-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-insight-selectors-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-insight-selectors-request
                     'make-put-insight-selectors-request))
@@ -5073,16 +6790,40 @@
                           put-insight-selectors-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-insight-selectors-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-insight-selectors-response-"))
-   (trail-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (insight-selectors common-lisp:nil :type
-    (common-lisp:or insight-selectors common-lisp:null))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (insights-destination common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass put-insight-selectors-response common-lisp:nil
+                       ((trail-arn :initarg :trail-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-put-insight-selectors-response-trail-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (insight-selectors :initarg :insight-selectors
+                         :initform common-lisp:nil :type
+                         (common-lisp:or insight-selectors common-lisp:null)
+                         :accessor
+                         struct-shape-put-insight-selectors-response-insight-selectors
+                         :shape "InsightSelectors" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-insight-selectors-response-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (insights-destination :initarg :insights-destination
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-insight-selectors-response-insights-destination
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-insight-selectors-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-insight-selectors-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-insight-selectors-response
                     'make-put-insight-selectors-response))
@@ -5132,13 +6873,27 @@
                           put-insight-selectors-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-resource-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-resource-policy-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (resource-policy (common-lisp:error ":resource-policy is required") :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass put-resource-policy-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-resource-policy-request-resource-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-policy :initarg :resource-policy :initform
+                         (common-lisp:error ":resource-policy is required")
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-put-resource-policy-request-resource-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-resource-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-resource-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-resource-policy-request
                     'make-put-resource-policy-request))
@@ -5172,13 +6927,26 @@
                           put-resource-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-resource-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-resource-policy-response-"))
-   (resource-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (resource-policy common-lisp:nil :type
-    (common-lisp:or resource-policy common-lisp:null)))
+ (common-lisp:defclass put-resource-policy-response common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-resource-policy-response-resource-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-policy :initarg :resource-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-put-resource-policy-response-resource-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-resource-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-resource-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-resource-policy-response
                     'make-put-resource-policy-response))
@@ -5219,13 +6987,28 @@
                            (trivial-types:proper-list query))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (query (:copier common-lisp:nil) (:conc-name "struct-shape-query-"))
-   (query-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (query-status common-lisp:nil :type
-    (common-lisp:or query-status common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null)))
+ (common-lisp:defclass query common-lisp:nil
+                       ((query-id :initarg :query-id :initform common-lisp:nil
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-query-query-id :shape "UUID" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (query-status :initarg :query-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-status common-lisp:null)
+                         :accessor struct-shape-query-query-status :shape
+                         "QueryStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-query-creation-time :shape "Date"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-query
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'query
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'query 'make-query))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input query))
@@ -5300,15 +7083,30 @@
 (common-lisp:deftype query-result-value () 'common-lisp:string)
 (common-lisp:deftype query-statement () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (query-statistics (:copier common-lisp:nil)
-      (:conc-name "struct-shape-query-statistics-"))
-   (results-count common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (total-results-count common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (bytes-scanned common-lisp:nil :type
-    (common-lisp:or long common-lisp:null)))
+ (common-lisp:defclass query-statistics common-lisp:nil
+                       ((results-count :initarg :results-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-query-statistics-results-count :shape
+                         "Integer" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (total-results-count :initarg :total-results-count
+                         :initform common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-query-statistics-total-results-count
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (bytes-scanned :initarg :bytes-scanned :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-query-statistics-bytes-scanned :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-query-statistics
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'query-statistics
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'query-statistics 'make-query-statistics))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5342,18 +7140,44 @@
                         ((aws-sdk/generator/shape::input query-statistics))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (query-statistics-for-describe-query (:copier common-lisp:nil)
-      (:conc-name "struct-shape-query-statistics-for-describe-query-"))
-   (events-matched common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (events-scanned common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (bytes-scanned common-lisp:nil :type (common-lisp:or long common-lisp:null))
-   (execution-time-in-millis common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null)))
+ (common-lisp:defclass query-statistics-for-describe-query common-lisp:nil
+                       ((events-matched :initarg :events-matched :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-query-statistics-for-describe-query-events-matched
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (events-scanned :initarg :events-scanned :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-query-statistics-for-describe-query-events-scanned
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (bytes-scanned :initarg :bytes-scanned :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-query-statistics-for-describe-query-bytes-scanned
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (execution-time-in-millis :initarg
+                         :execution-time-in-millis :initform common-lisp:nil
+                         :type (common-lisp:or integer common-lisp:null)
+                         :accessor
+                         struct-shape-query-statistics-for-describe-query-execution-time-in-millis
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-query-statistics-for-describe-query-creation-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-query-statistics-for-describe-query
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'query-statistics-for-describe-query
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'query-statistics-for-describe-query
                     'make-query-statistics-for-describe-query))
@@ -5411,12 +7235,22 @@
 (common-lisp:deftype query-status () 'common-lisp:string)
 (common-lisp:deftype read-write-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-organization-delegated-admin-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-register-organization-delegated-admin-request-"))
-   (member-account-id (common-lisp:error ":member-account-id is required")
-    :type (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass register-organization-delegated-admin-request
+                       common-lisp:nil
+                       ((member-account-id :initarg :member-account-id
+                         :initform
+                         (common-lisp:error ":member-account-id is required")
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor
+                         struct-shape-register-organization-delegated-admin-request-member-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-organization-delegated-admin-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'register-organization-delegated-admin-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-organization-delegated-admin-request
                     'make-register-organization-delegated-admin-request))
@@ -5443,10 +7277,14 @@
                           register-organization-delegated-admin-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-organization-delegated-admin-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-register-organization-delegated-admin-response-")))
+ (common-lisp:defclass register-organization-delegated-admin-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-organization-delegated-admin-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'register-organization-delegated-admin-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-organization-delegated-admin-response
                     'make-register-organization-delegated-admin-response))
@@ -5466,13 +7304,24 @@
                           register-organization-delegated-admin-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (remove-tags-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-remove-tags-request-"))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags-list (common-lisp:error ":tags-list is required") :type
-    (common-lisp:or tags-list common-lisp:null)))
+ (common-lisp:defclass remove-tags-request common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-remove-tags-request-resource-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags-list :initarg :tags-list :initform
+                         (common-lisp:error ":tags-list is required") :type
+                         (common-lisp:or tags-list common-lisp:null) :accessor
+                         struct-shape-remove-tags-request-tags-list :shape
+                         "TagsList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-remove-tags-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'remove-tags-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'remove-tags-request 'make-remove-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5499,9 +7348,12 @@
                         ((aws-sdk/generator/shape::input remove-tags-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (remove-tags-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-remove-tags-response-")))
+ (common-lisp:defclass remove-tags-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-remove-tags-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'remove-tags-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'remove-tags-response 'make-remove-tags-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5514,12 +7366,24 @@
                         ((aws-sdk/generator/shape::input remove-tags-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource (:copier common-lisp:nil) (:conc-name "struct-shape-resource-"))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (resource-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass resource common-lisp:nil
+                       ((resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-resource-resource-type :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-name :initarg :resource-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-resource-resource-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resource 'make-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resource))
@@ -5581,12 +7445,24 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'resource-policy-not-valid-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-tag (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-tag-"))
-   (resource-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tags-list common-lisp:nil :type
-    (common-lisp:or tags-list common-lisp:null)))
+ (common-lisp:defclass resource-tag common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-resource-tag-resource-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags-list :initarg :tags-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tags-list common-lisp:null) :accessor
+                         struct-shape-resource-tag-tags-list :shape "TagsList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-tag
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resource-tag 'make-resource-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resource-tag))
@@ -5625,11 +7501,21 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'resource-type-not-supported-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (restore-event-data-store-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-restore-event-data-store-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass restore-event-data-store-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-restore-event-data-store-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'restore-event-data-store-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'restore-event-data-store-request
                     'make-restore-event-data-store-request))
@@ -5656,33 +7542,99 @@
                           restore-event-data-store-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (restore-event-data-store-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-restore-event-data-store-response-"))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or event-data-store-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or event-data-store-status common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null))
-   (multi-region-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (organization-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (retention-period common-lisp:nil :type
-    (common-lisp:or retention-period common-lisp:null))
-   (termination-protection-enabled common-lisp:nil :type
-    (common-lisp:or termination-protection-enabled common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or event-data-store-kms-key-id common-lisp:null))
-   (billing-mode common-lisp:nil :type
-    (common-lisp:or billing-mode common-lisp:null)))
+ (common-lisp:defclass restore-event-data-store-response common-lisp:nil
+                       ((event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-response-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-response-name
+                         :shape "EventDataStoreName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or event-data-store-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-response-status
+                         :shape "EventDataStoreStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-response-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (multi-region-enabled :initarg :multi-region-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-restore-event-data-store-response-multi-region-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (organization-enabled :initarg :organization-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-restore-event-data-store-response-organization-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retention-period :initarg :retention-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or retention-period common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-response-retention-period
+                         :shape "RetentionPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (termination-protection-enabled :initarg
+                         :termination-protection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or termination-protection-enabled
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-response-termination-protection-enabled
+                         :shape "TerminationProtectionEnabled" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-restore-event-data-store-response-created-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-restore-event-data-store-response-updated-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-kms-key-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-response-kms-key-id
+                         :shape "EventDataStoreKmsKeyId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-mode :initarg :billing-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-mode common-lisp:null)
+                         :accessor
+                         struct-shape-restore-event-data-store-response-billing-mode
+                         :shape "BillingMode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-restore-event-data-store-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'restore-event-data-store-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'restore-event-data-store-response
                     'make-restore-event-data-store-response))
@@ -5797,16 +7749,33 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 's3bucket-does-not-exist-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3import-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3import-source-"))
-   (s3location-uri (common-lisp:error ":s3location-uri is required") :type
-    (common-lisp:or string common-lisp:null))
-   (s3bucket-region (common-lisp:error ":s3bucket-region is required") :type
-    (common-lisp:or string common-lisp:null))
-   (s3bucket-access-role-arn
-    (common-lisp:error ":s3bucket-access-role-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass s3import-source common-lisp:nil
+                       ((s3location-uri :initarg :s3location-uri :initform
+                         (common-lisp:error ":s3location-uri is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-s3import-source-s3location-uri
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (s3bucket-region :initarg :s3bucket-region :initform
+                         (common-lisp:error ":s3bucket-region is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-s3import-source-s3bucket-region
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (s3bucket-access-role-arn :initarg
+                         :s3bucket-access-role-arn :initform
+                         (common-lisp:error
+                          ":s3bucket-access-role-arn is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-s3import-source-s3bucket-access-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-s3import-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 's3import-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 's3import-source 'make-s3import-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input s3import-source))
@@ -5843,13 +7812,27 @@
 (common-lisp:deftype selector-name () 'common-lisp:string)
 (common-lisp:deftype source () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (source-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-source-config-"))
-   (apply-to-all-regions common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null)))
+ (common-lisp:defclass source-config common-lisp:nil
+                       ((apply-to-all-regions :initarg :apply-to-all-regions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-source-config-apply-to-all-regions :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-source-config-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-source-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'source-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'source-config 'make-source-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input source-config))
@@ -5877,11 +7860,21 @@
                         ((aws-sdk/generator/shape::input source-config))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-event-data-store-ingestion-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-event-data-store-ingestion-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass start-event-data-store-ingestion-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-start-event-data-store-ingestion-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-event-data-store-ingestion-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-event-data-store-ingestion-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-event-data-store-ingestion-request
                     'make-start-event-data-store-ingestion-request))
@@ -5908,9 +7901,14 @@
                           start-event-data-store-ingestion-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-event-data-store-ingestion-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-event-data-store-ingestion-response-")))
+ (common-lisp:defclass start-event-data-store-ingestion-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-event-data-store-ingestion-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-event-data-store-ingestion-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-event-data-store-ingestion-response
                     'make-start-event-data-store-ingestion-response))
@@ -5930,18 +7928,44 @@
                           start-event-data-store-ingestion-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-import-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-import-request-"))
-   (destinations common-lisp:nil :type
-    (common-lisp:or import-destinations common-lisp:null))
-   (import-source common-lisp:nil :type
-    (common-lisp:or import-source common-lisp:null))
-   (start-event-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (end-event-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (import-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass start-import-request common-lisp:nil
+                       ((destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-destinations common-lisp:null)
+                         :accessor
+                         struct-shape-start-import-request-destinations :shape
+                         "ImportDestinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (import-source :initarg :import-source :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-source common-lisp:null)
+                         :accessor
+                         struct-shape-start-import-request-import-source :shape
+                         "ImportSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-event-time :initarg :start-event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-start-import-request-start-event-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-event-time :initarg :end-event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-start-import-request-end-event-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (import-id :initarg :import-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-start-import-request-import-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-import-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-import-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-import-request 'make-start-import-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5989,24 +8013,63 @@
                         ((aws-sdk/generator/shape::input start-import-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-import-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-import-response-"))
-   (import-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (destinations common-lisp:nil :type
-    (common-lisp:or import-destinations common-lisp:null))
-   (import-source common-lisp:nil :type
-    (common-lisp:or import-source common-lisp:null))
-   (start-event-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (end-event-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (import-status common-lisp:nil :type
-    (common-lisp:or import-status common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null)))
+ (common-lisp:defclass start-import-response common-lisp:nil
+                       ((import-id :initarg :import-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-start-import-response-import-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-destinations common-lisp:null)
+                         :accessor
+                         struct-shape-start-import-response-destinations :shape
+                         "ImportDestinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (import-source :initarg :import-source :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-source common-lisp:null)
+                         :accessor
+                         struct-shape-start-import-response-import-source
+                         :shape "ImportSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-event-time :initarg :start-event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-start-import-response-start-event-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-event-time :initarg :end-event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-start-import-response-end-event-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (import-status :initarg :import-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-status common-lisp:null)
+                         :accessor
+                         struct-shape-start-import-response-import-status
+                         :shape "ImportStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-start-import-response-created-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-start-import-response-updated-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-import-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-import-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-import-response 'make-start-import-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6081,11 +8144,18 @@
                           start-import-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-logging-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-logging-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass start-logging-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-start-logging-request-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-logging-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-logging-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-logging-request 'make-start-logging-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6111,9 +8181,12 @@
                           start-logging-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-logging-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-logging-response-")))
+ (common-lisp:defclass start-logging-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-logging-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-logging-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-logging-response 'make-start-logging-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6132,17 +8205,39 @@
                           start-logging-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-query-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-query-request-"))
-   (query-statement common-lisp:nil :type
-    (common-lisp:or query-statement common-lisp:null))
-   (delivery-s3uri common-lisp:nil :type
-    (common-lisp:or delivery-s3uri common-lisp:null))
-   (query-alias common-lisp:nil :type
-    (common-lisp:or query-alias common-lisp:null))
-   (query-parameters common-lisp:nil :type
-    (common-lisp:or query-parameters common-lisp:null)))
+ (common-lisp:defclass start-query-request common-lisp:nil
+                       ((query-statement :initarg :query-statement :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-statement common-lisp:null)
+                         :accessor
+                         struct-shape-start-query-request-query-statement
+                         :shape "QueryStatement" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (delivery-s3uri :initarg :delivery-s3uri :initform
+                         common-lisp:nil :type
+                         (common-lisp:or delivery-s3uri common-lisp:null)
+                         :accessor
+                         struct-shape-start-query-request-delivery-s3uri :shape
+                         "DeliveryS3Uri" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-alias :initarg :query-alias :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-alias common-lisp:null)
+                         :accessor struct-shape-start-query-request-query-alias
+                         :shape "QueryAlias" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-parameters :initarg :query-parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or query-parameters common-lisp:null)
+                         :accessor
+                         struct-shape-start-query-request-query-parameters
+                         :shape "QueryParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-query-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-query-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-query-request 'make-start-query-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6183,10 +8278,17 @@
                         ((aws-sdk/generator/shape::input start-query-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-query-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-query-response-"))
-   (query-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass start-query-response common-lisp:nil
+                       ((query-id :initarg :query-id :initform common-lisp:nil
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-start-query-response-query-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-query-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-query-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-query-response 'make-start-query-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6206,11 +8308,21 @@
                         ((aws-sdk/generator/shape::input start-query-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-event-data-store-ingestion-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-event-data-store-ingestion-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null)))
+ (common-lisp:defclass stop-event-data-store-ingestion-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-stop-event-data-store-ingestion-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-event-data-store-ingestion-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'stop-event-data-store-ingestion-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-event-data-store-ingestion-request
                     'make-stop-event-data-store-ingestion-request))
@@ -6237,9 +8349,14 @@
                           stop-event-data-store-ingestion-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-event-data-store-ingestion-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-event-data-store-ingestion-response-")))
+ (common-lisp:defclass stop-event-data-store-ingestion-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-event-data-store-ingestion-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'stop-event-data-store-ingestion-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-event-data-store-ingestion-response
                     'make-stop-event-data-store-ingestion-response))
@@ -6259,11 +8376,18 @@
                           stop-event-data-store-ingestion-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-import-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-import-request-"))
-   (import-id (common-lisp:error ":import-id is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass stop-import-request common-lisp:nil
+                       ((import-id :initarg :import-id :initform
+                         (common-lisp:error ":import-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-stop-import-request-import-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-import-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-import-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-import-request 'make-stop-import-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6283,26 +8407,70 @@
                         ((aws-sdk/generator/shape::input stop-import-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-import-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-import-response-"))
-   (import-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (import-source common-lisp:nil :type
-    (common-lisp:or import-source common-lisp:null))
-   (destinations common-lisp:nil :type
-    (common-lisp:or import-destinations common-lisp:null))
-   (import-status common-lisp:nil :type
-    (common-lisp:or import-status common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (start-event-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (end-event-time common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (import-statistics common-lisp:nil :type
-    (common-lisp:or import-statistics common-lisp:null)))
+ (common-lisp:defclass stop-import-response common-lisp:nil
+                       ((import-id :initarg :import-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-stop-import-response-import-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (import-source :initarg :import-source :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-source common-lisp:null)
+                         :accessor
+                         struct-shape-stop-import-response-import-source :shape
+                         "ImportSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-destinations common-lisp:null)
+                         :accessor
+                         struct-shape-stop-import-response-destinations :shape
+                         "ImportDestinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (import-status :initarg :import-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or import-status common-lisp:null)
+                         :accessor
+                         struct-shape-stop-import-response-import-status :shape
+                         "ImportStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-stop-import-response-created-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-stop-import-response-updated-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-event-time :initarg :start-event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-stop-import-response-start-event-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-event-time :initarg :end-event-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-stop-import-response-end-event-time
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (import-statistics :initarg :import-statistics
+                         :initform common-lisp:nil :type
+                         (common-lisp:or import-statistics common-lisp:null)
+                         :accessor
+                         struct-shape-stop-import-response-import-statistics
+                         :shape "ImportStatistics" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-import-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-import-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-import-response 'make-stop-import-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6378,11 +8546,18 @@
                         ((aws-sdk/generator/shape::input stop-import-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-logging-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-logging-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass stop-logging-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-stop-logging-request-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-logging-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-logging-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-logging-request 'make-stop-logging-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6402,9 +8577,12 @@
                         ((aws-sdk/generator/shape::input stop-logging-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-logging-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-logging-response-")))
+ (common-lisp:defclass stop-logging-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-logging-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-logging-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-logging-response 'make-stop-logging-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6424,11 +8602,20 @@
    common-lisp:nil))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -6481,36 +8668,109 @@
                            (trivial-types:proper-list date))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (trail (:copier common-lisp:nil) (:conc-name "struct-shape-trail-"))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (s3bucket-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (s3key-prefix common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (sns-topic-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (sns-topic-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (include-global-service-events common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (is-multi-region-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (home-region common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (trail-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (log-file-validation-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (cloud-watch-logs-log-group-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (cloud-watch-logs-role-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (has-custom-event-selectors common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (has-insight-selectors common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (is-organization-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass trail common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-name :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (s3bucket-name :initarg :s3bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-s3bucket-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3key-prefix :initarg :s3key-prefix :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-s3key-prefix :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-name :initarg :sns-topic-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-sns-topic-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-arn :initarg :sns-topic-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-sns-topic-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (include-global-service-events :initarg
+                         :include-global-service-events :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-trail-include-global-service-events
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (is-multi-region-trail :initarg :is-multi-region-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-trail-is-multi-region-trail :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (home-region :initarg :home-region :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-home-region :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (trail-arn :initarg :trail-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-trail-arn :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (log-file-validation-enabled :initarg
+                         :log-file-validation-enabled :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-trail-log-file-validation-enabled :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cloud-watch-logs-log-group-arn :initarg
+                         :cloud-watch-logs-log-group-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-cloud-watch-logs-log-group-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-role-arn :initarg
+                         :cloud-watch-logs-role-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-trail-cloud-watch-logs-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-kms-key-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (has-custom-event-selectors :initarg
+                         :has-custom-event-selectors :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-trail-has-custom-event-selectors :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (has-insight-selectors :initarg :has-insight-selectors
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-trail-has-insight-selectors :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (is-organization-trail :initarg :is-organization-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-trail-is-organization-trail :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-trail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'trail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'trail 'make-trail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input trail))
@@ -6647,13 +8907,28 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'trail-already-exists-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (trail-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-trail-info-"))
-   (trail-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (home-region common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass trail-info common-lisp:nil
+                       ((trail-arn :initarg :trail-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-info-trail-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-info-name :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (home-region :initarg :home-region :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-trail-info-home-region :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-trail-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'trail-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'trail-info 'make-trail-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input trail-info))
@@ -6723,14 +8998,30 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'unsupported-operation-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-request-"))
-   (channel (common-lisp:error ":channel is required") :type
-    (common-lisp:or channel-arn common-lisp:null))
-   (destinations common-lisp:nil :type
-    (common-lisp:or destinations common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or channel-name common-lisp:null)))
+ (common-lisp:defclass update-channel-request common-lisp:nil
+                       ((channel :initarg :channel :initform
+                         (common-lisp:error ":channel is required") :type
+                         (common-lisp:or channel-arn common-lisp:null)
+                         :accessor struct-shape-update-channel-request-channel
+                         :shape "ChannelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or destinations common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-request-destinations
+                         :shape "Destinations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or channel-name common-lisp:null)
+                         :accessor struct-shape-update-channel-request-name
+                         :shape "ChannelName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-channel-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-request 'make-update-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6770,15 +9061,36 @@
                           update-channel-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-channel-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-channel-response-"))
-   (channel-arn common-lisp:nil :type
-    (common-lisp:or channel-arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or channel-name common-lisp:null))
-   (source common-lisp:nil :type (common-lisp:or source common-lisp:null))
-   (destinations common-lisp:nil :type
-    (common-lisp:or destinations common-lisp:null)))
+ (common-lisp:defclass update-channel-response common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or channel-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-response-channel-arn
+                         :shape "ChannelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or channel-name common-lisp:null)
+                         :accessor struct-shape-update-channel-response-name
+                         :shape "ChannelName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source :initarg :source :initform common-lisp:nil
+                         :type (common-lisp:or source common-lisp:null)
+                         :accessor struct-shape-update-channel-response-source
+                         :shape "Source" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destinations :initarg :destinations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or destinations common-lisp:null)
+                         :accessor
+                         struct-shape-update-channel-response-destinations
+                         :shape "Destinations" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-channel-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-channel-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-channel-response 'make-update-channel-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6825,27 +9137,80 @@
                           update-channel-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-event-data-store-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-event-data-store-request-"))
-   (event-data-store (common-lisp:error ":event-data-store is required") :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or event-data-store-name common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null))
-   (multi-region-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (organization-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (retention-period common-lisp:nil :type
-    (common-lisp:or retention-period common-lisp:null))
-   (termination-protection-enabled common-lisp:nil :type
-    (common-lisp:or termination-protection-enabled common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or event-data-store-kms-key-id common-lisp:null))
-   (billing-mode common-lisp:nil :type
-    (common-lisp:or billing-mode common-lisp:null)))
+ (common-lisp:defclass update-event-data-store-request common-lisp:nil
+                       ((event-data-store :initarg :event-data-store :initform
+                         (common-lisp:error ":event-data-store is required")
+                         :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-request-event-data-store
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-request-name
+                         :shape "EventDataStoreName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-request-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (multi-region-enabled :initarg :multi-region-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-event-data-store-request-multi-region-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (organization-enabled :initarg :organization-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-event-data-store-request-organization-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retention-period :initarg :retention-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or retention-period common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-request-retention-period
+                         :shape "RetentionPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (termination-protection-enabled :initarg
+                         :termination-protection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or termination-protection-enabled
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-request-termination-protection-enabled
+                         :shape "TerminationProtectionEnabled" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-kms-key-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-request-kms-key-id
+                         :shape "EventDataStoreKmsKeyId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-mode :initarg :billing-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-mode common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-request-billing-mode
+                         :shape "BillingMode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-event-data-store-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-event-data-store-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-event-data-store-request
                     'make-update-event-data-store-request))
@@ -6932,37 +9297,113 @@
                           update-event-data-store-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-event-data-store-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-event-data-store-response-"))
-   (event-data-store-arn common-lisp:nil :type
-    (common-lisp:or event-data-store-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or event-data-store-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or event-data-store-status common-lisp:null))
-   (advanced-event-selectors common-lisp:nil :type
-    (common-lisp:or advanced-event-selectors common-lisp:null))
-   (multi-region-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (organization-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (retention-period common-lisp:nil :type
-    (common-lisp:or retention-period common-lisp:null))
-   (termination-protection-enabled common-lisp:nil :type
-    (common-lisp:or termination-protection-enabled common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (updated-timestamp common-lisp:nil :type
-    (common-lisp:or date common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or event-data-store-kms-key-id common-lisp:null))
-   (billing-mode common-lisp:nil :type
-    (common-lisp:or billing-mode common-lisp:null))
-   (federation-status common-lisp:nil :type
-    (common-lisp:or federation-status common-lisp:null))
-   (federation-role-arn common-lisp:nil :type
-    (common-lisp:or federation-role-arn common-lisp:null)))
+ (common-lisp:defclass update-event-data-store-response common-lisp:nil
+                       ((event-data-store-arn :initarg :event-data-store-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-event-data-store-arn
+                         :shape "EventDataStoreArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or event-data-store-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-name
+                         :shape "EventDataStoreName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or event-data-store-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-status
+                         :shape "EventDataStoreStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (advanced-event-selectors :initarg
+                         :advanced-event-selectors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or advanced-event-selectors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-advanced-event-selectors
+                         :shape "AdvancedEventSelectors" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (multi-region-enabled :initarg :multi-region-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-event-data-store-response-multi-region-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (organization-enabled :initarg :organization-enabled
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-event-data-store-response-organization-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retention-period :initarg :retention-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or retention-period common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-retention-period
+                         :shape "RetentionPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (termination-protection-enabled :initarg
+                         :termination-protection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or termination-protection-enabled
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-termination-protection-enabled
+                         :shape "TerminationProtectionEnabled" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-update-event-data-store-response-created-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-timestamp :initarg :updated-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or date common-lisp:null) :accessor
+                         struct-shape-update-event-data-store-response-updated-timestamp
+                         :shape "Date" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-data-store-kms-key-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-kms-key-id
+                         :shape "EventDataStoreKmsKeyId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-mode :initarg :billing-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-mode common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-billing-mode
+                         :shape "BillingMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-status :initarg :federation-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-federation-status
+                         :shape "FederationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-role-arn :initarg :federation-role-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-event-data-store-response-federation-role-arn
+                         :shape "FederationRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-event-data-store-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-event-data-store-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-event-data-store-response
                     'make-update-event-data-store-response))
@@ -7085,30 +9526,82 @@
                           update-event-data-store-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-trail-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-trail-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (s3bucket-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (s3key-prefix common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (sns-topic-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (include-global-service-events common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (is-multi-region-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (enable-log-file-validation common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (cloud-watch-logs-log-group-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (cloud-watch-logs-role-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (is-organization-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass update-trail-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-request-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3bucket-name :initarg :s3bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-request-s3bucket-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3key-prefix :initarg :s3key-prefix :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-request-s3key-prefix :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-name :initarg :sns-topic-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-request-sns-topic-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-global-service-events :initarg
+                         :include-global-service-events :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-trail-request-include-global-service-events
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (is-multi-region-trail :initarg :is-multi-region-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-trail-request-is-multi-region-trail
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (enable-log-file-validation :initarg
+                         :enable-log-file-validation :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-update-trail-request-enable-log-file-validation
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-log-group-arn :initarg
+                         :cloud-watch-logs-log-group-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-request-cloud-watch-logs-log-group-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-role-arn :initarg
+                         :cloud-watch-logs-role-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-update-trail-request-cloud-watch-logs-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-request-kms-key-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (is-organization-trail :initarg :is-organization-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-trail-request-is-organization-trail
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-trail-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-trail-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-trail-request 'make-update-trail-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7204,32 +9697,93 @@
                         ((aws-sdk/generator/shape::input update-trail-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-trail-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-trail-response-"))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (s3bucket-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (s3key-prefix common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (sns-topic-name common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (sns-topic-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (include-global-service-events common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (is-multi-region-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (trail-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (log-file-validation-enabled common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (cloud-watch-logs-log-group-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (cloud-watch-logs-role-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (is-organization-trail common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass update-trail-response common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-response-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3bucket-name :initarg :s3bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-response-s3bucket-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (s3key-prefix :initarg :s3key-prefix :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-response-s3key-prefix :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-name :initarg :sns-topic-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-response-sns-topic-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sns-topic-arn :initarg :sns-topic-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-response-sns-topic-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-global-service-events :initarg
+                         :include-global-service-events :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-trail-response-include-global-service-events
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (is-multi-region-trail :initarg :is-multi-region-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-trail-response-is-multi-region-trail
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (trail-arn :initarg :trail-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-response-trail-arn :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (log-file-validation-enabled :initarg
+                         :log-file-validation-enabled :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-update-trail-response-log-file-validation-enabled
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-log-group-arn :initarg
+                         :cloud-watch-logs-log-group-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-response-cloud-watch-logs-log-group-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cloud-watch-logs-role-arn :initarg
+                         :cloud-watch-logs-role-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-update-trail-response-cloud-watch-logs-role-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-trail-response-kms-key-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (is-organization-trail :initarg :is-organization-trail
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-trail-response-is-organization-trail
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-trail-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-trail-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-trail-response 'make-update-trail-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

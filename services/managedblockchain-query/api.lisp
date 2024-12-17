@@ -43,15 +43,33 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (asset-contract (:copier common-lisp:nil)
-      (:conc-name "struct-shape-asset-contract-"))
-   (contract-identifier (common-lisp:error ":contractidentifier is required")
-    :type (common-lisp:or contract-identifier common-lisp:null))
-   (token-standard (common-lisp:error ":tokenstandard is required") :type
-    (common-lisp:or query-token-standard common-lisp:null))
-   (deployer-address (common-lisp:error ":deployeraddress is required") :type
-    (common-lisp:or chain-address common-lisp:null)))
+ (common-lisp:defclass asset-contract common-lisp:nil
+                       ((contract-identifier :initarg :contract-identifier
+                         :initform
+                         (common-lisp:error ":contractidentifier is required")
+                         :type
+                         (common-lisp:or contract-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-asset-contract-contract-identifier :shape
+                         "ContractIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-standard :initarg :token-standard :initform
+                         (common-lisp:error ":tokenstandard is required") :type
+                         (common-lisp:or query-token-standard common-lisp:null)
+                         :accessor struct-shape-asset-contract-token-standard
+                         :shape "QueryTokenStandard" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (deployer-address :initarg :deployer-address :initform
+                         (common-lisp:error ":deployeraddress is required")
+                         :type (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-asset-contract-deployer-address
+                         :shape "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-asset-contract
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'asset-contract
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'asset-contract 'make-asset-contract))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input asset-contract))
@@ -92,21 +110,52 @@
                            (trivial-types:proper-list asset-contract))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-token-balance-error-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-token-balance-error-item-"))
-   (token-identifier common-lisp:nil :type
-    (common-lisp:or token-identifier common-lisp:null))
-   (owner-identifier common-lisp:nil :type
-    (common-lisp:or owner-identifier common-lisp:null))
-   (at-blockchain-instant common-lisp:nil :type
-    (common-lisp:or blockchain-instant common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or string common-lisp:null))
-   (error-message (common-lisp:error ":errormessage is required") :type
-    (common-lisp:or string common-lisp:null))
-   (error-type (common-lisp:error ":errortype is required") :type
-    (common-lisp:or error-type common-lisp:null)))
+ (common-lisp:defclass batch-get-token-balance-error-item common-lisp:nil
+                       ((token-identifier :initarg :token-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-error-item-token-identifier
+                         :shape "TokenIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-identifier :initarg :owner-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or owner-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-error-item-owner-identifier
+                         :shape "OwnerIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (at-blockchain-instant :initarg :at-blockchain-instant
+                         :initform common-lisp:nil :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-error-item-at-blockchain-instant
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-code :initarg :error-code :initform
+                         (common-lisp:error ":errorcode is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-batch-get-token-balance-error-item-error-code
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         (common-lisp:error ":errormessage is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-batch-get-token-balance-error-item-error-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-type :initarg :error-type :initform
+                         (common-lisp:error ":errortype is required") :type
+                         (common-lisp:or error-type common-lisp:null) :accessor
+                         struct-shape-batch-get-token-balance-error-item-error-type
+                         :shape "ErrorType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-token-balance-error-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-get-token-balance-error-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-token-balance-error-item
                     'make-batch-get-token-balance-error-item))
@@ -178,11 +227,22 @@
                             batch-get-token-balance-error-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-token-balance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-token-balance-input-"))
-   (get-token-balance-inputs common-lisp:nil :type
-    (common-lisp:or get-token-balance-input-list common-lisp:null)))
+ (common-lisp:defclass batch-get-token-balance-input common-lisp:nil
+                       ((get-token-balance-inputs :initarg
+                         :get-token-balance-inputs :initform common-lisp:nil
+                         :type
+                         (common-lisp:or get-token-balance-input-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-input-get-token-balance-inputs
+                         :shape "GetTokenBalanceInputList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-token-balance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-get-token-balance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-token-balance-input
                     'make-batch-get-token-balance-input))
@@ -210,15 +270,36 @@
                           batch-get-token-balance-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-token-balance-input-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-token-balance-input-item-"))
-   (token-identifier (common-lisp:error ":tokenidentifier is required") :type
-    (common-lisp:or token-identifier common-lisp:null))
-   (owner-identifier (common-lisp:error ":owneridentifier is required") :type
-    (common-lisp:or owner-identifier common-lisp:null))
-   (at-blockchain-instant common-lisp:nil :type
-    (common-lisp:or blockchain-instant common-lisp:null)))
+ (common-lisp:defclass batch-get-token-balance-input-item common-lisp:nil
+                       ((token-identifier :initarg :token-identifier :initform
+                         (common-lisp:error ":tokenidentifier is required")
+                         :type
+                         (common-lisp:or token-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-input-item-token-identifier
+                         :shape "TokenIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-identifier :initarg :owner-identifier :initform
+                         (common-lisp:error ":owneridentifier is required")
+                         :type
+                         (common-lisp:or owner-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-input-item-owner-identifier
+                         :shape "OwnerIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (at-blockchain-instant :initarg :at-blockchain-instant
+                         :initform common-lisp:nil :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-input-item-at-blockchain-instant
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-token-balance-input-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-get-token-balance-input-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-token-balance-input-item
                     'make-batch-get-token-balance-input-item))
@@ -260,13 +341,29 @@
                           batch-get-token-balance-input-item))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-token-balance-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-token-balance-output-"))
-   (token-balances (common-lisp:error ":tokenbalances is required") :type
-    (common-lisp:or batch-get-token-balance-output-list common-lisp:null))
-   (errors (common-lisp:error ":errors is required") :type
-    (common-lisp:or batch-get-token-balance-errors common-lisp:null)))
+ (common-lisp:defclass batch-get-token-balance-output common-lisp:nil
+                       ((token-balances :initarg :token-balances :initform
+                         (common-lisp:error ":tokenbalances is required") :type
+                         (common-lisp:or batch-get-token-balance-output-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-output-token-balances
+                         :shape "BatchGetTokenBalanceOutputList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (errors :initarg :errors :initform
+                         (common-lisp:error ":errors is required") :type
+                         (common-lisp:or batch-get-token-balance-errors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-output-errors
+                         :shape "BatchGetTokenBalanceErrors" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-token-balance-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-get-token-balance-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-token-balance-output
                     'make-batch-get-token-balance-output))
@@ -300,20 +397,49 @@
                           batch-get-token-balance-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-token-balance-output-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-token-balance-output-item-"))
-   (owner-identifier common-lisp:nil :type
-    (common-lisp:or owner-identifier common-lisp:null))
-   (token-identifier common-lisp:nil :type
-    (common-lisp:or token-identifier common-lisp:null))
-   (balance (common-lisp:error ":balance is required") :type
-    (common-lisp:or string common-lisp:null))
-   (at-blockchain-instant
-    (common-lisp:error ":atblockchaininstant is required") :type
-    (common-lisp:or blockchain-instant common-lisp:null))
-   (last-updated-time common-lisp:nil :type
-    (common-lisp:or blockchain-instant common-lisp:null)))
+ (common-lisp:defclass batch-get-token-balance-output-item common-lisp:nil
+                       ((owner-identifier :initarg :owner-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or owner-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-output-item-owner-identifier
+                         :shape "OwnerIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-identifier :initarg :token-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-output-item-token-identifier
+                         :shape "TokenIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (balance :initarg :balance :initform
+                         (common-lisp:error ":balance is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-batch-get-token-balance-output-item-balance
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (at-blockchain-instant :initarg :at-blockchain-instant
+                         :initform
+                         (common-lisp:error ":atblockchaininstant is required")
+                         :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-output-item-at-blockchain-instant
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-time :initarg :last-updated-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-token-balance-output-item-last-updated-time
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-token-balance-output-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-get-token-balance-output-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-token-balance-output-item
                     'make-batch-get-token-balance-output-item))
@@ -379,10 +505,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype block-hash () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (blockchain-instant (:copier common-lisp:nil)
-      (:conc-name "struct-shape-blockchain-instant-"))
-   (time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass blockchain-instant common-lisp:nil
+                       ((time :initarg :time :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-blockchain-instant-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-blockchain-instant
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'blockchain-instant
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'blockchain-instant 'make-blockchain-instant))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -404,11 +537,20 @@
 (common-lisp:deftype chain-address () 'common-lisp:string)
 (common-lisp:deftype confirmation-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (confirmation-status-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-confirmation-status-filter-"))
-   (include (common-lisp:error ":include is required") :type
-    (common-lisp:or confirmation-status-include-list common-lisp:null)))
+ (common-lisp:defclass confirmation-status-filter common-lisp:nil
+                       ((include :initarg :include :initform
+                         (common-lisp:error ":include is required") :type
+                         (common-lisp:or confirmation-status-include-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-confirmation-status-filter-include :shape
+                         "ConfirmationStatusIncludeList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-confirmation-status-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'confirmation-status-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'confirmation-status-filter
                     'make-confirmation-status-filter))
@@ -443,15 +585,31 @@
                            (trivial-types:proper-list confirmation-status))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (contract-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-contract-filter-"))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (token-standard (common-lisp:error ":tokenstandard is required") :type
-    (common-lisp:or query-token-standard common-lisp:null))
-   (deployer-address (common-lisp:error ":deployeraddress is required") :type
-    (common-lisp:or chain-address common-lisp:null)))
+ (common-lisp:defclass contract-filter common-lisp:nil
+                       ((network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-contract-filter-network :shape
+                         "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-standard :initarg :token-standard :initform
+                         (common-lisp:error ":tokenstandard is required") :type
+                         (common-lisp:or query-token-standard common-lisp:null)
+                         :accessor struct-shape-contract-filter-token-standard
+                         :shape "QueryTokenStandard" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (deployer-address :initarg :deployer-address :initform
+                         (common-lisp:error ":deployeraddress is required")
+                         :type (common-lisp:or chain-address common-lisp:null)
+                         :accessor
+                         struct-shape-contract-filter-deployer-address :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-contract-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'contract-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'contract-filter 'make-contract-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input contract-filter))
@@ -484,13 +642,25 @@
                         ((aws-sdk/generator/shape::input contract-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (contract-identifier (:copier common-lisp:nil)
-      (:conc-name "struct-shape-contract-identifier-"))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (contract-address (common-lisp:error ":contractaddress is required") :type
-    (common-lisp:or chain-address common-lisp:null)))
+ (common-lisp:defclass contract-identifier common-lisp:nil
+                       ((network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-contract-identifier-network
+                         :shape "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (contract-address :initarg :contract-address :initform
+                         (common-lisp:error ":contractaddress is required")
+                         :type (common-lisp:or chain-address common-lisp:null)
+                         :accessor
+                         struct-shape-contract-identifier-contract-address
+                         :shape "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-contract-identifier
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'contract-identifier
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'contract-identifier 'make-contract-identifier))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -517,12 +687,27 @@
                         ((aws-sdk/generator/shape::input contract-identifier))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (contract-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-contract-metadata-"))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (symbol common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (decimals common-lisp:nil :type (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass contract-metadata common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-contract-metadata-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (symbol :initarg :symbol :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-contract-metadata-symbol :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decimals :initarg :decimals :initform common-lisp:nil
+                         :type (common-lisp:or integer common-lisp:null)
+                         :accessor struct-shape-contract-metadata-decimals
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-contract-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'contract-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'contract-metadata 'make-contract-metadata))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -559,11 +744,21 @@
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:deftype execution-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-asset-contract-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-asset-contract-input-"))
-   (contract-identifier (common-lisp:error ":contractidentifier is required")
-    :type (common-lisp:or contract-identifier common-lisp:null)))
+ (common-lisp:defclass get-asset-contract-input common-lisp:nil
+                       ((contract-identifier :initarg :contract-identifier
+                         :initform
+                         (common-lisp:error ":contractidentifier is required")
+                         :type
+                         (common-lisp:or contract-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-get-asset-contract-input-contract-identifier
+                         :shape "ContractIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-asset-contract-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-asset-contract-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-asset-contract-input 'make-get-asset-contract-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -589,17 +784,42 @@
                           get-asset-contract-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-asset-contract-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-asset-contract-output-"))
-   (contract-identifier (common-lisp:error ":contractidentifier is required")
-    :type (common-lisp:or contract-identifier common-lisp:null))
-   (token-standard (common-lisp:error ":tokenstandard is required") :type
-    (common-lisp:or query-token-standard common-lisp:null))
-   (deployer-address (common-lisp:error ":deployeraddress is required") :type
-    (common-lisp:or chain-address common-lisp:null))
-   (metadata common-lisp:nil :type
-    (common-lisp:or contract-metadata common-lisp:null)))
+ (common-lisp:defclass get-asset-contract-output common-lisp:nil
+                       ((contract-identifier :initarg :contract-identifier
+                         :initform
+                         (common-lisp:error ":contractidentifier is required")
+                         :type
+                         (common-lisp:or contract-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-get-asset-contract-output-contract-identifier
+                         :shape "ContractIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-standard :initarg :token-standard :initform
+                         (common-lisp:error ":tokenstandard is required") :type
+                         (common-lisp:or query-token-standard common-lisp:null)
+                         :accessor
+                         struct-shape-get-asset-contract-output-token-standard
+                         :shape "QueryTokenStandard" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (deployer-address :initarg :deployer-address :initform
+                         (common-lisp:error ":deployeraddress is required")
+                         :type (common-lisp:or chain-address common-lisp:null)
+                         :accessor
+                         struct-shape-get-asset-contract-output-deployer-address
+                         :shape "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type
+                         (common-lisp:or contract-metadata common-lisp:null)
+                         :accessor
+                         struct-shape-get-asset-contract-output-metadata :shape
+                         "ContractMetadata" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-asset-contract-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-asset-contract-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-asset-contract-output
                     'make-get-asset-contract-output))
@@ -647,15 +867,35 @@
                           get-asset-contract-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-token-balance-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-token-balance-input-"))
-   (token-identifier (common-lisp:error ":tokenidentifier is required") :type
-    (common-lisp:or token-identifier common-lisp:null))
-   (owner-identifier (common-lisp:error ":owneridentifier is required") :type
-    (common-lisp:or owner-identifier common-lisp:null))
-   (at-blockchain-instant common-lisp:nil :type
-    (common-lisp:or blockchain-instant common-lisp:null)))
+ (common-lisp:defclass get-token-balance-input common-lisp:nil
+                       ((token-identifier :initarg :token-identifier :initform
+                         (common-lisp:error ":tokenidentifier is required")
+                         :type
+                         (common-lisp:or token-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-get-token-balance-input-token-identifier
+                         :shape "TokenIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-identifier :initarg :owner-identifier :initform
+                         (common-lisp:error ":owneridentifier is required")
+                         :type
+                         (common-lisp:or owner-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-get-token-balance-input-owner-identifier
+                         :shape "OwnerIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (at-blockchain-instant :initarg :at-blockchain-instant
+                         :initform common-lisp:nil :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-get-token-balance-input-at-blockchain-instant
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-token-balance-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-token-balance-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-token-balance-input 'make-get-token-balance-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -705,20 +945,48 @@
                             batch-get-token-balance-input-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-token-balance-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-token-balance-output-"))
-   (owner-identifier common-lisp:nil :type
-    (common-lisp:or owner-identifier common-lisp:null))
-   (token-identifier common-lisp:nil :type
-    (common-lisp:or token-identifier common-lisp:null))
-   (balance (common-lisp:error ":balance is required") :type
-    (common-lisp:or string common-lisp:null))
-   (at-blockchain-instant
-    (common-lisp:error ":atblockchaininstant is required") :type
-    (common-lisp:or blockchain-instant common-lisp:null))
-   (last-updated-time common-lisp:nil :type
-    (common-lisp:or blockchain-instant common-lisp:null)))
+ (common-lisp:defclass get-token-balance-output common-lisp:nil
+                       ((owner-identifier :initarg :owner-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or owner-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-get-token-balance-output-owner-identifier
+                         :shape "OwnerIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-identifier :initarg :token-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-get-token-balance-output-token-identifier
+                         :shape "TokenIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (balance :initarg :balance :initform
+                         (common-lisp:error ":balance is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-token-balance-output-balance :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (at-blockchain-instant :initarg :at-blockchain-instant
+                         :initform
+                         (common-lisp:error ":atblockchaininstant is required")
+                         :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-get-token-balance-output-at-blockchain-instant
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-time :initarg :last-updated-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-get-token-balance-output-last-updated-time
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-token-balance-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-token-balance-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-token-balance-output 'make-get-token-balance-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -773,13 +1041,27 @@
                           get-token-balance-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-transaction-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-transaction-input-"))
-   (transaction-hash (common-lisp:error ":transactionhash is required") :type
-    (common-lisp:or query-transaction-hash common-lisp:null))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null)))
+ (common-lisp:defclass get-transaction-input common-lisp:nil
+                       ((transaction-hash :initarg :transaction-hash :initform
+                         (common-lisp:error ":transactionhash is required")
+                         :type
+                         (common-lisp:or query-transaction-hash
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-transaction-input-transaction-hash
+                         :shape "QueryTransactionHash" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-get-transaction-input-network
+                         :shape "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-transaction-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-transaction-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-transaction-input 'make-get-transaction-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -812,11 +1094,19 @@
                           get-transaction-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-transaction-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-transaction-output-"))
-   (transaction (common-lisp:error ":transaction is required") :type
-    (common-lisp:or transaction common-lisp:null)))
+ (common-lisp:defclass get-transaction-output common-lisp:nil
+                       ((transaction :initarg :transaction :initform
+                         (common-lisp:error ":transaction is required") :type
+                         (common-lisp:or transaction common-lisp:null)
+                         :accessor
+                         struct-shape-get-transaction-output-transaction :shape
+                         "Transaction" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-transaction-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-transaction-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-transaction-output 'make-get-transaction-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -854,16 +1144,36 @@
                     'internal-server-exception-message
                     'internal-server-exception-retry-after-seconds)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-asset-contracts-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-asset-contracts-input-"))
-   (contract-filter (common-lisp:error ":contractfilter is required") :type
-    (common-lisp:or contract-filter common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-asset-contracts-input-max-results-integer
-                    common-lisp:null)))
+ (common-lisp:defclass list-asset-contracts-input common-lisp:nil
+                       ((contract-filter :initarg :contract-filter :initform
+                         (common-lisp:error ":contractfilter is required")
+                         :type
+                         (common-lisp:or contract-filter common-lisp:null)
+                         :accessor
+                         struct-shape-list-asset-contracts-input-contract-filter
+                         :shape "ContractFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-asset-contracts-input-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-asset-contracts-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-asset-contracts-input-max-results
+                         :shape "ListAssetContractsInputMaxResultsInteger"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-asset-contracts-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-asset-contracts-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-asset-contracts-input
                     'make-list-asset-contracts-input))
@@ -906,13 +1216,25 @@
 (common-lisp:deftype list-asset-contracts-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-asset-contracts-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-asset-contracts-output-"))
-   (contracts (common-lisp:error ":contracts is required") :type
-    (common-lisp:or asset-contract-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-asset-contracts-output common-lisp:nil
+                       ((contracts :initarg :contracts :initform
+                         (common-lisp:error ":contracts is required") :type
+                         (common-lisp:or asset-contract-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-asset-contracts-output-contracts
+                         :shape "AssetContractList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-asset-contracts-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-asset-contracts-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-asset-contracts-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-asset-contracts-output
                     'make-list-asset-contracts-output))
@@ -946,18 +1268,42 @@
                           list-asset-contracts-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-token-balances-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-token-balances-input-"))
-   (owner-filter common-lisp:nil :type
-    (common-lisp:or owner-filter common-lisp:null))
-   (token-filter (common-lisp:error ":tokenfilter is required") :type
-    (common-lisp:or token-filter common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-token-balances-input-max-results-integer
-                    common-lisp:null)))
+ (common-lisp:defclass list-token-balances-input common-lisp:nil
+                       ((owner-filter :initarg :owner-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or owner-filter common-lisp:null)
+                         :accessor
+                         struct-shape-list-token-balances-input-owner-filter
+                         :shape "OwnerFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-filter :initarg :token-filter :initform
+                         (common-lisp:error ":tokenfilter is required") :type
+                         (common-lisp:or token-filter common-lisp:null)
+                         :accessor
+                         struct-shape-list-token-balances-input-token-filter
+                         :shape "TokenFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-token-balances-input-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-token-balances-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-token-balances-input-max-results
+                         :shape "ListTokenBalancesInputMaxResultsInteger"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-token-balances-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-token-balances-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-token-balances-input
                     'make-list-token-balances-input))
@@ -1007,13 +1353,25 @@
 (common-lisp:deftype list-token-balances-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-token-balances-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-token-balances-output-"))
-   (token-balances (common-lisp:error ":tokenbalances is required") :type
-    (common-lisp:or token-balance-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-token-balances-output common-lisp:nil
+                       ((token-balances :initarg :token-balances :initform
+                         (common-lisp:error ":tokenbalances is required") :type
+                         (common-lisp:or token-balance-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-token-balances-output-token-balances
+                         :shape "TokenBalanceList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-token-balances-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-token-balances-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-token-balances-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-token-balances-output
                     'make-list-token-balances-output))
@@ -1047,18 +1405,45 @@
                           list-token-balances-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-transaction-events-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-transaction-events-input-"))
-   (transaction-hash (common-lisp:error ":transactionhash is required") :type
-    (common-lisp:or query-transaction-hash common-lisp:null))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-transaction-events-input-max-results-integer
-                    common-lisp:null)))
+ (common-lisp:defclass list-transaction-events-input common-lisp:nil
+                       ((transaction-hash :initarg :transaction-hash :initform
+                         (common-lisp:error ":transactionhash is required")
+                         :type
+                         (common-lisp:or query-transaction-hash
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-transaction-events-input-transaction-hash
+                         :shape "QueryTransactionHash" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor
+                         struct-shape-list-transaction-events-input-network
+                         :shape "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-transaction-events-input-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-transaction-events-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-transaction-events-input-max-results
+                         :shape "ListTransactionEventsInputMaxResultsInteger"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-transaction-events-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-transaction-events-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-transaction-events-input
                     'make-list-transaction-events-input))
@@ -1108,13 +1493,27 @@
 (common-lisp:deftype list-transaction-events-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-transaction-events-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-transaction-events-output-"))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or transaction-event-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-transaction-events-output common-lisp:nil
+                       ((events :initarg :events :initform
+                         (common-lisp:error ":events is required") :type
+                         (common-lisp:or transaction-event-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-transaction-events-output-events
+                         :shape "TransactionEventList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-transaction-events-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-transaction-events-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-transaction-events-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-transaction-events-output
                     'make-list-transaction-events-output))
@@ -1148,26 +1547,70 @@
                           list-transaction-events-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-transactions-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-transactions-input-"))
-   (address (common-lisp:error ":address is required") :type
-    (common-lisp:or chain-address common-lisp:null))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (from-blockchain-instant common-lisp:nil :type
-    (common-lisp:or blockchain-instant common-lisp:null))
-   (to-blockchain-instant common-lisp:nil :type
-    (common-lisp:or blockchain-instant common-lisp:null))
-   (sort common-lisp:nil :type
-    (common-lisp:or list-transactions-sort common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-transactions-input-max-results-integer
-                    common-lisp:null))
-   (confirmation-status-filter common-lisp:nil :type
-    (common-lisp:or confirmation-status-filter common-lisp:null)))
+ (common-lisp:defclass list-transactions-input common-lisp:nil
+                       ((address :initarg :address :initform
+                         (common-lisp:error ":address is required") :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-list-transactions-input-address
+                         :shape "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-list-transactions-input-network
+                         :shape "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (from-blockchain-instant :initarg
+                         :from-blockchain-instant :initform common-lisp:nil
+                         :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-list-transactions-input-from-blockchain-instant
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (to-blockchain-instant :initarg :to-blockchain-instant
+                         :initform common-lisp:nil :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-list-transactions-input-to-blockchain-instant
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sort :initarg :sort :initform common-lisp:nil :type
+                         (common-lisp:or list-transactions-sort
+                                         common-lisp:null)
+                         :accessor struct-shape-list-transactions-input-sort
+                         :shape "ListTransactionsSort" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-transactions-input-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-transactions-input-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-transactions-input-max-results
+                         :shape "ListTransactionsInputMaxResultsInteger"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (confirmation-status-filter :initarg
+                         :confirmation-status-filter :initform common-lisp:nil
+                         :type
+                         (common-lisp:or confirmation-status-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-transactions-input-confirmation-status-filter
+                         :shape "ConfirmationStatusFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-transactions-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-transactions-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-transactions-input 'make-list-transactions-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1247,13 +1690,26 @@
 (common-lisp:deftype list-transactions-input-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-transactions-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-transactions-output-"))
-   (transactions (common-lisp:error ":transactions is required") :type
-    (common-lisp:or transaction-output-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-transactions-output common-lisp:nil
+                       ((transactions :initarg :transactions :initform
+                         (common-lisp:error ":transactions is required") :type
+                         (common-lisp:or transaction-output-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-transactions-output-transactions
+                         :shape "TransactionOutputList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-transactions-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-transactions-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-transactions-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-transactions-output 'make-list-transactions-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1286,13 +1742,25 @@
                           list-transactions-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-transactions-sort (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-transactions-sort-"))
-   (sort-by common-lisp:nil :type
-    (common-lisp:or list-transactions-sort-by common-lisp:null))
-   (sort-order common-lisp:nil :type
-    (common-lisp:or sort-order common-lisp:null)))
+ (common-lisp:defclass list-transactions-sort common-lisp:nil
+                       ((sort-by :initarg :sort-by :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-transactions-sort-by
+                                         common-lisp:null)
+                         :accessor struct-shape-list-transactions-sort-sort-by
+                         :shape "ListTransactionsSortBy" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sort-order :initarg :sort-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sort-order common-lisp:null) :accessor
+                         struct-shape-list-transactions-sort-sort-order :shape
+                         "SortOrder" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-transactions-sort
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-transactions-sort
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-transactions-sort 'make-list-transactions-sort))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1328,11 +1796,18 @@
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (owner-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-owner-filter-"))
-   (address (common-lisp:error ":address is required") :type
-    (common-lisp:or chain-address common-lisp:null)))
+ (common-lisp:defclass owner-filter common-lisp:nil
+                       ((address :initarg :address :initform
+                         (common-lisp:error ":address is required") :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-owner-filter-address :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-owner-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'owner-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'owner-filter 'make-owner-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input owner-filter))
@@ -1351,11 +1826,18 @@
                         ((aws-sdk/generator/shape::input owner-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (owner-identifier (:copier common-lisp:nil)
-      (:conc-name "struct-shape-owner-identifier-"))
-   (address (common-lisp:error ":address is required") :type
-    (common-lisp:or chain-address common-lisp:null)))
+ (common-lisp:defclass owner-identifier common-lisp:nil
+                       ((address :initarg :address :initform
+                         (common-lisp:error ":address is required") :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-owner-identifier-address :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-owner-identifier
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'owner-identifier
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'owner-identifier 'make-owner-identifier))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1437,20 +1919,45 @@
                     'throttling-exception-retry-after-seconds)))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (token-balance (:copier common-lisp:nil)
-      (:conc-name "struct-shape-token-balance-"))
-   (owner-identifier common-lisp:nil :type
-    (common-lisp:or owner-identifier common-lisp:null))
-   (token-identifier common-lisp:nil :type
-    (common-lisp:or token-identifier common-lisp:null))
-   (balance (common-lisp:error ":balance is required") :type
-    (common-lisp:or string common-lisp:null))
-   (at-blockchain-instant
-    (common-lisp:error ":atblockchaininstant is required") :type
-    (common-lisp:or blockchain-instant common-lisp:null))
-   (last-updated-time common-lisp:nil :type
-    (common-lisp:or blockchain-instant common-lisp:null)))
+ (common-lisp:defclass token-balance common-lisp:nil
+                       ((owner-identifier :initarg :owner-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or owner-identifier common-lisp:null)
+                         :accessor struct-shape-token-balance-owner-identifier
+                         :shape "OwnerIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-identifier :initarg :token-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token-identifier common-lisp:null)
+                         :accessor struct-shape-token-balance-token-identifier
+                         :shape "TokenIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (balance :initarg :balance :initform
+                         (common-lisp:error ":balance is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-token-balance-balance :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (at-blockchain-instant :initarg :at-blockchain-instant
+                         :initform
+                         (common-lisp:error ":atblockchaininstant is required")
+                         :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor
+                         struct-shape-token-balance-at-blockchain-instant
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-time :initarg :last-updated-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or blockchain-instant common-lisp:null)
+                         :accessor struct-shape-token-balance-last-updated-time
+                         :shape "BlockchainInstant" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-token-balance
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'token-balance
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'token-balance 'make-token-balance))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input token-balance))
@@ -1506,15 +2013,29 @@
                            (trivial-types:proper-list token-balance))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (token-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-token-filter-"))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (contract-address common-lisp:nil :type
-    (common-lisp:or chain-address common-lisp:null))
-   (token-id common-lisp:nil :type
-    (common-lisp:or query-token-id common-lisp:null)))
+ (common-lisp:defclass token-filter common-lisp:nil
+                       ((network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-token-filter-network :shape
+                         "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (contract-address :initarg :contract-address :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-token-filter-contract-address
+                         :shape "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-id :initarg :token-id :initform common-lisp:nil
+                         :type (common-lisp:or query-token-id common-lisp:null)
+                         :accessor struct-shape-token-filter-token-id :shape
+                         "QueryTokenId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-token-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'token-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'token-filter 'make-token-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input token-filter))
@@ -1547,15 +2068,30 @@
                         ((aws-sdk/generator/shape::input token-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (token-identifier (:copier common-lisp:nil)
-      (:conc-name "struct-shape-token-identifier-"))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (contract-address common-lisp:nil :type
-    (common-lisp:or chain-address common-lisp:null))
-   (token-id common-lisp:nil :type
-    (common-lisp:or query-token-id common-lisp:null)))
+ (common-lisp:defclass token-identifier common-lisp:nil
+                       ((network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-token-identifier-network :shape
+                         "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (contract-address :initarg :contract-address :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor
+                         struct-shape-token-identifier-contract-address :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-id :initarg :token-id :initform common-lisp:nil
+                         :type (common-lisp:or query-token-id common-lisp:null)
+                         :accessor struct-shape-token-identifier-token-id
+                         :shape "QueryTokenId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-token-identifier
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'token-identifier
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'token-identifier 'make-token-identifier))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1589,47 +2125,138 @@
                         ((aws-sdk/generator/shape::input token-identifier))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transaction (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transaction-"))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (block-hash common-lisp:nil :type
-    (common-lisp:or block-hash common-lisp:null))
-   (transaction-hash (common-lisp:error ":transactionhash is required") :type
-    (common-lisp:or query-transaction-hash common-lisp:null))
-   (block-number common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (transaction-timestamp
-    (common-lisp:error ":transactiontimestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (transaction-index (common-lisp:error ":transactionindex is required") :type
-    (common-lisp:or long common-lisp:null))
-   (number-of-transactions
-    (common-lisp:error ":numberoftransactions is required") :type
-    (common-lisp:or long common-lisp:null))
-   (to (common-lisp:error ":to is required") :type
-    (common-lisp:or chain-address common-lisp:null))
-   (from common-lisp:nil :type (common-lisp:or chain-address common-lisp:null))
-   (contract-address common-lisp:nil :type
-    (common-lisp:or chain-address common-lisp:null))
-   (gas-used common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (cumulative-gas-used common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (effective-gas-price common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (signature-v common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (signature-r common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (signature-s common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (transaction-fee common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (transaction-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (confirmation-status common-lisp:nil :type
-    (common-lisp:or confirmation-status common-lisp:null))
-   (execution-status common-lisp:nil :type
-    (common-lisp:or execution-status common-lisp:null)))
+ (common-lisp:defclass transaction common-lisp:nil
+                       ((network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-transaction-network :shape
+                         "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-hash :initarg :block-hash :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-hash common-lisp:null) :accessor
+                         struct-shape-transaction-block-hash :shape "BlockHash"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (transaction-hash :initarg :transaction-hash :initform
+                         (common-lisp:error ":transactionhash is required")
+                         :type
+                         (common-lisp:or query-transaction-hash
+                                         common-lisp:null)
+                         :accessor struct-shape-transaction-transaction-hash
+                         :shape "QueryTransactionHash" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (block-number :initarg :block-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-block-number :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (transaction-timestamp :initarg :transaction-timestamp
+                         :initform
+                         (common-lisp:error
+                          ":transactiontimestamp is required")
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-transaction-transaction-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (transaction-index :initarg :transaction-index
+                         :initform
+                         (common-lisp:error ":transactionindex is required")
+                         :type (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-transaction-transaction-index :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (number-of-transactions :initarg
+                         :number-of-transactions :initform
+                         (common-lisp:error
+                          ":numberoftransactions is required")
+                         :type (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-transaction-number-of-transactions :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (to :initarg :to :initform
+                         (common-lisp:error ":to is required") :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-transaction-to :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (from :initarg :from :initform common-lisp:nil :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-transaction-from :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (contract-address :initarg :contract-address :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-transaction-contract-address
+                         :shape "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (gas-used :initarg :gas-used :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-transaction-gas-used :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cumulative-gas-used :initarg :cumulative-gas-used
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-cumulative-gas-used :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (effective-gas-price :initarg :effective-gas-price
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-effective-gas-price :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (signature-v :initarg :signature-v :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-transaction-signature-v :shape "Integer"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (signature-r :initarg :signature-r :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-signature-r :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (signature-s :initarg :signature-s :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-signature-s :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (transaction-fee :initarg :transaction-fee :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-transaction-fee :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (transaction-id :initarg :transaction-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-transaction-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (confirmation-status :initarg :confirmation-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or confirmation-status common-lisp:null)
+                         :accessor struct-shape-transaction-confirmation-status
+                         :shape "ConfirmationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-status :initarg :execution-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-status common-lisp:null)
+                         :accessor struct-shape-transaction-execution-status
+                         :shape "ExecutionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-transaction
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'transaction
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'transaction 'make-transaction))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input transaction))
@@ -1783,26 +2410,73 @@
                         ((aws-sdk/generator/shape::input transaction))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transaction-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transaction-event-"))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (transaction-hash (common-lisp:error ":transactionhash is required") :type
-    (common-lisp:or query-transaction-hash common-lisp:null))
-   (event-type (common-lisp:error ":eventtype is required") :type
-    (common-lisp:or query-transaction-event-type common-lisp:null))
-   (from common-lisp:nil :type (common-lisp:or chain-address common-lisp:null))
-   (to common-lisp:nil :type (common-lisp:or chain-address common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (contract-address common-lisp:nil :type
-    (common-lisp:or chain-address common-lisp:null))
-   (token-id common-lisp:nil :type
-    (common-lisp:or query-token-id common-lisp:null))
-   (transaction-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (vout-index common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass transaction-event common-lisp:nil
+                       ((network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-transaction-event-network
+                         :shape "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (transaction-hash :initarg :transaction-hash :initform
+                         (common-lisp:error ":transactionhash is required")
+                         :type
+                         (common-lisp:or query-transaction-hash
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-transaction-event-transaction-hash :shape
+                         "QueryTransactionHash" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-type :initarg :event-type :initform
+                         (common-lisp:error ":eventtype is required") :type
+                         (common-lisp:or query-transaction-event-type
+                                         common-lisp:null)
+                         :accessor struct-shape-transaction-event-event-type
+                         :shape "QueryTransactionEventType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (from :initarg :from :initform common-lisp:nil :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-transaction-event-from :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (to :initarg :to :initform common-lisp:nil :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor struct-shape-transaction-event-to :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-event-value :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (contract-address :initarg :contract-address :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chain-address common-lisp:null)
+                         :accessor
+                         struct-shape-transaction-event-contract-address :shape
+                         "ChainAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-id :initarg :token-id :initform common-lisp:nil
+                         :type (common-lisp:or query-token-id common-lisp:null)
+                         :accessor struct-shape-transaction-event-token-id
+                         :shape "QueryTokenId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (transaction-id :initarg :transaction-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-transaction-event-transaction-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vout-index :initarg :vout-index :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-transaction-event-vout-index :shape
+                         "Integer" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-transaction-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'transaction-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'transaction-event 'make-transaction-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1893,18 +2567,43 @@
                            (trivial-types:proper-list transaction-event))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transaction-output-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transaction-output-item-"))
-   (transaction-hash (common-lisp:error ":transactionhash is required") :type
-    (common-lisp:or query-transaction-hash common-lisp:null))
-   (network (common-lisp:error ":network is required") :type
-    (common-lisp:or query-network common-lisp:null))
-   (transaction-timestamp
-    (common-lisp:error ":transactiontimestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (confirmation-status common-lisp:nil :type
-    (common-lisp:or confirmation-status common-lisp:null)))
+ (common-lisp:defclass transaction-output-item common-lisp:nil
+                       ((transaction-hash :initarg :transaction-hash :initform
+                         (common-lisp:error ":transactionhash is required")
+                         :type
+                         (common-lisp:or query-transaction-hash
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-transaction-output-item-transaction-hash
+                         :shape "QueryTransactionHash" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (network :initarg :network :initform
+                         (common-lisp:error ":network is required") :type
+                         (common-lisp:or query-network common-lisp:null)
+                         :accessor struct-shape-transaction-output-item-network
+                         :shape "QueryNetwork" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (transaction-timestamp :initarg :transaction-timestamp
+                         :initform
+                         (common-lisp:error
+                          ":transactiontimestamp is required")
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-transaction-output-item-transaction-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (confirmation-status :initarg :confirmation-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or confirmation-status common-lisp:null)
+                         :accessor
+                         struct-shape-transaction-output-item-confirmation-status
+                         :shape "ConfirmationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-transaction-output-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'transaction-output-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'transaction-output-item 'make-transaction-output-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1973,13 +2672,24 @@
                     'validation-exception-reason
                     'validation-exception-field-list)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-field-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass validation-exception-field common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-message :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-field
                     'make-validation-exception-field))

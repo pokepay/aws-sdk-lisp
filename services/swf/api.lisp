@@ -41,20 +41,50 @@
      . workflow-execution-already-started-fault)))
 (common-lisp:deftype activity-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-task-"))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass activity-task common-lisp:nil
+                       ((task-token :initarg :task-token :initform
+                         (common-lisp:error ":tasktoken is required") :type
+                         (common-lisp:or task-token common-lisp:null) :accessor
+                         struct-shape-activity-task-task-token :shape
+                         "TaskToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (activity-id :initarg :activity-id :initform
+                         (common-lisp:error ":activityid is required") :type
+                         (common-lisp:or activity-id common-lisp:null)
+                         :accessor struct-shape-activity-task-activity-id
+                         :shape "ActivityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor struct-shape-activity-task-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-workflow-execution :shape
+                         "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (activity-type :initarg :activity-type :initform
+                         (common-lisp:error ":activitytype is required") :type
+                         (common-lisp:or activity-type common-lisp:null)
+                         :accessor struct-shape-activity-task-activity-type
+                         :shape "ActivityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-activity-task-input :shape "Data"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'activity-task
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'activity-task 'make-activity-task))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input activity-task))
@@ -108,15 +138,30 @@
                         ((aws-sdk/generator/shape::input activity-task))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task-cancel-requested-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-activity-task-cancel-requested-event-attributes-"))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null)))
+ (common-lisp:defclass activity-task-cancel-requested-event-attributes
+                       common-lisp:nil
+                       ((decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-cancel-requested-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (activity-id :initarg :activity-id :initform
+                         (common-lisp:error ":activityid is required") :type
+                         (common-lisp:or activity-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-cancel-requested-event-attributes-activity-id
+                         :shape "ActivityId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task-cancel-requested-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'activity-task-cancel-requested-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-task-cancel-requested-event-attributes
                     'make-activity-task-cancel-requested-event-attributes))
@@ -151,16 +196,40 @@
                           activity-task-cancel-requested-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task-canceled-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-task-canceled-event-attributes-"))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (latest-cancel-requested-event-id common-lisp:nil :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass activity-task-canceled-event-attributes common-lisp:nil
+                       ((details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-activity-task-canceled-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-canceled-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-canceled-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-cancel-requested-event-id :initarg
+                         :latest-cancel-requested-event-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-id common-lisp:null) :accessor
+                         struct-shape-activity-task-canceled-event-attributes-latest-cancel-requested-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task-canceled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'activity-task-canceled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-task-canceled-event-attributes
                     'make-activity-task-canceled-event-attributes))
@@ -209,14 +278,33 @@
                           activity-task-canceled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task-completed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-task-completed-event-attributes-"))
-   (result common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass activity-task-completed-event-attributes common-lisp:nil
+                       ((result :initarg :result :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-activity-task-completed-event-attributes-result
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-completed-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-completed-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task-completed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'activity-task-completed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-task-completed-event-attributes
                     'make-activity-task-completed-event-attributes))
@@ -257,16 +345,39 @@
                           activity-task-completed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-task-failed-event-attributes-"))
-   (reason common-lisp:nil :type
-    (common-lisp:or failure-reason common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass activity-task-failed-event-attributes common-lisp:nil
+                       ((reason :initarg :reason :initform common-lisp:nil
+                         :type (common-lisp:or failure-reason common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-failed-event-attributes-reason
+                         :shape "FailureReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-activity-task-failed-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-failed-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-failed-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'activity-task-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-task-failed-event-attributes
                     'make-activity-task-failed-event-attributes))
@@ -314,30 +425,94 @@
                           activity-task-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task-scheduled-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-task-scheduled-event-attributes-"))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (schedule-to-start-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (schedule-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (heartbeat-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
+ (common-lisp:defclass activity-task-scheduled-event-attributes common-lisp:nil
+                       ((activity-type :initarg :activity-type :initform
+                         (common-lisp:error ":activitytype is required") :type
+                         (common-lisp:or activity-type common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-activity-type
+                         :shape "ActivityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (activity-id :initarg :activity-id :initform
+                         (common-lisp:error ":activityid is required") :type
+                         (common-lisp:or activity-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-activity-id
+                         :shape "ActivityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (schedule-to-start-timeout :initarg
+                         :schedule-to-start-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-schedule-to-start-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (schedule-to-close-timeout :initarg
+                         :schedule-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-schedule-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-to-close-timeout :initarg
+                         :start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (heartbeat-timeout :initarg :heartbeat-timeout
+                         :initform common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-scheduled-event-attributes-heartbeat-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task-scheduled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'activity-task-scheduled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-task-scheduled-event-attributes
                     'make-activity-task-scheduled-event-attributes))
@@ -438,12 +613,27 @@
                           activity-task-scheduled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task-started-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-task-started-event-attributes-"))
-   (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass activity-task-started-event-attributes common-lisp:nil
+                       ((identity :initarg :identity :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-started-event-attributes-identity
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-started-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task-started-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'activity-task-started-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-task-started-event-attributes
                     'make-activity-task-started-event-attributes))
@@ -477,11 +667,19 @@
                           activity-task-started-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-task-status-"))
-   (cancel-requested (common-lisp:error ":cancelrequested is required") :type
-    (common-lisp:or canceled common-lisp:null)))
+ (common-lisp:defclass activity-task-status common-lisp:nil
+                       ((cancel-requested :initarg :cancel-requested :initform
+                         (common-lisp:error ":cancelrequested is required")
+                         :type (common-lisp:or canceled common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-status-cancel-requested
+                         :shape "Canceled" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'activity-task-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-task-status 'make-activity-task-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -501,17 +699,42 @@
                         ((aws-sdk/generator/shape::input activity-task-status))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-task-timed-out-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-task-timed-out-event-attributes-"))
-   (timeout-type (common-lisp:error ":timeouttype is required") :type
-    (common-lisp:or activity-task-timeout-type common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (details common-lisp:nil :type
-    (common-lisp:or limited-data common-lisp:null)))
+ (common-lisp:defclass activity-task-timed-out-event-attributes common-lisp:nil
+                       ((timeout-type :initarg :timeout-type :initform
+                         (common-lisp:error ":timeouttype is required") :type
+                         (common-lisp:or activity-task-timeout-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-timed-out-event-attributes-timeout-type
+                         :shape "ActivityTaskTimeoutType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-timed-out-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-timed-out-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or limited-data common-lisp:null)
+                         :accessor
+                         struct-shape-activity-task-timed-out-event-attributes-details
+                         :shape "LimitedData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-task-timed-out-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'activity-task-timed-out-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-task-timed-out-event-attributes
                     'make-activity-task-timed-out-event-attributes))
@@ -560,13 +783,24 @@
    common-lisp:nil))
 (common-lisp:deftype activity-task-timeout-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-type-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+ (common-lisp:defclass activity-type common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-activity-type-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-activity-type-version :shape "Version"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'activity-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'activity-type 'make-activity-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input activity-type))
@@ -592,21 +826,61 @@
                         ((aws-sdk/generator/shape::input activity-type))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-type-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-type-configuration-"))
-   (default-task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-task-heartbeat-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (default-task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (default-task-schedule-to-start-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-task-schedule-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
+ (common-lisp:defclass activity-type-configuration common-lisp:nil
+                       ((default-task-start-to-close-timeout :initarg
+                         :default-task-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-type-configuration-default-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-task-heartbeat-timeout :initarg
+                         :default-task-heartbeat-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-type-configuration-default-task-heartbeat-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-task-list :initarg :default-task-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-activity-type-configuration-default-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-task-priority :initarg :default-task-priority
+                         :initform common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-activity-type-configuration-default-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-task-schedule-to-start-timeout :initarg
+                         :default-task-schedule-to-start-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-type-configuration-default-task-schedule-to-start-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-task-schedule-to-close-timeout :initarg
+                         :default-task-schedule-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-type-configuration-default-task-schedule-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-type-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'activity-type-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-type-configuration
                     'make-activity-type-configuration))
@@ -673,13 +947,26 @@
                           activity-type-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-type-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-type-detail-"))
-   (type-info (common-lisp:error ":typeinfo is required") :type
-    (common-lisp:or activity-type-info common-lisp:null))
-   (configuration (common-lisp:error ":configuration is required") :type
-    (common-lisp:or activity-type-configuration common-lisp:null)))
+ (common-lisp:defclass activity-type-detail common-lisp:nil
+                       ((type-info :initarg :type-info :initform
+                         (common-lisp:error ":typeinfo is required") :type
+                         (common-lisp:or activity-type-info common-lisp:null)
+                         :accessor struct-shape-activity-type-detail-type-info
+                         :shape "ActivityTypeInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration :initarg :configuration :initform
+                         (common-lisp:error ":configuration is required") :type
+                         (common-lisp:or activity-type-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-activity-type-detail-configuration :shape
+                         "ActivityTypeConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-type-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'activity-type-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-type-detail 'make-activity-type-detail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -706,19 +993,43 @@
                         ((aws-sdk/generator/shape::input activity-type-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-type-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-type-info-"))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or registration-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (deprecation-date common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass activity-type-info common-lisp:nil
+                       ((activity-type :initarg :activity-type :initform
+                         (common-lisp:error ":activitytype is required") :type
+                         (common-lisp:or activity-type common-lisp:null)
+                         :accessor
+                         struct-shape-activity-type-info-activity-type :shape
+                         "ActivityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or registration-status common-lisp:null)
+                         :accessor struct-shape-activity-type-info-status
+                         :shape "RegistrationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-activity-type-info-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-date :initarg :creation-date :initform
+                         (common-lisp:error ":creationdate is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-activity-type-info-creation-date :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (deprecation-date :initarg :deprecation-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-activity-type-info-deprecation-date
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-type-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'activity-type-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-type-info 'make-activity-type-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -774,13 +1085,25 @@
                            (trivial-types:proper-list activity-type-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (activity-type-infos (:copier common-lisp:nil)
-      (:conc-name "struct-shape-activity-type-infos-"))
-   (type-infos (common-lisp:error ":typeinfos is required") :type
-    (common-lisp:or activity-type-info-list common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass activity-type-infos common-lisp:nil
+                       ((type-infos :initarg :type-infos :initform
+                         (common-lisp:error ":typeinfos is required") :type
+                         (common-lisp:or activity-type-info-list
+                                         common-lisp:null)
+                         :accessor struct-shape-activity-type-infos-type-infos
+                         :shape "ActivityTypeInfoList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-activity-type-infos-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-activity-type-infos
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'activity-type-infos
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'activity-type-infos 'make-activity-type-infos))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -808,11 +1131,19 @@
    common-lisp:nil))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-timer-decision-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-timer-decision-attributes-"))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null)))
+ (common-lisp:defclass cancel-timer-decision-attributes common-lisp:nil
+                       ((timer-id :initarg :timer-id :initform
+                         (common-lisp:error ":timerid is required") :type
+                         (common-lisp:or timer-id common-lisp:null) :accessor
+                         struct-shape-cancel-timer-decision-attributes-timer-id
+                         :shape "TimerId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-timer-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cancel-timer-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-timer-decision-attributes
                     'make-cancel-timer-decision-attributes))
@@ -840,16 +1171,36 @@
    common-lisp:nil))
 (common-lisp:deftype cancel-timer-failed-cause () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-timer-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-timer-failed-event-attributes-"))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or cancel-timer-failed-cause common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass cancel-timer-failed-event-attributes common-lisp:nil
+                       ((timer-id :initarg :timer-id :initform
+                         (common-lisp:error ":timerid is required") :type
+                         (common-lisp:or timer-id common-lisp:null) :accessor
+                         struct-shape-cancel-timer-failed-event-attributes-timer-id
+                         :shape "TimerId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or cancel-timer-failed-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-timer-failed-event-attributes-cause
+                         :shape "CancelTimerFailedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-timer-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-timer-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cancel-timer-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-timer-failed-event-attributes
                     'make-cancel-timer-failed-event-attributes))
@@ -891,11 +1242,19 @@
                           cancel-timer-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-workflow-execution-decision-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-cancel-workflow-execution-decision-attributes-"))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass cancel-workflow-execution-decision-attributes
+                       common-lisp:nil
+                       ((details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-cancel-workflow-execution-decision-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-workflow-execution-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cancel-workflow-execution-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-workflow-execution-decision-attributes
                     'make-cancel-workflow-execution-decision-attributes))
@@ -924,16 +1283,31 @@
 (common-lisp:deftype cancel-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-cancel-workflow-execution-failed-event-attributes-"))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or cancel-workflow-execution-failed-cause common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass cancel-workflow-execution-failed-event-attributes
+                       common-lisp:nil
+                       ((cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or cancel-workflow-execution-failed-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-workflow-execution-failed-event-attributes-cause
+                         :shape "CancelWorkflowExecutionFailedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-workflow-execution-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cancel-workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-workflow-execution-failed-event-attributes
                     'make-cancel-workflow-execution-failed-event-attributes))
@@ -971,20 +1345,50 @@
 (common-lisp:deftype cause-message () 'common-lisp:string)
 (common-lisp:deftype child-policy () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (child-workflow-execution-canceled-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-child-workflow-execution-canceled-event-attributes-"))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass child-workflow-execution-canceled-event-attributes
+                       common-lisp:nil
+                       ((workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-canceled-event-attributes-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-canceled-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-child-workflow-execution-canceled-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (initiated-event-id :initarg :initiated-event-id
+                         :initform
+                         (common-lisp:error ":initiatedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-canceled-event-attributes-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-canceled-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-child-workflow-execution-canceled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'child-workflow-execution-canceled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-canceled-event-attributes
                     'make-child-workflow-execution-canceled-event-attributes))
@@ -1039,20 +1443,50 @@
                           child-workflow-execution-canceled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (child-workflow-execution-completed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-child-workflow-execution-completed-event-attributes-"))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (result common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass child-workflow-execution-completed-event-attributes
+                       common-lisp:nil
+                       ((workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-completed-event-attributes-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-completed-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (result :initarg :result :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-child-workflow-execution-completed-event-attributes-result
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (initiated-event-id :initarg :initiated-event-id
+                         :initform
+                         (common-lisp:error ":initiatedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-completed-event-attributes-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-completed-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-child-workflow-execution-completed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'child-workflow-execution-completed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-completed-event-attributes
                     'make-child-workflow-execution-completed-event-attributes))
@@ -1107,22 +1541,56 @@
                           child-workflow-execution-completed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (child-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-child-workflow-execution-failed-event-attributes-"))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or failure-reason common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass child-workflow-execution-failed-event-attributes
+                       common-lisp:nil
+                       ((workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-failed-event-attributes-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-failed-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reason :initarg :reason :initform common-lisp:nil
+                         :type (common-lisp:or failure-reason common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-failed-event-attributes-reason
+                         :shape "FailureReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-child-workflow-execution-failed-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (initiated-event-id :initarg :initiated-event-id
+                         :initform
+                         (common-lisp:error ":initiatedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-failed-event-attributes-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-failed-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-child-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'child-workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-failed-event-attributes
                     'make-child-workflow-execution-failed-event-attributes))
@@ -1184,17 +1652,38 @@
                           child-workflow-execution-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (child-workflow-execution-started-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-child-workflow-execution-started-event-attributes-"))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass child-workflow-execution-started-event-attributes
+                       common-lisp:nil
+                       ((workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-started-event-attributes-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-started-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initiated-event-id :initarg :initiated-event-id
+                         :initform
+                         (common-lisp:error ":initiatedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-started-event-attributes-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-child-workflow-execution-started-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'child-workflow-execution-started-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-started-event-attributes
                     'make-child-workflow-execution-started-event-attributes))
@@ -1235,19 +1724,45 @@
                           child-workflow-execution-started-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (child-workflow-execution-terminated-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-child-workflow-execution-terminated-event-attributes-"))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass child-workflow-execution-terminated-event-attributes
+                       common-lisp:nil
+                       ((workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-terminated-event-attributes-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-terminated-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initiated-event-id :initarg :initiated-event-id
+                         :initform
+                         (common-lisp:error ":initiatedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-terminated-event-attributes-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-terminated-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-child-workflow-execution-terminated-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'child-workflow-execution-terminated-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-terminated-event-attributes
                     'make-child-workflow-execution-terminated-event-attributes))
@@ -1295,21 +1810,53 @@
                           child-workflow-execution-terminated-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (child-workflow-execution-timed-out-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-child-workflow-execution-timed-out-event-attributes-"))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (timeout-type (common-lisp:error ":timeouttype is required") :type
-    (common-lisp:or workflow-execution-timeout-type common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass child-workflow-execution-timed-out-event-attributes
+                       common-lisp:nil
+                       ((workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-timed-out-event-attributes-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-timed-out-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timeout-type :initarg :timeout-type :initform
+                         (common-lisp:error ":timeouttype is required") :type
+                         (common-lisp:or workflow-execution-timeout-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-timed-out-event-attributes-timeout-type
+                         :shape "WorkflowExecutionTimeoutType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (initiated-event-id :initarg :initiated-event-id
+                         :initform
+                         (common-lisp:error ":initiatedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-timed-out-event-attributes-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-child-workflow-execution-timed-out-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-child-workflow-execution-timed-out-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'child-workflow-execution-timed-out-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-timed-out-event-attributes
                     'make-child-workflow-execution-timed-out-event-attributes))
@@ -1365,11 +1912,18 @@
    common-lisp:nil))
 (common-lisp:deftype close-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (close-status-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-close-status-filter-"))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or close-status common-lisp:null)))
+ (common-lisp:defclass close-status-filter common-lisp:nil
+                       ((status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or close-status common-lisp:null)
+                         :accessor struct-shape-close-status-filter-status
+                         :shape "CloseStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-close-status-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'close-status-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'close-status-filter 'make-close-status-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1389,11 +1943,19 @@
                         ((aws-sdk/generator/shape::input close-status-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (complete-workflow-execution-decision-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-complete-workflow-execution-decision-attributes-"))
-   (result common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass complete-workflow-execution-decision-attributes
+                       common-lisp:nil
+                       ((result :initarg :result :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-complete-workflow-execution-decision-attributes-result
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-complete-workflow-execution-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'complete-workflow-execution-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'complete-workflow-execution-decision-attributes
                     'make-complete-workflow-execution-decision-attributes))
@@ -1422,16 +1984,33 @@
 (common-lisp:deftype complete-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (complete-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-complete-workflow-execution-failed-event-attributes-"))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or complete-workflow-execution-failed-cause common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass complete-workflow-execution-failed-event-attributes
+                       common-lisp:nil
+                       ((cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or
+                          complete-workflow-execution-failed-cause
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-complete-workflow-execution-failed-event-attributes-cause
+                         :shape "CompleteWorkflowExecutionFailedCause"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-complete-workflow-execution-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-complete-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'complete-workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'complete-workflow-execution-failed-event-attributes
                     'make-complete-workflow-execution-failed-event-attributes))
@@ -1466,26 +2045,75 @@
                           complete-workflow-execution-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (continue-as-new-workflow-execution-decision-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-continue-as-new-workflow-execution-decision-attributes-"))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (execution-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (child-policy common-lisp:nil :type
-    (common-lisp:or child-policy common-lisp:null))
-   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (workflow-type-version common-lisp:nil :type
-    (common-lisp:or version common-lisp:null))
-   (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass continue-as-new-workflow-execution-decision-attributes
+                       common-lisp:nil
+                       ((input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (execution-start-to-close-timeout :initarg
+                         :execution-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-execution-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-start-to-close-timeout :initarg
+                         :task-start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-list :initarg :tag-list :initform common-lisp:nil
+                         :type (common-lisp:or tag-list common-lisp:null)
+                         :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-tag-list
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type-version :initarg :workflow-type-version
+                         :initform common-lisp:nil :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-workflow-type-version
+                         :shape "Version" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lambda-role :initarg :lambda-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-continue-as-new-workflow-execution-decision-attributes-lambda-role
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-continue-as-new-workflow-execution-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'continue-as-new-workflow-execution-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'continue-as-new-workflow-execution-decision-attributes
                     'make-continue-as-new-workflow-execution-decision-attributes))
@@ -1573,17 +2201,27 @@
 (common-lisp:deftype continue-as-new-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (continue-as-new-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-continue-as-new-workflow-execution-failed-event-attributes-"))
-   (cause (common-lisp:error ":cause is required") :type
+ (common-lisp:defclass
+  continue-as-new-workflow-execution-failed-event-attributes common-lisp:nil
+  ((cause :initarg :cause :initform (common-lisp:error ":cause is required")
+    :type
     (common-lisp:or continue-as-new-workflow-execution-failed-cause
-                    common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+                    common-lisp:null)
+    :accessor
+    struct-shape-continue-as-new-workflow-execution-failed-event-attributes-cause
+    :shape "ContinueAsNewWorkflowExecutionFailedCause" :location
+    common-lisp:nil :location-name common-lisp:nil)
+   (decision-task-completed-event-id :initarg :decision-task-completed-event-id
+    :initform (common-lisp:error ":decisiontaskcompletedeventid is required")
+    :type (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-continue-as-new-workflow-execution-failed-event-attributes-decision-task-completed-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-continue-as-new-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'continue-as-new-workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'continue-as-new-workflow-execution-failed-event-attributes
                     'make-continue-as-new-workflow-execution-failed-event-attributes))
@@ -1619,23 +2257,64 @@
    common-lisp:nil))
 (common-lisp:deftype count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (count-closed-workflow-executions-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-count-closed-workflow-executions-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (start-time-filter common-lisp:nil :type
-    (common-lisp:or execution-time-filter common-lisp:null))
-   (close-time-filter common-lisp:nil :type
-    (common-lisp:or execution-time-filter common-lisp:null))
-   (execution-filter common-lisp:nil :type
-    (common-lisp:or workflow-execution-filter common-lisp:null))
-   (type-filter common-lisp:nil :type
-    (common-lisp:or workflow-type-filter common-lisp:null))
-   (tag-filter common-lisp:nil :type
-    (common-lisp:or tag-filter common-lisp:null))
-   (close-status-filter common-lisp:nil :type
-    (common-lisp:or close-status-filter common-lisp:null)))
+ (common-lisp:defclass count-closed-workflow-executions-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-count-closed-workflow-executions-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time-filter :initarg :start-time-filter
+                         :initform common-lisp:nil :type
+                         (common-lisp:or execution-time-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-count-closed-workflow-executions-input-start-time-filter
+                         :shape "ExecutionTimeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (close-time-filter :initarg :close-time-filter
+                         :initform common-lisp:nil :type
+                         (common-lisp:or execution-time-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-count-closed-workflow-executions-input-close-time-filter
+                         :shape "ExecutionTimeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-filter :initarg :execution-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or workflow-execution-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-count-closed-workflow-executions-input-execution-filter
+                         :shape "WorkflowExecutionFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (type-filter :initarg :type-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or workflow-type-filter common-lisp:null)
+                         :accessor
+                         struct-shape-count-closed-workflow-executions-input-type-filter
+                         :shape "WorkflowTypeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-filter :initarg :tag-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-filter common-lisp:null) :accessor
+                         struct-shape-count-closed-workflow-executions-input-tag-filter
+                         :shape "TagFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (close-status-filter :initarg :close-status-filter
+                         :initform common-lisp:nil :type
+                         (common-lisp:or close-status-filter common-lisp:null)
+                         :accessor
+                         struct-shape-count-closed-workflow-executions-input-close-status-filter
+                         :shape "CloseStatusFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-count-closed-workflow-executions-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'count-closed-workflow-executions-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'count-closed-workflow-executions-input
                     'make-count-closed-workflow-executions-input))
@@ -1704,19 +2383,51 @@
                           count-closed-workflow-executions-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (count-open-workflow-executions-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-count-open-workflow-executions-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (start-time-filter (common-lisp:error ":starttimefilter is required") :type
-    (common-lisp:or execution-time-filter common-lisp:null))
-   (type-filter common-lisp:nil :type
-    (common-lisp:or workflow-type-filter common-lisp:null))
-   (tag-filter common-lisp:nil :type
-    (common-lisp:or tag-filter common-lisp:null))
-   (execution-filter common-lisp:nil :type
-    (common-lisp:or workflow-execution-filter common-lisp:null)))
+ (common-lisp:defclass count-open-workflow-executions-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-count-open-workflow-executions-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time-filter :initarg :start-time-filter
+                         :initform
+                         (common-lisp:error ":starttimefilter is required")
+                         :type
+                         (common-lisp:or execution-time-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-count-open-workflow-executions-input-start-time-filter
+                         :shape "ExecutionTimeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type-filter :initarg :type-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or workflow-type-filter common-lisp:null)
+                         :accessor
+                         struct-shape-count-open-workflow-executions-input-type-filter
+                         :shape "WorkflowTypeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-filter :initarg :tag-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-filter common-lisp:null) :accessor
+                         struct-shape-count-open-workflow-executions-input-tag-filter
+                         :shape "TagFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-filter :initarg :execution-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or workflow-execution-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-count-open-workflow-executions-input-execution-filter
+                         :shape "WorkflowExecutionFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-count-open-workflow-executions-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'count-open-workflow-executions-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'count-open-workflow-executions-input
                     'make-count-open-workflow-executions-input))
@@ -1771,13 +2482,26 @@
                           count-open-workflow-executions-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (count-pending-activity-tasks-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-count-pending-activity-tasks-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null)))
+ (common-lisp:defclass count-pending-activity-tasks-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-count-pending-activity-tasks-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-count-pending-activity-tasks-input-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-count-pending-activity-tasks-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'count-pending-activity-tasks-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'count-pending-activity-tasks-input
                     'make-count-pending-activity-tasks-input))
@@ -1811,13 +2535,26 @@
                           count-pending-activity-tasks-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (count-pending-decision-tasks-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-count-pending-decision-tasks-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null)))
+ (common-lisp:defclass count-pending-decision-tasks-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-count-pending-decision-tasks-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-count-pending-decision-tasks-input-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-count-pending-decision-tasks-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'count-pending-decision-tasks-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'count-pending-decision-tasks-input
                     'make-count-pending-decision-tasks-input))
@@ -1852,50 +2589,164 @@
    common-lisp:nil))
 (common-lisp:deftype data () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (decision (:copier common-lisp:nil) (:conc-name "struct-shape-decision-"))
-   (decision-type (common-lisp:error ":decisiontype is required") :type
-    (common-lisp:or decision-type common-lisp:null))
-   (schedule-activity-task-decision-attributes common-lisp:nil :type
-    (common-lisp:or schedule-activity-task-decision-attributes
-                    common-lisp:null))
-   (request-cancel-activity-task-decision-attributes common-lisp:nil :type
-    (common-lisp:or request-cancel-activity-task-decision-attributes
-                    common-lisp:null))
-   (complete-workflow-execution-decision-attributes common-lisp:nil :type
-    (common-lisp:or complete-workflow-execution-decision-attributes
-                    common-lisp:null))
-   (fail-workflow-execution-decision-attributes common-lisp:nil :type
-    (common-lisp:or fail-workflow-execution-decision-attributes
-                    common-lisp:null))
-   (cancel-workflow-execution-decision-attributes common-lisp:nil :type
-    (common-lisp:or cancel-workflow-execution-decision-attributes
-                    common-lisp:null))
-   (continue-as-new-workflow-execution-decision-attributes common-lisp:nil
-    :type
-    (common-lisp:or continue-as-new-workflow-execution-decision-attributes
-                    common-lisp:null))
-   (record-marker-decision-attributes common-lisp:nil :type
-    (common-lisp:or record-marker-decision-attributes common-lisp:null))
-   (start-timer-decision-attributes common-lisp:nil :type
-    (common-lisp:or start-timer-decision-attributes common-lisp:null))
-   (cancel-timer-decision-attributes common-lisp:nil :type
-    (common-lisp:or cancel-timer-decision-attributes common-lisp:null))
-   (signal-external-workflow-execution-decision-attributes common-lisp:nil
-    :type
-    (common-lisp:or signal-external-workflow-execution-decision-attributes
-                    common-lisp:null))
-   (request-cancel-external-workflow-execution-decision-attributes
-    common-lisp:nil :type
-    (common-lisp:or
-     request-cancel-external-workflow-execution-decision-attributes
-     common-lisp:null))
-   (start-child-workflow-execution-decision-attributes common-lisp:nil :type
-    (common-lisp:or start-child-workflow-execution-decision-attributes
-                    common-lisp:null))
-   (schedule-lambda-function-decision-attributes common-lisp:nil :type
-    (common-lisp:or schedule-lambda-function-decision-attributes
-                    common-lisp:null)))
+ (common-lisp:defclass decision common-lisp:nil
+                       ((decision-type :initarg :decision-type :initform
+                         (common-lisp:error ":decisiontype is required") :type
+                         (common-lisp:or decision-type common-lisp:null)
+                         :accessor struct-shape-decision-decision-type :shape
+                         "DecisionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schedule-activity-task-decision-attributes :initarg
+                         :schedule-activity-task-decision-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          schedule-activity-task-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-schedule-activity-task-decision-attributes
+                         :shape "ScheduleActivityTaskDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (request-cancel-activity-task-decision-attributes
+                         :initarg
+                         :request-cancel-activity-task-decision-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          request-cancel-activity-task-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-request-cancel-activity-task-decision-attributes
+                         :shape "RequestCancelActivityTaskDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (complete-workflow-execution-decision-attributes
+                         :initarg
+                         :complete-workflow-execution-decision-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          complete-workflow-execution-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-complete-workflow-execution-decision-attributes
+                         :shape "CompleteWorkflowExecutionDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (fail-workflow-execution-decision-attributes :initarg
+                         :fail-workflow-execution-decision-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          fail-workflow-execution-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-fail-workflow-execution-decision-attributes
+                         :shape "FailWorkflowExecutionDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cancel-workflow-execution-decision-attributes :initarg
+                         :cancel-workflow-execution-decision-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          cancel-workflow-execution-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-cancel-workflow-execution-decision-attributes
+                         :shape "CancelWorkflowExecutionDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (continue-as-new-workflow-execution-decision-attributes
+                         :initarg
+                         :continue-as-new-workflow-execution-decision-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          continue-as-new-workflow-execution-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-continue-as-new-workflow-execution-decision-attributes
+                         :shape
+                         "ContinueAsNewWorkflowExecutionDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (record-marker-decision-attributes :initarg
+                         :record-marker-decision-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or record-marker-decision-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decision-record-marker-decision-attributes
+                         :shape "RecordMarkerDecisionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-timer-decision-attributes :initarg
+                         :start-timer-decision-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or start-timer-decision-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decision-start-timer-decision-attributes
+                         :shape "StartTimerDecisionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cancel-timer-decision-attributes :initarg
+                         :cancel-timer-decision-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cancel-timer-decision-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decision-cancel-timer-decision-attributes
+                         :shape "CancelTimerDecisionAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signal-external-workflow-execution-decision-attributes
+                         :initarg
+                         :signal-external-workflow-execution-decision-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          signal-external-workflow-execution-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-signal-external-workflow-execution-decision-attributes
+                         :shape
+                         "SignalExternalWorkflowExecutionDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (request-cancel-external-workflow-execution-decision-attributes
+                         :initarg
+                         :request-cancel-external-workflow-execution-decision-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          request-cancel-external-workflow-execution-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-request-cancel-external-workflow-execution-decision-attributes
+                         :shape
+                         "RequestCancelExternalWorkflowExecutionDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-child-workflow-execution-decision-attributes
+                         :initarg
+                         :start-child-workflow-execution-decision-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          start-child-workflow-execution-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-start-child-workflow-execution-decision-attributes
+                         :shape "StartChildWorkflowExecutionDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (schedule-lambda-function-decision-attributes :initarg
+                         :schedule-lambda-function-decision-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          schedule-lambda-function-decision-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-decision-schedule-lambda-function-decision-attributes
+                         :shape "ScheduleLambdaFunctionDecisionAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decision
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'decision
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'decision 'make-decision))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input decision))
@@ -2026,23 +2877,58 @@
                            (trivial-types:proper-list decision))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decision-task (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decision-task-"))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or history-event-list common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (previous-started-event-id common-lisp:nil :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass decision-task common-lisp:nil
+                       ((task-token :initarg :task-token :initform
+                         (common-lisp:error ":tasktoken is required") :type
+                         (common-lisp:or task-token common-lisp:null) :accessor
+                         struct-shape-decision-task-task-token :shape
+                         "TaskToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor struct-shape-decision-task-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-workflow-execution :shape
+                         "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor struct-shape-decision-task-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (events :initarg :events :initform
+                         (common-lisp:error ":events is required") :type
+                         (common-lisp:or history-event-list common-lisp:null)
+                         :accessor struct-shape-decision-task-events :shape
+                         "HistoryEventList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-decision-task-next-page-token :shape
+                         "PageToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (previous-started-event-id :initarg
+                         :previous-started-event-id :initform common-lisp:nil
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-previous-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decision-task
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'decision-task
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'decision-task 'make-decision-task))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input decision-task))
@@ -2104,19 +2990,49 @@
                         ((aws-sdk/generator/shape::input decision-task))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decision-task-completed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decision-task-completed-event-attributes-"))
-   (execution-context common-lisp:nil :type
-    (common-lisp:or data common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-list-schedule-to-start-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
+ (common-lisp:defclass decision-task-completed-event-attributes common-lisp:nil
+                       ((execution-context :initarg :execution-context
+                         :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-decision-task-completed-event-attributes-execution-context
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-completed-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-completed-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-decision-task-completed-event-attributes-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list-schedule-to-start-timeout :initarg
+                         :task-list-schedule-to-start-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-completed-event-attributes-task-list-schedule-to-start-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decision-task-completed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'decision-task-completed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'decision-task-completed-event-attributes
                     'make-decision-task-completed-event-attributes))
@@ -2172,17 +3088,44 @@
                           decision-task-completed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decision-task-scheduled-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decision-task-scheduled-event-attributes-"))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (schedule-to-start-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
+ (common-lisp:defclass decision-task-scheduled-event-attributes common-lisp:nil
+                       ((task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-decision-task-scheduled-event-attributes-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-scheduled-event-attributes-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-to-close-timeout :initarg
+                         :start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-scheduled-event-attributes-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (schedule-to-start-timeout :initarg
+                         :schedule-to-start-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-scheduled-event-attributes-schedule-to-start-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decision-task-scheduled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'decision-task-scheduled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'decision-task-scheduled-event-attributes
                     'make-decision-task-scheduled-event-attributes))
@@ -2232,12 +3175,27 @@
                           decision-task-scheduled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decision-task-started-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decision-task-started-event-attributes-"))
-   (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass decision-task-started-event-attributes common-lisp:nil
+                       ((identity :initarg :identity :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-started-event-attributes-identity
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-started-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decision-task-started-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'decision-task-started-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'decision-task-started-event-attributes
                     'make-decision-task-started-event-attributes))
@@ -2271,15 +3229,36 @@
                           decision-task-started-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decision-task-timed-out-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decision-task-timed-out-event-attributes-"))
-   (timeout-type (common-lisp:error ":timeouttype is required") :type
-    (common-lisp:or decision-task-timeout-type common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass decision-task-timed-out-event-attributes common-lisp:nil
+                       ((timeout-type :initarg :timeout-type :initform
+                         (common-lisp:error ":timeouttype is required") :type
+                         (common-lisp:or decision-task-timeout-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-timed-out-event-attributes-timeout-type
+                         :shape "DecisionTaskTimeoutType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-timed-out-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-decision-task-timed-out-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decision-task-timed-out-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'decision-task-timed-out-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'decision-task-timed-out-event-attributes
                     'make-decision-task-timed-out-event-attributes))
@@ -2329,13 +3308,27 @@
  (common-lisp:export
   (common-lisp:list 'default-undefined-fault 'default-undefined-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deprecate-activity-type-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deprecate-activity-type-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null)))
+ (common-lisp:defclass deprecate-activity-type-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-deprecate-activity-type-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (activity-type :initarg :activity-type :initform
+                         (common-lisp:error ":activitytype is required") :type
+                         (common-lisp:or activity-type common-lisp:null)
+                         :accessor
+                         struct-shape-deprecate-activity-type-input-activity-type
+                         :shape "ActivityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-deprecate-activity-type-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'deprecate-activity-type-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'deprecate-activity-type-input
                     'make-deprecate-activity-type-input))
@@ -2369,11 +3362,18 @@
                           deprecate-activity-type-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deprecate-domain-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deprecate-domain-input-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+ (common-lisp:defclass deprecate-domain-input common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-deprecate-domain-input-name
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-deprecate-domain-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'deprecate-domain-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'deprecate-domain-input 'make-deprecate-domain-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2399,13 +3399,27 @@
                           deprecate-domain-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deprecate-workflow-type-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deprecate-workflow-type-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null)))
+ (common-lisp:defclass deprecate-workflow-type-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-deprecate-workflow-type-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-deprecate-workflow-type-input-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-deprecate-workflow-type-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'deprecate-workflow-type-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'deprecate-workflow-type-input
                     'make-deprecate-workflow-type-input))
@@ -2439,13 +3453,26 @@
                           deprecate-workflow-type-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-activity-type-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-activity-type-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null)))
+ (common-lisp:defclass describe-activity-type-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-activity-type-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (activity-type :initarg :activity-type :initform
+                         (common-lisp:error ":activitytype is required") :type
+                         (common-lisp:or activity-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-activity-type-input-activity-type
+                         :shape "ActivityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-activity-type-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-activity-type-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-activity-type-input
                     'make-describe-activity-type-input))
@@ -2479,11 +3506,18 @@
                           describe-activity-type-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-domain-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-domain-input-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+ (common-lisp:defclass describe-domain-input common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-describe-domain-input-name
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-domain-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-domain-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-domain-input 'make-describe-domain-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2509,13 +3543,27 @@
                           describe-domain-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-workflow-execution-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-workflow-execution-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (execution (common-lisp:error ":execution is required") :type
-    (common-lisp:or workflow-execution common-lisp:null)))
+ (common-lisp:defclass describe-workflow-execution-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-workflow-execution-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution :initarg :execution :initform
+                         (common-lisp:error ":execution is required") :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-describe-workflow-execution-input-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-workflow-execution-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-workflow-execution-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-workflow-execution-input
                     'make-describe-workflow-execution-input))
@@ -2549,13 +3597,26 @@
                           describe-workflow-execution-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-workflow-type-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-workflow-type-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null)))
+ (common-lisp:defclass describe-workflow-type-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-workflow-type-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-workflow-type-input-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-workflow-type-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-workflow-type-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-workflow-type-input
                     'make-describe-workflow-type-input))
@@ -2598,12 +3659,22 @@
   (common-lisp:list 'domain-already-exists-fault
                     'domain-already-exists-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-configuration-"))
-   (workflow-execution-retention-period-in-days
-    (common-lisp:error ":workflowexecutionretentionperiodindays is required")
-    :type (common-lisp:or duration-in-days common-lisp:null)))
+ (common-lisp:defclass domain-configuration common-lisp:nil
+                       ((workflow-execution-retention-period-in-days :initarg
+                         :workflow-execution-retention-period-in-days :initform
+                         (common-lisp:error
+                          ":workflowexecutionretentionperiodindays is required")
+                         :type
+                         (common-lisp:or duration-in-days common-lisp:null)
+                         :accessor
+                         struct-shape-domain-configuration-workflow-execution-retention-period-in-days
+                         :shape "DurationInDays" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-domain-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'domain-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'domain-configuration 'make-domain-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2631,13 +3702,24 @@
  (common-lisp:export
   (common-lisp:list 'domain-deprecated-fault 'domain-deprecated-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-detail-"))
-   (domain-info (common-lisp:error ":domaininfo is required") :type
-    (common-lisp:or domain-info common-lisp:null))
-   (configuration (common-lisp:error ":configuration is required") :type
-    (common-lisp:or domain-configuration common-lisp:null)))
+ (common-lisp:defclass domain-detail common-lisp:nil
+                       ((domain-info :initarg :domain-info :initform
+                         (common-lisp:error ":domaininfo is required") :type
+                         (common-lisp:or domain-info common-lisp:null)
+                         :accessor struct-shape-domain-detail-domain-info
+                         :shape "DomainInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration :initarg :configuration :initform
+                         (common-lisp:error ":configuration is required") :type
+                         (common-lisp:or domain-configuration common-lisp:null)
+                         :accessor struct-shape-domain-detail-configuration
+                         :shape "DomainConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-domain-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'domain-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'domain-detail 'make-domain-detail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input domain-detail))
@@ -2663,16 +3745,34 @@
                         ((aws-sdk/generator/shape::input domain-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-info-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or registration-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass domain-info common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-domain-info-name :shape
+                         "DomainName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or registration-status common-lisp:null)
+                         :accessor struct-shape-domain-info-status :shape
+                         "RegistrationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-domain-info-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-domain-info-arn :shape "Arn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-domain-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'domain-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'domain-info 'make-domain-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input domain-info))
@@ -2720,13 +3820,24 @@
                            (trivial-types:proper-list domain-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (domain-infos (:copier common-lisp:nil)
-      (:conc-name "struct-shape-domain-infos-"))
-   (domain-infos (common-lisp:error ":domaininfos is required") :type
-    (common-lisp:or domain-info-list common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass domain-infos common-lisp:nil
+                       ((domain-infos :initarg :domain-infos :initform
+                         (common-lisp:error ":domaininfos is required") :type
+                         (common-lisp:or domain-info-list common-lisp:null)
+                         :accessor struct-shape-domain-infos-domain-infos
+                         :shape "DomainInfoList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-domain-infos-next-page-token :shape
+                         "PageToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-domain-infos
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'domain-infos
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'domain-infos 'make-domain-infos))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input domain-infos))
@@ -2760,13 +3871,24 @@
 (common-lisp:deftype event-type () 'common-lisp:string)
 (common-lisp:deftype execution-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (execution-time-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-execution-time-filter-"))
-   (oldest-date (common-lisp:error ":oldestdate is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (latest-date common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass execution-time-filter common-lisp:nil
+                       ((oldest-date :initarg :oldest-date :initform
+                         (common-lisp:error ":oldestdate is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-execution-time-filter-oldest-date :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (latest-date :initarg :latest-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-execution-time-filter-latest-date :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-execution-time-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'execution-time-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'execution-time-filter 'make-execution-time-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2799,15 +3921,25 @@
                           execution-time-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (external-workflow-execution-cancel-requested-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-external-workflow-execution-cancel-requested-event-attributes-"))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass
+  external-workflow-execution-cancel-requested-event-attributes common-lisp:nil
+  ((workflow-execution :initarg :workflow-execution :initform
+    (common-lisp:error ":workflowexecution is required") :type
+    (common-lisp:or workflow-execution common-lisp:null) :accessor
+    struct-shape-external-workflow-execution-cancel-requested-event-attributes-workflow-execution
+    :shape "WorkflowExecution" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (initiated-event-id :initarg :initiated-event-id :initform
+    (common-lisp:error ":initiatedeventid is required") :type
+    (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-external-workflow-execution-cancel-requested-event-attributes-initiated-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-external-workflow-execution-cancel-requested-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'external-workflow-execution-cancel-requested-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'external-workflow-execution-cancel-requested-event-attributes
@@ -2842,15 +3974,31 @@
                           external-workflow-execution-cancel-requested-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (external-workflow-execution-signaled-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-external-workflow-execution-signaled-event-attributes-"))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
-    :type (common-lisp:or workflow-execution common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass external-workflow-execution-signaled-event-attributes
+                       common-lisp:nil
+                       ((workflow-execution :initarg :workflow-execution
+                         :initform
+                         (common-lisp:error ":workflowexecution is required")
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-external-workflow-execution-signaled-event-attributes-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initiated-event-id :initarg :initiated-event-id
+                         :initform
+                         (common-lisp:error ":initiatedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-external-workflow-execution-signaled-event-attributes-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-external-workflow-execution-signaled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'external-workflow-execution-signaled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'external-workflow-execution-signaled-event-attributes
                     'make-external-workflow-execution-signaled-event-attributes))
@@ -2884,12 +4032,25 @@
                           external-workflow-execution-signaled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (fail-workflow-execution-decision-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-fail-workflow-execution-decision-attributes-"))
-   (reason common-lisp:nil :type
-    (common-lisp:or failure-reason common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass fail-workflow-execution-decision-attributes
+                       common-lisp:nil
+                       ((reason :initarg :reason :initform common-lisp:nil
+                         :type (common-lisp:or failure-reason common-lisp:null)
+                         :accessor
+                         struct-shape-fail-workflow-execution-decision-attributes-reason
+                         :shape "FailureReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-fail-workflow-execution-decision-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-fail-workflow-execution-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'fail-workflow-execution-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'fail-workflow-execution-decision-attributes
                     'make-fail-workflow-execution-decision-attributes))
@@ -2925,15 +4086,31 @@
 (common-lisp:deftype fail-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (fail-workflow-execution-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-fail-workflow-execution-failed-event-attributes-"))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or fail-workflow-execution-failed-cause common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass fail-workflow-execution-failed-event-attributes
+                       common-lisp:nil
+                       ((cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or fail-workflow-execution-failed-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-fail-workflow-execution-failed-event-attributes-cause
+                         :shape "FailWorkflowExecutionFailedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-fail-workflow-execution-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-fail-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'fail-workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'fail-workflow-execution-failed-event-attributes
                     'make-fail-workflow-execution-failed-event-attributes))
@@ -2972,19 +4149,46 @@
 (common-lisp:deftype function-input () 'common-lisp:string)
 (common-lisp:deftype function-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-workflow-execution-history-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-workflow-execution-history-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (execution (common-lisp:error ":execution is required") :type
-    (common-lisp:or workflow-execution common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (maximum-page-size common-lisp:nil :type
-    (common-lisp:or page-size common-lisp:null))
-   (reverse-order common-lisp:nil :type
-    (common-lisp:or reverse-order common-lisp:null)))
+ (common-lisp:defclass get-workflow-execution-history-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-workflow-execution-history-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution :initarg :execution :initform
+                         (common-lisp:error ":execution is required") :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-get-workflow-execution-history-input-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-get-workflow-execution-history-input-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (maximum-page-size :initarg :maximum-page-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or page-size common-lisp:null) :accessor
+                         struct-shape-get-workflow-execution-history-input-maximum-page-size
+                         :shape "PageSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reverse-order :initarg :reverse-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reverse-order common-lisp:null)
+                         :accessor
+                         struct-shape-get-workflow-execution-history-input-reverse-order
+                         :shape "ReverseOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-workflow-execution-history-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-workflow-execution-history-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-workflow-execution-history-input
                     'make-get-workflow-execution-history-input))
@@ -3039,12 +4243,24 @@
                           get-workflow-execution-history-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (history (:copier common-lisp:nil) (:conc-name "struct-shape-history-"))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or history-event-list common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass history common-lisp:nil
+                       ((events :initarg :events :initform
+                         (common-lisp:error ":events is required") :type
+                         (common-lisp:or history-event-list common-lisp:null)
+                         :accessor struct-shape-history-events :shape
+                         "HistoryEventList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-history-next-page-token :shape
+                         "PageToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-history
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'history
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'history 'make-history))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input history))
@@ -3070,170 +4286,640 @@
                         ((aws-sdk/generator/shape::input history))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (history-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-history-event-"))
-   (event-timestamp (common-lisp:error ":eventtimestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (event-type (common-lisp:error ":eventtype is required") :type
-    (common-lisp:or event-type common-lisp:null))
-   (event-id (common-lisp:error ":eventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (workflow-execution-started-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-started-event-attributes
-                    common-lisp:null))
-   (workflow-execution-completed-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-completed-event-attributes
-                    common-lisp:null))
-   (complete-workflow-execution-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or complete-workflow-execution-failed-event-attributes
-                    common-lisp:null))
-   (workflow-execution-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-failed-event-attributes
-                    common-lisp:null))
-   (fail-workflow-execution-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or fail-workflow-execution-failed-event-attributes
-                    common-lisp:null))
-   (workflow-execution-timed-out-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-timed-out-event-attributes
-                    common-lisp:null))
-   (workflow-execution-canceled-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-canceled-event-attributes
-                    common-lisp:null))
-   (cancel-workflow-execution-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or cancel-workflow-execution-failed-event-attributes
-                    common-lisp:null))
-   (workflow-execution-continued-as-new-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-continued-as-new-event-attributes
-                    common-lisp:null))
-   (continue-as-new-workflow-execution-failed-event-attributes common-lisp:nil
-    :type
-    (common-lisp:or continue-as-new-workflow-execution-failed-event-attributes
-                    common-lisp:null))
-   (workflow-execution-terminated-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-terminated-event-attributes
-                    common-lisp:null))
-   (workflow-execution-cancel-requested-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-cancel-requested-event-attributes
-                    common-lisp:null))
-   (decision-task-scheduled-event-attributes common-lisp:nil :type
-    (common-lisp:or decision-task-scheduled-event-attributes common-lisp:null))
-   (decision-task-started-event-attributes common-lisp:nil :type
-    (common-lisp:or decision-task-started-event-attributes common-lisp:null))
-   (decision-task-completed-event-attributes common-lisp:nil :type
-    (common-lisp:or decision-task-completed-event-attributes common-lisp:null))
-   (decision-task-timed-out-event-attributes common-lisp:nil :type
-    (common-lisp:or decision-task-timed-out-event-attributes common-lisp:null))
-   (activity-task-scheduled-event-attributes common-lisp:nil :type
-    (common-lisp:or activity-task-scheduled-event-attributes common-lisp:null))
-   (activity-task-started-event-attributes common-lisp:nil :type
-    (common-lisp:or activity-task-started-event-attributes common-lisp:null))
-   (activity-task-completed-event-attributes common-lisp:nil :type
-    (common-lisp:or activity-task-completed-event-attributes common-lisp:null))
-   (activity-task-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or activity-task-failed-event-attributes common-lisp:null))
-   (activity-task-timed-out-event-attributes common-lisp:nil :type
-    (common-lisp:or activity-task-timed-out-event-attributes common-lisp:null))
-   (activity-task-canceled-event-attributes common-lisp:nil :type
-    (common-lisp:or activity-task-canceled-event-attributes common-lisp:null))
-   (activity-task-cancel-requested-event-attributes common-lisp:nil :type
-    (common-lisp:or activity-task-cancel-requested-event-attributes
-                    common-lisp:null))
-   (workflow-execution-signaled-event-attributes common-lisp:nil :type
-    (common-lisp:or workflow-execution-signaled-event-attributes
-                    common-lisp:null))
-   (marker-recorded-event-attributes common-lisp:nil :type
-    (common-lisp:or marker-recorded-event-attributes common-lisp:null))
-   (record-marker-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or record-marker-failed-event-attributes common-lisp:null))
-   (timer-started-event-attributes common-lisp:nil :type
-    (common-lisp:or timer-started-event-attributes common-lisp:null))
-   (timer-fired-event-attributes common-lisp:nil :type
-    (common-lisp:or timer-fired-event-attributes common-lisp:null))
-   (timer-canceled-event-attributes common-lisp:nil :type
-    (common-lisp:or timer-canceled-event-attributes common-lisp:null))
-   (start-child-workflow-execution-initiated-event-attributes common-lisp:nil
-    :type
-    (common-lisp:or start-child-workflow-execution-initiated-event-attributes
-                    common-lisp:null))
-   (child-workflow-execution-started-event-attributes common-lisp:nil :type
-    (common-lisp:or child-workflow-execution-started-event-attributes
-                    common-lisp:null))
-   (child-workflow-execution-completed-event-attributes common-lisp:nil :type
-    (common-lisp:or child-workflow-execution-completed-event-attributes
-                    common-lisp:null))
-   (child-workflow-execution-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or child-workflow-execution-failed-event-attributes
-                    common-lisp:null))
-   (child-workflow-execution-timed-out-event-attributes common-lisp:nil :type
-    (common-lisp:or child-workflow-execution-timed-out-event-attributes
-                    common-lisp:null))
-   (child-workflow-execution-canceled-event-attributes common-lisp:nil :type
-    (common-lisp:or child-workflow-execution-canceled-event-attributes
-                    common-lisp:null))
-   (child-workflow-execution-terminated-event-attributes common-lisp:nil :type
-    (common-lisp:or child-workflow-execution-terminated-event-attributes
-                    common-lisp:null))
-   (signal-external-workflow-execution-initiated-event-attributes
-    common-lisp:nil :type
-    (common-lisp:or
-     signal-external-workflow-execution-initiated-event-attributes
-     common-lisp:null))
-   (external-workflow-execution-signaled-event-attributes common-lisp:nil :type
-    (common-lisp:or external-workflow-execution-signaled-event-attributes
-                    common-lisp:null))
-   (signal-external-workflow-execution-failed-event-attributes common-lisp:nil
-    :type
-    (common-lisp:or signal-external-workflow-execution-failed-event-attributes
-                    common-lisp:null))
-   (external-workflow-execution-cancel-requested-event-attributes
-    common-lisp:nil :type
-    (common-lisp:or
-     external-workflow-execution-cancel-requested-event-attributes
-     common-lisp:null))
-   (request-cancel-external-workflow-execution-initiated-event-attributes
-    common-lisp:nil :type
-    (common-lisp:or
-     request-cancel-external-workflow-execution-initiated-event-attributes
-     common-lisp:null))
-   (request-cancel-external-workflow-execution-failed-event-attributes
-    common-lisp:nil :type
-    (common-lisp:or
-     request-cancel-external-workflow-execution-failed-event-attributes
-     common-lisp:null))
-   (schedule-activity-task-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or schedule-activity-task-failed-event-attributes
-                    common-lisp:null))
-   (request-cancel-activity-task-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or request-cancel-activity-task-failed-event-attributes
-                    common-lisp:null))
-   (start-timer-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or start-timer-failed-event-attributes common-lisp:null))
-   (cancel-timer-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or cancel-timer-failed-event-attributes common-lisp:null))
-   (start-child-workflow-execution-failed-event-attributes common-lisp:nil
-    :type
-    (common-lisp:or start-child-workflow-execution-failed-event-attributes
-                    common-lisp:null))
-   (lambda-function-scheduled-event-attributes common-lisp:nil :type
-    (common-lisp:or lambda-function-scheduled-event-attributes
-                    common-lisp:null))
-   (lambda-function-started-event-attributes common-lisp:nil :type
-    (common-lisp:or lambda-function-started-event-attributes common-lisp:null))
-   (lambda-function-completed-event-attributes common-lisp:nil :type
-    (common-lisp:or lambda-function-completed-event-attributes
-                    common-lisp:null))
-   (lambda-function-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or lambda-function-failed-event-attributes common-lisp:null))
-   (lambda-function-timed-out-event-attributes common-lisp:nil :type
-    (common-lisp:or lambda-function-timed-out-event-attributes
-                    common-lisp:null))
-   (schedule-lambda-function-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or schedule-lambda-function-failed-event-attributes
-                    common-lisp:null))
-   (start-lambda-function-failed-event-attributes common-lisp:nil :type
-    (common-lisp:or start-lambda-function-failed-event-attributes
-                    common-lisp:null)))
+ (common-lisp:defclass history-event common-lisp:nil
+                       ((event-timestamp :initarg :event-timestamp :initform
+                         (common-lisp:error ":eventtimestamp is required")
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-history-event-event-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-type :initarg :event-type :initform
+                         (common-lisp:error ":eventtype is required") :type
+                         (common-lisp:or event-type common-lisp:null) :accessor
+                         struct-shape-history-event-event-type :shape
+                         "EventType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (event-id :initarg :event-id :initform
+                         (common-lisp:error ":eventid is required") :type
+                         (common-lisp:or event-id common-lisp:null) :accessor
+                         struct-shape-history-event-event-id :shape "EventId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-started-event-attributes :initarg
+                         :workflow-execution-started-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-started-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-started-event-attributes
+                         :shape "WorkflowExecutionStartedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-completed-event-attributes :initarg
+                         :workflow-execution-completed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-completed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-completed-event-attributes
+                         :shape "WorkflowExecutionCompletedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (complete-workflow-execution-failed-event-attributes
+                         :initarg
+                         :complete-workflow-execution-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          complete-workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-complete-workflow-execution-failed-event-attributes
+                         :shape
+                         "CompleteWorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-failed-event-attributes :initarg
+                         :workflow-execution-failed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-failed-event-attributes
+                         :shape "WorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (fail-workflow-execution-failed-event-attributes
+                         :initarg
+                         :fail-workflow-execution-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          fail-workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-fail-workflow-execution-failed-event-attributes
+                         :shape "FailWorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-timed-out-event-attributes :initarg
+                         :workflow-execution-timed-out-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-timed-out-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-timed-out-event-attributes
+                         :shape "WorkflowExecutionTimedOutEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-canceled-event-attributes :initarg
+                         :workflow-execution-canceled-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-canceled-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-canceled-event-attributes
+                         :shape "WorkflowExecutionCanceledEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cancel-workflow-execution-failed-event-attributes
+                         :initarg
+                         :cancel-workflow-execution-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          cancel-workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-cancel-workflow-execution-failed-event-attributes
+                         :shape "CancelWorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-continued-as-new-event-attributes
+                         :initarg
+                         :workflow-execution-continued-as-new-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-continued-as-new-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-continued-as-new-event-attributes
+                         :shape
+                         "WorkflowExecutionContinuedAsNewEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (continue-as-new-workflow-execution-failed-event-attributes
+                         :initarg
+                         :continue-as-new-workflow-execution-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          continue-as-new-workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-continue-as-new-workflow-execution-failed-event-attributes
+                         :shape
+                         "ContinueAsNewWorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-terminated-event-attributes
+                         :initarg
+                         :workflow-execution-terminated-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-terminated-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-terminated-event-attributes
+                         :shape "WorkflowExecutionTerminatedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-cancel-requested-event-attributes
+                         :initarg
+                         :workflow-execution-cancel-requested-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-cancel-requested-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-cancel-requested-event-attributes
+                         :shape
+                         "WorkflowExecutionCancelRequestedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-scheduled-event-attributes :initarg
+                         :decision-task-scheduled-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          decision-task-scheduled-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-decision-task-scheduled-event-attributes
+                         :shape "DecisionTaskScheduledEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-started-event-attributes :initarg
+                         :decision-task-started-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or decision-task-started-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-decision-task-started-event-attributes
+                         :shape "DecisionTaskStartedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-attributes :initarg
+                         :decision-task-completed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          decision-task-completed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-decision-task-completed-event-attributes
+                         :shape "DecisionTaskCompletedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-timed-out-event-attributes :initarg
+                         :decision-task-timed-out-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          decision-task-timed-out-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-decision-task-timed-out-event-attributes
+                         :shape "DecisionTaskTimedOutEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (activity-task-scheduled-event-attributes :initarg
+                         :activity-task-scheduled-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          activity-task-scheduled-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-activity-task-scheduled-event-attributes
+                         :shape "ActivityTaskScheduledEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (activity-task-started-event-attributes :initarg
+                         :activity-task-started-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or activity-task-started-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-activity-task-started-event-attributes
+                         :shape "ActivityTaskStartedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (activity-task-completed-event-attributes :initarg
+                         :activity-task-completed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          activity-task-completed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-activity-task-completed-event-attributes
+                         :shape "ActivityTaskCompletedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (activity-task-failed-event-attributes :initarg
+                         :activity-task-failed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or activity-task-failed-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-activity-task-failed-event-attributes
+                         :shape "ActivityTaskFailedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (activity-task-timed-out-event-attributes :initarg
+                         :activity-task-timed-out-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          activity-task-timed-out-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-activity-task-timed-out-event-attributes
+                         :shape "ActivityTaskTimedOutEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (activity-task-canceled-event-attributes :initarg
+                         :activity-task-canceled-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          activity-task-canceled-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-activity-task-canceled-event-attributes
+                         :shape "ActivityTaskCanceledEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (activity-task-cancel-requested-event-attributes
+                         :initarg
+                         :activity-task-cancel-requested-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          activity-task-cancel-requested-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-activity-task-cancel-requested-event-attributes
+                         :shape "ActivityTaskCancelRequestedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-signaled-event-attributes :initarg
+                         :workflow-execution-signaled-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-signaled-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-workflow-execution-signaled-event-attributes
+                         :shape "WorkflowExecutionSignaledEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (marker-recorded-event-attributes :initarg
+                         :marker-recorded-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or marker-recorded-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-marker-recorded-event-attributes
+                         :shape "MarkerRecordedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (record-marker-failed-event-attributes :initarg
+                         :record-marker-failed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or record-marker-failed-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-record-marker-failed-event-attributes
+                         :shape "RecordMarkerFailedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (timer-started-event-attributes :initarg
+                         :timer-started-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timer-started-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-timer-started-event-attributes
+                         :shape "TimerStartedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (timer-fired-event-attributes :initarg
+                         :timer-fired-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timer-fired-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-timer-fired-event-attributes
+                         :shape "TimerFiredEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (timer-canceled-event-attributes :initarg
+                         :timer-canceled-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timer-canceled-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-timer-canceled-event-attributes
+                         :shape "TimerCanceledEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-child-workflow-execution-initiated-event-attributes
+                         :initarg
+                         :start-child-workflow-execution-initiated-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          start-child-workflow-execution-initiated-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-start-child-workflow-execution-initiated-event-attributes
+                         :shape
+                         "StartChildWorkflowExecutionInitiatedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (child-workflow-execution-started-event-attributes
+                         :initarg
+                         :child-workflow-execution-started-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          child-workflow-execution-started-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-child-workflow-execution-started-event-attributes
+                         :shape "ChildWorkflowExecutionStartedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (child-workflow-execution-completed-event-attributes
+                         :initarg
+                         :child-workflow-execution-completed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          child-workflow-execution-completed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-child-workflow-execution-completed-event-attributes
+                         :shape
+                         "ChildWorkflowExecutionCompletedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (child-workflow-execution-failed-event-attributes
+                         :initarg
+                         :child-workflow-execution-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          child-workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-child-workflow-execution-failed-event-attributes
+                         :shape "ChildWorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (child-workflow-execution-timed-out-event-attributes
+                         :initarg
+                         :child-workflow-execution-timed-out-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          child-workflow-execution-timed-out-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-child-workflow-execution-timed-out-event-attributes
+                         :shape "ChildWorkflowExecutionTimedOutEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (child-workflow-execution-canceled-event-attributes
+                         :initarg
+                         :child-workflow-execution-canceled-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          child-workflow-execution-canceled-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-child-workflow-execution-canceled-event-attributes
+                         :shape "ChildWorkflowExecutionCanceledEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (child-workflow-execution-terminated-event-attributes
+                         :initarg
+                         :child-workflow-execution-terminated-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          child-workflow-execution-terminated-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-child-workflow-execution-terminated-event-attributes
+                         :shape
+                         "ChildWorkflowExecutionTerminatedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (signal-external-workflow-execution-initiated-event-attributes
+                         :initarg
+                         :signal-external-workflow-execution-initiated-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          signal-external-workflow-execution-initiated-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-signal-external-workflow-execution-initiated-event-attributes
+                         :shape
+                         "SignalExternalWorkflowExecutionInitiatedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (external-workflow-execution-signaled-event-attributes
+                         :initarg
+                         :external-workflow-execution-signaled-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          external-workflow-execution-signaled-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-external-workflow-execution-signaled-event-attributes
+                         :shape
+                         "ExternalWorkflowExecutionSignaledEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (signal-external-workflow-execution-failed-event-attributes
+                         :initarg
+                         :signal-external-workflow-execution-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          signal-external-workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-signal-external-workflow-execution-failed-event-attributes
+                         :shape
+                         "SignalExternalWorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (external-workflow-execution-cancel-requested-event-attributes
+                         :initarg
+                         :external-workflow-execution-cancel-requested-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          external-workflow-execution-cancel-requested-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-external-workflow-execution-cancel-requested-event-attributes
+                         :shape
+                         "ExternalWorkflowExecutionCancelRequestedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (request-cancel-external-workflow-execution-initiated-event-attributes
+                         :initarg
+                         :request-cancel-external-workflow-execution-initiated-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          request-cancel-external-workflow-execution-initiated-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-request-cancel-external-workflow-execution-initiated-event-attributes
+                         :shape
+                         "RequestCancelExternalWorkflowExecutionInitiatedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (request-cancel-external-workflow-execution-failed-event-attributes
+                         :initarg
+                         :request-cancel-external-workflow-execution-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          request-cancel-external-workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-request-cancel-external-workflow-execution-failed-event-attributes
+                         :shape
+                         "RequestCancelExternalWorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (schedule-activity-task-failed-event-attributes
+                         :initarg
+                         :schedule-activity-task-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          schedule-activity-task-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-schedule-activity-task-failed-event-attributes
+                         :shape "ScheduleActivityTaskFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (request-cancel-activity-task-failed-event-attributes
+                         :initarg
+                         :request-cancel-activity-task-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          request-cancel-activity-task-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-request-cancel-activity-task-failed-event-attributes
+                         :shape
+                         "RequestCancelActivityTaskFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-timer-failed-event-attributes :initarg
+                         :start-timer-failed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or start-timer-failed-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-start-timer-failed-event-attributes
+                         :shape "StartTimerFailedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cancel-timer-failed-event-attributes :initarg
+                         :cancel-timer-failed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cancel-timer-failed-event-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-cancel-timer-failed-event-attributes
+                         :shape "CancelTimerFailedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-child-workflow-execution-failed-event-attributes
+                         :initarg
+                         :start-child-workflow-execution-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          start-child-workflow-execution-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-start-child-workflow-execution-failed-event-attributes
+                         :shape
+                         "StartChildWorkflowExecutionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (lambda-function-scheduled-event-attributes :initarg
+                         :lambda-function-scheduled-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          lambda-function-scheduled-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-lambda-function-scheduled-event-attributes
+                         :shape "LambdaFunctionScheduledEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (lambda-function-started-event-attributes :initarg
+                         :lambda-function-started-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          lambda-function-started-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-lambda-function-started-event-attributes
+                         :shape "LambdaFunctionStartedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (lambda-function-completed-event-attributes :initarg
+                         :lambda-function-completed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          lambda-function-completed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-lambda-function-completed-event-attributes
+                         :shape "LambdaFunctionCompletedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (lambda-function-failed-event-attributes :initarg
+                         :lambda-function-failed-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          lambda-function-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-lambda-function-failed-event-attributes
+                         :shape "LambdaFunctionFailedEventAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (lambda-function-timed-out-event-attributes :initarg
+                         :lambda-function-timed-out-event-attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          lambda-function-timed-out-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-lambda-function-timed-out-event-attributes
+                         :shape "LambdaFunctionTimedOutEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (schedule-lambda-function-failed-event-attributes
+                         :initarg
+                         :schedule-lambda-function-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          schedule-lambda-function-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-schedule-lambda-function-failed-event-attributes
+                         :shape "ScheduleLambdaFunctionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-lambda-function-failed-event-attributes :initarg
+                         :start-lambda-function-failed-event-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          start-lambda-function-failed-event-attributes
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-history-event-start-lambda-function-failed-event-attributes
+                         :shape "StartLambdaFunctionFailedEventAttributes"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-history-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'history-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'history-event 'make-history-event))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input history-event))
@@ -3711,14 +5397,34 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype identity () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (lambda-function-completed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lambda-function-completed-event-attributes-"))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (result common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass lambda-function-completed-event-attributes
+                       common-lisp:nil
+                       ((scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-completed-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-completed-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (result :initarg :result :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-lambda-function-completed-event-attributes-result
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lambda-function-completed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'lambda-function-completed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lambda-function-completed-event-attributes
                     'make-lambda-function-completed-event-attributes))
@@ -3759,16 +5465,39 @@
                           lambda-function-completed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lambda-function-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lambda-function-failed-event-attributes-"))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or failure-reason common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass lambda-function-failed-event-attributes common-lisp:nil
+                       ((scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-failed-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-failed-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reason :initarg :reason :initform common-lisp:nil
+                         :type (common-lisp:or failure-reason common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-failed-event-attributes-reason
+                         :shape "FailureReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-lambda-function-failed-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lambda-function-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'lambda-function-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lambda-function-failed-event-attributes
                     'make-lambda-function-failed-event-attributes))
@@ -3816,21 +5545,57 @@
                           lambda-function-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lambda-function-scheduled-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lambda-function-scheduled-event-attributes-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or function-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (input common-lisp:nil :type
-    (common-lisp:or function-input common-lisp:null))
-   (start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass lambda-function-scheduled-event-attributes
+                       common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or function-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-scheduled-event-attributes-id
+                         :shape "FunctionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or function-name common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-scheduled-event-attributes-name
+                         :shape "FunctionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-lambda-function-scheduled-event-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or function-input common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-scheduled-event-attributes-input
+                         :shape "FunctionInput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-to-close-timeout :initarg
+                         :start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-scheduled-event-attributes-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-scheduled-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lambda-function-scheduled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'lambda-function-scheduled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lambda-function-scheduled-event-attributes
                     'make-lambda-function-scheduled-event-attributes))
@@ -3894,11 +5659,21 @@
                           lambda-function-scheduled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lambda-function-started-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lambda-function-started-event-attributes-"))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass lambda-function-started-event-attributes common-lisp:nil
+                       ((scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-started-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lambda-function-started-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'lambda-function-started-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lambda-function-started-event-attributes
                     'make-lambda-function-started-event-attributes))
@@ -3925,15 +5700,37 @@
                           lambda-function-started-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lambda-function-timed-out-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lambda-function-timed-out-event-attributes-"))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (timeout-type common-lisp:nil :type
-    (common-lisp:or lambda-function-timeout-type common-lisp:null)))
+ (common-lisp:defclass lambda-function-timed-out-event-attributes
+                       common-lisp:nil
+                       ((scheduled-event-id :initarg :scheduled-event-id
+                         :initform
+                         (common-lisp:error ":scheduledeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-timed-out-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-timed-out-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timeout-type :initarg :timeout-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or lambda-function-timeout-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-timed-out-event-attributes-timeout-type
+                         :shape "LambdaFunctionTimeoutType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lambda-function-timed-out-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'lambda-function-timed-out-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lambda-function-timed-out-event-attributes
                     'make-lambda-function-timed-out-event-attributes))
@@ -3983,20 +5780,52 @@
   (common-lisp:list 'limit-exceeded-fault 'limit-exceeded-fault-message)))
 (common-lisp:deftype limited-data () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-activity-types-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-activity-types-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (registration-status (common-lisp:error ":registrationstatus is required")
-    :type (common-lisp:or registration-status common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (maximum-page-size common-lisp:nil :type
-    (common-lisp:or page-size common-lisp:null))
-   (reverse-order common-lisp:nil :type
-    (common-lisp:or reverse-order common-lisp:null)))
+ (common-lisp:defclass list-activity-types-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-activity-types-input-domain :shape
+                         "DomainName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-list-activity-types-input-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (registration-status :initarg :registration-status
+                         :initform
+                         (common-lisp:error ":registrationstatus is required")
+                         :type
+                         (common-lisp:or registration-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-activity-types-input-registration-status
+                         :shape "RegistrationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-activity-types-input-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (maximum-page-size :initarg :maximum-page-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or page-size common-lisp:null) :accessor
+                         struct-shape-list-activity-types-input-maximum-page-size
+                         :shape "PageSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reverse-order :initarg :reverse-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reverse-order common-lisp:null)
+                         :accessor
+                         struct-shape-list-activity-types-input-reverse-order
+                         :shape "ReverseOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-activity-types-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-activity-types-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-activity-types-input
                     'make-list-activity-types-input))
@@ -4058,29 +5887,83 @@
                           list-activity-types-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-closed-workflow-executions-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-closed-workflow-executions-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (start-time-filter common-lisp:nil :type
-    (common-lisp:or execution-time-filter common-lisp:null))
-   (close-time-filter common-lisp:nil :type
-    (common-lisp:or execution-time-filter common-lisp:null))
-   (execution-filter common-lisp:nil :type
-    (common-lisp:or workflow-execution-filter common-lisp:null))
-   (close-status-filter common-lisp:nil :type
-    (common-lisp:or close-status-filter common-lisp:null))
-   (type-filter common-lisp:nil :type
-    (common-lisp:or workflow-type-filter common-lisp:null))
-   (tag-filter common-lisp:nil :type
-    (common-lisp:or tag-filter common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (maximum-page-size common-lisp:nil :type
-    (common-lisp:or page-size common-lisp:null))
-   (reverse-order common-lisp:nil :type
-    (common-lisp:or reverse-order common-lisp:null)))
+ (common-lisp:defclass list-closed-workflow-executions-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-closed-workflow-executions-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time-filter :initarg :start-time-filter
+                         :initform common-lisp:nil :type
+                         (common-lisp:or execution-time-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-closed-workflow-executions-input-start-time-filter
+                         :shape "ExecutionTimeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (close-time-filter :initarg :close-time-filter
+                         :initform common-lisp:nil :type
+                         (common-lisp:or execution-time-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-closed-workflow-executions-input-close-time-filter
+                         :shape "ExecutionTimeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-filter :initarg :execution-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or workflow-execution-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-closed-workflow-executions-input-execution-filter
+                         :shape "WorkflowExecutionFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (close-status-filter :initarg :close-status-filter
+                         :initform common-lisp:nil :type
+                         (common-lisp:or close-status-filter common-lisp:null)
+                         :accessor
+                         struct-shape-list-closed-workflow-executions-input-close-status-filter
+                         :shape "CloseStatusFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type-filter :initarg :type-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or workflow-type-filter common-lisp:null)
+                         :accessor
+                         struct-shape-list-closed-workflow-executions-input-type-filter
+                         :shape "WorkflowTypeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-filter :initarg :tag-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-filter common-lisp:null) :accessor
+                         struct-shape-list-closed-workflow-executions-input-tag-filter
+                         :shape "TagFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-closed-workflow-executions-input-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (maximum-page-size :initarg :maximum-page-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or page-size common-lisp:null) :accessor
+                         struct-shape-list-closed-workflow-executions-input-maximum-page-size
+                         :shape "PageSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reverse-order :initarg :reverse-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reverse-order common-lisp:null)
+                         :accessor
+                         struct-shape-list-closed-workflow-executions-input-reverse-order
+                         :shape "ReverseOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-closed-workflow-executions-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-closed-workflow-executions-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-closed-workflow-executions-input
                     'make-list-closed-workflow-executions-input))
@@ -4170,17 +6053,40 @@
                           list-closed-workflow-executions-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-domains-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-domains-input-"))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (registration-status (common-lisp:error ":registrationstatus is required")
-    :type (common-lisp:or registration-status common-lisp:null))
-   (maximum-page-size common-lisp:nil :type
-    (common-lisp:or page-size common-lisp:null))
-   (reverse-order common-lisp:nil :type
-    (common-lisp:or reverse-order common-lisp:null)))
+ (common-lisp:defclass list-domains-input common-lisp:nil
+                       ((next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-domains-input-next-page-token :shape
+                         "PageToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (registration-status :initarg :registration-status
+                         :initform
+                         (common-lisp:error ":registrationstatus is required")
+                         :type
+                         (common-lisp:or registration-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-domains-input-registration-status
+                         :shape "RegistrationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (maximum-page-size :initarg :maximum-page-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or page-size common-lisp:null) :accessor
+                         struct-shape-list-domains-input-maximum-page-size
+                         :shape "PageSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reverse-order :initarg :reverse-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reverse-order common-lisp:null)
+                         :accessor
+                         struct-shape-list-domains-input-reverse-order :shape
+                         "ReverseOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-domains-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-domains-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-domains-input 'make-list-domains-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4221,25 +6127,70 @@
                         ((aws-sdk/generator/shape::input list-domains-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-open-workflow-executions-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-open-workflow-executions-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (start-time-filter (common-lisp:error ":starttimefilter is required") :type
-    (common-lisp:or execution-time-filter common-lisp:null))
-   (type-filter common-lisp:nil :type
-    (common-lisp:or workflow-type-filter common-lisp:null))
-   (tag-filter common-lisp:nil :type
-    (common-lisp:or tag-filter common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (maximum-page-size common-lisp:nil :type
-    (common-lisp:or page-size common-lisp:null))
-   (reverse-order common-lisp:nil :type
-    (common-lisp:or reverse-order common-lisp:null))
-   (execution-filter common-lisp:nil :type
-    (common-lisp:or workflow-execution-filter common-lisp:null)))
+ (common-lisp:defclass list-open-workflow-executions-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-open-workflow-executions-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time-filter :initarg :start-time-filter
+                         :initform
+                         (common-lisp:error ":starttimefilter is required")
+                         :type
+                         (common-lisp:or execution-time-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-open-workflow-executions-input-start-time-filter
+                         :shape "ExecutionTimeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type-filter :initarg :type-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or workflow-type-filter common-lisp:null)
+                         :accessor
+                         struct-shape-list-open-workflow-executions-input-type-filter
+                         :shape "WorkflowTypeFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-filter :initarg :tag-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-filter common-lisp:null) :accessor
+                         struct-shape-list-open-workflow-executions-input-tag-filter
+                         :shape "TagFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-open-workflow-executions-input-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (maximum-page-size :initarg :maximum-page-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or page-size common-lisp:null) :accessor
+                         struct-shape-list-open-workflow-executions-input-maximum-page-size
+                         :shape "PageSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reverse-order :initarg :reverse-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reverse-order common-lisp:null)
+                         :accessor
+                         struct-shape-list-open-workflow-executions-input-reverse-order
+                         :shape "ReverseOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-filter :initarg :execution-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or workflow-execution-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-open-workflow-executions-input-execution-filter
+                         :shape "WorkflowExecutionFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-open-workflow-executions-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-open-workflow-executions-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-open-workflow-executions-input
                     'make-list-open-workflow-executions-input))
@@ -4315,11 +6266,18 @@
                           list-open-workflow-executions-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-input-resource-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-for-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-input
                     'make-list-tags-for-resource-input))
@@ -4346,11 +6304,19 @@
                           list-tags-for-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-output-"))
-   (tags common-lisp:nil :type
-    (common-lisp:or resource-tag-list common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-output common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or resource-tag-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-output-tags :shape
+                         "ResourceTagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-output
                     'make-list-tags-for-resource-output))
@@ -4377,20 +6343,52 @@
                           list-tags-for-resource-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-workflow-types-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-workflow-types-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (registration-status (common-lisp:error ":registrationstatus is required")
-    :type (common-lisp:or registration-status common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (maximum-page-size common-lisp:nil :type
-    (common-lisp:or page-size common-lisp:null))
-   (reverse-order common-lisp:nil :type
-    (common-lisp:or reverse-order common-lisp:null)))
+ (common-lisp:defclass list-workflow-types-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-workflow-types-input-domain :shape
+                         "DomainName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-list-workflow-types-input-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (registration-status :initarg :registration-status
+                         :initform
+                         (common-lisp:error ":registrationstatus is required")
+                         :type
+                         (common-lisp:or registration-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-workflow-types-input-registration-status
+                         :shape "RegistrationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-workflow-types-input-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (maximum-page-size :initarg :maximum-page-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or page-size common-lisp:null) :accessor
+                         struct-shape-list-workflow-types-input-maximum-page-size
+                         :shape "PageSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reverse-order :initarg :reverse-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reverse-order common-lisp:null)
+                         :accessor
+                         struct-shape-list-workflow-types-input-reverse-order
+                         :shape "ReverseOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-workflow-types-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-workflow-types-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-workflow-types-input
                     'make-list-workflow-types-input))
@@ -4453,15 +6451,34 @@
    common-lisp:nil))
 (common-lisp:deftype marker-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (marker-recorded-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-marker-recorded-event-attributes-"))
-   (marker-name (common-lisp:error ":markername is required") :type
-    (common-lisp:or marker-name common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass marker-recorded-event-attributes common-lisp:nil
+                       ((marker-name :initarg :marker-name :initform
+                         (common-lisp:error ":markername is required") :type
+                         (common-lisp:or marker-name common-lisp:null)
+                         :accessor
+                         struct-shape-marker-recorded-event-attributes-marker-name
+                         :shape "MarkerName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-marker-recorded-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-marker-recorded-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-marker-recorded-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'marker-recorded-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'marker-recorded-event-attributes
                     'make-marker-recorded-event-attributes))
@@ -4515,13 +6532,24 @@
 (common-lisp:deftype page-size () 'common-lisp:integer)
 (common-lisp:deftype page-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pending-task-count (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pending-task-count-"))
-   (count (common-lisp:error ":count is required") :type
-    (common-lisp:or count common-lisp:null))
-   (truncated common-lisp:nil :type
-    (common-lisp:or truncated common-lisp:null)))
+ (common-lisp:defclass pending-task-count common-lisp:nil
+                       ((count :initarg :count :initform
+                         (common-lisp:error ":count is required") :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-pending-task-count-count :shape "Count"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (truncated :initarg :truncated :initform
+                         common-lisp:nil :type
+                         (common-lisp:or truncated common-lisp:null) :accessor
+                         struct-shape-pending-task-count-truncated :shape
+                         "Truncated" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pending-task-count
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pending-task-count
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'pending-task-count 'make-pending-task-count))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4548,14 +6576,31 @@
                         ((aws-sdk/generator/shape::input pending-task-count))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (poll-for-activity-task-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-poll-for-activity-task-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
-   (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null)))
+ (common-lisp:defclass poll-for-activity-task-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-poll-for-activity-task-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-poll-for-activity-task-input-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity :initarg :identity :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-poll-for-activity-task-input-identity
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-poll-for-activity-task-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'poll-for-activity-task-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'poll-for-activity-task-input
                     'make-poll-for-activity-task-input))
@@ -4596,22 +6641,59 @@
                           poll-for-activity-task-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (poll-for-decision-task-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-poll-for-decision-task-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
-   (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (maximum-page-size common-lisp:nil :type
-    (common-lisp:or page-size common-lisp:null))
-   (reverse-order common-lisp:nil :type
-    (common-lisp:or reverse-order common-lisp:null))
-   (start-at-previous-started-event common-lisp:nil :type
-    (common-lisp:or start-at-previous-started-event common-lisp:null)))
+ (common-lisp:defclass poll-for-decision-task-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-poll-for-decision-task-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-poll-for-decision-task-input-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity :initarg :identity :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-poll-for-decision-task-input-identity
+                         :shape "Identity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-poll-for-decision-task-input-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (maximum-page-size :initarg :maximum-page-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or page-size common-lisp:null) :accessor
+                         struct-shape-poll-for-decision-task-input-maximum-page-size
+                         :shape "PageSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reverse-order :initarg :reverse-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reverse-order common-lisp:null)
+                         :accessor
+                         struct-shape-poll-for-decision-task-input-reverse-order
+                         :shape "ReverseOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-at-previous-started-event :initarg
+                         :start-at-previous-started-event :initform
+                         common-lisp:nil :type
+                         (common-lisp:or start-at-previous-started-event
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-poll-for-decision-task-input-start-at-previous-started-event
+                         :shape "StartAtPreviousStartedEvent" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-poll-for-decision-task-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'poll-for-decision-task-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'poll-for-decision-task-input
                     'make-poll-for-decision-task-input))
@@ -4681,13 +6763,25 @@
                           poll-for-decision-task-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (record-activity-task-heartbeat-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-record-activity-task-heartbeat-input-"))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (details common-lisp:nil :type
-    (common-lisp:or limited-data common-lisp:null)))
+ (common-lisp:defclass record-activity-task-heartbeat-input common-lisp:nil
+                       ((task-token :initarg :task-token :initform
+                         (common-lisp:error ":tasktoken is required") :type
+                         (common-lisp:or task-token common-lisp:null) :accessor
+                         struct-shape-record-activity-task-heartbeat-input-task-token
+                         :shape "TaskToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or limited-data common-lisp:null)
+                         :accessor
+                         struct-shape-record-activity-task-heartbeat-input-details
+                         :shape "LimitedData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-record-activity-task-heartbeat-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'record-activity-task-heartbeat-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'record-activity-task-heartbeat-input
                     'make-record-activity-task-heartbeat-input))
@@ -4721,12 +6815,25 @@
                           record-activity-task-heartbeat-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (record-marker-decision-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-record-marker-decision-attributes-"))
-   (marker-name (common-lisp:error ":markername is required") :type
-    (common-lisp:or marker-name common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass record-marker-decision-attributes common-lisp:nil
+                       ((marker-name :initarg :marker-name :initform
+                         (common-lisp:error ":markername is required") :type
+                         (common-lisp:or marker-name common-lisp:null)
+                         :accessor
+                         struct-shape-record-marker-decision-attributes-marker-name
+                         :shape "MarkerName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-record-marker-decision-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-record-marker-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'record-marker-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'record-marker-decision-attributes
                     'make-record-marker-decision-attributes))
@@ -4761,16 +6868,37 @@
    common-lisp:nil))
 (common-lisp:deftype record-marker-failed-cause () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (record-marker-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-record-marker-failed-event-attributes-"))
-   (marker-name (common-lisp:error ":markername is required") :type
-    (common-lisp:or marker-name common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or record-marker-failed-cause common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass record-marker-failed-event-attributes common-lisp:nil
+                       ((marker-name :initarg :marker-name :initform
+                         (common-lisp:error ":markername is required") :type
+                         (common-lisp:or marker-name common-lisp:null)
+                         :accessor
+                         struct-shape-record-marker-failed-event-attributes-marker-name
+                         :shape "MarkerName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or record-marker-failed-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-record-marker-failed-event-attributes-cause
+                         :shape "RecordMarkerFailedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-record-marker-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-record-marker-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'record-marker-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'record-marker-failed-event-attributes
                     'make-record-marker-failed-event-attributes))
@@ -4812,29 +6940,87 @@
                           record-marker-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-activity-type-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-register-activity-type-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (default-task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-task-heartbeat-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (default-task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (default-task-schedule-to-start-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-task-schedule-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
+ (common-lisp:defclass register-activity-type-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-register-activity-type-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-register-activity-type-input-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-register-activity-type-input-version
+                         :shape "Version" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-register-activity-type-input-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-task-start-to-close-timeout :initarg
+                         :default-task-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-register-activity-type-input-default-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-task-heartbeat-timeout :initarg
+                         :default-task-heartbeat-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-register-activity-type-input-default-task-heartbeat-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-task-list :initarg :default-task-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-register-activity-type-input-default-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-task-priority :initarg :default-task-priority
+                         :initform common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-register-activity-type-input-default-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-task-schedule-to-start-timeout :initarg
+                         :default-task-schedule-to-start-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-register-activity-type-input-default-task-schedule-to-start-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-task-schedule-to-close-timeout :initarg
+                         :default-task-schedule-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-register-activity-type-input-default-task-schedule-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-activity-type-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'register-activity-type-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-activity-type-input
                     'make-register-activity-type-input))
@@ -4929,18 +7115,40 @@
                           register-activity-type-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-domain-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-register-domain-input-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (workflow-execution-retention-period-in-days
-    (common-lisp:error ":workflowexecutionretentionperiodindays is required")
-    :type (common-lisp:or duration-in-days common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or resource-tag-list common-lisp:null)))
+ (common-lisp:defclass register-domain-input common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-register-domain-input-name
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-register-domain-input-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-execution-retention-period-in-days :initarg
+                         :workflow-execution-retention-period-in-days :initform
+                         (common-lisp:error
+                          ":workflowexecutionretentionperiodindays is required")
+                         :type
+                         (common-lisp:or duration-in-days common-lisp:null)
+                         :accessor
+                         struct-shape-register-domain-input-workflow-execution-retention-period-in-days
+                         :shape "DurationInDays" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or resource-tag-list common-lisp:null)
+                         :accessor struct-shape-register-domain-input-tags
+                         :shape "ResourceTagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-domain-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'register-domain-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-domain-input 'make-register-domain-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4988,29 +7196,82 @@
                           register-domain-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-workflow-type-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-register-workflow-type-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (default-task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-execution-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (default-task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (default-child-policy common-lisp:nil :type
-    (common-lisp:or child-policy common-lisp:null))
-   (default-lambda-role common-lisp:nil :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass register-workflow-type-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-register-workflow-type-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-register-workflow-type-input-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-register-workflow-type-input-version
+                         :shape "Version" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-register-workflow-type-input-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-task-start-to-close-timeout :initarg
+                         :default-task-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-register-workflow-type-input-default-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-execution-start-to-close-timeout :initarg
+                         :default-execution-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-register-workflow-type-input-default-execution-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-task-list :initarg :default-task-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-register-workflow-type-input-default-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-task-priority :initarg :default-task-priority
+                         :initform common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-register-workflow-type-input-default-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-child-policy :initarg :default-child-policy
+                         :initform common-lisp:nil :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-register-workflow-type-input-default-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-lambda-role :initarg :default-lambda-role
+                         :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-register-workflow-type-input-default-lambda-role
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-workflow-type-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'register-workflow-type-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-workflow-type-input
                     'make-register-workflow-type-input))
@@ -5105,13 +7366,21 @@
    common-lisp:nil))
 (common-lisp:deftype registration-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-cancel-activity-task-decision-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-request-cancel-activity-task-decision-attributes-"))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null)))
+ (common-lisp:defclass request-cancel-activity-task-decision-attributes
+                       common-lisp:nil
+                       ((activity-id :initarg :activity-id :initform
+                         (common-lisp:error ":activityid is required") :type
+                         (common-lisp:or activity-id common-lisp:null)
+                         :accessor
+                         struct-shape-request-cancel-activity-task-decision-attributes-activity-id
+                         :shape "ActivityId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-request-cancel-activity-task-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'request-cancel-activity-task-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'request-cancel-activity-task-decision-attributes
                     'make-request-cancel-activity-task-decision-attributes))
@@ -5140,19 +7409,40 @@
 (common-lisp:deftype request-cancel-activity-task-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-cancel-activity-task-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-request-cancel-activity-task-failed-event-attributes-"))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or request-cancel-activity-task-failed-cause
-                    common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass request-cancel-activity-task-failed-event-attributes
+                       common-lisp:nil
+                       ((activity-id :initarg :activity-id :initform
+                         (common-lisp:error ":activityid is required") :type
+                         (common-lisp:or activity-id common-lisp:null)
+                         :accessor
+                         struct-shape-request-cancel-activity-task-failed-event-attributes-activity-id
+                         :shape "ActivityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or
+                          request-cancel-activity-task-failed-cause
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-request-cancel-activity-task-failed-event-attributes-cause
+                         :shape "RequestCancelActivityTaskFailedCause"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-request-cancel-activity-task-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-request-cancel-activity-task-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'request-cancel-activity-task-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'request-cancel-activity-task-failed-event-attributes
                     'make-request-cancel-activity-task-failed-event-attributes))
@@ -5194,16 +7484,30 @@
                           request-cancel-activity-task-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-cancel-external-workflow-execution-decision-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-request-cancel-external-workflow-execution-decision-attributes-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass
+  request-cancel-external-workflow-execution-decision-attributes
+  common-lisp:nil
+  ((workflow-id :initarg :workflow-id :initform
+    (common-lisp:error ":workflowid is required") :type
+    (common-lisp:or workflow-id common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-decision-attributes-workflow-id
+    :shape "WorkflowId" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (run-id :initarg :run-id :initform common-lisp:nil :type
+    (common-lisp:or workflow-run-id-optional common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-decision-attributes-run-id
+    :shape "WorkflowRunIdOptional" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (control :initarg :control :initform common-lisp:nil :type
+    (common-lisp:or data common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-decision-attributes-control
+    :shape "Data" :location common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-request-cancel-external-workflow-execution-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'request-cancel-external-workflow-execution-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'request-cancel-external-workflow-execution-decision-attributes
@@ -5247,24 +7551,48 @@
 (common-lisp:deftype request-cancel-external-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-cancel-external-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-request-cancel-external-workflow-execution-failed-event-attributes-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
+ (common-lisp:defclass
+  request-cancel-external-workflow-execution-failed-event-attributes
+  common-lisp:nil
+  ((workflow-id :initarg :workflow-id :initform
+    (common-lisp:error ":workflowid is required") :type
+    (common-lisp:or workflow-id common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-failed-event-attributes-workflow-id
+    :shape "WorkflowId" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (run-id :initarg :run-id :initform common-lisp:nil :type
+    (common-lisp:or workflow-run-id-optional common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-failed-event-attributes-run-id
+    :shape "WorkflowRunIdOptional" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (cause :initarg :cause :initform (common-lisp:error ":cause is required")
+    :type
     (common-lisp:or request-cancel-external-workflow-execution-failed-cause
-                    common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+                    common-lisp:null)
+    :accessor
+    struct-shape-request-cancel-external-workflow-execution-failed-event-attributes-cause
+    :shape "RequestCancelExternalWorkflowExecutionFailedCause" :location
+    common-lisp:nil :location-name common-lisp:nil)
+   (initiated-event-id :initarg :initiated-event-id :initform
+    (common-lisp:error ":initiatedeventid is required") :type
+    (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-failed-event-attributes-initiated-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil)
+   (decision-task-completed-event-id :initarg :decision-task-completed-event-id
+    :initform (common-lisp:error ":decisiontaskcompletedeventid is required")
+    :type (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-failed-event-attributes-decision-task-completed-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil)
+   (control :initarg :control :initform common-lisp:nil :type
+    (common-lisp:or data common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-failed-event-attributes-control
+    :shape "Data" :location common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-request-cancel-external-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'request-cancel-external-workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'request-cancel-external-workflow-execution-failed-event-attributes
@@ -5328,19 +7656,35 @@
                           request-cancel-external-workflow-execution-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-cancel-external-workflow-execution-initiated-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-request-cancel-external-workflow-execution-initiated-event-attributes-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass
+  request-cancel-external-workflow-execution-initiated-event-attributes
+  common-lisp:nil
+  ((workflow-id :initarg :workflow-id :initform
+    (common-lisp:error ":workflowid is required") :type
+    (common-lisp:or workflow-id common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-initiated-event-attributes-workflow-id
+    :shape "WorkflowId" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (run-id :initarg :run-id :initform common-lisp:nil :type
+    (common-lisp:or workflow-run-id-optional common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-initiated-event-attributes-run-id
+    :shape "WorkflowRunIdOptional" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (decision-task-completed-event-id :initarg :decision-task-completed-event-id
+    :initform (common-lisp:error ":decisiontaskcompletedeventid is required")
+    :type (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-initiated-event-attributes-decision-task-completed-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil)
+   (control :initarg :control :initform common-lisp:nil :type
+    (common-lisp:or data common-lisp:null) :accessor
+    struct-shape-request-cancel-external-workflow-execution-initiated-event-attributes-control
+    :shape "Data" :location common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-request-cancel-external-workflow-execution-initiated-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'request-cancel-external-workflow-execution-initiated-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'request-cancel-external-workflow-execution-initiated-event-attributes
@@ -5390,15 +7734,35 @@
                           request-cancel-external-workflow-execution-initiated-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-cancel-workflow-execution-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-request-cancel-workflow-execution-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null)))
+ (common-lisp:defclass request-cancel-workflow-execution-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-request-cancel-workflow-execution-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor
+                         struct-shape-request-cancel-workflow-execution-input-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (run-id :initarg :run-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-run-id-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-request-cancel-workflow-execution-input-run-id
+                         :shape "WorkflowRunIdOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-request-cancel-workflow-execution-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'request-cancel-workflow-execution-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'request-cancel-workflow-execution-input
                     'make-request-cancel-workflow-execution-input))
@@ -5439,13 +7803,23 @@
                           request-cancel-workflow-execution-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-tag (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or resource-tag-key common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or resource-tag-value common-lisp:null)))
+ (common-lisp:defclass resource-tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or resource-tag-key common-lisp:null)
+                         :accessor struct-shape-resource-tag-key :shape
+                         "ResourceTagKey" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or resource-tag-value common-lisp:null)
+                         :accessor struct-shape-resource-tag-value :shape
+                         "ResourceTagValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-tag
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resource-tag 'make-resource-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resource-tag))
@@ -5489,12 +7863,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype resource-tag-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (respond-activity-task-canceled-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-respond-activity-task-canceled-input-"))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass respond-activity-task-canceled-input common-lisp:nil
+                       ((task-token :initarg :task-token :initform
+                         (common-lisp:error ":tasktoken is required") :type
+                         (common-lisp:or task-token common-lisp:null) :accessor
+                         struct-shape-respond-activity-task-canceled-input-task-token
+                         :shape "TaskToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-respond-activity-task-canceled-input-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-respond-activity-task-canceled-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'respond-activity-task-canceled-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'respond-activity-task-canceled-input
                     'make-respond-activity-task-canceled-input))
@@ -5528,12 +7914,24 @@
                           respond-activity-task-canceled-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (respond-activity-task-completed-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-respond-activity-task-completed-input-"))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (result common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass respond-activity-task-completed-input common-lisp:nil
+                       ((task-token :initarg :task-token :initform
+                         (common-lisp:error ":tasktoken is required") :type
+                         (common-lisp:or task-token common-lisp:null) :accessor
+                         struct-shape-respond-activity-task-completed-input-task-token
+                         :shape "TaskToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (result :initarg :result :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-respond-activity-task-completed-input-result
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-respond-activity-task-completed-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'respond-activity-task-completed-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'respond-activity-task-completed-input
                     'make-respond-activity-task-completed-input))
@@ -5567,14 +7965,30 @@
                           respond-activity-task-completed-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (respond-activity-task-failed-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-respond-activity-task-failed-input-"))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or failure-reason common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass respond-activity-task-failed-input common-lisp:nil
+                       ((task-token :initarg :task-token :initform
+                         (common-lisp:error ":tasktoken is required") :type
+                         (common-lisp:or task-token common-lisp:null) :accessor
+                         struct-shape-respond-activity-task-failed-input-task-token
+                         :shape "TaskToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reason :initarg :reason :initform common-lisp:nil
+                         :type (common-lisp:or failure-reason common-lisp:null)
+                         :accessor
+                         struct-shape-respond-activity-task-failed-input-reason
+                         :shape "FailureReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-respond-activity-task-failed-input-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-respond-activity-task-failed-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'respond-activity-task-failed-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'respond-activity-task-failed-input
                     'make-respond-activity-task-failed-input))
@@ -5615,19 +8029,47 @@
                           respond-activity-task-failed-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (respond-decision-task-completed-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-respond-decision-task-completed-input-"))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (decisions common-lisp:nil :type
-    (common-lisp:or decision-list common-lisp:null))
-   (execution-context common-lisp:nil :type
-    (common-lisp:or data common-lisp:null))
-   (task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-list-schedule-to-start-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
+ (common-lisp:defclass respond-decision-task-completed-input common-lisp:nil
+                       ((task-token :initarg :task-token :initform
+                         (common-lisp:error ":tasktoken is required") :type
+                         (common-lisp:or task-token common-lisp:null) :accessor
+                         struct-shape-respond-decision-task-completed-input-task-token
+                         :shape "TaskToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (decisions :initarg :decisions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or decision-list common-lisp:null)
+                         :accessor
+                         struct-shape-respond-decision-task-completed-input-decisions
+                         :shape "DecisionList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-context :initarg :execution-context
+                         :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-respond-decision-task-completed-input-execution-context
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-respond-decision-task-completed-input-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list-schedule-to-start-timeout :initarg
+                         :task-list-schedule-to-start-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-respond-decision-task-completed-input-task-list-schedule-to-start-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-respond-decision-task-completed-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'respond-decision-task-completed-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'respond-decision-task-completed-input
                     'make-respond-decision-task-completed-input))
@@ -5684,10 +8126,17 @@
    common-lisp:nil))
 (common-lisp:deftype reverse-order () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (run (:copier common-lisp:nil) (:conc-name "struct-shape-run-"))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id common-lisp:null)))
+ (common-lisp:defclass run common-lisp:nil
+                       ((run-id :initarg :run-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-run-id common-lisp:null)
+                         :accessor struct-shape-run-run-id :shape
+                         "WorkflowRunId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-run (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'run
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'run 'make-run))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input run))
@@ -5706,27 +8155,86 @@
                         ((aws-sdk/generator/shape::input run))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (schedule-activity-task-decision-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-schedule-activity-task-decision-attributes-"))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (schedule-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (schedule-to-start-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (heartbeat-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
+ (common-lisp:defclass schedule-activity-task-decision-attributes
+                       common-lisp:nil
+                       ((activity-type :initarg :activity-type :initform
+                         (common-lisp:error ":activitytype is required") :type
+                         (common-lisp:or activity-type common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-activity-type
+                         :shape "ActivityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (activity-id :initarg :activity-id :initform
+                         (common-lisp:error ":activityid is required") :type
+                         (common-lisp:or activity-id common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-activity-id
+                         :shape "ActivityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (schedule-to-close-timeout :initarg
+                         :schedule-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-schedule-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schedule-to-start-timeout :initarg
+                         :schedule-to-start-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-schedule-to-start-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-to-close-timeout :initarg
+                         :start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (heartbeat-timeout :initarg :heartbeat-timeout
+                         :initform common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-decision-attributes-heartbeat-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-schedule-activity-task-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'schedule-activity-task-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'schedule-activity-task-decision-attributes
                     'make-schedule-activity-task-decision-attributes))
@@ -5820,19 +8328,45 @@
    common-lisp:nil))
 (common-lisp:deftype schedule-activity-task-failed-cause () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (schedule-activity-task-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-schedule-activity-task-failed-event-attributes-"))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or schedule-activity-task-failed-cause common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass schedule-activity-task-failed-event-attributes
+                       common-lisp:nil
+                       ((activity-type :initarg :activity-type :initform
+                         (common-lisp:error ":activitytype is required") :type
+                         (common-lisp:or activity-type common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-failed-event-attributes-activity-type
+                         :shape "ActivityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (activity-id :initarg :activity-id :initform
+                         (common-lisp:error ":activityid is required") :type
+                         (common-lisp:or activity-id common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-failed-event-attributes-activity-id
+                         :shape "ActivityId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or schedule-activity-task-failed-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-failed-event-attributes-cause
+                         :shape "ScheduleActivityTaskFailedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-activity-task-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-schedule-activity-task-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'schedule-activity-task-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'schedule-activity-task-failed-event-attributes
                     'make-schedule-activity-task-failed-event-attributes))
@@ -5881,19 +8415,48 @@
                           schedule-activity-task-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (schedule-lambda-function-decision-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-schedule-lambda-function-decision-attributes-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or function-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (input common-lisp:nil :type
-    (common-lisp:or function-input common-lisp:null))
-   (start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null)))
+ (common-lisp:defclass schedule-lambda-function-decision-attributes
+                       common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or function-id common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-lambda-function-decision-attributes-id
+                         :shape "FunctionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or function-name common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-lambda-function-decision-attributes-name
+                         :shape "FunctionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-schedule-lambda-function-decision-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or function-input common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-lambda-function-decision-attributes-input
+                         :shape "FunctionInput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-to-close-timeout :initarg
+                         :start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-lambda-function-decision-attributes-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-schedule-lambda-function-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'schedule-lambda-function-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'schedule-lambda-function-decision-attributes
                     'make-schedule-lambda-function-decision-attributes))
@@ -5951,20 +8514,45 @@
 (common-lisp:deftype schedule-lambda-function-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (schedule-lambda-function-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-schedule-lambda-function-failed-event-attributes-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or function-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or schedule-lambda-function-failed-cause common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass schedule-lambda-function-failed-event-attributes
+                       common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or function-id common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-lambda-function-failed-event-attributes-id
+                         :shape "FunctionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or function-name common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-lambda-function-failed-event-attributes-name
+                         :shape "FunctionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or schedule-lambda-function-failed-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-lambda-function-failed-event-attributes-cause
+                         :shape "ScheduleLambdaFunctionFailedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-schedule-lambda-function-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-schedule-lambda-function-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'schedule-lambda-function-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'schedule-lambda-function-failed-event-attributes
                     'make-schedule-lambda-function-failed-event-attributes))
@@ -6013,19 +8601,46 @@
                           schedule-lambda-function-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signal-external-workflow-execution-decision-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-signal-external-workflow-execution-decision-attributes-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (signal-name (common-lisp:error ":signalname is required") :type
-    (common-lisp:or signal-name common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass signal-external-workflow-execution-decision-attributes
+                       common-lisp:nil
+                       ((workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor
+                         struct-shape-signal-external-workflow-execution-decision-attributes-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (run-id :initarg :run-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-run-id-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-signal-external-workflow-execution-decision-attributes-run-id
+                         :shape "WorkflowRunIdOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signal-name :initarg :signal-name :initform
+                         (common-lisp:error ":signalname is required") :type
+                         (common-lisp:or signal-name common-lisp:null)
+                         :accessor
+                         struct-shape-signal-external-workflow-execution-decision-attributes-signal-name
+                         :shape "SignalName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-signal-external-workflow-execution-decision-attributes-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-signal-external-workflow-execution-decision-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signal-external-workflow-execution-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'signal-external-workflow-execution-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signal-external-workflow-execution-decision-attributes
                     'make-signal-external-workflow-execution-decision-attributes))
@@ -6082,24 +8697,47 @@
 (common-lisp:deftype signal-external-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (signal-external-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-signal-external-workflow-execution-failed-event-attributes-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
+ (common-lisp:defclass
+  signal-external-workflow-execution-failed-event-attributes common-lisp:nil
+  ((workflow-id :initarg :workflow-id :initform
+    (common-lisp:error ":workflowid is required") :type
+    (common-lisp:or workflow-id common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-failed-event-attributes-workflow-id
+    :shape "WorkflowId" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (run-id :initarg :run-id :initform common-lisp:nil :type
+    (common-lisp:or workflow-run-id-optional common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-failed-event-attributes-run-id
+    :shape "WorkflowRunIdOptional" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (cause :initarg :cause :initform (common-lisp:error ":cause is required")
+    :type
     (common-lisp:or signal-external-workflow-execution-failed-cause
-                    common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+                    common-lisp:null)
+    :accessor
+    struct-shape-signal-external-workflow-execution-failed-event-attributes-cause
+    :shape "SignalExternalWorkflowExecutionFailedCause" :location
+    common-lisp:nil :location-name common-lisp:nil)
+   (initiated-event-id :initarg :initiated-event-id :initform
+    (common-lisp:error ":initiatedeventid is required") :type
+    (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-failed-event-attributes-initiated-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil)
+   (decision-task-completed-event-id :initarg :decision-task-completed-event-id
+    :initform (common-lisp:error ":decisiontaskcompletedeventid is required")
+    :type (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-failed-event-attributes-decision-task-completed-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil)
+   (control :initarg :control :initform common-lisp:nil :type
+    (common-lisp:or data common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-failed-event-attributes-control
+    :shape "Data" :location common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signal-external-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'signal-external-workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signal-external-workflow-execution-failed-event-attributes
                     'make-signal-external-workflow-execution-failed-event-attributes))
@@ -6162,22 +8800,44 @@
                           signal-external-workflow-execution-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (signal-external-workflow-execution-initiated-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-signal-external-workflow-execution-initiated-event-attributes-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (signal-name (common-lisp:error ":signalname is required") :type
-    (common-lisp:or signal-name common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass
+  signal-external-workflow-execution-initiated-event-attributes common-lisp:nil
+  ((workflow-id :initarg :workflow-id :initform
+    (common-lisp:error ":workflowid is required") :type
+    (common-lisp:or workflow-id common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-initiated-event-attributes-workflow-id
+    :shape "WorkflowId" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (run-id :initarg :run-id :initform common-lisp:nil :type
+    (common-lisp:or workflow-run-id-optional common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-initiated-event-attributes-run-id
+    :shape "WorkflowRunIdOptional" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (signal-name :initarg :signal-name :initform
+    (common-lisp:error ":signalname is required") :type
+    (common-lisp:or signal-name common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-initiated-event-attributes-signal-name
+    :shape "SignalName" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (input :initarg :input :initform common-lisp:nil :type
+    (common-lisp:or data common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-initiated-event-attributes-input
+    :shape "Data" :location common-lisp:nil :location-name common-lisp:nil)
+   (decision-task-completed-event-id :initarg :decision-task-completed-event-id
+    :initform (common-lisp:error ":decisiontaskcompletedeventid is required")
+    :type (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-initiated-event-attributes-decision-task-completed-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil)
+   (control :initarg :control :initform common-lisp:nil :type
+    (common-lisp:or data common-lisp:null) :accessor
+    struct-shape-signal-external-workflow-execution-initiated-event-attributes-control
+    :shape "Data" :location common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signal-external-workflow-execution-initiated-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'signal-external-workflow-execution-initiated-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'signal-external-workflow-execution-initiated-event-attributes
@@ -6242,18 +8902,47 @@
    common-lisp:nil))
 (common-lisp:deftype signal-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (signal-workflow-execution-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-signal-workflow-execution-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (signal-name (common-lisp:error ":signalname is required") :type
-    (common-lisp:or signal-name common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass signal-workflow-execution-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-signal-workflow-execution-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor
+                         struct-shape-signal-workflow-execution-input-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (run-id :initarg :run-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-run-id-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-signal-workflow-execution-input-run-id
+                         :shape "WorkflowRunIdOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (signal-name :initarg :signal-name :initform
+                         (common-lisp:error ":signalname is required") :type
+                         (common-lisp:or signal-name common-lisp:null)
+                         :accessor
+                         struct-shape-signal-workflow-execution-input-signal-name
+                         :shape "SignalName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-signal-workflow-execution-input-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-signal-workflow-execution-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'signal-workflow-execution-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'signal-workflow-execution-input
                     'make-signal-workflow-execution-input))
@@ -6309,29 +8998,88 @@
    common-lisp:nil))
 (common-lisp:deftype start-at-previous-started-event () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-child-workflow-execution-decision-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-start-child-workflow-execution-decision-attributes-"))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (execution-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (child-policy common-lisp:nil :type
-    (common-lisp:or child-policy common-lisp:null))
-   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass start-child-workflow-execution-decision-attributes
+                       common-lisp:nil
+                       ((workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (execution-start-to-close-timeout :initarg
+                         :execution-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-execution-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-start-to-close-timeout :initarg
+                         :task-start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-list :initarg :tag-list :initform common-lisp:nil
+                         :type (common-lisp:or tag-list common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-tag-list
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lambda-role :initarg :lambda-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-start-child-workflow-execution-decision-attributes-lambda-role
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-child-workflow-execution-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-child-workflow-execution-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-child-workflow-execution-decision-attributes
                     'make-start-child-workflow-execution-decision-attributes))
@@ -6432,24 +9180,60 @@
 (common-lisp:deftype start-child-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-child-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-start-child-workflow-execution-failed-event-attributes-"))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or start-child-workflow-execution-failed-cause
-                    common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
-    :type (common-lisp:or event-id common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass start-child-workflow-execution-failed-event-attributes
+                       common-lisp:nil
+                       ((workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-failed-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or
+                          start-child-workflow-execution-failed-cause
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-failed-event-attributes-cause
+                         :shape "StartChildWorkflowExecutionFailedCause"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-failed-event-attributes-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initiated-event-id :initarg :initiated-event-id
+                         :initform
+                         (common-lisp:error ":initiatedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-failed-event-attributes-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-child-workflow-execution-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-start-child-workflow-execution-failed-event-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-child-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-child-workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-child-workflow-execution-failed-event-attributes
                     'make-start-child-workflow-execution-failed-event-attributes))
@@ -6512,32 +9296,75 @@
                           start-child-workflow-execution-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-child-workflow-execution-initiated-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-start-child-workflow-execution-initiated-event-attributes-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (execution-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
-   (task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass
+  start-child-workflow-execution-initiated-event-attributes common-lisp:nil
+  ((workflow-id :initarg :workflow-id :initform
+    (common-lisp:error ":workflowid is required") :type
+    (common-lisp:or workflow-id common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-workflow-id
+    :shape "WorkflowId" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (workflow-type :initarg :workflow-type :initform
+    (common-lisp:error ":workflowtype is required") :type
+    (common-lisp:or workflow-type common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-workflow-type
+    :shape "WorkflowType" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (control :initarg :control :initform common-lisp:nil :type
+    (common-lisp:or data common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-control
+    :shape "Data" :location common-lisp:nil :location-name common-lisp:nil)
+   (input :initarg :input :initform common-lisp:nil :type
+    (common-lisp:or data common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-input
+    :shape "Data" :location common-lisp:nil :location-name common-lisp:nil)
+   (execution-start-to-close-timeout :initarg :execution-start-to-close-timeout
+    :initform common-lisp:nil :type
+    (common-lisp:or duration-in-seconds-optional common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-execution-start-to-close-timeout
+    :shape "DurationInSecondsOptional" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (task-list :initarg :task-list :initform
+    (common-lisp:error ":tasklist is required") :type
+    (common-lisp:or task-list common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-task-list
+    :shape "TaskList" :location common-lisp:nil :location-name common-lisp:nil)
+   (task-priority :initarg :task-priority :initform common-lisp:nil :type
+    (common-lisp:or task-priority common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-task-priority
+    :shape "TaskPriority" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (decision-task-completed-event-id :initarg :decision-task-completed-event-id
+    :initform (common-lisp:error ":decisiontaskcompletedeventid is required")
+    :type (common-lisp:or event-id common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-decision-task-completed-event-id
+    :shape "EventId" :location common-lisp:nil :location-name common-lisp:nil)
+   (child-policy :initarg :child-policy :initform
+    (common-lisp:error ":childpolicy is required") :type
+    (common-lisp:or child-policy common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-child-policy
+    :shape "ChildPolicy" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (task-start-to-close-timeout :initarg :task-start-to-close-timeout :initform
+    common-lisp:nil :type
+    (common-lisp:or duration-in-seconds-optional common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-task-start-to-close-timeout
+    :shape "DurationInSecondsOptional" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (tag-list :initarg :tag-list :initform common-lisp:nil :type
+    (common-lisp:or tag-list common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-tag-list
+    :shape "TagList" :location common-lisp:nil :location-name common-lisp:nil)
+   (lambda-role :initarg :lambda-role :initform common-lisp:nil :type
+    (common-lisp:or arn common-lisp:null) :accessor
+    struct-shape-start-child-workflow-execution-initiated-event-attributes-lambda-role
+    :shape "Arn" :location common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-child-workflow-execution-initiated-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-child-workflow-execution-initiated-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-child-workflow-execution-initiated-event-attributes
                     'make-start-child-workflow-execution-initiated-event-attributes))
@@ -6645,16 +9472,33 @@
    common-lisp:nil))
 (common-lisp:deftype start-lambda-function-failed-cause () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-lambda-function-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-start-lambda-function-failed-event-attributes-"))
-   (scheduled-event-id common-lisp:nil :type
-    (common-lisp:or event-id common-lisp:null))
-   (cause common-lisp:nil :type
-    (common-lisp:or start-lambda-function-failed-cause common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or cause-message common-lisp:null)))
+ (common-lisp:defclass start-lambda-function-failed-event-attributes
+                       common-lisp:nil
+                       ((scheduled-event-id :initarg :scheduled-event-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or event-id common-lisp:null) :accessor
+                         struct-shape-start-lambda-function-failed-event-attributes-scheduled-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform common-lisp:nil :type
+                         (common-lisp:or start-lambda-function-failed-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-lambda-function-failed-event-attributes-cause
+                         :shape "StartLambdaFunctionFailedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (message :initarg :message :initform common-lisp:nil
+                         :type (common-lisp:or cause-message common-lisp:null)
+                         :accessor
+                         struct-shape-start-lambda-function-failed-event-attributes-message
+                         :shape "CauseMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-lambda-function-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-lambda-function-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-lambda-function-failed-event-attributes
                     'make-start-lambda-function-failed-event-attributes))
@@ -6695,14 +9539,33 @@
                           start-lambda-function-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-timer-decision-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-timer-decision-attributes-"))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (start-to-fire-timeout (common-lisp:error ":starttofiretimeout is required")
-    :type (common-lisp:or duration-in-seconds common-lisp:null)))
+ (common-lisp:defclass start-timer-decision-attributes common-lisp:nil
+                       ((timer-id :initarg :timer-id :initform
+                         (common-lisp:error ":timerid is required") :type
+                         (common-lisp:or timer-id common-lisp:null) :accessor
+                         struct-shape-start-timer-decision-attributes-timer-id
+                         :shape "TimerId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-start-timer-decision-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-to-fire-timeout :initarg :start-to-fire-timeout
+                         :initform
+                         (common-lisp:error ":starttofiretimeout is required")
+                         :type
+                         (common-lisp:or duration-in-seconds common-lisp:null)
+                         :accessor
+                         struct-shape-start-timer-decision-attributes-start-to-fire-timeout
+                         :shape "DurationInSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-timer-decision-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-timer-decision-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-timer-decision-attributes
                     'make-start-timer-decision-attributes))
@@ -6745,16 +9608,36 @@
    common-lisp:nil))
 (common-lisp:deftype start-timer-failed-cause () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-timer-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-timer-failed-event-attributes-"))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or start-timer-failed-cause common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass start-timer-failed-event-attributes common-lisp:nil
+                       ((timer-id :initarg :timer-id :initform
+                         (common-lisp:error ":timerid is required") :type
+                         (common-lisp:or timer-id common-lisp:null) :accessor
+                         struct-shape-start-timer-failed-event-attributes-timer-id
+                         :shape "TimerId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform
+                         (common-lisp:error ":cause is required") :type
+                         (common-lisp:or start-timer-failed-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-timer-failed-event-attributes-cause
+                         :shape "StartTimerFailedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-timer-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-timer-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-timer-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-timer-failed-event-attributes
                     'make-start-timer-failed-event-attributes))
@@ -6796,28 +9679,89 @@
                           start-timer-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-workflow-execution-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-workflow-execution-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (execution-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (child-policy common-lisp:nil :type
-    (common-lisp:or child-policy common-lisp:null))
-   (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass start-workflow-execution-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-workflow-execution-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-workflow-execution-input-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-start-workflow-execution-input-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-start-workflow-execution-input-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-start-workflow-execution-input-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-start-workflow-execution-input-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (execution-start-to-close-timeout :initarg
+                         :execution-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-workflow-execution-input-execution-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tag-list :initarg :tag-list :initform common-lisp:nil
+                         :type (common-lisp:or tag-list common-lisp:null)
+                         :accessor
+                         struct-shape-start-workflow-execution-input-tag-list
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-start-to-close-timeout :initarg
+                         :task-start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-workflow-execution-input-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-start-workflow-execution-input-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lambda-role :initarg :lambda-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-start-workflow-execution-input-lambda-role
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-workflow-execution-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-workflow-execution-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-workflow-execution-input
                     'make-start-workflow-execution-input))
@@ -6917,11 +9861,17 @@
    common-lisp:nil))
 (common-lisp:deftype tag () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-filter-"))
-   (tag (common-lisp:error ":tag is required") :type
-    (common-lisp:or tag common-lisp:null)))
+ (common-lisp:defclass tag-filter common-lisp:nil
+                       ((tag :initarg :tag :initform
+                         (common-lisp:error ":tag is required") :type
+                         (common-lisp:or tag common-lisp:null) :accessor
+                         struct-shape-tag-filter-tag :shape "Tag" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag-filter 'make-tag-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag-filter))
@@ -6947,13 +9897,24 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or resource-tag-list common-lisp:null)))
+ (common-lisp:defclass tag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-resource-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or resource-tag-list common-lisp:null)
+                         :accessor struct-shape-tag-resource-input-tags :shape
+                         "ResourceTagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6980,11 +9941,17 @@
                         ((aws-sdk/generator/shape::input tag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (task-list (:copier common-lisp:nil)
-      (:conc-name "struct-shape-task-list-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null)))
+ (common-lisp:defclass task-list common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-task-list-name :shape "Name" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-task-list
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'task-list
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'task-list 'make-task-list))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input task-list))
@@ -7006,20 +9973,54 @@
 (common-lisp:deftype task-token () 'common-lisp:string)
 (common-lisp:deftype terminate-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (terminate-workflow-execution-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-terminate-workflow-execution-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or terminate-reason common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (child-policy common-lisp:nil :type
-    (common-lisp:or child-policy common-lisp:null)))
+ (common-lisp:defclass terminate-workflow-execution-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-terminate-workflow-execution-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor
+                         struct-shape-terminate-workflow-execution-input-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (run-id :initarg :run-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-run-id-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-terminate-workflow-execution-input-run-id
+                         :shape "WorkflowRunIdOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (reason :initarg :reason :initform common-lisp:nil
+                         :type
+                         (common-lisp:or terminate-reason common-lisp:null)
+                         :accessor
+                         struct-shape-terminate-workflow-execution-input-reason
+                         :shape "TerminateReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-terminate-workflow-execution-input-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-terminate-workflow-execution-input-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-terminate-workflow-execution-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'terminate-workflow-execution-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'terminate-workflow-execution-input
                     'make-terminate-workflow-execution-input))
@@ -7081,16 +10082,35 @@
                           terminate-workflow-execution-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (timer-canceled-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-timer-canceled-event-attributes-"))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass timer-canceled-event-attributes common-lisp:nil
+                       ((timer-id :initarg :timer-id :initform
+                         (common-lisp:error ":timerid is required") :type
+                         (common-lisp:or timer-id common-lisp:null) :accessor
+                         struct-shape-timer-canceled-event-attributes-timer-id
+                         :shape "TimerId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-timer-canceled-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-timer-canceled-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-timer-canceled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'timer-canceled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'timer-canceled-event-attributes
                     'make-timer-canceled-event-attributes))
@@ -7132,13 +10152,25 @@
                           timer-canceled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (timer-fired-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-timer-fired-event-attributes-"))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass timer-fired-event-attributes common-lisp:nil
+                       ((timer-id :initarg :timer-id :initform
+                         (common-lisp:error ":timerid is required") :type
+                         (common-lisp:or timer-id common-lisp:null) :accessor
+                         struct-shape-timer-fired-event-attributes-timer-id
+                         :shape "TimerId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-event-id :initarg :started-event-id :initform
+                         (common-lisp:error ":startedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-timer-fired-event-attributes-started-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-timer-fired-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'timer-fired-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'timer-fired-event-attributes
                     'make-timer-fired-event-attributes))
@@ -7173,17 +10205,42 @@
    common-lisp:nil))
 (common-lisp:deftype timer-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (timer-started-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-timer-started-event-attributes-"))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (start-to-fire-timeout (common-lisp:error ":starttofiretimeout is required")
-    :type (common-lisp:or duration-in-seconds common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass timer-started-event-attributes common-lisp:nil
+                       ((timer-id :initarg :timer-id :initform
+                         (common-lisp:error ":timerid is required") :type
+                         (common-lisp:or timer-id common-lisp:null) :accessor
+                         struct-shape-timer-started-event-attributes-timer-id
+                         :shape "TimerId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (control :initarg :control :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-timer-started-event-attributes-control
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-to-fire-timeout :initarg :start-to-fire-timeout
+                         :initform
+                         (common-lisp:error ":starttofiretimeout is required")
+                         :type
+                         (common-lisp:or duration-in-seconds common-lisp:null)
+                         :accessor
+                         struct-shape-timer-started-event-attributes-start-to-fire-timeout
+                         :shape "DurationInSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-timer-started-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-timer-started-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'timer-started-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'timer-started-event-attributes
                     'make-timer-started-event-attributes))
@@ -7257,13 +10314,27 @@
  (common-lisp:export
   (common-lisp:list 'type-deprecated-fault 'type-deprecated-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (undeprecate-activity-type-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-undeprecate-activity-type-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null)))
+ (common-lisp:defclass undeprecate-activity-type-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-undeprecate-activity-type-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (activity-type :initarg :activity-type :initform
+                         (common-lisp:error ":activitytype is required") :type
+                         (common-lisp:or activity-type common-lisp:null)
+                         :accessor
+                         struct-shape-undeprecate-activity-type-input-activity-type
+                         :shape "ActivityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-undeprecate-activity-type-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'undeprecate-activity-type-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'undeprecate-activity-type-input
                     'make-undeprecate-activity-type-input))
@@ -7297,11 +10368,18 @@
                           undeprecate-activity-type-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (undeprecate-domain-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-undeprecate-domain-input-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+ (common-lisp:defclass undeprecate-domain-input common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-undeprecate-domain-input-name
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-undeprecate-domain-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'undeprecate-domain-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'undeprecate-domain-input 'make-undeprecate-domain-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7327,13 +10405,27 @@
                           undeprecate-domain-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (undeprecate-workflow-type-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-undeprecate-workflow-type-input-"))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null)))
+ (common-lisp:defclass undeprecate-workflow-type-input common-lisp:nil
+                       ((domain :initarg :domain :initform
+                         (common-lisp:error ":domain is required") :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-undeprecate-workflow-type-input-domain
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-undeprecate-workflow-type-input-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-undeprecate-workflow-type-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'undeprecate-workflow-type-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'undeprecate-workflow-type-input
                     'make-undeprecate-workflow-type-input))
@@ -7374,13 +10466,25 @@
  (common-lisp:export
   (common-lisp:list 'unknown-resource-fault 'unknown-resource-fault-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or resource-tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-input-resource-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or resource-tag-key-list
+                                         common-lisp:null)
+                         :accessor struct-shape-untag-resource-input-tag-keys
+                         :shape "ResourceTagKeyList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7409,13 +10513,24 @@
 (common-lisp:deftype version () 'common-lisp:string)
 (common-lisp:deftype version-optional () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id (common-lisp:error ":runid is required") :type
-    (common-lisp:or workflow-run-id common-lisp:null)))
+ (common-lisp:defclass workflow-execution common-lisp:nil
+                       ((workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor struct-shape-workflow-execution-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (run-id :initarg :run-id :initform
+                         (common-lisp:error ":runid is required") :type
+                         (common-lisp:or workflow-run-id common-lisp:null)
+                         :accessor struct-shape-workflow-execution-run-id
+                         :shape "WorkflowRunId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-execution
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution 'make-workflow-execution))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7452,18 +10567,38 @@
 (common-lisp:deftype workflow-execution-cancel-requested-cause ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-cancel-requested-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-workflow-execution-cancel-requested-event-attributes-"))
-   (external-workflow-execution common-lisp:nil :type
-    (common-lisp:or workflow-execution common-lisp:null))
-   (external-initiated-event-id common-lisp:nil :type
-    (common-lisp:or event-id common-lisp:null))
-   (cause common-lisp:nil :type
-    (common-lisp:or workflow-execution-cancel-requested-cause
-                    common-lisp:null)))
+ (common-lisp:defclass workflow-execution-cancel-requested-event-attributes
+                       common-lisp:nil
+                       ((external-workflow-execution :initarg
+                         :external-workflow-execution :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-cancel-requested-event-attributes-external-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (external-initiated-event-id :initarg
+                         :external-initiated-event-id :initform common-lisp:nil
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-cancel-requested-event-attributes-external-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform common-lisp:nil :type
+                         (common-lisp:or
+                          workflow-execution-cancel-requested-cause
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-cancel-requested-event-attributes-cause
+                         :shape "WorkflowExecutionCancelRequestedCause"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-cancel-requested-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-cancel-requested-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-cancel-requested-event-attributes
                     'make-workflow-execution-cancel-requested-event-attributes))
@@ -7506,14 +10641,28 @@
                           workflow-execution-cancel-requested-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-canceled-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-workflow-execution-canceled-event-attributes-"))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass workflow-execution-canceled-event-attributes
+                       common-lisp:nil
+                       ((details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-workflow-execution-canceled-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-canceled-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-canceled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-canceled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-canceled-event-attributes
                     'make-workflow-execution-canceled-event-attributes))
@@ -7548,14 +10697,28 @@
                           workflow-execution-canceled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-completed-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-workflow-execution-completed-event-attributes-"))
-   (result common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass workflow-execution-completed-event-attributes
+                       common-lisp:nil
+                       ((result :initarg :result :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-workflow-execution-completed-event-attributes-result
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-completed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-completed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-completed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-completed-event-attributes
                     'make-workflow-execution-completed-event-attributes))
@@ -7590,22 +10753,59 @@
                           workflow-execution-completed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-configuration-"))
-   (task-start-to-close-timeout
-    (common-lisp:error ":taskstarttoclosetimeout is required") :type
-    (common-lisp:or duration-in-seconds common-lisp:null))
-   (execution-start-to-close-timeout
-    (common-lisp:error ":executionstarttoclosetimeout is required") :type
-    (common-lisp:or duration-in-seconds common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
-   (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass workflow-execution-configuration common-lisp:nil
+                       ((task-start-to-close-timeout :initarg
+                         :task-start-to-close-timeout :initform
+                         (common-lisp:error
+                          ":taskstarttoclosetimeout is required")
+                         :type
+                         (common-lisp:or duration-in-seconds common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-configuration-task-start-to-close-timeout
+                         :shape "DurationInSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-start-to-close-timeout :initarg
+                         :execution-start-to-close-timeout :initform
+                         (common-lisp:error
+                          ":executionstarttoclosetimeout is required")
+                         :type
+                         (common-lisp:or duration-in-seconds common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-configuration-execution-start-to-close-timeout
+                         :shape "DurationInSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-workflow-execution-configuration-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-configuration-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         (common-lisp:error ":childpolicy is required") :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-configuration-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lambda-role :initarg :lambda-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-workflow-execution-configuration-lambda-role
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-configuration
                     'make-workflow-execution-configuration))
@@ -7669,31 +10869,94 @@
                           workflow-execution-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-continued-as-new-event-attributes
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-workflow-execution-continued-as-new-event-attributes-"))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (new-execution-run-id (common-lisp:error ":newexecutionrunid is required")
-    :type (common-lisp:or workflow-run-id common-lisp:null))
-   (execution-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
-   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass workflow-execution-continued-as-new-event-attributes
+                       common-lisp:nil
+                       ((input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (new-execution-run-id :initarg :new-execution-run-id
+                         :initform
+                         (common-lisp:error ":newexecutionrunid is required")
+                         :type
+                         (common-lisp:or workflow-run-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-new-execution-run-id
+                         :shape "WorkflowRunId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-start-to-close-timeout :initarg
+                         :execution-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-execution-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-start-to-close-timeout :initarg
+                         :task-start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         (common-lisp:error ":childpolicy is required") :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-list :initarg :tag-list :initform common-lisp:nil
+                         :type (common-lisp:or tag-list common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-tag-list
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lambda-role :initarg :lambda-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-workflow-execution-continued-as-new-event-attributes-lambda-role
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-continued-as-new-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-continued-as-new-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-continued-as-new-event-attributes
                     'make-workflow-execution-continued-as-new-event-attributes))
@@ -7794,13 +11057,24 @@
                           workflow-execution-continued-as-new-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-count (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-count-"))
-   (count (common-lisp:error ":count is required") :type
-    (common-lisp:or count common-lisp:null))
-   (truncated common-lisp:nil :type
-    (common-lisp:or truncated common-lisp:null)))
+ (common-lisp:defclass workflow-execution-count common-lisp:nil
+                       ((count :initarg :count :initform
+                         (common-lisp:error ":count is required") :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-workflow-execution-count-count :shape
+                         "Count" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (truncated :initarg :truncated :initform
+                         common-lisp:nil :type
+                         (common-lisp:or truncated common-lisp:null) :accessor
+                         struct-shape-workflow-execution-count-truncated :shape
+                         "Truncated" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-count
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-execution-count
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-count 'make-workflow-execution-count))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7833,20 +11107,52 @@
                           workflow-execution-count))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-detail-"))
-   (execution-info (common-lisp:error ":executioninfo is required") :type
-    (common-lisp:or workflow-execution-info common-lisp:null))
-   (execution-configuration
-    (common-lisp:error ":executionconfiguration is required") :type
-    (common-lisp:or workflow-execution-configuration common-lisp:null))
-   (open-counts (common-lisp:error ":opencounts is required") :type
-    (common-lisp:or workflow-execution-open-counts common-lisp:null))
-   (latest-activity-task-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (latest-execution-context common-lisp:nil :type
-    (common-lisp:or data common-lisp:null)))
+ (common-lisp:defclass workflow-execution-detail common-lisp:nil
+                       ((execution-info :initarg :execution-info :initform
+                         (common-lisp:error ":executioninfo is required") :type
+                         (common-lisp:or workflow-execution-info
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-detail-execution-info
+                         :shape "WorkflowExecutionInfo" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (execution-configuration :initarg
+                         :execution-configuration :initform
+                         (common-lisp:error
+                          ":executionconfiguration is required")
+                         :type
+                         (common-lisp:or workflow-execution-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-detail-execution-configuration
+                         :shape "WorkflowExecutionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (open-counts :initarg :open-counts :initform
+                         (common-lisp:error ":opencounts is required") :type
+                         (common-lisp:or workflow-execution-open-counts
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-detail-open-counts
+                         :shape "WorkflowExecutionOpenCounts" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (latest-activity-task-timestamp :initarg
+                         :latest-activity-task-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-workflow-execution-detail-latest-activity-task-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-execution-context :initarg
+                         :latest-execution-context :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-workflow-execution-detail-latest-execution-context
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-execution-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-detail
                     'make-workflow-execution-detail))
@@ -7904,15 +11210,34 @@
                           workflow-execution-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-failed-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-failed-event-attributes-"))
-   (reason common-lisp:nil :type
-    (common-lisp:or failure-reason common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass workflow-execution-failed-event-attributes
+                       common-lisp:nil
+                       ((reason :initarg :reason :initform common-lisp:nil
+                         :type (common-lisp:or failure-reason common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-failed-event-attributes-reason
+                         :shape "FailureReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-workflow-execution-failed-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (decision-task-completed-event-id :initarg
+                         :decision-task-completed-event-id :initform
+                         (common-lisp:error
+                          ":decisiontaskcompletedeventid is required")
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-failed-event-attributes-decision-task-completed-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-failed-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-failed-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-failed-event-attributes
                     'make-workflow-execution-failed-event-attributes))
@@ -7954,11 +11279,19 @@
                           workflow-execution-failed-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-filter-"))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null)))
+ (common-lisp:defclass workflow-execution-filter common-lisp:nil
+                       ((workflow-id :initarg :workflow-id :initform
+                         (common-lisp:error ":workflowid is required") :type
+                         (common-lisp:or workflow-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-filter-workflow-id
+                         :shape "WorkflowId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-execution-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-filter
                     'make-workflow-execution-filter))
@@ -7985,26 +11318,72 @@
                           workflow-execution-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-info-"))
-   (execution (common-lisp:error ":execution is required") :type
-    (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (start-timestamp (common-lisp:error ":starttimestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (close-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (execution-status (common-lisp:error ":executionstatus is required") :type
-    (common-lisp:or execution-status common-lisp:null))
-   (close-status common-lisp:nil :type
-    (common-lisp:or close-status common-lisp:null))
-   (parent common-lisp:nil :type
-    (common-lisp:or workflow-execution common-lisp:null))
-   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (cancel-requested common-lisp:nil :type
-    (common-lisp:or canceled common-lisp:null)))
+ (common-lisp:defclass workflow-execution-info common-lisp:nil
+                       ((execution :initarg :execution :initform
+                         (common-lisp:error ":execution is required") :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-info-execution :shape
+                         "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-info-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-timestamp :initarg :start-timestamp :initform
+                         (common-lisp:error ":starttimestamp is required")
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-info-start-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (close-timestamp :initarg :close-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-workflow-execution-info-close-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-status :initarg :execution-status :initform
+                         (common-lisp:error ":executionstatus is required")
+                         :type
+                         (common-lisp:or execution-status common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-info-execution-status
+                         :shape "ExecutionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (close-status :initarg :close-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or close-status common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-info-close-status
+                         :shape "CloseStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parent :initarg :parent :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor struct-shape-workflow-execution-info-parent
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-list :initarg :tag-list :initform common-lisp:nil
+                         :type (common-lisp:or tag-list common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-info-tag-list :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cancel-requested :initarg :cancel-requested :initform
+                         common-lisp:nil :type
+                         (common-lisp:or canceled common-lisp:null) :accessor
+                         struct-shape-workflow-execution-info-cancel-requested
+                         :shape "Canceled" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-execution-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-info 'make-workflow-execution-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8094,13 +11473,27 @@
                            (trivial-types:proper-list workflow-execution-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-infos (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-infos-"))
-   (execution-infos (common-lisp:error ":executioninfos is required") :type
-    (common-lisp:or workflow-execution-info-list common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass workflow-execution-infos common-lisp:nil
+                       ((execution-infos :initarg :execution-infos :initform
+                         (common-lisp:error ":executioninfos is required")
+                         :type
+                         (common-lisp:or workflow-execution-info-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-infos-execution-infos
+                         :shape "WorkflowExecutionInfoList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-workflow-execution-infos-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-infos
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-execution-infos
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-infos 'make-workflow-execution-infos))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8133,20 +11526,52 @@
                           workflow-execution-infos))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-open-counts (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-open-counts-"))
-   (open-activity-tasks (common-lisp:error ":openactivitytasks is required")
-    :type (common-lisp:or count common-lisp:null))
-   (open-decision-tasks (common-lisp:error ":opendecisiontasks is required")
-    :type (common-lisp:or open-decision-tasks-count common-lisp:null))
-   (open-timers (common-lisp:error ":opentimers is required") :type
-    (common-lisp:or count common-lisp:null))
-   (open-child-workflow-executions
-    (common-lisp:error ":openchildworkflowexecutions is required") :type
-    (common-lisp:or count common-lisp:null))
-   (open-lambda-functions common-lisp:nil :type
-    (common-lisp:or count common-lisp:null)))
+ (common-lisp:defclass workflow-execution-open-counts common-lisp:nil
+                       ((open-activity-tasks :initarg :open-activity-tasks
+                         :initform
+                         (common-lisp:error ":openactivitytasks is required")
+                         :type (common-lisp:or count common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-open-counts-open-activity-tasks
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (open-decision-tasks :initarg :open-decision-tasks
+                         :initform
+                         (common-lisp:error ":opendecisiontasks is required")
+                         :type
+                         (common-lisp:or open-decision-tasks-count
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-open-counts-open-decision-tasks
+                         :shape "OpenDecisionTasksCount" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (open-timers :initarg :open-timers :initform
+                         (common-lisp:error ":opentimers is required") :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-workflow-execution-open-counts-open-timers
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (open-child-workflow-executions :initarg
+                         :open-child-workflow-executions :initform
+                         (common-lisp:error
+                          ":openchildworkflowexecutions is required")
+                         :type (common-lisp:or count common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-open-counts-open-child-workflow-executions
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (open-lambda-functions :initarg :open-lambda-functions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-workflow-execution-open-counts-open-lambda-functions
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-open-counts
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-open-counts
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-open-counts
                     'make-workflow-execution-open-counts))
@@ -8203,17 +11628,41 @@
                           workflow-execution-open-counts))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-signaled-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-workflow-execution-signaled-event-attributes-"))
-   (signal-name (common-lisp:error ":signalname is required") :type
-    (common-lisp:or signal-name common-lisp:null))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (external-workflow-execution common-lisp:nil :type
-    (common-lisp:or workflow-execution common-lisp:null))
-   (external-initiated-event-id common-lisp:nil :type
-    (common-lisp:or event-id common-lisp:null)))
+ (common-lisp:defclass workflow-execution-signaled-event-attributes
+                       common-lisp:nil
+                       ((signal-name :initarg :signal-name :initform
+                         (common-lisp:error ":signalname is required") :type
+                         (common-lisp:or signal-name common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-signaled-event-attributes-signal-name
+                         :shape "SignalName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-workflow-execution-signaled-event-attributes-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (external-workflow-execution :initarg
+                         :external-workflow-execution :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-signaled-event-attributes-external-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (external-initiated-event-id :initarg
+                         :external-initiated-event-id :initform common-lisp:nil
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-signaled-event-attributes-external-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-signaled-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-signaled-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-signaled-event-attributes
                     'make-workflow-execution-signaled-event-attributes))
@@ -8263,30 +11712,100 @@
                           workflow-execution-signaled-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-started-event-attributes (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-execution-started-event-attributes-"))
-   (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (execution-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
-   (task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (continued-execution-run-id common-lisp:nil :type
-    (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (parent-workflow-execution common-lisp:nil :type
-    (common-lisp:or workflow-execution common-lisp:null))
-   (parent-initiated-event-id common-lisp:nil :type
-    (common-lisp:or event-id common-lisp:null))
-   (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass workflow-execution-started-event-attributes
+                       common-lisp:nil
+                       ((input :initarg :input :initform common-lisp:nil :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-workflow-execution-started-event-attributes-input
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (execution-start-to-close-timeout :initarg
+                         :execution-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-execution-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (task-start-to-close-timeout :initarg
+                         :task-start-to-close-timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         (common-lisp:error ":childpolicy is required") :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-list :initarg :task-list :initform
+                         (common-lisp:error ":tasklist is required") :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-workflow-execution-started-event-attributes-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (task-priority :initarg :task-priority :initform
+                         common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-workflow-type
+                         :shape "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-list :initarg :tag-list :initform common-lisp:nil
+                         :type (common-lisp:or tag-list common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-tag-list
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (continued-execution-run-id :initarg
+                         :continued-execution-run-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-run-id-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-continued-execution-run-id
+                         :shape "WorkflowRunIdOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (parent-workflow-execution :initarg
+                         :parent-workflow-execution :initform common-lisp:nil
+                         :type
+                         (common-lisp:or workflow-execution common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-parent-workflow-execution
+                         :shape "WorkflowExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parent-initiated-event-id :initarg
+                         :parent-initiated-event-id :initform common-lisp:nil
+                         :type (common-lisp:or event-id common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-started-event-attributes-parent-initiated-event-id
+                         :shape "EventId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (lambda-role :initarg :lambda-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-workflow-execution-started-event-attributes-lambda-role
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-started-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-started-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-started-event-attributes
                     'make-workflow-execution-started-event-attributes))
@@ -8396,17 +11915,40 @@
    common-lisp:nil))
 (common-lisp:deftype workflow-execution-terminated-cause () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-terminated-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-workflow-execution-terminated-event-attributes-"))
-   (reason common-lisp:nil :type
-    (common-lisp:or terminate-reason common-lisp:null))
-   (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
-   (cause common-lisp:nil :type
-    (common-lisp:or workflow-execution-terminated-cause common-lisp:null)))
+ (common-lisp:defclass workflow-execution-terminated-event-attributes
+                       common-lisp:nil
+                       ((reason :initarg :reason :initform common-lisp:nil
+                         :type
+                         (common-lisp:or terminate-reason common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-terminated-event-attributes-reason
+                         :shape "TerminateReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-workflow-execution-terminated-event-attributes-details
+                         :shape "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         (common-lisp:error ":childpolicy is required") :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-terminated-event-attributes-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cause :initarg :cause :initform common-lisp:nil :type
+                         (common-lisp:or workflow-execution-terminated-cause
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-terminated-event-attributes-cause
+                         :shape "WorkflowExecutionTerminatedCause" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-terminated-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-terminated-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-terminated-event-attributes
                     'make-workflow-execution-terminated-event-attributes))
@@ -8454,14 +11996,29 @@
                           workflow-execution-terminated-event-attributes))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-execution-timed-out-event-attributes (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-workflow-execution-timed-out-event-attributes-"))
-   (timeout-type (common-lisp:error ":timeouttype is required") :type
-    (common-lisp:or workflow-execution-timeout-type common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null)))
+ (common-lisp:defclass workflow-execution-timed-out-event-attributes
+                       common-lisp:nil
+                       ((timeout-type :initarg :timeout-type :initform
+                         (common-lisp:error ":timeouttype is required") :type
+                         (common-lisp:or workflow-execution-timeout-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-timed-out-event-attributes-timeout-type
+                         :shape "WorkflowExecutionTimeoutType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (child-policy :initarg :child-policy :initform
+                         (common-lisp:error ":childpolicy is required") :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-execution-timed-out-event-attributes-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-execution-timed-out-event-attributes
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'workflow-execution-timed-out-event-attributes
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-timed-out-event-attributes
                     'make-workflow-execution-timed-out-event-attributes))
@@ -8499,13 +12056,24 @@
 (common-lisp:deftype workflow-run-id () 'common-lisp:string)
 (common-lisp:deftype workflow-run-id-optional () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-type-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+ (common-lisp:defclass workflow-type common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-workflow-type-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-workflow-type-version :shape "Version"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'workflow-type 'make-workflow-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input workflow-type))
@@ -8531,21 +12099,56 @@
                         ((aws-sdk/generator/shape::input workflow-type))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-type-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-type-configuration-"))
-   (default-task-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-execution-start-to-close-timeout common-lisp:nil :type
-    (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (default-task-list common-lisp:nil :type
-    (common-lisp:or task-list common-lisp:null))
-   (default-task-priority common-lisp:nil :type
-    (common-lisp:or task-priority common-lisp:null))
-   (default-child-policy common-lisp:nil :type
-    (common-lisp:or child-policy common-lisp:null))
-   (default-lambda-role common-lisp:nil :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass workflow-type-configuration common-lisp:nil
+                       ((default-task-start-to-close-timeout :initarg
+                         :default-task-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-type-configuration-default-task-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-execution-start-to-close-timeout :initarg
+                         :default-execution-start-to-close-timeout :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration-in-seconds-optional
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-type-configuration-default-execution-start-to-close-timeout
+                         :shape "DurationInSecondsOptional" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (default-task-list :initarg :default-task-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or task-list common-lisp:null) :accessor
+                         struct-shape-workflow-type-configuration-default-task-list
+                         :shape "TaskList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-task-priority :initarg :default-task-priority
+                         :initform common-lisp:nil :type
+                         (common-lisp:or task-priority common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-type-configuration-default-task-priority
+                         :shape "TaskPriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-child-policy :initarg :default-child-policy
+                         :initform common-lisp:nil :type
+                         (common-lisp:or child-policy common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-type-configuration-default-child-policy
+                         :shape "ChildPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-lambda-role :initarg :default-lambda-role
+                         :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-workflow-type-configuration-default-lambda-role
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-type-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-type-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-type-configuration
                     'make-workflow-type-configuration))
@@ -8611,13 +12214,26 @@
                           workflow-type-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-type-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-type-detail-"))
-   (type-info (common-lisp:error ":typeinfo is required") :type
-    (common-lisp:or workflow-type-info common-lisp:null))
-   (configuration (common-lisp:error ":configuration is required") :type
-    (common-lisp:or workflow-type-configuration common-lisp:null)))
+ (common-lisp:defclass workflow-type-detail common-lisp:nil
+                       ((type-info :initarg :type-info :initform
+                         (common-lisp:error ":typeinfo is required") :type
+                         (common-lisp:or workflow-type-info common-lisp:null)
+                         :accessor struct-shape-workflow-type-detail-type-info
+                         :shape "WorkflowTypeInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration :initarg :configuration :initform
+                         (common-lisp:error ":configuration is required") :type
+                         (common-lisp:or workflow-type-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-type-detail-configuration :shape
+                         "WorkflowTypeConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-type-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-type-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-type-detail 'make-workflow-type-detail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8644,13 +12260,24 @@
                         ((aws-sdk/generator/shape::input workflow-type-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-type-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-type-filter-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or version-optional common-lisp:null)))
+ (common-lisp:defclass workflow-type-filter common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-workflow-type-filter-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or version-optional common-lisp:null)
+                         :accessor struct-shape-workflow-type-filter-version
+                         :shape "VersionOptional" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-type-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-type-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-type-filter 'make-workflow-type-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8677,19 +12304,43 @@
                         ((aws-sdk/generator/shape::input workflow-type-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-type-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-type-info-"))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or registration-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (deprecation-date common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass workflow-type-info common-lisp:nil
+                       ((workflow-type :initarg :workflow-type :initform
+                         (common-lisp:error ":workflowtype is required") :type
+                         (common-lisp:or workflow-type common-lisp:null)
+                         :accessor
+                         struct-shape-workflow-type-info-workflow-type :shape
+                         "WorkflowType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or registration-status common-lisp:null)
+                         :accessor struct-shape-workflow-type-info-status
+                         :shape "RegistrationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-workflow-type-info-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-date :initarg :creation-date :initform
+                         (common-lisp:error ":creationdate is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-workflow-type-info-creation-date :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (deprecation-date :initarg :deprecation-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-workflow-type-info-deprecation-date
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-type-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-type-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-type-info 'make-workflow-type-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8745,13 +12396,25 @@
                            (trivial-types:proper-list workflow-type-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (workflow-type-infos (:copier common-lisp:nil)
-      (:conc-name "struct-shape-workflow-type-infos-"))
-   (type-infos (common-lisp:error ":typeinfos is required") :type
-    (common-lisp:or workflow-type-info-list common-lisp:null))
-   (next-page-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass workflow-type-infos common-lisp:nil
+                       ((type-infos :initarg :type-infos :initform
+                         (common-lisp:error ":typeinfos is required") :type
+                         (common-lisp:or workflow-type-info-list
+                                         common-lisp:null)
+                         :accessor struct-shape-workflow-type-infos-type-infos
+                         :shape "WorkflowTypeInfoList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-page-token :initarg :next-page-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-workflow-type-infos-next-page-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-workflow-type-infos
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'workflow-type-infos
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'workflow-type-infos 'make-workflow-type-infos))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

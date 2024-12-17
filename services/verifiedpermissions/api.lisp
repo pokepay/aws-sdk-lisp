@@ -45,13 +45,24 @@
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:deftype action-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-identifier (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-identifier-"))
-   (action-type (common-lisp:error ":actiontype is required") :type
-    (common-lisp:or action-type common-lisp:null))
-   (action-id (common-lisp:error ":actionid is required") :type
-    (common-lisp:or action-id common-lisp:null)))
+ (common-lisp:defclass action-identifier common-lisp:nil
+                       ((action-type :initarg :action-type :initform
+                         (common-lisp:error ":actiontype is required") :type
+                         (common-lisp:or action-type common-lisp:null)
+                         :accessor struct-shape-action-identifier-action-type
+                         :shape "ActionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-id :initarg :action-id :initform
+                         (common-lisp:error ":actionid is required") :type
+                         (common-lisp:or action-id common-lisp:null) :accessor
+                         struct-shape-action-identifier-action-id :shape
+                         "ActionId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-identifier
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-identifier
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'action-identifier 'make-action-identifier))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -79,20 +90,47 @@
    common-lisp:nil))
 (common-lisp:deftype action-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (attribute-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attribute-value-"))
-   (boolean common-lisp:nil :type
-    (common-lisp:or boolean-attribute common-lisp:null))
-   (entity-identifier common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (long common-lisp:nil :type
-    (common-lisp:or long-attribute common-lisp:null))
-   (string common-lisp:nil :type
-    (common-lisp:or string-attribute common-lisp:null))
-   (set common-lisp:nil :type (common-lisp:or set-attribute common-lisp:null))
-   (record common-lisp:nil :type
-    (common-lisp:or record-attribute common-lisp:null)))
+ (common-lisp:defclass attribute-value common-lisp:nil
+                       ((boolean :initarg :boolean :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-attribute common-lisp:null)
+                         :accessor struct-shape-attribute-value-boolean :shape
+                         "BooleanAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (entity-identifier :initarg :entity-identifier
+                         :initform common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-attribute-value-entity-identifier :shape
+                         "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (long :initarg :long :initform common-lisp:nil :type
+                         (common-lisp:or long-attribute common-lisp:null)
+                         :accessor struct-shape-attribute-value-long :shape
+                         "LongAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (string :initarg :string :initform common-lisp:nil
+                         :type
+                         (common-lisp:or string-attribute common-lisp:null)
+                         :accessor struct-shape-attribute-value-string :shape
+                         "StringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (set :initarg :set :initform common-lisp:nil :type
+                         (common-lisp:or set-attribute common-lisp:null)
+                         :accessor struct-shape-attribute-value-set :shape
+                         "SetAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (record :initarg :record :initform common-lisp:nil
+                         :type
+                         (common-lisp:or record-attribute common-lisp:null)
+                         :accessor struct-shape-attribute-value-record :shape
+                         "RecordAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-attribute-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'attribute-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'attribute-value 'make-attribute-value))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input attribute-value))
@@ -146,15 +184,34 @@
                         ((aws-sdk/generator/shape::input attribute-value))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-is-authorized-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-is-authorized-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (entities common-lisp:nil :type
-    (common-lisp:or entities-definition common-lisp:null))
-   (requests (common-lisp:error ":requests is required") :type
-    (common-lisp:or batch-is-authorized-input-list common-lisp:null)))
+ (common-lisp:defclass batch-is-authorized-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (entities :initarg :entities :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entities-definition common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-input-entities :shape
+                         "EntitiesDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (requests :initarg :requests :initform
+                         (common-lisp:error ":requests is required") :type
+                         (common-lisp:or batch-is-authorized-input-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-input-requests :shape
+                         "BatchIsAuthorizedInputList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-is-authorized-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-is-authorized-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-is-authorized-input
                     'make-batch-is-authorized-input))
@@ -195,17 +252,41 @@
                           batch-is-authorized-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-is-authorized-input-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-is-authorized-input-item-"))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (action common-lisp:nil :type
-    (common-lisp:or action-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (context common-lisp:nil :type
-    (common-lisp:or context-definition common-lisp:null)))
+ (common-lisp:defclass batch-is-authorized-input-item common-lisp:nil
+                       ((principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-input-item-principal
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform common-lisp:nil
+                         :type
+                         (common-lisp:or action-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-input-item-action
+                         :shape "ActionIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-input-item-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (context :initarg :context :initform common-lisp:nil
+                         :type
+                         (common-lisp:or context-definition common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-input-item-context
+                         :shape "ContextDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-is-authorized-input-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-is-authorized-input-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-is-authorized-input-item
                     'make-batch-is-authorized-input-item))
@@ -262,11 +343,20 @@
                             batch-is-authorized-input-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-is-authorized-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-is-authorized-output-"))
-   (results (common-lisp:error ":results is required") :type
-    (common-lisp:or batch-is-authorized-output-list common-lisp:null)))
+ (common-lisp:defclass batch-is-authorized-output common-lisp:nil
+                       ((results :initarg :results :initform
+                         (common-lisp:error ":results is required") :type
+                         (common-lisp:or batch-is-authorized-output-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-output-results :shape
+                         "BatchIsAuthorizedOutputList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-is-authorized-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-is-authorized-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-is-authorized-output
                     'make-batch-is-authorized-output))
@@ -293,17 +383,45 @@
                           batch-is-authorized-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-is-authorized-output-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-is-authorized-output-item-"))
-   (request (common-lisp:error ":request is required") :type
-    (common-lisp:or batch-is-authorized-input-item common-lisp:null))
-   (decision (common-lisp:error ":decision is required") :type
-    (common-lisp:or decision common-lisp:null))
-   (determining-policies (common-lisp:error ":determiningpolicies is required")
-    :type (common-lisp:or determining-policy-list common-lisp:null))
-   (errors (common-lisp:error ":errors is required") :type
-    (common-lisp:or evaluation-error-list common-lisp:null)))
+ (common-lisp:defclass batch-is-authorized-output-item common-lisp:nil
+                       ((request :initarg :request :initform
+                         (common-lisp:error ":request is required") :type
+                         (common-lisp:or batch-is-authorized-input-item
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-output-item-request
+                         :shape "BatchIsAuthorizedInputItem" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (decision :initarg :decision :initform
+                         (common-lisp:error ":decision is required") :type
+                         (common-lisp:or decision common-lisp:null) :accessor
+                         struct-shape-batch-is-authorized-output-item-decision
+                         :shape "Decision" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (determining-policies :initarg :determining-policies
+                         :initform
+                         (common-lisp:error ":determiningpolicies is required")
+                         :type
+                         (common-lisp:or determining-policy-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-output-item-determining-policies
+                         :shape "DeterminingPolicyList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (errors :initarg :errors :initform
+                         (common-lisp:error ":errors is required") :type
+                         (common-lisp:or evaluation-error-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-is-authorized-output-item-errors
+                         :shape "EvaluationErrorList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-is-authorized-output-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-is-authorized-output-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-is-authorized-output-item
                     'make-batch-is-authorized-output-item))
@@ -371,13 +489,26 @@
                            (trivial-types:proper-list client-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cognito-user-pool-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cognito-user-pool-configuration-"))
-   (user-pool-arn (common-lisp:error ":userpoolarn is required") :type
-    (common-lisp:or user-pool-arn common-lisp:null))
-   (client-ids common-lisp:nil :type
-    (common-lisp:or client-ids common-lisp:null)))
+ (common-lisp:defclass cognito-user-pool-configuration common-lisp:nil
+                       ((user-pool-arn :initarg :user-pool-arn :initform
+                         (common-lisp:error ":userpoolarn is required") :type
+                         (common-lisp:or user-pool-arn common-lisp:null)
+                         :accessor
+                         struct-shape-cognito-user-pool-configuration-user-pool-arn
+                         :shape "UserPoolArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-ids :initarg :client-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-ids common-lisp:null) :accessor
+                         struct-shape-cognito-user-pool-configuration-client-ids
+                         :shape "ClientIds" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cognito-user-pool-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cognito-user-pool-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cognito-user-pool-configuration
                     'make-cognito-user-pool-configuration))
@@ -411,15 +542,32 @@
                           cognito-user-pool-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cognito-user-pool-configuration-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cognito-user-pool-configuration-detail-"))
-   (user-pool-arn (common-lisp:error ":userpoolarn is required") :type
-    (common-lisp:or user-pool-arn common-lisp:null))
-   (client-ids (common-lisp:error ":clientids is required") :type
-    (common-lisp:or client-ids common-lisp:null))
-   (issuer (common-lisp:error ":issuer is required") :type
-    (common-lisp:or issuer common-lisp:null)))
+ (common-lisp:defclass cognito-user-pool-configuration-detail common-lisp:nil
+                       ((user-pool-arn :initarg :user-pool-arn :initform
+                         (common-lisp:error ":userpoolarn is required") :type
+                         (common-lisp:or user-pool-arn common-lisp:null)
+                         :accessor
+                         struct-shape-cognito-user-pool-configuration-detail-user-pool-arn
+                         :shape "UserPoolArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-ids :initarg :client-ids :initform
+                         (common-lisp:error ":clientids is required") :type
+                         (common-lisp:or client-ids common-lisp:null) :accessor
+                         struct-shape-cognito-user-pool-configuration-detail-client-ids
+                         :shape "ClientIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (issuer :initarg :issuer :initform
+                         (common-lisp:error ":issuer is required") :type
+                         (common-lisp:or issuer common-lisp:null) :accessor
+                         struct-shape-cognito-user-pool-configuration-detail-issuer
+                         :shape "Issuer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cognito-user-pool-configuration-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cognito-user-pool-configuration-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cognito-user-pool-configuration-detail
                     'make-cognito-user-pool-configuration-detail))
@@ -460,15 +608,32 @@
                           cognito-user-pool-configuration-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cognito-user-pool-configuration-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cognito-user-pool-configuration-item-"))
-   (user-pool-arn (common-lisp:error ":userpoolarn is required") :type
-    (common-lisp:or user-pool-arn common-lisp:null))
-   (client-ids (common-lisp:error ":clientids is required") :type
-    (common-lisp:or client-ids common-lisp:null))
-   (issuer (common-lisp:error ":issuer is required") :type
-    (common-lisp:or issuer common-lisp:null)))
+ (common-lisp:defclass cognito-user-pool-configuration-item common-lisp:nil
+                       ((user-pool-arn :initarg :user-pool-arn :initform
+                         (common-lisp:error ":userpoolarn is required") :type
+                         (common-lisp:or user-pool-arn common-lisp:null)
+                         :accessor
+                         struct-shape-cognito-user-pool-configuration-item-user-pool-arn
+                         :shape "UserPoolArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-ids :initarg :client-ids :initform
+                         (common-lisp:error ":clientids is required") :type
+                         (common-lisp:or client-ids common-lisp:null) :accessor
+                         struct-shape-cognito-user-pool-configuration-item-client-ids
+                         :shape "ClientIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (issuer :initarg :issuer :initform
+                         (common-lisp:error ":issuer is required") :type
+                         (common-lisp:or issuer common-lisp:null) :accessor
+                         struct-shape-cognito-user-pool-configuration-item-issuer
+                         :shape "Issuer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cognito-user-pool-configuration-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cognito-user-pool-configuration-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cognito-user-pool-configuration-item
                     'make-cognito-user-pool-configuration-item))
@@ -509,11 +674,21 @@
                           cognito-user-pool-configuration-item))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configuration-"))
-   (cognito-user-pool-configuration common-lisp:nil :type
-    (common-lisp:or cognito-user-pool-configuration common-lisp:null)))
+ (common-lisp:defclass configuration common-lisp:nil
+                       ((cognito-user-pool-configuration :initarg
+                         :cognito-user-pool-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cognito-user-pool-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configuration-cognito-user-pool-configuration
+                         :shape "CognitoUserPoolConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'configuration 'make-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input configuration))
@@ -533,11 +708,21 @@
                         ((aws-sdk/generator/shape::input configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configuration-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configuration-detail-"))
-   (cognito-user-pool-configuration common-lisp:nil :type
-    (common-lisp:or cognito-user-pool-configuration-detail common-lisp:null)))
+ (common-lisp:defclass configuration-detail common-lisp:nil
+                       ((cognito-user-pool-configuration :initarg
+                         :cognito-user-pool-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cognito-user-pool-configuration-detail
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configuration-detail-cognito-user-pool-configuration
+                         :shape "CognitoUserPoolConfigurationDetail" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configuration-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'configuration-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configuration-detail 'make-configuration-detail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -558,11 +743,21 @@
                         ((aws-sdk/generator/shape::input configuration-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configuration-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configuration-item-"))
-   (cognito-user-pool-configuration common-lisp:nil :type
-    (common-lisp:or cognito-user-pool-configuration-item common-lisp:null)))
+ (common-lisp:defclass configuration-item common-lisp:nil
+                       ((cognito-user-pool-configuration :initarg
+                         :cognito-user-pool-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or cognito-user-pool-configuration-item
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configuration-item-cognito-user-pool-configuration
+                         :shape "CognitoUserPoolConfigurationItem" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configuration-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'configuration-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configuration-item 'make-configuration-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -593,11 +788,18 @@
   (common-lisp:list 'conflict-exception 'conflict-exception-message
                     'conflict-exception-resources)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (context-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-context-definition-"))
-   (context-map common-lisp:nil :type
-    (common-lisp:or context-map common-lisp:null)))
+ (common-lisp:defclass context-definition common-lisp:nil
+                       ((context-map :initarg :context-map :initform
+                         common-lisp:nil :type
+                         (common-lisp:or context-map common-lisp:null)
+                         :accessor struct-shape-context-definition-context-map
+                         :shape "ContextMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-context-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'context-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'context-definition 'make-context-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -624,17 +826,41 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-identity-source-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-identity-source-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or idempotency-token common-lisp:null))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (configuration (common-lisp:error ":configuration is required") :type
-    (common-lisp:or configuration common-lisp:null))
-   (principal-entity-type common-lisp:nil :type
-    (common-lisp:or principal-entity-type common-lisp:null)))
+ (common-lisp:defclass create-identity-source-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or idempotency-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-source-input-client-token
+                         :shape "IdempotencyToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-source-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration :initarg :configuration :initform
+                         (common-lisp:error ":configuration is required") :type
+                         (common-lisp:or configuration common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-source-input-configuration
+                         :shape "Configuration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-entity-type :initarg :principal-entity-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or principal-entity-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-source-input-principal-entity-type
+                         :shape "PrincipalEntityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-identity-source-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-identity-source-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-identity-source-input
                     'make-create-identity-source-input))
@@ -683,17 +909,45 @@
                           create-identity-source-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-identity-source-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-identity-source-output-"))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (identity-source-id (common-lisp:error ":identitysourceid is required")
-    :type (common-lisp:or identity-source-id common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null)))
+ (common-lisp:defclass create-identity-source-output common-lisp:nil
+                       ((created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-source-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-source-id :initarg :identity-source-id
+                         :initform
+                         (common-lisp:error ":identitysourceid is required")
+                         :type
+                         (common-lisp:or identity-source-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-source-output-identity-source-id
+                         :shape "IdentitySourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-source-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-identity-source-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-identity-source-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-identity-source-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-identity-source-output
                     'make-create-identity-source-output))
@@ -741,15 +995,32 @@
                           create-identity-source-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-policy-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-policy-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or idempotency-token common-lisp:null))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or policy-definition common-lisp:null)))
+ (common-lisp:defclass create-policy-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or idempotency-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-input-client-token :shape
+                         "IdempotencyToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (definition :initarg :definition :initform
+                         (common-lisp:error ":definition is required") :type
+                         (common-lisp:or policy-definition common-lisp:null)
+                         :accessor struct-shape-create-policy-input-definition
+                         :shape "PolicyDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-policy-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-policy-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-policy-input 'make-create-policy-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -783,23 +1054,60 @@
                         ((aws-sdk/generator/shape::input create-policy-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-policy-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-policy-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-id (common-lisp:error ":policyid is required") :type
-    (common-lisp:or policy-id common-lisp:null))
-   (policy-type (common-lisp:error ":policytype is required") :type
-    (common-lisp:or policy-type common-lisp:null))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass create-policy-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policyid is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-create-policy-output-policy-id :shape
+                         "PolicyId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (policy-type :initarg :policy-type :initform
+                         (common-lisp:error ":policytype is required") :type
+                         (common-lisp:or policy-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-output-policy-type :shape
+                         "PolicyType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-create-policy-output-principal
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-create-policy-output-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-output-created-date :shape
+                         "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-policy-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-policy-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-policy-output 'make-create-policy-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -861,15 +1169,36 @@
                         ((aws-sdk/generator/shape::input create-policy-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-policy-store-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-policy-store-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or idempotency-token common-lisp:null))
-   (validation-settings (common-lisp:error ":validationsettings is required")
-    :type (common-lisp:or validation-settings common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or policy-store-description common-lisp:null)))
+ (common-lisp:defclass create-policy-store-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or idempotency-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-store-input-client-token
+                         :shape "IdempotencyToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (validation-settings :initarg :validation-settings
+                         :initform
+                         (common-lisp:error ":validationsettings is required")
+                         :type
+                         (common-lisp:or validation-settings common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-store-input-validation-settings
+                         :shape "ValidationSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-store-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-store-input-description
+                         :shape "PolicyStoreDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-policy-store-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-policy-store-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-policy-store-input
                     'make-create-policy-store-input))
@@ -910,17 +1239,41 @@
                           create-policy-store-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-policy-store-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-policy-store-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass create-policy-store-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-store-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-create-policy-store-output-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-store-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-store-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-policy-store-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-policy-store-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-policy-store-output
                     'make-create-policy-store-output))
@@ -968,17 +1321,41 @@
                           create-policy-store-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-policy-template-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-policy-template-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or idempotency-token common-lisp:null))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or policy-template-description common-lisp:null))
-   (statement (common-lisp:error ":statement is required") :type
-    (common-lisp:or policy-statement common-lisp:null)))
+ (common-lisp:defclass create-policy-template-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or idempotency-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-template-input-client-token
+                         :shape "IdempotencyToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-template-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-template-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-template-input-description
+                         :shape "PolicyTemplateDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (statement :initarg :statement :initform
+                         (common-lisp:error ":statement is required") :type
+                         (common-lisp:or policy-statement common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-template-input-statement
+                         :shape "PolicyStatement" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-policy-template-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-policy-template-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-policy-template-input
                     'make-create-policy-template-input))
@@ -1026,17 +1403,45 @@
                           create-policy-template-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-policy-template-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-policy-template-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass create-policy-template-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-template-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-template-output-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-template-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-create-policy-template-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-policy-template-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-policy-template-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-policy-template-output
                     'make-create-policy-template-output))
@@ -1085,13 +1490,28 @@
    common-lisp:nil))
 (common-lisp:deftype decision () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-identity-source-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-identity-source-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (identity-source-id (common-lisp:error ":identitysourceid is required")
-    :type (common-lisp:or identity-source-id common-lisp:null)))
+ (common-lisp:defclass delete-identity-source-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-identity-source-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-source-id :initarg :identity-source-id
+                         :initform
+                         (common-lisp:error ":identitysourceid is required")
+                         :type
+                         (common-lisp:or identity-source-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-identity-source-input-identity-source-id
+                         :shape "IdentitySourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-identity-source-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-identity-source-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-identity-source-input
                     'make-delete-identity-source-input))
@@ -1125,9 +1545,14 @@
                           delete-identity-source-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-identity-source-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-identity-source-output-")))
+ (common-lisp:defclass delete-identity-source-output common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-identity-source-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-identity-source-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-identity-source-output
                     'make-delete-identity-source-output))
@@ -1147,13 +1572,25 @@
                           delete-identity-source-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-policy-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-policy-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-id (common-lisp:error ":policyid is required") :type
-    (common-lisp:or policy-id common-lisp:null)))
+ (common-lisp:defclass delete-policy-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-policy-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policyid is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-delete-policy-input-policy-id :shape
+                         "PolicyId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-policy-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-policy-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-policy-input 'make-delete-policy-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1180,9 +1617,12 @@
                         ((aws-sdk/generator/shape::input delete-policy-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-policy-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-policy-output-")))
+ (common-lisp:defclass delete-policy-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-policy-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-policy-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-policy-output 'make-delete-policy-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1195,11 +1635,19 @@
                         ((aws-sdk/generator/shape::input delete-policy-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-policy-store-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-policy-store-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null)))
+ (common-lisp:defclass delete-policy-store-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-policy-store-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-policy-store-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-policy-store-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-policy-store-input
                     'make-delete-policy-store-input))
@@ -1226,9 +1674,13 @@
                           delete-policy-store-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-policy-store-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-policy-store-output-")))
+ (common-lisp:defclass delete-policy-store-output common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-policy-store-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-policy-store-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-policy-store-output
                     'make-delete-policy-store-output))
@@ -1248,13 +1700,28 @@
                           delete-policy-store-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-policy-template-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-policy-template-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null)))
+ (common-lisp:defclass delete-policy-template-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-policy-template-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-policy-template-input-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-policy-template-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-policy-template-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-policy-template-input
                     'make-delete-policy-template-input))
@@ -1288,9 +1755,14 @@
                           delete-policy-template-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-policy-template-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-policy-template-output-")))
+ (common-lisp:defclass delete-policy-template-output common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-policy-template-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-policy-template-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-policy-template-output
                     'make-delete-policy-template-output))
@@ -1310,11 +1782,18 @@
                           delete-policy-template-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (determining-policy-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-determining-policy-item-"))
-   (policy-id (common-lisp:error ":policyid is required") :type
-    (common-lisp:or policy-id common-lisp:null)))
+ (common-lisp:defclass determining-policy-item common-lisp:nil
+                       ((policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policyid is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-determining-policy-item-policy-id :shape
+                         "PolicyId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-determining-policy-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'determining-policy-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'determining-policy-item 'make-determining-policy-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1349,11 +1828,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype discovery-url () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (entities-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entities-definition-"))
-   (entity-list common-lisp:nil :type
-    (common-lisp:or entity-list common-lisp:null)))
+ (common-lisp:defclass entities-definition common-lisp:nil
+                       ((entity-list :initarg :entity-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-list common-lisp:null)
+                         :accessor struct-shape-entities-definition-entity-list
+                         :shape "EntityList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-entities-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'entities-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'entities-definition 'make-entities-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1382,13 +1868,24 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype entity-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-identifier (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-identifier-"))
-   (entity-type (common-lisp:error ":entitytype is required") :type
-    (common-lisp:or entity-type common-lisp:null))
-   (entity-id (common-lisp:error ":entityid is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+ (common-lisp:defclass entity-identifier common-lisp:nil
+                       ((entity-type :initarg :entity-type :initform
+                         (common-lisp:error ":entitytype is required") :type
+                         (common-lisp:or entity-type common-lisp:null)
+                         :accessor struct-shape-entity-identifier-entity-type
+                         :shape "EntityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (entity-id :initarg :entity-id :initform
+                         (common-lisp:error ":entityid is required") :type
+                         (common-lisp:or entity-id common-lisp:null) :accessor
+                         struct-shape-entity-identifier-entity-id :shape
+                         "EntityId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-entity-identifier
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'entity-identifier
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'entity-identifier 'make-entity-identifier))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1415,15 +1912,29 @@
                         ((aws-sdk/generator/shape::input entity-identifier))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-item-"))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (attributes common-lisp:nil :type
-    (common-lisp:or entity-attributes common-lisp:null))
-   (parents common-lisp:nil :type
-    (common-lisp:or parent-list common-lisp:null)))
+ (common-lisp:defclass entity-item common-lisp:nil
+                       ((identifier :initarg :identifier :initform
+                         (common-lisp:error ":identifier is required") :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-entity-item-identifier :shape
+                         "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attributes :initarg :attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-attributes common-lisp:null)
+                         :accessor struct-shape-entity-item-attributes :shape
+                         "EntityAttributes" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parents :initarg :parents :initform common-lisp:nil
+                         :type (common-lisp:or parent-list common-lisp:null)
+                         :accessor struct-shape-entity-item-parents :shape
+                         "ParentList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-entity-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'entity-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'entity-item 'make-entity-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input entity-item))
@@ -1463,13 +1974,24 @@
                            (trivial-types:proper-list entity-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (entity-reference (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entity-reference-"))
-   (unspecified common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (identifier common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null)))
+ (common-lisp:defclass entity-reference common-lisp:nil
+                       ((unspecified :initarg :unspecified :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-entity-reference-unspecified :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (identifier :initarg :identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-entity-reference-identifier
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-entity-reference
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'entity-reference
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'entity-reference 'make-entity-reference))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1497,11 +2019,20 @@
    common-lisp:nil))
 (common-lisp:deftype entity-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (evaluation-error-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-evaluation-error-item-"))
-   (error-description (common-lisp:error ":errordescription is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass evaluation-error-item common-lisp:nil
+                       ((error-description :initarg :error-description
+                         :initform
+                         (common-lisp:error ":errordescription is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-evaluation-error-item-error-description
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-evaluation-error-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'evaluation-error-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'evaluation-error-item 'make-evaluation-error-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1535,13 +2066,28 @@
                            (trivial-types:proper-list evaluation-error-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-identity-source-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-identity-source-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (identity-source-id (common-lisp:error ":identitysourceid is required")
-    :type (common-lisp:or identity-source-id common-lisp:null)))
+ (common-lisp:defclass get-identity-source-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-source-id :initarg :identity-source-id
+                         :initform
+                         (common-lisp:error ":identitysourceid is required")
+                         :type
+                         (common-lisp:or identity-source-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-input-identity-source-id
+                         :shape "IdentitySourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-identity-source-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-identity-source-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-identity-source-input
                     'make-get-identity-source-input))
@@ -1575,24 +2121,69 @@
                           get-identity-source-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-identity-source-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-identity-source-output-"))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (details common-lisp:nil :type
-    (common-lisp:or identity-source-details common-lisp:null))
-   (identity-source-id (common-lisp:error ":identitysourceid is required")
-    :type (common-lisp:or identity-source-id common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (principal-entity-type
-    (common-lisp:error ":principalentitytype is required") :type
-    (common-lisp:or principal-entity-type common-lisp:null))
-   (configuration common-lisp:nil :type
-    (common-lisp:or configuration-detail common-lisp:null)))
+ (common-lisp:defclass get-identity-source-output common-lisp:nil
+                       ((created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type
+                         (common-lisp:or identity-source-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-output-details :shape
+                         "IdentitySourceDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-source-id :initarg :identity-source-id
+                         :initform
+                         (common-lisp:error ":identitysourceid is required")
+                         :type
+                         (common-lisp:or identity-source-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-output-identity-source-id
+                         :shape "IdentitySourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-entity-type :initarg :principal-entity-type
+                         :initform
+                         (common-lisp:error ":principalentitytype is required")
+                         :type
+                         (common-lisp:or principal-entity-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-output-principal-entity-type
+                         :shape "PrincipalEntityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or configuration-detail common-lisp:null)
+                         :accessor
+                         struct-shape-get-identity-source-output-configuration
+                         :shape "ConfigurationDetail" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-identity-source-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-identity-source-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-identity-source-output
                     'make-get-identity-source-output))
@@ -1662,13 +2253,25 @@
                           get-identity-source-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-policy-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-policy-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-id (common-lisp:error ":policyid is required") :type
-    (common-lisp:or policy-id common-lisp:null)))
+ (common-lisp:defclass get-policy-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-input-policy-store-id :shape
+                         "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policyid is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-get-policy-input-policy-id :shape
+                         "PolicyId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-policy-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-policy-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-policy-input 'make-get-policy-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1695,25 +2298,65 @@
                         ((aws-sdk/generator/shape::input get-policy-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-policy-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-policy-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-id (common-lisp:error ":policyid is required") :type
-    (common-lisp:or policy-id common-lisp:null))
-   (policy-type (common-lisp:error ":policytype is required") :type
-    (common-lisp:or policy-type common-lisp:null))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or policy-definition-detail common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass get-policy-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-output-policy-store-id :shape
+                         "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policyid is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-get-policy-output-policy-id :shape
+                         "PolicyId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (policy-type :initarg :policy-type :initform
+                         (common-lisp:error ":policytype is required") :type
+                         (common-lisp:or policy-type common-lisp:null)
+                         :accessor struct-shape-get-policy-output-policy-type
+                         :shape "PolicyType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-get-policy-output-principal
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-get-policy-output-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (definition :initarg :definition :initform
+                         (common-lisp:error ":definition is required") :type
+                         (common-lisp:or policy-definition-detail
+                                         common-lisp:null)
+                         :accessor struct-shape-get-policy-output-definition
+                         :shape "PolicyDefinitionDetail" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor struct-shape-get-policy-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-policy-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-policy-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-policy-output 'make-get-policy-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1782,11 +2425,19 @@
                         ((aws-sdk/generator/shape::input get-policy-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-policy-store-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-policy-store-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null)))
+ (common-lisp:defclass get-policy-store-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-store-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-policy-store-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-policy-store-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-policy-store-input 'make-get-policy-store-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1812,21 +2463,58 @@
                           get-policy-store-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-policy-store-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-policy-store-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (validation-settings (common-lisp:error ":validationsettings is required")
-    :type (common-lisp:or validation-settings common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or policy-store-description common-lisp:null)))
+ (common-lisp:defclass get-policy-store-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-store-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-get-policy-store-output-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (validation-settings :initarg :validation-settings
+                         :initform
+                         (common-lisp:error ":validationsettings is required")
+                         :type
+                         (common-lisp:or validation-settings common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-store-output-validation-settings
+                         :shape "ValidationSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-store-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-store-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-store-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-store-output-description
+                         :shape "PolicyStoreDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-policy-store-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-policy-store-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-policy-store-output 'make-get-policy-store-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1887,13 +2575,28 @@
                           get-policy-store-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-policy-template-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-policy-template-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null)))
+ (common-lisp:defclass get-policy-template-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-template-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-template-input-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-policy-template-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-policy-template-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-policy-template-input
                     'make-get-policy-template-input))
@@ -1927,21 +2630,59 @@
                           get-policy-template-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-policy-template-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-policy-template-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or policy-template-description common-lisp:null))
-   (statement (common-lisp:error ":statement is required") :type
-    (common-lisp:or policy-statement common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass get-policy-template-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-template-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-template-output-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-template-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-template-output-description
+                         :shape "PolicyTemplateDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (statement :initarg :statement :initform
+                         (common-lisp:error ":statement is required") :type
+                         (common-lisp:or policy-statement common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-template-output-statement
+                         :shape "PolicyStatement" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-template-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-policy-template-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-policy-template-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-policy-template-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-policy-template-output
                     'make-get-policy-template-output))
@@ -2003,11 +2744,19 @@
                           get-policy-template-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-schema-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-schema-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null)))
+ (common-lisp:defclass get-schema-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-schema-input-policy-store-id :shape
+                         "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-schema-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-schema-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-schema-input 'make-get-schema-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2027,19 +2776,46 @@
                         ((aws-sdk/generator/shape::input get-schema-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-schema-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-schema-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (schema (common-lisp:error ":schema is required") :type
-    (common-lisp:or schema-json common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (namespaces common-lisp:nil :type
-    (common-lisp:or namespace-list common-lisp:null)))
+ (common-lisp:defclass get-schema-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-schema-output-policy-store-id :shape
+                         "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schema :initarg :schema :initform
+                         (common-lisp:error ":schema is required") :type
+                         (common-lisp:or schema-json common-lisp:null)
+                         :accessor struct-shape-get-schema-output-schema :shape
+                         "SchemaJson" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor struct-shape-get-schema-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-schema-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespaces :initarg :namespaces :initform
+                         common-lisp:nil :type
+                         (common-lisp:or namespace-list common-lisp:null)
+                         :accessor struct-shape-get-schema-output-namespaces
+                         :shape "NamespaceList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-schema-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-schema-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-schema-output 'make-get-schema-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2088,17 +2864,39 @@
    common-lisp:nil))
 (common-lisp:deftype idempotency-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity-source-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-identity-source-details-"))
-   (client-ids common-lisp:nil :type
-    (common-lisp:or client-ids common-lisp:null))
-   (user-pool-arn common-lisp:nil :type
-    (common-lisp:or user-pool-arn common-lisp:null))
-   (discovery-url common-lisp:nil :type
-    (common-lisp:or discovery-url common-lisp:null))
-   (open-id-issuer common-lisp:nil :type
-    (common-lisp:or open-id-issuer common-lisp:null)))
+ (common-lisp:defclass identity-source-details common-lisp:nil
+                       ((client-ids :initarg :client-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-ids common-lisp:null) :accessor
+                         struct-shape-identity-source-details-client-ids :shape
+                         "ClientIds" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-pool-arn :initarg :user-pool-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or user-pool-arn common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-details-user-pool-arn
+                         :shape "UserPoolArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (discovery-url :initarg :discovery-url :initform
+                         common-lisp:nil :type
+                         (common-lisp:or discovery-url common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-details-discovery-url
+                         :shape "DiscoveryUrl" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (open-id-issuer :initarg :open-id-issuer :initform
+                         common-lisp:nil :type
+                         (common-lisp:or open-id-issuer common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-details-open-id-issuer
+                         :shape "OpenIdIssuer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity-source-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'identity-source-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'identity-source-details 'make-identity-source-details))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2145,11 +2943,20 @@
                           identity-source-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity-source-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-identity-source-filter-"))
-   (principal-entity-type common-lisp:nil :type
-    (common-lisp:or principal-entity-type common-lisp:null)))
+ (common-lisp:defclass identity-source-filter common-lisp:nil
+                       ((principal-entity-type :initarg :principal-entity-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or principal-entity-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-filter-principal-entity-type
+                         :shape "PrincipalEntityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity-source-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'identity-source-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'identity-source-filter 'make-identity-source-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2185,24 +2992,68 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype identity-source-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity-source-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-identity-source-item-"))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (details common-lisp:nil :type
-    (common-lisp:or identity-source-item-details common-lisp:null))
-   (identity-source-id (common-lisp:error ":identitysourceid is required")
-    :type (common-lisp:or identity-source-id common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (principal-entity-type
-    (common-lisp:error ":principalentitytype is required") :type
-    (common-lisp:or principal-entity-type common-lisp:null))
-   (configuration common-lisp:nil :type
-    (common-lisp:or configuration-item common-lisp:null)))
+ (common-lisp:defclass identity-source-item common-lisp:nil
+                       ((created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-created-date :shape
+                         "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (details :initarg :details :initform common-lisp:nil
+                         :type
+                         (common-lisp:or identity-source-item-details
+                                         common-lisp:null)
+                         :accessor struct-shape-identity-source-item-details
+                         :shape "IdentitySourceItemDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (identity-source-id :initarg :identity-source-id
+                         :initform
+                         (common-lisp:error ":identitysourceid is required")
+                         :type
+                         (common-lisp:or identity-source-id common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-identity-source-id
+                         :shape "IdentitySourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-entity-type :initarg :principal-entity-type
+                         :initform
+                         (common-lisp:error ":principalentitytype is required")
+                         :type
+                         (common-lisp:or principal-entity-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-principal-entity-type
+                         :shape "PrincipalEntityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or configuration-item common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-configuration :shape
+                         "ConfigurationItem" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity-source-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'identity-source-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'identity-source-item 'make-identity-source-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2265,17 +3116,39 @@
                         ((aws-sdk/generator/shape::input identity-source-item))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity-source-item-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-identity-source-item-details-"))
-   (client-ids common-lisp:nil :type
-    (common-lisp:or client-ids common-lisp:null))
-   (user-pool-arn common-lisp:nil :type
-    (common-lisp:or user-pool-arn common-lisp:null))
-   (discovery-url common-lisp:nil :type
-    (common-lisp:or discovery-url common-lisp:null))
-   (open-id-issuer common-lisp:nil :type
-    (common-lisp:or open-id-issuer common-lisp:null)))
+ (common-lisp:defclass identity-source-item-details common-lisp:nil
+                       ((client-ids :initarg :client-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-ids common-lisp:null) :accessor
+                         struct-shape-identity-source-item-details-client-ids
+                         :shape "ClientIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-pool-arn :initarg :user-pool-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or user-pool-arn common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-details-user-pool-arn
+                         :shape "UserPoolArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (discovery-url :initarg :discovery-url :initform
+                         common-lisp:nil :type
+                         (common-lisp:or discovery-url common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-details-discovery-url
+                         :shape "DiscoveryUrl" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (open-id-issuer :initarg :open-id-issuer :initform
+                         common-lisp:nil :type
+                         (common-lisp:or open-id-issuer common-lisp:null)
+                         :accessor
+                         struct-shape-identity-source-item-details-open-id-issuer
+                         :shape "OpenIdIssuer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity-source-item-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'identity-source-item-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'identity-source-item-details
                     'make-identity-source-item-details))
@@ -2339,21 +3212,49 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (is-authorized-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-is-authorized-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (action common-lisp:nil :type
-    (common-lisp:or action-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (context common-lisp:nil :type
-    (common-lisp:or context-definition common-lisp:null))
-   (entities common-lisp:nil :type
-    (common-lisp:or entities-definition common-lisp:null)))
+ (common-lisp:defclass is-authorized-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-is-authorized-input-principal
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform common-lisp:nil
+                         :type
+                         (common-lisp:or action-identifier common-lisp:null)
+                         :accessor struct-shape-is-authorized-input-action
+                         :shape "ActionIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-is-authorized-input-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (context :initarg :context :initform common-lisp:nil
+                         :type
+                         (common-lisp:or context-definition common-lisp:null)
+                         :accessor struct-shape-is-authorized-input-context
+                         :shape "ContextDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (entities :initarg :entities :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entities-definition common-lisp:null)
+                         :accessor struct-shape-is-authorized-input-entities
+                         :shape "EntitiesDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-is-authorized-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'is-authorized-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'is-authorized-input 'make-is-authorized-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2408,15 +3309,35 @@
                         ((aws-sdk/generator/shape::input is-authorized-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (is-authorized-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-is-authorized-output-"))
-   (decision (common-lisp:error ":decision is required") :type
-    (common-lisp:or decision common-lisp:null))
-   (determining-policies (common-lisp:error ":determiningpolicies is required")
-    :type (common-lisp:or determining-policy-list common-lisp:null))
-   (errors (common-lisp:error ":errors is required") :type
-    (common-lisp:or evaluation-error-list common-lisp:null)))
+ (common-lisp:defclass is-authorized-output common-lisp:nil
+                       ((decision :initarg :decision :initform
+                         (common-lisp:error ":decision is required") :type
+                         (common-lisp:or decision common-lisp:null) :accessor
+                         struct-shape-is-authorized-output-decision :shape
+                         "Decision" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (determining-policies :initarg :determining-policies
+                         :initform
+                         (common-lisp:error ":determiningpolicies is required")
+                         :type
+                         (common-lisp:or determining-policy-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-output-determining-policies
+                         :shape "DeterminingPolicyList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (errors :initarg :errors :initform
+                         (common-lisp:error ":errors is required") :type
+                         (common-lisp:or evaluation-error-list
+                                         common-lisp:null)
+                         :accessor struct-shape-is-authorized-output-errors
+                         :shape "EvaluationErrorList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-is-authorized-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'is-authorized-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'is-authorized-output 'make-is-authorized-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2451,22 +3372,60 @@
                         ((aws-sdk/generator/shape::input is-authorized-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (is-authorized-with-token-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-is-authorized-with-token-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (identity-token common-lisp:nil :type
-    (common-lisp:or token common-lisp:null))
-   (access-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
-   (action common-lisp:nil :type
-    (common-lisp:or action-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (context common-lisp:nil :type
-    (common-lisp:or context-definition common-lisp:null))
-   (entities common-lisp:nil :type
-    (common-lisp:or entities-definition common-lisp:null)))
+ (common-lisp:defclass is-authorized-with-token-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-with-token-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-token :initarg :identity-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-is-authorized-with-token-input-identity-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (access-token :initarg :access-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-is-authorized-with-token-input-access-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform common-lisp:nil
+                         :type
+                         (common-lisp:or action-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-with-token-input-action
+                         :shape "ActionIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-with-token-input-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (context :initarg :context :initform common-lisp:nil
+                         :type
+                         (common-lisp:or context-definition common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-with-token-input-context
+                         :shape "ContextDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (entities :initarg :entities :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entities-definition common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-with-token-input-entities
+                         :shape "EntitiesDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-is-authorized-with-token-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'is-authorized-with-token-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'is-authorized-with-token-input
                     'make-is-authorized-with-token-input))
@@ -2535,15 +3494,37 @@
                           is-authorized-with-token-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (is-authorized-with-token-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-is-authorized-with-token-output-"))
-   (decision (common-lisp:error ":decision is required") :type
-    (common-lisp:or decision common-lisp:null))
-   (determining-policies (common-lisp:error ":determiningpolicies is required")
-    :type (common-lisp:or determining-policy-list common-lisp:null))
-   (errors (common-lisp:error ":errors is required") :type
-    (common-lisp:or evaluation-error-list common-lisp:null)))
+ (common-lisp:defclass is-authorized-with-token-output common-lisp:nil
+                       ((decision :initarg :decision :initform
+                         (common-lisp:error ":decision is required") :type
+                         (common-lisp:or decision common-lisp:null) :accessor
+                         struct-shape-is-authorized-with-token-output-decision
+                         :shape "Decision" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (determining-policies :initarg :determining-policies
+                         :initform
+                         (common-lisp:error ":determiningpolicies is required")
+                         :type
+                         (common-lisp:or determining-policy-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-with-token-output-determining-policies
+                         :shape "DeterminingPolicyList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (errors :initarg :errors :initform
+                         (common-lisp:error ":errors is required") :type
+                         (common-lisp:or evaluation-error-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-is-authorized-with-token-output-errors
+                         :shape "EvaluationErrorList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-is-authorized-with-token-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'is-authorized-with-token-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'is-authorized-with-token-output
                     'make-is-authorized-with-token-output))
@@ -2586,17 +3567,41 @@
    common-lisp:nil))
 (common-lisp:deftype issuer () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-identity-sources-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-identity-sources-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-identity-sources-max-results common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or identity-source-filters common-lisp:null)))
+ (common-lisp:defclass list-identity-sources-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-identity-sources-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-identity-sources-input-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-identity-sources-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-identity-sources-input-max-results
+                         :shape "ListIdentitySourcesMaxResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or identity-source-filters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-identity-sources-input-filters
+                         :shape "IdentitySourceFilters" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-identity-sources-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-identity-sources-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-identity-sources-input
                     'make-list-identity-sources-input))
@@ -2645,13 +3650,26 @@
    common-lisp:nil))
 (common-lisp:deftype list-identity-sources-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-identity-sources-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-identity-sources-output-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (identity-sources (common-lisp:error ":identitysources is required") :type
-    (common-lisp:or identity-sources common-lisp:null)))
+ (common-lisp:defclass list-identity-sources-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-identity-sources-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-sources :initarg :identity-sources :initform
+                         (common-lisp:error ":identitysources is required")
+                         :type
+                         (common-lisp:or identity-sources common-lisp:null)
+                         :accessor
+                         struct-shape-list-identity-sources-output-identity-sources
+                         :shape "IdentitySources" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-identity-sources-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-identity-sources-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-identity-sources-output
                     'make-list-identity-sources-output))
@@ -2685,17 +3703,36 @@
                           list-identity-sources-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-policies-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-policies-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (filter common-lisp:nil :type
-    (common-lisp:or policy-filter common-lisp:null)))
+ (common-lisp:defclass list-policies-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-policies-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-policies-input-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor struct-shape-list-policies-input-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filter :initarg :filter :initform common-lisp:nil
+                         :type (common-lisp:or policy-filter common-lisp:null)
+                         :accessor struct-shape-list-policies-input-filter
+                         :shape "PolicyFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-policies-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-policies-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-policies-input 'make-list-policies-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2736,13 +3773,24 @@
                         ((aws-sdk/generator/shape::input list-policies-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-policies-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-policies-output-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (policies (common-lisp:error ":policies is required") :type
-    (common-lisp:or policy-list common-lisp:null)))
+ (common-lisp:defclass list-policies-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-policies-output-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (policies :initarg :policies :initform
+                         (common-lisp:error ":policies is required") :type
+                         (common-lisp:or policy-list common-lisp:null)
+                         :accessor struct-shape-list-policies-output-policies
+                         :shape "PolicyList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-policies-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-policies-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-policies-output 'make-list-policies-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2769,13 +3817,25 @@
                         ((aws-sdk/generator/shape::input list-policies-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-policy-stores-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-policy-stores-input-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-policy-stores-input common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-policy-stores-input-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-policy-stores-input-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-policy-stores-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-policy-stores-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-policy-stores-input 'make-list-policy-stores-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2808,13 +3868,25 @@
                           list-policy-stores-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-policy-stores-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-policy-stores-output-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (policy-stores (common-lisp:error ":policystores is required") :type
-    (common-lisp:or policy-store-list common-lisp:null)))
+ (common-lisp:defclass list-policy-stores-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-policy-stores-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-stores :initarg :policy-stores :initform
+                         (common-lisp:error ":policystores is required") :type
+                         (common-lisp:or policy-store-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-policy-stores-output-policy-stores
+                         :shape "PolicyStoreList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-policy-stores-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-policy-stores-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-policy-stores-output
                     'make-list-policy-stores-output))
@@ -2848,15 +3920,32 @@
                           list-policy-stores-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-policy-templates-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-policy-templates-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-policy-templates-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-policy-templates-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-policy-templates-input-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-policy-templates-input-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-policy-templates-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-policy-templates-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-policy-templates-input
                     'make-list-policy-templates-input))
@@ -2897,13 +3986,27 @@
                           list-policy-templates-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-policy-templates-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-policy-templates-output-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (policy-templates (common-lisp:error ":policytemplates is required") :type
-    (common-lisp:or policy-templates-list common-lisp:null)))
+ (common-lisp:defclass list-policy-templates-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-policy-templates-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-templates :initarg :policy-templates :initform
+                         (common-lisp:error ":policytemplates is required")
+                         :type
+                         (common-lisp:or policy-templates-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-policy-templates-output-policy-templates
+                         :shape "PolicyTemplatesList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-policy-templates-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-policy-templates-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-policy-templates-output
                     'make-list-policy-templates-output))
@@ -2957,13 +4060,27 @@
                            (trivial-types:proper-list entity-identifier))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-definition-"))
-   (static common-lisp:nil :type
-    (common-lisp:or static-policy-definition common-lisp:null))
-   (template-linked common-lisp:nil :type
-    (common-lisp:or template-linked-policy-definition common-lisp:null)))
+ (common-lisp:defclass policy-definition common-lisp:nil
+                       ((static :initarg :static :initform common-lisp:nil
+                         :type
+                         (common-lisp:or static-policy-definition
+                                         common-lisp:null)
+                         :accessor struct-shape-policy-definition-static :shape
+                         "StaticPolicyDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (template-linked :initarg :template-linked :initform
+                         common-lisp:nil :type
+                         (common-lisp:or template-linked-policy-definition
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-policy-definition-template-linked :shape
+                         "TemplateLinkedPolicyDefinition" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-policy-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'policy-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'policy-definition 'make-policy-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2990,14 +4107,29 @@
                         ((aws-sdk/generator/shape::input policy-definition))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-definition-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-definition-detail-"))
-   (static common-lisp:nil :type
-    (common-lisp:or static-policy-definition-detail common-lisp:null))
-   (template-linked common-lisp:nil :type
-    (common-lisp:or template-linked-policy-definition-detail
-                    common-lisp:null)))
+ (common-lisp:defclass policy-definition-detail common-lisp:nil
+                       ((static :initarg :static :initform common-lisp:nil
+                         :type
+                         (common-lisp:or static-policy-definition-detail
+                                         common-lisp:null)
+                         :accessor struct-shape-policy-definition-detail-static
+                         :shape "StaticPolicyDefinitionDetail" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (template-linked :initarg :template-linked :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          template-linked-policy-definition-detail
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-policy-definition-detail-template-linked
+                         :shape "TemplateLinkedPolicyDefinitionDetail"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-policy-definition-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'policy-definition-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'policy-definition-detail 'make-policy-definition-detail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3030,13 +4162,27 @@
                           policy-definition-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-definition-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-definition-item-"))
-   (static common-lisp:nil :type
-    (common-lisp:or static-policy-definition-item common-lisp:null))
-   (template-linked common-lisp:nil :type
-    (common-lisp:or template-linked-policy-definition-item common-lisp:null)))
+ (common-lisp:defclass policy-definition-item common-lisp:nil
+                       ((static :initarg :static :initform common-lisp:nil
+                         :type
+                         (common-lisp:or static-policy-definition-item
+                                         common-lisp:null)
+                         :accessor struct-shape-policy-definition-item-static
+                         :shape "StaticPolicyDefinitionItem" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (template-linked :initarg :template-linked :initform
+                         common-lisp:nil :type
+                         (common-lisp:or template-linked-policy-definition-item
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-policy-definition-item-template-linked
+                         :shape "TemplateLinkedPolicyDefinitionItem" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-policy-definition-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'policy-definition-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'policy-definition-item 'make-policy-definition-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3069,17 +4215,37 @@
                           policy-definition-item))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-filter-"))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-reference common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-reference common-lisp:null))
-   (policy-type common-lisp:nil :type
-    (common-lisp:or policy-type common-lisp:null))
-   (policy-template-id common-lisp:nil :type
-    (common-lisp:or policy-template-id common-lisp:null)))
+ (common-lisp:defclass policy-filter common-lisp:nil
+                       ((principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-reference common-lisp:null)
+                         :accessor struct-shape-policy-filter-principal :shape
+                         "EntityReference" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-reference common-lisp:null)
+                         :accessor struct-shape-policy-filter-resource :shape
+                         "EntityReference" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-type :initarg :policy-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-type common-lisp:null)
+                         :accessor struct-shape-policy-filter-policy-type
+                         :shape "PolicyType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-template-id :initarg :policy-template-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-policy-filter-policy-template-id :shape
+                         "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-policy-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'policy-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'policy-filter 'make-policy-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input policy-filter))
@@ -3120,25 +4286,63 @@
    common-lisp:nil))
 (common-lisp:deftype policy-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-item-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-id (common-lisp:error ":policyid is required") :type
-    (common-lisp:or policy-id common-lisp:null))
-   (policy-type (common-lisp:error ":policytype is required") :type
-    (common-lisp:or policy-type common-lisp:null))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or policy-definition-item common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass policy-item common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor struct-shape-policy-item-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policyid is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-policy-item-policy-id :shape "PolicyId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (policy-type :initarg :policy-type :initform
+                         (common-lisp:error ":policytype is required") :type
+                         (common-lisp:or policy-type common-lisp:null)
+                         :accessor struct-shape-policy-item-policy-type :shape
+                         "PolicyType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-policy-item-principal :shape
+                         "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-policy-item-resource :shape
+                         "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (definition :initarg :definition :initform
+                         (common-lisp:error ":definition is required") :type
+                         (common-lisp:or policy-definition-item
+                                         common-lisp:null)
+                         :accessor struct-shape-policy-item-definition :shape
+                         "PolicyDefinitionItem" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor struct-shape-policy-item-created-date :shape
+                         "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor struct-shape-policy-item-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-policy-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'policy-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'policy-item 'make-policy-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input policy-item))
@@ -3216,19 +4420,45 @@
 (common-lisp:deftype policy-store-description () 'common-lisp:string)
 (common-lisp:deftype policy-store-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-store-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-store-item-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date common-lisp:nil :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or policy-store-description common-lisp:null)))
+ (common-lisp:defclass policy-store-item common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-policy-store-item-policy-store-id :shape
+                         "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-policy-store-item-arn :shape
+                         "ResourceArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor struct-shape-policy-store-item-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-policy-store-item-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-store-description
+                                         common-lisp:null)
+                         :accessor struct-shape-policy-store-item-description
+                         :shape "PolicyStoreDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-policy-store-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'policy-store-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'policy-store-item 'make-policy-store-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3286,19 +4516,52 @@
 (common-lisp:deftype policy-template-description () 'common-lisp:string)
 (common-lisp:deftype policy-template-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-template-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-template-item-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or policy-template-description common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass policy-template-item common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-policy-template-item-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-policy-template-item-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-template-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-policy-template-item-description :shape
+                         "PolicyTemplateDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-policy-template-item-created-date :shape
+                         "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-policy-template-item-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-policy-template-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'policy-template-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'policy-template-item 'make-policy-template-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3356,13 +4619,25 @@
 (common-lisp:deftype policy-type () 'common-lisp:string)
 (common-lisp:deftype principal-entity-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-schema-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-schema-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or schema-definition common-lisp:null)))
+ (common-lisp:defclass put-schema-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-schema-input-policy-store-id :shape
+                         "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (definition :initarg :definition :initform
+                         (common-lisp:error ":definition is required") :type
+                         (common-lisp:or schema-definition common-lisp:null)
+                         :accessor struct-shape-put-schema-input-definition
+                         :shape "SchemaDefinition" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-schema-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-schema-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-schema-input 'make-put-schema-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3389,17 +4664,40 @@
                         ((aws-sdk/generator/shape::input put-schema-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-schema-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-schema-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (namespaces (common-lisp:error ":namespaces is required") :type
-    (common-lisp:or namespace-list common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass put-schema-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-schema-output-policy-store-id :shape
+                         "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespaces :initarg :namespaces :initform
+                         (common-lisp:error ":namespaces is required") :type
+                         (common-lisp:or namespace-list common-lisp:null)
+                         :accessor struct-shape-put-schema-output-namespaces
+                         :shape "NamespaceList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor struct-shape-put-schema-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-put-schema-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-schema-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-schema-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-schema-output 'make-put-schema-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3448,13 +4746,24 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype resource-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-conflict (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-conflict-"))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-type (common-lisp:error ":resourcetype is required") :type
-    (common-lisp:or resource-type common-lisp:null)))
+ (common-lisp:defclass resource-conflict common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resourceid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-resource-conflict-resource-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-type :initarg :resource-type :initform
+                         (common-lisp:error ":resourcetype is required") :type
+                         (common-lisp:or resource-type common-lisp:null)
+                         :accessor struct-shape-resource-conflict-resource-type
+                         :shape "ResourceType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-conflict
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-conflict
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resource-conflict 'make-resource-conflict))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3504,11 +4813,18 @@
                     'resource-not-found-exception-resource-type)))
 (common-lisp:deftype resource-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (schema-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-schema-definition-"))
-   (cedar-json common-lisp:nil :type
-    (common-lisp:or schema-json common-lisp:null)))
+ (common-lisp:defclass schema-definition common-lisp:nil
+                       ((cedar-json :initarg :cedar-json :initform
+                         common-lisp:nil :type
+                         (common-lisp:or schema-json common-lisp:null)
+                         :accessor struct-shape-schema-definition-cedar-json
+                         :shape "SchemaJson" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-schema-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'schema-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'schema-definition 'make-schema-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3557,13 +4873,27 @@
                            (trivial-types:proper-list attribute-value))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (static-policy-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-static-policy-definition-"))
-   (description common-lisp:nil :type
-    (common-lisp:or static-policy-description common-lisp:null))
-   (statement (common-lisp:error ":statement is required") :type
-    (common-lisp:or policy-statement common-lisp:null)))
+ (common-lisp:defclass static-policy-definition common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or static-policy-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-static-policy-definition-description
+                         :shape "StaticPolicyDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (statement :initarg :statement :initform
+                         (common-lisp:error ":statement is required") :type
+                         (common-lisp:or policy-statement common-lisp:null)
+                         :accessor
+                         struct-shape-static-policy-definition-statement :shape
+                         "PolicyStatement" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-static-policy-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'static-policy-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'static-policy-definition 'make-static-policy-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3596,13 +4926,28 @@
                           static-policy-definition))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (static-policy-definition-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-static-policy-definition-detail-"))
-   (description common-lisp:nil :type
-    (common-lisp:or static-policy-description common-lisp:null))
-   (statement (common-lisp:error ":statement is required") :type
-    (common-lisp:or policy-statement common-lisp:null)))
+ (common-lisp:defclass static-policy-definition-detail common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or static-policy-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-static-policy-definition-detail-description
+                         :shape "StaticPolicyDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (statement :initarg :statement :initform
+                         (common-lisp:error ":statement is required") :type
+                         (common-lisp:or policy-statement common-lisp:null)
+                         :accessor
+                         struct-shape-static-policy-definition-detail-statement
+                         :shape "PolicyStatement" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-static-policy-definition-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'static-policy-definition-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'static-policy-definition-detail
                     'make-static-policy-definition-detail))
@@ -3636,11 +4981,21 @@
                           static-policy-definition-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (static-policy-definition-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-static-policy-definition-item-"))
-   (description common-lisp:nil :type
-    (common-lisp:or static-policy-description common-lisp:null)))
+ (common-lisp:defclass static-policy-definition-item common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or static-policy-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-static-policy-definition-item-description
+                         :shape "StaticPolicyDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-static-policy-definition-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'static-policy-definition-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'static-policy-definition-item
                     'make-static-policy-definition-item))
@@ -3670,15 +5025,36 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype string-attribute () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (template-linked-policy-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-template-linked-policy-definition-"))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null)))
+ (common-lisp:defclass template-linked-policy-definition common-lisp:nil
+                       ((policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-principal
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-template-linked-policy-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'template-linked-policy-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'template-linked-policy-definition
                     'make-template-linked-policy-definition))
@@ -3719,15 +5095,36 @@
                           template-linked-policy-definition))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (template-linked-policy-definition-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-template-linked-policy-definition-detail-"))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null)))
+ (common-lisp:defclass template-linked-policy-definition-detail common-lisp:nil
+                       ((policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-detail-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-detail-principal
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-detail-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-template-linked-policy-definition-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'template-linked-policy-definition-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'template-linked-policy-definition-detail
                     'make-template-linked-policy-definition-detail))
@@ -3768,15 +5165,36 @@
                           template-linked-policy-definition-detail))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (template-linked-policy-definition-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-template-linked-policy-definition-item-"))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null)))
+ (common-lisp:defclass template-linked-policy-definition-item common-lisp:nil
+                       ((policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-item-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-item-principal
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-template-linked-policy-definition-item-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-template-linked-policy-definition-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'template-linked-policy-definition-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'template-linked-policy-definition-item
                     'make-template-linked-policy-definition-item))
@@ -3832,13 +5250,26 @@
 (common-lisp:deftype timestamp-format () 'common-lisp:string)
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-cognito-user-pool-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-cognito-user-pool-configuration-"))
-   (user-pool-arn (common-lisp:error ":userpoolarn is required") :type
-    (common-lisp:or user-pool-arn common-lisp:null))
-   (client-ids common-lisp:nil :type
-    (common-lisp:or client-ids common-lisp:null)))
+ (common-lisp:defclass update-cognito-user-pool-configuration common-lisp:nil
+                       ((user-pool-arn :initarg :user-pool-arn :initform
+                         (common-lisp:error ":userpoolarn is required") :type
+                         (common-lisp:or user-pool-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-cognito-user-pool-configuration-user-pool-arn
+                         :shape "UserPoolArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-ids :initarg :client-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-ids common-lisp:null) :accessor
+                         struct-shape-update-cognito-user-pool-configuration-client-ids
+                         :shape "ClientIds" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-cognito-user-pool-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-cognito-user-pool-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-cognito-user-pool-configuration
                     'make-update-cognito-user-pool-configuration))
@@ -3872,11 +5303,21 @@
                           update-cognito-user-pool-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-configuration-"))
-   (cognito-user-pool-configuration common-lisp:nil :type
-    (common-lisp:or update-cognito-user-pool-configuration common-lisp:null)))
+ (common-lisp:defclass update-configuration common-lisp:nil
+                       ((cognito-user-pool-configuration :initarg
+                         :cognito-user-pool-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or update-cognito-user-pool-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-configuration-cognito-user-pool-configuration
+                         :shape "UpdateCognitoUserPoolConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-configuration 'make-update-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3897,17 +5338,45 @@
                         ((aws-sdk/generator/shape::input update-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-identity-source-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-identity-source-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (identity-source-id (common-lisp:error ":identitysourceid is required")
-    :type (common-lisp:or identity-source-id common-lisp:null))
-   (update-configuration (common-lisp:error ":updateconfiguration is required")
-    :type (common-lisp:or update-configuration common-lisp:null))
-   (principal-entity-type common-lisp:nil :type
-    (common-lisp:or principal-entity-type common-lisp:null)))
+ (common-lisp:defclass update-identity-source-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-identity-source-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-source-id :initarg :identity-source-id
+                         :initform
+                         (common-lisp:error ":identitysourceid is required")
+                         :type
+                         (common-lisp:or identity-source-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-identity-source-input-identity-source-id
+                         :shape "IdentitySourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-configuration :initarg :update-configuration
+                         :initform
+                         (common-lisp:error ":updateconfiguration is required")
+                         :type
+                         (common-lisp:or update-configuration common-lisp:null)
+                         :accessor
+                         struct-shape-update-identity-source-input-update-configuration
+                         :shape "UpdateConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-entity-type :initarg :principal-entity-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or principal-entity-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-identity-source-input-principal-entity-type
+                         :shape "PrincipalEntityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-identity-source-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-identity-source-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-identity-source-input
                     'make-update-identity-source-input))
@@ -3957,17 +5426,45 @@
                           update-identity-source-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-identity-source-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-identity-source-output-"))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (identity-source-id (common-lisp:error ":identitysourceid is required")
-    :type (common-lisp:or identity-source-id common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null)))
+ (common-lisp:defclass update-identity-source-output common-lisp:nil
+                       ((created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-identity-source-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (identity-source-id :initarg :identity-source-id
+                         :initform
+                         (common-lisp:error ":identitysourceid is required")
+                         :type
+                         (common-lisp:or identity-source-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-identity-source-output-identity-source-id
+                         :shape "IdentitySourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-identity-source-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-identity-source-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-identity-source-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-identity-source-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-identity-source-output
                     'make-update-identity-source-output))
@@ -4015,11 +5512,19 @@
                           update-identity-source-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-policy-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-policy-definition-"))
-   (static common-lisp:nil :type
-    (common-lisp:or update-static-policy-definition common-lisp:null)))
+ (common-lisp:defclass update-policy-definition common-lisp:nil
+                       ((static :initarg :static :initform common-lisp:nil
+                         :type
+                         (common-lisp:or update-static-policy-definition
+                                         common-lisp:null)
+                         :accessor struct-shape-update-policy-definition-static
+                         :shape "UpdateStaticPolicyDefinition" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-policy-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-policy-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-policy-definition 'make-update-policy-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4045,15 +5550,32 @@
                           update-policy-definition))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-policy-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-policy-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-id (common-lisp:error ":policyid is required") :type
-    (common-lisp:or policy-id common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or update-policy-definition common-lisp:null)))
+ (common-lisp:defclass update-policy-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policyid is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-update-policy-input-policy-id :shape
+                         "PolicyId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (definition :initarg :definition :initform
+                         (common-lisp:error ":definition is required") :type
+                         (common-lisp:or update-policy-definition
+                                         common-lisp:null)
+                         :accessor struct-shape-update-policy-input-definition
+                         :shape "UpdatePolicyDefinition" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-policy-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-policy-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-policy-input 'make-update-policy-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4087,23 +5609,60 @@
                         ((aws-sdk/generator/shape::input update-policy-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-policy-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-policy-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-id (common-lisp:error ":policyid is required") :type
-    (common-lisp:or policy-id common-lisp:null))
-   (policy-type (common-lisp:error ":policytype is required") :type
-    (common-lisp:or policy-type common-lisp:null))
-   (principal common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or entity-identifier common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass update-policy-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-id :initarg :policy-id :initform
+                         (common-lisp:error ":policyid is required") :type
+                         (common-lisp:or policy-id common-lisp:null) :accessor
+                         struct-shape-update-policy-output-policy-id :shape
+                         "PolicyId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (policy-type :initarg :policy-type :initform
+                         (common-lisp:error ":policytype is required") :type
+                         (common-lisp:or policy-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-output-policy-type :shape
+                         "PolicyType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (principal :initarg :principal :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-update-policy-output-principal
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or entity-identifier common-lisp:null)
+                         :accessor struct-shape-update-policy-output-resource
+                         :shape "EntityIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-output-created-date :shape
+                         "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-policy-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-policy-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-policy-output 'make-update-policy-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4165,15 +5724,36 @@
                         ((aws-sdk/generator/shape::input update-policy-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-policy-store-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-policy-store-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (validation-settings (common-lisp:error ":validationsettings is required")
-    :type (common-lisp:or validation-settings common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or policy-store-description common-lisp:null)))
+ (common-lisp:defclass update-policy-store-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-store-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (validation-settings :initarg :validation-settings
+                         :initform
+                         (common-lisp:error ":validationsettings is required")
+                         :type
+                         (common-lisp:or validation-settings common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-store-input-validation-settings
+                         :shape "ValidationSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-store-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-store-input-description
+                         :shape "PolicyStoreDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-policy-store-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-policy-store-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-policy-store-input
                     'make-update-policy-store-input))
@@ -4214,17 +5794,41 @@
                           update-policy-store-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-policy-store-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-policy-store-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass update-policy-store-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-store-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-update-policy-store-output-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-store-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-store-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-policy-store-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-policy-store-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-policy-store-output
                     'make-update-policy-store-output))
@@ -4272,17 +5876,43 @@
                           update-policy-store-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-policy-template-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-policy-template-input-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or policy-template-description common-lisp:null))
-   (statement (common-lisp:error ":statement is required") :type
-    (common-lisp:or policy-statement common-lisp:null)))
+ (common-lisp:defclass update-policy-template-input common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-template-input-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-template-input-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or policy-template-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-template-input-description
+                         :shape "PolicyTemplateDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (statement :initarg :statement :initform
+                         (common-lisp:error ":statement is required") :type
+                         (common-lisp:or policy-statement common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-template-input-statement
+                         :shape "PolicyStatement" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-policy-template-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-policy-template-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-policy-template-input
                     'make-update-policy-template-input))
@@ -4330,17 +5960,45 @@
                           update-policy-template-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-policy-template-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-policy-template-output-"))
-   (policy-store-id (common-lisp:error ":policystoreid is required") :type
-    (common-lisp:or policy-store-id common-lisp:null))
-   (policy-template-id (common-lisp:error ":policytemplateid is required")
-    :type (common-lisp:or policy-template-id common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null))
-   (last-updated-date (common-lisp:error ":lastupdateddate is required") :type
-    (common-lisp:or timestamp-format common-lisp:null)))
+ (common-lisp:defclass update-policy-template-output common-lisp:nil
+                       ((policy-store-id :initarg :policy-store-id :initform
+                         (common-lisp:error ":policystoreid is required") :type
+                         (common-lisp:or policy-store-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-template-output-policy-store-id
+                         :shape "PolicyStoreId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-template-id :initarg :policy-template-id
+                         :initform
+                         (common-lisp:error ":policytemplateid is required")
+                         :type
+                         (common-lisp:or policy-template-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-template-output-policy-template-id
+                         :shape "PolicyTemplateId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-template-output-created-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-date :initarg :last-updated-date
+                         :initform
+                         (common-lisp:error ":lastupdateddate is required")
+                         :type
+                         (common-lisp:or timestamp-format common-lisp:null)
+                         :accessor
+                         struct-shape-update-policy-template-output-last-updated-date
+                         :shape "TimestampFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-policy-template-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-policy-template-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-policy-template-output
                     'make-update-policy-template-output))
@@ -4388,13 +6046,28 @@
                           update-policy-template-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-static-policy-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-static-policy-definition-"))
-   (description common-lisp:nil :type
-    (common-lisp:or static-policy-description common-lisp:null))
-   (statement (common-lisp:error ":statement is required") :type
-    (common-lisp:or policy-statement common-lisp:null)))
+ (common-lisp:defclass update-static-policy-definition common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or static-policy-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-static-policy-definition-description
+                         :shape "StaticPolicyDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (statement :initarg :statement :initform
+                         (common-lisp:error ":statement is required") :type
+                         (common-lisp:or policy-statement common-lisp:null)
+                         :accessor
+                         struct-shape-update-static-policy-definition-statement
+                         :shape "PolicyStatement" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-static-policy-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-static-policy-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-static-policy-definition
                     'make-update-static-policy-definition))
@@ -4439,13 +6112,24 @@
   (common-lisp:list 'validation-exception 'validation-exception-message
                     'validation-exception-field-list)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-field-"))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or string common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass validation-exception-field common-lisp:nil
+                       ((path :initarg :path :initform
+                         (common-lisp:error ":path is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-path :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-message :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-field
                     'make-validation-exception-field))
@@ -4489,11 +6173,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype validation-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-settings (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-settings-"))
-   (mode (common-lisp:error ":mode is required") :type
-    (common-lisp:or validation-mode common-lisp:null)))
+ (common-lisp:defclass validation-settings common-lisp:nil
+                       ((mode :initarg :mode :initform
+                         (common-lisp:error ":mode is required") :type
+                         (common-lisp:or validation-mode common-lisp:null)
+                         :accessor struct-shape-validation-settings-mode :shape
+                         "ValidationMode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-settings
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-settings
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-settings 'make-validation-settings))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
