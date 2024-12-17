@@ -56,23 +56,63 @@
 (common-lisp:deftype action () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-firewall-rule-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-firewall-rule-group-request-"))
-   (creator-request-id (common-lisp:error ":creator-request-id is required")
-    :type (common-lisp:or creator-request-id common-lisp:null))
-   (firewall-rule-group-id
-    (common-lisp:error ":firewall-rule-group-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (vpc-id (common-lisp:error ":vpc-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (priority (common-lisp:error ":priority is required") :type
-    (common-lisp:or priority common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (mutation-protection common-lisp:nil :type
-    (common-lisp:or mutation-protection-status common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass associate-firewall-rule-group-request common-lisp:nil
+                       ((creator-request-id :initarg :creator-request-id
+                         :initform
+                         (common-lisp:error ":creator-request-id is required")
+                         :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-associate-firewall-rule-group-request-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-associate-firewall-rule-group-request-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-id :initarg :vpc-id :initform
+                         (common-lisp:error ":vpc-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-associate-firewall-rule-group-request-vpc-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (priority :initarg :priority :initform
+                         (common-lisp:error ":priority is required") :type
+                         (common-lisp:or priority common-lisp:null) :accessor
+                         struct-shape-associate-firewall-rule-group-request-priority
+                         :shape "Priority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-associate-firewall-rule-group-request-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mutation-protection :initarg :mutation-protection
+                         :initform common-lisp:nil :type
+                         (common-lisp:or mutation-protection-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-firewall-rule-group-request-mutation-protection
+                         :shape "MutationProtectionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-associate-firewall-rule-group-request-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-firewall-rule-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-firewall-rule-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-firewall-rule-group-request
                     'make-associate-firewall-rule-group-request))
@@ -142,11 +182,22 @@
                           associate-firewall-rule-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-firewall-rule-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-firewall-rule-group-response-"))
-   (firewall-rule-group-association common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-association common-lisp:null)))
+ (common-lisp:defclass associate-firewall-rule-group-response common-lisp:nil
+                       ((firewall-rule-group-association :initarg
+                         :firewall-rule-group-association :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-firewall-rule-group-response-firewall-rule-group-association
+                         :shape "FirewallRuleGroupAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-firewall-rule-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-firewall-rule-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-firewall-rule-group-response
                     'make-associate-firewall-rule-group-response))
@@ -174,15 +225,30 @@
                           associate-firewall-rule-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-resolver-endpoint-ip-address-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-associate-resolver-endpoint-ip-address-request-"))
-   (resolver-endpoint-id
-    (common-lisp:error ":resolver-endpoint-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (ip-address (common-lisp:error ":ip-address is required") :type
-    (common-lisp:or ip-address-update common-lisp:null)))
+ (common-lisp:defclass associate-resolver-endpoint-ip-address-request
+                       common-lisp:nil
+                       ((resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform
+                         (common-lisp:error
+                          ":resolver-endpoint-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-endpoint-ip-address-request-resolver-endpoint-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ip-address :initarg :ip-address :initform
+                         (common-lisp:error ":ip-address is required") :type
+                         (common-lisp:or ip-address-update common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-endpoint-ip-address-request-ip-address
+                         :shape "IpAddressUpdate" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-resolver-endpoint-ip-address-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-resolver-endpoint-ip-address-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-resolver-endpoint-ip-address-request
                     'make-associate-resolver-endpoint-ip-address-request))
@@ -217,12 +283,21 @@
                           associate-resolver-endpoint-ip-address-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-resolver-endpoint-ip-address-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-associate-resolver-endpoint-ip-address-response-"))
-   (resolver-endpoint common-lisp:nil :type
-    (common-lisp:or resolver-endpoint common-lisp:null)))
+ (common-lisp:defclass associate-resolver-endpoint-ip-address-response
+                       common-lisp:nil
+                       ((resolver-endpoint :initarg :resolver-endpoint
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-endpoint common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-endpoint-ip-address-response-resolver-endpoint
+                         :shape "ResolverEndpoint" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-resolver-endpoint-ip-address-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-resolver-endpoint-ip-address-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-resolver-endpoint-ip-address-response
                     'make-associate-resolver-endpoint-ip-address-response))
@@ -249,14 +324,30 @@
                           associate-resolver-endpoint-ip-address-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-resolver-query-log-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-resolver-query-log-config-request-"))
-   (resolver-query-log-config-id
-    (common-lisp:error ":resolver-query-log-config-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass associate-resolver-query-log-config-request
+                       common-lisp:nil
+                       ((resolver-query-log-config-id :initarg
+                         :resolver-query-log-config-id :initform
+                         (common-lisp:error
+                          ":resolver-query-log-config-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-query-log-config-request-resolver-query-log-config-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-query-log-config-request-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-resolver-query-log-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-resolver-query-log-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-resolver-query-log-config-request
                     'make-associate-resolver-query-log-config-request))
@@ -291,12 +382,23 @@
                           associate-resolver-query-log-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-resolver-query-log-config-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-associate-resolver-query-log-config-response-"))
-   (resolver-query-log-config-association common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-association common-lisp:null)))
+ (common-lisp:defclass associate-resolver-query-log-config-response
+                       common-lisp:nil
+                       ((resolver-query-log-config-association :initarg
+                         :resolver-query-log-config-association :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-query-log-config-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-query-log-config-response-resolver-query-log-config-association
+                         :shape "ResolverQueryLogConfigAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-resolver-query-log-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-resolver-query-log-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-resolver-query-log-config-response
                     'make-associate-resolver-query-log-config-response))
@@ -324,14 +426,32 @@
                           associate-resolver-query-log-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-resolver-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-resolver-rule-request-"))
-   (resolver-rule-id (common-lisp:error ":resolver-rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (vpcid (common-lisp:error ":vpcid is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass associate-resolver-rule-request common-lisp:nil
+                       ((resolver-rule-id :initarg :resolver-rule-id :initform
+                         (common-lisp:error ":resolver-rule-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-rule-request-resolver-rule-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-associate-resolver-rule-request-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vpcid :initarg :vpcid :initform
+                         (common-lisp:error ":vpcid is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-rule-request-vpcid
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-resolver-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-resolver-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-resolver-rule-request
                     'make-associate-resolver-rule-request))
@@ -372,11 +492,22 @@
                           associate-resolver-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-resolver-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-resolver-rule-response-"))
-   (resolver-rule-association common-lisp:nil :type
-    (common-lisp:or resolver-rule-association common-lisp:null)))
+ (common-lisp:defclass associate-resolver-rule-response common-lisp:nil
+                       ((resolver-rule-association :initarg
+                         :resolver-rule-association :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-rule-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resolver-rule-response-resolver-rule-association
+                         :shape "ResolverRuleAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-resolver-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-resolver-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-resolver-rule-response
                     'make-associate-resolver-rule-response))
@@ -418,14 +549,33 @@
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:deftype count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-firewall-domain-list-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-firewall-domain-list-request-"))
-   (creator-request-id (common-lisp:error ":creator-request-id is required")
-    :type (common-lisp:or creator-request-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass create-firewall-domain-list-request common-lisp:nil
+                       ((creator-request-id :initarg :creator-request-id
+                         :initform
+                         (common-lisp:error ":creator-request-id is required")
+                         :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-domain-list-request-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-firewall-domain-list-request-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-firewall-domain-list-request-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-firewall-domain-list-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-firewall-domain-list-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-firewall-domain-list-request
                     'make-create-firewall-domain-list-request))
@@ -466,11 +616,20 @@
                           create-firewall-domain-list-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-firewall-domain-list-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-firewall-domain-list-response-"))
-   (firewall-domain-list common-lisp:nil :type
-    (common-lisp:or firewall-domain-list common-lisp:null)))
+ (common-lisp:defclass create-firewall-domain-list-response common-lisp:nil
+                       ((firewall-domain-list :initarg :firewall-domain-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-domain-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-domain-list-response-firewall-domain-list
+                         :shape "FirewallDomainList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-firewall-domain-list-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-firewall-domain-list-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-firewall-domain-list-response
                     'make-create-firewall-domain-list-response))
@@ -498,14 +657,33 @@
                           create-firewall-domain-list-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-firewall-rule-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-firewall-rule-group-request-"))
-   (creator-request-id (common-lisp:error ":creator-request-id is required")
-    :type (common-lisp:or creator-request-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass create-firewall-rule-group-request common-lisp:nil
+                       ((creator-request-id :initarg :creator-request-id
+                         :initform
+                         (common-lisp:error ":creator-request-id is required")
+                         :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-group-request-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-firewall-rule-group-request-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-firewall-rule-group-request-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-firewall-rule-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-firewall-rule-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-firewall-rule-group-request
                     'make-create-firewall-rule-group-request))
@@ -546,11 +724,20 @@
                           create-firewall-rule-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-firewall-rule-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-firewall-rule-group-response-"))
-   (firewall-rule-group common-lisp:nil :type
-    (common-lisp:or firewall-rule-group common-lisp:null)))
+ (common-lisp:defclass create-firewall-rule-group-response common-lisp:nil
+                       ((firewall-rule-group :initarg :firewall-rule-group
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-group-response-firewall-rule-group
+                         :shape "FirewallRuleGroup" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-firewall-rule-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-firewall-rule-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-firewall-rule-group-response
                     'make-create-firewall-rule-group-response))
@@ -577,32 +764,93 @@
                           create-firewall-rule-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-firewall-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-firewall-rule-request-"))
-   (creator-request-id (common-lisp:error ":creator-request-id is required")
-    :type (common-lisp:or creator-request-id common-lisp:null))
-   (firewall-rule-group-id
-    (common-lisp:error ":firewall-rule-group-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (firewall-domain-list-id
-    (common-lisp:error ":firewall-domain-list-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (priority (common-lisp:error ":priority is required") :type
-    (common-lisp:or priority common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or action common-lisp:null))
-   (block-response common-lisp:nil :type
-    (common-lisp:or block-response common-lisp:null))
-   (block-override-domain common-lisp:nil :type
-    (common-lisp:or block-override-domain common-lisp:null))
-   (block-override-dns-type common-lisp:nil :type
-    (common-lisp:or block-override-dns-type common-lisp:null))
-   (block-override-ttl common-lisp:nil :type
-    (common-lisp:or block-override-ttl common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (qtype common-lisp:nil :type (common-lisp:or qtype common-lisp:null)))
+ (common-lisp:defclass create-firewall-rule-request common-lisp:nil
+                       ((creator-request-id :initarg :creator-request-id
+                         :initform
+                         (common-lisp:error ":creator-request-id is required")
+                         :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-request-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-request-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform
+                         (common-lisp:error
+                          ":firewall-domain-list-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-request-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (priority :initarg :priority :initform
+                         (common-lisp:error ":priority is required") :type
+                         (common-lisp:or priority common-lisp:null) :accessor
+                         struct-shape-create-firewall-rule-request-priority
+                         :shape "Priority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or action common-lisp:null) :accessor
+                         struct-shape-create-firewall-rule-request-action
+                         :shape "Action" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-response :initarg :block-response :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-response common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-request-block-response
+                         :shape "BlockResponse" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-override-domain :initarg :block-override-domain
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-override-domain
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-request-block-override-domain
+                         :shape "BlockOverrideDomain" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-override-dns-type :initarg
+                         :block-override-dns-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or block-override-dns-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-request-block-override-dns-type
+                         :shape "BlockOverrideDnsType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (block-override-ttl :initarg :block-override-ttl
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-override-ttl common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-request-block-override-ttl
+                         :shape "BlockOverrideTtl" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-firewall-rule-request-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (qtype :initarg :qtype :initform common-lisp:nil :type
+                         (common-lisp:or qtype common-lisp:null) :accessor
+                         struct-shape-create-firewall-rule-request-qtype :shape
+                         "Qtype" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-firewall-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-firewall-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-firewall-rule-request
                     'make-create-firewall-rule-request))
@@ -703,11 +951,20 @@
                           create-firewall-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-firewall-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-firewall-rule-response-"))
-   (firewall-rule common-lisp:nil :type
-    (common-lisp:or firewall-rule common-lisp:null)))
+ (common-lisp:defclass create-firewall-rule-response common-lisp:nil
+                       ((firewall-rule :initarg :firewall-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rule common-lisp:null)
+                         :accessor
+                         struct-shape-create-firewall-rule-response-firewall-rule
+                         :shape "FirewallRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-firewall-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-firewall-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-firewall-rule-response
                     'make-create-firewall-rule-response))
@@ -734,21 +991,60 @@
                           create-firewall-rule-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-outpost-resolver-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-outpost-resolver-request-"))
-   (creator-request-id (common-lisp:error ":creator-request-id is required")
-    :type (common-lisp:or creator-request-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or outpost-resolver-name common-lisp:null))
-   (instance-count common-lisp:nil :type
-    (common-lisp:or instance-count common-lisp:null))
-   (preferred-instance-type
-    (common-lisp:error ":preferred-instance-type is required") :type
-    (common-lisp:or outpost-instance-type common-lisp:null))
-   (outpost-arn (common-lisp:error ":outpost-arn is required") :type
-    (common-lisp:or outpost-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass create-outpost-resolver-request common-lisp:nil
+                       ((creator-request-id :initarg :creator-request-id
+                         :initform
+                         (common-lisp:error ":creator-request-id is required")
+                         :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-outpost-resolver-request-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or outpost-resolver-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-outpost-resolver-request-name
+                         :shape "OutpostResolverName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-count :initarg :instance-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instance-count common-lisp:null)
+                         :accessor
+                         struct-shape-create-outpost-resolver-request-instance-count
+                         :shape "InstanceCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (preferred-instance-type :initarg
+                         :preferred-instance-type :initform
+                         (common-lisp:error
+                          ":preferred-instance-type is required")
+                         :type
+                         (common-lisp:or outpost-instance-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-outpost-resolver-request-preferred-instance-type
+                         :shape "OutpostInstanceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (outpost-arn :initarg :outpost-arn :initform
+                         (common-lisp:error ":outpost-arn is required") :type
+                         (common-lisp:or outpost-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-outpost-resolver-request-outpost-arn
+                         :shape "OutpostArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-outpost-resolver-request-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-outpost-resolver-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-outpost-resolver-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-outpost-resolver-request
                     'make-create-outpost-resolver-request))
@@ -811,11 +1107,20 @@
                           create-outpost-resolver-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-outpost-resolver-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-outpost-resolver-response-"))
-   (outpost-resolver common-lisp:nil :type
-    (common-lisp:or outpost-resolver common-lisp:null)))
+ (common-lisp:defclass create-outpost-resolver-response common-lisp:nil
+                       ((outpost-resolver :initarg :outpost-resolver :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-resolver common-lisp:null)
+                         :accessor
+                         struct-shape-create-outpost-resolver-response-outpost-resolver
+                         :shape "OutpostResolver" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-outpost-resolver-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-outpost-resolver-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-outpost-resolver-response
                     'make-create-outpost-resolver-response))
@@ -842,27 +1147,88 @@
                           create-outpost-resolver-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-resolver-endpoint-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-resolver-endpoint-request-"))
-   (creator-request-id (common-lisp:error ":creator-request-id is required")
-    :type (common-lisp:or creator-request-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (security-group-ids (common-lisp:error ":security-group-ids is required")
-    :type (common-lisp:or security-group-ids common-lisp:null))
-   (direction (common-lisp:error ":direction is required") :type
-    (common-lisp:or resolver-endpoint-direction common-lisp:null))
-   (ip-addresses (common-lisp:error ":ip-addresses is required") :type
-    (common-lisp:or ip-addresses-request common-lisp:null))
-   (outpost-arn common-lisp:nil :type
-    (common-lisp:or outpost-arn common-lisp:null))
-   (preferred-instance-type common-lisp:nil :type
-    (common-lisp:or outpost-instance-type common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (resolver-endpoint-type common-lisp:nil :type
-    (common-lisp:or resolver-endpoint-type common-lisp:null))
-   (protocols common-lisp:nil :type
-    (common-lisp:or protocol-list common-lisp:null)))
+ (common-lisp:defclass create-resolver-endpoint-request common-lisp:nil
+                       ((creator-request-id :initarg :creator-request-id
+                         :initform
+                         (common-lisp:error ":creator-request-id is required")
+                         :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-request-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-resolver-endpoint-request-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (security-group-ids :initarg :security-group-ids
+                         :initform
+                         (common-lisp:error ":security-group-ids is required")
+                         :type
+                         (common-lisp:or security-group-ids common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-request-security-group-ids
+                         :shape "SecurityGroupIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (direction :initarg :direction :initform
+                         (common-lisp:error ":direction is required") :type
+                         (common-lisp:or resolver-endpoint-direction
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-request-direction
+                         :shape "ResolverEndpointDirection" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ip-addresses :initarg :ip-addresses :initform
+                         (common-lisp:error ":ip-addresses is required") :type
+                         (common-lisp:or ip-addresses-request common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-request-ip-addresses
+                         :shape "IpAddressesRequest" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (outpost-arn :initarg :outpost-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-request-outpost-arn
+                         :shape "OutpostArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (preferred-instance-type :initarg
+                         :preferred-instance-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or outpost-instance-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-request-preferred-instance-type
+                         :shape "OutpostInstanceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-resolver-endpoint-request-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-endpoint-type :initarg
+                         :resolver-endpoint-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-endpoint-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-request-resolver-endpoint-type
+                         :shape "ResolverEndpointType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (protocols :initarg :protocols :initform
+                         common-lisp:nil :type
+                         (common-lisp:or protocol-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-request-protocols
+                         :shape "ProtocolList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-resolver-endpoint-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-resolver-endpoint-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-resolver-endpoint-request
                     'make-create-resolver-endpoint-request))
@@ -954,11 +1320,20 @@
                           create-resolver-endpoint-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-resolver-endpoint-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-resolver-endpoint-response-"))
-   (resolver-endpoint common-lisp:nil :type
-    (common-lisp:or resolver-endpoint common-lisp:null)))
+ (common-lisp:defclass create-resolver-endpoint-response common-lisp:nil
+                       ((resolver-endpoint :initarg :resolver-endpoint
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-endpoint common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-endpoint-response-resolver-endpoint
+                         :shape "ResolverEndpoint" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-resolver-endpoint-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-resolver-endpoint-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-resolver-endpoint-response
                     'make-create-resolver-endpoint-response))
@@ -985,16 +1360,43 @@
                           create-resolver-endpoint-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-resolver-query-log-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-resolver-query-log-config-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resolver-query-log-config-name common-lisp:null))
-   (destination-arn (common-lisp:error ":destination-arn is required") :type
-    (common-lisp:or destination-arn common-lisp:null))
-   (creator-request-id (common-lisp:error ":creator-request-id is required")
-    :type (common-lisp:or creator-request-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass create-resolver-query-log-config-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or resolver-query-log-config-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-query-log-config-request-name
+                         :shape "ResolverQueryLogConfigName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (destination-arn :initarg :destination-arn :initform
+                         (common-lisp:error ":destination-arn is required")
+                         :type
+                         (common-lisp:or destination-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-query-log-config-request-destination-arn
+                         :shape "DestinationArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform
+                         (common-lisp:error ":creator-request-id is required")
+                         :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-query-log-config-request-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-resolver-query-log-config-request-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-resolver-query-log-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-resolver-query-log-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-resolver-query-log-config-request
                     'make-create-resolver-query-log-config-request))
@@ -1042,11 +1444,23 @@
                           create-resolver-query-log-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-resolver-query-log-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-resolver-query-log-config-response-"))
-   (resolver-query-log-config common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config common-lisp:null)))
+ (common-lisp:defclass create-resolver-query-log-config-response
+                       common-lisp:nil
+                       ((resolver-query-log-config :initarg
+                         :resolver-query-log-config :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-query-log-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-query-log-config-response-resolver-query-log-config
+                         :shape "ResolverQueryLogConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-resolver-query-log-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-resolver-query-log-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-resolver-query-log-config-response
                     'make-create-resolver-query-log-config-response))
@@ -1074,21 +1488,59 @@
                           create-resolver-query-log-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-resolver-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-resolver-rule-request-"))
-   (creator-request-id (common-lisp:error ":creator-request-id is required")
-    :type (common-lisp:or creator-request-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (rule-type (common-lisp:error ":rule-type is required") :type
-    (common-lisp:or rule-type-option common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or domain-name common-lisp:null))
-   (target-ips common-lisp:nil :type
-    (common-lisp:or target-list common-lisp:null))
-   (resolver-endpoint-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass create-resolver-rule-request common-lisp:nil
+                       ((creator-request-id :initarg :creator-request-id
+                         :initform
+                         (common-lisp:error ":creator-request-id is required")
+                         :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-rule-request-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-resolver-rule-request-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (rule-type :initarg :rule-type :initform
+                         (common-lisp:error ":rule-type is required") :type
+                         (common-lisp:or rule-type-option common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-rule-request-rule-type
+                         :shape "RuleTypeOption" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-rule-request-domain-name
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-ips :initarg :target-ips :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-rule-request-target-ips
+                         :shape "TargetList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-rule-request-resolver-endpoint-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-resolver-rule-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-resolver-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-resolver-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-resolver-rule-request
                     'make-create-resolver-rule-request))
@@ -1158,11 +1610,20 @@
                           create-resolver-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-resolver-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-resolver-rule-response-"))
-   (resolver-rule common-lisp:nil :type
-    (common-lisp:or resolver-rule common-lisp:null)))
+ (common-lisp:defclass create-resolver-rule-response common-lisp:nil
+                       ((resolver-rule :initarg :resolver-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-rule common-lisp:null)
+                         :accessor
+                         struct-shape-create-resolver-rule-response-resolver-rule
+                         :shape "ResolverRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-resolver-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-resolver-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-resolver-rule-response
                     'make-create-resolver-rule-response))
@@ -1190,12 +1651,22 @@
    common-lisp:nil))
 (common-lisp:deftype creator-request-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-firewall-domain-list-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-firewall-domain-list-request-"))
-   (firewall-domain-list-id
-    (common-lisp:error ":firewall-domain-list-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass delete-firewall-domain-list-request common-lisp:nil
+                       ((firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform
+                         (common-lisp:error
+                          ":firewall-domain-list-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-firewall-domain-list-request-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-firewall-domain-list-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-firewall-domain-list-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-firewall-domain-list-request
                     'make-delete-firewall-domain-list-request))
@@ -1223,11 +1694,20 @@
                           delete-firewall-domain-list-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-firewall-domain-list-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-firewall-domain-list-response-"))
-   (firewall-domain-list common-lisp:nil :type
-    (common-lisp:or firewall-domain-list common-lisp:null)))
+ (common-lisp:defclass delete-firewall-domain-list-response common-lisp:nil
+                       ((firewall-domain-list :initarg :firewall-domain-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-domain-list common-lisp:null)
+                         :accessor
+                         struct-shape-delete-firewall-domain-list-response-firewall-domain-list
+                         :shape "FirewallDomainList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-firewall-domain-list-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-firewall-domain-list-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-firewall-domain-list-response
                     'make-delete-firewall-domain-list-response))
@@ -1255,12 +1735,22 @@
                           delete-firewall-domain-list-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-firewall-rule-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-firewall-rule-group-request-"))
-   (firewall-rule-group-id
-    (common-lisp:error ":firewall-rule-group-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass delete-firewall-rule-group-request common-lisp:nil
+                       ((firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-firewall-rule-group-request-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-firewall-rule-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-firewall-rule-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-firewall-rule-group-request
                     'make-delete-firewall-rule-group-request))
@@ -1288,11 +1778,20 @@
                           delete-firewall-rule-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-firewall-rule-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-firewall-rule-group-response-"))
-   (firewall-rule-group common-lisp:nil :type
-    (common-lisp:or firewall-rule-group common-lisp:null)))
+ (common-lisp:defclass delete-firewall-rule-group-response common-lisp:nil
+                       ((firewall-rule-group :initarg :firewall-rule-group
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group common-lisp:null)
+                         :accessor
+                         struct-shape-delete-firewall-rule-group-response-firewall-rule-group
+                         :shape "FirewallRuleGroup" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-firewall-rule-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-firewall-rule-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-firewall-rule-group-response
                     'make-delete-firewall-rule-group-response))
@@ -1319,16 +1818,35 @@
                           delete-firewall-rule-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-firewall-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-firewall-rule-request-"))
-   (firewall-rule-group-id
-    (common-lisp:error ":firewall-rule-group-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (firewall-domain-list-id
-    (common-lisp:error ":firewall-domain-list-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (qtype common-lisp:nil :type (common-lisp:or qtype common-lisp:null)))
+ (common-lisp:defclass delete-firewall-rule-request common-lisp:nil
+                       ((firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-firewall-rule-request-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform
+                         (common-lisp:error
+                          ":firewall-domain-list-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-firewall-rule-request-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (qtype :initarg :qtype :initform common-lisp:nil :type
+                         (common-lisp:or qtype common-lisp:null) :accessor
+                         struct-shape-delete-firewall-rule-request-qtype :shape
+                         "Qtype" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-firewall-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-firewall-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-firewall-rule-request
                     'make-delete-firewall-rule-request))
@@ -1371,11 +1889,20 @@
                           delete-firewall-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-firewall-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-firewall-rule-response-"))
-   (firewall-rule common-lisp:nil :type
-    (common-lisp:or firewall-rule common-lisp:null)))
+ (common-lisp:defclass delete-firewall-rule-response common-lisp:nil
+                       ((firewall-rule :initarg :firewall-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rule common-lisp:null)
+                         :accessor
+                         struct-shape-delete-firewall-rule-response-firewall-rule
+                         :shape "FirewallRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-firewall-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-firewall-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-firewall-rule-response
                     'make-delete-firewall-rule-response))
@@ -1402,11 +1929,20 @@
                           delete-firewall-rule-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-outpost-resolver-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-outpost-resolver-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass delete-outpost-resolver-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-outpost-resolver-request-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-outpost-resolver-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-outpost-resolver-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-outpost-resolver-request
                     'make-delete-outpost-resolver-request))
@@ -1433,11 +1969,20 @@
                           delete-outpost-resolver-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-outpost-resolver-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-outpost-resolver-response-"))
-   (outpost-resolver common-lisp:nil :type
-    (common-lisp:or outpost-resolver common-lisp:null)))
+ (common-lisp:defclass delete-outpost-resolver-response common-lisp:nil
+                       ((outpost-resolver :initarg :outpost-resolver :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-resolver common-lisp:null)
+                         :accessor
+                         struct-shape-delete-outpost-resolver-response-outpost-resolver
+                         :shape "OutpostResolver" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-outpost-resolver-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-outpost-resolver-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-outpost-resolver-response
                     'make-delete-outpost-resolver-response))
@@ -1464,12 +2009,22 @@
                           delete-outpost-resolver-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resolver-endpoint-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resolver-endpoint-request-"))
-   (resolver-endpoint-id
-    (common-lisp:error ":resolver-endpoint-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass delete-resolver-endpoint-request common-lisp:nil
+                       ((resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform
+                         (common-lisp:error
+                          ":resolver-endpoint-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resolver-endpoint-request-resolver-endpoint-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resolver-endpoint-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resolver-endpoint-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resolver-endpoint-request
                     'make-delete-resolver-endpoint-request))
@@ -1497,11 +2052,20 @@
                           delete-resolver-endpoint-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resolver-endpoint-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resolver-endpoint-response-"))
-   (resolver-endpoint common-lisp:nil :type
-    (common-lisp:or resolver-endpoint common-lisp:null)))
+ (common-lisp:defclass delete-resolver-endpoint-response common-lisp:nil
+                       ((resolver-endpoint :initarg :resolver-endpoint
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-endpoint common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resolver-endpoint-response-resolver-endpoint
+                         :shape "ResolverEndpoint" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resolver-endpoint-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resolver-endpoint-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resolver-endpoint-response
                     'make-delete-resolver-endpoint-response))
@@ -1528,12 +2092,22 @@
                           delete-resolver-endpoint-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resolver-query-log-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resolver-query-log-config-request-"))
-   (resolver-query-log-config-id
-    (common-lisp:error ":resolver-query-log-config-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass delete-resolver-query-log-config-request common-lisp:nil
+                       ((resolver-query-log-config-id :initarg
+                         :resolver-query-log-config-id :initform
+                         (common-lisp:error
+                          ":resolver-query-log-config-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resolver-query-log-config-request-resolver-query-log-config-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resolver-query-log-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resolver-query-log-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resolver-query-log-config-request
                     'make-delete-resolver-query-log-config-request))
@@ -1561,11 +2135,23 @@
                           delete-resolver-query-log-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resolver-query-log-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resolver-query-log-config-response-"))
-   (resolver-query-log-config common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config common-lisp:null)))
+ (common-lisp:defclass delete-resolver-query-log-config-response
+                       common-lisp:nil
+                       ((resolver-query-log-config :initarg
+                         :resolver-query-log-config :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-query-log-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resolver-query-log-config-response-resolver-query-log-config
+                         :shape "ResolverQueryLogConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resolver-query-log-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resolver-query-log-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resolver-query-log-config-response
                     'make-delete-resolver-query-log-config-response))
@@ -1593,11 +2179,19 @@
                           delete-resolver-query-log-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resolver-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resolver-rule-request-"))
-   (resolver-rule-id (common-lisp:error ":resolver-rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass delete-resolver-rule-request common-lisp:nil
+                       ((resolver-rule-id :initarg :resolver-rule-id :initform
+                         (common-lisp:error ":resolver-rule-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resolver-rule-request-resolver-rule-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resolver-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-resolver-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resolver-rule-request
                     'make-delete-resolver-rule-request))
@@ -1624,11 +2218,20 @@
                           delete-resolver-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resolver-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resolver-rule-response-"))
-   (resolver-rule common-lisp:nil :type
-    (common-lisp:or resolver-rule common-lisp:null)))
+ (common-lisp:defclass delete-resolver-rule-response common-lisp:nil
+                       ((resolver-rule :initarg :resolver-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-rule common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resolver-rule-response-resolver-rule
+                         :shape "ResolverRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resolver-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resolver-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resolver-rule-response
                     'make-delete-resolver-rule-response))
@@ -1656,12 +2259,22 @@
    common-lisp:nil))
 (common-lisp:deftype destination-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-firewall-rule-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-firewall-rule-group-request-"))
-   (firewall-rule-group-association-id
-    (common-lisp:error ":firewall-rule-group-association-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass disassociate-firewall-rule-group-request common-lisp:nil
+                       ((firewall-rule-group-association-id :initarg
+                         :firewall-rule-group-association-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-association-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-firewall-rule-group-request-firewall-rule-group-association-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-firewall-rule-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-firewall-rule-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-firewall-rule-group-request
                     'make-disassociate-firewall-rule-group-request))
@@ -1689,11 +2302,23 @@
                           disassociate-firewall-rule-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-firewall-rule-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-firewall-rule-group-response-"))
-   (firewall-rule-group-association common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-association common-lisp:null)))
+ (common-lisp:defclass disassociate-firewall-rule-group-response
+                       common-lisp:nil
+                       ((firewall-rule-group-association :initarg
+                         :firewall-rule-group-association :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-firewall-rule-group-response-firewall-rule-group-association
+                         :shape "FirewallRuleGroupAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-firewall-rule-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-firewall-rule-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-firewall-rule-group-response
                     'make-disassociate-firewall-rule-group-response))
@@ -1721,16 +2346,30 @@
                           disassociate-firewall-rule-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-resolver-endpoint-ip-address-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-disassociate-resolver-endpoint-ip-address-request-"))
-   (resolver-endpoint-id
-    (common-lisp:error ":resolver-endpoint-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (ip-address (common-lisp:error ":ip-address is required") :type
-    (common-lisp:or ip-address-update common-lisp:null)))
+ (common-lisp:defclass disassociate-resolver-endpoint-ip-address-request
+                       common-lisp:nil
+                       ((resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform
+                         (common-lisp:error
+                          ":resolver-endpoint-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-endpoint-ip-address-request-resolver-endpoint-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ip-address :initarg :ip-address :initform
+                         (common-lisp:error ":ip-address is required") :type
+                         (common-lisp:or ip-address-update common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-endpoint-ip-address-request-ip-address
+                         :shape "IpAddressUpdate" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-resolver-endpoint-ip-address-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-resolver-endpoint-ip-address-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-resolver-endpoint-ip-address-request
                     'make-disassociate-resolver-endpoint-ip-address-request))
@@ -1765,13 +2404,21 @@
                           disassociate-resolver-endpoint-ip-address-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-resolver-endpoint-ip-address-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-disassociate-resolver-endpoint-ip-address-response-"))
-   (resolver-endpoint common-lisp:nil :type
-    (common-lisp:or resolver-endpoint common-lisp:null)))
+ (common-lisp:defclass disassociate-resolver-endpoint-ip-address-response
+                       common-lisp:nil
+                       ((resolver-endpoint :initarg :resolver-endpoint
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-endpoint common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-endpoint-ip-address-response-resolver-endpoint
+                         :shape "ResolverEndpoint" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-resolver-endpoint-ip-address-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-resolver-endpoint-ip-address-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-resolver-endpoint-ip-address-response
                     'make-disassociate-resolver-endpoint-ip-address-response))
@@ -1798,15 +2445,30 @@
                           disassociate-resolver-endpoint-ip-address-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-resolver-query-log-config-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-disassociate-resolver-query-log-config-request-"))
-   (resolver-query-log-config-id
-    (common-lisp:error ":resolver-query-log-config-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass disassociate-resolver-query-log-config-request
+                       common-lisp:nil
+                       ((resolver-query-log-config-id :initarg
+                         :resolver-query-log-config-id :initform
+                         (common-lisp:error
+                          ":resolver-query-log-config-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-query-log-config-request-resolver-query-log-config-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-query-log-config-request-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-resolver-query-log-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-resolver-query-log-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-resolver-query-log-config-request
                     'make-disassociate-resolver-query-log-config-request))
@@ -1841,12 +2503,23 @@
                           disassociate-resolver-query-log-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-resolver-query-log-config-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-disassociate-resolver-query-log-config-response-"))
-   (resolver-query-log-config-association common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-association common-lisp:null)))
+ (common-lisp:defclass disassociate-resolver-query-log-config-response
+                       common-lisp:nil
+                       ((resolver-query-log-config-association :initarg
+                         :resolver-query-log-config-association :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-query-log-config-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-query-log-config-response-resolver-query-log-config-association
+                         :shape "ResolverQueryLogConfigAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-resolver-query-log-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-resolver-query-log-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-resolver-query-log-config-response
                     'make-disassociate-resolver-query-log-config-response))
@@ -1874,13 +2547,27 @@
                           disassociate-resolver-query-log-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-resolver-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-resolver-rule-request-"))
-   (vpcid (common-lisp:error ":vpcid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (resolver-rule-id (common-lisp:error ":resolver-rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass disassociate-resolver-rule-request common-lisp:nil
+                       ((vpcid :initarg :vpcid :initform
+                         (common-lisp:error ":vpcid is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-rule-request-vpcid
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-rule-id :initarg :resolver-rule-id :initform
+                         (common-lisp:error ":resolver-rule-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-rule-request-resolver-rule-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-resolver-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-resolver-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-resolver-rule-request
                     'make-disassociate-resolver-rule-request))
@@ -1914,11 +2601,22 @@
                           disassociate-resolver-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-resolver-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-resolver-rule-response-"))
-   (resolver-rule-association common-lisp:nil :type
-    (common-lisp:or resolver-rule-association common-lisp:null)))
+ (common-lisp:defclass disassociate-resolver-rule-response common-lisp:nil
+                       ((resolver-rule-association :initarg
+                         :resolver-rule-association :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-rule-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resolver-rule-response-resolver-rule-association
+                         :shape "ResolverRuleAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-resolver-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-resolver-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-resolver-rule-response
                     'make-disassociate-resolver-rule-response))
@@ -1949,11 +2647,22 @@
 (common-lisp:deftype domain-name () 'common-lisp:string)
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (filter (:copier common-lisp:nil) (:conc-name "struct-shape-filter-"))
-   (name common-lisp:nil :type (common-lisp:or filter-name common-lisp:null))
-   (values common-lisp:nil :type
-    (common-lisp:or filter-values common-lisp:null)))
+ (common-lisp:defclass filter common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or filter-name common-lisp:null)
+                         :accessor struct-shape-filter-name :shape "FilterName"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type (common-lisp:or filter-values common-lisp:null)
+                         :accessor struct-shape-filter-values :shape
+                         "FilterValues" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input filter))
@@ -1996,16 +2705,36 @@
                            (trivial-types:proper-list filter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (firewall-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-firewall-config-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (owner-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (firewall-fail-open common-lisp:nil :type
-    (common-lisp:or firewall-fail-open-status common-lisp:null)))
+ (common-lisp:defclass firewall-config common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-firewall-config-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-firewall-config-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-id :initarg :owner-id :initform common-lisp:nil
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor struct-shape-firewall-config-owner-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (firewall-fail-open :initarg :firewall-fail-open
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-fail-open-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-config-firewall-fail-open :shape
+                         "FirewallFailOpenStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-firewall-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'firewall-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'firewall-config 'make-firewall-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input firewall-config))
@@ -2054,26 +2783,75 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype firewall-domain-import-operation () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (firewall-domain-list (:copier common-lisp:nil)
-      (:conc-name "struct-shape-firewall-domain-list-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (domain-count common-lisp:nil :type
-    (common-lisp:or unsigned common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or firewall-domain-list-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null))
-   (managed-owner-name common-lisp:nil :type
-    (common-lisp:or service-principle common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (modification-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null)))
+ (common-lisp:defclass firewall-domain-list common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-firewall-domain-list-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-firewall-domain-list-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-firewall-domain-list-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (domain-count :initarg :domain-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or unsigned common-lisp:null) :accessor
+                         struct-shape-firewall-domain-list-domain-count :shape
+                         "Unsigned" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or firewall-domain-list-status
+                                         common-lisp:null)
+                         :accessor struct-shape-firewall-domain-list-status
+                         :shape "FirewallDomainListStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-domain-list-status-message
+                         :shape "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (managed-owner-name :initarg :managed-owner-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or service-principle common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-domain-list-managed-owner-name
+                         :shape "ServicePrinciple" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-domain-list-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-domain-list-creation-time :shape
+                         "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modification-time :initarg :modification-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-domain-list-modification-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-firewall-domain-list
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'firewall-domain-list
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'firewall-domain-list 'make-firewall-domain-list))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2156,16 +2934,43 @@
                         ((aws-sdk/generator/shape::input firewall-domain-list))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (firewall-domain-list-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-firewall-domain-list-metadata-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (managed-owner-name common-lisp:nil :type
-    (common-lisp:or service-principle common-lisp:null)))
+ (common-lisp:defclass firewall-domain-list-metadata common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-domain-list-metadata-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-firewall-domain-list-metadata-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-firewall-domain-list-metadata-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-domain-list-metadata-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (managed-owner-name :initarg :managed-owner-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or service-principle common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-domain-list-metadata-managed-owner-name
+                         :shape "ServicePrinciple" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-firewall-domain-list-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'firewall-domain-list-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'firewall-domain-list-metadata
                     'make-firewall-domain-list-metadata))
@@ -2241,31 +3046,94 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype firewall-fail-open-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (firewall-rule (:copier common-lisp:nil)
-      (:conc-name "struct-shape-firewall-rule-"))
-   (firewall-rule-group-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (firewall-domain-list-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (priority common-lisp:nil :type (common-lisp:or priority common-lisp:null))
-   (action common-lisp:nil :type (common-lisp:or action common-lisp:null))
-   (block-response common-lisp:nil :type
-    (common-lisp:or block-response common-lisp:null))
-   (block-override-domain common-lisp:nil :type
-    (common-lisp:or block-override-domain common-lisp:null))
-   (block-override-dns-type common-lisp:nil :type
-    (common-lisp:or block-override-dns-type common-lisp:null))
-   (block-override-ttl common-lisp:nil :type
-    (common-lisp:or unsigned common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (modification-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (qtype common-lisp:nil :type (common-lisp:or qtype common-lisp:null)))
+ (common-lisp:defclass firewall-rule common-lisp:nil
+                       ((firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform common-lisp:nil
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform common-lisp:nil
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-firewall-rule-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (priority :initarg :priority :initform common-lisp:nil
+                         :type (common-lisp:or priority common-lisp:null)
+                         :accessor struct-shape-firewall-rule-priority :shape
+                         "Priority" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action :initarg :action :initform common-lisp:nil
+                         :type (common-lisp:or action common-lisp:null)
+                         :accessor struct-shape-firewall-rule-action :shape
+                         "Action" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (block-response :initarg :block-response :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-response common-lisp:null)
+                         :accessor struct-shape-firewall-rule-block-response
+                         :shape "BlockResponse" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-override-domain :initarg :block-override-domain
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-override-domain
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-block-override-domain
+                         :shape "BlockOverrideDomain" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-override-dns-type :initarg
+                         :block-override-dns-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or block-override-dns-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-block-override-dns-type
+                         :shape "BlockOverrideDnsType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (block-override-ttl :initarg :block-override-ttl
+                         :initform common-lisp:nil :type
+                         (common-lisp:or unsigned common-lisp:null) :accessor
+                         struct-shape-firewall-rule-block-override-ttl :shape
+                         "Unsigned" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-creator-request-id :shape
+                         "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor struct-shape-firewall-rule-creation-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modification-time :initarg :modification-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor struct-shape-firewall-rule-modification-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (qtype :initarg :qtype :initform common-lisp:nil :type
+                         (common-lisp:or qtype common-lisp:null) :accessor
+                         struct-shape-firewall-rule-qtype :shape "Qtype"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-firewall-rule
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'firewall-rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'firewall-rule 'make-firewall-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input firewall-rule))
@@ -2372,28 +3240,80 @@
                         ((aws-sdk/generator/shape::input firewall-rule))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (firewall-rule-group (:copier common-lisp:nil)
-      (:conc-name "struct-shape-firewall-rule-group-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (rule-count common-lisp:nil :type
-    (common-lisp:or unsigned common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null))
-   (owner-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (share-status common-lisp:nil :type
-    (common-lisp:or share-status common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (modification-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null)))
+ (common-lisp:defclass firewall-rule-group common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-firewall-rule-group-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-firewall-rule-group-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-firewall-rule-group-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (rule-count :initarg :rule-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or unsigned common-lisp:null) :accessor
+                         struct-shape-firewall-rule-group-rule-count :shape
+                         "Unsigned" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or firewall-rule-group-status
+                                         common-lisp:null)
+                         :accessor struct-shape-firewall-rule-group-status
+                         :shape "FirewallRuleGroupStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-status-message :shape
+                         "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-id :initarg :owner-id :initform common-lisp:nil
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor struct-shape-firewall-rule-group-owner-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (share-status :initarg :share-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or share-status common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-share-status :shape
+                         "ShareStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-creation-time :shape
+                         "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modification-time :initarg :modification-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-modification-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-firewall-rule-group
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'firewall-rule-group
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'firewall-rule-group 'make-firewall-rule-group))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2483,30 +3403,99 @@
                         ((aws-sdk/generator/shape::input firewall-rule-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (firewall-rule-group-association (:copier common-lisp:nil)
-      (:conc-name "struct-shape-firewall-rule-group-association-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (firewall-rule-group-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (vpc-id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (priority common-lisp:nil :type (common-lisp:or priority common-lisp:null))
-   (mutation-protection common-lisp:nil :type
-    (common-lisp:or mutation-protection-status common-lisp:null))
-   (managed-owner-name common-lisp:nil :type
-    (common-lisp:or service-principle common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-association-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (modification-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null)))
+ (common-lisp:defclass firewall-rule-group-association common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-firewall-rule-group-association-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform common-lisp:nil
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-id :initarg :vpc-id :initform common-lisp:nil
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-vpc-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-firewall-rule-group-association-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (priority :initarg :priority :initform common-lisp:nil
+                         :type (common-lisp:or priority common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-priority
+                         :shape "Priority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mutation-protection :initarg :mutation-protection
+                         :initform common-lisp:nil :type
+                         (common-lisp:or mutation-protection-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-mutation-protection
+                         :shape "MutationProtectionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (managed-owner-name :initarg :managed-owner-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or service-principle common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-managed-owner-name
+                         :shape "ServicePrinciple" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or firewall-rule-group-association-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-status
+                         :shape "FirewallRuleGroupAssociationStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-status-message
+                         :shape "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-creation-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modification-time :initarg :modification-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-association-modification-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-firewall-rule-group-association
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'firewall-rule-group-association
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'firewall-rule-group-association
                     'make-firewall-rule-group-association))
@@ -2629,18 +3618,47 @@
                             firewall-rule-group-association))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (firewall-rule-group-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-firewall-rule-group-metadata-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (owner-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (share-status common-lisp:nil :type
-    (common-lisp:or share-status common-lisp:null)))
+ (common-lisp:defclass firewall-rule-group-metadata common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-firewall-rule-group-metadata-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-firewall-rule-group-metadata-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-firewall-rule-group-metadata-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (owner-id :initarg :owner-id :initform common-lisp:nil
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-metadata-owner-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-metadata-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (share-status :initarg :share-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or share-status common-lisp:null)
+                         :accessor
+                         struct-shape-firewall-rule-group-metadata-share-status
+                         :shape "ShareStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-firewall-rule-group-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'firewall-rule-group-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'firewall-rule-group-metadata
                     'make-firewall-rule-group-metadata))
@@ -2721,11 +3739,19 @@
                            (trivial-types:proper-list firewall-rule))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-config-request-"))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-firewall-config-request common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-config-request-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-firewall-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-config-request
                     'make-get-firewall-config-request))
@@ -2752,11 +3778,19 @@
                           get-firewall-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-config-response-"))
-   (firewall-config common-lisp:nil :type
-    (common-lisp:or firewall-config common-lisp:null)))
+ (common-lisp:defclass get-firewall-config-response common-lisp:nil
+                       ((firewall-config :initarg :firewall-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-config common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-config-response-firewall-config
+                         :shape "FirewallConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-firewall-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-config-response
                     'make-get-firewall-config-response))
@@ -2783,12 +3817,22 @@
                           get-firewall-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-domain-list-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-domain-list-request-"))
-   (firewall-domain-list-id
-    (common-lisp:error ":firewall-domain-list-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-firewall-domain-list-request common-lisp:nil
+                       ((firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform
+                         (common-lisp:error
+                          ":firewall-domain-list-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-domain-list-request-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-domain-list-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-firewall-domain-list-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-domain-list-request
                     'make-get-firewall-domain-list-request))
@@ -2816,11 +3860,20 @@
                           get-firewall-domain-list-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-domain-list-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-domain-list-response-"))
-   (firewall-domain-list common-lisp:nil :type
-    (common-lisp:or firewall-domain-list common-lisp:null)))
+ (common-lisp:defclass get-firewall-domain-list-response common-lisp:nil
+                       ((firewall-domain-list :initarg :firewall-domain-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-domain-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-domain-list-response-firewall-domain-list
+                         :shape "FirewallDomainList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-domain-list-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-firewall-domain-list-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-domain-list-response
                     'make-get-firewall-domain-list-response))
@@ -2848,12 +3901,23 @@
                           get-firewall-domain-list-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-rule-group-association-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-rule-group-association-request-"))
-   (firewall-rule-group-association-id
-    (common-lisp:error ":firewall-rule-group-association-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-firewall-rule-group-association-request
+                       common-lisp:nil
+                       ((firewall-rule-group-association-id :initarg
+                         :firewall-rule-group-association-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-association-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-rule-group-association-request-firewall-rule-group-association-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-rule-group-association-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-firewall-rule-group-association-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-rule-group-association-request
                     'make-get-firewall-rule-group-association-request))
@@ -2881,12 +3945,23 @@
                           get-firewall-rule-group-association-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-rule-group-association-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-firewall-rule-group-association-response-"))
-   (firewall-rule-group-association common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-association common-lisp:null)))
+ (common-lisp:defclass get-firewall-rule-group-association-response
+                       common-lisp:nil
+                       ((firewall-rule-group-association :initarg
+                         :firewall-rule-group-association :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-rule-group-association-response-firewall-rule-group-association
+                         :shape "FirewallRuleGroupAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-rule-group-association-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-firewall-rule-group-association-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-rule-group-association-response
                     'make-get-firewall-rule-group-association-response))
@@ -2914,11 +3989,19 @@
                           get-firewall-rule-group-association-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-rule-group-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-rule-group-policy-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass get-firewall-rule-group-policy-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-firewall-rule-group-policy-request-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-rule-group-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-firewall-rule-group-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-rule-group-policy-request
                     'make-get-firewall-rule-group-policy-request))
@@ -2945,11 +4028,22 @@
                           get-firewall-rule-group-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-rule-group-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-rule-group-policy-response-"))
-   (firewall-rule-group-policy common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-policy common-lisp:null)))
+ (common-lisp:defclass get-firewall-rule-group-policy-response common-lisp:nil
+                       ((firewall-rule-group-policy :initarg
+                         :firewall-rule-group-policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or firewall-rule-group-policy
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-rule-group-policy-response-firewall-rule-group-policy
+                         :shape "FirewallRuleGroupPolicy" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-rule-group-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-firewall-rule-group-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-rule-group-policy-response
                     'make-get-firewall-rule-group-policy-response))
@@ -2977,12 +4071,22 @@
                           get-firewall-rule-group-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-rule-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-rule-group-request-"))
-   (firewall-rule-group-id
-    (common-lisp:error ":firewall-rule-group-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-firewall-rule-group-request common-lisp:nil
+                       ((firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-rule-group-request-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-rule-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-firewall-rule-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-rule-group-request
                     'make-get-firewall-rule-group-request))
@@ -3010,11 +4114,20 @@
                           get-firewall-rule-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-firewall-rule-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-firewall-rule-group-response-"))
-   (firewall-rule-group common-lisp:nil :type
-    (common-lisp:or firewall-rule-group common-lisp:null)))
+ (common-lisp:defclass get-firewall-rule-group-response common-lisp:nil
+                       ((firewall-rule-group :initarg :firewall-rule-group
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group common-lisp:null)
+                         :accessor
+                         struct-shape-get-firewall-rule-group-response-firewall-rule-group
+                         :shape "FirewallRuleGroup" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-firewall-rule-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-firewall-rule-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-firewall-rule-group-response
                     'make-get-firewall-rule-group-response))
@@ -3041,11 +4154,18 @@
                           get-firewall-rule-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-outpost-resolver-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-outpost-resolver-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-outpost-resolver-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-get-outpost-resolver-request-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-outpost-resolver-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-outpost-resolver-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-outpost-resolver-request
                     'make-get-outpost-resolver-request))
@@ -3072,11 +4192,20 @@
                           get-outpost-resolver-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-outpost-resolver-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-outpost-resolver-response-"))
-   (outpost-resolver common-lisp:nil :type
-    (common-lisp:or outpost-resolver common-lisp:null)))
+ (common-lisp:defclass get-outpost-resolver-response common-lisp:nil
+                       ((outpost-resolver :initarg :outpost-resolver :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-resolver common-lisp:null)
+                         :accessor
+                         struct-shape-get-outpost-resolver-response-outpost-resolver
+                         :shape "OutpostResolver" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-outpost-resolver-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-outpost-resolver-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-outpost-resolver-response
                     'make-get-outpost-resolver-response))
@@ -3103,11 +4232,19 @@
                           get-outpost-resolver-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-config-request-"))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-resolver-config-request common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-config-request-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resolver-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-config-request
                     'make-get-resolver-config-request))
@@ -3134,11 +4271,19 @@
                           get-resolver-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-config-response-"))
-   (resolver-config common-lisp:nil :type
-    (common-lisp:or resolver-config common-lisp:null)))
+ (common-lisp:defclass get-resolver-config-response common-lisp:nil
+                       ((resolver-config :initarg :resolver-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-config common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-config-response-resolver-config
+                         :shape "ResolverConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resolver-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-config-response
                     'make-get-resolver-config-response))
@@ -3165,11 +4310,20 @@
                           get-resolver-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-dnssec-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-dnssec-config-request-"))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-resolver-dnssec-config-request common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-dnssec-config-request-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-dnssec-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-dnssec-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-dnssec-config-request
                     'make-get-resolver-dnssec-config-request))
@@ -3196,11 +4350,21 @@
                           get-resolver-dnssec-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-dnssec-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-dnssec-config-response-"))
-   (resolver-dnssecconfig common-lisp:nil :type
-    (common-lisp:or resolver-dnssec-config common-lisp:null)))
+ (common-lisp:defclass get-resolver-dnssec-config-response common-lisp:nil
+                       ((resolver-dnssecconfig :initarg :resolver-dnssecconfig
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-dnssec-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-dnssec-config-response-resolver-dnssecconfig
+                         :shape "ResolverDnssecConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-dnssec-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-dnssec-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-dnssec-config-response
                     'make-get-resolver-dnssec-config-response))
@@ -3228,12 +4392,22 @@
                           get-resolver-dnssec-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-endpoint-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-endpoint-request-"))
-   (resolver-endpoint-id
-    (common-lisp:error ":resolver-endpoint-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-resolver-endpoint-request common-lisp:nil
+                       ((resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform
+                         (common-lisp:error
+                          ":resolver-endpoint-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-endpoint-request-resolver-endpoint-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-endpoint-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-endpoint-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-endpoint-request
                     'make-get-resolver-endpoint-request))
@@ -3261,11 +4435,20 @@
                           get-resolver-endpoint-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-endpoint-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-endpoint-response-"))
-   (resolver-endpoint common-lisp:nil :type
-    (common-lisp:or resolver-endpoint common-lisp:null)))
+ (common-lisp:defclass get-resolver-endpoint-response common-lisp:nil
+                       ((resolver-endpoint :initarg :resolver-endpoint
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-endpoint common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-endpoint-response-resolver-endpoint
+                         :shape "ResolverEndpoint" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-endpoint-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-endpoint-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-endpoint-response
                     'make-get-resolver-endpoint-response))
@@ -3292,14 +4475,23 @@
                           get-resolver-endpoint-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-query-log-config-association-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-resolver-query-log-config-association-request-"))
-   (resolver-query-log-config-association-id
-    (common-lisp:error ":resolver-query-log-config-association-id is required")
-    :type (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-resolver-query-log-config-association-request
+                       common-lisp:nil
+                       ((resolver-query-log-config-association-id :initarg
+                         :resolver-query-log-config-association-id :initform
+                         (common-lisp:error
+                          ":resolver-query-log-config-association-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-query-log-config-association-request-resolver-query-log-config-association-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-query-log-config-association-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-query-log-config-association-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-query-log-config-association-request
                     'make-get-resolver-query-log-config-association-request))
@@ -3327,13 +4519,23 @@
                           get-resolver-query-log-config-association-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-query-log-config-association-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-resolver-query-log-config-association-response-"))
-   (resolver-query-log-config-association common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-association common-lisp:null)))
+ (common-lisp:defclass get-resolver-query-log-config-association-response
+                       common-lisp:nil
+                       ((resolver-query-log-config-association :initarg
+                         :resolver-query-log-config-association :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-query-log-config-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-query-log-config-association-response-resolver-query-log-config-association
+                         :shape "ResolverQueryLogConfigAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-query-log-config-association-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-query-log-config-association-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-query-log-config-association-response
                     'make-get-resolver-query-log-config-association-response))
@@ -3361,12 +4563,20 @@
                           get-resolver-query-log-config-association-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-query-log-config-policy-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-resolver-query-log-config-policy-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass get-resolver-query-log-config-policy-request
+                       common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-resolver-query-log-config-policy-request-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-query-log-config-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-query-log-config-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-query-log-config-policy-request
                     'make-get-resolver-query-log-config-policy-request))
@@ -3393,12 +4603,23 @@
                           get-resolver-query-log-config-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-query-log-config-policy-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-resolver-query-log-config-policy-response-"))
-   (resolver-query-log-config-policy common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-policy common-lisp:null)))
+ (common-lisp:defclass get-resolver-query-log-config-policy-response
+                       common-lisp:nil
+                       ((resolver-query-log-config-policy :initarg
+                         :resolver-query-log-config-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-query-log-config-policy
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-query-log-config-policy-response-resolver-query-log-config-policy
+                         :shape "ResolverQueryLogConfigPolicy" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-query-log-config-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-query-log-config-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-query-log-config-policy-response
                     'make-get-resolver-query-log-config-policy-response))
@@ -3426,12 +4647,22 @@
                           get-resolver-query-log-config-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-query-log-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-query-log-config-request-"))
-   (resolver-query-log-config-id
-    (common-lisp:error ":resolver-query-log-config-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-resolver-query-log-config-request common-lisp:nil
+                       ((resolver-query-log-config-id :initarg
+                         :resolver-query-log-config-id :initform
+                         (common-lisp:error
+                          ":resolver-query-log-config-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-query-log-config-request-resolver-query-log-config-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-query-log-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-query-log-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-query-log-config-request
                     'make-get-resolver-query-log-config-request))
@@ -3459,11 +4690,22 @@
                           get-resolver-query-log-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-query-log-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-query-log-config-response-"))
-   (resolver-query-log-config common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config common-lisp:null)))
+ (common-lisp:defclass get-resolver-query-log-config-response common-lisp:nil
+                       ((resolver-query-log-config :initarg
+                         :resolver-query-log-config :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-query-log-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-query-log-config-response-resolver-query-log-config
+                         :shape "ResolverQueryLogConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-query-log-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-query-log-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-query-log-config-response
                     'make-get-resolver-query-log-config-response))
@@ -3491,12 +4733,22 @@
                           get-resolver-query-log-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-rule-association-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-rule-association-request-"))
-   (resolver-rule-association-id
-    (common-lisp:error ":resolver-rule-association-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-resolver-rule-association-request common-lisp:nil
+                       ((resolver-rule-association-id :initarg
+                         :resolver-rule-association-id :initform
+                         (common-lisp:error
+                          ":resolver-rule-association-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-rule-association-request-resolver-rule-association-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-rule-association-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-rule-association-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-rule-association-request
                     'make-get-resolver-rule-association-request))
@@ -3524,11 +4776,22 @@
                           get-resolver-rule-association-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-rule-association-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-rule-association-response-"))
-   (resolver-rule-association common-lisp:nil :type
-    (common-lisp:or resolver-rule-association common-lisp:null)))
+ (common-lisp:defclass get-resolver-rule-association-response common-lisp:nil
+                       ((resolver-rule-association :initarg
+                         :resolver-rule-association :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-rule-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-rule-association-response-resolver-rule-association
+                         :shape "ResolverRuleAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-rule-association-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-rule-association-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-rule-association-response
                     'make-get-resolver-rule-association-response))
@@ -3556,11 +4819,19 @@
                           get-resolver-rule-association-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-rule-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-rule-policy-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass get-resolver-rule-policy-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-resolver-rule-policy-request-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-rule-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-rule-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-rule-policy-request
                     'make-get-resolver-rule-policy-request))
@@ -3587,11 +4858,20 @@
                           get-resolver-rule-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-rule-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-rule-policy-response-"))
-   (resolver-rule-policy common-lisp:nil :type
-    (common-lisp:or resolver-rule-policy common-lisp:null)))
+ (common-lisp:defclass get-resolver-rule-policy-response common-lisp:nil
+                       ((resolver-rule-policy :initarg :resolver-rule-policy
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-rule-policy common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-rule-policy-response-resolver-rule-policy
+                         :shape "ResolverRulePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-rule-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-resolver-rule-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-rule-policy-response
                     'make-get-resolver-rule-policy-response))
@@ -3619,11 +4899,19 @@
                           get-resolver-rule-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-rule-request-"))
-   (resolver-rule-id (common-lisp:error ":resolver-rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass get-resolver-rule-request common-lisp:nil
+                       ((resolver-rule-id :initarg :resolver-rule-id :initform
+                         (common-lisp:error ":resolver-rule-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-rule-request-resolver-rule-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resolver-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-rule-request
                     'make-get-resolver-rule-request))
@@ -3650,11 +4938,19 @@
                           get-resolver-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resolver-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resolver-rule-response-"))
-   (resolver-rule common-lisp:nil :type
-    (common-lisp:or resolver-rule common-lisp:null)))
+ (common-lisp:defclass get-resolver-rule-response common-lisp:nil
+                       ((resolver-rule :initarg :resolver-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-rule common-lisp:null)
+                         :accessor
+                         struct-shape-get-resolver-rule-response-resolver-rule
+                         :shape "ResolverRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resolver-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resolver-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resolver-rule-response
                     'make-get-resolver-rule-response))
@@ -3681,16 +4977,38 @@
                           get-resolver-rule-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (import-firewall-domains-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-import-firewall-domains-request-"))
-   (firewall-domain-list-id
-    (common-lisp:error ":firewall-domain-list-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (operation (common-lisp:error ":operation is required") :type
-    (common-lisp:or firewall-domain-import-operation common-lisp:null))
-   (domain-file-url (common-lisp:error ":domain-file-url is required") :type
-    (common-lisp:or domain-list-file-url common-lisp:null)))
+ (common-lisp:defclass import-firewall-domains-request common-lisp:nil
+                       ((firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform
+                         (common-lisp:error
+                          ":firewall-domain-list-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-import-firewall-domains-request-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operation :initarg :operation :initform
+                         (common-lisp:error ":operation is required") :type
+                         (common-lisp:or firewall-domain-import-operation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-import-firewall-domains-request-operation
+                         :shape "FirewallDomainImportOperation" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (domain-file-url :initarg :domain-file-url :initform
+                         (common-lisp:error ":domain-file-url is required")
+                         :type
+                         (common-lisp:or domain-list-file-url common-lisp:null)
+                         :accessor
+                         struct-shape-import-firewall-domains-request-domain-file-url
+                         :shape "DomainListFileUrl" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-import-firewall-domains-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'import-firewall-domains-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'import-firewall-domains-request
                     'make-import-firewall-domains-request))
@@ -3732,15 +5050,39 @@
                           import-firewall-domains-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (import-firewall-domains-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-import-firewall-domains-response-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or firewall-domain-list-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null)))
+ (common-lisp:defclass import-firewall-domains-response common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-import-firewall-domains-response-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-import-firewall-domains-response-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or firewall-domain-list-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-import-firewall-domains-response-status
+                         :shape "FirewallDomainListStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor
+                         struct-shape-import-firewall-domains-response-status-message
+                         :shape "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-import-firewall-domains-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'import-firewall-domains-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'import-firewall-domains-response
                     'make-import-firewall-domains-response))
@@ -3840,13 +5182,28 @@
 (common-lisp:deftype ip () 'common-lisp:string)
 (common-lisp:deftype ip-address-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (ip-address-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ip-address-request-"))
-   (subnet-id (common-lisp:error ":subnet-id is required") :type
-    (common-lisp:or subnet-id common-lisp:null))
-   (ip common-lisp:nil :type (common-lisp:or ip common-lisp:null))
-   (ipv6 common-lisp:nil :type (common-lisp:or ipv6 common-lisp:null)))
+ (common-lisp:defclass ip-address-request common-lisp:nil
+                       ((subnet-id :initarg :subnet-id :initform
+                         (common-lisp:error ":subnet-id is required") :type
+                         (common-lisp:or subnet-id common-lisp:null) :accessor
+                         struct-shape-ip-address-request-subnet-id :shape
+                         "SubnetId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ip :initarg :ip :initform common-lisp:nil :type
+                         (common-lisp:or ip common-lisp:null) :accessor
+                         struct-shape-ip-address-request-ip :shape "Ip"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ipv6 :initarg :ipv6 :initform common-lisp:nil :type
+                         (common-lisp:or ipv6 common-lisp:null) :accessor
+                         struct-shape-ip-address-request-ipv6 :shape "Ipv6"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ip-address-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ip-address-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ip-address-request 'make-ip-address-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3880,22 +5237,60 @@
                         ((aws-sdk/generator/shape::input ip-address-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ip-address-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ip-address-response-"))
-   (ip-id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (subnet-id common-lisp:nil :type
-    (common-lisp:or subnet-id common-lisp:null))
-   (ip common-lisp:nil :type (common-lisp:or ip common-lisp:null))
-   (ipv6 common-lisp:nil :type (common-lisp:or ipv6 common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or ip-address-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (modification-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null)))
+ (common-lisp:defclass ip-address-response common-lisp:nil
+                       ((ip-id :initarg :ip-id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-ip-address-response-ip-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subnet-id :initarg :subnet-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or subnet-id common-lisp:null) :accessor
+                         struct-shape-ip-address-response-subnet-id :shape
+                         "SubnetId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ip :initarg :ip :initform common-lisp:nil :type
+                         (common-lisp:or ip common-lisp:null) :accessor
+                         struct-shape-ip-address-response-ip :shape "Ip"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ipv6 :initarg :ipv6 :initform common-lisp:nil :type
+                         (common-lisp:or ipv6 common-lisp:null) :accessor
+                         struct-shape-ip-address-response-ipv6 :shape "Ipv6"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or ip-address-status common-lisp:null)
+                         :accessor struct-shape-ip-address-response-status
+                         :shape "IpAddressStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor
+                         struct-shape-ip-address-response-status-message :shape
+                         "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-ip-address-response-creation-time :shape
+                         "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modification-time :initarg :modification-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-ip-address-response-modification-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ip-address-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ip-address-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ip-address-response 'make-ip-address-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3965,14 +5360,33 @@
    common-lisp:nil))
 (common-lisp:deftype ip-address-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (ip-address-update (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ip-address-update-"))
-   (ip-id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (subnet-id common-lisp:nil :type
-    (common-lisp:or subnet-id common-lisp:null))
-   (ip common-lisp:nil :type (common-lisp:or ip common-lisp:null))
-   (ipv6 common-lisp:nil :type (common-lisp:or ipv6 common-lisp:null)))
+ (common-lisp:defclass ip-address-update common-lisp:nil
+                       ((ip-id :initarg :ip-id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-ip-address-update-ip-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (subnet-id :initarg :subnet-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or subnet-id common-lisp:null) :accessor
+                         struct-shape-ip-address-update-subnet-id :shape
+                         "SubnetId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ip :initarg :ip :initform common-lisp:nil :type
+                         (common-lisp:or ip common-lisp:null) :accessor
+                         struct-shape-ip-address-update-ip :shape "Ip"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ipv6 :initarg :ipv6 :initform common-lisp:nil :type
+                         (common-lisp:or ipv6 common-lisp:null) :accessor
+                         struct-shape-ip-address-update-ipv6 :shape "Ipv6"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ip-address-update
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ip-address-update
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ip-address-update 'make-ip-address-update))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4042,13 +5456,27 @@
 (common-lisp:deftype list-domain-max-results () 'common-lisp:integer)
 (common-lisp:deftype list-firewall-configs-max-result () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-configs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-configs-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-firewall-configs-max-result common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-firewall-configs-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-firewall-configs-max-result
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-configs-request-max-results
+                         :shape "ListFirewallConfigsMaxResult" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-configs-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-configs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-configs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-configs-request
                     'make-list-firewall-configs-request))
@@ -4082,13 +5510,26 @@
                           list-firewall-configs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-configs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-configs-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (firewall-configs common-lisp:nil :type
-    (common-lisp:or firewall-config-list common-lisp:null)))
+ (common-lisp:defclass list-firewall-configs-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-configs-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-configs :initarg :firewall-configs :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-config-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-configs-response-firewall-configs
+                         :shape "FirewallConfigList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-configs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-configs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-configs-response
                     'make-list-firewall-configs-response))
@@ -4122,13 +5563,26 @@
                           list-firewall-configs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-domain-lists-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-domain-lists-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-firewall-domain-lists-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-domain-lists-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-domain-lists-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-domain-lists-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-domain-lists-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-domain-lists-request
                     'make-list-firewall-domain-lists-request))
@@ -4162,13 +5616,27 @@
                           list-firewall-domain-lists-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-domain-lists-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-domain-lists-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (firewall-domain-lists common-lisp:nil :type
-    (common-lisp:or firewall-domain-list-metadata-list common-lisp:null)))
+ (common-lisp:defclass list-firewall-domain-lists-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-domain-lists-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-domain-lists :initarg :firewall-domain-lists
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-domain-list-metadata-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-domain-lists-response-firewall-domain-lists
+                         :shape "FirewallDomainListMetadataList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-domain-lists-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-domain-lists-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-domain-lists-response
                     'make-list-firewall-domain-lists-response))
@@ -4203,16 +5671,36 @@
                           list-firewall-domain-lists-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-domains-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-domains-request-"))
-   (firewall-domain-list-id
-    (common-lisp:error ":firewall-domain-list-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-domain-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-firewall-domains-request common-lisp:nil
+                       ((firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform
+                         (common-lisp:error
+                          ":firewall-domain-list-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-domains-request-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-domain-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-domains-request-max-results
+                         :shape "ListDomainMaxResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-domains-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-domains-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-domains-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-domains-request
                     'make-list-firewall-domains-request))
@@ -4254,13 +5742,26 @@
                           list-firewall-domains-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-domains-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-domains-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (domains common-lisp:nil :type
-    (common-lisp:or firewall-domains common-lisp:null)))
+ (common-lisp:defclass list-firewall-domains-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-domains-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (domains :initarg :domains :initform common-lisp:nil
+                         :type
+                         (common-lisp:or firewall-domains common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-domains-response-domains
+                         :shape "FirewallDomains" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-domains-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-domains-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-domains-response
                     'make-list-firewall-domains-response))
@@ -4294,20 +5795,54 @@
                           list-firewall-domains-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-rule-group-associations-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-firewall-rule-group-associations-request-"))
-   (firewall-rule-group-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (vpc-id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (priority common-lisp:nil :type (common-lisp:or priority common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-association-status common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-firewall-rule-group-associations-request
+                       common-lisp:nil
+                       ((firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform common-lisp:nil
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rule-group-associations-request-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-id :initarg :vpc-id :initform common-lisp:nil
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rule-group-associations-request-vpc-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (priority :initarg :priority :initform common-lisp:nil
+                         :type (common-lisp:or priority common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rule-group-associations-request-priority
+                         :shape "Priority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or firewall-rule-group-association-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rule-group-associations-request-status
+                         :shape "FirewallRuleGroupAssociationStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rule-group-associations-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-rule-group-associations-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-rule-group-associations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-rule-group-associations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-rule-group-associations-request
                     'make-list-firewall-rule-group-associations-request))
@@ -4370,14 +5905,29 @@
                           list-firewall-rule-group-associations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-rule-group-associations-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-firewall-rule-group-associations-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (firewall-rule-group-associations common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-associations common-lisp:null)))
+ (common-lisp:defclass list-firewall-rule-group-associations-response
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-rule-group-associations-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-rule-group-associations :initarg
+                         :firewall-rule-group-associations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group-associations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rule-group-associations-response-firewall-rule-group-associations
+                         :shape "FirewallRuleGroupAssociations" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-rule-group-associations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-rule-group-associations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-rule-group-associations-response
                     'make-list-firewall-rule-group-associations-response))
@@ -4412,13 +5962,26 @@
                           list-firewall-rule-group-associations-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-rule-groups-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-rule-groups-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-firewall-rule-groups-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rule-groups-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-rule-groups-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-rule-groups-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-rule-groups-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-rule-groups-request
                     'make-list-firewall-rule-groups-request))
@@ -4452,13 +6015,27 @@
                           list-firewall-rule-groups-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-rule-groups-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-rule-groups-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (firewall-rule-groups common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-metadata-list common-lisp:null)))
+ (common-lisp:defclass list-firewall-rule-groups-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-rule-groups-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-rule-groups :initarg :firewall-rule-groups
+                         :initform common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group-metadata-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rule-groups-response-firewall-rule-groups
+                         :shape "FirewallRuleGroupMetadataList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-rule-groups-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-firewall-rule-groups-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-rule-groups-response
                     'make-list-firewall-rule-groups-response))
@@ -4493,18 +6070,46 @@
                           list-firewall-rule-groups-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-rules-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-rules-request-"))
-   (firewall-rule-group-id
-    (common-lisp:error ":firewall-rule-group-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (priority common-lisp:nil :type (common-lisp:or priority common-lisp:null))
-   (action common-lisp:nil :type (common-lisp:or action common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-firewall-rules-request common-lisp:nil
+                       ((firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rules-request-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (priority :initarg :priority :initform common-lisp:nil
+                         :type (common-lisp:or priority common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rules-request-priority
+                         :shape "Priority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform common-lisp:nil
+                         :type (common-lisp:or action common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rules-request-action :shape
+                         "Action" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rules-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-rules-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-rules-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-firewall-rules-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-rules-request
                     'make-list-firewall-rules-request))
@@ -4560,13 +6165,25 @@
                           list-firewall-rules-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-firewall-rules-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-firewall-rules-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (firewall-rules common-lisp:nil :type
-    (common-lisp:or firewall-rules common-lisp:null)))
+ (common-lisp:defclass list-firewall-rules-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-firewall-rules-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-rules :initarg :firewall-rules :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rules common-lisp:null)
+                         :accessor
+                         struct-shape-list-firewall-rules-response-firewall-rules
+                         :shape "FirewallRules" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-firewall-rules-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-firewall-rules-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-firewall-rules-response
                     'make-list-firewall-rules-response))
@@ -4600,15 +6217,33 @@
                           list-firewall-rules-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-outpost-resolvers-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-outpost-resolvers-request-"))
-   (outpost-arn common-lisp:nil :type
-    (common-lisp:or outpost-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-outpost-resolvers-request common-lisp:nil
+                       ((outpost-arn :initarg :outpost-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-outpost-resolvers-request-outpost-arn
+                         :shape "OutpostArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-outpost-resolvers-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-outpost-resolvers-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-outpost-resolvers-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-outpost-resolvers-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-outpost-resolvers-request
                     'make-list-outpost-resolvers-request))
@@ -4649,13 +6284,27 @@
                           list-outpost-resolvers-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-outpost-resolvers-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-outpost-resolvers-response-"))
-   (outpost-resolvers common-lisp:nil :type
-    (common-lisp:or outpost-resolver-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-outpost-resolvers-response common-lisp:nil
+                       ((outpost-resolvers :initarg :outpost-resolvers
+                         :initform common-lisp:nil :type
+                         (common-lisp:or outpost-resolver-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-outpost-resolvers-response-outpost-resolvers
+                         :shape "OutpostResolverList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-outpost-resolvers-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-outpost-resolvers-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-outpost-resolvers-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-outpost-resolvers-response
                     'make-list-outpost-resolvers-response))
@@ -4690,13 +6339,27 @@
    common-lisp:nil))
 (common-lisp:deftype list-resolver-configs-max-result () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-configs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-configs-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-resolver-configs-max-result common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-resolver-configs-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-resolver-configs-max-result
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-configs-request-max-results
+                         :shape "ListResolverConfigsMaxResult" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-configs-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-configs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-configs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-configs-request
                     'make-list-resolver-configs-request))
@@ -4730,13 +6393,26 @@
                           list-resolver-configs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-configs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-configs-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (resolver-configs common-lisp:nil :type
-    (common-lisp:or resolver-config-list common-lisp:null)))
+ (common-lisp:defclass list-resolver-configs-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-configs-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-configs :initarg :resolver-configs :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-config-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-configs-response-resolver-configs
+                         :shape "ResolverConfigList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-configs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-configs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-configs-response
                     'make-list-resolver-configs-response))
@@ -4770,14 +6446,32 @@
                           list-resolver-configs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-dnssec-configs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-dnssec-configs-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null)))
+ (common-lisp:defclass list-resolver-dnssec-configs-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-dnssec-configs-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-dnssec-configs-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filters common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-dnssec-configs-request-filters
+                         :shape "Filters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-dnssec-configs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-dnssec-configs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-dnssec-configs-request
                     'make-list-resolver-dnssec-configs-request))
@@ -4818,13 +6512,28 @@
                           list-resolver-dnssec-configs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-dnssec-configs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-dnssec-configs-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (resolver-dnssec-configs common-lisp:nil :type
-    (common-lisp:or resolver-dnssec-config-list common-lisp:null)))
+ (common-lisp:defclass list-resolver-dnssec-configs-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-dnssec-configs-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-dnssec-configs :initarg
+                         :resolver-dnssec-configs :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-dnssec-config-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-dnssec-configs-response-resolver-dnssec-configs
+                         :shape "ResolverDnssecConfigList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-dnssec-configs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-dnssec-configs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-dnssec-configs-response
                     'make-list-resolver-dnssec-configs-response))
@@ -4859,16 +6568,36 @@
                           list-resolver-dnssec-configs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-endpoint-ip-addresses-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-endpoint-ip-addresses-request-"))
-   (resolver-endpoint-id
-    (common-lisp:error ":resolver-endpoint-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-resolver-endpoint-ip-addresses-request
+                       common-lisp:nil
+                       ((resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform
+                         (common-lisp:error
+                          ":resolver-endpoint-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-endpoint-ip-addresses-request-resolver-endpoint-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-endpoint-ip-addresses-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-endpoint-ip-addresses-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-endpoint-ip-addresses-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-endpoint-ip-addresses-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-endpoint-ip-addresses-request
                     'make-list-resolver-endpoint-ip-addresses-request))
@@ -4910,16 +6639,35 @@
                           list-resolver-endpoint-ip-addresses-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-endpoint-ip-addresses-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-resolver-endpoint-ip-addresses-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (ip-addresses common-lisp:nil :type
-    (common-lisp:or ip-addresses-response common-lisp:null)))
+ (common-lisp:defclass list-resolver-endpoint-ip-addresses-response
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-endpoint-ip-addresses-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-endpoint-ip-addresses-response-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ip-addresses :initarg :ip-addresses :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ip-addresses-response
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-endpoint-ip-addresses-response-ip-addresses
+                         :shape "IpAddressesResponse" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-endpoint-ip-addresses-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-endpoint-ip-addresses-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-endpoint-ip-addresses-response
                     'make-list-resolver-endpoint-ip-addresses-response))
@@ -4960,14 +6708,32 @@
                           list-resolver-endpoint-ip-addresses-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-endpoints-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-endpoints-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null)))
+ (common-lisp:defclass list-resolver-endpoints-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-endpoints-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-endpoints-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filters common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-endpoints-request-filters
+                         :shape "Filters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-endpoints-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-endpoints-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-endpoints-request
                     'make-list-resolver-endpoints-request))
@@ -5008,15 +6774,33 @@
                           list-resolver-endpoints-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-endpoints-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-endpoints-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (resolver-endpoints common-lisp:nil :type
-    (common-lisp:or resolver-endpoints common-lisp:null)))
+ (common-lisp:defclass list-resolver-endpoints-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-endpoints-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-endpoints-response-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-endpoints :initarg :resolver-endpoints
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-endpoints common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-endpoints-response-resolver-endpoints
+                         :shape "ResolverEndpoints" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-endpoints-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-endpoints-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-endpoints-response
                     'make-list-resolver-endpoints-response))
@@ -5057,20 +6841,45 @@
                           list-resolver-endpoints-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-query-log-config-associations-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-resolver-query-log-config-associations-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null))
-   (sort-by common-lisp:nil :type
-    (common-lisp:or sort-by-key common-lisp:null))
-   (sort-order common-lisp:nil :type
-    (common-lisp:or sort-order common-lisp:null)))
+ (common-lisp:defclass list-resolver-query-log-config-associations-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-query-log-config-associations-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-config-associations-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filters common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-query-log-config-associations-request-filters
+                         :shape "Filters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sort-by :initarg :sort-by :initform common-lisp:nil
+                         :type (common-lisp:or sort-by-key common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-query-log-config-associations-request-sort-by
+                         :shape "SortByKey" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sort-order :initarg :sort-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sort-order common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-config-associations-request-sort-order
+                         :shape "SortOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-query-log-config-associations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-query-log-config-associations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-query-log-config-associations-request
                     'make-list-resolver-query-log-config-associations-request))
@@ -5125,19 +6934,43 @@
                           list-resolver-query-log-config-associations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-query-log-config-associations-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-resolver-query-log-config-associations-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (total-count common-lisp:nil :type (common-lisp:or count common-lisp:null))
-   (total-filtered-count common-lisp:nil :type
-    (common-lisp:or count common-lisp:null))
-   (resolver-query-log-config-associations common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-association-list
-                    common-lisp:null)))
+ (common-lisp:defclass list-resolver-query-log-config-associations-response
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-config-associations-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (total-count :initarg :total-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-config-associations-response-total-count
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (total-filtered-count :initarg :total-filtered-count
+                         :initform common-lisp:nil :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-config-associations-response-total-filtered-count
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-query-log-config-associations :initarg
+                         :resolver-query-log-config-associations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          resolver-query-log-config-association-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-query-log-config-associations-response-resolver-query-log-config-associations
+                         :shape "ResolverQueryLogConfigAssociationList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-query-log-config-associations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-query-log-config-associations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-query-log-config-associations-response
                     'make-list-resolver-query-log-config-associations-response))
@@ -5187,18 +7020,44 @@
                           list-resolver-query-log-config-associations-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-query-log-configs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-query-log-configs-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null))
-   (sort-by common-lisp:nil :type
-    (common-lisp:or sort-by-key common-lisp:null))
-   (sort-order common-lisp:nil :type
-    (common-lisp:or sort-order common-lisp:null)))
+ (common-lisp:defclass list-resolver-query-log-configs-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-query-log-configs-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-configs-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filters common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-query-log-configs-request-filters
+                         :shape "Filters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sort-by :initarg :sort-by :initform common-lisp:nil
+                         :type (common-lisp:or sort-by-key common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-query-log-configs-request-sort-by
+                         :shape "SortByKey" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sort-order :initarg :sort-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sort-order common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-configs-request-sort-order
+                         :shape "SortOrder" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-query-log-configs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-query-log-configs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-query-log-configs-request
                     'make-list-resolver-query-log-configs-request))
@@ -5253,16 +7112,40 @@
                           list-resolver-query-log-configs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-query-log-configs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-query-log-configs-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (total-count common-lisp:nil :type (common-lisp:or count common-lisp:null))
-   (total-filtered-count common-lisp:nil :type
-    (common-lisp:or count common-lisp:null))
-   (resolver-query-log-configs common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-list common-lisp:null)))
+ (common-lisp:defclass list-resolver-query-log-configs-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-configs-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (total-count :initarg :total-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-configs-response-total-count
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (total-filtered-count :initarg :total-filtered-count
+                         :initform common-lisp:nil :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-list-resolver-query-log-configs-response-total-filtered-count
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-query-log-configs :initarg
+                         :resolver-query-log-configs :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-query-log-config-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-query-log-configs-response-resolver-query-log-configs
+                         :shape "ResolverQueryLogConfigList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-query-log-configs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-query-log-configs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-query-log-configs-response
                     'make-list-resolver-query-log-configs-response))
@@ -5312,14 +7195,32 @@
                           list-resolver-query-log-configs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-rule-associations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-rule-associations-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null)))
+ (common-lisp:defclass list-resolver-rule-associations-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-rule-associations-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-rule-associations-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filters common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-rule-associations-request-filters
+                         :shape "Filters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-rule-associations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-rule-associations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-rule-associations-request
                     'make-list-resolver-rule-associations-request))
@@ -5360,15 +7261,35 @@
                           list-resolver-rule-associations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-rule-associations-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-rule-associations-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (resolver-rule-associations common-lisp:nil :type
-    (common-lisp:or resolver-rule-associations common-lisp:null)))
+ (common-lisp:defclass list-resolver-rule-associations-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-rule-associations-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-rule-associations-response-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-rule-associations :initarg
+                         :resolver-rule-associations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-rule-associations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-rule-associations-response-resolver-rule-associations
+                         :shape "ResolverRuleAssociations" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-rule-associations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resolver-rule-associations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-rule-associations-response
                     'make-list-resolver-rule-associations-response))
@@ -5410,14 +7331,31 @@
                           list-resolver-rule-associations-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-rules-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-rules-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null)))
+ (common-lisp:defclass list-resolver-rules-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-rules-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-rules-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filters common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-rules-request-filters
+                         :shape "Filters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-rules-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-resolver-rules-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-rules-request
                     'make-list-resolver-rules-request))
@@ -5458,15 +7396,32 @@
                           list-resolver-rules-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resolver-rules-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-resolver-rules-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (resolver-rules common-lisp:nil :type
-    (common-lisp:or resolver-rules common-lisp:null)))
+ (common-lisp:defclass list-resolver-rules-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-resolver-rules-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-rules-response-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-rules :initarg :resolver-rules :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-rules common-lisp:null)
+                         :accessor
+                         struct-shape-list-resolver-rules-response-resolver-rules
+                         :shape "ResolverRules" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resolver-rules-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-resolver-rules-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resolver-rules-response
                     'make-list-resolver-rules-response))
@@ -5507,15 +7462,32 @@
                           list-resolver-rules-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -5556,12 +7528,24 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -5601,29 +7585,83 @@
 (common-lisp:deftype outpost-arn () 'common-lisp:string)
 (common-lisp:deftype outpost-instance-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (outpost-resolver (:copier common-lisp:nil)
-      (:conc-name "struct-shape-outpost-resolver-"))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (modification-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (instance-count common-lisp:nil :type
-    (common-lisp:or instance-count common-lisp:null))
-   (preferred-instance-type common-lisp:nil :type
-    (common-lisp:or outpost-instance-type common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or outpost-resolver-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or outpost-resolver-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or outpost-resolver-status-message common-lisp:null))
-   (outpost-arn common-lisp:nil :type
-    (common-lisp:or outpost-arn common-lisp:null)))
+ (common-lisp:defclass outpost-resolver common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-outpost-resolver-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor struct-shape-outpost-resolver-creation-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modification-time :initarg :modification-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-outpost-resolver-modification-time :shape
+                         "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-outpost-resolver-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-outpost-resolver-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (instance-count :initarg :instance-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instance-count common-lisp:null)
+                         :accessor struct-shape-outpost-resolver-instance-count
+                         :shape "InstanceCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (preferred-instance-type :initarg
+                         :preferred-instance-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or outpost-instance-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-outpost-resolver-preferred-instance-type
+                         :shape "OutpostInstanceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or outpost-resolver-name
+                                         common-lisp:null)
+                         :accessor struct-shape-outpost-resolver-name :shape
+                         "OutpostResolverName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or outpost-resolver-status
+                                         common-lisp:null)
+                         :accessor struct-shape-outpost-resolver-status :shape
+                         "OutpostResolverStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-resolver-status-message
+                                         common-lisp:null)
+                         :accessor struct-shape-outpost-resolver-status-message
+                         :shape "OutpostResolverStatusMessage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (outpost-arn :initarg :outpost-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-arn common-lisp:null)
+                         :accessor struct-shape-outpost-resolver-outpost-arn
+                         :shape "OutpostArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-outpost-resolver
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'outpost-resolver
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'outpost-resolver 'make-outpost-resolver))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5735,14 +7773,30 @@
                            (trivial-types:proper-list protocol))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-firewall-rule-group-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-firewall-rule-group-policy-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (firewall-rule-group-policy
-    (common-lisp:error ":firewall-rule-group-policy is required") :type
-    (common-lisp:or firewall-rule-group-policy common-lisp:null)))
+ (common-lisp:defclass put-firewall-rule-group-policy-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-put-firewall-rule-group-policy-request-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (firewall-rule-group-policy :initarg
+                         :firewall-rule-group-policy :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-policy is required")
+                         :type
+                         (common-lisp:or firewall-rule-group-policy
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-firewall-rule-group-policy-request-firewall-rule-group-policy
+                         :shape "FirewallRuleGroupPolicy" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-firewall-rule-group-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-firewall-rule-group-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-firewall-rule-group-policy-request
                     'make-put-firewall-rule-group-policy-request))
@@ -5777,11 +7831,19 @@
                           put-firewall-rule-group-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-firewall-rule-group-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-firewall-rule-group-policy-response-"))
-   (return-value common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass put-firewall-rule-group-policy-response common-lisp:nil
+                       ((return-value :initarg :return-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-put-firewall-rule-group-policy-response-return-value
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-firewall-rule-group-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-firewall-rule-group-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-firewall-rule-group-policy-response
                     'make-put-firewall-rule-group-policy-response))
@@ -5808,15 +7870,31 @@
                           put-firewall-rule-group-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-resolver-query-log-config-policy-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-put-resolver-query-log-config-policy-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (resolver-query-log-config-policy
-    (common-lisp:error ":resolver-query-log-config-policy is required") :type
-    (common-lisp:or resolver-query-log-config-policy common-lisp:null)))
+ (common-lisp:defclass put-resolver-query-log-config-policy-request
+                       common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-put-resolver-query-log-config-policy-request-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resolver-query-log-config-policy :initarg
+                         :resolver-query-log-config-policy :initform
+                         (common-lisp:error
+                          ":resolver-query-log-config-policy is required")
+                         :type
+                         (common-lisp:or resolver-query-log-config-policy
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-resolver-query-log-config-policy-request-resolver-query-log-config-policy
+                         :shape "ResolverQueryLogConfigPolicy" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-resolver-query-log-config-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-resolver-query-log-config-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-resolver-query-log-config-policy-request
                     'make-put-resolver-query-log-config-policy-request))
@@ -5851,12 +7929,20 @@
                           put-resolver-query-log-config-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-resolver-query-log-config-policy-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-put-resolver-query-log-config-policy-response-"))
-   (return-value common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass put-resolver-query-log-config-policy-response
+                       common-lisp:nil
+                       ((return-value :initarg :return-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-put-resolver-query-log-config-policy-response-return-value
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-resolver-query-log-config-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-resolver-query-log-config-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-resolver-query-log-config-policy-response
                     'make-put-resolver-query-log-config-policy-response))
@@ -5883,14 +7969,29 @@
                           put-resolver-query-log-config-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-resolver-rule-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-resolver-rule-policy-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (resolver-rule-policy
-    (common-lisp:error ":resolver-rule-policy is required") :type
-    (common-lisp:or resolver-rule-policy common-lisp:null)))
+ (common-lisp:defclass put-resolver-rule-policy-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-put-resolver-rule-policy-request-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resolver-rule-policy :initarg :resolver-rule-policy
+                         :initform
+                         (common-lisp:error
+                          ":resolver-rule-policy is required")
+                         :type
+                         (common-lisp:or resolver-rule-policy common-lisp:null)
+                         :accessor
+                         struct-shape-put-resolver-rule-policy-request-resolver-rule-policy
+                         :shape "ResolverRulePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-resolver-rule-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-resolver-rule-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-resolver-rule-policy-request
                     'make-put-resolver-rule-policy-request))
@@ -5925,11 +8026,19 @@
                           put-resolver-rule-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-resolver-rule-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-resolver-rule-policy-response-"))
-   (return-value common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass put-resolver-rule-policy-response common-lisp:nil
+                       ((return-value :initarg :return-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-put-resolver-rule-policy-response-return-value
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-resolver-rule-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-resolver-rule-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-resolver-rule-policy-response
                     'make-put-resolver-rule-policy-response))
@@ -5958,16 +8067,36 @@
 (common-lisp:deftype qtype () 'common-lisp:string)
 (common-lisp:deftype resolver-autodefined-reverse-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolver-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolver-config-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (owner-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (autodefined-reverse common-lisp:nil :type
-    (common-lisp:or resolver-autodefined-reverse-status common-lisp:null)))
+ (common-lisp:defclass resolver-config common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-config-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-config-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-id :initarg :owner-id :initform common-lisp:nil
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor struct-shape-resolver-config-owner-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (autodefined-reverse :initarg :autodefined-reverse
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-autodefined-reverse-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-config-autodefined-reverse
+                         :shape "ResolverAutodefinedReverseStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolver-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolver-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resolver-config 'make-resolver-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resolver-config))
@@ -6016,16 +8145,37 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype resolver-dnssecvalidation-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolver-dnssec-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolver-dnssec-config-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (owner-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (validation-status common-lisp:nil :type
-    (common-lisp:or resolver-dnssecvalidation-status common-lisp:null)))
+ (common-lisp:defclass resolver-dnssec-config common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-dnssec-config-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-id :initarg :owner-id :initform common-lisp:nil
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor struct-shape-resolver-dnssec-config-owner-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-dnssec-config-resource-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (validation-status :initarg :validation-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-dnssecvalidation-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-dnssec-config-validation-status
+                         :shape "ResolverDNSSECValidationStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolver-dnssec-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolver-dnssec-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolver-dnssec-config 'make-resolver-dnssec-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6080,38 +8230,118 @@
                            (trivial-types:proper-list resolver-dnssec-config))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolver-endpoint (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolver-endpoint-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (security-group-ids common-lisp:nil :type
-    (common-lisp:or security-group-ids common-lisp:null))
-   (direction common-lisp:nil :type
-    (common-lisp:or resolver-endpoint-direction common-lisp:null))
-   (ip-address-count common-lisp:nil :type
-    (common-lisp:or ip-address-count common-lisp:null))
-   (host-vpcid common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or resolver-endpoint-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (modification-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (outpost-arn common-lisp:nil :type
-    (common-lisp:or outpost-arn common-lisp:null))
-   (preferred-instance-type common-lisp:nil :type
-    (common-lisp:or outpost-instance-type common-lisp:null))
-   (resolver-endpoint-type common-lisp:nil :type
-    (common-lisp:or resolver-endpoint-type common-lisp:null))
-   (protocols common-lisp:nil :type
-    (common-lisp:or protocol-list common-lisp:null)))
+ (common-lisp:defclass resolver-endpoint common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-endpoint-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-endpoint-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-resolver-endpoint-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-resolver-endpoint-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (security-group-ids :initarg :security-group-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or security-group-ids common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-endpoint-security-group-ids
+                         :shape "SecurityGroupIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (direction :initarg :direction :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-endpoint-direction
+                                         common-lisp:null)
+                         :accessor struct-shape-resolver-endpoint-direction
+                         :shape "ResolverEndpointDirection" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ip-address-count :initarg :ip-address-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ip-address-count common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-endpoint-ip-address-count :shape
+                         "IpAddressCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (host-vpcid :initarg :host-vpcid :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-endpoint-host-vpcid
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-endpoint-status
+                                         common-lisp:null)
+                         :accessor struct-shape-resolver-endpoint-status :shape
+                         "ResolverEndpointStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-endpoint-status-message :shape
+                         "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor struct-shape-resolver-endpoint-creation-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modification-time :initarg :modification-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-endpoint-modification-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (outpost-arn :initarg :outpost-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-arn common-lisp:null)
+                         :accessor struct-shape-resolver-endpoint-outpost-arn
+                         :shape "OutpostArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (preferred-instance-type :initarg
+                         :preferred-instance-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or outpost-instance-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-endpoint-preferred-instance-type
+                         :shape "OutpostInstanceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-endpoint-type :initarg
+                         :resolver-endpoint-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-endpoint-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-endpoint-resolver-endpoint-type
+                         :shape "ResolverEndpointType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (protocols :initarg :protocols :initform
+                         common-lisp:nil :type
+                         (common-lisp:or protocol-list common-lisp:null)
+                         :accessor struct-shape-resolver-endpoint-protocols
+                         :shape "ProtocolList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolver-endpoint
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolver-endpoint
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolver-endpoint 'make-resolver-endpoint))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6249,27 +8479,76 @@
                            (trivial-types:proper-list resolver-endpoint))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolver-query-log-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolver-query-log-config-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (owner-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-status common-lisp:null))
-   (share-status common-lisp:nil :type
-    (common-lisp:or share-status common-lisp:null))
-   (association-count common-lisp:nil :type
-    (common-lisp:or count common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-name common-lisp:null))
-   (destination-arn common-lisp:nil :type
-    (common-lisp:or destination-arn common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null)))
+ (common-lisp:defclass resolver-query-log-config common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-query-log-config-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-id :initarg :owner-id :initform common-lisp:nil
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-owner-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-query-log-config-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-status :shape
+                         "ResolverQueryLogConfigStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (share-status :initarg :share-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or share-status common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-share-status
+                         :shape "ShareStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (association-count :initarg :association-count
+                         :initform common-lisp:nil :type
+                         (common-lisp:or count common-lisp:null) :accessor
+                         struct-shape-resolver-query-log-config-association-count
+                         :shape "Count" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-resolver-query-log-config-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or resolver-query-log-config-name
+                                         common-lisp:null)
+                         :accessor struct-shape-resolver-query-log-config-name
+                         :shape "ResolverQueryLogConfigName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (destination-arn :initarg :destination-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or destination-arn common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-destination-arn
+                         :shape "DestinationArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-creator-request-id
+                         :shape "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-creation-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolver-query-log-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolver-query-log-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolver-query-log-config
                     'make-resolver-query-log-config))
@@ -6359,25 +8638,70 @@
                           resolver-query-log-config))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolver-query-log-config-association (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolver-query-log-config-association-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (resolver-query-log-config-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (resource-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-association-status
-                    common-lisp:null))
-   (error common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-association-error
-                    common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or resolver-query-log-config-association-error-message
-                    common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null)))
+ (common-lisp:defclass resolver-query-log-config-association common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-association-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-query-log-config-id :initarg
+                         :resolver-query-log-config-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-association-resolver-query-log-config-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-association-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          resolver-query-log-config-association-status
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-association-status
+                         :shape "ResolverQueryLogConfigAssociationStatus"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (error :initarg :error :initform common-lisp:nil :type
+                         (common-lisp:or
+                          resolver-query-log-config-association-error
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-association-error
+                         :shape "ResolverQueryLogConfigAssociationError"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          resolver-query-log-config-association-error-message
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-association-error-message
+                         :shape "ResolverQueryLogConfigAssociationErrorMessage"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-query-log-config-association-creation-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolver-query-log-config-association
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'resolver-query-log-config-association
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolver-query-log-config-association
                     'make-resolver-query-log-config-association))
@@ -6474,34 +8798,93 @@
 (common-lisp:deftype resolver-query-log-config-policy () 'common-lisp:string)
 (common-lisp:deftype resolver-query-log-config-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolver-rule (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolver-rule-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (creator-request-id common-lisp:nil :type
-    (common-lisp:or creator-request-id common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (domain-name common-lisp:nil :type
-    (common-lisp:or domain-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or resolver-rule-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null))
-   (rule-type common-lisp:nil :type
-    (common-lisp:or rule-type-option common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (target-ips common-lisp:nil :type
-    (common-lisp:or target-list common-lisp:null))
-   (resolver-endpoint-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (owner-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (share-status common-lisp:nil :type
-    (common-lisp:or share-status common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null))
-   (modification-time common-lisp:nil :type
-    (common-lisp:or rfc3339time-string common-lisp:null)))
+ (common-lisp:defclass resolver-rule common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-rule-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (creator-request-id :initarg :creator-request-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creator-request-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-rule-creator-request-id :shape
+                         "CreatorRequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-resolver-rule-arn :shape "Arn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (domain-name :initarg :domain-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or domain-name common-lisp:null)
+                         :accessor struct-shape-resolver-rule-domain-name
+                         :shape "DomainName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-rule-status common-lisp:null)
+                         :accessor struct-shape-resolver-rule-status :shape
+                         "ResolverRuleStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor struct-shape-resolver-rule-status-message
+                         :shape "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rule-type :initarg :rule-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rule-type-option common-lisp:null)
+                         :accessor struct-shape-resolver-rule-rule-type :shape
+                         "RuleTypeOption" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-resolver-rule-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (target-ips :initarg :target-ips :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-list common-lisp:null)
+                         :accessor struct-shape-resolver-rule-target-ips :shape
+                         "TargetList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-rule-resolver-endpoint-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (owner-id :initarg :owner-id :initform common-lisp:nil
+                         :type (common-lisp:or account-id common-lisp:null)
+                         :accessor struct-shape-resolver-rule-owner-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (share-status :initarg :share-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or share-status common-lisp:null)
+                         :accessor struct-shape-resolver-rule-share-status
+                         :shape "ShareStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor struct-shape-resolver-rule-creation-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modification-time :initarg :modification-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rfc3339time-string common-lisp:null)
+                         :accessor struct-shape-resolver-rule-modification-time
+                         :shape "Rfc3339TimeString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolver-rule
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolver-rule
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resolver-rule 'make-resolver-rule))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resolver-rule))
@@ -6612,18 +8995,49 @@
                         ((aws-sdk/generator/shape::input resolver-rule))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolver-rule-association (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolver-rule-association-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (resolver-rule-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (vpcid common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or resolver-rule-association-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null)))
+ (common-lisp:defclass resolver-rule-association common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-rule-association-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-rule-id :initarg :resolver-rule-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-rule-association-resolver-rule-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-resolver-rule-association-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vpcid :initarg :vpcid :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resolver-rule-association-vpcid
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-rule-association-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-rule-association-status :shape
+                         "ResolverRuleAssociationStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-rule-association-status-message
+                         :shape "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolver-rule-association
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolver-rule-association
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolver-rule-association
                     'make-resolver-rule-association))
@@ -6695,14 +9109,30 @@
                             resolver-rule-association))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resolver-rule-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resolver-rule-config-"))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (target-ips common-lisp:nil :type
-    (common-lisp:or target-list common-lisp:null))
-   (resolver-endpoint-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass resolver-rule-config common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-resolver-rule-config-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (target-ips :initarg :target-ips :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-list common-lisp:null)
+                         :accessor struct-shape-resolver-rule-config-target-ips
+                         :shape "TargetList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-resolver-rule-config-resolver-endpoint-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resolver-rule-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resolver-rule-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resolver-rule-config 'make-resolver-rule-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6817,12 +9247,21 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype subnet-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -6863,13 +9302,24 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6896,9 +9346,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6918,13 +9371,31 @@
    common-lisp:nil))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-address (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-address-"))
-   (ip common-lisp:nil :type (common-lisp:or ip common-lisp:null))
-   (port common-lisp:nil :type (common-lisp:or port common-lisp:null))
-   (ipv6 common-lisp:nil :type (common-lisp:or ipv6 common-lisp:null))
-   (protocol common-lisp:nil :type (common-lisp:or protocol common-lisp:null)))
+ (common-lisp:defclass target-address common-lisp:nil
+                       ((ip :initarg :ip :initform common-lisp:nil :type
+                         (common-lisp:or ip common-lisp:null) :accessor
+                         struct-shape-target-address-ip :shape "Ip" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-target-address-port :shape "Port"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ipv6 :initarg :ipv6 :initform common-lisp:nil :type
+                         (common-lisp:or ipv6 common-lisp:null) :accessor
+                         struct-shape-target-address-ipv6 :shape "Ipv6"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform common-lisp:nil
+                         :type (common-lisp:or protocol common-lisp:null)
+                         :accessor struct-shape-target-address-protocol :shape
+                         "Protocol" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-address
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'target-address
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'target-address 'make-target-address))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input target-address))
@@ -6988,13 +9459,24 @@
                     'unknown-resource-exception-message)))
 (common-lisp:deftype unsigned () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7027,9 +9509,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7048,13 +9533,30 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-firewall-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-firewall-config-request-"))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (firewall-fail-open (common-lisp:error ":firewall-fail-open is required")
-    :type (common-lisp:or firewall-fail-open-status common-lisp:null)))
+ (common-lisp:defclass update-firewall-config-request common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-config-request-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-fail-open :initarg :firewall-fail-open
+                         :initform
+                         (common-lisp:error ":firewall-fail-open is required")
+                         :type
+                         (common-lisp:or firewall-fail-open-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-config-request-firewall-fail-open
+                         :shape "FirewallFailOpenStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-firewall-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-firewall-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-firewall-config-request
                     'make-update-firewall-config-request))
@@ -7088,11 +9590,20 @@
                           update-firewall-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-firewall-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-firewall-config-response-"))
-   (firewall-config common-lisp:nil :type
-    (common-lisp:or firewall-config common-lisp:null)))
+ (common-lisp:defclass update-firewall-config-response common-lisp:nil
+                       ((firewall-config :initarg :firewall-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-config common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-config-response-firewall-config
+                         :shape "FirewallConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-firewall-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-firewall-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-firewall-config-response
                     'make-update-firewall-config-response))
@@ -7119,16 +9630,37 @@
                           update-firewall-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-firewall-domains-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-firewall-domains-request-"))
-   (firewall-domain-list-id
-    (common-lisp:error ":firewall-domain-list-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (operation (common-lisp:error ":operation is required") :type
-    (common-lisp:or firewall-domain-update-operation common-lisp:null))
-   (domains (common-lisp:error ":domains is required") :type
-    (common-lisp:or firewall-domains common-lisp:null)))
+ (common-lisp:defclass update-firewall-domains-request common-lisp:nil
+                       ((firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform
+                         (common-lisp:error
+                          ":firewall-domain-list-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-domains-request-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operation :initarg :operation :initform
+                         (common-lisp:error ":operation is required") :type
+                         (common-lisp:or firewall-domain-update-operation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-domains-request-operation
+                         :shape "FirewallDomainUpdateOperation" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (domains :initarg :domains :initform
+                         (common-lisp:error ":domains is required") :type
+                         (common-lisp:or firewall-domains common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-domains-request-domains
+                         :shape "FirewallDomains" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-firewall-domains-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-firewall-domains-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-firewall-domains-request
                     'make-update-firewall-domains-request))
@@ -7170,15 +9702,39 @@
                           update-firewall-domains-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-firewall-domains-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-firewall-domains-response-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or firewall-domain-list-status common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null)))
+ (common-lisp:defclass update-firewall-domains-response common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-domains-response-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-firewall-domains-response-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or firewall-domain-list-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-domains-response-status
+                         :shape "FirewallDomainListStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-domains-response-status-message
+                         :shape "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-firewall-domains-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-firewall-domains-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-firewall-domains-response
                     'make-update-firewall-domains-response))
@@ -7226,17 +9782,42 @@
                           update-firewall-domains-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-firewall-rule-group-association-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-firewall-rule-group-association-request-"))
-   (firewall-rule-group-association-id
-    (common-lisp:error ":firewall-rule-group-association-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (priority common-lisp:nil :type (common-lisp:or priority common-lisp:null))
-   (mutation-protection common-lisp:nil :type
-    (common-lisp:or mutation-protection-status common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null)))
+ (common-lisp:defclass update-firewall-rule-group-association-request
+                       common-lisp:nil
+                       ((firewall-rule-group-association-id :initarg
+                         :firewall-rule-group-association-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-association-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-group-association-request-firewall-rule-group-association-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (priority :initarg :priority :initform common-lisp:nil
+                         :type (common-lisp:or priority common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-group-association-request-priority
+                         :shape "Priority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mutation-protection :initarg :mutation-protection
+                         :initform common-lisp:nil :type
+                         (common-lisp:or mutation-protection-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-group-association-request-mutation-protection
+                         :shape "MutationProtectionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-firewall-rule-group-association-request-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-firewall-rule-group-association-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-firewall-rule-group-association-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-firewall-rule-group-association-request
                     'make-update-firewall-rule-group-association-request))
@@ -7285,12 +9866,23 @@
                           update-firewall-rule-group-association-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-firewall-rule-group-association-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-firewall-rule-group-association-response-"))
-   (firewall-rule-group-association common-lisp:nil :type
-    (common-lisp:or firewall-rule-group-association common-lisp:null)))
+ (common-lisp:defclass update-firewall-rule-group-association-response
+                       common-lisp:nil
+                       ((firewall-rule-group-association :initarg
+                         :firewall-rule-group-association :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rule-group-association
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-group-association-response-firewall-rule-group-association
+                         :shape "FirewallRuleGroupAssociation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-firewall-rule-group-association-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-firewall-rule-group-association-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-firewall-rule-group-association-response
                     'make-update-firewall-rule-group-association-response))
@@ -7318,27 +9910,83 @@
                           update-firewall-rule-group-association-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-firewall-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-firewall-rule-request-"))
-   (firewall-rule-group-id
-    (common-lisp:error ":firewall-rule-group-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (firewall-domain-list-id
-    (common-lisp:error ":firewall-domain-list-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (priority common-lisp:nil :type (common-lisp:or priority common-lisp:null))
-   (action common-lisp:nil :type (common-lisp:or action common-lisp:null))
-   (block-response common-lisp:nil :type
-    (common-lisp:or block-response common-lisp:null))
-   (block-override-domain common-lisp:nil :type
-    (common-lisp:or block-override-domain common-lisp:null))
-   (block-override-dns-type common-lisp:nil :type
-    (common-lisp:or block-override-dns-type common-lisp:null))
-   (block-override-ttl common-lisp:nil :type
-    (common-lisp:or block-override-ttl common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (qtype common-lisp:nil :type (common-lisp:or qtype common-lisp:null)))
+ (common-lisp:defclass update-firewall-rule-request common-lisp:nil
+                       ((firewall-rule-group-id :initarg
+                         :firewall-rule-group-id :initform
+                         (common-lisp:error
+                          ":firewall-rule-group-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-request-firewall-rule-group-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (firewall-domain-list-id :initarg
+                         :firewall-domain-list-id :initform
+                         (common-lisp:error
+                          ":firewall-domain-list-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-request-firewall-domain-list-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (priority :initarg :priority :initform common-lisp:nil
+                         :type (common-lisp:or priority common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-request-priority
+                         :shape "Priority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action :initarg :action :initform common-lisp:nil
+                         :type (common-lisp:or action common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-request-action
+                         :shape "Action" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-response :initarg :block-response :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-response common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-request-block-response
+                         :shape "BlockResponse" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-override-domain :initarg :block-override-domain
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-override-domain
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-request-block-override-domain
+                         :shape "BlockOverrideDomain" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-override-dns-type :initarg
+                         :block-override-dns-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or block-override-dns-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-request-block-override-dns-type
+                         :shape "BlockOverrideDnsType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (block-override-ttl :initarg :block-override-ttl
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-override-ttl common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-request-block-override-ttl
+                         :shape "BlockOverrideTtl" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-firewall-rule-request-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (qtype :initarg :qtype :initform common-lisp:nil :type
+                         (common-lisp:or qtype common-lisp:null) :accessor
+                         struct-shape-update-firewall-rule-request-qtype :shape
+                         "Qtype" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-firewall-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-firewall-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-firewall-rule-request
                     'make-update-firewall-rule-request))
@@ -7432,11 +10080,20 @@
                           update-firewall-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-firewall-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-firewall-rule-response-"))
-   (firewall-rule common-lisp:nil :type
-    (common-lisp:or firewall-rule common-lisp:null)))
+ (common-lisp:defclass update-firewall-rule-response common-lisp:nil
+                       ((firewall-rule :initarg :firewall-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or firewall-rule common-lisp:null)
+                         :accessor
+                         struct-shape-update-firewall-rule-response-firewall-rule
+                         :shape "FirewallRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-firewall-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-firewall-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-firewall-rule-response
                     'make-update-firewall-rule-response))
@@ -7463,13 +10120,24 @@
                           update-firewall-rule-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-ip-address (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-ip-address-"))
-   (ip-id (common-lisp:error ":ip-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (ipv6 (common-lisp:error ":ipv6 is required") :type
-    (common-lisp:or ipv6 common-lisp:null)))
+ (common-lisp:defclass update-ip-address common-lisp:nil
+                       ((ip-id :initarg :ip-id :initform
+                         (common-lisp:error ":ip-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-update-ip-address-ip-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ipv6 :initarg :ipv6 :initform
+                         (common-lisp:error ":ipv6 is required") :type
+                         (common-lisp:or ipv6 common-lisp:null) :accessor
+                         struct-shape-update-ip-address-ipv6 :shape "Ipv6"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-ip-address
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-ip-address
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-ip-address 'make-update-ip-address))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7504,17 +10172,43 @@
                            (trivial-types:proper-list update-ip-address))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-outpost-resolver-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-outpost-resolver-request-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or outpost-resolver-name common-lisp:null))
-   (instance-count common-lisp:nil :type
-    (common-lisp:or instance-count common-lisp:null))
-   (preferred-instance-type common-lisp:nil :type
-    (common-lisp:or outpost-instance-type common-lisp:null)))
+ (common-lisp:defclass update-outpost-resolver-request common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-outpost-resolver-request-id :shape
+                         "ResourceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or outpost-resolver-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-outpost-resolver-request-name
+                         :shape "OutpostResolverName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-count :initarg :instance-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instance-count common-lisp:null)
+                         :accessor
+                         struct-shape-update-outpost-resolver-request-instance-count
+                         :shape "InstanceCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (preferred-instance-type :initarg
+                         :preferred-instance-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or outpost-instance-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-outpost-resolver-request-preferred-instance-type
+                         :shape "OutpostInstanceType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-outpost-resolver-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-outpost-resolver-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-outpost-resolver-request
                     'make-update-outpost-resolver-request))
@@ -7563,11 +10257,20 @@
                           update-outpost-resolver-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-outpost-resolver-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-outpost-resolver-response-"))
-   (outpost-resolver common-lisp:nil :type
-    (common-lisp:or outpost-resolver common-lisp:null)))
+ (common-lisp:defclass update-outpost-resolver-response common-lisp:nil
+                       ((outpost-resolver :initarg :outpost-resolver :initform
+                         common-lisp:nil :type
+                         (common-lisp:or outpost-resolver common-lisp:null)
+                         :accessor
+                         struct-shape-update-outpost-resolver-response-outpost-resolver
+                         :shape "OutpostResolver" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-outpost-resolver-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-outpost-resolver-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-outpost-resolver-response
                     'make-update-outpost-resolver-response))
@@ -7594,14 +10297,31 @@
                           update-outpost-resolver-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resolver-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resolver-config-request-"))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (autodefined-reverse-flag
-    (common-lisp:error ":autodefined-reverse-flag is required") :type
-    (common-lisp:or autodefined-reverse-flag common-lisp:null)))
+ (common-lisp:defclass update-resolver-config-request common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-config-request-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (autodefined-reverse-flag :initarg
+                         :autodefined-reverse-flag :initform
+                         (common-lisp:error
+                          ":autodefined-reverse-flag is required")
+                         :type
+                         (common-lisp:or autodefined-reverse-flag
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-config-request-autodefined-reverse-flag
+                         :shape "AutodefinedReverseFlag" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resolver-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-resolver-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resolver-config-request
                     'make-update-resolver-config-request))
@@ -7636,11 +10356,20 @@
                           update-resolver-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resolver-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resolver-config-response-"))
-   (resolver-config common-lisp:nil :type
-    (common-lisp:or resolver-config common-lisp:null)))
+ (common-lisp:defclass update-resolver-config-response common-lisp:nil
+                       ((resolver-config :initarg :resolver-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-config common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-config-response-resolver-config
+                         :shape "ResolverConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resolver-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-resolver-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resolver-config-response
                     'make-update-resolver-config-response))
@@ -7667,13 +10396,26 @@
                           update-resolver-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resolver-dnssec-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resolver-dnssec-config-request-"))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (validation (common-lisp:error ":validation is required") :type
-    (common-lisp:or validation common-lisp:null)))
+ (common-lisp:defclass update-resolver-dnssec-config-request common-lisp:nil
+                       ((resource-id :initarg :resource-id :initform
+                         (common-lisp:error ":resource-id is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-dnssec-config-request-resource-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (validation :initarg :validation :initform
+                         (common-lisp:error ":validation is required") :type
+                         (common-lisp:or validation common-lisp:null) :accessor
+                         struct-shape-update-resolver-dnssec-config-request-validation
+                         :shape "Validation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resolver-dnssec-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-resolver-dnssec-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resolver-dnssec-config-request
                     'make-update-resolver-dnssec-config-request))
@@ -7707,11 +10449,21 @@
                           update-resolver-dnssec-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resolver-dnssec-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resolver-dnssec-config-response-"))
-   (resolver-dnssecconfig common-lisp:nil :type
-    (common-lisp:or resolver-dnssec-config common-lisp:null)))
+ (common-lisp:defclass update-resolver-dnssec-config-response common-lisp:nil
+                       ((resolver-dnssecconfig :initarg :resolver-dnssecconfig
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-dnssec-config
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-dnssec-config-response-resolver-dnssecconfig
+                         :shape "ResolverDnssecConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resolver-dnssec-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-resolver-dnssec-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resolver-dnssec-config-response
                     'make-update-resolver-dnssec-config-response))
@@ -7739,19 +10491,50 @@
                           update-resolver-dnssec-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resolver-endpoint-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resolver-endpoint-request-"))
-   (resolver-endpoint-id
-    (common-lisp:error ":resolver-endpoint-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (resolver-endpoint-type common-lisp:nil :type
-    (common-lisp:or resolver-endpoint-type common-lisp:null))
-   (update-ip-addresses common-lisp:nil :type
-    (common-lisp:or update-ip-addresses common-lisp:null))
-   (protocols common-lisp:nil :type
-    (common-lisp:or protocol-list common-lisp:null)))
+ (common-lisp:defclass update-resolver-endpoint-request common-lisp:nil
+                       ((resolver-endpoint-id :initarg :resolver-endpoint-id
+                         :initform
+                         (common-lisp:error
+                          ":resolver-endpoint-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-endpoint-request-resolver-endpoint-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-resolver-endpoint-request-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resolver-endpoint-type :initarg
+                         :resolver-endpoint-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resolver-endpoint-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-endpoint-request-resolver-endpoint-type
+                         :shape "ResolverEndpointType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-ip-addresses :initarg :update-ip-addresses
+                         :initform common-lisp:nil :type
+                         (common-lisp:or update-ip-addresses common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-endpoint-request-update-ip-addresses
+                         :shape "UpdateIpAddresses" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (protocols :initarg :protocols :initform
+                         common-lisp:nil :type
+                         (common-lisp:or protocol-list common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-endpoint-request-protocols
+                         :shape "ProtocolList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resolver-endpoint-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-resolver-endpoint-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resolver-endpoint-request
                     'make-update-resolver-endpoint-request))
@@ -7808,11 +10591,20 @@
                           update-resolver-endpoint-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resolver-endpoint-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resolver-endpoint-response-"))
-   (resolver-endpoint common-lisp:nil :type
-    (common-lisp:or resolver-endpoint common-lisp:null)))
+ (common-lisp:defclass update-resolver-endpoint-response common-lisp:nil
+                       ((resolver-endpoint :initarg :resolver-endpoint
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resolver-endpoint common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-endpoint-response-resolver-endpoint
+                         :shape "ResolverEndpoint" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resolver-endpoint-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-resolver-endpoint-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resolver-endpoint-response
                     'make-update-resolver-endpoint-response))
@@ -7839,13 +10631,26 @@
                           update-resolver-endpoint-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resolver-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resolver-rule-request-"))
-   (resolver-rule-id (common-lisp:error ":resolver-rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (config (common-lisp:error ":config is required") :type
-    (common-lisp:or resolver-rule-config common-lisp:null)))
+ (common-lisp:defclass update-resolver-rule-request common-lisp:nil
+                       ((resolver-rule-id :initarg :resolver-rule-id :initform
+                         (common-lisp:error ":resolver-rule-id is required")
+                         :type (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-rule-request-resolver-rule-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (config :initarg :config :initform
+                         (common-lisp:error ":config is required") :type
+                         (common-lisp:or resolver-rule-config common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-rule-request-config
+                         :shape "ResolverRuleConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resolver-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-resolver-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resolver-rule-request
                     'make-update-resolver-rule-request))
@@ -7879,11 +10684,20 @@
                           update-resolver-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-resolver-rule-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-resolver-rule-response-"))
-   (resolver-rule common-lisp:nil :type
-    (common-lisp:or resolver-rule common-lisp:null)))
+ (common-lisp:defclass update-resolver-rule-response common-lisp:nil
+                       ((resolver-rule :initarg :resolver-rule :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resolver-rule common-lisp:null)
+                         :accessor
+                         struct-shape-update-resolver-rule-response-resolver-rule
+                         :shape "ResolverRule" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-resolver-rule-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-resolver-rule-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-resolver-rule-response
                     'make-update-resolver-rule-response))

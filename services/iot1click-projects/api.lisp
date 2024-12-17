@@ -34,17 +34,42 @@
     ("ResourceNotFoundException" . resource-not-found-exception)
     ("TooManyRequestsException" . too-many-requests-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-device-with-placement-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-device-with-placement-request-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null))
-   (device-id (common-lisp:error ":deviceid is required") :type
-    (common-lisp:or device-id common-lisp:null))
-   (device-template-name (common-lisp:error ":devicetemplatename is required")
-    :type (common-lisp:or device-template-name common-lisp:null)))
+ (common-lisp:defclass associate-device-with-placement-request common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-associate-device-with-placement-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName")
+                        (placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-associate-device-with-placement-request-placement-name
+                         :shape "PlacementName" :location "uri" :location-name
+                         "placementName")
+                        (device-id :initarg :device-id :initform
+                         (common-lisp:error ":deviceid is required") :type
+                         (common-lisp:or device-id common-lisp:null) :accessor
+                         struct-shape-associate-device-with-placement-request-device-id
+                         :shape "DeviceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (device-template-name :initarg :device-template-name
+                         :initform
+                         (common-lisp:error ":devicetemplatename is required")
+                         :type
+                         (common-lisp:or device-template-name common-lisp:null)
+                         :accessor
+                         struct-shape-associate-device-with-placement-request-device-template-name
+                         :shape "DeviceTemplateName" :location "uri"
+                         :location-name "deviceTemplateName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-device-with-placement-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-device-with-placement-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-device-with-placement-request
                     'make-associate-device-with-placement-request))
@@ -71,9 +96,14 @@
                           associate-device-with-placement-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-device-with-placement-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-device-with-placement-response-")))
+ (common-lisp:defclass associate-device-with-placement-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-device-with-placement-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-device-with-placement-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-device-with-placement-response
                     'make-associate-device-with-placement-response))
@@ -97,15 +127,34 @@
 (common-lisp:deftype attribute-value () 'common-lisp:string)
 (common-lisp:deftype code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-placement-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-placement-request-"))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (attributes common-lisp:nil :type
-    (common-lisp:or placement-attribute-map common-lisp:null)))
+ (common-lisp:defclass create-placement-request common-lisp:nil
+                       ((placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-placement-request-placement-name
+                         :shape "PlacementName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-placement-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName")
+                        (attributes :initarg :attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or placement-attribute-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-placement-request-attributes
+                         :shape "PlacementAttributeMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-placement-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-placement-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-placement-request 'make-create-placement-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -138,9 +187,13 @@
                           create-placement-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-placement-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-placement-response-")))
+ (common-lisp:defclass create-placement-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-placement-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-placement-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-placement-response
                     'make-create-placement-response))
@@ -160,16 +213,38 @@
                           create-placement-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-project-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-project-request-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (placement-template common-lisp:nil :type
-    (common-lisp:or placement-template common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-project-request common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-project-request-project-name
+                         :shape "ProjectName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-project-request-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (placement-template :initarg :placement-template
+                         :initform common-lisp:nil :type
+                         (common-lisp:or placement-template common-lisp:null)
+                         :accessor
+                         struct-shape-create-project-request-placement-template
+                         :shape "PlacementTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-project-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-project-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-project-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-project-request 'make-create-project-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -216,9 +291,12 @@
                           create-project-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-project-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-project-response-")))
+ (common-lisp:defclass create-project-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-project-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-project-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-project-response 'make-create-project-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -246,13 +324,26 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-placement-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-placement-request-"))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null)))
+ (common-lisp:defclass delete-placement-request common-lisp:nil
+                       ((placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-placement-request-placement-name
+                         :shape "PlacementName" :location "uri" :location-name
+                         "placementName")
+                        (project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-placement-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-placement-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-placement-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-placement-request 'make-delete-placement-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -271,9 +362,13 @@
                           delete-placement-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-placement-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-placement-response-")))
+ (common-lisp:defclass delete-placement-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-placement-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-placement-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-placement-response
                     'make-delete-placement-response))
@@ -293,11 +388,19 @@
                           delete-placement-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-project-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-project-request-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null)))
+ (common-lisp:defclass delete-project-request common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-project-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-project-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-project-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-project-request 'make-delete-project-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -316,9 +419,12 @@
                           delete-project-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-project-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-project-response-")))
+ (common-lisp:defclass delete-project-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-project-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-project-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-project-response 'make-delete-project-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -337,13 +443,26 @@
                           delete-project-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-placement-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-placement-request-"))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null)))
+ (common-lisp:defclass describe-placement-request common-lisp:nil
+                       ((placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-placement-request-placement-name
+                         :shape "PlacementName" :location "uri" :location-name
+                         "placementName")
+                        (project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-placement-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-placement-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-placement-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-placement-request
                     'make-describe-placement-request))
@@ -363,11 +482,20 @@
                           describe-placement-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-placement-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-placement-response-"))
-   (placement (common-lisp:error ":placement is required") :type
-    (common-lisp:or placement-description common-lisp:null)))
+ (common-lisp:defclass describe-placement-response common-lisp:nil
+                       ((placement :initarg :placement :initform
+                         (common-lisp:error ":placement is required") :type
+                         (common-lisp:or placement-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-placement-response-placement
+                         :shape "PlacementDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-placement-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-placement-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-placement-response
                     'make-describe-placement-response))
@@ -394,11 +522,19 @@
                           describe-placement-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-project-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-project-request-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null)))
+ (common-lisp:defclass describe-project-request common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-project-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-project-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-project-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-project-request 'make-describe-project-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -417,11 +553,19 @@
                           describe-project-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-project-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-project-response-"))
-   (project (common-lisp:error ":project is required") :type
-    (common-lisp:or project-description common-lisp:null)))
+ (common-lisp:defclass describe-project-response common-lisp:nil
+                       ((project :initarg :project :initform
+                         (common-lisp:error ":project is required") :type
+                         (common-lisp:or project-description common-lisp:null)
+                         :accessor
+                         struct-shape-describe-project-response-project :shape
+                         "ProjectDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-project-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-project-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-project-response
                     'make-describe-project-response))
@@ -467,13 +611,26 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (device-template (:copier common-lisp:nil)
-      (:conc-name "struct-shape-device-template-"))
-   (device-type common-lisp:nil :type
-    (common-lisp:or device-type common-lisp:null))
-   (callback-overrides common-lisp:nil :type
-    (common-lisp:or device-callback-override-map common-lisp:null)))
+ (common-lisp:defclass device-template common-lisp:nil
+                       ((device-type :initarg :device-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or device-type common-lisp:null)
+                         :accessor struct-shape-device-template-device-type
+                         :shape "DeviceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (callback-overrides :initarg :callback-overrides
+                         :initform common-lisp:nil :type
+                         (common-lisp:or device-callback-override-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-device-template-callback-overrides :shape
+                         "DeviceCallbackOverrideMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-device-template
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'device-template
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'device-template 'make-device-template))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input device-template))
@@ -509,15 +666,37 @@
 (common-lisp:deftype device-template-name () 'common-lisp:string)
 (common-lisp:deftype device-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-device-from-placement-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-device-from-placement-request-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null))
-   (device-template-name (common-lisp:error ":devicetemplatename is required")
-    :type (common-lisp:or device-template-name common-lisp:null)))
+ (common-lisp:defclass disassociate-device-from-placement-request
+                       common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-device-from-placement-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName")
+                        (placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-device-from-placement-request-placement-name
+                         :shape "PlacementName" :location "uri" :location-name
+                         "placementName")
+                        (device-template-name :initarg :device-template-name
+                         :initform
+                         (common-lisp:error ":devicetemplatename is required")
+                         :type
+                         (common-lisp:or device-template-name common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-device-from-placement-request-device-template-name
+                         :shape "DeviceTemplateName" :location "uri"
+                         :location-name "deviceTemplateName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-device-from-placement-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-device-from-placement-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-device-from-placement-request
                     'make-disassociate-device-from-placement-request))
@@ -537,10 +716,14 @@
                           disassociate-device-from-placement-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-device-from-placement-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-disassociate-device-from-placement-response-")))
+ (common-lisp:defclass disassociate-device-from-placement-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-device-from-placement-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-device-from-placement-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-device-from-placement-response
                     'make-disassociate-device-from-placement-response))
@@ -560,13 +743,27 @@
                           disassociate-device-from-placement-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-devices-in-placement-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-devices-in-placement-request-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null)))
+ (common-lisp:defclass get-devices-in-placement-request common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-devices-in-placement-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName")
+                        (placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-devices-in-placement-request-placement-name
+                         :shape "PlacementName" :location "uri" :location-name
+                         "placementName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-devices-in-placement-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-devices-in-placement-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-devices-in-placement-request
                     'make-get-devices-in-placement-request))
@@ -586,11 +783,19 @@
                           get-devices-in-placement-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-devices-in-placement-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-devices-in-placement-response-"))
-   (devices (common-lisp:error ":devices is required") :type
-    (common-lisp:or device-map common-lisp:null)))
+ (common-lisp:defclass get-devices-in-placement-response common-lisp:nil
+                       ((devices :initarg :devices :initform
+                         (common-lisp:error ":devices is required") :type
+                         (common-lisp:or device-map common-lisp:null) :accessor
+                         struct-shape-get-devices-in-placement-response-devices
+                         :shape "DeviceMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-devices-in-placement-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-devices-in-placement-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-devices-in-placement-response
                     'make-get-devices-in-placement-response))
@@ -638,15 +843,32 @@
   (common-lisp:list 'invalid-request-exception 'invalid-request-exception-code
                     'invalid-request-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-placements-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-placements-request-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-placements-request common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-placements-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-placements-request-next-token :shape
+                         "NextToken" :location "querystring" :location-name
+                         "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-placements-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-placements-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-placements-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-placements-request 'make-list-placements-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -665,13 +887,26 @@
                           list-placements-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-placements-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-placements-response-"))
-   (placements (common-lisp:error ":placements is required") :type
-    (common-lisp:or placement-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-placements-response common-lisp:nil
+                       ((placements :initarg :placements :initform
+                         (common-lisp:error ":placements is required") :type
+                         (common-lisp:or placement-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-placements-response-placements
+                         :shape "PlacementSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-placements-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-placements-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-placements-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-placements-response 'make-list-placements-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -704,13 +939,25 @@
                           list-placements-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-projects-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-projects-request-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-projects-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-projects-request-next-token :shape
+                         "NextToken" :location "querystring" :location-name
+                         "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-projects-request-max-results :shape
+                         "MaxResults" :location "querystring" :location-name
+                         "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-projects-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-projects-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-projects-request 'make-list-projects-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -729,13 +976,24 @@
                           list-projects-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-projects-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-projects-response-"))
-   (projects (common-lisp:error ":projects is required") :type
-    (common-lisp:or project-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-projects-response common-lisp:nil
+                       ((projects :initarg :projects :initform
+                         (common-lisp:error ":projects is required") :type
+                         (common-lisp:or project-summary-list common-lisp:null)
+                         :accessor struct-shape-list-projects-response-projects
+                         :shape "ProjectSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-projects-response-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-projects-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-projects-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-projects-response 'make-list-projects-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -768,11 +1026,20 @@
                           list-projects-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or project-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or project-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "ProjectArn" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -792,10 +1059,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -833,19 +1108,46 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (placement-description (:copier common-lisp:nil)
-      (:conc-name "struct-shape-placement-description-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or placement-attribute-map common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or time common-lisp:null))
-   (updated-date (common-lisp:error ":updateddate is required") :type
-    (common-lisp:or time common-lisp:null)))
+ (common-lisp:defclass placement-description common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-placement-description-project-name :shape
+                         "ProjectName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-placement-description-placement-name
+                         :shape "PlacementName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attributes :initarg :attributes :initform
+                         (common-lisp:error ":attributes is required") :type
+                         (common-lisp:or placement-attribute-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-placement-description-attributes :shape
+                         "PlacementAttributeMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or time common-lisp:null) :accessor
+                         struct-shape-placement-description-created-date :shape
+                         "Time" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-date :initarg :updated-date :initform
+                         (common-lisp:error ":updateddate is required") :type
+                         (common-lisp:or time common-lisp:null) :accessor
+                         struct-shape-placement-description-updated-date :shape
+                         "Time" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-placement-description
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'placement-description
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'placement-description 'make-placement-description))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -900,17 +1202,37 @@
    common-lisp:nil))
 (common-lisp:deftype placement-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (placement-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-placement-summary-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or time common-lisp:null))
-   (updated-date (common-lisp:error ":updateddate is required") :type
-    (common-lisp:or time common-lisp:null)))
+ (common-lisp:defclass placement-summary common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor struct-shape-placement-summary-project-name
+                         :shape "ProjectName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-placement-summary-placement-name :shape
+                         "PlacementName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or time common-lisp:null) :accessor
+                         struct-shape-placement-summary-created-date :shape
+                         "Time" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-date :initarg :updated-date :initform
+                         (common-lisp:error ":updateddate is required") :type
+                         (common-lisp:or time common-lisp:null) :accessor
+                         struct-shape-placement-summary-updated-date :shape
+                         "Time" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-placement-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'placement-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'placement-summary 'make-placement-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -959,13 +1281,27 @@
                            (trivial-types:proper-list placement-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (placement-template (:copier common-lisp:nil)
-      (:conc-name "struct-shape-placement-template-"))
-   (default-attributes common-lisp:nil :type
-    (common-lisp:or default-placement-attribute-map common-lisp:null))
-   (device-templates common-lisp:nil :type
-    (common-lisp:or device-template-map common-lisp:null)))
+ (common-lisp:defclass placement-template common-lisp:nil
+                       ((default-attributes :initarg :default-attributes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or default-placement-attribute-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-placement-template-default-attributes
+                         :shape "DefaultPlacementAttributeMap" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (device-templates :initarg :device-templates :initform
+                         common-lisp:nil :type
+                         (common-lisp:or device-template-map common-lisp:null)
+                         :accessor
+                         struct-shape-placement-template-device-templates
+                         :shape "DeviceTemplateMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-placement-template
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'placement-template
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'placement-template 'make-placement-template))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -993,21 +1329,54 @@
    common-lisp:nil))
 (common-lisp:deftype project-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (project-description (:copier common-lisp:nil)
-      (:conc-name "struct-shape-project-description-"))
-   (arn common-lisp:nil :type (common-lisp:or project-arn common-lisp:null))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or time common-lisp:null))
-   (updated-date (common-lisp:error ":updateddate is required") :type
-    (common-lisp:or time common-lisp:null))
-   (placement-template common-lisp:nil :type
-    (common-lisp:or placement-template common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass project-description common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or project-arn common-lisp:null)
+                         :accessor struct-shape-project-description-arn :shape
+                         "ProjectArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-project-description-project-name :shape
+                         "ProjectName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-project-description-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or time common-lisp:null) :accessor
+                         struct-shape-project-description-created-date :shape
+                         "Time" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-date :initarg :updated-date :initform
+                         (common-lisp:error ":updateddate is required") :type
+                         (common-lisp:or time common-lisp:null) :accessor
+                         struct-shape-project-description-updated-date :shape
+                         "Time" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (placement-template :initarg :placement-template
+                         :initform common-lisp:nil :type
+                         (common-lisp:or placement-template common-lisp:null)
+                         :accessor
+                         struct-shape-project-description-placement-template
+                         :shape "PlacementTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-project-description-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-project-description
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'project-description
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'project-description 'make-project-description))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1070,17 +1439,40 @@
    common-lisp:nil))
 (common-lisp:deftype project-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (project-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-project-summary-"))
-   (arn common-lisp:nil :type (common-lisp:or project-arn common-lisp:null))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (created-date (common-lisp:error ":createddate is required") :type
-    (common-lisp:or time common-lisp:null))
-   (updated-date (common-lisp:error ":updateddate is required") :type
-    (common-lisp:or time common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass project-summary common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or project-arn common-lisp:null)
+                         :accessor struct-shape-project-summary-arn :shape
+                         "ProjectArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor struct-shape-project-summary-project-name
+                         :shape "ProjectName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         (common-lisp:error ":createddate is required") :type
+                         (common-lisp:or time common-lisp:null) :accessor
+                         struct-shape-project-summary-created-date :shape
+                         "Time" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-date :initarg :updated-date :initform
+                         (common-lisp:error ":updateddate is required") :type
+                         (common-lisp:or time common-lisp:null) :accessor
+                         struct-shape-project-summary-updated-date :shape
+                         "Time" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-project-summary-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-project-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'project-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'project-summary 'make-project-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input project-summary))
@@ -1172,13 +1564,25 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or project-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or project-arn common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "ProjectArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1198,9 +1602,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1232,13 +1639,25 @@
                     'too-many-requests-exception-code
                     'too-many-requests-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or project-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or project-arn common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "ProjectArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1257,9 +1676,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1278,15 +1700,34 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-placement-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-placement-request-"))
-   (placement-name (common-lisp:error ":placementname is required") :type
-    (common-lisp:or placement-name common-lisp:null))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (attributes common-lisp:nil :type
-    (common-lisp:or placement-attribute-map common-lisp:null)))
+ (common-lisp:defclass update-placement-request common-lisp:nil
+                       ((placement-name :initarg :placement-name :initform
+                         (common-lisp:error ":placementname is required") :type
+                         (common-lisp:or placement-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-placement-request-placement-name
+                         :shape "PlacementName" :location "uri" :location-name
+                         "placementName")
+                        (project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-placement-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName")
+                        (attributes :initarg :attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or placement-attribute-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-placement-request-attributes
+                         :shape "PlacementAttributeMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-placement-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-placement-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-placement-request 'make-update-placement-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1312,9 +1753,13 @@
                           update-placement-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-placement-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-placement-response-")))
+ (common-lisp:defclass update-placement-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-placement-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-placement-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-placement-response
                     'make-update-placement-response))
@@ -1334,15 +1779,33 @@
                           update-placement-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-project-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-project-request-"))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (placement-template common-lisp:nil :type
-    (common-lisp:or placement-template common-lisp:null)))
+ (common-lisp:defclass update-project-request common-lisp:nil
+                       ((project-name :initarg :project-name :initform
+                         (common-lisp:error ":projectname is required") :type
+                         (common-lisp:or project-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-project-request-project-name
+                         :shape "ProjectName" :location "uri" :location-name
+                         "projectName")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-project-request-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (placement-template :initarg :placement-template
+                         :initform common-lisp:nil :type
+                         (common-lisp:or placement-template common-lisp:null)
+                         :accessor
+                         struct-shape-update-project-request-placement-template
+                         :shape "PlacementTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-project-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-project-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-project-request 'make-update-project-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1375,9 +1838,12 @@
                           update-project-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-project-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-project-response-")))
+ (common-lisp:defclass update-project-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-project-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-project-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-project-response 'make-update-project-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

@@ -60,21 +60,53 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (auto-scaling-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-auto-scaling-configuration-"))
-   (min-node-count common-lisp:nil :type
-    (common-lisp:or node-count common-lisp:null))
-   (max-node-count common-lisp:nil :type
-    (common-lisp:or node-count common-lisp:null))
-   (auto-scaling-metric common-lisp:nil :type
-    (common-lisp:or auto-scaling-metric common-lisp:null))
-   (metric-target common-lisp:nil :type
-    (common-lisp:or auto-scaling-metric-target common-lisp:null))
-   (scale-in-cooldown-seconds common-lisp:nil :type
-    (common-lisp:or cooldown-time common-lisp:null))
-   (scale-out-cooldown-seconds common-lisp:nil :type
-    (common-lisp:or cooldown-time common-lisp:null)))
+ (common-lisp:defclass auto-scaling-configuration common-lisp:nil
+                       ((min-node-count :initarg :min-node-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or node-count common-lisp:null) :accessor
+                         struct-shape-auto-scaling-configuration-min-node-count
+                         :shape "NodeCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-node-count :initarg :max-node-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or node-count common-lisp:null) :accessor
+                         struct-shape-auto-scaling-configuration-max-node-count
+                         :shape "NodeCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (auto-scaling-metric :initarg :auto-scaling-metric
+                         :initform common-lisp:nil :type
+                         (common-lisp:or auto-scaling-metric common-lisp:null)
+                         :accessor
+                         struct-shape-auto-scaling-configuration-auto-scaling-metric
+                         :shape "AutoScalingMetric" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metric-target :initarg :metric-target :initform
+                         common-lisp:nil :type
+                         (common-lisp:or auto-scaling-metric-target
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-auto-scaling-configuration-metric-target
+                         :shape "AutoScalingMetricTarget" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scale-in-cooldown-seconds :initarg
+                         :scale-in-cooldown-seconds :initform common-lisp:nil
+                         :type (common-lisp:or cooldown-time common-lisp:null)
+                         :accessor
+                         struct-shape-auto-scaling-configuration-scale-in-cooldown-seconds
+                         :shape "CooldownTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scale-out-cooldown-seconds :initarg
+                         :scale-out-cooldown-seconds :initform common-lisp:nil
+                         :type (common-lisp:or cooldown-time common-lisp:null)
+                         :accessor
+                         struct-shape-auto-scaling-configuration-scale-out-cooldown-seconds
+                         :shape "CooldownTime" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-auto-scaling-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'auto-scaling-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'auto-scaling-configuration
                     'make-auto-scaling-configuration))
@@ -150,13 +182,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype boxed-integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (capacity-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-capacity-configuration-"))
-   (node-type common-lisp:nil :type
-    (common-lisp:or node-type common-lisp:null))
-   (node-count common-lisp:nil :type
-    (common-lisp:or node-count common-lisp:null)))
+ (common-lisp:defclass capacity-configuration common-lisp:nil
+                       ((node-type :initarg :node-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or node-type common-lisp:null) :accessor
+                         struct-shape-capacity-configuration-node-type :shape
+                         "NodeType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (node-count :initarg :node-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or node-count common-lisp:null) :accessor
+                         struct-shape-capacity-configuration-node-count :shape
+                         "NodeCount" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-capacity-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'capacity-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'capacity-configuration 'make-capacity-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -189,14 +232,29 @@
                           capacity-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (change-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-change-request-"))
-   (change-type (common-lisp:error ":changetype is required") :type
-    (common-lisp:or change-type common-lisp:null))
-   (s3path common-lisp:nil :type (common-lisp:or s3path common-lisp:null))
-   (db-path (common-lisp:error ":dbpath is required") :type
-    (common-lisp:or db-path common-lisp:null)))
+ (common-lisp:defclass change-request common-lisp:nil
+                       ((change-type :initarg :change-type :initform
+                         (common-lisp:error ":changetype is required") :type
+                         (common-lisp:or change-type common-lisp:null)
+                         :accessor struct-shape-change-request-change-type
+                         :shape "ChangeType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (s3path :initarg :s3path :initform common-lisp:nil
+                         :type (common-lisp:or s3path common-lisp:null)
+                         :accessor struct-shape-change-request-s3path :shape
+                         "S3Path" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (db-path :initarg :db-path :initform
+                         (common-lisp:error ":dbpath is required") :type
+                         (common-lisp:or db-path common-lisp:null) :accessor
+                         struct-shape-change-request-db-path :shape "DbPath"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-change-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'change-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'change-request 'make-change-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input change-request))
@@ -243,13 +301,29 @@
 (common-lisp:deftype client-token-string () 'common-lisp:string)
 (common-lisp:deftype cluster-node-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (code-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-code-configuration-"))
-   (s3bucket common-lisp:nil :type (common-lisp:or s3bucket common-lisp:null))
-   (s3key common-lisp:nil :type (common-lisp:or s3key common-lisp:null))
-   (s3object-version common-lisp:nil :type
-    (common-lisp:or s3object-version common-lisp:null)))
+ (common-lisp:defclass code-configuration common-lisp:nil
+                       ((s3bucket :initarg :s3bucket :initform common-lisp:nil
+                         :type (common-lisp:or s3bucket common-lisp:null)
+                         :accessor struct-shape-code-configuration-s3bucket
+                         :shape "S3Bucket" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (s3key :initarg :s3key :initform common-lisp:nil :type
+                         (common-lisp:or s3key common-lisp:null) :accessor
+                         struct-shape-code-configuration-s3key :shape "S3Key"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (s3object-version :initarg :s3object-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or s3object-version common-lisp:null)
+                         :accessor
+                         struct-shape-code-configuration-s3object-version
+                         :shape "S3ObjectVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-code-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'code-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'code-configuration 'make-code-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -295,24 +369,65 @@
 (common-lisp:deftype cooldown-time () 'common-lisp:double-float)
 (common-lisp:deftype cpu-count () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-environment-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or environment-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (federation-mode common-lisp:nil :type
-    (common-lisp:or federation-mode common-lisp:null))
-   (federation-parameters common-lisp:nil :type
-    (common-lisp:or federation-parameters common-lisp:null))
-   (superuser-parameters common-lisp:nil :type
-    (common-lisp:or superuser-parameters common-lisp:null))
-   (data-bundles common-lisp:nil :type
-    (common-lisp:or data-bundle-arns common-lisp:null)))
+ (common-lisp:defclass create-environment-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or environment-name common-lisp:null)
+                         :accessor struct-shape-create-environment-request-name
+                         :shape "EnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id common-lisp:null) :accessor
+                         struct-shape-create-environment-request-kms-key-id
+                         :shape "KmsKeyId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-environment-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (federation-mode :initarg :federation-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or federation-mode common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-request-federation-mode
+                         :shape "FederationMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-parameters :initarg :federation-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-parameters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-request-federation-parameters
+                         :shape "FederationParameters" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (superuser-parameters :initarg :superuser-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or superuser-parameters common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-request-superuser-parameters
+                         :shape "SuperuserParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (data-bundles :initarg :data-bundles :initform
+                         common-lisp:nil :type
+                         (common-lisp:or data-bundle-arns common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-request-data-bundles
+                         :shape "DataBundleArns" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-environment-request
                     'make-create-environment-request))
@@ -390,15 +505,31 @@
                           create-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-environment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-environment-response-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (environment-arn common-lisp:nil :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (environment-url common-lisp:nil :type
-    (common-lisp:or |url| common-lisp:null)))
+ (common-lisp:defclass create-environment-response common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-create-environment-response-environment-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-arn :initarg :environment-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-environment-response-environment-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-url :initarg :environment-url :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |url| common-lisp:null) :accessor
+                         struct-shape-create-environment-response-environment-url
+                         :shape "url" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-environment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-environment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-environment-response
                     'make-create-environment-response))
@@ -439,17 +570,41 @@
                           create-environment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-changeset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-changeset-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (change-requests (common-lisp:error ":changerequests is required") :type
-    (common-lisp:or change-requests common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass create-kx-changeset-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (change-requests :initarg :change-requests :initform
+                         (common-lisp:error ":changerequests is required")
+                         :type
+                         (common-lisp:or change-requests common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-request-change-requests
+                         :shape "ChangeRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-request-client-token
+                         :shape "ClientTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-changeset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-changeset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-changeset-request
                     'make-create-kx-changeset-request))
@@ -483,25 +638,66 @@
                           create-kx-changeset-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-changeset-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-changeset-response-"))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (change-requests common-lisp:nil :type
-    (common-lisp:or change-requests common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or changeset-status common-lisp:null))
-   (error-info common-lisp:nil :type
-    (common-lisp:or error-info common-lisp:null)))
+ (common-lisp:defclass create-kx-changeset-response common-lisp:nil
+                       ((changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-response-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-response-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-response-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (change-requests :initarg :change-requests :initform
+                         common-lisp:nil :type
+                         (common-lisp:or change-requests common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-response-change-requests
+                         :shape "ChangeRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-create-kx-changeset-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or changeset-status common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-changeset-response-status
+                         :shape "ChangesetStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-info :initarg :error-info :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-info common-lisp:null) :accessor
+                         struct-shape-create-kx-changeset-response-error-info
+                         :shape "ErrorInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-changeset-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-changeset-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-changeset-response
                     'make-create-kx-changeset-response))
@@ -578,50 +774,173 @@
                           create-kx-changeset-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-cluster-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-cluster-request-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (cluster-name (common-lisp:error ":clustername is required") :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (cluster-type (common-lisp:error ":clustertype is required") :type
-    (common-lisp:or kx-cluster-type common-lisp:null))
-   (tickerplant-log-configuration common-lisp:nil :type
-    (common-lisp:or tickerplant-log-configuration common-lisp:null))
-   (databases common-lisp:nil :type
-    (common-lisp:or kx-database-configurations common-lisp:null))
-   (cache-storage-configurations common-lisp:nil :type
-    (common-lisp:or kx-cache-storage-configurations common-lisp:null))
-   (auto-scaling-configuration common-lisp:nil :type
-    (common-lisp:or auto-scaling-configuration common-lisp:null))
-   (cluster-description common-lisp:nil :type
-    (common-lisp:or kx-cluster-description common-lisp:null))
-   (capacity-configuration common-lisp:nil :type
-    (common-lisp:or capacity-configuration common-lisp:null))
-   (release-label (common-lisp:error ":releaselabel is required") :type
-    (common-lisp:or release-label common-lisp:null))
-   (vpc-configuration (common-lisp:error ":vpcconfiguration is required") :type
-    (common-lisp:or vpc-configuration common-lisp:null))
-   (initialization-script common-lisp:nil :type
-    (common-lisp:or initialization-script-file-path common-lisp:null))
-   (command-line-arguments common-lisp:nil :type
-    (common-lisp:or kx-command-line-arguments common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or code-configuration common-lisp:null))
-   (execution-role common-lisp:nil :type
-    (common-lisp:or execution-role-arn common-lisp:null))
-   (savedown-storage-configuration common-lisp:nil :type
-    (common-lisp:or kx-savedown-storage-configuration common-lisp:null))
-   (az-mode (common-lisp:error ":azmode is required") :type
-    (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (scaling-group-configuration common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-configuration common-lisp:null)))
+ (common-lisp:defclass create-kx-cluster-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":clustername is required") :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-cluster-name
+                         :shape "KxClusterName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cluster-type :initarg :cluster-type :initform
+                         (common-lisp:error ":clustertype is required") :type
+                         (common-lisp:or kx-cluster-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-cluster-type
+                         :shape "KxClusterType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tickerplant-log-configuration :initarg
+                         :tickerplant-log-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tickerplant-log-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-tickerplant-log-configuration
+                         :shape "TickerplantLogConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (databases :initarg :databases :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-database-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-databases
+                         :shape "KxDatabaseConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cache-storage-configurations :initarg
+                         :cache-storage-configurations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cache-storage-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-cache-storage-configurations
+                         :shape "KxCacheStorageConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (auto-scaling-configuration :initarg
+                         :auto-scaling-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or auto-scaling-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-auto-scaling-configuration
+                         :shape "AutoScalingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-description :initarg :cluster-description
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-cluster-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-cluster-description
+                         :shape "KxClusterDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (capacity-configuration :initarg
+                         :capacity-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or capacity-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-capacity-configuration
+                         :shape "CapacityConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (release-label :initarg :release-label :initform
+                         (common-lisp:error ":releaselabel is required") :type
+                         (common-lisp:or release-label common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-release-label
+                         :shape "ReleaseLabel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-configuration :initarg :vpc-configuration
+                         :initform
+                         (common-lisp:error ":vpcconfiguration is required")
+                         :type
+                         (common-lisp:or vpc-configuration common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-vpc-configuration
+                         :shape "VpcConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initialization-script :initarg :initialization-script
+                         :initform common-lisp:nil :type
+                         (common-lisp:or initialization-script-file-path
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-initialization-script
+                         :shape "InitializationScriptFilePath" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (command-line-arguments :initarg
+                         :command-line-arguments :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-command-line-arguments
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-command-line-arguments
+                         :shape "KxCommandLineArguments" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (code :initarg :code :initform common-lisp:nil :type
+                         (common-lisp:or code-configuration common-lisp:null)
+                         :accessor struct-shape-create-kx-cluster-request-code
+                         :shape "CodeConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-role :initarg :execution-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-execution-role
+                         :shape "ExecutionRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (savedown-storage-configuration :initarg
+                         :savedown-storage-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-savedown-storage-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-savedown-storage-configuration
+                         :shape "KxSavedownStorageConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform
+                         (common-lisp:error ":azmode is required") :type
+                         (common-lisp:or kx-az-mode common-lisp:null) :accessor
+                         struct-shape-create-kx-cluster-request-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-kx-cluster-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (scaling-group-configuration :initarg
+                         :scaling-group-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-scaling-group-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-request-scaling-group-configuration
+                         :shape "KxScalingGroupConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-cluster-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-cluster-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-cluster-request
                     'make-create-kx-cluster-request))
@@ -790,55 +1109,193 @@
                           create-kx-cluster-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-cluster-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-cluster-response-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-cluster-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-cluster-status-reason common-lisp:null))
-   (cluster-name common-lisp:nil :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (cluster-type common-lisp:nil :type
-    (common-lisp:or kx-cluster-type common-lisp:null))
-   (tickerplant-log-configuration common-lisp:nil :type
-    (common-lisp:or tickerplant-log-configuration common-lisp:null))
-   (volumes common-lisp:nil :type (common-lisp:or volumes common-lisp:null))
-   (databases common-lisp:nil :type
-    (common-lisp:or kx-database-configurations common-lisp:null))
-   (cache-storage-configurations common-lisp:nil :type
-    (common-lisp:or kx-cache-storage-configurations common-lisp:null))
-   (auto-scaling-configuration common-lisp:nil :type
-    (common-lisp:or auto-scaling-configuration common-lisp:null))
-   (cluster-description common-lisp:nil :type
-    (common-lisp:or kx-cluster-description common-lisp:null))
-   (capacity-configuration common-lisp:nil :type
-    (common-lisp:or capacity-configuration common-lisp:null))
-   (release-label common-lisp:nil :type
-    (common-lisp:or release-label common-lisp:null))
-   (vpc-configuration common-lisp:nil :type
-    (common-lisp:or vpc-configuration common-lisp:null))
-   (initialization-script common-lisp:nil :type
-    (common-lisp:or initialization-script-file-path common-lisp:null))
-   (command-line-arguments common-lisp:nil :type
-    (common-lisp:or kx-command-line-arguments common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or code-configuration common-lisp:null))
-   (execution-role common-lisp:nil :type
-    (common-lisp:or execution-role-arn common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (savedown-storage-configuration common-lisp:nil :type
-    (common-lisp:or kx-savedown-storage-configuration common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (scaling-group-configuration common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-configuration common-lisp:null)))
+ (common-lisp:defclass create-kx-cluster-response common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-environment-id
+                         :shape "KxEnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-cluster-status common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-status :shape
+                         "KxClusterStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-status-reason
+                         :shape "KxClusterStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-name :initarg :cluster-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-cluster-name
+                         :shape "KxClusterName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cluster-type :initarg :cluster-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-cluster-type
+                         :shape "KxClusterType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tickerplant-log-configuration :initarg
+                         :tickerplant-log-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tickerplant-log-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-tickerplant-log-configuration
+                         :shape "TickerplantLogConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (volumes :initarg :volumes :initform common-lisp:nil
+                         :type (common-lisp:or volumes common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-volumes :shape
+                         "Volumes" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (databases :initarg :databases :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-database-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-databases
+                         :shape "KxDatabaseConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cache-storage-configurations :initarg
+                         :cache-storage-configurations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cache-storage-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-cache-storage-configurations
+                         :shape "KxCacheStorageConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (auto-scaling-configuration :initarg
+                         :auto-scaling-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or auto-scaling-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-auto-scaling-configuration
+                         :shape "AutoScalingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-description :initarg :cluster-description
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-cluster-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-cluster-description
+                         :shape "KxClusterDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (capacity-configuration :initarg
+                         :capacity-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or capacity-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-capacity-configuration
+                         :shape "CapacityConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (release-label :initarg :release-label :initform
+                         common-lisp:nil :type
+                         (common-lisp:or release-label common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-release-label
+                         :shape "ReleaseLabel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-configuration :initarg :vpc-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or vpc-configuration common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-vpc-configuration
+                         :shape "VpcConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initialization-script :initarg :initialization-script
+                         :initform common-lisp:nil :type
+                         (common-lisp:or initialization-script-file-path
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-initialization-script
+                         :shape "InitializationScriptFilePath" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (command-line-arguments :initarg
+                         :command-line-arguments :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-command-line-arguments
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-command-line-arguments
+                         :shape "KxCommandLineArguments" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (code :initarg :code :initform common-lisp:nil :type
+                         (common-lisp:or code-configuration common-lisp:null)
+                         :accessor struct-shape-create-kx-cluster-response-code
+                         :shape "CodeConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-role :initarg :execution-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-execution-role
+                         :shape "ExecutionRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (savedown-storage-configuration :initarg
+                         :savedown-storage-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-savedown-storage-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-savedown-storage-configuration
+                         :shape "KxSavedownStorageConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-create-kx-cluster-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-group-configuration :initarg
+                         :scaling-group-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-scaling-group-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-cluster-response-scaling-group-configuration
+                         :shape "KxScalingGroupConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-cluster-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-cluster-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-cluster-response
                     'make-create-kx-cluster-response))
@@ -1036,18 +1493,45 @@
                           create-kx-cluster-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-database-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-database-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass create-kx-database-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-request-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-kx-database-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-request-client-token
+                         :shape "ClientTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-database-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-database-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-database-request
                     'make-create-kx-database-request))
@@ -1095,21 +1579,53 @@
                           create-kx-database-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-database-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-database-response-"))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (database-arn common-lisp:nil :type
-    (common-lisp:or database-arn common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass create-kx-database-response common-lisp:nil
+                       ((database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-response-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-arn :initarg :database-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-response-database-arn
+                         :shape "DatabaseArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-response-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-create-kx-database-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-database-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-database-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-database-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-database-response
                     'make-create-kx-database-response))
@@ -1172,30 +1688,88 @@
                           create-kx-database-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-dataview-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-dataview-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (dataview-name (common-lisp:error ":dataviewname is required") :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (az-mode (common-lisp:error ":azmode is required") :type
-    (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (segment-configurations common-lisp:nil :type
-    (common-lisp:or kx-dataview-segment-configuration-list common-lisp:null))
-   (auto-update common-lisp:nil :type
-    (common-lisp:or |booleanValue| common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass create-kx-dataview-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (dataview-name :initarg :dataview-name :initform
+                         (common-lisp:error ":dataviewname is required") :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-dataview-name
+                         :shape "KxDataviewName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform
+                         (common-lisp:error ":azmode is required") :type
+                         (common-lisp:or kx-az-mode common-lisp:null) :accessor
+                         struct-shape-create-kx-dataview-request-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (segment-configurations :initarg
+                         :segment-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-segment-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-segment-configurations
+                         :shape "KxDataviewSegmentConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (auto-update :initarg :auto-update :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |booleanValue| common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-auto-update
+                         :shape "booleanValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-kx-dataview-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-request-client-token
+                         :shape "ClientTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-dataview-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-dataview-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-dataview-request
                     'make-create-kx-dataview-request))
@@ -1280,32 +1854,96 @@
                           create-kx-dataview-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-dataview-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-dataview-response-"))
-   (dataview-name common-lisp:nil :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (segment-configurations common-lisp:nil :type
-    (common-lisp:or kx-dataview-segment-configuration-list common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (auto-update common-lisp:nil :type
-    (common-lisp:or |booleanValue| common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-dataview-status common-lisp:null)))
+ (common-lisp:defclass create-kx-dataview-response common-lisp:nil
+                       ((dataview-name :initarg :dataview-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-dataview-name
+                         :shape "KxDataviewName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-az-mode
+                         :shape "KxAzMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (segment-configurations :initarg
+                         :segment-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-segment-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-segment-configurations
+                         :shape "KxDataviewSegmentConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (auto-update :initarg :auto-update :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |booleanValue| common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-auto-update
+                         :shape "booleanValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-create-kx-dataview-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-status common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-dataview-response-status :shape
+                         "KxDataviewStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-dataview-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-dataview-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-dataview-response
                     'make-create-kx-dataview-response))
@@ -1412,18 +2050,46 @@
                           create-kx-dataview-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-environment-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or kx-environment-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (kms-key-id (common-lisp:error ":kmskeyid is required") :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null)))
+ (common-lisp:defclass create-kx-environment-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or kx-environment-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-environment-request-name :shape
+                         "KxEnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-environment-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         (common-lisp:error ":kmskeyid is required") :type
+                         (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-environment-request-kms-key-id
+                         :shape "KmsKeyARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-kx-environment-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-environment-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-kx-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-environment-request
                     'make-create-kx-environment-request))
@@ -1478,23 +2144,58 @@
                           create-kx-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-environment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-environment-response-"))
-   (name common-lisp:nil :type
-    (common-lisp:or kx-environment-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or environment-status common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (environment-arn common-lisp:nil :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id common-lisp:null))
-   (creation-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass create-kx-environment-response common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or kx-environment-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-environment-response-name
+                         :shape "KxEnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or environment-status common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-environment-response-status
+                         :shape "EnvironmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-create-kx-environment-response-environment-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-environment-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-arn :initarg :environment-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-environment-response-environment-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id common-lisp:null) :accessor
+                         struct-shape-create-kx-environment-response-kms-key-id
+                         :shape "KmsKeyId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-timestamp :initarg :creation-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-create-kx-environment-response-creation-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-environment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-kx-environment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-environment-response
                     'make-create-kx-environment-response))
@@ -1563,20 +2264,58 @@
                           create-kx-environment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-scaling-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-scaling-group-request-"))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token common-lisp:null))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (scaling-group-name (common-lisp:error ":scalinggroupname is required")
-    :type (common-lisp:or kx-scaling-group-name common-lisp:null))
-   (host-type (common-lisp:error ":hosttype is required") :type
-    (common-lisp:or kx-host-type common-lisp:null))
-   (availability-zone-id (common-lisp:error ":availabilityzoneid is required")
-    :type (common-lisp:or availability-zone-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-kx-scaling-group-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (scaling-group-name :initarg :scaling-group-name
+                         :initform
+                         (common-lisp:error ":scalinggroupname is required")
+                         :type
+                         (common-lisp:or kx-scaling-group-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-request-scaling-group-name
+                         :shape "KxScalingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (host-type :initarg :host-type :initform
+                         (common-lisp:error ":hosttype is required") :type
+                         (common-lisp:or kx-host-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-request-host-type
+                         :shape "KxHostType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform
+                         (common-lisp:error ":availabilityzoneid is required")
+                         :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-request-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-kx-scaling-group-request-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-scaling-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-kx-scaling-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-scaling-group-request
                     'make-create-kx-scaling-group-request))
@@ -1632,23 +2371,63 @@
                           create-kx-scaling-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-scaling-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-scaling-group-response-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (scaling-group-name common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-name common-lisp:null))
-   (host-type common-lisp:nil :type
-    (common-lisp:or kx-host-type common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-status common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass create-kx-scaling-group-response common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-response-environment-id
+                         :shape "KxEnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-group-name :initarg :scaling-group-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-scaling-group-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-response-scaling-group-name
+                         :shape "KxScalingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (host-type :initarg :host-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-host-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-response-host-type
+                         :shape "KxHostType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-response-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-scaling-group-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-response-status
+                         :shape "KxScalingGroupStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-scaling-group-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-create-kx-scaling-group-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-scaling-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-kx-scaling-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-scaling-group-response
                     'make-create-kx-scaling-group-response))
@@ -1719,18 +2498,43 @@
                           create-kx-scaling-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-user-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-user-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (user-name (common-lisp:error ":username is required") :type
-    (common-lisp:or kx-user-name-string common-lisp:null))
-   (iam-role (common-lisp:error ":iamrole is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null)))
+ (common-lisp:defclass create-kx-user-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-create-kx-user-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (user-name :initarg :user-name :initform
+                         (common-lisp:error ":username is required") :type
+                         (common-lisp:or kx-user-name-string common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-user-request-user-name :shape
+                         "KxUserNameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role :initarg :iam-role :initform
+                         (common-lisp:error ":iamrole is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-create-kx-user-request-iam-role :shape
+                         "RoleArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-kx-user-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-user-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-user-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-user-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-user-request 'make-create-kx-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1777,16 +2581,37 @@
                           create-kx-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-user-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-user-response-"))
-   (user-name common-lisp:nil :type
-    (common-lisp:or kx-user-name-string common-lisp:null))
-   (user-arn common-lisp:nil :type
-    (common-lisp:or kx-user-arn common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (iam-role common-lisp:nil :type (common-lisp:or role-arn common-lisp:null)))
+ (common-lisp:defclass create-kx-user-response common-lisp:nil
+                       ((user-name :initarg :user-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-user-name-string common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-user-response-user-name :shape
+                         "KxUserNameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-arn :initarg :user-arn :initform common-lisp:nil
+                         :type (common-lisp:or kx-user-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-user-response-user-arn :shape
+                         "KxUserArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-create-kx-user-response-environment-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role :initarg :iam-role :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-user-response-iam-role :shape
+                         "RoleArn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-user-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-user-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-user-response 'make-create-kx-user-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1833,27 +2658,75 @@
                           create-kx-user-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-volume-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-volume-request-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (volume-type (common-lisp:error ":volumetype is required") :type
-    (common-lisp:or kx-volume-type common-lisp:null))
-   (volume-name (common-lisp:error ":volumename is required") :type
-    (common-lisp:or kx-volume-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (nas1configuration common-lisp:nil :type
-    (common-lisp:or kx-nas1configuration common-lisp:null))
-   (az-mode (common-lisp:error ":azmode is required") :type
-    (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-ids
-    (common-lisp:error ":availabilityzoneids is required") :type
-    (common-lisp:or availability-zone-ids common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-kx-volume-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (volume-type :initarg :volume-type :initform
+                         (common-lisp:error ":volumetype is required") :type
+                         (common-lisp:or kx-volume-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-request-volume-type
+                         :shape "KxVolumeType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-name :initarg :volume-name :initform
+                         (common-lisp:error ":volumename is required") :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-request-volume-name
+                         :shape "KxVolumeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nas1configuration :initarg :nas1configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-nas1configuration common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-request-nas1configuration
+                         :shape "KxNAS1Configuration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform
+                         (common-lisp:error ":azmode is required") :type
+                         (common-lisp:or kx-az-mode common-lisp:null) :accessor
+                         struct-shape-create-kx-volume-request-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform
+                         (common-lisp:error ":availabilityzoneids is required")
+                         :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-request-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-kx-volume-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-volume-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-volume-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-volume-request 'make-create-kx-volume-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1929,30 +2802,89 @@
                           create-kx-volume-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-kx-volume-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-kx-volume-response-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (volume-name common-lisp:nil :type
-    (common-lisp:or kx-volume-name common-lisp:null))
-   (volume-type common-lisp:nil :type
-    (common-lisp:or kx-volume-type common-lisp:null))
-   (volume-arn common-lisp:nil :type
-    (common-lisp:or kx-volume-arn common-lisp:null))
-   (nas1configuration common-lisp:nil :type
-    (common-lisp:or kx-nas1configuration common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-volume-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-volume-status-reason common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (availability-zone-ids common-lisp:nil :type
-    (common-lisp:or availability-zone-ids common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass create-kx-volume-response common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-environment-id
+                         :shape "KxEnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-name :initarg :volume-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-volume-name
+                         :shape "KxVolumeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-type :initarg :volume-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-volume-type
+                         :shape "KxVolumeType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-arn :initarg :volume-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-volume-arn
+                         :shape "KxVolumeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nas1configuration :initarg :nas1configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-nas1configuration common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-nas1configuration
+                         :shape "KxNAS1Configuration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-volume-status common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-status :shape
+                         "KxVolumeStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-status-reason
+                         :shape "KxVolumeStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-kx-volume-response-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-create-kx-volume-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-kx-volume-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-kx-volume-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-kx-volume-response
                     'make-create-kx-volume-response))
@@ -2058,14 +2990,29 @@
                            (trivial-types:proper-list custom-dnsserver))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (custom-dnsserver (:copier common-lisp:nil)
-      (:conc-name "struct-shape-custom-dnsserver-"))
-   (custom-dnsserver-name
-    (common-lisp:error ":customdnsservername is required") :type
-    (common-lisp:or valid-hostname common-lisp:null))
-   (custom-dnsserver-ip (common-lisp:error ":customdnsserverip is required")
-    :type (common-lisp:or valid-ipaddress common-lisp:null)))
+ (common-lisp:defclass custom-dnsserver common-lisp:nil
+                       ((custom-dnsserver-name :initarg :custom-dnsserver-name
+                         :initform
+                         (common-lisp:error ":customdnsservername is required")
+                         :type (common-lisp:or valid-hostname common-lisp:null)
+                         :accessor
+                         struct-shape-custom-dnsserver-custom-dnsserver-name
+                         :shape "ValidHostname" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (custom-dnsserver-ip :initarg :custom-dnsserver-ip
+                         :initform
+                         (common-lisp:error ":customdnsserverip is required")
+                         :type
+                         (common-lisp:or valid-ipaddress common-lisp:null)
+                         :accessor
+                         struct-shape-custom-dnsserver-custom-dnsserver-ip
+                         :shape "ValidIPAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-custom-dnsserver
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'custom-dnsserver
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'custom-dnsserver 'make-custom-dnsserver))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2112,11 +3059,18 @@
                            (trivial-types:proper-list db-path))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-environment-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null)))
+ (common-lisp:defclass delete-environment-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-delete-environment-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-environment-request
                     'make-delete-environment-request))
@@ -2136,9 +3090,13 @@
                           delete-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-environment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-environment-response-")))
+ (common-lisp:defclass delete-environment-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-environment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-environment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-environment-response
                     'make-delete-environment-response))
@@ -2158,15 +3116,33 @@
                           delete-environment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-cluster-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-cluster-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (cluster-name (common-lisp:error ":clustername is required") :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass delete-kx-cluster-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-cluster-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":clustername is required") :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-cluster-request-cluster-name
+                         :shape "KxClusterName" :location "uri" :location-name
+                         "clusterName")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-cluster-request-client-token
+                         :shape "ClientTokenString" :location "querystring"
+                         :location-name "clientToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-cluster-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-cluster-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-cluster-request
                     'make-delete-kx-cluster-request))
@@ -2186,9 +3162,13 @@
                           delete-kx-cluster-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-cluster-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-cluster-response-")))
+ (common-lisp:defclass delete-kx-cluster-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-cluster-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-cluster-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-cluster-response
                     'make-delete-kx-cluster-response))
@@ -2208,15 +3188,33 @@
                           delete-kx-cluster-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-database-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-database-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass delete-kx-database-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-database-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-database-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-database-request-client-token
+                         :shape "ClientTokenString" :location "querystring"
+                         :location-name "clientToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-database-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-database-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-database-request
                     'make-delete-kx-database-request))
@@ -2236,9 +3234,13 @@
                           delete-kx-database-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-database-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-database-response-")))
+ (common-lisp:defclass delete-kx-database-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-database-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-database-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-database-response
                     'make-delete-kx-database-response))
@@ -2258,17 +3260,40 @@
                           delete-kx-database-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-dataview-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-dataview-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (dataview-name (common-lisp:error ":dataviewname is required") :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass delete-kx-dataview-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-dataview-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-dataview-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (dataview-name :initarg :dataview-name :initform
+                         (common-lisp:error ":dataviewname is required") :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-dataview-request-dataview-name
+                         :shape "KxDataviewName" :location "uri" :location-name
+                         "dataviewName")
+                        (client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-dataview-request-client-token
+                         :shape "ClientTokenString" :location "querystring"
+                         :location-name "clientToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-dataview-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-dataview-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-dataview-request
                     'make-delete-kx-dataview-request))
@@ -2288,9 +3313,13 @@
                           delete-kx-dataview-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-dataview-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-dataview-response-")))
+ (common-lisp:defclass delete-kx-dataview-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-dataview-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-dataview-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-dataview-response
                     'make-delete-kx-dataview-response))
@@ -2310,13 +3339,26 @@
                           delete-kx-dataview-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-environment-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null)))
+ (common-lisp:defclass delete-kx-environment-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-delete-kx-environment-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-environment-request-client-token
+                         :shape "ClientToken" :location "querystring"
+                         :location-name "clientToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-kx-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-environment-request
                     'make-delete-kx-environment-request))
@@ -2336,9 +3378,14 @@
                           delete-kx-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-environment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-environment-response-")))
+ (common-lisp:defclass delete-kx-environment-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-environment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-kx-environment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-environment-response
                     'make-delete-kx-environment-response))
@@ -2358,15 +3405,37 @@
                           delete-kx-environment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-scaling-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-scaling-group-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (scaling-group-name (common-lisp:error ":scalinggroupname is required")
-    :type (common-lisp:or kx-scaling-group-name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass delete-kx-scaling-group-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-scaling-group-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (scaling-group-name :initarg :scaling-group-name
+                         :initform
+                         (common-lisp:error ":scalinggroupname is required")
+                         :type
+                         (common-lisp:or kx-scaling-group-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-scaling-group-request-scaling-group-name
+                         :shape "KxScalingGroupName" :location "uri"
+                         :location-name "scalingGroupName")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-scaling-group-request-client-token
+                         :shape "ClientTokenString" :location "querystring"
+                         :location-name "clientToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-scaling-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-kx-scaling-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-scaling-group-request
                     'make-delete-kx-scaling-group-request))
@@ -2386,9 +3455,14 @@
                           delete-kx-scaling-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-scaling-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-scaling-group-response-")))
+ (common-lisp:defclass delete-kx-scaling-group-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-scaling-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-kx-scaling-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-scaling-group-response
                     'make-delete-kx-scaling-group-response))
@@ -2408,15 +3482,32 @@
                           delete-kx-scaling-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-user-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-user-request-"))
-   (user-name (common-lisp:error ":username is required") :type
-    (common-lisp:or kx-user-name-string common-lisp:null))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null)))
+ (common-lisp:defclass delete-kx-user-request common-lisp:nil
+                       ((user-name :initarg :user-name :initform
+                         (common-lisp:error ":username is required") :type
+                         (common-lisp:or kx-user-name-string common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-user-request-user-name :shape
+                         "KxUserNameString" :location "uri" :location-name
+                         "userName")
+                        (environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-delete-kx-user-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-user-request-client-token
+                         :shape "ClientToken" :location "querystring"
+                         :location-name "clientToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-user-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-user-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-user-request 'make-delete-kx-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2435,9 +3526,12 @@
                           delete-kx-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-user-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-user-response-")))
+ (common-lisp:defclass delete-kx-user-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-user-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-user-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-user-response 'make-delete-kx-user-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2456,15 +3550,33 @@
                           delete-kx-user-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-volume-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-volume-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (volume-name (common-lisp:error ":volumename is required") :type
-    (common-lisp:or kx-volume-name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass delete-kx-volume-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-volume-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (volume-name :initarg :volume-name :initform
+                         (common-lisp:error ":volumename is required") :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-volume-request-volume-name
+                         :shape "KxVolumeName" :location "uri" :location-name
+                         "volumeName")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-delete-kx-volume-request-client-token
+                         :shape "ClientTokenString" :location "querystring"
+                         :location-name "clientToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-volume-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-volume-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-volume-request 'make-delete-kx-volume-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2483,9 +3595,13 @@
                           delete-kx-volume-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-kx-volume-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-kx-volume-response-")))
+ (common-lisp:defclass delete-kx-volume-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-kx-volume-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-kx-volume-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-kx-volume-response
                     'make-delete-kx-volume-response))
@@ -2507,33 +3623,88 @@
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:deftype email-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (environment (:copier common-lisp:nil)
-      (:conc-name "struct-shape-environment-"))
-   (name common-lisp:nil :type
-    (common-lisp:or environment-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (aws-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or environment-status common-lisp:null))
-   (environment-url common-lisp:nil :type
-    (common-lisp:or |url| common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (environment-arn common-lisp:nil :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (sage-maker-studio-domain-url common-lisp:nil :type
-    (common-lisp:or sms-domain-url common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id common-lisp:null))
-   (dedicated-service-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (federation-mode common-lisp:nil :type
-    (common-lisp:or federation-mode common-lisp:null))
-   (federation-parameters common-lisp:nil :type
-    (common-lisp:or federation-parameters common-lisp:null)))
+ (common-lisp:defclass environment common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or environment-name common-lisp:null)
+                         :accessor struct-shape-environment-name :shape
+                         "EnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-environment-environment-id :shape
+                         "IdType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (aws-account-id :initarg :aws-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-environment-aws-account-id :shape
+                         "IdType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or environment-status common-lisp:null)
+                         :accessor struct-shape-environment-status :shape
+                         "EnvironmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-url :initarg :environment-url :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |url| common-lisp:null) :accessor
+                         struct-shape-environment-environment-url :shape "url"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-environment-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (environment-arn :initarg :environment-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor struct-shape-environment-environment-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sage-maker-studio-domain-url :initarg
+                         :sage-maker-studio-domain-url :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sms-domain-url common-lisp:null)
+                         :accessor
+                         struct-shape-environment-sage-maker-studio-domain-url
+                         :shape "SmsDomainUrl" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id common-lisp:null) :accessor
+                         struct-shape-environment-kms-key-id :shape "KmsKeyId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (dedicated-service-account-id :initarg
+                         :dedicated-service-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-environment-dedicated-service-account-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-mode :initarg :federation-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or federation-mode common-lisp:null)
+                         :accessor struct-shape-environment-federation-mode
+                         :shape "FederationMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-parameters :initarg :federation-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-parameters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-environment-federation-parameters :shape
+                         "FederationParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-environment
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'environment
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'environment 'make-environment))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input environment))
@@ -2646,13 +3817,24 @@
 (common-lisp:deftype environment-status () 'common-lisp:string)
 (common-lisp:deftype error-details () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (error-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-error-info-"))
-   (error-message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-type common-lisp:nil :type
-    (common-lisp:or error-details common-lisp:null)))
+ (common-lisp:defclass error-info common-lisp:nil
+                       ((error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-message common-lisp:null)
+                         :accessor struct-shape-error-info-error-message :shape
+                         "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-type :initarg :error-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-details common-lisp:null)
+                         :accessor struct-shape-error-info-error-type :shape
+                         "ErrorDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-error-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'error-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'error-info 'make-error-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input error-info))
@@ -2683,21 +3865,56 @@
 (common-lisp:deftype federation-attribute-value () 'common-lisp:string)
 (common-lisp:deftype federation-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (federation-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-federation-parameters-"))
-   (saml-metadata-document common-lisp:nil :type
-    (common-lisp:or saml-metadata-document common-lisp:null))
-   (saml-metadata-url common-lisp:nil :type
-    (common-lisp:or |url| common-lisp:null))
-   (application-call-back-url common-lisp:nil :type
-    (common-lisp:or |url| common-lisp:null))
-   (federation-urn common-lisp:nil :type
-    (common-lisp:or |urn| common-lisp:null))
-   (federation-provider-name common-lisp:nil :type
-    (common-lisp:or federation-provider-name common-lisp:null))
-   (attribute-map common-lisp:nil :type
-    (common-lisp:or attribute-map common-lisp:null)))
+ (common-lisp:defclass federation-parameters common-lisp:nil
+                       ((saml-metadata-document :initarg
+                         :saml-metadata-document :initform common-lisp:nil
+                         :type
+                         (common-lisp:or saml-metadata-document
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-federation-parameters-saml-metadata-document
+                         :shape "SamlMetadataDocument" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (saml-metadata-url :initarg :saml-metadata-url
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |url| common-lisp:null) :accessor
+                         struct-shape-federation-parameters-saml-metadata-url
+                         :shape "url" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (application-call-back-url :initarg
+                         :application-call-back-url :initform common-lisp:nil
+                         :type (common-lisp:or |url| common-lisp:null)
+                         :accessor
+                         struct-shape-federation-parameters-application-call-back-url
+                         :shape "url" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (federation-urn :initarg :federation-urn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |urn| common-lisp:null) :accessor
+                         struct-shape-federation-parameters-federation-urn
+                         :shape "urn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (federation-provider-name :initarg
+                         :federation-provider-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or federation-provider-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-federation-parameters-federation-provider-name
+                         :shape "FederationProviderName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (attribute-map :initarg :attribute-map :initform
+                         common-lisp:nil :type
+                         (common-lisp:or attribute-map common-lisp:null)
+                         :accessor
+                         struct-shape-federation-parameters-attribute-map
+                         :shape "AttributeMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-federation-parameters
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'federation-parameters
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'federation-parameters 'make-federation-parameters))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2763,11 +3980,18 @@
 (common-lisp:deftype federation-provider-name () 'common-lisp:string)
 (common-lisp:deftype fin-space-taggable-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-environment-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null)))
+ (common-lisp:defclass get-environment-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-environment-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-environment-request 'make-get-environment-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2786,11 +4010,19 @@
                           get-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-environment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-environment-response-"))
-   (environment common-lisp:nil :type
-    (common-lisp:or environment common-lisp:null)))
+ (common-lisp:defclass get-environment-response common-lisp:nil
+                       ((environment :initarg :environment :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment common-lisp:null)
+                         :accessor
+                         struct-shape-get-environment-response-environment
+                         :shape "Environment" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-environment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-environment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-environment-response 'make-get-environment-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2816,15 +4048,33 @@
                           get-environment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-changeset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-changeset-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (changeset-id (common-lisp:error ":changesetid is required") :type
-    (common-lisp:or changeset-id common-lisp:null)))
+ (common-lisp:defclass get-kx-changeset-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (changeset-id :initarg :changeset-id :initform
+                         (common-lisp:error ":changesetid is required") :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-request-changeset-id
+                         :shape "ChangesetId" :location "uri" :location-name
+                         "changesetId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-changeset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-changeset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-changeset-request 'make-get-kx-changeset-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2843,27 +4093,72 @@
                           get-kx-changeset-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-changeset-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-changeset-response-"))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (change-requests common-lisp:nil :type
-    (common-lisp:or change-requests common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (active-from-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or changeset-status common-lisp:null))
-   (error-info common-lisp:nil :type
-    (common-lisp:or error-info common-lisp:null)))
+ (common-lisp:defclass get-kx-changeset-response common-lisp:nil
+                       ((changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-response-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-response-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-response-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (change-requests :initarg :change-requests :initform
+                         common-lisp:nil :type
+                         (common-lisp:or change-requests common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-response-change-requests
+                         :shape "ChangeRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-changeset-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (active-from-timestamp :initarg :active-from-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-changeset-response-active-from-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or changeset-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-changeset-response-status :shape
+                         "ChangesetStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-info :initarg :error-info :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-info common-lisp:null) :accessor
+                         struct-shape-get-kx-changeset-response-error-info
+                         :shape "ErrorInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-changeset-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-changeset-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-changeset-response
                     'make-get-kx-changeset-response))
@@ -2948,13 +4243,26 @@
                           get-kx-changeset-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-cluster-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-cluster-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (cluster-name (common-lisp:error ":clustername is required") :type
-    (common-lisp:or kx-cluster-name common-lisp:null)))
+ (common-lisp:defclass get-kx-cluster-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":clustername is required") :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-request-cluster-name
+                         :shape "KxClusterName" :location "uri" :location-name
+                         "clusterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-cluster-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-cluster-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-cluster-request 'make-get-kx-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2973,53 +4281,183 @@
                           get-kx-cluster-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-cluster-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-cluster-response-"))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-cluster-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-cluster-status-reason common-lisp:null))
-   (cluster-name common-lisp:nil :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (cluster-type common-lisp:nil :type
-    (common-lisp:or kx-cluster-type common-lisp:null))
-   (tickerplant-log-configuration common-lisp:nil :type
-    (common-lisp:or tickerplant-log-configuration common-lisp:null))
-   (volumes common-lisp:nil :type (common-lisp:or volumes common-lisp:null))
-   (databases common-lisp:nil :type
-    (common-lisp:or kx-database-configurations common-lisp:null))
-   (cache-storage-configurations common-lisp:nil :type
-    (common-lisp:or kx-cache-storage-configurations common-lisp:null))
-   (auto-scaling-configuration common-lisp:nil :type
-    (common-lisp:or auto-scaling-configuration common-lisp:null))
-   (cluster-description common-lisp:nil :type
-    (common-lisp:or kx-cluster-description common-lisp:null))
-   (capacity-configuration common-lisp:nil :type
-    (common-lisp:or capacity-configuration common-lisp:null))
-   (release-label common-lisp:nil :type
-    (common-lisp:or release-label common-lisp:null))
-   (vpc-configuration common-lisp:nil :type
-    (common-lisp:or vpc-configuration common-lisp:null))
-   (initialization-script common-lisp:nil :type
-    (common-lisp:or initialization-script-file-path common-lisp:null))
-   (command-line-arguments common-lisp:nil :type
-    (common-lisp:or kx-command-line-arguments common-lisp:null))
-   (code common-lisp:nil :type
-    (common-lisp:or code-configuration common-lisp:null))
-   (execution-role common-lisp:nil :type
-    (common-lisp:or execution-role-arn common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (savedown-storage-configuration common-lisp:nil :type
-    (common-lisp:or kx-savedown-storage-configuration common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (scaling-group-configuration common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-configuration common-lisp:null)))
+ (common-lisp:defclass get-kx-cluster-response common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-cluster-status common-lisp:null)
+                         :accessor struct-shape-get-kx-cluster-response-status
+                         :shape "KxClusterStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-status-reason
+                         :shape "KxClusterStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-name :initarg :cluster-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-cluster-name
+                         :shape "KxClusterName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cluster-type :initarg :cluster-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-cluster-type
+                         :shape "KxClusterType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tickerplant-log-configuration :initarg
+                         :tickerplant-log-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tickerplant-log-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-tickerplant-log-configuration
+                         :shape "TickerplantLogConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (volumes :initarg :volumes :initform common-lisp:nil
+                         :type (common-lisp:or volumes common-lisp:null)
+                         :accessor struct-shape-get-kx-cluster-response-volumes
+                         :shape "Volumes" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (databases :initarg :databases :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-database-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-databases :shape
+                         "KxDatabaseConfigurations" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cache-storage-configurations :initarg
+                         :cache-storage-configurations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cache-storage-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-cache-storage-configurations
+                         :shape "KxCacheStorageConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (auto-scaling-configuration :initarg
+                         :auto-scaling-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or auto-scaling-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-auto-scaling-configuration
+                         :shape "AutoScalingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cluster-description :initarg :cluster-description
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-cluster-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-cluster-description
+                         :shape "KxClusterDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (capacity-configuration :initarg
+                         :capacity-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or capacity-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-capacity-configuration
+                         :shape "CapacityConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (release-label :initarg :release-label :initform
+                         common-lisp:nil :type
+                         (common-lisp:or release-label common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-release-label
+                         :shape "ReleaseLabel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-configuration :initarg :vpc-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or vpc-configuration common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-vpc-configuration
+                         :shape "VpcConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initialization-script :initarg :initialization-script
+                         :initform common-lisp:nil :type
+                         (common-lisp:or initialization-script-file-path
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-initialization-script
+                         :shape "InitializationScriptFilePath" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (command-line-arguments :initarg
+                         :command-line-arguments :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-command-line-arguments
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-command-line-arguments
+                         :shape "KxCommandLineArguments" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (code :initarg :code :initform common-lisp:nil :type
+                         (common-lisp:or code-configuration common-lisp:null)
+                         :accessor struct-shape-get-kx-cluster-response-code
+                         :shape "CodeConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-role :initarg :execution-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-execution-role
+                         :shape "ExecutionRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (savedown-storage-configuration :initarg
+                         :savedown-storage-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-savedown-storage-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-savedown-storage-configuration
+                         :shape "KxSavedownStorageConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor struct-shape-get-kx-cluster-response-az-mode
+                         :shape "KxAzMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-cluster-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-group-configuration :initarg
+                         :scaling-group-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-scaling-group-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-cluster-response-scaling-group-configuration
+                         :shape "KxScalingGroupConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-cluster-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-cluster-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-cluster-response 'make-get-kx-cluster-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3209,15 +4647,33 @@
                           get-kx-cluster-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-connection-string-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-connection-string-request-"))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or kx-user-arn common-lisp:null))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (cluster-name (common-lisp:error ":clustername is required") :type
-    (common-lisp:or kx-cluster-name common-lisp:null)))
+ (common-lisp:defclass get-kx-connection-string-request common-lisp:nil
+                       ((user-arn :initarg :user-arn :initform
+                         (common-lisp:error ":userarn is required") :type
+                         (common-lisp:or kx-user-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-connection-string-request-user-arn
+                         :shape "KxUserArn" :location "querystring"
+                         :location-name "userArn")
+                        (environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-kx-connection-string-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":clustername is required") :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-connection-string-request-cluster-name
+                         :shape "KxClusterName" :location "querystring"
+                         :location-name "clusterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-connection-string-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-kx-connection-string-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-connection-string-request
                     'make-get-kx-connection-string-request))
@@ -3237,11 +4693,22 @@
                           get-kx-connection-string-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-connection-string-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-connection-string-response-"))
-   (signed-connection-string common-lisp:nil :type
-    (common-lisp:or signed-kx-connection-string common-lisp:null)))
+ (common-lisp:defclass get-kx-connection-string-response common-lisp:nil
+                       ((signed-connection-string :initarg
+                         :signed-connection-string :initform common-lisp:nil
+                         :type
+                         (common-lisp:or signed-kx-connection-string
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-connection-string-response-signed-connection-string
+                         :shape "SignedKxConnectionString" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-connection-string-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-kx-connection-string-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-connection-string-response
                     'make-get-kx-connection-string-response))
@@ -3269,13 +4736,26 @@
                           get-kx-connection-string-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-database-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-database-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null)))
+ (common-lisp:defclass get-kx-database-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-database-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-database-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-database-request 'make-get-kx-database-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3294,29 +4774,79 @@
                           get-kx-database-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-database-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-database-response-"))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (database-arn common-lisp:nil :type
-    (common-lisp:or database-arn common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-completed-changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (num-bytes common-lisp:nil :type
-    (common-lisp:or |numBytes| common-lisp:null))
-   (num-changesets common-lisp:nil :type
-    (common-lisp:or |numChangesets| common-lisp:null))
-   (num-files common-lisp:nil :type
-    (common-lisp:or |numFiles| common-lisp:null)))
+ (common-lisp:defclass get-kx-database-response common-lisp:nil
+                       ((database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-response-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-arn :initarg :database-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-response-database-arn
+                         :shape "DatabaseArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-response-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-database-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-completed-changeset-id :initarg
+                         :last-completed-changeset-id :initform common-lisp:nil
+                         :type (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-response-last-completed-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (num-bytes :initarg :num-bytes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |numBytes| common-lisp:null) :accessor
+                         struct-shape-get-kx-database-response-num-bytes :shape
+                         "numBytes" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (num-changesets :initarg :num-changesets :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |numChangesets| common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-database-response-num-changesets
+                         :shape "numChangesets" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (num-files :initarg :num-files :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |numFiles| common-lisp:null) :accessor
+                         struct-shape-get-kx-database-response-num-files :shape
+                         "numFiles" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-database-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-database-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-database-response 'make-get-kx-database-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3407,15 +4937,33 @@
                           get-kx-database-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-dataview-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-dataview-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (dataview-name (common-lisp:error ":dataviewname is required") :type
-    (common-lisp:or kx-dataview-name common-lisp:null)))
+ (common-lisp:defclass get-kx-dataview-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (dataview-name :initarg :dataview-name :initform
+                         (common-lisp:error ":dataviewname is required") :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-request-dataview-name
+                         :shape "KxDataviewName" :location "uri" :location-name
+                         "dataviewName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-dataview-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-dataview-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-dataview-request 'make-get-kx-dataview-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3434,36 +4982,111 @@
                           get-kx-dataview-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-dataview-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-dataview-response-"))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (dataview-name common-lisp:nil :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (segment-configurations common-lisp:nil :type
-    (common-lisp:or kx-dataview-segment-configuration-list common-lisp:null))
-   (active-versions common-lisp:nil :type
-    (common-lisp:or kx-dataview-active-version-list common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (auto-update common-lisp:nil :type
-    (common-lisp:or |booleanValue| common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-dataview-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-dataview-status-reason common-lisp:null)))
+ (common-lisp:defclass get-kx-dataview-response common-lisp:nil
+                       ((database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dataview-name :initarg :dataview-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-dataview-name
+                         :shape "KxDataviewName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (segment-configurations :initarg
+                         :segment-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-segment-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-segment-configurations
+                         :shape "KxDataviewSegmentConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (active-versions :initarg :active-versions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-active-version-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-active-versions
+                         :shape "KxDataviewActiveVersionList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (auto-update :initarg :auto-update :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |booleanValue| common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-auto-update
+                         :shape "booleanValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-dataview-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-status common-lisp:null)
+                         :accessor struct-shape-get-kx-dataview-response-status
+                         :shape "KxDataviewStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-dataview-response-status-reason
+                         :shape "KxDataviewStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-dataview-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-dataview-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-dataview-response 'make-get-kx-dataview-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3583,11 +5206,18 @@
                           get-kx-dataview-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-environment-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null)))
+ (common-lisp:defclass get-kx-environment-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-kx-environment-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-environment-request
                     'make-get-kx-environment-request))
@@ -3607,43 +5237,133 @@
                           get-kx-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-environment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-environment-response-"))
-   (name common-lisp:nil :type
-    (common-lisp:or kx-environment-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (aws-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or environment-status common-lisp:null))
-   (tgw-status common-lisp:nil :type
-    (common-lisp:or |tgwStatus| common-lisp:null))
-   (dns-status common-lisp:nil :type
-    (common-lisp:or |dnsStatus| common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or environment-error-message common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (environment-arn common-lisp:nil :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id common-lisp:null))
-   (dedicated-service-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (transit-gateway-configuration common-lisp:nil :type
-    (common-lisp:or transit-gateway-configuration common-lisp:null))
-   (custom-dnsconfiguration common-lisp:nil :type
-    (common-lisp:or custom-dnsconfiguration common-lisp:null))
-   (creation-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (update-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (availability-zone-ids common-lisp:nil :type
-    (common-lisp:or availability-zone-ids common-lisp:null))
-   (certificate-authority-arn common-lisp:nil :type
-    (common-lisp:or |stringValueLength1to255| common-lisp:null)))
+ (common-lisp:defclass get-kx-environment-response common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or kx-environment-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-name :shape
+                         "KxEnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-kx-environment-response-environment-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aws-account-id :initarg :aws-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-kx-environment-response-aws-account-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or environment-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-status :shape
+                         "EnvironmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tgw-status :initarg :tgw-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |tgwStatus| common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-tgw-status
+                         :shape "tgwStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dns-status :initarg :dns-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |dnsStatus| common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-dns-status
+                         :shape "dnsStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-error-message
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-error-message
+                         :shape "EnvironmentErrorMessage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-arn :initarg :environment-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-environment-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id common-lisp:null) :accessor
+                         struct-shape-get-kx-environment-response-kms-key-id
+                         :shape "KmsKeyId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dedicated-service-account-id :initarg
+                         :dedicated-service-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-kx-environment-response-dedicated-service-account-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (transit-gateway-configuration :initarg
+                         :transit-gateway-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transit-gateway-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-transit-gateway-configuration
+                         :shape "TransitGatewayConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (custom-dnsconfiguration :initarg
+                         :custom-dnsconfiguration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or custom-dnsconfiguration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-custom-dnsconfiguration
+                         :shape "CustomDNSConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-timestamp :initarg :creation-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-environment-response-creation-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-timestamp :initarg :update-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-environment-response-update-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (certificate-authority-arn :initarg
+                         :certificate-authority-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |stringValueLength1to255|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-environment-response-certificate-authority-arn
+                         :shape "stringValueLength1to255" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-environment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-environment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-environment-response
                     'make-get-kx-environment-response))
@@ -3787,13 +5507,29 @@
                           get-kx-environment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-scaling-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-scaling-group-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (scaling-group-name (common-lisp:error ":scalinggroupname is required")
-    :type (common-lisp:or kx-scaling-group-name common-lisp:null)))
+ (common-lisp:defclass get-kx-scaling-group-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (scaling-group-name :initarg :scaling-group-name
+                         :initform
+                         (common-lisp:error ":scalinggroupname is required")
+                         :type
+                         (common-lisp:or kx-scaling-group-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-request-scaling-group-name
+                         :shape "KxScalingGroupName" :location "uri"
+                         :location-name "scalingGroupName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-scaling-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-scaling-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-scaling-group-request
                     'make-get-kx-scaling-group-request))
@@ -3813,27 +5549,77 @@
                           get-kx-scaling-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-scaling-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-scaling-group-response-"))
-   (scaling-group-name common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-name common-lisp:null))
-   (scaling-group-arn common-lisp:nil :type
-    (common-lisp:or |arn| common-lisp:null))
-   (host-type common-lisp:nil :type
-    (common-lisp:or kx-host-type common-lisp:null))
-   (clusters common-lisp:nil :type
-    (common-lisp:or kx-cluster-name-list common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-cluster-status-reason common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass get-kx-scaling-group-response common-lisp:nil
+                       ((scaling-group-name :initarg :scaling-group-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-scaling-group-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-response-scaling-group-name
+                         :shape "KxScalingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scaling-group-arn :initarg :scaling-group-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |arn| common-lisp:null) :accessor
+                         struct-shape-get-kx-scaling-group-response-scaling-group-arn
+                         :shape "arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (host-type :initarg :host-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-host-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-response-host-type
+                         :shape "KxHostType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (clusters :initarg :clusters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-cluster-name-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-response-clusters
+                         :shape "KxClusterNameList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-response-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-scaling-group-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-response-status
+                         :shape "KxScalingGroupStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-response-status-reason
+                         :shape "KxClusterStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-scaling-group-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-scaling-group-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-scaling-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-kx-scaling-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-scaling-group-response
                     'make-get-kx-scaling-group-response))
@@ -3918,13 +5704,24 @@
                           get-kx-scaling-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-user-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-user-request-"))
-   (user-name (common-lisp:error ":username is required") :type
-    (common-lisp:or kx-user-name-string common-lisp:null))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null)))
+ (common-lisp:defclass get-kx-user-request common-lisp:nil
+                       ((user-name :initarg :user-name :initform
+                         (common-lisp:error ":username is required") :type
+                         (common-lisp:or kx-user-name-string common-lisp:null)
+                         :accessor struct-shape-get-kx-user-request-user-name
+                         :shape "KxUserNameString" :location "uri"
+                         :location-name "userName")
+                        (environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-kx-user-request-environment-id :shape
+                         "IdType" :location "uri" :location-name
+                         "environmentId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-user-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-user-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-user-request 'make-get-kx-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3937,15 +5734,34 @@
                         ((aws-sdk/generator/shape::input get-kx-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-user-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-user-response-"))
-   (user-name common-lisp:nil :type (common-lisp:or id-type common-lisp:null))
-   (user-arn common-lisp:nil :type
-    (common-lisp:or kx-user-arn common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (iam-role common-lisp:nil :type (common-lisp:or role-arn common-lisp:null)))
+ (common-lisp:defclass get-kx-user-response common-lisp:nil
+                       ((user-name :initarg :user-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-kx-user-response-user-name :shape
+                         "IdType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-arn :initarg :user-arn :initform common-lisp:nil
+                         :type (common-lisp:or kx-user-arn common-lisp:null)
+                         :accessor struct-shape-get-kx-user-response-user-arn
+                         :shape "KxUserArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-get-kx-user-response-environment-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role :initarg :iam-role :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor struct-shape-get-kx-user-response-iam-role
+                         :shape "RoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-user-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-user-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-user-response 'make-get-kx-user-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3986,13 +5802,26 @@
                         ((aws-sdk/generator/shape::input get-kx-user-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-volume-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-volume-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (volume-name (common-lisp:error ":volumename is required") :type
-    (common-lisp:or kx-volume-name common-lisp:null)))
+ (common-lisp:defclass get-kx-volume-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (volume-name :initarg :volume-name :initform
+                         (common-lisp:error ":volumename is required") :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-request-volume-name :shape
+                         "KxVolumeName" :location "uri" :location-name
+                         "volumeName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-volume-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-volume-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-volume-request 'make-get-kx-volume-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4011,34 +5840,101 @@
                           get-kx-volume-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-kx-volume-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-kx-volume-response-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (volume-name common-lisp:nil :type
-    (common-lisp:or kx-volume-name common-lisp:null))
-   (volume-type common-lisp:nil :type
-    (common-lisp:or kx-volume-type common-lisp:null))
-   (volume-arn common-lisp:nil :type
-    (common-lisp:or kx-volume-arn common-lisp:null))
-   (nas1configuration common-lisp:nil :type
-    (common-lisp:or kx-nas1configuration common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-volume-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-volume-status-reason common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-ids common-lisp:nil :type
-    (common-lisp:or availability-zone-ids common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (attached-clusters common-lisp:nil :type
-    (common-lisp:or kx-attached-clusters common-lisp:null)))
+ (common-lisp:defclass get-kx-volume-response common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-environment-id
+                         :shape "KxEnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-name :initarg :volume-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-volume-name :shape
+                         "KxVolumeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-type :initarg :volume-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-volume-type :shape
+                         "KxVolumeType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-arn :initarg :volume-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-volume-arn :shape
+                         "KxVolumeArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (nas1configuration :initarg :nas1configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-nas1configuration common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-nas1configuration
+                         :shape "KxNAS1Configuration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-volume-status common-lisp:null)
+                         :accessor struct-shape-get-kx-volume-response-status
+                         :shape "KxVolumeStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-status-reason
+                         :shape "KxVolumeStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-kx-volume-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor struct-shape-get-kx-volume-response-az-mode
+                         :shape "KxAzMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attached-clusters :initarg :attached-clusters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-attached-clusters common-lisp:null)
+                         :accessor
+                         struct-shape-get-kx-volume-response-attached-clusters
+                         :shape "KxAttachedClusters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-kx-volume-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-kx-volume-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-kx-volume-response 'make-get-kx-volume-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4151,13 +6047,24 @@
    common-lisp:nil))
 (common-lisp:deftype ipaddress-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (icmp-type-code (:copier common-lisp:nil)
-      (:conc-name "struct-shape-icmp-type-code-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or icmp-type-or-code common-lisp:null))
-   (code (common-lisp:error ":code is required") :type
-    (common-lisp:or icmp-type-or-code common-lisp:null)))
+ (common-lisp:defclass icmp-type-code common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or icmp-type-or-code common-lisp:null)
+                         :accessor struct-shape-icmp-type-code-type :shape
+                         "IcmpTypeOrCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (code :initarg :code :initform
+                         (common-lisp:error ":code is required") :type
+                         (common-lisp:or icmp-type-or-code common-lisp:null)
+                         :accessor struct-shape-icmp-type-code-code :shape
+                         "IcmpTypeOrCode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-icmp-type-code
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'icmp-type-code
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'icmp-type-code 'make-icmp-type-code))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input icmp-type-code))
@@ -4204,15 +6111,33 @@
 (common-lisp:deftype kms-key-arn () 'common-lisp:string)
 (common-lisp:deftype kms-key-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-attached-cluster (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-attached-cluster-"))
-   (cluster-name common-lisp:nil :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (cluster-type common-lisp:nil :type
-    (common-lisp:or kx-cluster-type common-lisp:null))
-   (cluster-status common-lisp:nil :type
-    (common-lisp:or kx-cluster-status common-lisp:null)))
+ (common-lisp:defclass kx-attached-cluster common-lisp:nil
+                       ((cluster-name :initarg :cluster-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-attached-cluster-cluster-name :shape
+                         "KxClusterName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cluster-type :initarg :cluster-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-type common-lisp:null)
+                         :accessor
+                         struct-shape-kx-attached-cluster-cluster-type :shape
+                         "KxClusterType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cluster-status :initarg :cluster-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-status common-lisp:null)
+                         :accessor
+                         struct-shape-kx-attached-cluster-cluster-status :shape
+                         "KxClusterStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-attached-cluster
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-attached-cluster
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-attached-cluster 'make-kx-attached-cluster))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4255,13 +6180,29 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype kx-az-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-cache-storage-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-cache-storage-configuration-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or kx-cache-storage-type common-lisp:null))
-   (size (common-lisp:error ":size is required") :type
-    (common-lisp:or kx-cache-storage-size common-lisp:null)))
+ (common-lisp:defclass kx-cache-storage-configuration common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or kx-cache-storage-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-cache-storage-configuration-type
+                         :shape "KxCacheStorageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (size :initarg :size :initform
+                         (common-lisp:error ":size is required") :type
+                         (common-lisp:or kx-cache-storage-size
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-cache-storage-configuration-size
+                         :shape "KxCacheStorageSize" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-cache-storage-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'kx-cache-storage-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-cache-storage-configuration
                     'make-kx-cache-storage-configuration))
@@ -4306,19 +6247,44 @@
 (common-lisp:deftype kx-cache-storage-size () 'common-lisp:integer)
 (common-lisp:deftype kx-cache-storage-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-changeset-list-entry (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-changeset-list-entry-"))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (active-from-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or changeset-status common-lisp:null)))
+ (common-lisp:defclass kx-changeset-list-entry common-lisp:nil
+                       ((changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-kx-changeset-list-entry-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-changeset-list-entry-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (active-from-timestamp :initarg :active-from-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-changeset-list-entry-active-from-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-kx-changeset-list-entry-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or changeset-status common-lisp:null)
+                         :accessor struct-shape-kx-changeset-list-entry-status
+                         :shape "ChangesetStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-changeset-list-entry
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-changeset-list-entry
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-changeset-list-entry 'make-kx-changeset-list-entry))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4382,33 +6348,93 @@
                            (trivial-types:proper-list kx-changeset-list-entry))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-cluster (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-cluster-"))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-cluster-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-cluster-status-reason common-lisp:null))
-   (cluster-name common-lisp:nil :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (cluster-type common-lisp:nil :type
-    (common-lisp:or kx-cluster-type common-lisp:null))
-   (cluster-description common-lisp:nil :type
-    (common-lisp:or kx-cluster-description common-lisp:null))
-   (release-label common-lisp:nil :type
-    (common-lisp:or release-label common-lisp:null))
-   (volumes common-lisp:nil :type (common-lisp:or volumes common-lisp:null))
-   (initialization-script common-lisp:nil :type
-    (common-lisp:or initialization-script-file-path common-lisp:null))
-   (execution-role common-lisp:nil :type
-    (common-lisp:or execution-role-arn common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass kx-cluster common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-cluster-status common-lisp:null)
+                         :accessor struct-shape-kx-cluster-status :shape
+                         "KxClusterStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-status-reason
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-cluster-status-reason :shape
+                         "KxClusterStatusReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cluster-name :initarg :cluster-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor struct-shape-kx-cluster-cluster-name :shape
+                         "KxClusterName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cluster-type :initarg :cluster-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-type common-lisp:null)
+                         :accessor struct-shape-kx-cluster-cluster-type :shape
+                         "KxClusterType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cluster-description :initarg :cluster-description
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-cluster-description
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-cluster-cluster-description
+                         :shape "KxClusterDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (release-label :initarg :release-label :initform
+                         common-lisp:nil :type
+                         (common-lisp:or release-label common-lisp:null)
+                         :accessor struct-shape-kx-cluster-release-label :shape
+                         "ReleaseLabel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volumes :initarg :volumes :initform common-lisp:nil
+                         :type (common-lisp:or volumes common-lisp:null)
+                         :accessor struct-shape-kx-cluster-volumes :shape
+                         "Volumes" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (initialization-script :initarg :initialization-script
+                         :initform common-lisp:nil :type
+                         (common-lisp:or initialization-script-file-path
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-cluster-initialization-script :shape
+                         "InitializationScriptFilePath" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (execution-role :initarg :execution-role :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-role-arn common-lisp:null)
+                         :accessor struct-shape-kx-cluster-execution-role
+                         :shape "ExecutionRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor struct-shape-kx-cluster-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor struct-shape-kx-cluster-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-kx-cluster-last-modified-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-cluster-created-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-cluster
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-cluster
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'kx-cluster 'make-kx-cluster))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input kx-cluster))
@@ -4514,12 +6540,23 @@
                         ((aws-sdk/generator/shape::input kx-cluster))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-cluster-code-deployment-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-cluster-code-deployment-configuration-"))
-   (deployment-strategy (common-lisp:error ":deploymentstrategy is required")
-    :type
-    (common-lisp:or kx-cluster-code-deployment-strategy common-lisp:null)))
+ (common-lisp:defclass kx-cluster-code-deployment-configuration common-lisp:nil
+                       ((deployment-strategy :initarg :deployment-strategy
+                         :initform
+                         (common-lisp:error ":deploymentstrategy is required")
+                         :type
+                         (common-lisp:or kx-cluster-code-deployment-strategy
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-cluster-code-deployment-configuration-deployment-strategy
+                         :shape "KxClusterCodeDeploymentStrategy" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-cluster-code-deployment-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'kx-cluster-code-deployment-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-cluster-code-deployment-configuration
                     'make-kx-cluster-code-deployment-configuration))
@@ -4568,13 +6605,24 @@
                            (trivial-types:proper-list kx-cluster))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-command-line-argument (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-command-line-argument-"))
-   (key common-lisp:nil :type
-    (common-lisp:or kx-command-line-argument-key common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or kx-command-line-argument-value common-lisp:null)))
+ (common-lisp:defclass kx-command-line-argument common-lisp:nil
+                       ((key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or kx-command-line-argument-key
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-command-line-argument-key
+                         :shape "KxCommandLineArgumentKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or kx-command-line-argument-value
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-command-line-argument-value
+                         :shape "KxCommandLineArgumentValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-command-line-argument
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-command-line-argument
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-command-line-argument 'make-kx-command-line-argument))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4618,15 +6666,34 @@
                             kx-command-line-argument))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-database-cache-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-database-cache-configuration-"))
-   (cache-type (common-lisp:error ":cachetype is required") :type
-    (common-lisp:or kx-cache-storage-type common-lisp:null))
-   (db-paths (common-lisp:error ":dbpaths is required") :type
-    (common-lisp:or db-paths common-lisp:null))
-   (dataview-name common-lisp:nil :type
-    (common-lisp:or kx-dataview-name common-lisp:null)))
+ (common-lisp:defclass kx-database-cache-configuration common-lisp:nil
+                       ((cache-type :initarg :cache-type :initform
+                         (common-lisp:error ":cachetype is required") :type
+                         (common-lisp:or kx-cache-storage-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-cache-configuration-cache-type
+                         :shape "KxCacheStorageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (db-paths :initarg :db-paths :initform
+                         (common-lisp:error ":dbpaths is required") :type
+                         (common-lisp:or db-paths common-lisp:null) :accessor
+                         struct-shape-kx-database-cache-configuration-db-paths
+                         :shape "DbPaths" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dataview-name :initarg :dataview-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-cache-configuration-dataview-name
+                         :shape "KxDataviewName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-database-cache-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'kx-database-cache-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-database-cache-configuration
                     'make-kx-database-cache-configuration))
@@ -4676,19 +6743,50 @@
                             kx-database-cache-configuration))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-database-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-database-configuration-"))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (cache-configurations common-lisp:nil :type
-    (common-lisp:or kx-database-cache-configurations common-lisp:null))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (dataview-name common-lisp:nil :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (dataview-configuration common-lisp:nil :type
-    (common-lisp:or kx-dataview-configuration common-lisp:null)))
+ (common-lisp:defclass kx-database-configuration common-lisp:nil
+                       ((database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-configuration-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cache-configurations :initarg :cache-configurations
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-database-cache-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-configuration-cache-configurations
+                         :shape "KxDatabaseCacheConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-configuration-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dataview-name :initarg :dataview-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-configuration-dataview-name
+                         :shape "KxDataviewName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dataview-configuration :initarg
+                         :dataview-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-configuration-dataview-configuration
+                         :shape "KxDataviewConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-database-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-database-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-database-configuration
                     'make-kx-database-configuration))
@@ -4754,15 +6852,32 @@
                             kx-database-configuration))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-database-list-entry (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-database-list-entry-"))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass kx-database-list-entry common-lisp:nil
+                       ((database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-list-entry-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-database-list-entry-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-kx-database-list-entry-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-database-list-entry
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-database-list-entry
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-database-list-entry 'make-kx-database-list-entry))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4811,19 +6926,48 @@
                            (trivial-types:proper-list kx-database-list-entry))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-dataview-active-version (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-dataview-active-version-"))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (segment-configurations common-lisp:nil :type
-    (common-lisp:or kx-dataview-segment-configuration-list common-lisp:null))
-   (attached-clusters common-lisp:nil :type
-    (common-lisp:or attached-cluster-list common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or version-id common-lisp:null)))
+ (common-lisp:defclass kx-dataview-active-version common-lisp:nil
+                       ((changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-active-version-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (segment-configurations :initarg
+                         :segment-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-segment-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-active-version-segment-configurations
+                         :shape "KxDataviewSegmentConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (attached-clusters :initarg :attached-clusters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or attached-cluster-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-active-version-attached-clusters
+                         :shape "AttachedClusterList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-dataview-active-version-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or version-id common-lisp:null) :accessor
+                         struct-shape-kx-dataview-active-version-version-id
+                         :shape "VersionId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-dataview-active-version
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-dataview-active-version
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-dataview-active-version
                     'make-kx-dataview-active-version))
@@ -4888,17 +7032,41 @@
                             kx-dataview-active-version))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-dataview-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-dataview-configuration-"))
-   (dataview-name common-lisp:nil :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (dataview-version-id common-lisp:nil :type
-    (common-lisp:or version-id common-lisp:null))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (segment-configurations common-lisp:nil :type
-    (common-lisp:or kx-dataview-segment-configuration-list common-lisp:null)))
+ (common-lisp:defclass kx-dataview-configuration common-lisp:nil
+                       ((dataview-name :initarg :dataview-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-configuration-dataview-name
+                         :shape "KxDataviewName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dataview-version-id :initarg :dataview-version-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or version-id common-lisp:null) :accessor
+                         struct-shape-kx-dataview-configuration-dataview-version-id
+                         :shape "VersionId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-configuration-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (segment-configurations :initarg
+                         :segment-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-segment-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-configuration-segment-configurations
+                         :shape "KxDataviewSegmentConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-dataview-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-dataview-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-dataview-configuration
                     'make-kx-dataview-configuration))
@@ -4947,36 +7115,110 @@
                           kx-dataview-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-dataview-list-entry (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-dataview-list-entry-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (dataview-name common-lisp:nil :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (segment-configurations common-lisp:nil :type
-    (common-lisp:or kx-dataview-segment-configuration-list common-lisp:null))
-   (active-versions common-lisp:nil :type
-    (common-lisp:or kx-dataview-active-version-list common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-dataview-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (auto-update common-lisp:nil :type
-    (common-lisp:or |booleanValue| common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-dataview-status-reason common-lisp:null)))
+ (common-lisp:defclass kx-dataview-list-entry common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dataview-name :initarg :dataview-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-dataview-name
+                         :shape "KxDataviewName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor struct-shape-kx-dataview-list-entry-az-mode
+                         :shape "KxAzMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (segment-configurations :initarg
+                         :segment-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-segment-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-segment-configurations
+                         :shape "KxDataviewSegmentConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (active-versions :initarg :active-versions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-active-version-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-active-versions
+                         :shape "KxDataviewActiveVersionList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-status common-lisp:null)
+                         :accessor struct-shape-kx-dataview-list-entry-status
+                         :shape "KxDataviewStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (auto-update :initarg :auto-update :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |booleanValue| common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-auto-update :shape
+                         "booleanValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-dataview-list-entry-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-list-entry-status-reason
+                         :shape "KxDataviewStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-dataview-list-entry
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-dataview-list-entry
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-dataview-list-entry 'make-kx-dataview-list-entry))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5097,13 +7339,28 @@
    common-lisp:nil))
 (common-lisp:deftype kx-dataview-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-dataview-segment-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-dataview-segment-configuration-"))
-   (db-paths (common-lisp:error ":dbpaths is required") :type
-    (common-lisp:or segment-configuration-db-path-list common-lisp:null))
-   (volume-name (common-lisp:error ":volumename is required") :type
-    (common-lisp:or kx-volume-name common-lisp:null)))
+ (common-lisp:defclass kx-dataview-segment-configuration common-lisp:nil
+                       ((db-paths :initarg :db-paths :initform
+                         (common-lisp:error ":dbpaths is required") :type
+                         (common-lisp:or segment-configuration-db-path-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-segment-configuration-db-paths
+                         :shape "SegmentConfigurationDbPathList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (volume-name :initarg :volume-name :initform
+                         (common-lisp:error ":volumename is required") :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-dataview-segment-configuration-volume-name
+                         :shape "KxVolumeName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-dataview-segment-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'kx-dataview-segment-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-dataview-segment-configuration
                     'make-kx-dataview-segment-configuration))
@@ -5156,11 +7413,22 @@
                            (trivial-types:proper-list kx-dataview-list-entry))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-deployment-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-deployment-configuration-"))
-   (deployment-strategy (common-lisp:error ":deploymentstrategy is required")
-    :type (common-lisp:or kx-deployment-strategy common-lisp:null)))
+ (common-lisp:defclass kx-deployment-configuration common-lisp:nil
+                       ((deployment-strategy :initarg :deployment-strategy
+                         :initform
+                         (common-lisp:error ":deploymentstrategy is required")
+                         :type
+                         (common-lisp:or kx-deployment-strategy
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-deployment-configuration-deployment-strategy
+                         :shape "KxDeploymentStrategy" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-deployment-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-deployment-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-deployment-configuration
                     'make-kx-deployment-configuration))
@@ -5188,43 +7456,126 @@
    common-lisp:nil))
 (common-lisp:deftype kx-deployment-strategy () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-environment (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-environment-"))
-   (name common-lisp:nil :type
-    (common-lisp:or kx-environment-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (aws-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or environment-status common-lisp:null))
-   (tgw-status common-lisp:nil :type
-    (common-lisp:or |tgwStatus| common-lisp:null))
-   (dns-status common-lisp:nil :type
-    (common-lisp:or |dnsStatus| common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or environment-error-message common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (environment-arn common-lisp:nil :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id common-lisp:null))
-   (dedicated-service-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (transit-gateway-configuration common-lisp:nil :type
-    (common-lisp:or transit-gateway-configuration common-lisp:null))
-   (custom-dnsconfiguration common-lisp:nil :type
-    (common-lisp:or custom-dnsconfiguration common-lisp:null))
-   (creation-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (update-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (availability-zone-ids common-lisp:nil :type
-    (common-lisp:or availability-zone-ids common-lisp:null))
-   (certificate-authority-arn common-lisp:nil :type
-    (common-lisp:or |stringValueLength1to255| common-lisp:null)))
+ (common-lisp:defclass kx-environment common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or kx-environment-name common-lisp:null)
+                         :accessor struct-shape-kx-environment-name :shape
+                         "KxEnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-kx-environment-environment-id :shape
+                         "IdType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (aws-account-id :initarg :aws-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-kx-environment-aws-account-id :shape
+                         "IdType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or environment-status common-lisp:null)
+                         :accessor struct-shape-kx-environment-status :shape
+                         "EnvironmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tgw-status :initarg :tgw-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |tgwStatus| common-lisp:null)
+                         :accessor struct-shape-kx-environment-tgw-status
+                         :shape "tgwStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dns-status :initarg :dns-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |dnsStatus| common-lisp:null)
+                         :accessor struct-shape-kx-environment-dns-status
+                         :shape "dnsStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-error-message
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-environment-error-message
+                         :shape "EnvironmentErrorMessage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-kx-environment-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-arn :initarg :environment-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor struct-shape-kx-environment-environment-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id common-lisp:null) :accessor
+                         struct-shape-kx-environment-kms-key-id :shape
+                         "KmsKeyId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (dedicated-service-account-id :initarg
+                         :dedicated-service-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-kx-environment-dedicated-service-account-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (transit-gateway-configuration :initarg
+                         :transit-gateway-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transit-gateway-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-environment-transit-gateway-configuration
+                         :shape "TransitGatewayConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (custom-dnsconfiguration :initarg
+                         :custom-dnsconfiguration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or custom-dnsconfiguration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-environment-custom-dnsconfiguration
+                         :shape "CustomDNSConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-timestamp :initarg :creation-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-environment-creation-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (update-timestamp :initarg :update-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-environment-update-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-environment-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (certificate-authority-arn :initarg
+                         :certificate-authority-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |stringValueLength1to255|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-environment-certificate-authority-arn
+                         :shape "stringValueLength1to255" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-environment
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-environment
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'kx-environment 'make-kx-environment))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input kx-environment))
@@ -5371,11 +7722,22 @@
 (common-lisp:deftype kx-environment-name () 'common-lisp:string)
 (common-lisp:deftype kx-host-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-nas1configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-nas1configuration-"))
-   (type common-lisp:nil :type (common-lisp:or kx-nas1type common-lisp:null))
-   (size common-lisp:nil :type (common-lisp:or kx-nas1size common-lisp:null)))
+ (common-lisp:defclass kx-nas1configuration common-lisp:nil
+                       ((type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or kx-nas1type common-lisp:null)
+                         :accessor struct-shape-kx-nas1configuration-type
+                         :shape "KxNAS1Type" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (size :initarg :size :initform common-lisp:nil :type
+                         (common-lisp:or kx-nas1size common-lisp:null)
+                         :accessor struct-shape-kx-nas1configuration-size
+                         :shape "KxNAS1Size" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-nas1configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-nas1configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-nas1configuration 'make-kx-nas1configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5404,14 +7766,31 @@
 (common-lisp:deftype kx-nas1size () 'common-lisp:integer)
 (common-lisp:deftype kx-nas1type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-node (:copier common-lisp:nil) (:conc-name "struct-shape-kx-node-"))
-   (node-id common-lisp:nil :type
-    (common-lisp:or kx-cluster-node-id-string common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (launch-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass kx-node common-lisp:nil
+                       ((node-id :initarg :node-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-cluster-node-id-string
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-node-node-id :shape
+                         "KxClusterNodeIdString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor struct-shape-kx-node-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (launch-time :initarg :launch-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-node-launch-time :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-node
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-node
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'kx-node 'make-kx-node))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input kx-node))
@@ -5453,15 +7832,34 @@
                            (trivial-types:proper-list kx-node))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-savedown-storage-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-savedown-storage-configuration-"))
-   (type common-lisp:nil :type
-    (common-lisp:or kx-savedown-storage-type common-lisp:null))
-   (size common-lisp:nil :type
-    (common-lisp:or kx-savedown-storage-size common-lisp:null))
-   (volume-name common-lisp:nil :type
-    (common-lisp:or kx-volume-name common-lisp:null)))
+ (common-lisp:defclass kx-savedown-storage-configuration common-lisp:nil
+                       ((type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or kx-savedown-storage-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-savedown-storage-configuration-type
+                         :shape "KxSavedownStorageType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (size :initarg :size :initform common-lisp:nil :type
+                         (common-lisp:or kx-savedown-storage-size
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-savedown-storage-configuration-size
+                         :shape "KxSavedownStorageSize" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (volume-name :initarg :volume-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-kx-savedown-storage-configuration-volume-name
+                         :shape "KxVolumeName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-savedown-storage-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'kx-savedown-storage-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-savedown-storage-configuration
                     'make-kx-savedown-storage-configuration))
@@ -5504,25 +7902,66 @@
 (common-lisp:deftype kx-savedown-storage-size () 'common-lisp:integer)
 (common-lisp:deftype kx-savedown-storage-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-scaling-group (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-scaling-group-"))
-   (scaling-group-name common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-name common-lisp:null))
-   (host-type common-lisp:nil :type
-    (common-lisp:or kx-host-type common-lisp:null))
-   (clusters common-lisp:nil :type
-    (common-lisp:or kx-cluster-name-list common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-cluster-status-reason common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass kx-scaling-group common-lisp:nil
+                       ((scaling-group-name :initarg :scaling-group-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-scaling-group-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-scaling-group-scaling-group-name
+                         :shape "KxScalingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (host-type :initarg :host-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-host-type common-lisp:null)
+                         :accessor struct-shape-kx-scaling-group-host-type
+                         :shape "KxHostType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (clusters :initarg :clusters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-cluster-name-list common-lisp:null)
+                         :accessor struct-shape-kx-scaling-group-clusters
+                         :shape "KxClusterNameList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-kx-scaling-group-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-scaling-group-status
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-scaling-group-status :shape
+                         "KxScalingGroupStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-status-reason
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-scaling-group-status-reason
+                         :shape "KxClusterStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-kx-scaling-group-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-scaling-group-created-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-scaling-group
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-scaling-group
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-scaling-group 'make-kx-scaling-group))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5593,18 +8032,49 @@
                         ((aws-sdk/generator/shape::input kx-scaling-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-scaling-group-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-scaling-group-configuration-"))
-   (scaling-group-name (common-lisp:error ":scalinggroupname is required")
-    :type (common-lisp:or kx-scaling-group-name common-lisp:null))
-   (memory-limit common-lisp:nil :type
-    (common-lisp:or memory-mib common-lisp:null))
-   (memory-reservation (common-lisp:error ":memoryreservation is required")
-    :type (common-lisp:or memory-mib common-lisp:null))
-   (node-count (common-lisp:error ":nodecount is required") :type
-    (common-lisp:or cluster-node-count common-lisp:null))
-   (cpu common-lisp:nil :type (common-lisp:or cpu-count common-lisp:null)))
+ (common-lisp:defclass kx-scaling-group-configuration common-lisp:nil
+                       ((scaling-group-name :initarg :scaling-group-name
+                         :initform
+                         (common-lisp:error ":scalinggroupname is required")
+                         :type
+                         (common-lisp:or kx-scaling-group-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-kx-scaling-group-configuration-scaling-group-name
+                         :shape "KxScalingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (memory-limit :initarg :memory-limit :initform
+                         common-lisp:nil :type
+                         (common-lisp:or memory-mib common-lisp:null) :accessor
+                         struct-shape-kx-scaling-group-configuration-memory-limit
+                         :shape "MemoryMib" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (memory-reservation :initarg :memory-reservation
+                         :initform
+                         (common-lisp:error ":memoryreservation is required")
+                         :type (common-lisp:or memory-mib common-lisp:null)
+                         :accessor
+                         struct-shape-kx-scaling-group-configuration-memory-reservation
+                         :shape "MemoryMib" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (node-count :initarg :node-count :initform
+                         (common-lisp:error ":nodecount is required") :type
+                         (common-lisp:or cluster-node-count common-lisp:null)
+                         :accessor
+                         struct-shape-kx-scaling-group-configuration-node-count
+                         :shape "ClusterNodeCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cpu :initarg :cpu :initform common-lisp:nil :type
+                         (common-lisp:or cpu-count common-lisp:null) :accessor
+                         struct-shape-kx-scaling-group-configuration-cpu :shape
+                         "CpuCount" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-scaling-group-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'kx-scaling-group-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'kx-scaling-group-configuration
                     'make-kx-scaling-group-configuration))
@@ -5669,17 +8139,40 @@
 (common-lisp:deftype kx-scaling-group-name () 'common-lisp:string)
 (common-lisp:deftype kx-scaling-group-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-user (:copier common-lisp:nil) (:conc-name "struct-shape-kx-user-"))
-   (user-arn common-lisp:nil :type
-    (common-lisp:or kx-user-arn common-lisp:null))
-   (user-name common-lisp:nil :type
-    (common-lisp:or kx-user-name-string common-lisp:null))
-   (iam-role common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
-   (create-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (update-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass kx-user common-lisp:nil
+                       ((user-arn :initarg :user-arn :initform common-lisp:nil
+                         :type (common-lisp:or kx-user-arn common-lisp:null)
+                         :accessor struct-shape-kx-user-user-arn :shape
+                         "KxUserArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-name :initarg :user-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-user-name-string common-lisp:null)
+                         :accessor struct-shape-kx-user-user-name :shape
+                         "KxUserNameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role :initarg :iam-role :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor struct-shape-kx-user-iam-role :shape
+                         "RoleArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (create-timestamp :initarg :create-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-user-create-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (update-timestamp :initarg :update-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-user-update-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-user
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-user
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'kx-user 'make-kx-user))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input kx-user))
@@ -5735,26 +8228,68 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype kx-user-name-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (kx-volume (:copier common-lisp:nil)
-      (:conc-name "struct-shape-kx-volume-"))
-   (volume-name common-lisp:nil :type
-    (common-lisp:or kx-volume-name common-lisp:null))
-   (volume-type common-lisp:nil :type
-    (common-lisp:or kx-volume-type common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-volume-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-volume-status-reason common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-ids common-lisp:nil :type
-    (common-lisp:or availability-zone-ids common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass kx-volume common-lisp:nil
+                       ((volume-name :initarg :volume-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor struct-shape-kx-volume-volume-name :shape
+                         "KxVolumeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-type :initarg :volume-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-type common-lisp:null)
+                         :accessor struct-shape-kx-volume-volume-type :shape
+                         "KxVolumeType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-volume-status common-lisp:null)
+                         :accessor struct-shape-kx-volume-status :shape
+                         "KxVolumeStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-kx-volume-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-status-reason
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-volume-status-reason :shape
+                         "KxVolumeStatusReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor struct-shape-kx-volume-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor struct-shape-kx-volume-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-kx-volume-created-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-kx-volume-last-modified-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-kx-volume
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'kx-volume
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'kx-volume 'make-kx-volume))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input kx-volume))
@@ -5851,13 +8386,26 @@
   (common-lisp:list 'limit-exceeded-exception
                     'limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-environments-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-environments-request-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or result-limit common-lisp:null)))
+ (common-lisp:defclass list-environments-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-environments-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or result-limit common-lisp:null)
+                         :accessor
+                         struct-shape-list-environments-request-max-results
+                         :shape "ResultLimit" :location "querystring"
+                         :location-name "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-environments-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-environments-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-environments-request
                     'make-list-environments-request))
@@ -5877,13 +8425,26 @@
                           list-environments-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-environments-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-environments-response-"))
-   (environments common-lisp:nil :type
-    (common-lisp:or environment-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-environments-response common-lisp:nil
+                       ((environments :initarg :environments :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-environments-response-environments
+                         :shape "EnvironmentList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-environments-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-environments-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-environments-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-environments-response
                     'make-list-environments-response))
@@ -5917,17 +8478,40 @@
                           list-environments-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-changesets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-changesets-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-kx-changesets-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-changesets-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-changesets-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-changesets-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-changesets-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-changesets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-changesets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-changesets-request
                     'make-list-kx-changesets-request))
@@ -5947,13 +8531,26 @@
                           list-kx-changesets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-changesets-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-changesets-response-"))
-   (kx-changesets common-lisp:nil :type
-    (common-lisp:or kx-changesets common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-changesets-response common-lisp:nil
+                       ((kx-changesets :initarg :kx-changesets :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-changesets common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-changesets-response-kx-changesets
+                         :shape "KxChangesets" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-changesets-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-changesets-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-changesets-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-changesets-response
                     'make-list-kx-changesets-response))
@@ -5987,17 +8584,41 @@
                           list-kx-changesets-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-cluster-nodes-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-cluster-nodes-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (cluster-name (common-lisp:error ":clustername is required") :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or result-limit common-lisp:null)))
+ (common-lisp:defclass list-kx-cluster-nodes-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-cluster-nodes-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":clustername is required") :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-cluster-nodes-request-cluster-name
+                         :shape "KxClusterName" :location "uri" :location-name
+                         "clusterName")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-cluster-nodes-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or result-limit common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-cluster-nodes-request-max-results
+                         :shape "ResultLimit" :location "querystring"
+                         :location-name "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-cluster-nodes-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-kx-cluster-nodes-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-cluster-nodes-request
                     'make-list-kx-cluster-nodes-request))
@@ -6017,13 +8638,26 @@
                           list-kx-cluster-nodes-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-cluster-nodes-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-cluster-nodes-response-"))
-   (nodes common-lisp:nil :type
-    (common-lisp:or kx-node-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-cluster-nodes-response common-lisp:nil
+                       ((nodes :initarg :nodes :initform common-lisp:nil :type
+                         (common-lisp:or kx-node-summaries common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-cluster-nodes-response-nodes
+                         :shape "KxNodeSummaries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-cluster-nodes-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-cluster-nodes-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-kx-cluster-nodes-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-cluster-nodes-response
                     'make-list-kx-cluster-nodes-response))
@@ -6057,17 +8691,40 @@
                           list-kx-cluster-nodes-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-clusters-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-clusters-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (cluster-type common-lisp:nil :type
-    (common-lisp:or kx-cluster-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-clusters-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-clusters-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (cluster-type :initarg :cluster-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-cluster-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-clusters-request-cluster-type
+                         :shape "KxClusterType" :location "querystring"
+                         :location-name "clusterType")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-clusters-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-clusters-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-clusters-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-clusters-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-clusters-request 'make-list-kx-clusters-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6086,13 +8743,26 @@
                           list-kx-clusters-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-clusters-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-clusters-response-"))
-   (kx-cluster-summaries common-lisp:nil :type
-    (common-lisp:or kx-clusters common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-clusters-response common-lisp:nil
+                       ((kx-cluster-summaries :initarg :kx-cluster-summaries
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-clusters common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-clusters-response-kx-cluster-summaries
+                         :shape "KxClusters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-clusters-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-clusters-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-clusters-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-clusters-response
                     'make-list-kx-clusters-response))
@@ -6127,15 +8797,33 @@
                           list-kx-clusters-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-databases-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-databases-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-kx-databases-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-databases-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-databases-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-databases-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-databases-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-databases-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-databases-request
                     'make-list-kx-databases-request))
@@ -6155,13 +8843,26 @@
                           list-kx-databases-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-databases-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-databases-response-"))
-   (kx-databases common-lisp:nil :type
-    (common-lisp:or kx-databases common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-databases-response common-lisp:nil
+                       ((kx-databases :initarg :kx-databases :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-databases common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-databases-response-kx-databases
+                         :shape "KxDatabases" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-databases-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-databases-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-databases-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-databases-response
                     'make-list-kx-databases-response))
@@ -6195,17 +8896,40 @@
                           list-kx-databases-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-dataviews-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-dataviews-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-kx-dataviews-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-dataviews-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-dataviews-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-dataviews-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-dataviews-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-dataviews-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-dataviews-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-dataviews-request
                     'make-list-kx-dataviews-request))
@@ -6225,13 +8949,26 @@
                           list-kx-dataviews-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-dataviews-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-dataviews-response-"))
-   (kx-dataviews common-lisp:nil :type
-    (common-lisp:or kx-dataviews common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-dataviews-response common-lisp:nil
+                       ((kx-dataviews :initarg :kx-dataviews :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataviews common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-dataviews-response-kx-dataviews
+                         :shape "KxDataviews" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-dataviews-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-dataviews-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-dataviews-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-dataviews-response
                     'make-list-kx-dataviews-response))
@@ -6265,13 +9002,26 @@
                           list-kx-dataviews-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-environments-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-environments-request-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or boxed-integer common-lisp:null)))
+ (common-lisp:defclass list-kx-environments-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-environments-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boxed-integer common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-environments-request-max-results
+                         :shape "BoxedInteger" :location "querystring"
+                         :location-name "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-environments-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-environments-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-environments-request
                     'make-list-kx-environments-request))
@@ -6291,13 +9041,27 @@
                           list-kx-environments-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-environments-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-environments-response-"))
-   (environments common-lisp:nil :type
-    (common-lisp:or kx-environment-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-environments-response common-lisp:nil
+                       ((environments :initarg :environments :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-environment-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-environments-response-environments
+                         :shape "KxEnvironmentList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-environments-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-environments-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-kx-environments-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-environments-response
                     'make-list-kx-environments-response))
@@ -6331,15 +9095,34 @@
                           list-kx-environments-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-scaling-groups-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-scaling-groups-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-scaling-groups-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-scaling-groups-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-scaling-groups-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-scaling-groups-request-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-scaling-groups-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-kx-scaling-groups-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-scaling-groups-request
                     'make-list-kx-scaling-groups-request))
@@ -6359,13 +9142,28 @@
                           list-kx-scaling-groups-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-scaling-groups-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-scaling-groups-response-"))
-   (scaling-groups common-lisp:nil :type
-    (common-lisp:or kx-scaling-group-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-scaling-groups-response common-lisp:nil
+                       ((scaling-groups :initarg :scaling-groups :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-scaling-group-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-scaling-groups-response-scaling-groups
+                         :shape "KxScalingGroupList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-scaling-groups-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-scaling-groups-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-kx-scaling-groups-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-scaling-groups-response
                     'make-list-kx-scaling-groups-response))
@@ -6399,15 +9197,32 @@
                           list-kx-scaling-groups-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-users-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-users-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or result-limit common-lisp:null)))
+ (common-lisp:defclass list-kx-users-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-list-kx-users-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-users-request-next-token :shape
+                         "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or result-limit common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-users-request-max-results :shape
+                         "ResultLimit" :location "querystring" :location-name
+                         "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-users-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-users-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-users-request 'make-list-kx-users-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6426,12 +9241,24 @@
                           list-kx-users-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-users-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-users-response-"))
-   (users common-lisp:nil :type (common-lisp:or kx-user-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-users-response common-lisp:nil
+                       ((users :initarg :users :initform common-lisp:nil :type
+                         (common-lisp:or kx-user-list common-lisp:null)
+                         :accessor struct-shape-list-kx-users-response-users
+                         :shape "KxUserList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-users-response-next-token :shape
+                         "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-users-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-users-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-users-response 'make-list-kx-users-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6464,17 +9291,40 @@
                           list-kx-users-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-volumes-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-volumes-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (volume-type common-lisp:nil :type
-    (common-lisp:or kx-volume-type common-lisp:null)))
+ (common-lisp:defclass list-kx-volumes-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-volumes-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-volumes-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-volumes-request-next-token :shape
+                         "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (volume-type :initarg :volume-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-volumes-request-volume-type
+                         :shape "KxVolumeType" :location "querystring"
+                         :location-name "volumeType"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-volumes-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-volumes-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-volumes-request 'make-list-kx-volumes-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6493,13 +9343,25 @@
                           list-kx-volumes-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-kx-volumes-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-kx-volumes-response-"))
-   (kx-volume-summaries common-lisp:nil :type
-    (common-lisp:or kx-volumes common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-kx-volumes-response common-lisp:nil
+                       ((kx-volume-summaries :initarg :kx-volume-summaries
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-volumes common-lisp:null) :accessor
+                         struct-shape-list-kx-volumes-response-kx-volume-summaries
+                         :shape "KxVolumes" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-kx-volumes-response-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-kx-volumes-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-kx-volumes-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-kx-volumes-response 'make-list-kx-volumes-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6532,11 +9394,21 @@
                           list-kx-volumes-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or fin-space-taggable-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or fin-space-taggable-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "FinSpaceTaggableArn" :location "uri"
+                         :location-name "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -6556,10 +9428,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -6597,21 +9477,48 @@
                            (trivial-types:proper-list network-aclentry))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (network-aclentry (:copier common-lisp:nil)
-      (:conc-name "struct-shape-network-aclentry-"))
-   (rule-number (common-lisp:error ":rulenumber is required") :type
-    (common-lisp:or rule-number common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol common-lisp:null))
-   (rule-action (common-lisp:error ":ruleaction is required") :type
-    (common-lisp:or rule-action common-lisp:null))
-   (port-range common-lisp:nil :type
-    (common-lisp:or port-range common-lisp:null))
-   (icmp-type-code common-lisp:nil :type
-    (common-lisp:or icmp-type-code common-lisp:null))
-   (cidr-block (common-lisp:error ":cidrblock is required") :type
-    (common-lisp:or valid-cidrblock common-lisp:null)))
+ (common-lisp:defclass network-aclentry common-lisp:nil
+                       ((rule-number :initarg :rule-number :initform
+                         (common-lisp:error ":rulenumber is required") :type
+                         (common-lisp:or rule-number common-lisp:null)
+                         :accessor struct-shape-network-aclentry-rule-number
+                         :shape "RuleNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or protocol common-lisp:null) :accessor
+                         struct-shape-network-aclentry-protocol :shape
+                         "Protocol" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (rule-action :initarg :rule-action :initform
+                         (common-lisp:error ":ruleaction is required") :type
+                         (common-lisp:or rule-action common-lisp:null)
+                         :accessor struct-shape-network-aclentry-rule-action
+                         :shape "RuleAction" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (port-range :initarg :port-range :initform
+                         common-lisp:nil :type
+                         (common-lisp:or port-range common-lisp:null) :accessor
+                         struct-shape-network-aclentry-port-range :shape
+                         "PortRange" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (icmp-type-code :initarg :icmp-type-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or icmp-type-code common-lisp:null)
+                         :accessor struct-shape-network-aclentry-icmp-type-code
+                         :shape "IcmpTypeCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cidr-block :initarg :cidr-block :initform
+                         (common-lisp:error ":cidrblock is required") :type
+                         (common-lisp:or valid-cidrblock common-lisp:null)
+                         :accessor struct-shape-network-aclentry-cidr-block
+                         :shape "ValidCIDRBlock" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-network-aclentry
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'network-aclentry
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'network-aclentry 'make-network-aclentry))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6670,13 +9577,22 @@
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:deftype port () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (port-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-port-range-"))
-   (from (common-lisp:error ":from is required") :type
-    (common-lisp:or port common-lisp:null))
-   (to (common-lisp:error ":to is required") :type
-    (common-lisp:or port common-lisp:null)))
+ (common-lisp:defclass port-range common-lisp:nil
+                       ((from :initarg :from :initform
+                         (common-lisp:error ":from is required") :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-port-range-from :shape "Port" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (to :initarg :to :initform
+                         (common-lisp:error ":to is required") :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-port-range-to :shape "Port" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-port-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'port-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'port-range 'make-port-range))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input port-range))
@@ -6766,15 +9682,30 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype subnet-id-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (superuser-parameters (:copier common-lisp:nil)
-      (:conc-name "struct-shape-superuser-parameters-"))
-   (email-address (common-lisp:error ":emailaddress is required") :type
-    (common-lisp:or email-id common-lisp:null))
-   (first-name (common-lisp:error ":firstname is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (last-name (common-lisp:error ":lastname is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+ (common-lisp:defclass superuser-parameters common-lisp:nil
+                       ((email-address :initarg :email-address :initform
+                         (common-lisp:error ":emailaddress is required") :type
+                         (common-lisp:or email-id common-lisp:null) :accessor
+                         struct-shape-superuser-parameters-email-address :shape
+                         "EmailId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (first-name :initarg :first-name :initform
+                         (common-lisp:error ":firstname is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor struct-shape-superuser-parameters-first-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-name :initarg :last-name :initform
+                         (common-lisp:error ":lastname is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor struct-shape-superuser-parameters-last-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-superuser-parameters
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'superuser-parameters
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'superuser-parameters 'make-superuser-parameters))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6823,13 +9754,26 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or fin-space-taggable-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or fin-space-taggable-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "FinSpaceTaggableArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6849,9 +9793,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6878,11 +9825,22 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tickerplant-log-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tickerplant-log-configuration-"))
-   (tickerplant-log-volumes common-lisp:nil :type
-    (common-lisp:or tickerplant-log-volumes common-lisp:null)))
+ (common-lisp:defclass tickerplant-log-configuration common-lisp:nil
+                       ((tickerplant-log-volumes :initarg
+                         :tickerplant-log-volumes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or tickerplant-log-volumes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-tickerplant-log-configuration-tickerplant-log-volumes
+                         :shape "TickerplantLogVolumes" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tickerplant-log-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'tickerplant-log-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tickerplant-log-configuration
                     'make-tickerplant-log-configuration))
@@ -6919,15 +9877,40 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (transit-gateway-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transit-gateway-configuration-"))
-   (transit-gateway-id (common-lisp:error ":transitgatewayid is required")
-    :type (common-lisp:or transit-gateway-id common-lisp:null))
-   (routable-cidrspace (common-lisp:error ":routablecidrspace is required")
-    :type (common-lisp:or valid-cidrspace common-lisp:null))
-   (attachment-network-acl-configuration common-lisp:nil :type
-    (common-lisp:or network-aclconfiguration common-lisp:null)))
+ (common-lisp:defclass transit-gateway-configuration common-lisp:nil
+                       ((transit-gateway-id :initarg :transit-gateway-id
+                         :initform
+                         (common-lisp:error ":transitgatewayid is required")
+                         :type
+                         (common-lisp:or transit-gateway-id common-lisp:null)
+                         :accessor
+                         struct-shape-transit-gateway-configuration-transit-gateway-id
+                         :shape "TransitGatewayID" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (routable-cidrspace :initarg :routable-cidrspace
+                         :initform
+                         (common-lisp:error ":routablecidrspace is required")
+                         :type
+                         (common-lisp:or valid-cidrspace common-lisp:null)
+                         :accessor
+                         struct-shape-transit-gateway-configuration-routable-cidrspace
+                         :shape "ValidCIDRSpace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attachment-network-acl-configuration :initarg
+                         :attachment-network-acl-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or network-aclconfiguration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-transit-gateway-configuration-attachment-network-acl-configuration
+                         :shape "NetworkACLConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-transit-gateway-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'transit-gateway-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'transit-gateway-configuration
                     'make-transit-gateway-configuration))
@@ -6970,13 +9953,26 @@
    common-lisp:nil))
 (common-lisp:deftype transit-gateway-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or fin-space-taggable-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or fin-space-taggable-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "FinSpaceTaggableArn" :location "uri"
+                         :location-name "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6995,9 +9991,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7016,19 +10015,45 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-environment-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or environment-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (federation-mode common-lisp:nil :type
-    (common-lisp:or federation-mode common-lisp:null))
-   (federation-parameters common-lisp:nil :type
-    (common-lisp:or federation-parameters common-lisp:null)))
+ (common-lisp:defclass update-environment-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-environment-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or environment-name common-lisp:null)
+                         :accessor struct-shape-update-environment-request-name
+                         :shape "EnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-mode :initarg :federation-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or federation-mode common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-request-federation-mode
+                         :shape "FederationMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federation-parameters :initarg :federation-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or federation-parameters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-request-federation-parameters
+                         :shape "FederationParameters" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-environment-request
                     'make-update-environment-request))
@@ -7077,11 +10102,19 @@
                           update-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-environment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-environment-response-"))
-   (environment common-lisp:nil :type
-    (common-lisp:or environment common-lisp:null)))
+ (common-lisp:defclass update-environment-response common-lisp:nil
+                       ((environment :initarg :environment :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment common-lisp:null)
+                         :accessor
+                         struct-shape-update-environment-response-environment
+                         :shape "Environment" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-environment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-environment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-environment-response
                     'make-update-environment-response))
@@ -7108,25 +10141,70 @@
                           update-environment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-cluster-code-configuration-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-kx-cluster-code-configuration-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (cluster-name (common-lisp:error ":clustername is required") :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token-string common-lisp:null))
-   (code (common-lisp:error ":code is required") :type
-    (common-lisp:or code-configuration common-lisp:null))
-   (initialization-script common-lisp:nil :type
-    (common-lisp:or initialization-script-file-path common-lisp:null))
-   (command-line-arguments common-lisp:nil :type
-    (common-lisp:or kx-command-line-arguments common-lisp:null))
-   (deployment-configuration common-lisp:nil :type
-    (common-lisp:or kx-cluster-code-deployment-configuration
-                    common-lisp:null)))
+ (common-lisp:defclass update-kx-cluster-code-configuration-request
+                       common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-code-configuration-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":clustername is required") :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-code-configuration-request-cluster-name
+                         :shape "KxClusterName" :location "uri" :location-name
+                         "clusterName")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-code-configuration-request-client-token
+                         :shape "ClientTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (code :initarg :code :initform
+                         (common-lisp:error ":code is required") :type
+                         (common-lisp:or code-configuration common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-code-configuration-request-code
+                         :shape "CodeConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (initialization-script :initarg :initialization-script
+                         :initform common-lisp:nil :type
+                         (common-lisp:or initialization-script-file-path
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-code-configuration-request-initialization-script
+                         :shape "InitializationScriptFilePath" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (command-line-arguments :initarg
+                         :command-line-arguments :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-command-line-arguments
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-code-configuration-request-command-line-arguments
+                         :shape "KxCommandLineArguments" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (deployment-configuration :initarg
+                         :deployment-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          kx-cluster-code-deployment-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-code-configuration-request-deployment-configuration
+                         :shape "KxClusterCodeDeploymentConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-cluster-code-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-kx-cluster-code-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-cluster-code-configuration-request
                     'make-update-kx-cluster-code-configuration-request))
@@ -7184,10 +10262,14 @@
                           update-kx-cluster-code-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-cluster-code-configuration-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-kx-cluster-code-configuration-response-")))
+ (common-lisp:defclass update-kx-cluster-code-configuration-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-cluster-code-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-kx-cluster-code-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-cluster-code-configuration-response
                     'make-update-kx-cluster-code-configuration-response))
@@ -7207,19 +10289,51 @@
                           update-kx-cluster-code-configuration-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-cluster-databases-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-cluster-databases-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (cluster-name (common-lisp:error ":clustername is required") :type
-    (common-lisp:or kx-cluster-name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token-string common-lisp:null))
-   (databases (common-lisp:error ":databases is required") :type
-    (common-lisp:or kx-database-configurations common-lisp:null))
-   (deployment-configuration common-lisp:nil :type
-    (common-lisp:or kx-deployment-configuration common-lisp:null)))
+ (common-lisp:defclass update-kx-cluster-databases-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-databases-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (cluster-name :initarg :cluster-name :initform
+                         (common-lisp:error ":clustername is required") :type
+                         (common-lisp:or kx-cluster-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-databases-request-cluster-name
+                         :shape "KxClusterName" :location "uri" :location-name
+                         "clusterName")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-databases-request-client-token
+                         :shape "ClientTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (databases :initarg :databases :initform
+                         (common-lisp:error ":databases is required") :type
+                         (common-lisp:or kx-database-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-databases-request-databases
+                         :shape "KxDatabaseConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (deployment-configuration :initarg
+                         :deployment-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-deployment-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-cluster-databases-request-deployment-configuration
+                         :shape "KxDeploymentConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-cluster-databases-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-kx-cluster-databases-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-cluster-databases-request
                     'make-update-kx-cluster-databases-request))
@@ -7261,9 +10375,14 @@
                           update-kx-cluster-databases-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-cluster-databases-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-cluster-databases-response-")))
+ (common-lisp:defclass update-kx-cluster-databases-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-cluster-databases-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-kx-cluster-databases-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-cluster-databases-response
                     'make-update-kx-cluster-databases-response))
@@ -7283,17 +10402,40 @@
                           update-kx-cluster-databases-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-database-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-database-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass update-kx-database-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-database-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-database-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-database-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-database-request-client-token
+                         :shape "ClientTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-database-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-kx-database-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-database-request
                     'make-update-kx-database-request))
@@ -7327,17 +10469,40 @@
                           update-kx-database-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-database-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-database-response-"))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass update-kx-database-response common-lisp:nil
+                       ((database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-database-response-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-database-response-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-database-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-database-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-database-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-kx-database-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-database-response
                     'make-update-kx-database-response))
@@ -7386,23 +10551,63 @@
                           update-kx-database-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-dataview-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-dataview-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or database-name common-lisp:null))
-   (dataview-name (common-lisp:error ":dataviewname is required") :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (segment-configurations common-lisp:nil :type
-    (common-lisp:or kx-dataview-segment-configuration-list common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token-string common-lisp:null)))
+ (common-lisp:defclass update-kx-dataview-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-request-environment-id
+                         :shape "EnvironmentId" :location "uri" :location-name
+                         "environmentId")
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-request-database-name
+                         :shape "DatabaseName" :location "uri" :location-name
+                         "databaseName")
+                        (dataview-name :initarg :dataview-name :initform
+                         (common-lisp:error ":dataviewname is required") :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-request-dataview-name
+                         :shape "KxDataviewName" :location "uri" :location-name
+                         "dataviewName")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-request-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (segment-configurations :initarg
+                         :segment-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-segment-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-request-segment-configurations
+                         :shape "KxDataviewSegmentConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         (common-lisp:error ":clienttoken is required") :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-request-client-token
+                         :shape "ClientTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-dataview-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-kx-dataview-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-dataview-request
                     'make-update-kx-dataview-request))
@@ -7451,34 +10656,104 @@
                           update-kx-dataview-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-dataview-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-dataview-response-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or environment-id common-lisp:null))
-   (database-name common-lisp:nil :type
-    (common-lisp:or database-name common-lisp:null))
-   (dataview-name common-lisp:nil :type
-    (common-lisp:or kx-dataview-name common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-id common-lisp:nil :type
-    (common-lisp:or availability-zone-id common-lisp:null))
-   (changeset-id common-lisp:nil :type
-    (common-lisp:or changeset-id common-lisp:null))
-   (segment-configurations common-lisp:nil :type
-    (common-lisp:or kx-dataview-segment-configuration-list common-lisp:null))
-   (active-versions common-lisp:nil :type
-    (common-lisp:or kx-dataview-active-version-list common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-dataview-status common-lisp:null))
-   (auto-update common-lisp:nil :type
-    (common-lisp:or |booleanValue| common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass update-kx-dataview-response common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-environment-id
+                         :shape "EnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-name :initarg :database-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or database-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-database-name
+                         :shape "DatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dataview-name :initarg :dataview-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-dataview-name
+                         :shape "KxDataviewName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-az-mode
+                         :shape "KxAzMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-id :initarg :availability-zone-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-availability-zone-id
+                         :shape "AvailabilityZoneId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (changeset-id :initarg :changeset-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changeset-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-changeset-id
+                         :shape "ChangesetId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (segment-configurations :initarg
+                         :segment-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-segment-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-segment-configurations
+                         :shape "KxDataviewSegmentConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (active-versions :initarg :active-versions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-dataview-active-version-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-active-versions
+                         :shape "KxDataviewActiveVersionList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-dataview-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-status :shape
+                         "KxDataviewStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (auto-update :initarg :auto-update :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |booleanValue| common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-auto-update
+                         :shape "booleanValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-update-kx-dataview-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-dataview-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-dataview-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-kx-dataview-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-dataview-response
                     'make-update-kx-dataview-response))
@@ -7592,17 +10867,44 @@
                           update-kx-dataview-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-environment-network-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-environment-network-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (transit-gateway-configuration common-lisp:nil :type
-    (common-lisp:or transit-gateway-configuration common-lisp:null))
-   (custom-dnsconfiguration common-lisp:nil :type
-    (common-lisp:or custom-dnsconfiguration common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null)))
+ (common-lisp:defclass update-kx-environment-network-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-network-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (transit-gateway-configuration :initarg
+                         :transit-gateway-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transit-gateway-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-request-transit-gateway-configuration
+                         :shape "TransitGatewayConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (custom-dnsconfiguration :initarg
+                         :custom-dnsconfiguration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or custom-dnsconfiguration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-request-custom-dnsconfiguration
+                         :shape "CustomDNSConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-environment-network-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-kx-environment-network-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-environment-network-request
                     'make-update-kx-environment-network-request))
@@ -7645,41 +10947,125 @@
                           update-kx-environment-network-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-environment-network-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-environment-network-response-"))
-   (name common-lisp:nil :type
-    (common-lisp:or kx-environment-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (aws-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or environment-status common-lisp:null))
-   (tgw-status common-lisp:nil :type
-    (common-lisp:or |tgwStatus| common-lisp:null))
-   (dns-status common-lisp:nil :type
-    (common-lisp:or |dnsStatus| common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or environment-error-message common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (environment-arn common-lisp:nil :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id common-lisp:null))
-   (dedicated-service-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (transit-gateway-configuration common-lisp:nil :type
-    (common-lisp:or transit-gateway-configuration common-lisp:null))
-   (custom-dnsconfiguration common-lisp:nil :type
-    (common-lisp:or custom-dnsconfiguration common-lisp:null))
-   (creation-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (update-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (availability-zone-ids common-lisp:nil :type
-    (common-lisp:or availability-zone-ids common-lisp:null)))
+ (common-lisp:defclass update-kx-environment-network-response common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or kx-environment-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-name
+                         :shape "KxEnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-network-response-environment-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aws-account-id :initarg :aws-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-network-response-aws-account-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or environment-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-status
+                         :shape "EnvironmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tgw-status :initarg :tgw-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |tgwStatus| common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-tgw-status
+                         :shape "tgwStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dns-status :initarg :dns-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |dnsStatus| common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-dns-status
+                         :shape "dnsStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-error-message
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-error-message
+                         :shape "EnvironmentErrorMessage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-arn :initarg :environment-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-environment-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-network-response-kms-key-id
+                         :shape "KmsKeyId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dedicated-service-account-id :initarg
+                         :dedicated-service-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-network-response-dedicated-service-account-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (transit-gateway-configuration :initarg
+                         :transit-gateway-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transit-gateway-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-transit-gateway-configuration
+                         :shape "TransitGatewayConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (custom-dnsconfiguration :initarg
+                         :custom-dnsconfiguration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or custom-dnsconfiguration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-custom-dnsconfiguration
+                         :shape "CustomDNSConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-timestamp :initarg :creation-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-network-response-creation-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-timestamp :initarg :update-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-network-response-update-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-network-response-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-environment-network-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-kx-environment-network-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-environment-network-response
                     'make-update-kx-environment-network-response))
@@ -7815,17 +11201,39 @@
                           update-kx-environment-network-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-environment-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-environment-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or kx-environment-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null)))
+ (common-lisp:defclass update-kx-environment-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or kx-environment-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-request-name :shape
+                         "KxEnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-environment-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-kx-environment-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-environment-request
                     'make-update-kx-environment-request))
@@ -7866,41 +11274,125 @@
                           update-kx-environment-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-environment-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-environment-response-"))
-   (name common-lisp:nil :type
-    (common-lisp:or kx-environment-name common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (aws-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or environment-status common-lisp:null))
-   (tgw-status common-lisp:nil :type
-    (common-lisp:or |tgwStatus| common-lisp:null))
-   (dns-status common-lisp:nil :type
-    (common-lisp:or |dnsStatus| common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or environment-error-message common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (environment-arn common-lisp:nil :type
-    (common-lisp:or environment-arn common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id common-lisp:null))
-   (dedicated-service-account-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (transit-gateway-configuration common-lisp:nil :type
-    (common-lisp:or transit-gateway-configuration common-lisp:null))
-   (custom-dnsconfiguration common-lisp:nil :type
-    (common-lisp:or custom-dnsconfiguration common-lisp:null))
-   (creation-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (update-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (availability-zone-ids common-lisp:nil :type
-    (common-lisp:or availability-zone-ids common-lisp:null)))
+ (common-lisp:defclass update-kx-environment-response common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or kx-environment-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-name
+                         :shape "KxEnvironmentName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-response-environment-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aws-account-id :initarg :aws-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-response-aws-account-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or environment-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-status
+                         :shape "EnvironmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tgw-status :initarg :tgw-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |tgwStatus| common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-tgw-status
+                         :shape "tgwStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dns-status :initarg :dns-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |dnsStatus| common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-dns-status
+                         :shape "dnsStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-error-message
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-error-message
+                         :shape "EnvironmentErrorMessage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-arn :initarg :environment-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or environment-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-environment-arn
+                         :shape "EnvironmentArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-response-kms-key-id
+                         :shape "KmsKeyId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dedicated-service-account-id :initarg
+                         :dedicated-service-account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-response-dedicated-service-account-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (transit-gateway-configuration :initarg
+                         :transit-gateway-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transit-gateway-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-transit-gateway-configuration
+                         :shape "TransitGatewayConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (custom-dnsconfiguration :initarg
+                         :custom-dnsconfiguration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or custom-dnsconfiguration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-custom-dnsconfiguration
+                         :shape "CustomDNSConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-timestamp :initarg :creation-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-response-creation-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-timestamp :initarg :update-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-update-kx-environment-response-update-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-environment-response-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-environment-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-kx-environment-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-environment-response
                     'make-update-kx-environment-response))
@@ -8036,17 +11528,38 @@
                           update-kx-environment-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-user-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-user-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (user-name (common-lisp:error ":username is required") :type
-    (common-lisp:or kx-user-name-string common-lisp:null))
-   (iam-role (common-lisp:error ":iamrole is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null)))
+ (common-lisp:defclass update-kx-user-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-user-request-environment-id
+                         :shape "IdType" :location "uri" :location-name
+                         "environmentId")
+                        (user-name :initarg :user-name :initform
+                         (common-lisp:error ":username is required") :type
+                         (common-lisp:or kx-user-name-string common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-user-request-user-name :shape
+                         "KxUserNameString" :location "uri" :location-name
+                         "userName")
+                        (iam-role :initarg :iam-role :initform
+                         (common-lisp:error ":iamrole is required") :type
+                         (common-lisp:or role-arn common-lisp:null) :accessor
+                         struct-shape-update-kx-user-request-iam-role :shape
+                         "RoleArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-user-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-user-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-kx-user-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-user-request 'make-update-kx-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8079,16 +11592,37 @@
                           update-kx-user-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-user-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-user-response-"))
-   (user-name common-lisp:nil :type
-    (common-lisp:or kx-user-name-string common-lisp:null))
-   (user-arn common-lisp:nil :type
-    (common-lisp:or kx-user-arn common-lisp:null))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or id-type common-lisp:null))
-   (iam-role common-lisp:nil :type (common-lisp:or role-arn common-lisp:null)))
+ (common-lisp:defclass update-kx-user-response common-lisp:nil
+                       ((user-name :initarg :user-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-user-name-string common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-user-response-user-name :shape
+                         "KxUserNameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-arn :initarg :user-arn :initform common-lisp:nil
+                         :type (common-lisp:or kx-user-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-user-response-user-arn :shape
+                         "KxUserArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or id-type common-lisp:null) :accessor
+                         struct-shape-update-kx-user-response-environment-id
+                         :shape "IdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role :initarg :iam-role :initform common-lisp:nil
+                         :type (common-lisp:or role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-user-response-iam-role :shape
+                         "RoleArn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-user-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-kx-user-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-user-response 'make-update-kx-user-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8135,19 +11669,47 @@
                           update-kx-user-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-volume-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-volume-request-"))
-   (environment-id (common-lisp:error ":environmentid is required") :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (volume-name (common-lisp:error ":volumename is required") :type
-    (common-lisp:or kx-volume-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token-string common-lisp:null))
-   (nas1configuration common-lisp:nil :type
-    (common-lisp:or kx-nas1configuration common-lisp:null)))
+ (common-lisp:defclass update-kx-volume-request common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         (common-lisp:error ":environmentid is required") :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-request-environment-id
+                         :shape "KxEnvironmentId" :location "uri"
+                         :location-name "environmentId")
+                        (volume-name :initarg :volume-name :initform
+                         (common-lisp:error ":volumename is required") :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-request-volume-name
+                         :shape "KxVolumeName" :location "uri" :location-name
+                         "volumeName")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token-string common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-request-client-token
+                         :shape "ClientTokenString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nas1configuration :initarg :nas1configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-nas1configuration common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-request-nas1configuration
+                         :shape "KxNAS1Configuration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-volume-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-kx-volume-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-volume-request 'make-update-kx-volume-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8187,34 +11749,103 @@
                           update-kx-volume-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-kx-volume-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-kx-volume-response-"))
-   (environment-id common-lisp:nil :type
-    (common-lisp:or kx-environment-id common-lisp:null))
-   (volume-name common-lisp:nil :type
-    (common-lisp:or kx-volume-name common-lisp:null))
-   (volume-type common-lisp:nil :type
-    (common-lisp:or kx-volume-type common-lisp:null))
-   (volume-arn common-lisp:nil :type
-    (common-lisp:or kx-volume-arn common-lisp:null))
-   (nas1configuration common-lisp:nil :type
-    (common-lisp:or kx-nas1configuration common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or kx-volume-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or kx-volume-status-reason common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (az-mode common-lisp:nil :type (common-lisp:or kx-az-mode common-lisp:null))
-   (availability-zone-ids common-lisp:nil :type
-    (common-lisp:or availability-zone-ids common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (attached-clusters common-lisp:nil :type
-    (common-lisp:or kx-attached-clusters common-lisp:null)))
+ (common-lisp:defclass update-kx-volume-response common-lisp:nil
+                       ((environment-id :initarg :environment-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-environment-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-environment-id
+                         :shape "KxEnvironmentId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-name :initarg :volume-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-volume-name
+                         :shape "KxVolumeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-type :initarg :volume-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-volume-type
+                         :shape "KxVolumeType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-arn :initarg :volume-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-volume-arn
+                         :shape "KxVolumeArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (nas1configuration :initarg :nas1configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-nas1configuration common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-nas1configuration
+                         :shape "KxNAS1Configuration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or kx-volume-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-status :shape
+                         "KxVolumeStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kx-volume-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-status-reason
+                         :shape "KxVolumeStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-update-kx-volume-response-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (az-mode :initarg :az-mode :initform common-lisp:nil
+                         :type (common-lisp:or kx-az-mode common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-az-mode :shape
+                         "KxAzMode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (availability-zone-ids :initarg :availability-zone-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone-ids
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-availability-zone-ids
+                         :shape "AvailabilityZoneIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-last-modified-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attached-clusters :initarg :attached-clusters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or kx-attached-clusters common-lisp:null)
+                         :accessor
+                         struct-shape-update-kx-volume-response-attached-clusters
+                         :shape "KxAttachedClusters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-kx-volume-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-kx-volume-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-kx-volume-response
                     'make-update-kx-volume-response))
@@ -8339,12 +11970,24 @@
   (common-lisp:list 'validation-exception 'validation-exception-message)))
 (common-lisp:deftype version-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (volume (:copier common-lisp:nil) (:conc-name "struct-shape-volume-"))
-   (volume-name common-lisp:nil :type
-    (common-lisp:or volume-name common-lisp:null))
-   (volume-type common-lisp:nil :type
-    (common-lisp:or volume-type common-lisp:null)))
+ (common-lisp:defclass volume common-lisp:nil
+                       ((volume-name :initarg :volume-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or volume-name common-lisp:null)
+                         :accessor struct-shape-volume-volume-name :shape
+                         "VolumeName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (volume-type :initarg :volume-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or volume-type common-lisp:null)
+                         :accessor struct-shape-volume-volume-type :shape
+                         "VolumeType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-volume
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'volume
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'volume 'make-volume))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input volume))
@@ -8379,17 +12022,38 @@
                            (trivial-types:proper-list volume))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (vpc-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-vpc-configuration-"))
-   (vpc-id common-lisp:nil :type
-    (common-lisp:or vpc-id-string common-lisp:null))
-   (security-group-ids common-lisp:nil :type
-    (common-lisp:or security-group-id-list common-lisp:null))
-   (subnet-ids common-lisp:nil :type
-    (common-lisp:or subnet-id-list common-lisp:null))
-   (ip-address-type common-lisp:nil :type
-    (common-lisp:or ipaddress-type common-lisp:null)))
+ (common-lisp:defclass vpc-configuration common-lisp:nil
+                       ((vpc-id :initarg :vpc-id :initform common-lisp:nil
+                         :type (common-lisp:or vpc-id-string common-lisp:null)
+                         :accessor struct-shape-vpc-configuration-vpc-id :shape
+                         "VpcIdString" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (security-group-ids :initarg :security-group-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or security-group-id-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-vpc-configuration-security-group-ids
+                         :shape "SecurityGroupIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subnet-ids :initarg :subnet-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or subnet-id-list common-lisp:null)
+                         :accessor struct-shape-vpc-configuration-subnet-ids
+                         :shape "SubnetIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ip-address-type :initarg :ip-address-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ipaddress-type common-lisp:null)
+                         :accessor
+                         struct-shape-vpc-configuration-ip-address-type :shape
+                         "IPAddressType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-vpc-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'vpc-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'vpc-configuration 'make-vpc-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

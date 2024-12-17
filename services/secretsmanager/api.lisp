@@ -49,15 +49,29 @@
                            (trivial-types:proper-list apierror-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (apierror-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-apierror-type-"))
-   (secret-id common-lisp:nil :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (error-code common-lisp:nil :type
-    (common-lisp:or error-code common-lisp:null))
-   (message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:defclass apierror-type common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor struct-shape-apierror-type-secret-id :shape
+                         "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-code :initarg :error-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-code common-lisp:null) :accessor
+                         struct-shape-apierror-type-error-code :shape
+                         "ErrorCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (message :initarg :message :initform common-lisp:nil
+                         :type (common-lisp:or error-message common-lisp:null)
+                         :accessor struct-shape-apierror-type-message :shape
+                         "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-apierror-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'apierror-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'apierror-type 'make-apierror-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input apierror-type))
@@ -100,17 +114,42 @@
 (common-lisp:deftype automatically-rotate-after-days-type ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-secret-value-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-secret-value-request-"))
-   (secret-id-list common-lisp:nil :type
-    (common-lisp:or secret-id-list-type common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or filters-list-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results-batch-type common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null)))
+ (common-lisp:defclass batch-get-secret-value-request common-lisp:nil
+                       ((secret-id-list :initarg :secret-id-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-id-list-type common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-secret-value-request-secret-id-list
+                         :shape "SecretIdListType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or filters-list-type common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-secret-value-request-filters
+                         :shape "FiltersListType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results-batch-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-secret-value-request-max-results
+                         :shape "MaxResultsBatchType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-secret-value-request-next-token
+                         :shape "NextTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-secret-value-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-get-secret-value-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-secret-value-request
                     'make-batch-get-secret-value-request))
@@ -158,15 +197,34 @@
                           batch-get-secret-value-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-secret-value-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-secret-value-response-"))
-   (secret-values common-lisp:nil :type
-    (common-lisp:or secret-values-type common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null))
-   (errors common-lisp:nil :type
-    (common-lisp:or apierror-list-type common-lisp:null)))
+ (common-lisp:defclass batch-get-secret-value-response common-lisp:nil
+                       ((secret-values :initarg :secret-values :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-values-type common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-secret-value-response-secret-values
+                         :shape "SecretValuesType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-secret-value-response-next-token
+                         :shape "NextTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (errors :initarg :errors :initform common-lisp:nil
+                         :type
+                         (common-lisp:or apierror-list-type common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-secret-value-response-errors
+                         :shape "APIErrorListType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-secret-value-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-get-secret-value-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-secret-value-response
                     'make-batch-get-secret-value-response))
@@ -208,11 +266,19 @@
    common-lisp:nil))
 (common-lisp:deftype boolean-type () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-rotate-secret-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-rotate-secret-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null)))
+ (common-lisp:defclass cancel-rotate-secret-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-rotate-secret-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-rotate-secret-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'cancel-rotate-secret-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-rotate-secret-request
                     'make-cancel-rotate-secret-request))
@@ -239,14 +305,33 @@
                           cancel-rotate-secret-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (cancel-rotate-secret-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-cancel-rotate-secret-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null)))
+ (common-lisp:defclass cancel-rotate-secret-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-rotate-secret-response-arn :shape
+                         "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-rotate-secret-response-name :shape
+                         "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-cancel-rotate-secret-response-version-id
+                         :shape "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-cancel-rotate-secret-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'cancel-rotate-secret-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'cancel-rotate-secret-response
                     'make-cancel-rotate-secret-response))
@@ -288,26 +373,75 @@
    common-lisp:nil))
 (common-lisp:deftype client-request-token-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-secret-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-secret-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-type common-lisp:null))
-   (client-request-token common-lisp:nil :type
-    (common-lisp:or client-request-token-type common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description-type common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id-type common-lisp:null))
-   (secret-binary common-lisp:nil :type
-    (common-lisp:or secret-binary-type common-lisp:null))
-   (secret-string common-lisp:nil :type
-    (common-lisp:or secret-string-type common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list-type common-lisp:null))
-   (add-replica-regions common-lisp:nil :type
-    (common-lisp:or add-replica-region-list-type common-lisp:null))
-   (force-overwrite-replica-secret common-lisp:nil :type
-    (common-lisp:or boolean-type common-lisp:null)))
+ (common-lisp:defclass create-secret-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-type common-lisp:null) :accessor
+                         struct-shape-create-secret-request-name :shape
+                         "NameType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-request-token-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-request-client-request-token
+                         :shape "ClientRequestTokenType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-request-description :shape
+                         "DescriptionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-request-kms-key-id :shape
+                         "KmsKeyIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-binary :initarg :secret-binary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-binary-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-request-secret-binary
+                         :shape "SecretBinaryType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-string :initarg :secret-string :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-string-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-request-secret-string
+                         :shape "SecretStringType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list-type common-lisp:null)
+                         :accessor struct-shape-create-secret-request-tags
+                         :shape "TagListType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (add-replica-regions :initarg :add-replica-regions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or add-replica-region-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-request-add-replica-regions
+                         :shape "AddReplicaRegionListType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (force-overwrite-replica-secret :initarg
+                         :force-overwrite-replica-secret :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-request-force-overwrite-replica-secret
+                         :shape "BooleanType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-secret-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-secret-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-secret-request 'make-create-secret-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -391,16 +525,38 @@
                           create-secret-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-secret-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-secret-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null))
-   (replication-status common-lisp:nil :type
-    (common-lisp:or replication-status-list-type common-lisp:null)))
+ (common-lisp:defclass create-secret-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-create-secret-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-create-secret-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-response-version-id :shape
+                         "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (replication-status :initarg :replication-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or replication-status-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-secret-response-replication-status
+                         :shape "ReplicationStatusListType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-secret-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-secret-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-secret-response 'make-create-secret-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -455,11 +611,20 @@
  (common-lisp:export
   (common-lisp:list 'decryption-failure 'decryption-failure-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resource-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resource-policy-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null)))
+ (common-lisp:defclass delete-resource-policy-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resource-policy-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resource-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resource-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resource-policy-request
                     'make-delete-resource-policy-request))
@@ -486,11 +651,24 @@
                           delete-resource-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-resource-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-resource-policy-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name-type common-lisp:null)))
+ (common-lisp:defclass delete-resource-policy-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-delete-resource-policy-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name-type common-lisp:null) :accessor
+                         struct-shape-delete-resource-policy-response-name
+                         :shape "NameType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-resource-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-resource-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-resource-policy-response
                     'make-delete-resource-policy-response))
@@ -524,15 +702,35 @@
                           delete-resource-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-secret-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-secret-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (recovery-window-in-days common-lisp:nil :type
-    (common-lisp:or recovery-window-in-days-type common-lisp:null))
-   (force-delete-without-recovery common-lisp:nil :type
-    (common-lisp:or boolean-type common-lisp:null)))
+ (common-lisp:defclass delete-secret-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor struct-shape-delete-secret-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recovery-window-in-days :initarg
+                         :recovery-window-in-days :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recovery-window-in-days-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-secret-request-recovery-window-in-days
+                         :shape "RecoveryWindowInDaysType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (force-delete-without-recovery :initarg
+                         :force-delete-without-recovery :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean-type common-lisp:null)
+                         :accessor
+                         struct-shape-delete-secret-request-force-delete-without-recovery
+                         :shape "BooleanType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-secret-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-secret-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-secret-request 'make-delete-secret-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -574,14 +772,29 @@
                           delete-secret-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-secret-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-secret-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (deletion-date common-lisp:nil :type
-    (common-lisp:or deletion-date-type common-lisp:null)))
+ (common-lisp:defclass delete-secret-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-delete-secret-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-delete-secret-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (deletion-date :initarg :deletion-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or deletion-date-type common-lisp:null)
+                         :accessor
+                         struct-shape-delete-secret-response-deletion-date
+                         :shape "DeletionDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-secret-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-secret-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-secret-response 'make-delete-secret-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -623,11 +836,19 @@
 (common-lisp:deftype deleted-date-type () 'common-lisp:string)
 (common-lisp:deftype deletion-date-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-secret-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-secret-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null)))
+ (common-lisp:defclass describe-secret-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-request-secret-id :shape
+                         "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-secret-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-secret-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-secret-request 'make-describe-secret-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -653,43 +874,140 @@
                           describe-secret-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-secret-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-secret-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description-type common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id-type common-lisp:null))
-   (rotation-enabled common-lisp:nil :type
-    (common-lisp:or rotation-enabled-type common-lisp:null))
-   (rotation-lambda-arn common-lisp:nil :type
-    (common-lisp:or rotation-lambda-arntype common-lisp:null))
-   (rotation-rules common-lisp:nil :type
-    (common-lisp:or rotation-rules-type common-lisp:null))
-   (last-rotated-date common-lisp:nil :type
-    (common-lisp:or last-rotated-date-type common-lisp:null))
-   (last-changed-date common-lisp:nil :type
-    (common-lisp:or last-changed-date-type common-lisp:null))
-   (last-accessed-date common-lisp:nil :type
-    (common-lisp:or last-accessed-date-type common-lisp:null))
-   (deleted-date common-lisp:nil :type
-    (common-lisp:or deleted-date-type common-lisp:null))
-   (next-rotation-date common-lisp:nil :type
-    (common-lisp:or next-rotation-date-type common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list-type common-lisp:null))
-   (version-ids-to-stages common-lisp:nil :type
-    (common-lisp:or secret-versions-to-stages-map-type common-lisp:null))
-   (owning-service common-lisp:nil :type
-    (common-lisp:or owning-service-type common-lisp:null))
-   (created-date common-lisp:nil :type
-    (common-lisp:or timestamp-type common-lisp:null))
-   (primary-region common-lisp:nil :type
-    (common-lisp:or region-type common-lisp:null))
-   (replication-status common-lisp:nil :type
-    (common-lisp:or replication-status-list-type common-lisp:null)))
+ (common-lisp:defclass describe-secret-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-describe-secret-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-describe-secret-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-description
+                         :shape "DescriptionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-kms-key-id
+                         :shape "KmsKeyIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rotation-enabled :initarg :rotation-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rotation-enabled-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-rotation-enabled
+                         :shape "RotationEnabledType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rotation-lambda-arn :initarg :rotation-lambda-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rotation-lambda-arntype
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-rotation-lambda-arn
+                         :shape "RotationLambdaARNType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (rotation-rules :initarg :rotation-rules :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rotation-rules-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-rotation-rules
+                         :shape "RotationRulesType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-rotated-date :initarg :last-rotated-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-rotated-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-last-rotated-date
+                         :shape "LastRotatedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-changed-date :initarg :last-changed-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-changed-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-last-changed-date
+                         :shape "LastChangedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-accessed-date :initarg :last-accessed-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-accessed-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-last-accessed-date
+                         :shape "LastAccessedDateType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (deleted-date :initarg :deleted-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or deleted-date-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-deleted-date
+                         :shape "DeletedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-rotation-date :initarg :next-rotation-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or next-rotation-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-next-rotation-date
+                         :shape "NextRotationDateType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list-type common-lisp:null)
+                         :accessor struct-shape-describe-secret-response-tags
+                         :shape "TagListType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-ids-to-stages :initarg :version-ids-to-stages
+                         :initform common-lisp:nil :type
+                         (common-lisp:or secret-versions-to-stages-map-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-version-ids-to-stages
+                         :shape "SecretVersionsToStagesMapType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (owning-service :initarg :owning-service :initform
+                         common-lisp:nil :type
+                         (common-lisp:or owning-service-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-owning-service
+                         :shape "OwningServiceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-created-date
+                         :shape "TimestampType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-region :initarg :primary-region :initform
+                         common-lisp:nil :type
+                         (common-lisp:or region-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-primary-region
+                         :shape "RegionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (replication-status :initarg :replication-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or replication-status-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-secret-response-replication-status
+                         :shape "ReplicationStatusListType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-secret-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-secret-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-secret-response 'make-describe-secret-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -851,12 +1169,25 @@
 (common-lisp:deftype exclude-punctuation-type () 'common-lisp:boolean)
 (common-lisp:deftype exclude-uppercase-type () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (filter (:copier common-lisp:nil) (:conc-name "struct-shape-filter-"))
-   (key common-lisp:nil :type
-    (common-lisp:or filter-name-string-type common-lisp:null))
-   (values common-lisp:nil :type
-    (common-lisp:or filter-values-string-list common-lisp:null)))
+ (common-lisp:defclass filter common-lisp:nil
+                       ((key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or filter-name-string-type
+                                         common-lisp:null)
+                         :accessor struct-shape-filter-key :shape
+                         "FilterNameStringType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type
+                         (common-lisp:or filter-values-string-list
+                                         common-lisp:null)
+                         :accessor struct-shape-filter-values :shape
+                         "FilterValuesStringList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input filter))
@@ -900,25 +1231,74 @@
                            (trivial-types:proper-list filter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-random-password-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-random-password-request-"))
-   (password-length common-lisp:nil :type
-    (common-lisp:or password-length-type common-lisp:null))
-   (exclude-characters common-lisp:nil :type
-    (common-lisp:or exclude-characters-type common-lisp:null))
-   (exclude-numbers common-lisp:nil :type
-    (common-lisp:or exclude-numbers-type common-lisp:null))
-   (exclude-punctuation common-lisp:nil :type
-    (common-lisp:or exclude-punctuation-type common-lisp:null))
-   (exclude-uppercase common-lisp:nil :type
-    (common-lisp:or exclude-uppercase-type common-lisp:null))
-   (exclude-lowercase common-lisp:nil :type
-    (common-lisp:or exclude-lowercase-type common-lisp:null))
-   (include-space common-lisp:nil :type
-    (common-lisp:or include-space-type common-lisp:null))
-   (require-each-included-type common-lisp:nil :type
-    (common-lisp:or require-each-included-type-type common-lisp:null)))
+ (common-lisp:defclass get-random-password-request common-lisp:nil
+                       ((password-length :initarg :password-length :initform
+                         common-lisp:nil :type
+                         (common-lisp:or password-length-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-request-password-length
+                         :shape "PasswordLengthType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (exclude-characters :initarg :exclude-characters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or exclude-characters-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-request-exclude-characters
+                         :shape "ExcludeCharactersType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (exclude-numbers :initarg :exclude-numbers :initform
+                         common-lisp:nil :type
+                         (common-lisp:or exclude-numbers-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-request-exclude-numbers
+                         :shape "ExcludeNumbersType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (exclude-punctuation :initarg :exclude-punctuation
+                         :initform common-lisp:nil :type
+                         (common-lisp:or exclude-punctuation-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-request-exclude-punctuation
+                         :shape "ExcludePunctuationType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (exclude-uppercase :initarg :exclude-uppercase
+                         :initform common-lisp:nil :type
+                         (common-lisp:or exclude-uppercase-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-request-exclude-uppercase
+                         :shape "ExcludeUppercaseType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (exclude-lowercase :initarg :exclude-lowercase
+                         :initform common-lisp:nil :type
+                         (common-lisp:or exclude-lowercase-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-request-exclude-lowercase
+                         :shape "ExcludeLowercaseType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (include-space :initarg :include-space :initform
+                         common-lisp:nil :type
+                         (common-lisp:or include-space-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-request-include-space
+                         :shape "IncludeSpaceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (require-each-included-type :initarg
+                         :require-each-included-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or require-each-included-type-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-request-require-each-included-type
+                         :shape "RequireEachIncludedTypeType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-random-password-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-random-password-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-random-password-request
                     'make-get-random-password-request))
@@ -995,11 +1375,19 @@
                           get-random-password-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-random-password-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-random-password-response-"))
-   (random-password common-lisp:nil :type
-    (common-lisp:or random-password-type common-lisp:null)))
+ (common-lisp:defclass get-random-password-response common-lisp:nil
+                       ((random-password :initarg :random-password :initform
+                         common-lisp:nil :type
+                         (common-lisp:or random-password-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-random-password-response-random-password
+                         :shape "RandomPasswordType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-random-password-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-random-password-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-random-password-response
                     'make-get-random-password-response))
@@ -1026,11 +1414,19 @@
                           get-random-password-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resource-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resource-policy-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null)))
+ (common-lisp:defclass get-resource-policy-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-policy-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resource-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resource-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resource-policy-request
                     'make-get-resource-policy-request))
@@ -1057,13 +1453,31 @@
                           get-resource-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-resource-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-resource-policy-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name-type common-lisp:null))
-   (resource-policy common-lisp:nil :type
-    (common-lisp:or non-empty-resource-policy-type common-lisp:null)))
+ (common-lisp:defclass get-resource-policy-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-policy-response-arn :shape
+                         "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name-type common-lisp:null) :accessor
+                         struct-shape-get-resource-policy-response-name :shape
+                         "NameType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-policy :initarg :resource-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or non-empty-resource-policy-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-resource-policy-response-resource-policy
+                         :shape "NonEmptyResourcePolicyType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-resource-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-resource-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-resource-policy-response
                     'make-get-resource-policy-response))
@@ -1104,15 +1518,35 @@
                           get-resource-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-secret-value-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-secret-value-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null))
-   (version-stage common-lisp:nil :type
-    (common-lisp:or secret-version-stage-type common-lisp:null)))
+ (common-lisp:defclass get-secret-value-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-secret-value-request-secret-id :shape
+                         "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-secret-value-request-version-id
+                         :shape "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-stage :initarg :version-stage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-stage-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-secret-value-request-version-stage
+                         :shape "SecretVersionStageType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-secret-value-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-secret-value-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-secret-value-request 'make-get-secret-value-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1152,22 +1586,59 @@
                           get-secret-value-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-secret-value-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-secret-value-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null))
-   (secret-binary common-lisp:nil :type
-    (common-lisp:or secret-binary-type common-lisp:null))
-   (secret-string common-lisp:nil :type
-    (common-lisp:or secret-string-type common-lisp:null))
-   (version-stages common-lisp:nil :type
-    (common-lisp:or secret-version-stages-type common-lisp:null))
-   (created-date common-lisp:nil :type
-    (common-lisp:or created-date-type common-lisp:null)))
+ (common-lisp:defclass get-secret-value-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-get-secret-value-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-get-secret-value-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-secret-value-response-version-id
+                         :shape "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-binary :initarg :secret-binary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-binary-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-secret-value-response-secret-binary
+                         :shape "SecretBinaryType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-string :initarg :secret-string :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-string-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-secret-value-response-secret-string
+                         :shape "SecretStringType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-stages :initarg :version-stages :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-stages-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-secret-value-response-version-stages
+                         :shape "SecretVersionStagesType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or created-date-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-secret-value-response-created-date
+                         :shape "CreatedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-secret-value-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-secret-value-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-secret-value-response
                     'make-get-secret-value-response))
@@ -1288,17 +1759,41 @@
   (common-lisp:list 'limit-exceeded-exception
                     'limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-secret-version-ids-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-secret-version-ids-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results-type common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null))
-   (include-deprecated common-lisp:nil :type
-    (common-lisp:or boolean-type common-lisp:null)))
+ (common-lisp:defclass list-secret-version-ids-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secret-version-ids-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secret-version-ids-request-max-results
+                         :shape "MaxResultsType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secret-version-ids-request-next-token
+                         :shape "NextTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-deprecated :initarg :include-deprecated
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secret-version-ids-request-include-deprecated
+                         :shape "BooleanType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-secret-version-ids-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-secret-version-ids-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-secret-version-ids-request
                     'make-list-secret-version-ids-request))
@@ -1346,16 +1841,40 @@
                           list-secret-version-ids-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-secret-version-ids-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-secret-version-ids-response-"))
-   (versions common-lisp:nil :type
-    (common-lisp:or secret-versions-list-type common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null)))
+ (common-lisp:defclass list-secret-version-ids-response common-lisp:nil
+                       ((versions :initarg :versions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or secret-versions-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-secret-version-ids-response-versions
+                         :shape "SecretVersionsListType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secret-version-ids-response-next-token
+                         :shape "NextTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-list-secret-version-ids-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secret-version-ids-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-secret-version-ids-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-secret-version-ids-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-secret-version-ids-response
                     'make-list-secret-version-ids-response))
@@ -1403,19 +1922,44 @@
                           list-secret-version-ids-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-secrets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-secrets-request-"))
-   (include-planned-deletion common-lisp:nil :type
-    (common-lisp:or boolean-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results-type common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or filters-list-type common-lisp:null))
-   (sort-order common-lisp:nil :type
-    (common-lisp:or sort-order-type common-lisp:null)))
+ (common-lisp:defclass list-secrets-request common-lisp:nil
+                       ((include-planned-deletion :initarg
+                         :include-planned-deletion :initform common-lisp:nil
+                         :type (common-lisp:or boolean-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secrets-request-include-planned-deletion
+                         :shape "BooleanType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secrets-request-max-results :shape
+                         "MaxResultsType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor struct-shape-list-secrets-request-next-token
+                         :shape "NextTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or filters-list-type common-lisp:null)
+                         :accessor struct-shape-list-secrets-request-filters
+                         :shape "FiltersListType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sort-order :initarg :sort-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sort-order-type common-lisp:null)
+                         :accessor struct-shape-list-secrets-request-sort-order
+                         :shape "SortOrderType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-secrets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-secrets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-secrets-request 'make-list-secrets-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1464,13 +2008,26 @@
                         ((aws-sdk/generator/shape::input list-secrets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-secrets-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-secrets-response-"))
-   (secret-list common-lisp:nil :type
-    (common-lisp:or secret-list-type common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null)))
+ (common-lisp:defclass list-secrets-response common-lisp:nil
+                       ((secret-list :initarg :secret-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-list-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secrets-response-secret-list :shape
+                         "SecretListType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-secrets-response-next-token :shape
+                         "NextTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-secrets-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-secrets-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-secrets-response 'make-list-secrets-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1534,15 +2091,35 @@
  (common-lisp:export
   (common-lisp:list 'public-policy-exception 'public-policy-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-resource-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-resource-policy-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (resource-policy (common-lisp:error ":resource-policy is required") :type
-    (common-lisp:or non-empty-resource-policy-type common-lisp:null))
-   (block-public-policy common-lisp:nil :type
-    (common-lisp:or boolean-type common-lisp:null)))
+ (common-lisp:defclass put-resource-policy-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-put-resource-policy-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-policy :initarg :resource-policy :initform
+                         (common-lisp:error ":resource-policy is required")
+                         :type
+                         (common-lisp:or non-empty-resource-policy-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-resource-policy-request-resource-policy
+                         :shape "NonEmptyResourcePolicyType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (block-public-policy :initarg :block-public-policy
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean-type common-lisp:null)
+                         :accessor
+                         struct-shape-put-resource-policy-request-block-public-policy
+                         :shape "BooleanType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-resource-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-resource-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-resource-policy-request
                     'make-put-resource-policy-request))
@@ -1583,11 +2160,23 @@
                           put-resource-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-resource-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-resource-policy-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or name-type common-lisp:null)))
+ (common-lisp:defclass put-resource-policy-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-put-resource-policy-response-arn :shape
+                         "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or name-type common-lisp:null) :accessor
+                         struct-shape-put-resource-policy-response-name :shape
+                         "NameType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-resource-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-resource-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-resource-policy-response
                     'make-put-resource-policy-response))
@@ -1621,19 +2210,49 @@
                           put-resource-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-secret-value-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-secret-value-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (client-request-token common-lisp:nil :type
-    (common-lisp:or client-request-token-type common-lisp:null))
-   (secret-binary common-lisp:nil :type
-    (common-lisp:or secret-binary-type common-lisp:null))
-   (secret-string common-lisp:nil :type
-    (common-lisp:or secret-string-type common-lisp:null))
-   (version-stages common-lisp:nil :type
-    (common-lisp:or secret-version-stages-type common-lisp:null)))
+ (common-lisp:defclass put-secret-value-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-put-secret-value-request-secret-id :shape
+                         "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-request-token-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-secret-value-request-client-request-token
+                         :shape "ClientRequestTokenType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (secret-binary :initarg :secret-binary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-binary-type common-lisp:null)
+                         :accessor
+                         struct-shape-put-secret-value-request-secret-binary
+                         :shape "SecretBinaryType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-string :initarg :secret-string :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-string-type common-lisp:null)
+                         :accessor
+                         struct-shape-put-secret-value-request-secret-string
+                         :shape "SecretStringType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-stages :initarg :version-stages :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-stages-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-secret-value-request-version-stages
+                         :shape "SecretVersionStagesType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-secret-value-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-secret-value-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-secret-value-request 'make-put-secret-value-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1688,16 +2307,38 @@
                           put-secret-value-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-secret-value-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-secret-value-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null))
-   (version-stages common-lisp:nil :type
-    (common-lisp:or secret-version-stages-type common-lisp:null)))
+ (common-lisp:defclass put-secret-value-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-put-secret-value-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-put-secret-value-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-secret-value-response-version-id
+                         :shape "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-stages :initarg :version-stages :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-stages-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-secret-value-response-version-stages
+                         :shape "SecretVersionStagesType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-secret-value-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-secret-value-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-secret-value-response
                     'make-put-secret-value-response))
@@ -1748,14 +2389,31 @@
 (common-lisp:deftype recovery-window-in-days-type () 'common-lisp:integer)
 (common-lisp:deftype region-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (remove-regions-from-replication-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-remove-regions-from-replication-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (remove-replica-regions
-    (common-lisp:error ":remove-replica-regions is required") :type
-    (common-lisp:or remove-replica-region-list-type common-lisp:null)))
+ (common-lisp:defclass remove-regions-from-replication-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-remove-regions-from-replication-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (remove-replica-regions :initarg
+                         :remove-replica-regions :initform
+                         (common-lisp:error
+                          ":remove-replica-regions is required")
+                         :type
+                         (common-lisp:or remove-replica-region-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-remove-regions-from-replication-request-remove-replica-regions
+                         :shape "RemoveReplicaRegionListType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-remove-regions-from-replication-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'remove-regions-from-replication-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'remove-regions-from-replication-request
                     'make-remove-regions-from-replication-request))
@@ -1790,12 +2448,27 @@
                           remove-regions-from-replication-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (remove-regions-from-replication-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-remove-regions-from-replication-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (replication-status common-lisp:nil :type
-    (common-lisp:or replication-status-list-type common-lisp:null)))
+ (common-lisp:defclass remove-regions-from-replication-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-remove-regions-from-replication-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (replication-status :initarg :replication-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or replication-status-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-remove-regions-from-replication-response-replication-status
+                         :shape "ReplicationStatusListType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-remove-regions-from-replication-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'remove-regions-from-replication-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'remove-regions-from-replication-response
                     'make-remove-regions-from-replication-response))
@@ -1837,12 +2510,23 @@
                            (trivial-types:proper-list region-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (replica-region-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-replica-region-type-"))
-   (region common-lisp:nil :type (common-lisp:or region-type common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id-type common-lisp:null)))
+ (common-lisp:defclass replica-region-type common-lisp:nil
+                       ((region :initarg :region :initform common-lisp:nil
+                         :type (common-lisp:or region-type common-lisp:null)
+                         :accessor struct-shape-replica-region-type-region
+                         :shape "RegionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id-type common-lisp:null)
+                         :accessor struct-shape-replica-region-type-kms-key-id
+                         :shape "KmsKeyIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-replica-region-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'replica-region-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'replica-region-type 'make-replica-region-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1869,15 +2553,38 @@
                         ((aws-sdk/generator/shape::input replica-region-type))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (replicate-secret-to-regions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-replicate-secret-to-regions-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (add-replica-regions (common-lisp:error ":add-replica-regions is required")
-    :type (common-lisp:or add-replica-region-list-type common-lisp:null))
-   (force-overwrite-replica-secret common-lisp:nil :type
-    (common-lisp:or boolean-type common-lisp:null)))
+ (common-lisp:defclass replicate-secret-to-regions-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-replicate-secret-to-regions-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (add-replica-regions :initarg :add-replica-regions
+                         :initform
+                         (common-lisp:error ":add-replica-regions is required")
+                         :type
+                         (common-lisp:or add-replica-region-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-replicate-secret-to-regions-request-add-replica-regions
+                         :shape "AddReplicaRegionListType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (force-overwrite-replica-secret :initarg
+                         :force-overwrite-replica-secret :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean-type common-lisp:null)
+                         :accessor
+                         struct-shape-replicate-secret-to-regions-request-force-overwrite-replica-secret
+                         :shape "BooleanType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-replicate-secret-to-regions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'replicate-secret-to-regions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'replicate-secret-to-regions-request
                     'make-replicate-secret-to-regions-request))
@@ -1919,12 +2626,27 @@
                           replicate-secret-to-regions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (replicate-secret-to-regions-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-replicate-secret-to-regions-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (replication-status common-lisp:nil :type
-    (common-lisp:or replication-status-list-type common-lisp:null)))
+ (common-lisp:defclass replicate-secret-to-regions-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-replicate-secret-to-regions-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (replication-status :initarg :replication-status
+                         :initform common-lisp:nil :type
+                         (common-lisp:or replication-status-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-replicate-secret-to-regions-response-replication-status
+                         :shape "ReplicationStatusListType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-replicate-secret-to-regions-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'replicate-secret-to-regions-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'replicate-secret-to-regions-response
                     'make-replicate-secret-to-regions-response))
@@ -1966,17 +2688,44 @@
                            (trivial-types:proper-list replication-status-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (replication-status-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-replication-status-type-"))
-   (region common-lisp:nil :type (common-lisp:or region-type common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id-type common-lisp:null))
-   (status common-lisp:nil :type (common-lisp:or status-type common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message-type common-lisp:null))
-   (last-accessed-date common-lisp:nil :type
-    (common-lisp:or last-accessed-date-type common-lisp:null)))
+ (common-lisp:defclass replication-status-type common-lisp:nil
+                       ((region :initarg :region :initform common-lisp:nil
+                         :type (common-lisp:or region-type common-lisp:null)
+                         :accessor struct-shape-replication-status-type-region
+                         :shape "RegionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-replication-status-type-kms-key-id :shape
+                         "KmsKeyIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or status-type common-lisp:null)
+                         :accessor struct-shape-replication-status-type-status
+                         :shape "StatusType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message-type common-lisp:null)
+                         :accessor
+                         struct-shape-replication-status-type-status-message
+                         :shape "StatusMessageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-accessed-date :initarg :last-accessed-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-accessed-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-replication-status-type-last-accessed-date
+                         :shape "LastAccessedDateType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-replication-status-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'replication-status-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'replication-status-type 'make-replication-status-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2047,11 +2796,19 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (restore-secret-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-restore-secret-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null)))
+ (common-lisp:defclass restore-secret-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-restore-secret-request-secret-id :shape
+                         "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-restore-secret-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'restore-secret-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'restore-secret-request 'make-restore-secret-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2077,12 +2834,22 @@
                           restore-secret-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (restore-secret-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-restore-secret-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null)))
+ (common-lisp:defclass restore-secret-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-restore-secret-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-restore-secret-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-restore-secret-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'restore-secret-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'restore-secret-response 'make-restore-secret-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2115,19 +2882,48 @@
                           restore-secret-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rotate-secret-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rotate-secret-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (client-request-token common-lisp:nil :type
-    (common-lisp:or client-request-token-type common-lisp:null))
-   (rotation-lambda-arn common-lisp:nil :type
-    (common-lisp:or rotation-lambda-arntype common-lisp:null))
-   (rotation-rules common-lisp:nil :type
-    (common-lisp:or rotation-rules-type common-lisp:null))
-   (rotate-immediately common-lisp:nil :type
-    (common-lisp:or boolean-type common-lisp:null)))
+ (common-lisp:defclass rotate-secret-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor struct-shape-rotate-secret-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-request-token-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-secret-request-client-request-token
+                         :shape "ClientRequestTokenType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (rotation-lambda-arn :initarg :rotation-lambda-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rotation-lambda-arntype
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-secret-request-rotation-lambda-arn
+                         :shape "RotationLambdaARNType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (rotation-rules :initarg :rotation-rules :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rotation-rules-type common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-secret-request-rotation-rules
+                         :shape "RotationRulesType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rotate-immediately :initarg :rotate-immediately
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean-type common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-secret-request-rotate-immediately
+                         :shape "BooleanType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rotate-secret-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rotate-secret-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rotate-secret-request 'make-rotate-secret-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2182,14 +2978,30 @@
                           rotate-secret-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rotate-secret-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rotate-secret-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null)))
+ (common-lisp:defclass rotate-secret-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-rotate-secret-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-rotate-secret-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rotate-secret-response-version-id :shape
+                         "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rotate-secret-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rotate-secret-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rotate-secret-response 'make-rotate-secret-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2231,15 +3043,34 @@
 (common-lisp:deftype rotation-enabled-type () 'common-lisp:boolean)
 (common-lisp:deftype rotation-lambda-arntype () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (rotation-rules-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rotation-rules-type-"))
-   (automatically-after-days common-lisp:nil :type
-    (common-lisp:or automatically-rotate-after-days-type common-lisp:null))
-   (duration common-lisp:nil :type
-    (common-lisp:or duration-type common-lisp:null))
-   (schedule-expression common-lisp:nil :type
-    (common-lisp:or schedule-expression-type common-lisp:null)))
+ (common-lisp:defclass rotation-rules-type common-lisp:nil
+                       ((automatically-after-days :initarg
+                         :automatically-after-days :initform common-lisp:nil
+                         :type
+                         (common-lisp:or automatically-rotate-after-days-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rotation-rules-type-automatically-after-days
+                         :shape "AutomaticallyRotateAfterDaysType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (duration :initarg :duration :initform common-lisp:nil
+                         :type (common-lisp:or duration-type common-lisp:null)
+                         :accessor struct-shape-rotation-rules-type-duration
+                         :shape "DurationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schedule-expression :initarg :schedule-expression
+                         :initform common-lisp:nil :type
+                         (common-lisp:or schedule-expression-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rotation-rules-type-schedule-expression
+                         :shape "ScheduleExpressionType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rotation-rules-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rotation-rules-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rotation-rules-type 'make-rotation-rules-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2287,41 +3118,129 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype secret-id-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (secret-list-entry (:copier common-lisp:nil)
-      (:conc-name "struct-shape-secret-list-entry-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description-type common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id-type common-lisp:null))
-   (rotation-enabled common-lisp:nil :type
-    (common-lisp:or rotation-enabled-type common-lisp:null))
-   (rotation-lambda-arn common-lisp:nil :type
-    (common-lisp:or rotation-lambda-arntype common-lisp:null))
-   (rotation-rules common-lisp:nil :type
-    (common-lisp:or rotation-rules-type common-lisp:null))
-   (last-rotated-date common-lisp:nil :type
-    (common-lisp:or last-rotated-date-type common-lisp:null))
-   (last-changed-date common-lisp:nil :type
-    (common-lisp:or last-changed-date-type common-lisp:null))
-   (last-accessed-date common-lisp:nil :type
-    (common-lisp:or last-accessed-date-type common-lisp:null))
-   (deleted-date common-lisp:nil :type
-    (common-lisp:or deleted-date-type common-lisp:null))
-   (next-rotation-date common-lisp:nil :type
-    (common-lisp:or next-rotation-date-type common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list-type common-lisp:null))
-   (secret-versions-to-stages common-lisp:nil :type
-    (common-lisp:or secret-versions-to-stages-map-type common-lisp:null))
-   (owning-service common-lisp:nil :type
-    (common-lisp:or owning-service-type common-lisp:null))
-   (created-date common-lisp:nil :type
-    (common-lisp:or timestamp-type common-lisp:null))
-   (primary-region common-lisp:nil :type
-    (common-lisp:or region-type common-lisp:null)))
+ (common-lisp:defclass secret-list-entry common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-secret-list-entry-arn :shape
+                         "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-secret-list-entry-name :shape
+                         "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description-type common-lisp:null)
+                         :accessor struct-shape-secret-list-entry-description
+                         :shape "DescriptionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id-type common-lisp:null)
+                         :accessor struct-shape-secret-list-entry-kms-key-id
+                         :shape "KmsKeyIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rotation-enabled :initarg :rotation-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rotation-enabled-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-rotation-enabled :shape
+                         "RotationEnabledType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rotation-lambda-arn :initarg :rotation-lambda-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rotation-lambda-arntype
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-rotation-lambda-arn
+                         :shape "RotationLambdaARNType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (rotation-rules :initarg :rotation-rules :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rotation-rules-type common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-rotation-rules :shape
+                         "RotationRulesType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-rotated-date :initarg :last-rotated-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-rotated-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-last-rotated-date
+                         :shape "LastRotatedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-changed-date :initarg :last-changed-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-changed-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-last-changed-date
+                         :shape "LastChangedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-accessed-date :initarg :last-accessed-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-accessed-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-last-accessed-date
+                         :shape "LastAccessedDateType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (deleted-date :initarg :deleted-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or deleted-date-type common-lisp:null)
+                         :accessor struct-shape-secret-list-entry-deleted-date
+                         :shape "DeletedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-rotation-date :initarg :next-rotation-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or next-rotation-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-next-rotation-date
+                         :shape "NextRotationDateType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list-type common-lisp:null)
+                         :accessor struct-shape-secret-list-entry-tags :shape
+                         "TagListType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (secret-versions-to-stages :initarg
+                         :secret-versions-to-stages :initform common-lisp:nil
+                         :type
+                         (common-lisp:or secret-versions-to-stages-map-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-secret-versions-to-stages
+                         :shape "SecretVersionsToStagesMapType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (owning-service :initarg :owning-service :initform
+                         common-lisp:nil :type
+                         (common-lisp:or owning-service-type common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-owning-service :shape
+                         "OwningServiceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-type common-lisp:null)
+                         :accessor struct-shape-secret-list-entry-created-date
+                         :shape "TimestampType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (primary-region :initarg :primary-region :initform
+                         common-lisp:nil :type
+                         (common-lisp:or region-type common-lisp:null)
+                         :accessor
+                         struct-shape-secret-list-entry-primary-region :shape
+                         "RegionType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-secret-list-entry
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'secret-list-entry
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'secret-list-entry 'make-secret-list-entry))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2464,22 +3383,57 @@
 (common-lisp:deftype secret-name-type () 'common-lisp:string)
 (common-lisp:deftype secret-string-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (secret-value-entry (:copier common-lisp:nil)
-      (:conc-name "struct-shape-secret-value-entry-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null))
-   (secret-binary common-lisp:nil :type
-    (common-lisp:or secret-binary-type common-lisp:null))
-   (secret-string common-lisp:nil :type
-    (common-lisp:or secret-string-type common-lisp:null))
-   (version-stages common-lisp:nil :type
-    (common-lisp:or secret-version-stages-type common-lisp:null))
-   (created-date common-lisp:nil :type
-    (common-lisp:or created-date-type common-lisp:null)))
+ (common-lisp:defclass secret-value-entry common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-secret-value-entry-arn :shape
+                         "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-secret-value-entry-name :shape
+                         "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor struct-shape-secret-value-entry-version-id
+                         :shape "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-binary :initarg :secret-binary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-binary-type common-lisp:null)
+                         :accessor
+                         struct-shape-secret-value-entry-secret-binary :shape
+                         "SecretBinaryType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-string :initarg :secret-string :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-string-type common-lisp:null)
+                         :accessor
+                         struct-shape-secret-value-entry-secret-string :shape
+                         "SecretStringType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-stages :initarg :version-stages :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-stages-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-value-entry-version-stages :shape
+                         "SecretVersionStagesType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or created-date-type common-lisp:null)
+                         :accessor struct-shape-secret-value-entry-created-date
+                         :shape "CreatedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-secret-value-entry
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'secret-value-entry
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'secret-value-entry 'make-secret-value-entry))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2560,19 +3514,50 @@
                             secret-version-stage-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (secret-versions-list-entry (:copier common-lisp:nil)
-      (:conc-name "struct-shape-secret-versions-list-entry-"))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null))
-   (version-stages common-lisp:nil :type
-    (common-lisp:or secret-version-stages-type common-lisp:null))
-   (last-accessed-date common-lisp:nil :type
-    (common-lisp:or last-accessed-date-type common-lisp:null))
-   (created-date common-lisp:nil :type
-    (common-lisp:or created-date-type common-lisp:null))
-   (kms-key-ids common-lisp:nil :type
-    (common-lisp:or kms-key-id-list-type common-lisp:null)))
+ (common-lisp:defclass secret-versions-list-entry common-lisp:nil
+                       ((version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-versions-list-entry-version-id
+                         :shape "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-stages :initarg :version-stages :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-stages-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-versions-list-entry-version-stages
+                         :shape "SecretVersionStagesType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-accessed-date :initarg :last-accessed-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or last-accessed-date-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-secret-versions-list-entry-last-accessed-date
+                         :shape "LastAccessedDateType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-date :initarg :created-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or created-date-type common-lisp:null)
+                         :accessor
+                         struct-shape-secret-versions-list-entry-created-date
+                         :shape "CreatedDateType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-ids :initarg :kms-key-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id-list-type common-lisp:null)
+                         :accessor
+                         struct-shape-secret-versions-list-entry-kms-key-ids
+                         :shape "KmsKeyIdListType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-secret-versions-list-entry
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'secret-versions-list-entry
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'secret-versions-list-entry
                     'make-secret-versions-list-entry))
@@ -2648,11 +3633,20 @@
 (common-lisp:deftype status-message-type () 'common-lisp:string)
 (common-lisp:deftype status-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-replication-to-replica-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-replication-to-replica-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null)))
+ (common-lisp:defclass stop-replication-to-replica-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-stop-replication-to-replica-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-replication-to-replica-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'stop-replication-to-replica-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-replication-to-replica-request
                     'make-stop-replication-to-replica-request))
@@ -2679,11 +3673,19 @@
                           stop-replication-to-replica-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-replication-to-replica-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-replication-to-replica-response-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or secret-arntype common-lisp:null)))
+ (common-lisp:defclass stop-replication-to-replica-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-stop-replication-to-replica-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-replication-to-replica-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'stop-replication-to-replica-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-replication-to-replica-response
                     'make-stop-replication-to-replica-response))
@@ -2710,11 +3712,21 @@
                           stop-replication-to-replica-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key common-lisp:nil :type (common-lisp:or tag-key-type common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or tag-value-type common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or tag-key-type common-lisp:null)
+                         :accessor struct-shape-tag-key :shape "TagKeyType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or tag-value-type common-lisp:null)
+                         :accessor struct-shape-tag-value :shape "TagValueType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -2756,13 +3768,24 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list-type common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor struct-shape-tag-resource-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-list-type common-lisp:null)
+                         :accessor struct-shape-tag-resource-request-tags
+                         :shape "TagListType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2791,13 +3814,25 @@
 (common-lisp:deftype tag-value-type () 'common-lisp:string)
 (common-lisp:deftype timestamp-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list-type common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-secret-id :shape
+                         "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or tag-key-list-type common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyListType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2830,21 +3865,54 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-secret-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-secret-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (client-request-token common-lisp:nil :type
-    (common-lisp:or client-request-token-type common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description-type common-lisp:null))
-   (kms-key-id common-lisp:nil :type
-    (common-lisp:or kms-key-id-type common-lisp:null))
-   (secret-binary common-lisp:nil :type
-    (common-lisp:or secret-binary-type common-lisp:null))
-   (secret-string common-lisp:nil :type
-    (common-lisp:or secret-string-type common-lisp:null)))
+ (common-lisp:defclass update-secret-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor struct-shape-update-secret-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-request-token-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-request-client-request-token
+                         :shape "ClientRequestTokenType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-request-description :shape
+                         "DescriptionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-id :initarg :kms-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-request-kms-key-id :shape
+                         "KmsKeyIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-binary :initarg :secret-binary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-binary-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-request-secret-binary
+                         :shape "SecretBinaryType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-string :initarg :secret-string :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-string-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-request-secret-string
+                         :shape "SecretStringType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-secret-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-secret-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-secret-request 'make-update-secret-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2906,14 +3974,30 @@
                           update-secret-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-secret-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-secret-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null))
-   (version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null)))
+ (common-lisp:defclass update-secret-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor struct-shape-update-secret-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor struct-shape-update-secret-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-id :initarg :version-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-response-version-id :shape
+                         "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-secret-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-secret-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-secret-response 'make-update-secret-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2953,17 +4037,45 @@
                           update-secret-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-secret-version-stage-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-secret-version-stage-request-"))
-   (secret-id (common-lisp:error ":secret-id is required") :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (version-stage (common-lisp:error ":version-stage is required") :type
-    (common-lisp:or secret-version-stage-type common-lisp:null))
-   (remove-from-version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null))
-   (move-to-version-id common-lisp:nil :type
-    (common-lisp:or secret-version-id-type common-lisp:null)))
+ (common-lisp:defclass update-secret-version-stage-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         (common-lisp:error ":secret-id is required") :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-version-stage-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-stage :initarg :version-stage :initform
+                         (common-lisp:error ":version-stage is required") :type
+                         (common-lisp:or secret-version-stage-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-version-stage-request-version-stage
+                         :shape "SecretVersionStageType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (remove-from-version-id :initarg
+                         :remove-from-version-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-version-stage-request-remove-from-version-id
+                         :shape "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (move-to-version-id :initarg :move-to-version-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or secret-version-id-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-version-stage-request-move-to-version-id
+                         :shape "SecretVersionIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-secret-version-stage-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-secret-version-stage-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-secret-version-stage-request
                     'make-update-secret-version-stage-request))
@@ -3012,12 +4124,25 @@
                           update-secret-version-stage-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-secret-version-stage-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-secret-version-stage-response-"))
-   (arn common-lisp:nil :type (common-lisp:or secret-arntype common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or secret-name-type common-lisp:null)))
+ (common-lisp:defclass update-secret-version-stage-response common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or secret-arntype common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-version-stage-response-arn
+                         :shape "SecretARNType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or secret-name-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-secret-version-stage-response-name
+                         :shape "SecretNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-secret-version-stage-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-secret-version-stage-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-secret-version-stage-response
                     'make-update-secret-version-stage-response))
@@ -3051,13 +4176,29 @@
                           update-secret-version-stage-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validate-resource-policy-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validate-resource-policy-request-"))
-   (secret-id common-lisp:nil :type
-    (common-lisp:or secret-id-type common-lisp:null))
-   (resource-policy (common-lisp:error ":resource-policy is required") :type
-    (common-lisp:or non-empty-resource-policy-type common-lisp:null)))
+ (common-lisp:defclass validate-resource-policy-request common-lisp:nil
+                       ((secret-id :initarg :secret-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or secret-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-validate-resource-policy-request-secret-id
+                         :shape "SecretIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-policy :initarg :resource-policy :initform
+                         (common-lisp:error ":resource-policy is required")
+                         :type
+                         (common-lisp:or non-empty-resource-policy-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-validate-resource-policy-request-resource-policy
+                         :shape "NonEmptyResourcePolicyType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validate-resource-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'validate-resource-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validate-resource-policy-request
                     'make-validate-resource-policy-request))
@@ -3091,13 +4232,28 @@
                           validate-resource-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validate-resource-policy-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validate-resource-policy-response-"))
-   (policy-validation-passed common-lisp:nil :type
-    (common-lisp:or boolean-type common-lisp:null))
-   (validation-errors common-lisp:nil :type
-    (common-lisp:or validation-errors-type common-lisp:null)))
+ (common-lisp:defclass validate-resource-policy-response common-lisp:nil
+                       ((policy-validation-passed :initarg
+                         :policy-validation-passed :initform common-lisp:nil
+                         :type (common-lisp:or boolean-type common-lisp:null)
+                         :accessor
+                         struct-shape-validate-resource-policy-response-policy-validation-passed
+                         :shape "BooleanType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (validation-errors :initarg :validation-errors
+                         :initform common-lisp:nil :type
+                         (common-lisp:or validation-errors-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-validate-resource-policy-response-validation-errors
+                         :shape "ValidationErrorsType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validate-resource-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'validate-resource-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validate-resource-policy-response
                     'make-validate-resource-policy-response))
@@ -3132,13 +4288,25 @@
                           validate-resource-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-errors-entry (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-errors-entry-"))
-   (check-name common-lisp:nil :type
-    (common-lisp:or name-type common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:defclass validation-errors-entry common-lisp:nil
+                       ((check-name :initarg :check-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or name-type common-lisp:null) :accessor
+                         struct-shape-validation-errors-entry-check-name :shape
+                         "NameType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-message common-lisp:null)
+                         :accessor
+                         struct-shape-validation-errors-entry-error-message
+                         :shape "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-errors-entry
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-errors-entry
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-errors-entry 'make-validation-errors-entry))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

@@ -42,13 +42,29 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-suite-definition-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-suite-definition-request-"))
-   (suite-definition-configuration
-    (common-lisp:error ":suitedefinitionconfiguration is required") :type
-    (common-lisp:or suite-definition-configuration common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-suite-definition-request common-lisp:nil
+                       ((suite-definition-configuration :initarg
+                         :suite-definition-configuration :initform
+                         (common-lisp:error
+                          ":suitedefinitionconfiguration is required")
+                         :type
+                         (common-lisp:or suite-definition-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-suite-definition-request-suite-definition-configuration
+                         :shape "SuiteDefinitionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-suite-definition-request-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-suite-definition-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-suite-definition-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-suite-definition-request
                     'make-create-suite-definition-request))
@@ -83,17 +99,40 @@
                           create-suite-definition-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-suite-definition-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-suite-definition-response-"))
-   (suite-definition-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (suite-definition-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (suite-definition-name common-lisp:nil :type
-    (common-lisp:or suite-definition-name common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass create-suite-definition-response common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-create-suite-definition-response-suite-definition-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suite-definition-arn :initarg :suite-definition-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-suite-definition-response-suite-definition-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suite-definition-name :initarg :suite-definition-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or suite-definition-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-suite-definition-response-suite-definition-name
+                         :shape "SuiteDefinitionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-create-suite-definition-response-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-suite-definition-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-suite-definition-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-suite-definition-response
                     'make-create-suite-definition-response))
@@ -143,11 +182,20 @@
                           create-suite-definition-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-suite-definition-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-suite-definition-request-"))
-   (suite-definition-id (common-lisp:error ":suitedefinitionid is required")
-    :type (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass delete-suite-definition-request common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform
+                         (common-lisp:error ":suitedefinitionid is required")
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-delete-suite-definition-request-suite-definition-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteDefinitionId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-suite-definition-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-suite-definition-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-suite-definition-request
                     'make-delete-suite-definition-request))
@@ -167,9 +215,14 @@
                           delete-suite-definition-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-suite-definition-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-suite-definition-response-")))
+ (common-lisp:defclass delete-suite-definition-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-suite-definition-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-suite-definition-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-suite-definition-response
                     'make-delete-suite-definition-response))
@@ -189,15 +242,32 @@
                           delete-suite-definition-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (device-under-test (:copier common-lisp:nil)
-      (:conc-name "struct-shape-device-under-test-"))
-   (thing-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (certificate-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (device-role-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+ (common-lisp:defclass device-under-test common-lisp:nil
+                       ((thing-arn :initarg :thing-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor struct-shape-device-under-test-thing-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (certificate-arn :initarg :certificate-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-device-under-test-certificate-arn :shape
+                         "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (device-role-arn :initarg :device-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-device-under-test-device-role-arn :shape
+                         "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-device-under-test
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'device-under-test
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'device-under-test 'make-device-under-test))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -242,17 +312,40 @@
 (common-lisp:deftype error-reason () 'common-lisp:string)
 (common-lisp:deftype failure () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-endpoint-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-endpoint-request-"))
-   (thing-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (certificate-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (device-role-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (authentication-method common-lisp:nil :type
-    (common-lisp:or authentication-method common-lisp:null)))
+ (common-lisp:defclass get-endpoint-request common-lisp:nil
+                       ((thing-arn :initarg :thing-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor struct-shape-get-endpoint-request-thing-arn
+                         :shape "AmazonResourceName" :location "querystring"
+                         :location-name "thingArn")
+                        (certificate-arn :initarg :certificate-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-endpoint-request-certificate-arn
+                         :shape "AmazonResourceName" :location "querystring"
+                         :location-name "certificateArn")
+                        (device-role-arn :initarg :device-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-endpoint-request-device-role-arn
+                         :shape "AmazonResourceName" :location "querystring"
+                         :location-name "deviceRoleArn")
+                        (authentication-method :initarg :authentication-method
+                         :initform common-lisp:nil :type
+                         (common-lisp:or authentication-method
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-endpoint-request-authentication-method
+                         :shape "AuthenticationMethod" :location "querystring"
+                         :location-name "authenticationMethod"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-endpoint-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-endpoint-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-endpoint-request 'make-get-endpoint-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -265,10 +358,17 @@
                         ((aws-sdk/generator/shape::input get-endpoint-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-endpoint-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-endpoint-response-"))
-   (endpoint common-lisp:nil :type (common-lisp:or endpoint common-lisp:null)))
+ (common-lisp:defclass get-endpoint-response common-lisp:nil
+                       ((endpoint :initarg :endpoint :initform common-lisp:nil
+                         :type (common-lisp:or endpoint common-lisp:null)
+                         :accessor struct-shape-get-endpoint-response-endpoint
+                         :shape "Endpoint" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-endpoint-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-endpoint-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-endpoint-response 'make-get-endpoint-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -294,13 +394,29 @@
                           get-endpoint-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-suite-definition-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-suite-definition-request-"))
-   (suite-definition-id (common-lisp:error ":suitedefinitionid is required")
-    :type (common-lisp:or uuid common-lisp:null))
-   (suite-definition-version common-lisp:nil :type
-    (common-lisp:or suite-definition-version common-lisp:null)))
+ (common-lisp:defclass get-suite-definition-request common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform
+                         (common-lisp:error ":suitedefinitionid is required")
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-suite-definition-request-suite-definition-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteDefinitionId")
+                        (suite-definition-version :initarg
+                         :suite-definition-version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-definition-version
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-definition-request-suite-definition-version
+                         :shape "SuiteDefinitionVersion" :location
+                         "querystring" :location-name
+                         "suiteDefinitionVersion"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-suite-definition-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-suite-definition-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-suite-definition-request
                     'make-get-suite-definition-request))
@@ -320,24 +436,69 @@
                           get-suite-definition-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-suite-definition-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-suite-definition-response-"))
-   (suite-definition-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (suite-definition-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (suite-definition-version common-lisp:nil :type
-    (common-lisp:or suite-definition-version common-lisp:null))
-   (latest-version common-lisp:nil :type
-    (common-lisp:or suite-definition-version common-lisp:null))
-   (suite-definition-configuration common-lisp:nil :type
-    (common-lisp:or suite-definition-configuration common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-modified-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass get-suite-definition-response common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-suite-definition-response-suite-definition-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suite-definition-arn :initarg :suite-definition-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-definition-response-suite-definition-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suite-definition-version :initarg
+                         :suite-definition-version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-definition-version
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-definition-response-suite-definition-version
+                         :shape "SuiteDefinitionVersion" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (latest-version :initarg :latest-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or suite-definition-version
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-definition-response-latest-version
+                         :shape "SuiteDefinitionVersion" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (suite-definition-configuration :initarg
+                         :suite-definition-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or suite-definition-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-definition-response-suite-definition-configuration
+                         :shape "SuiteDefinitionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-suite-definition-response-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-at :initarg :last-modified-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-suite-definition-response-last-modified-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-suite-definition-response-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-suite-definition-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-suite-definition-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-suite-definition-response
                     'make-get-suite-definition-response))
@@ -416,13 +577,25 @@
                           get-suite-definition-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-suite-run-report-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-suite-run-report-request-"))
-   (suite-definition-id (common-lisp:error ":suitedefinitionid is required")
-    :type (common-lisp:or uuid common-lisp:null))
-   (suite-run-id (common-lisp:error ":suiterunid is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass get-suite-run-report-request common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform
+                         (common-lisp:error ":suitedefinitionid is required")
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-suite-run-report-request-suite-definition-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteDefinitionId")
+                        (suite-run-id :initarg :suite-run-id :initform
+                         (common-lisp:error ":suiterunid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-suite-run-report-request-suite-run-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteRunId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-suite-run-report-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-suite-run-report-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-suite-run-report-request
                     'make-get-suite-run-report-request))
@@ -442,11 +615,22 @@
                           get-suite-run-report-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-suite-run-report-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-suite-run-report-response-"))
-   (qualification-report-download-url common-lisp:nil :type
-    (common-lisp:or qualification-report-download-url common-lisp:null)))
+ (common-lisp:defclass get-suite-run-report-response common-lisp:nil
+                       ((qualification-report-download-url :initarg
+                         :qualification-report-download-url :initform
+                         common-lisp:nil :type
+                         (common-lisp:or qualification-report-download-url
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-run-report-response-qualification-report-download-url
+                         :shape "QualificationReportDownloadUrl" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-suite-run-report-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-suite-run-report-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-suite-run-report-response
                     'make-get-suite-run-report-response))
@@ -474,13 +658,24 @@
                           get-suite-run-report-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-suite-run-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-suite-run-request-"))
-   (suite-definition-id (common-lisp:error ":suitedefinitionid is required")
-    :type (common-lisp:or uuid common-lisp:null))
-   (suite-run-id (common-lisp:error ":suiterunid is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass get-suite-run-request common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform
+                         (common-lisp:error ":suitedefinitionid is required")
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-suite-run-request-suite-definition-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteDefinitionId")
+                        (suite-run-id :initarg :suite-run-id :initform
+                         (common-lisp:error ":suiterunid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-suite-run-request-suite-run-id :shape
+                         "UUID" :location "uri" :location-name "suiteRunId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-suite-run-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-suite-run-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-suite-run-request 'make-get-suite-run-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -499,28 +694,85 @@
                           get-suite-run-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-suite-run-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-suite-run-response-"))
-   (suite-definition-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (suite-definition-version common-lisp:nil :type
-    (common-lisp:or suite-definition-version common-lisp:null))
-   (suite-run-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (suite-run-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (suite-run-configuration common-lisp:nil :type
-    (common-lisp:or suite-run-configuration common-lisp:null))
-   (test-result common-lisp:nil :type
-    (common-lisp:or test-result common-lisp:null))
-   (start-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or suite-run-status common-lisp:null))
-   (error-reason common-lisp:nil :type
-    (common-lisp:or error-reason common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass get-suite-run-response common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-suite-run-response-suite-definition-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suite-definition-version :initarg
+                         :suite-definition-version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-definition-version
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-run-response-suite-definition-version
+                         :shape "SuiteDefinitionVersion" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (suite-run-id :initarg :suite-run-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-suite-run-response-suite-run-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suite-run-arn :initarg :suite-run-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-run-response-suite-run-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suite-run-configuration :initarg
+                         :suite-run-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-run-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-run-response-suite-run-configuration
+                         :shape "SuiteRunConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (test-result :initarg :test-result :initform
+                         common-lisp:nil :type
+                         (common-lisp:or test-result common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-run-response-test-result :shape
+                         "TestResult" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-suite-run-response-start-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-get-suite-run-response-end-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-run-status common-lisp:null)
+                         :accessor struct-shape-get-suite-run-response-status
+                         :shape "SuiteRunStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-reason :initarg :error-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-reason common-lisp:null)
+                         :accessor
+                         struct-shape-get-suite-run-response-error-reason
+                         :shape "ErrorReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-suite-run-response-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-suite-run-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-suite-run-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-suite-run-response 'make-get-suite-run-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -619,14 +871,28 @@
    common-lisp:nil))
 (common-lisp:deftype group-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (group-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-group-result-"))
-   (group-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (group-name common-lisp:nil :type
-    (common-lisp:or group-name common-lisp:null))
-   (tests common-lisp:nil :type
-    (common-lisp:or test-case-runs common-lisp:null)))
+ (common-lisp:defclass group-result common-lisp:nil
+                       ((group-id :initarg :group-id :initform common-lisp:nil
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-group-result-group-id :shape "UUID"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (group-name :initarg :group-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or group-name common-lisp:null) :accessor
+                         struct-shape-group-result-group-name :shape
+                         "GroupName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tests :initarg :tests :initform common-lisp:nil :type
+                         (common-lisp:or test-case-runs common-lisp:null)
+                         :accessor struct-shape-group-result-tests :shape
+                         "TestCaseRuns" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-group-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'group-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'group-result 'make-group-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input group-result))
@@ -677,12 +943,26 @@
                     'internal-server-exception-message)))
 (common-lisp:deftype is-long-duration-test-boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-suite-definitions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-suite-definitions-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-suite-definitions-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-suite-definitions-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-suite-definitions-request-next-token
+                         :shape "Token" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-suite-definitions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-suite-definitions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-suite-definitions-request
                     'make-list-suite-definitions-request))
@@ -702,12 +982,28 @@
                           list-suite-definitions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-suite-definitions-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-suite-definitions-response-"))
-   (suite-definition-information-list common-lisp:nil :type
-    (common-lisp:or suite-definition-information-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-suite-definitions-response common-lisp:nil
+                       ((suite-definition-information-list :initarg
+                         :suite-definition-information-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or suite-definition-information-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-suite-definitions-response-suite-definition-information-list
+                         :shape "SuiteDefinitionInformationList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-suite-definitions-response-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-suite-definitions-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-suite-definitions-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-suite-definitions-response
                     'make-list-suite-definitions-response))
@@ -742,16 +1038,40 @@
                           list-suite-definitions-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-suite-runs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-suite-runs-request-"))
-   (suite-definition-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (suite-definition-version common-lisp:nil :type
-    (common-lisp:or suite-definition-version common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-suite-runs-request common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-list-suite-runs-request-suite-definition-id
+                         :shape "UUID" :location "querystring" :location-name
+                         "suiteDefinitionId")
+                        (suite-definition-version :initarg
+                         :suite-definition-version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-definition-version
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-suite-runs-request-suite-definition-version
+                         :shape "SuiteDefinitionVersion" :location
+                         "querystring" :location-name "suiteDefinitionVersion")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-suite-runs-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-suite-runs-request-next-token :shape
+                         "Token" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-suite-runs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-suite-runs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-suite-runs-request 'make-list-suite-runs-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -770,12 +1090,25 @@
                           list-suite-runs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-suite-runs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-suite-runs-response-"))
-   (suite-runs-list common-lisp:nil :type
-    (common-lisp:or suite-runs-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-suite-runs-response common-lisp:nil
+                       ((suite-runs-list :initarg :suite-runs-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or suite-runs-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-suite-runs-response-suite-runs-list
+                         :shape "SuiteRunsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-suite-runs-response-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-suite-runs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-suite-runs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-suite-runs-response 'make-list-suite-runs-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -808,11 +1141,20 @@
                           list-suite-runs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "AmazonResourceName" :location "uri"
+                         :location-name "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -832,10 +1174,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -884,17 +1234,44 @@
                            (trivial-types:proper-list uuid))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-suite-run-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-suite-run-request-"))
-   (suite-definition-id (common-lisp:error ":suitedefinitionid is required")
-    :type (common-lisp:or uuid common-lisp:null))
-   (suite-definition-version common-lisp:nil :type
-    (common-lisp:or suite-definition-version common-lisp:null))
-   (suite-run-configuration
-    (common-lisp:error ":suiterunconfiguration is required") :type
-    (common-lisp:or suite-run-configuration common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass start-suite-run-request common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform
+                         (common-lisp:error ":suitedefinitionid is required")
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-start-suite-run-request-suite-definition-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteDefinitionId")
+                        (suite-definition-version :initarg
+                         :suite-definition-version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-definition-version
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-suite-run-request-suite-definition-version
+                         :shape "SuiteDefinitionVersion" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (suite-run-configuration :initarg
+                         :suite-run-configuration :initform
+                         (common-lisp:error
+                          ":suiterunconfiguration is required")
+                         :type
+                         (common-lisp:or suite-run-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-suite-run-request-suite-run-configuration
+                         :shape "SuiteRunConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-start-suite-run-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-suite-run-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-suite-run-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-suite-run-request 'make-start-suite-run-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -936,15 +1313,37 @@
                           start-suite-run-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-suite-run-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-suite-run-response-"))
-   (suite-run-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (suite-run-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (endpoint common-lisp:nil :type (common-lisp:or endpoint common-lisp:null)))
+ (common-lisp:defclass start-suite-run-response common-lisp:nil
+                       ((suite-run-id :initarg :suite-run-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-start-suite-run-response-suite-run-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suite-run-arn :initarg :suite-run-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-start-suite-run-response-suite-run-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-start-suite-run-response-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (endpoint :initarg :endpoint :initform common-lisp:nil
+                         :type (common-lisp:or endpoint common-lisp:null)
+                         :accessor
+                         struct-shape-start-suite-run-response-endpoint :shape
+                         "Endpoint" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-suite-run-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-suite-run-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-suite-run-response 'make-start-suite-run-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -992,13 +1391,25 @@
    common-lisp:nil))
 (common-lisp:deftype status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-suite-run-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-suite-run-request-"))
-   (suite-definition-id (common-lisp:error ":suitedefinitionid is required")
-    :type (common-lisp:or uuid common-lisp:null))
-   (suite-run-id (common-lisp:error ":suiterunid is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass stop-suite-run-request common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform
+                         (common-lisp:error ":suitedefinitionid is required")
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-stop-suite-run-request-suite-definition-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteDefinitionId")
+                        (suite-run-id :initarg :suite-run-id :initform
+                         (common-lisp:error ":suiterunid is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-stop-suite-run-request-suite-run-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteRunId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-suite-run-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-suite-run-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-suite-run-request 'make-stop-suite-run-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1017,9 +1428,12 @@
                           stop-suite-run-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (stop-suite-run-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-stop-suite-run-response-")))
+ (common-lisp:defclass stop-suite-run-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-stop-suite-run-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'stop-suite-run-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'stop-suite-run-response 'make-stop-suite-run-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1040,24 +1454,70 @@
 (common-lisp:deftype string128 () 'common-lisp:string)
 (common-lisp:deftype string256 () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (suite-definition-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-suite-definition-configuration-"))
-   (suite-definition-name
-    (common-lisp:error ":suitedefinitionname is required") :type
-    (common-lisp:or suite-definition-name common-lisp:null))
-   (devices common-lisp:nil :type
-    (common-lisp:or device-under-test-list common-lisp:null))
-   (intended-for-qualification common-lisp:nil :type
-    (common-lisp:or intended-for-qualification-boolean common-lisp:null))
-   (is-long-duration-test common-lisp:nil :type
-    (common-lisp:or is-long-duration-test-boolean common-lisp:null))
-   (root-group (common-lisp:error ":rootgroup is required") :type
-    (common-lisp:or root-group common-lisp:null))
-   (device-permission-role-arn
-    (common-lisp:error ":devicepermissionrolearn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (protocol common-lisp:nil :type (common-lisp:or protocol common-lisp:null)))
+ (common-lisp:defclass suite-definition-configuration common-lisp:nil
+                       ((suite-definition-name :initarg :suite-definition-name
+                         :initform
+                         (common-lisp:error ":suitedefinitionname is required")
+                         :type
+                         (common-lisp:or suite-definition-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-configuration-suite-definition-name
+                         :shape "SuiteDefinitionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (devices :initarg :devices :initform common-lisp:nil
+                         :type
+                         (common-lisp:or device-under-test-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-configuration-devices
+                         :shape "DeviceUnderTestList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (intended-for-qualification :initarg
+                         :intended-for-qualification :initform common-lisp:nil
+                         :type
+                         (common-lisp:or intended-for-qualification-boolean
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-configuration-intended-for-qualification
+                         :shape "IntendedForQualificationBoolean" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (is-long-duration-test :initarg :is-long-duration-test
+                         :initform common-lisp:nil :type
+                         (common-lisp:or is-long-duration-test-boolean
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-configuration-is-long-duration-test
+                         :shape "IsLongDurationTestBoolean" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (root-group :initarg :root-group :initform
+                         (common-lisp:error ":rootgroup is required") :type
+                         (common-lisp:or root-group common-lisp:null) :accessor
+                         struct-shape-suite-definition-configuration-root-group
+                         :shape "RootGroup" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (device-permission-role-arn :initarg
+                         :device-permission-role-arn :initform
+                         (common-lisp:error
+                          ":devicepermissionrolearn is required")
+                         :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-configuration-device-permission-role-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (protocol :initarg :protocol :initform common-lisp:nil
+                         :type (common-lisp:or protocol common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-configuration-protocol
+                         :shape "Protocol" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-suite-definition-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'suite-definition-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'suite-definition-configuration
                     'make-suite-definition-configuration))
@@ -1130,22 +1590,63 @@
                           suite-definition-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (suite-definition-information (:copier common-lisp:nil)
-      (:conc-name "struct-shape-suite-definition-information-"))
-   (suite-definition-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (suite-definition-name common-lisp:nil :type
-    (common-lisp:or suite-definition-name common-lisp:null))
-   (default-devices common-lisp:nil :type
-    (common-lisp:or device-under-test-list common-lisp:null))
-   (intended-for-qualification common-lisp:nil :type
-    (common-lisp:or intended-for-qualification-boolean common-lisp:null))
-   (is-long-duration-test common-lisp:nil :type
-    (common-lisp:or is-long-duration-test-boolean common-lisp:null))
-   (protocol common-lisp:nil :type (common-lisp:or protocol common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass suite-definition-information common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-suite-definition-information-suite-definition-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suite-definition-name :initarg :suite-definition-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or suite-definition-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-information-suite-definition-name
+                         :shape "SuiteDefinitionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (default-devices :initarg :default-devices :initform
+                         common-lisp:nil :type
+                         (common-lisp:or device-under-test-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-information-default-devices
+                         :shape "DeviceUnderTestList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (intended-for-qualification :initarg
+                         :intended-for-qualification :initform common-lisp:nil
+                         :type
+                         (common-lisp:or intended-for-qualification-boolean
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-information-intended-for-qualification
+                         :shape "IntendedForQualificationBoolean" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (is-long-duration-test :initarg :is-long-duration-test
+                         :initform common-lisp:nil :type
+                         (common-lisp:or is-long-duration-test-boolean
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-information-is-long-duration-test
+                         :shape "IsLongDurationTestBoolean" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (protocol :initarg :protocol :initform common-lisp:nil
+                         :type (common-lisp:or protocol common-lisp:null)
+                         :accessor
+                         struct-shape-suite-definition-information-protocol
+                         :shape "Protocol" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-suite-definition-information-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-suite-definition-information
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'suite-definition-information
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'suite-definition-information
                     'make-suite-definition-information))
@@ -1228,15 +1729,33 @@
 (common-lisp:deftype suite-definition-name () 'common-lisp:string)
 (common-lisp:deftype suite-definition-version () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (suite-run-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-suite-run-configuration-"))
-   (primary-device (common-lisp:error ":primarydevice is required") :type
-    (common-lisp:or device-under-test common-lisp:null))
-   (selected-test-list common-lisp:nil :type
-    (common-lisp:or selected-test-list common-lisp:null))
-   (parallel-run common-lisp:nil :type
-    (common-lisp:or parallel-run common-lisp:null)))
+ (common-lisp:defclass suite-run-configuration common-lisp:nil
+                       ((primary-device :initarg :primary-device :initform
+                         (common-lisp:error ":primarydevice is required") :type
+                         (common-lisp:or device-under-test common-lisp:null)
+                         :accessor
+                         struct-shape-suite-run-configuration-primary-device
+                         :shape "DeviceUnderTest" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (selected-test-list :initarg :selected-test-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or selected-test-list common-lisp:null)
+                         :accessor
+                         struct-shape-suite-run-configuration-selected-test-list
+                         :shape "SelectedTestList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parallel-run :initarg :parallel-run :initform
+                         common-lisp:nil :type
+                         (common-lisp:or parallel-run common-lisp:null)
+                         :accessor
+                         struct-shape-suite-run-configuration-parallel-run
+                         :shape "ParallelRun" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-suite-run-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'suite-run-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'suite-run-configuration 'make-suite-run-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1276,27 +1795,78 @@
                           suite-run-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (suite-run-information (:copier common-lisp:nil)
-      (:conc-name "struct-shape-suite-run-information-"))
-   (suite-definition-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (suite-definition-version common-lisp:nil :type
-    (common-lisp:or suite-definition-version common-lisp:null))
-   (suite-definition-name common-lisp:nil :type
-    (common-lisp:or suite-definition-name common-lisp:null))
-   (suite-run-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (started-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-at common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or suite-run-status common-lisp:null))
-   (passed common-lisp:nil :type
-    (common-lisp:or suite-run-result-count common-lisp:null))
-   (failed common-lisp:nil :type
-    (common-lisp:or suite-run-result-count common-lisp:null)))
+ (common-lisp:defclass suite-run-information common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-suite-run-information-suite-definition-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suite-definition-version :initarg
+                         :suite-definition-version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-definition-version
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-run-information-suite-definition-version
+                         :shape "SuiteDefinitionVersion" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (suite-definition-name :initarg :suite-definition-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or suite-definition-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-suite-run-information-suite-definition-name
+                         :shape "SuiteDefinitionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suite-run-id :initarg :suite-run-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-suite-run-information-suite-run-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-suite-run-information-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (started-at :initarg :started-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-suite-run-information-started-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-at :initarg :end-at :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-suite-run-information-end-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-run-status common-lisp:null)
+                         :accessor struct-shape-suite-run-information-status
+                         :shape "SuiteRunStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (passed :initarg :passed :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-run-result-count
+                                         common-lisp:null)
+                         :accessor struct-shape-suite-run-information-passed
+                         :shape "SuiteRunResultCount" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (failed :initarg :failed :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-run-result-count
+                                         common-lisp:null)
+                         :accessor struct-shape-suite-run-information-failed
+                         :shape "SuiteRunResultCount" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-suite-run-information
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'suite-run-information
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'suite-run-information 'make-suite-run-information))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1412,13 +1982,25 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "AmazonResourceName" :location "uri" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1438,9 +2020,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1460,24 +2045,71 @@
    common-lisp:nil))
 (common-lisp:deftype test-case-definition-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (test-case-run (:copier common-lisp:nil)
-      (:conc-name "struct-shape-test-case-run-"))
-   (test-case-run-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (test-case-definition-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (test-case-definition-name common-lisp:nil :type
-    (common-lisp:or test-case-definition-name common-lisp:null))
-   (status common-lisp:nil :type (common-lisp:or status common-lisp:null))
-   (start-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
-   (log-url common-lisp:nil :type (common-lisp:or log-url common-lisp:null))
-   (warnings common-lisp:nil :type (common-lisp:or warnings common-lisp:null))
-   (failure common-lisp:nil :type (common-lisp:or failure common-lisp:null))
-   (test-scenarios common-lisp:nil :type
-    (common-lisp:or test-case-scenarios-list common-lisp:null)))
+ (common-lisp:defclass test-case-run common-lisp:nil
+                       ((test-case-run-id :initarg :test-case-run-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-test-case-run-test-case-run-id :shape
+                         "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (test-case-definition-id :initarg
+                         :test-case-definition-id :initform common-lisp:nil
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-test-case-run-test-case-definition-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (test-case-definition-name :initarg
+                         :test-case-definition-name :initform common-lisp:nil
+                         :type
+                         (common-lisp:or test-case-definition-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-test-case-run-test-case-definition-name
+                         :shape "TestCaseDefinitionName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or status common-lisp:null)
+                         :accessor struct-shape-test-case-run-status :shape
+                         "Status" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-test-case-run-start-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-test-case-run-end-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (log-url :initarg :log-url :initform common-lisp:nil
+                         :type (common-lisp:or log-url common-lisp:null)
+                         :accessor struct-shape-test-case-run-log-url :shape
+                         "LogUrl" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (warnings :initarg :warnings :initform common-lisp:nil
+                         :type (common-lisp:or warnings common-lisp:null)
+                         :accessor struct-shape-test-case-run-warnings :shape
+                         "Warnings" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (failure :initarg :failure :initform common-lisp:nil
+                         :type (common-lisp:or failure common-lisp:null)
+                         :accessor struct-shape-test-case-run-failure :shape
+                         "Failure" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (test-scenarios :initarg :test-scenarios :initform
+                         common-lisp:nil :type
+                         (common-lisp:or test-case-scenarios-list
+                                         common-lisp:null)
+                         :accessor struct-shape-test-case-run-test-scenarios
+                         :shape "TestCaseScenariosList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-test-case-run
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'test-case-run
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'test-case-run 'make-test-case-run))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input test-case-run))
@@ -1569,18 +2201,48 @@
                            (trivial-types:proper-list test-case-run))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (test-case-scenario (:copier common-lisp:nil)
-      (:conc-name "struct-shape-test-case-scenario-"))
-   (test-case-scenario-id common-lisp:nil :type
-    (common-lisp:or test-case-scenario-id common-lisp:null))
-   (test-case-scenario-type common-lisp:nil :type
-    (common-lisp:or test-case-scenario-type common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or test-case-scenario-status common-lisp:null))
-   (failure common-lisp:nil :type (common-lisp:or failure common-lisp:null))
-   (system-message common-lisp:nil :type
-    (common-lisp:or system-message common-lisp:null)))
+ (common-lisp:defclass test-case-scenario common-lisp:nil
+                       ((test-case-scenario-id :initarg :test-case-scenario-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or test-case-scenario-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-test-case-scenario-test-case-scenario-id
+                         :shape "TestCaseScenarioId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (test-case-scenario-type :initarg
+                         :test-case-scenario-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or test-case-scenario-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-test-case-scenario-test-case-scenario-type
+                         :shape "TestCaseScenarioType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or test-case-scenario-status
+                                         common-lisp:null)
+                         :accessor struct-shape-test-case-scenario-status
+                         :shape "TestCaseScenarioStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (failure :initarg :failure :initform common-lisp:nil
+                         :type (common-lisp:or failure common-lisp:null)
+                         :accessor struct-shape-test-case-scenario-failure
+                         :shape "Failure" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (system-message :initarg :system-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or system-message common-lisp:null)
+                         :accessor
+                         struct-shape-test-case-scenario-system-message :shape
+                         "SystemMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-test-case-scenario
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'test-case-scenario
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'test-case-scenario 'make-test-case-scenario))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1641,11 +2303,18 @@
                            (trivial-types:proper-list test-case-scenario))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (test-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-test-result-"))
-   (groups common-lisp:nil :type
-    (common-lisp:or group-result-list common-lisp:null)))
+ (common-lisp:defclass test-result common-lisp:nil
+                       ((groups :initarg :groups :initform common-lisp:nil
+                         :type
+                         (common-lisp:or group-result-list common-lisp:null)
+                         :accessor struct-shape-test-result-groups :shape
+                         "GroupResultList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-test-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'test-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'test-result 'make-test-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input test-result))
@@ -1667,13 +2336,25 @@
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:deftype uuid () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "AmazonResourceName" :location "uri"
+                         :location-name "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1692,9 +2373,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1713,14 +2397,31 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-suite-definition-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-suite-definition-request-"))
-   (suite-definition-id (common-lisp:error ":suitedefinitionid is required")
-    :type (common-lisp:or uuid common-lisp:null))
-   (suite-definition-configuration
-    (common-lisp:error ":suitedefinitionconfiguration is required") :type
-    (common-lisp:or suite-definition-configuration common-lisp:null)))
+ (common-lisp:defclass update-suite-definition-request common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform
+                         (common-lisp:error ":suitedefinitionid is required")
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-update-suite-definition-request-suite-definition-id
+                         :shape "UUID" :location "uri" :location-name
+                         "suiteDefinitionId")
+                        (suite-definition-configuration :initarg
+                         :suite-definition-configuration :initform
+                         (common-lisp:error
+                          ":suitedefinitionconfiguration is required")
+                         :type
+                         (common-lisp:or suite-definition-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-suite-definition-request-suite-definition-configuration
+                         :shape "SuiteDefinitionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-suite-definition-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-suite-definition-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-suite-definition-request
                     'make-update-suite-definition-request))
@@ -1748,21 +2449,55 @@
                           update-suite-definition-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-suite-definition-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-suite-definition-response-"))
-   (suite-definition-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (suite-definition-arn common-lisp:nil :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (suite-definition-name common-lisp:nil :type
-    (common-lisp:or suite-definition-name common-lisp:null))
-   (suite-definition-version common-lisp:nil :type
-    (common-lisp:or suite-definition-version common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass update-suite-definition-response common-lisp:nil
+                       ((suite-definition-id :initarg :suite-definition-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-update-suite-definition-response-suite-definition-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suite-definition-arn :initarg :suite-definition-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-suite-definition-response-suite-definition-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suite-definition-name :initarg :suite-definition-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or suite-definition-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-suite-definition-response-suite-definition-name
+                         :shape "SuiteDefinitionName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suite-definition-version :initarg
+                         :suite-definition-version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suite-definition-version
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-suite-definition-response-suite-definition-version
+                         :shape "SuiteDefinitionVersion" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-update-suite-definition-response-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-update-suite-definition-response-last-updated-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-suite-definition-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-suite-definition-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-suite-definition-response
                     'make-update-suite-definition-response))

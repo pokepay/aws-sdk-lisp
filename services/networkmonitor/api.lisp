@@ -53,18 +53,44 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-monitor-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-monitor-input-"))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (probes common-lisp:nil :type
-    (common-lisp:or create-monitor-probe-input-list common-lisp:null))
-   (aggregation-period common-lisp:nil :type
-    (common-lisp:or aggregation-period common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-monitor-input common-lisp:nil
+                       ((monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-monitor-input-monitor-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (probes :initarg :probes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or create-monitor-probe-input-list
+                                         common-lisp:null)
+                         :accessor struct-shape-create-monitor-input-probes
+                         :shape "CreateMonitorProbeInputList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (aggregation-period :initarg :aggregation-period
+                         :initform common-lisp:nil :type
+                         (common-lisp:or aggregation-period common-lisp:null)
+                         :accessor
+                         struct-shape-create-monitor-input-aggregation-period
+                         :shape "AggregationPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-monitor-input-client-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-monitor-input-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-monitor-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-monitor-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-monitor-input 'make-create-monitor-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -112,18 +138,44 @@
                         ((aws-sdk/generator/shape::input create-monitor-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-monitor-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-monitor-output-"))
-   (monitor-arn (common-lisp:error ":monitorarn is required") :type
-    (common-lisp:or monitor-arn common-lisp:null))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or monitor-state common-lisp:null))
-   (aggregation-period common-lisp:nil :type
-    (common-lisp:or aggregation-period common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-monitor-output common-lisp:nil
+                       ((monitor-arn :initarg :monitor-arn :initform
+                         (common-lisp:error ":monitorarn is required") :type
+                         (common-lisp:or monitor-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-monitor-output-monitor-arn :shape
+                         "MonitorArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-monitor-output-monitor-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (state :initarg :state :initform
+                         (common-lisp:error ":state is required") :type
+                         (common-lisp:or monitor-state common-lisp:null)
+                         :accessor struct-shape-create-monitor-output-state
+                         :shape "MonitorState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aggregation-period :initarg :aggregation-period
+                         :initform common-lisp:nil :type
+                         (common-lisp:or aggregation-period common-lisp:null)
+                         :accessor
+                         struct-shape-create-monitor-output-aggregation-period
+                         :shape "AggregationPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-monitor-output-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-monitor-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-monitor-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-monitor-output 'make-create-monitor-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -177,21 +229,50 @@
                           create-monitor-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-monitor-probe-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-monitor-probe-input-"))
-   (source-arn (common-lisp:error ":sourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null))
-   (destination-port common-lisp:nil :type
-    (common-lisp:or port common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol common-lisp:null))
-   (packet-size common-lisp:nil :type
-    (common-lisp:or packet-size common-lisp:null))
-   (probe-tags common-lisp:nil :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-monitor-probe-input common-lisp:nil
+                       ((source-arn :initarg :source-arn :initform
+                         (common-lisp:error ":sourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-create-monitor-probe-input-source-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         (common-lisp:error ":destination is required") :type
+                         (common-lisp:or destination common-lisp:null)
+                         :accessor
+                         struct-shape-create-monitor-probe-input-destination
+                         :shape "Destination" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-port :initarg :destination-port :initform
+                         common-lisp:nil :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-create-monitor-probe-input-destination-port
+                         :shape "Port" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or protocol common-lisp:null) :accessor
+                         struct-shape-create-monitor-probe-input-protocol
+                         :shape "Protocol" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (packet-size :initarg :packet-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or packet-size common-lisp:null)
+                         :accessor
+                         struct-shape-create-monitor-probe-input-packet-size
+                         :shape "PacketSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (probe-tags :initarg :probe-tags :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-monitor-probe-input-probe-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-monitor-probe-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-monitor-probe-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-monitor-probe-input
                     'make-create-monitor-probe-input))
@@ -262,16 +343,35 @@
                             create-monitor-probe-input))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-probe-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-probe-input-"))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (probe (common-lisp:error ":probe is required") :type
-    (common-lisp:or probe-input common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-probe-input common-lisp:nil
+                       ((monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-create-probe-input-monitor-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "monitorName")
+                        (probe :initarg :probe :initform
+                         (common-lisp:error ":probe is required") :type
+                         (common-lisp:or probe-input common-lisp:null)
+                         :accessor struct-shape-create-probe-input-probe :shape
+                         "ProbeInput" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-probe-input-client-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-probe-input-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-probe-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-probe-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-probe-input 'make-create-probe-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -305,30 +405,87 @@
                         ((aws-sdk/generator/shape::input create-probe-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-probe-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-probe-output-"))
-   (probe-id common-lisp:nil :type (common-lisp:or probe-id common-lisp:null))
-   (probe-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (source-arn (common-lisp:error ":sourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null))
-   (destination-port common-lisp:nil :type
-    (common-lisp:or port common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol common-lisp:null))
-   (packet-size common-lisp:nil :type
-    (common-lisp:or packet-size common-lisp:null))
-   (address-family common-lisp:nil :type
-    (common-lisp:or address-family common-lisp:null))
-   (vpc-id common-lisp:nil :type (common-lisp:or vpc-id common-lisp:null))
-   (state common-lisp:nil :type (common-lisp:or probe-state common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (modified-at common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-probe-output common-lisp:nil
+                       ((probe-id :initarg :probe-id :initform common-lisp:nil
+                         :type (common-lisp:or probe-id common-lisp:null)
+                         :accessor struct-shape-create-probe-output-probe-id
+                         :shape "ProbeId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (probe-arn :initarg :probe-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-create-probe-output-probe-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (source-arn :initarg :source-arn :initform
+                         (common-lisp:error ":sourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-create-probe-output-source-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         (common-lisp:error ":destination is required") :type
+                         (common-lisp:or destination common-lisp:null)
+                         :accessor struct-shape-create-probe-output-destination
+                         :shape "Destination" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-port :initarg :destination-port :initform
+                         common-lisp:nil :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-create-probe-output-destination-port
+                         :shape "Port" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or protocol common-lisp:null) :accessor
+                         struct-shape-create-probe-output-protocol :shape
+                         "Protocol" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (packet-size :initarg :packet-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or packet-size common-lisp:null)
+                         :accessor struct-shape-create-probe-output-packet-size
+                         :shape "PacketSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (address-family :initarg :address-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or address-family common-lisp:null)
+                         :accessor
+                         struct-shape-create-probe-output-address-family :shape
+                         "AddressFamily" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-id :initarg :vpc-id :initform common-lisp:nil
+                         :type (common-lisp:or vpc-id common-lisp:null)
+                         :accessor struct-shape-create-probe-output-vpc-id
+                         :shape "VpcId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or probe-state common-lisp:null)
+                         :accessor struct-shape-create-probe-output-state
+                         :shape "ProbeState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-create-probe-output-created-at
+                         :shape "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modified-at :initarg :modified-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-create-probe-output-modified-at
+                         :shape "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-probe-output-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-probe-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-probe-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-probe-output 'make-create-probe-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -432,11 +589,19 @@
                         ((aws-sdk/generator/shape::input create-probe-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-monitor-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-monitor-input-"))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass delete-monitor-input common-lisp:nil
+                       ((monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-monitor-input-monitor-name :shape
+                         "ResourceName" :location "uri" :location-name
+                         "monitorName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-monitor-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-monitor-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-monitor-input 'make-delete-monitor-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -449,9 +614,12 @@
                         ((aws-sdk/generator/shape::input delete-monitor-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-monitor-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-monitor-output-")))
+ (common-lisp:defclass delete-monitor-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-monitor-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-monitor-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-monitor-output 'make-delete-monitor-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -470,13 +638,23 @@
                           delete-monitor-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-probe-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-probe-input-"))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (probe-id (common-lisp:error ":probeid is required") :type
-    (common-lisp:or probe-id common-lisp:null)))
+ (common-lisp:defclass delete-probe-input common-lisp:nil
+                       ((monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-delete-probe-input-monitor-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "monitorName")
+                        (probe-id :initarg :probe-id :initform
+                         (common-lisp:error ":probeid is required") :type
+                         (common-lisp:or probe-id common-lisp:null) :accessor
+                         struct-shape-delete-probe-input-probe-id :shape
+                         "ProbeId" :location "uri" :location-name "probeId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-probe-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-probe-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-probe-input 'make-delete-probe-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -489,9 +667,12 @@
                         ((aws-sdk/generator/shape::input delete-probe-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-probe-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-probe-output-")))
+ (common-lisp:defclass delete-probe-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-probe-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-probe-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-probe-output 'make-delete-probe-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -505,11 +686,18 @@
    common-lisp:nil))
 (common-lisp:deftype destination () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-monitor-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-monitor-input-"))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass get-monitor-input common-lisp:nil
+                       ((monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-get-monitor-input-monitor-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "monitorName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-monitor-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-monitor-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-monitor-input 'make-get-monitor-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -522,23 +710,61 @@
                         ((aws-sdk/generator/shape::input get-monitor-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-monitor-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-monitor-output-"))
-   (monitor-arn (common-lisp:error ":monitorarn is required") :type
-    (common-lisp:or monitor-arn common-lisp:null))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or monitor-state common-lisp:null))
-   (aggregation-period (common-lisp:error ":aggregationperiod is required")
-    :type (common-lisp:or aggregation-period common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (probes common-lisp:nil :type (common-lisp:or probe-list common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (modified-at (common-lisp:error ":modifiedat is required") :type
-    (common-lisp:or iso8601timestamp common-lisp:null)))
+ (common-lisp:defclass get-monitor-output common-lisp:nil
+                       ((monitor-arn :initarg :monitor-arn :initform
+                         (common-lisp:error ":monitorarn is required") :type
+                         (common-lisp:or monitor-arn common-lisp:null)
+                         :accessor struct-shape-get-monitor-output-monitor-arn
+                         :shape "MonitorArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-get-monitor-output-monitor-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (state :initarg :state :initform
+                         (common-lisp:error ":state is required") :type
+                         (common-lisp:or monitor-state common-lisp:null)
+                         :accessor struct-shape-get-monitor-output-state :shape
+                         "MonitorState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aggregation-period :initarg :aggregation-period
+                         :initform
+                         (common-lisp:error ":aggregationperiod is required")
+                         :type
+                         (common-lisp:or aggregation-period common-lisp:null)
+                         :accessor
+                         struct-shape-get-monitor-output-aggregation-period
+                         :shape "AggregationPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-monitor-output-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (probes :initarg :probes :initform common-lisp:nil
+                         :type (common-lisp:or probe-list common-lisp:null)
+                         :accessor struct-shape-get-monitor-output-probes
+                         :shape "ProbeList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-get-monitor-output-created-at
+                         :shape "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modified-at :initarg :modified-at :initform
+                         (common-lisp:error ":modifiedat is required") :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-get-monitor-output-modified-at
+                         :shape "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-monitor-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-monitor-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-monitor-output 'make-get-monitor-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -607,13 +833,23 @@
                         ((aws-sdk/generator/shape::input get-monitor-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-probe-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-probe-input-"))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (probe-id (common-lisp:error ":probeid is required") :type
-    (common-lisp:or probe-id common-lisp:null)))
+ (common-lisp:defclass get-probe-input common-lisp:nil
+                       ((monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-get-probe-input-monitor-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "monitorName")
+                        (probe-id :initarg :probe-id :initform
+                         (common-lisp:error ":probeid is required") :type
+                         (common-lisp:or probe-id common-lisp:null) :accessor
+                         struct-shape-get-probe-input-probe-id :shape "ProbeId"
+                         :location "uri" :location-name "probeId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-probe-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-probe-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-probe-input 'make-get-probe-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-probe-input))
@@ -625,30 +861,86 @@
                         ((aws-sdk/generator/shape::input get-probe-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-probe-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-probe-output-"))
-   (probe-id common-lisp:nil :type (common-lisp:or probe-id common-lisp:null))
-   (probe-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (source-arn (common-lisp:error ":sourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null))
-   (destination-port common-lisp:nil :type
-    (common-lisp:or port common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol common-lisp:null))
-   (packet-size common-lisp:nil :type
-    (common-lisp:or packet-size common-lisp:null))
-   (address-family common-lisp:nil :type
-    (common-lisp:or address-family common-lisp:null))
-   (vpc-id common-lisp:nil :type (common-lisp:or vpc-id common-lisp:null))
-   (state common-lisp:nil :type (common-lisp:or probe-state common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (modified-at common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass get-probe-output common-lisp:nil
+                       ((probe-id :initarg :probe-id :initform common-lisp:nil
+                         :type (common-lisp:or probe-id common-lisp:null)
+                         :accessor struct-shape-get-probe-output-probe-id
+                         :shape "ProbeId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (probe-arn :initarg :probe-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-probe-output-probe-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (source-arn :initarg :source-arn :initform
+                         (common-lisp:error ":sourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-probe-output-source-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         (common-lisp:error ":destination is required") :type
+                         (common-lisp:or destination common-lisp:null)
+                         :accessor struct-shape-get-probe-output-destination
+                         :shape "Destination" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-port :initarg :destination-port :initform
+                         common-lisp:nil :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-get-probe-output-destination-port :shape
+                         "Port" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or protocol common-lisp:null) :accessor
+                         struct-shape-get-probe-output-protocol :shape
+                         "Protocol" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (packet-size :initarg :packet-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or packet-size common-lisp:null)
+                         :accessor struct-shape-get-probe-output-packet-size
+                         :shape "PacketSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (address-family :initarg :address-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or address-family common-lisp:null)
+                         :accessor struct-shape-get-probe-output-address-family
+                         :shape "AddressFamily" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-id :initarg :vpc-id :initform common-lisp:nil
+                         :type (common-lisp:or vpc-id common-lisp:null)
+                         :accessor struct-shape-get-probe-output-vpc-id :shape
+                         "VpcId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or probe-state common-lisp:null)
+                         :accessor struct-shape-get-probe-output-state :shape
+                         "ProbeState" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-get-probe-output-created-at
+                         :shape "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modified-at :initarg :modified-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-get-probe-output-modified-at
+                         :shape "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-probe-output-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-probe-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-probe-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-probe-output 'make-get-probe-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -761,14 +1053,28 @@
                     'internal-server-exception-message)))
 (common-lisp:deftype iso8601timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-monitors-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-monitors-input-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (state common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-monitors-input common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor struct-shape-list-monitors-input-next-token
+                         :shape "PaginationToken" :location "querystring"
+                         :location-name "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor struct-shape-list-monitors-input-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-monitors-input-state :shape "String"
+                         :location "querystring" :location-name "state"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-monitors-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-monitors-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-monitors-input 'make-list-monitors-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -781,12 +1087,24 @@
                         ((aws-sdk/generator/shape::input list-monitors-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-monitors-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-monitors-output-"))
-   (monitors (common-lisp:error ":monitors is required") :type
-    (common-lisp:or monitor-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-monitors-output common-lisp:nil
+                       ((monitors :initarg :monitors :initform
+                         (common-lisp:error ":monitors is required") :type
+                         (common-lisp:or monitor-list common-lisp:null)
+                         :accessor struct-shape-list-monitors-output-monitors
+                         :shape "MonitorList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-monitors-output-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-monitors-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-monitors-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-monitors-output 'make-list-monitors-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -813,11 +1131,18 @@
                         ((aws-sdk/generator/shape::input list-monitors-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-input-resource-arn
+                         :shape "Arn" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-for-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-input
                     'make-list-tags-for-resource-input))
@@ -837,10 +1162,18 @@
                           list-tags-for-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-output-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-output common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-output-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-output
                     'make-list-tags-for-resource-output))
@@ -878,18 +1211,42 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype monitor-state () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (monitor-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-monitor-summary-"))
-   (monitor-arn (common-lisp:error ":monitorarn is required") :type
-    (common-lisp:or monitor-arn common-lisp:null))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or monitor-state common-lisp:null))
-   (aggregation-period common-lisp:nil :type
-    (common-lisp:or aggregation-period common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass monitor-summary common-lisp:nil
+                       ((monitor-arn :initarg :monitor-arn :initform
+                         (common-lisp:error ":monitorarn is required") :type
+                         (common-lisp:or monitor-arn common-lisp:null)
+                         :accessor struct-shape-monitor-summary-monitor-arn
+                         :shape "MonitorArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-monitor-summary-monitor-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (state :initarg :state :initform
+                         (common-lisp:error ":state is required") :type
+                         (common-lisp:or monitor-state common-lisp:null)
+                         :accessor struct-shape-monitor-summary-state :shape
+                         "MonitorState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aggregation-period :initarg :aggregation-period
+                         :initform common-lisp:nil :type
+                         (common-lisp:or aggregation-period common-lisp:null)
+                         :accessor
+                         struct-shape-monitor-summary-aggregation-period :shape
+                         "AggregationPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-monitor-summary-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-monitor-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'monitor-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'monitor-summary 'make-monitor-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input monitor-summary))
@@ -939,29 +1296,83 @@
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:deftype port () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (probe (:copier common-lisp:nil) (:conc-name "struct-shape-probe-"))
-   (probe-id common-lisp:nil :type (common-lisp:or probe-id common-lisp:null))
-   (probe-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (source-arn (common-lisp:error ":sourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null))
-   (destination-port common-lisp:nil :type
-    (common-lisp:or port common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol common-lisp:null))
-   (packet-size common-lisp:nil :type
-    (common-lisp:or packet-size common-lisp:null))
-   (address-family common-lisp:nil :type
-    (common-lisp:or address-family common-lisp:null))
-   (vpc-id common-lisp:nil :type (common-lisp:or vpc-id common-lisp:null))
-   (state common-lisp:nil :type (common-lisp:or probe-state common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (modified-at common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass probe common-lisp:nil
+                       ((probe-id :initarg :probe-id :initform common-lisp:nil
+                         :type (common-lisp:or probe-id common-lisp:null)
+                         :accessor struct-shape-probe-probe-id :shape "ProbeId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (probe-arn :initarg :probe-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-probe-probe-arn :shape "Arn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (source-arn :initarg :source-arn :initform
+                         (common-lisp:error ":sourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-probe-source-arn :shape "Arn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         (common-lisp:error ":destination is required") :type
+                         (common-lisp:or destination common-lisp:null)
+                         :accessor struct-shape-probe-destination :shape
+                         "Destination" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination-port :initarg :destination-port :initform
+                         common-lisp:nil :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-probe-destination-port :shape "Port"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or protocol common-lisp:null) :accessor
+                         struct-shape-probe-protocol :shape "Protocol"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (packet-size :initarg :packet-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or packet-size common-lisp:null)
+                         :accessor struct-shape-probe-packet-size :shape
+                         "PacketSize" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (address-family :initarg :address-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or address-family common-lisp:null)
+                         :accessor struct-shape-probe-address-family :shape
+                         "AddressFamily" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-id :initarg :vpc-id :initform common-lisp:nil
+                         :type (common-lisp:or vpc-id common-lisp:null)
+                         :accessor struct-shape-probe-vpc-id :shape "VpcId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or probe-state common-lisp:null)
+                         :accessor struct-shape-probe-state :shape "ProbeState"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-probe-created-at :shape
+                         "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modified-at :initarg :modified-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-probe-modified-at :shape
+                         "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-probe-tags :shape "TagMap" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-probe
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'probe
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'probe 'make-probe))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input probe))
@@ -1065,20 +1476,47 @@
    common-lisp:nil))
 (common-lisp:deftype probe-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (probe-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-probe-input-"))
-   (source-arn (common-lisp:error ":sourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null))
-   (destination-port common-lisp:nil :type
-    (common-lisp:or port common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol common-lisp:null))
-   (packet-size common-lisp:nil :type
-    (common-lisp:or packet-size common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass probe-input common-lisp:nil
+                       ((source-arn :initarg :source-arn :initform
+                         (common-lisp:error ":sourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-probe-input-source-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         (common-lisp:error ":destination is required") :type
+                         (common-lisp:or destination common-lisp:null)
+                         :accessor struct-shape-probe-input-destination :shape
+                         "Destination" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination-port :initarg :destination-port :initform
+                         common-lisp:nil :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-probe-input-destination-port :shape
+                         "Port" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or protocol common-lisp:null) :accessor
+                         struct-shape-probe-input-protocol :shape "Protocol"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (packet-size :initarg :packet-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or packet-size common-lisp:null)
+                         :accessor struct-shape-probe-input-packet-size :shape
+                         "PacketSize" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-probe-input-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-probe-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'probe-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'probe-input 'make-probe-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input probe-input))
@@ -1174,13 +1612,23 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-resource-arn :shape
+                         "Arn" :location "uri" :location-name "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1200,9 +1648,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-output-")))
+ (common-lisp:defclass tag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-output 'make-tag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1223,13 +1674,23 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-input-resource-arn :shape
+                         "Arn" :location "uri" :location-name "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-input-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1242,9 +1703,12 @@
                         ((aws-sdk/generator/shape::input untag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-output-")))
+ (common-lisp:defclass untag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-output 'make-untag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1263,13 +1727,28 @@
                           untag-resource-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-monitor-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-monitor-input-"))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (aggregation-period (common-lisp:error ":aggregationperiod is required")
-    :type (common-lisp:or aggregation-period common-lisp:null)))
+ (common-lisp:defclass update-monitor-input common-lisp:nil
+                       ((monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-monitor-input-monitor-name :shape
+                         "ResourceName" :location "uri" :location-name
+                         "monitorName")
+                        (aggregation-period :initarg :aggregation-period
+                         :initform
+                         (common-lisp:error ":aggregationperiod is required")
+                         :type
+                         (common-lisp:or aggregation-period common-lisp:null)
+                         :accessor
+                         struct-shape-update-monitor-input-aggregation-period
+                         :shape "AggregationPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-monitor-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-monitor-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-monitor-input 'make-update-monitor-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1289,18 +1768,44 @@
                         ((aws-sdk/generator/shape::input update-monitor-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-monitor-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-monitor-output-"))
-   (monitor-arn (common-lisp:error ":monitorarn is required") :type
-    (common-lisp:or monitor-arn common-lisp:null))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or monitor-state common-lisp:null))
-   (aggregation-period common-lisp:nil :type
-    (common-lisp:or aggregation-period common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass update-monitor-output common-lisp:nil
+                       ((monitor-arn :initarg :monitor-arn :initform
+                         (common-lisp:error ":monitorarn is required") :type
+                         (common-lisp:or monitor-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-monitor-output-monitor-arn :shape
+                         "MonitorArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-monitor-output-monitor-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (state :initarg :state :initform
+                         (common-lisp:error ":state is required") :type
+                         (common-lisp:or monitor-state common-lisp:null)
+                         :accessor struct-shape-update-monitor-output-state
+                         :shape "MonitorState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aggregation-period :initarg :aggregation-period
+                         :initform common-lisp:nil :type
+                         (common-lisp:or aggregation-period common-lisp:null)
+                         :accessor
+                         struct-shape-update-monitor-output-aggregation-period
+                         :shape "AggregationPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-update-monitor-output-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-monitor-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-monitor-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-monitor-output 'make-update-monitor-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1354,21 +1859,51 @@
                           update-monitor-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-probe-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-probe-input-"))
-   (monitor-name (common-lisp:error ":monitorname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (probe-id (common-lisp:error ":probeid is required") :type
-    (common-lisp:or probe-id common-lisp:null))
-   (state common-lisp:nil :type (common-lisp:or probe-state common-lisp:null))
-   (destination common-lisp:nil :type
-    (common-lisp:or destination common-lisp:null))
-   (destination-port common-lisp:nil :type
-    (common-lisp:or port common-lisp:null))
-   (protocol common-lisp:nil :type (common-lisp:or protocol common-lisp:null))
-   (packet-size common-lisp:nil :type
-    (common-lisp:or packet-size common-lisp:null)))
+ (common-lisp:defclass update-probe-input common-lisp:nil
+                       ((monitor-name :initarg :monitor-name :initform
+                         (common-lisp:error ":monitorname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-update-probe-input-monitor-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "monitorName")
+                        (probe-id :initarg :probe-id :initform
+                         (common-lisp:error ":probeid is required") :type
+                         (common-lisp:or probe-id common-lisp:null) :accessor
+                         struct-shape-update-probe-input-probe-id :shape
+                         "ProbeId" :location "uri" :location-name "probeId")
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or probe-state common-lisp:null)
+                         :accessor struct-shape-update-probe-input-state :shape
+                         "ProbeState" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         common-lisp:nil :type
+                         (common-lisp:or destination common-lisp:null)
+                         :accessor struct-shape-update-probe-input-destination
+                         :shape "Destination" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-port :initarg :destination-port :initform
+                         common-lisp:nil :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-update-probe-input-destination-port
+                         :shape "Port" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform common-lisp:nil
+                         :type (common-lisp:or protocol common-lisp:null)
+                         :accessor struct-shape-update-probe-input-protocol
+                         :shape "Protocol" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (packet-size :initarg :packet-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or packet-size common-lisp:null)
+                         :accessor struct-shape-update-probe-input-packet-size
+                         :shape "PacketSize" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-probe-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-probe-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-probe-input 'make-update-probe-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1416,30 +1951,87 @@
                         ((aws-sdk/generator/shape::input update-probe-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-probe-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-probe-output-"))
-   (probe-id common-lisp:nil :type (common-lisp:or probe-id common-lisp:null))
-   (probe-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (source-arn (common-lisp:error ":sourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null))
-   (destination-port common-lisp:nil :type
-    (common-lisp:or port common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol common-lisp:null))
-   (packet-size common-lisp:nil :type
-    (common-lisp:or packet-size common-lisp:null))
-   (address-family common-lisp:nil :type
-    (common-lisp:or address-family common-lisp:null))
-   (vpc-id common-lisp:nil :type (common-lisp:or vpc-id common-lisp:null))
-   (state common-lisp:nil :type (common-lisp:or probe-state common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (modified-at common-lisp:nil :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass update-probe-output common-lisp:nil
+                       ((probe-id :initarg :probe-id :initform common-lisp:nil
+                         :type (common-lisp:or probe-id common-lisp:null)
+                         :accessor struct-shape-update-probe-output-probe-id
+                         :shape "ProbeId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (probe-arn :initarg :probe-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-update-probe-output-probe-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (source-arn :initarg :source-arn :initform
+                         (common-lisp:error ":sourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-update-probe-output-source-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination :initarg :destination :initform
+                         (common-lisp:error ":destination is required") :type
+                         (common-lisp:or destination common-lisp:null)
+                         :accessor struct-shape-update-probe-output-destination
+                         :shape "Destination" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-port :initarg :destination-port :initform
+                         common-lisp:nil :type
+                         (common-lisp:or port common-lisp:null) :accessor
+                         struct-shape-update-probe-output-destination-port
+                         :shape "Port" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or protocol common-lisp:null) :accessor
+                         struct-shape-update-probe-output-protocol :shape
+                         "Protocol" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (packet-size :initarg :packet-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or packet-size common-lisp:null)
+                         :accessor struct-shape-update-probe-output-packet-size
+                         :shape "PacketSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (address-family :initarg :address-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or address-family common-lisp:null)
+                         :accessor
+                         struct-shape-update-probe-output-address-family :shape
+                         "AddressFamily" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vpc-id :initarg :vpc-id :initform common-lisp:nil
+                         :type (common-lisp:or vpc-id common-lisp:null)
+                         :accessor struct-shape-update-probe-output-vpc-id
+                         :shape "VpcId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or probe-state common-lisp:null)
+                         :accessor struct-shape-update-probe-output-state
+                         :shape "ProbeState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-update-probe-output-created-at
+                         :shape "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modified-at :initarg :modified-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or iso8601timestamp common-lisp:null)
+                         :accessor struct-shape-update-probe-output-modified-at
+                         :shape "Iso8601Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-update-probe-output-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-probe-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-probe-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-probe-output 'make-update-probe-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

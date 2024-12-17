@@ -42,15 +42,33 @@
                            (trivial-types:proper-list accelerator-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (accelerator-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-accelerator-type-"))
-   (accelerator-type-name common-lisp:nil :type
-    (common-lisp:or accelerator-type-name common-lisp:null))
-   (memory-info common-lisp:nil :type
-    (common-lisp:or memory-info common-lisp:null))
-   (throughput-info common-lisp:nil :type
-    (common-lisp:or throughput-info-list common-lisp:null)))
+ (common-lisp:defclass accelerator-type common-lisp:nil
+                       ((accelerator-type-name :initarg :accelerator-type-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or accelerator-type-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-accelerator-type-accelerator-type-name
+                         :shape "AcceleratorTypeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (memory-info :initarg :memory-info :initform
+                         common-lisp:nil :type
+                         (common-lisp:or memory-info common-lisp:null)
+                         :accessor struct-shape-accelerator-type-memory-info
+                         :shape "MemoryInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (throughput-info :initarg :throughput-info :initform
+                         common-lisp:nil :type
+                         (common-lisp:or throughput-info-list common-lisp:null)
+                         :accessor
+                         struct-shape-accelerator-type-throughput-info :shape
+                         "ThroughputInfoList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-accelerator-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'accelerator-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'accelerator-type 'make-accelerator-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -102,14 +120,33 @@
                            (trivial-types:proper-list accelerator-type-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (accelerator-type-offering (:copier common-lisp:nil)
-      (:conc-name "struct-shape-accelerator-type-offering-"))
-   (accelerator-type common-lisp:nil :type
-    (common-lisp:or accelerator-type-name common-lisp:null))
-   (location-type common-lisp:nil :type
-    (common-lisp:or location-type common-lisp:null))
-   (location common-lisp:nil :type (common-lisp:or location common-lisp:null)))
+ (common-lisp:defclass accelerator-type-offering common-lisp:nil
+                       ((accelerator-type :initarg :accelerator-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or accelerator-type-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-accelerator-type-offering-accelerator-type
+                         :shape "AcceleratorTypeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (location-type :initarg :location-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or location-type common-lisp:null)
+                         :accessor
+                         struct-shape-accelerator-type-offering-location-type
+                         :shape "LocationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (location :initarg :location :initform common-lisp:nil
+                         :type (common-lisp:or location common-lisp:null)
+                         :accessor
+                         struct-shape-accelerator-type-offering-location :shape
+                         "Location" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-accelerator-type-offering
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'accelerator-type-offering
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'accelerator-type-offering
                     'make-accelerator-type-offering))
@@ -167,13 +204,28 @@
  (common-lisp:export
   (common-lisp:list 'bad-request-exception 'bad-request-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-accelerator-offerings-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-accelerator-offerings-request-"))
-   (location-type (common-lisp:error ":locationtype is required") :type
-    (common-lisp:or location-type common-lisp:null))
-   (accelerator-types common-lisp:nil :type
-    (common-lisp:or accelerator-type-name-list common-lisp:null)))
+ (common-lisp:defclass describe-accelerator-offerings-request common-lisp:nil
+                       ((location-type :initarg :location-type :initform
+                         (common-lisp:error ":locationtype is required") :type
+                         (common-lisp:or location-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-accelerator-offerings-request-location-type
+                         :shape "LocationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (accelerator-types :initarg :accelerator-types
+                         :initform common-lisp:nil :type
+                         (common-lisp:or accelerator-type-name-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-accelerator-offerings-request-accelerator-types
+                         :shape "AcceleratorTypeNameList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-accelerator-offerings-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-accelerator-offerings-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-accelerator-offerings-request
                     'make-describe-accelerator-offerings-request))
@@ -207,11 +259,22 @@
                           describe-accelerator-offerings-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-accelerator-offerings-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-accelerator-offerings-response-"))
-   (accelerator-type-offerings common-lisp:nil :type
-    (common-lisp:or accelerator-type-offering-list common-lisp:null)))
+ (common-lisp:defclass describe-accelerator-offerings-response common-lisp:nil
+                       ((accelerator-type-offerings :initarg
+                         :accelerator-type-offerings :initform common-lisp:nil
+                         :type
+                         (common-lisp:or accelerator-type-offering-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-accelerator-offerings-response-accelerator-type-offerings
+                         :shape "AcceleratorTypeOfferingList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-accelerator-offerings-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-accelerator-offerings-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-accelerator-offerings-response
                     'make-describe-accelerator-offerings-response))
@@ -239,9 +302,14 @@
                           describe-accelerator-offerings-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-accelerator-types-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-accelerator-types-request-")))
+ (common-lisp:defclass describe-accelerator-types-request common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-accelerator-types-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-accelerator-types-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-accelerator-types-request
                     'make-describe-accelerator-types-request))
@@ -261,11 +329,21 @@
                           describe-accelerator-types-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-accelerator-types-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-accelerator-types-response-"))
-   (accelerator-types common-lisp:nil :type
-    (common-lisp:or accelerator-type-list common-lisp:null)))
+ (common-lisp:defclass describe-accelerator-types-response common-lisp:nil
+                       ((accelerator-types :initarg :accelerator-types
+                         :initform common-lisp:nil :type
+                         (common-lisp:or accelerator-type-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-accelerator-types-response-accelerator-types
+                         :shape "AcceleratorTypeList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-accelerator-types-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-accelerator-types-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-accelerator-types-response
                     'make-describe-accelerator-types-response))
@@ -292,17 +370,39 @@
                           describe-accelerator-types-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-accelerators-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-accelerators-request-"))
-   (accelerator-ids common-lisp:nil :type
-    (common-lisp:or accelerator-id-list common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or filter-list common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass describe-accelerators-request common-lisp:nil
+                       ((accelerator-ids :initarg :accelerator-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or accelerator-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-describe-accelerators-request-accelerator-ids
+                         :shape "AcceleratorIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filter-list common-lisp:null)
+                         :accessor
+                         struct-shape-describe-accelerators-request-filters
+                         :shape "FilterList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-accelerators-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-describe-accelerators-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-accelerators-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-accelerators-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-accelerators-request
                     'make-describe-accelerators-request))
@@ -350,13 +450,27 @@
                           describe-accelerators-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-accelerators-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-accelerators-response-"))
-   (accelerator-set common-lisp:nil :type
-    (common-lisp:or elastic-inference-accelerator-set common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass describe-accelerators-response common-lisp:nil
+                       ((accelerator-set :initarg :accelerator-set :initform
+                         common-lisp:nil :type
+                         (common-lisp:or elastic-inference-accelerator-set
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-accelerators-response-accelerator-set
+                         :shape "ElasticInferenceAcceleratorSet" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-describe-accelerators-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-accelerators-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-accelerators-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-accelerators-response
                     'make-describe-accelerators-response))
@@ -390,19 +504,50 @@
                           describe-accelerators-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (elastic-inference-accelerator (:copier common-lisp:nil)
-      (:conc-name "struct-shape-elastic-inference-accelerator-"))
-   (accelerator-health common-lisp:nil :type
-    (common-lisp:or elastic-inference-accelerator-health common-lisp:null))
-   (accelerator-type common-lisp:nil :type
-    (common-lisp:or accelerator-type-name common-lisp:null))
-   (accelerator-id common-lisp:nil :type
-    (common-lisp:or accelerator-id common-lisp:null))
-   (availability-zone common-lisp:nil :type
-    (common-lisp:or availability-zone common-lisp:null))
-   (attached-resource common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null)))
+ (common-lisp:defclass elastic-inference-accelerator common-lisp:nil
+                       ((accelerator-health :initarg :accelerator-health
+                         :initform common-lisp:nil :type
+                         (common-lisp:or elastic-inference-accelerator-health
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-inference-accelerator-accelerator-health
+                         :shape "ElasticInferenceAcceleratorHealth" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (accelerator-type :initarg :accelerator-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or accelerator-type-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-inference-accelerator-accelerator-type
+                         :shape "AcceleratorTypeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (accelerator-id :initarg :accelerator-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or accelerator-id common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-inference-accelerator-accelerator-id
+                         :shape "AcceleratorId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (availability-zone :initarg :availability-zone
+                         :initform common-lisp:nil :type
+                         (common-lisp:or availability-zone common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-inference-accelerator-availability-zone
+                         :shape "AvailabilityZone" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attached-resource :initarg :attached-resource
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-inference-accelerator-attached-resource
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-elastic-inference-accelerator
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'elastic-inference-accelerator
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'elastic-inference-accelerator
                     'make-elastic-inference-accelerator))
@@ -457,11 +602,21 @@
                           elastic-inference-accelerator))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (elastic-inference-accelerator-health (:copier common-lisp:nil)
-      (:conc-name "struct-shape-elastic-inference-accelerator-health-"))
-   (status common-lisp:nil :type
-    (common-lisp:or accelerator-health-status common-lisp:null)))
+ (common-lisp:defclass elastic-inference-accelerator-health common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or accelerator-health-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-elastic-inference-accelerator-health-status
+                         :shape "AcceleratorHealthStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-elastic-inference-accelerator-health
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'elastic-inference-accelerator-health
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'elastic-inference-accelerator-health
                     'make-elastic-inference-accelerator-health))
@@ -497,11 +652,23 @@
                             elastic-inference-accelerator))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (filter (:copier common-lisp:nil) (:conc-name "struct-shape-filter-"))
-   (name common-lisp:nil :type (common-lisp:or filter-name common-lisp:null))
-   (values common-lisp:nil :type
-    (common-lisp:or value-string-list common-lisp:null)))
+ (common-lisp:defclass filter common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or filter-name common-lisp:null)
+                         :accessor struct-shape-filter-name :shape "FilterName"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type
+                         (common-lisp:or value-string-list common-lisp:null)
+                         :accessor struct-shape-filter-values :shape
+                         "ValueStringList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input filter))
@@ -545,11 +712,21 @@
                     'internal-server-exception-message)))
 (common-lisp:deftype key () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (key-value-pair (:copier common-lisp:nil)
-      (:conc-name "struct-shape-key-value-pair-"))
-   (key common-lisp:nil :type (common-lisp:or key common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or value common-lisp:null)))
+ (common-lisp:defclass key-value-pair common-lisp:nil
+                       ((key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or key common-lisp:null) :accessor
+                         struct-shape-key-value-pair-key :shape "Key" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or value common-lisp:null) :accessor
+                         struct-shape-key-value-pair-value :shape "Value"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-key-value-pair
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'key-value-pair
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'key-value-pair 'make-key-value-pair))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input key-value-pair))
@@ -575,11 +752,20 @@
                         ((aws-sdk/generator/shape::input key-value-pair))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "ResourceARN" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -599,10 +785,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-result-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-result common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-result-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-result
                     'make-list-tags-for-resource-result))
@@ -632,11 +826,18 @@
 (common-lisp:deftype location-type () 'common-lisp:string)
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (memory-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-memory-info-"))
-   (size-in-mi-b common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass memory-info common-lisp:nil
+                       ((size-in-mi-b :initarg :size-in-mi-b :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-memory-info-size-in-mi-b :shape "Integer"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-memory-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'memory-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'memory-info 'make-memory-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input memory-info))
@@ -682,13 +883,25 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "ResourceARN" :location "uri" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -708,9 +921,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-result-")))
+ (common-lisp:defclass tag-resource-result common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-result 'make-tag-resource-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -732,13 +948,25 @@
                            (trivial-types:proper-list key-value-pair))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "ResourceARN" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -757,9 +985,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-result-")))
+ (common-lisp:defclass untag-resource-result common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-result 'make-untag-resource-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

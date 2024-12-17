@@ -35,11 +35,22 @@
     ("ThrottlingException" . throttling-exception)
     ("ValidationException" . validation-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (apischema (:copier common-lisp:nil)
-      (:conc-name "struct-shape-apischema-"))
-   (s3 common-lisp:nil :type (common-lisp:or s3identifier common-lisp:null))
-   (payload common-lisp:nil :type (common-lisp:or payload common-lisp:null)))
+ (common-lisp:defclass apischema common-lisp:nil
+                       ((s3 :initarg :s3 :initform common-lisp:nil :type
+                         (common-lisp:or s3identifier common-lisp:null)
+                         :accessor struct-shape-apischema-s3 :shape
+                         "S3Identifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payload :initarg :payload :initform common-lisp:nil
+                         :type (common-lisp:or payload common-lisp:null)
+                         :accessor struct-shape-apischema-payload :shape
+                         "Payload" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-apischema
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'apischema
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'apischema 'make-apischema))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input apischema))
@@ -72,10 +83,17 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-group-executor (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-group-executor-"))
-   (lambda common-lisp:nil :type (common-lisp:or lambda-arn common-lisp:null)))
+ (common-lisp:defclass action-group-executor common-lisp:nil
+                       ((lambda :initarg :lambda :initform common-lisp:nil
+                         :type (common-lisp:or lambda-arn common-lisp:null)
+                         :accessor struct-shape-action-group-executor-lambda
+                         :shape "LambdaArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-group-executor
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-group-executor
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'action-group-executor 'make-action-group-executor))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -111,19 +129,47 @@
                            (trivial-types:proper-list action-group-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (action-group-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-action-group-summary-"))
-   (action-group-id (common-lisp:error ":actiongroupid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (action-group-name (common-lisp:error ":actiongroupname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (action-group-state (common-lisp:error ":actiongroupstate is required")
-    :type (common-lisp:or action-group-state common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass action-group-summary common-lisp:nil
+                       ((action-group-id :initarg :action-group-id :initform
+                         (common-lisp:error ":actiongroupid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-action-group-summary-action-group-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action-group-name :initarg :action-group-name
+                         :initform
+                         (common-lisp:error ":actiongroupname is required")
+                         :type (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-action-group-summary-action-group-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action-group-state :initarg :action-group-state
+                         :initform
+                         (common-lisp:error ":actiongroupstate is required")
+                         :type
+                         (common-lisp:or action-group-state common-lisp:null)
+                         :accessor
+                         struct-shape-action-group-summary-action-group-state
+                         :shape "ActionGroupState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-action-group-summary-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-action-group-summary-updated-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-action-group-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'action-group-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'action-group-summary 'make-action-group-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -171,46 +217,127 @@
                         ((aws-sdk/generator/shape::input action-group-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent (:copier common-lisp:nil) (:conc-name "struct-shape-agent-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-name (common-lisp:error ":agentname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (agent-arn (common-lisp:error ":agentarn is required") :type
-    (common-lisp:or agent-arn common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or draft-version common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (instruction common-lisp:nil :type
-    (common-lisp:or instruction common-lisp:null))
-   (agent-status (common-lisp:error ":agentstatus is required") :type
-    (common-lisp:or agent-status common-lisp:null))
-   (foundation-model common-lisp:nil :type
-    (common-lisp:or model-identifier common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (idle-session-ttlin-seconds
-    (common-lisp:error ":idlesessionttlinseconds is required") :type
-    (common-lisp:or session-ttl common-lisp:null))
-   (agent-resource-role-arn
-    (common-lisp:error ":agentresourcerolearn is required") :type
-    (common-lisp:or agent-role-arn common-lisp:null))
-   (customer-encryption-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (prepared-at common-lisp:nil :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (failure-reasons common-lisp:nil :type
-    (common-lisp:or failure-reasons common-lisp:null))
-   (recommended-actions common-lisp:nil :type
-    (common-lisp:or recommended-actions common-lisp:null))
-   (prompt-override-configuration common-lisp:nil :type
-    (common-lisp:or prompt-override-configuration common-lisp:null)))
+ (common-lisp:defclass agent common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-agent-id :shape "Id" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (agent-name :initarg :agent-name :initform
+                         (common-lisp:error ":agentname is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-agent-agent-name :shape "Name" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (agent-arn :initarg :agent-arn :initform
+                         (common-lisp:error ":agentarn is required") :type
+                         (common-lisp:or agent-arn common-lisp:null) :accessor
+                         struct-shape-agent-agent-arn :shape "AgentArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or draft-version common-lisp:null)
+                         :accessor struct-shape-agent-agent-version :shape
+                         "DraftVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor struct-shape-agent-client-token :shape
+                         "ClientToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (instruction :initarg :instruction :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instruction common-lisp:null)
+                         :accessor struct-shape-agent-instruction :shape
+                         "Instruction" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-status :initarg :agent-status :initform
+                         (common-lisp:error ":agentstatus is required") :type
+                         (common-lisp:or agent-status common-lisp:null)
+                         :accessor struct-shape-agent-agent-status :shape
+                         "AgentStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (foundation-model :initarg :foundation-model :initform
+                         common-lisp:nil :type
+                         (common-lisp:or model-identifier common-lisp:null)
+                         :accessor struct-shape-agent-foundation-model :shape
+                         "ModelIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-agent-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (idle-session-ttlin-seconds :initarg
+                         :idle-session-ttlin-seconds :initform
+                         (common-lisp:error
+                          ":idlesessionttlinseconds is required")
+                         :type (common-lisp:or session-ttl common-lisp:null)
+                         :accessor
+                         struct-shape-agent-idle-session-ttlin-seconds :shape
+                         "SessionTTL" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-resource-role-arn :initarg
+                         :agent-resource-role-arn :initform
+                         (common-lisp:error
+                          ":agentresourcerolearn is required")
+                         :type (common-lisp:or agent-role-arn common-lisp:null)
+                         :accessor struct-shape-agent-agent-resource-role-arn
+                         :shape "AgentRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (customer-encryption-key-arn :initarg
+                         :customer-encryption-key-arn :initform common-lisp:nil
+                         :type (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-agent-customer-encryption-key-arn :shape
+                         "KmsKeyArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-created-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prepared-at :initarg :prepared-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-prepared-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (failure-reasons :initarg :failure-reasons :initform
+                         common-lisp:nil :type
+                         (common-lisp:or failure-reasons common-lisp:null)
+                         :accessor struct-shape-agent-failure-reasons :shape
+                         "FailureReasons" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommended-actions :initarg :recommended-actions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or recommended-actions common-lisp:null)
+                         :accessor struct-shape-agent-recommended-actions
+                         :shape "RecommendedActions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prompt-override-configuration :initarg
+                         :prompt-override-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or prompt-override-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-agent-prompt-override-configuration
+                         :shape "PromptOverrideConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'agent 'make-agent))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input agent))
@@ -352,33 +479,93 @@
                         ((aws-sdk/generator/shape::input agent))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-action-group (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-action-group-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (action-group-id (common-lisp:error ":actiongroupid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (action-group-name (common-lisp:error ":actiongroupname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (parent-action-signature common-lisp:nil :type
-    (common-lisp:or action-group-signature common-lisp:null))
-   (action-group-executor common-lisp:nil :type
-    (common-lisp:or action-group-executor common-lisp:null))
-   (api-schema common-lisp:nil :type
-    (common-lisp:or apischema common-lisp:null))
-   (action-group-state (common-lisp:error ":actiongroupstate is required")
-    :type (common-lisp:or action-group-state common-lisp:null)))
+ (common-lisp:defclass agent-action-group common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-action-group-agent-id :shape "Id"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-agent-action-group-agent-version :shape
+                         "Version" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action-group-id :initarg :action-group-id :initform
+                         (common-lisp:error ":actiongroupid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-action-group-action-group-id :shape
+                         "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action-group-name :initarg :action-group-name
+                         :initform
+                         (common-lisp:error ":actiongroupname is required")
+                         :type (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-agent-action-group-action-group-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor struct-shape-agent-action-group-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-agent-action-group-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-action-group-created-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-action-group-updated-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parent-action-signature :initarg
+                         :parent-action-signature :initform common-lisp:nil
+                         :type
+                         (common-lisp:or action-group-signature
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-agent-action-group-parent-action-signature
+                         :shape "ActionGroupSignature" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (action-group-executor :initarg :action-group-executor
+                         :initform common-lisp:nil :type
+                         (common-lisp:or action-group-executor
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-agent-action-group-action-group-executor
+                         :shape "ActionGroupExecutor" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (api-schema :initarg :api-schema :initform
+                         common-lisp:nil :type
+                         (common-lisp:or apischema common-lisp:null) :accessor
+                         struct-shape-agent-action-group-api-schema :shape
+                         "APISchema" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action-group-state :initarg :action-group-state
+                         :initform
+                         (common-lisp:error ":actiongroupstate is required")
+                         :type
+                         (common-lisp:or action-group-state common-lisp:null)
+                         :accessor
+                         struct-shape-agent-action-group-action-group-state
+                         :shape "ActionGroupState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-action-group
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-action-group
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'agent-action-group 'make-agent-action-group))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -477,32 +664,88 @@
                         ((aws-sdk/generator/shape::input agent-action-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-alias (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-alias-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-alias-id (common-lisp:error ":agentaliasid is required") :type
-    (common-lisp:or agent-alias-id common-lisp:null))
-   (agent-alias-name (common-lisp:error ":agentaliasname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (agent-alias-arn (common-lisp:error ":agentaliasarn is required") :type
-    (common-lisp:or agent-alias-arn common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (routing-configuration
-    (common-lisp:error ":routingconfiguration is required") :type
-    (common-lisp:or agent-alias-routing-configuration common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (agent-alias-history-events common-lisp:nil :type
-    (common-lisp:or agent-alias-history-events common-lisp:null))
-   (agent-alias-status (common-lisp:error ":agentaliasstatus is required")
-    :type (common-lisp:or agent-alias-status common-lisp:null)))
+ (common-lisp:defclass agent-alias common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-alias-agent-id :shape "Id"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-alias-id :initarg :agent-alias-id :initform
+                         (common-lisp:error ":agentaliasid is required") :type
+                         (common-lisp:or agent-alias-id common-lisp:null)
+                         :accessor struct-shape-agent-alias-agent-alias-id
+                         :shape "AgentAliasId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-alias-name :initarg :agent-alias-name :initform
+                         (common-lisp:error ":agentaliasname is required")
+                         :type (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-agent-alias-agent-alias-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-alias-arn :initarg :agent-alias-arn :initform
+                         (common-lisp:error ":agentaliasarn is required") :type
+                         (common-lisp:or agent-alias-arn common-lisp:null)
+                         :accessor struct-shape-agent-alias-agent-alias-arn
+                         :shape "AgentAliasArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor struct-shape-agent-alias-client-token :shape
+                         "ClientToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-agent-alias-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (routing-configuration :initarg :routing-configuration
+                         :initform
+                         (common-lisp:error
+                          ":routingconfiguration is required")
+                         :type
+                         (common-lisp:or agent-alias-routing-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-agent-alias-routing-configuration :shape
+                         "AgentAliasRoutingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-alias-created-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-alias-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-alias-history-events :initarg
+                         :agent-alias-history-events :initform common-lisp:nil
+                         :type
+                         (common-lisp:or agent-alias-history-events
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-agent-alias-agent-alias-history-events
+                         :shape "AgentAliasHistoryEvents" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (agent-alias-status :initarg :agent-alias-status
+                         :initform
+                         (common-lisp:error ":agentaliasstatus is required")
+                         :type
+                         (common-lisp:or agent-alias-status common-lisp:null)
+                         :accessor struct-shape-agent-alias-agent-alias-status
+                         :shape "AgentAliasStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-alias
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-alias
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'agent-alias 'make-agent-alias))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input agent-alias))
@@ -594,15 +837,33 @@
    common-lisp:nil))
 (common-lisp:deftype agent-alias-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-alias-history-event (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-alias-history-event-"))
-   (routing-configuration common-lisp:nil :type
-    (common-lisp:or agent-alias-routing-configuration common-lisp:null))
-   (end-date common-lisp:nil :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (start-date common-lisp:nil :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass agent-alias-history-event common-lisp:nil
+                       ((routing-configuration :initarg :routing-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or agent-alias-routing-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-agent-alias-history-event-routing-configuration
+                         :shape "AgentAliasRoutingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (end-date :initarg :end-date :initform common-lisp:nil
+                         :type (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-agent-alias-history-event-end-date :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-date :initarg :start-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-agent-alias-history-event-start-date
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-alias-history-event
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-alias-history-event
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'agent-alias-history-event
                     'make-agent-alias-history-event))
@@ -663,11 +924,20 @@
                             agent-alias-routing-configuration-list-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-alias-routing-configuration-list-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-alias-routing-configuration-list-item-"))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null)))
+ (common-lisp:defclass agent-alias-routing-configuration-list-item
+                       common-lisp:nil
+                       ((agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-agent-alias-routing-configuration-list-item-agent-version
+                         :shape "Version" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-alias-routing-configuration-list-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'agent-alias-routing-configuration-list-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'agent-alias-routing-configuration-list-item
                     'make-agent-alias-routing-configuration-list-item))
@@ -703,23 +973,60 @@
                            (trivial-types:proper-list agent-alias-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-alias-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-alias-summary-"))
-   (agent-alias-id (common-lisp:error ":agentaliasid is required") :type
-    (common-lisp:or agent-alias-id common-lisp:null))
-   (agent-alias-name (common-lisp:error ":agentaliasname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (routing-configuration common-lisp:nil :type
-    (common-lisp:or agent-alias-routing-configuration common-lisp:null))
-   (agent-alias-status (common-lisp:error ":agentaliasstatus is required")
-    :type (common-lisp:or agent-alias-status common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass agent-alias-summary common-lisp:nil
+                       ((agent-alias-id :initarg :agent-alias-id :initform
+                         (common-lisp:error ":agentaliasid is required") :type
+                         (common-lisp:or agent-alias-id common-lisp:null)
+                         :accessor
+                         struct-shape-agent-alias-summary-agent-alias-id :shape
+                         "AgentAliasId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-alias-name :initarg :agent-alias-name :initform
+                         (common-lisp:error ":agentaliasname is required")
+                         :type (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-agent-alias-summary-agent-alias-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-agent-alias-summary-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (routing-configuration :initarg :routing-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or agent-alias-routing-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-agent-alias-summary-routing-configuration
+                         :shape "AgentAliasRoutingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (agent-alias-status :initarg :agent-alias-status
+                         :initform
+                         (common-lisp:error ":agentaliasstatus is required")
+                         :type
+                         (common-lisp:or agent-alias-status common-lisp:null)
+                         :accessor
+                         struct-shape-agent-alias-summary-agent-alias-status
+                         :shape "AgentAliasStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-alias-summary-created-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-alias-summary-updated-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-alias-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-alias-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'agent-alias-summary 'make-agent-alias-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -783,23 +1090,59 @@
    common-lisp:nil))
 (common-lisp:deftype agent-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-knowledge-base (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-knowledge-base-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or description common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (knowledge-base-state (common-lisp:error ":knowledgebasestate is required")
-    :type (common-lisp:or knowledge-base-state common-lisp:null)))
+ (common-lisp:defclass agent-knowledge-base common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-knowledge-base-agent-id :shape "Id"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-agent-knowledge-base-agent-version :shape
+                         "Version" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-knowledge-base-knowledge-base-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         (common-lisp:error ":description is required") :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-agent-knowledge-base-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-knowledge-base-created-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-knowledge-base-updated-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (knowledge-base-state :initarg :knowledge-base-state
+                         :initform
+                         (common-lisp:error ":knowledgebasestate is required")
+                         :type
+                         (common-lisp:or knowledge-base-state common-lisp:null)
+                         :accessor
+                         struct-shape-agent-knowledge-base-knowledge-base-state
+                         :shape "KnowledgeBaseState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-knowledge-base
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-knowledge-base
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'agent-knowledge-base 'make-agent-knowledge-base))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -871,17 +1214,42 @@
                             agent-knowledge-base-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-knowledge-base-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-knowledge-base-summary-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (knowledge-base-state (common-lisp:error ":knowledgebasestate is required")
-    :type (common-lisp:or knowledge-base-state common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass agent-knowledge-base-summary common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-knowledge-base-summary-knowledge-base-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-agent-knowledge-base-summary-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (knowledge-base-state :initarg :knowledge-base-state
+                         :initform
+                         (common-lisp:error ":knowledgebasestate is required")
+                         :type
+                         (common-lisp:or knowledge-base-state common-lisp:null)
+                         :accessor
+                         struct-shape-agent-knowledge-base-summary-knowledge-base-state
+                         :shape "KnowledgeBaseState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-agent-knowledge-base-summary-updated-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-knowledge-base-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-knowledge-base-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'agent-knowledge-base-summary
                     'make-agent-knowledge-base-summary))
@@ -940,21 +1308,48 @@
                            (trivial-types:proper-list agent-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-summary-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-name (common-lisp:error ":agentname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (agent-status (common-lisp:error ":agentstatus is required") :type
-    (common-lisp:or agent-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (latest-agent-version common-lisp:nil :type
-    (common-lisp:or version common-lisp:null)))
+ (common-lisp:defclass agent-summary common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-summary-agent-id :shape "Id"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-name :initarg :agent-name :initform
+                         (common-lisp:error ":agentname is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-agent-summary-agent-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-status :initarg :agent-status :initform
+                         (common-lisp:error ":agentstatus is required") :type
+                         (common-lisp:or agent-status common-lisp:null)
+                         :accessor struct-shape-agent-summary-agent-status
+                         :shape "AgentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-agent-summary-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-summary-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (latest-agent-version :initarg :latest-agent-version
+                         :initform common-lisp:nil :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-agent-summary-latest-agent-version :shape
+                         "Version" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'agent-summary 'make-agent-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input agent-summary))
@@ -1009,43 +1404,119 @@
                         ((aws-sdk/generator/shape::input agent-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-version (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-version-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-name (common-lisp:error ":agentname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (agent-arn (common-lisp:error ":agentarn is required") :type
-    (common-lisp:or agent-arn common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or numerical-version common-lisp:null))
-   (instruction common-lisp:nil :type
-    (common-lisp:or instruction common-lisp:null))
-   (agent-status (common-lisp:error ":agentstatus is required") :type
-    (common-lisp:or agent-status common-lisp:null))
-   (foundation-model common-lisp:nil :type
-    (common-lisp:or model-identifier common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (idle-session-ttlin-seconds
-    (common-lisp:error ":idlesessionttlinseconds is required") :type
-    (common-lisp:or session-ttl common-lisp:null))
-   (agent-resource-role-arn
-    (common-lisp:error ":agentresourcerolearn is required") :type
-    (common-lisp:or agent-role-arn common-lisp:null))
-   (customer-encryption-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (failure-reasons common-lisp:nil :type
-    (common-lisp:or failure-reasons common-lisp:null))
-   (recommended-actions common-lisp:nil :type
-    (common-lisp:or recommended-actions common-lisp:null))
-   (prompt-override-configuration common-lisp:nil :type
-    (common-lisp:or prompt-override-configuration common-lisp:null)))
+ (common-lisp:defclass agent-version common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-agent-version-agent-id :shape "Id"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-name :initarg :agent-name :initform
+                         (common-lisp:error ":agentname is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-agent-version-agent-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-arn :initarg :agent-arn :initform
+                         (common-lisp:error ":agentarn is required") :type
+                         (common-lisp:or agent-arn common-lisp:null) :accessor
+                         struct-shape-agent-version-agent-arn :shape "AgentArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or numerical-version common-lisp:null)
+                         :accessor struct-shape-agent-version-version :shape
+                         "NumericalVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instruction :initarg :instruction :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instruction common-lisp:null)
+                         :accessor struct-shape-agent-version-instruction
+                         :shape "Instruction" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-status :initarg :agent-status :initform
+                         (common-lisp:error ":agentstatus is required") :type
+                         (common-lisp:or agent-status common-lisp:null)
+                         :accessor struct-shape-agent-version-agent-status
+                         :shape "AgentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (foundation-model :initarg :foundation-model :initform
+                         common-lisp:nil :type
+                         (common-lisp:or model-identifier common-lisp:null)
+                         :accessor struct-shape-agent-version-foundation-model
+                         :shape "ModelIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-agent-version-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (idle-session-ttlin-seconds :initarg
+                         :idle-session-ttlin-seconds :initform
+                         (common-lisp:error
+                          ":idlesessionttlinseconds is required")
+                         :type (common-lisp:or session-ttl common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-idle-session-ttlin-seconds
+                         :shape "SessionTTL" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-resource-role-arn :initarg
+                         :agent-resource-role-arn :initform
+                         (common-lisp:error
+                          ":agentresourcerolearn is required")
+                         :type (common-lisp:or agent-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-agent-resource-role-arn
+                         :shape "AgentRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (customer-encryption-key-arn :initarg
+                         :customer-encryption-key-arn :initform common-lisp:nil
+                         :type (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-customer-encryption-key-arn
+                         :shape "KmsKeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-version-created-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-agent-version-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (failure-reasons :initarg :failure-reasons :initform
+                         common-lisp:nil :type
+                         (common-lisp:or failure-reasons common-lisp:null)
+                         :accessor struct-shape-agent-version-failure-reasons
+                         :shape "FailureReasons" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommended-actions :initarg :recommended-actions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or recommended-actions common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-recommended-actions :shape
+                         "RecommendedActions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prompt-override-configuration :initarg
+                         :prompt-override-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or prompt-override-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-prompt-override-configuration
+                         :shape "PromptOverrideConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-version
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-version
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'agent-version 'make-agent-version))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input agent-version))
@@ -1181,21 +1652,52 @@
                            (trivial-types:proper-list agent-version-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (agent-version-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agent-version-summary-"))
-   (agent-name (common-lisp:error ":agentname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (agent-status (common-lisp:error ":agentstatus is required") :type
-    (common-lisp:or agent-status common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null)))
+ (common-lisp:defclass agent-version-summary common-lisp:nil
+                       ((agent-name :initarg :agent-name :initform
+                         (common-lisp:error ":agentname is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-agent-version-summary-agent-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-status :initarg :agent-status :initform
+                         (common-lisp:error ":agentstatus is required") :type
+                         (common-lisp:or agent-status common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-summary-agent-status :shape
+                         "AgentStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-agent-version-summary-agent-version
+                         :shape "Version" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-summary-created-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-summary-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-agent-version-summary-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agent-version-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agent-version-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'agent-version-summary 'make-agent-version-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1256,19 +1758,46 @@
                           agent-version-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-agent-knowledge-base-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-agent-knowledge-base-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or draft-version common-lisp:null))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or description common-lisp:null))
-   (knowledge-base-state common-lisp:nil :type
-    (common-lisp:or knowledge-base-state common-lisp:null)))
+ (common-lisp:defclass associate-agent-knowledge-base-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-associate-agent-knowledge-base-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or draft-version common-lisp:null)
+                         :accessor
+                         struct-shape-associate-agent-knowledge-base-request-agent-version
+                         :shape "DraftVersion" :location "uri" :location-name
+                         "agentVersion")
+                        (knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-associate-agent-knowledge-base-request-knowledge-base-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         (common-lisp:error ":description is required") :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-associate-agent-knowledge-base-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (knowledge-base-state :initarg :knowledge-base-state
+                         :initform common-lisp:nil :type
+                         (common-lisp:or knowledge-base-state common-lisp:null)
+                         :accessor
+                         struct-shape-associate-agent-knowledge-base-request-knowledge-base-state
+                         :shape "KnowledgeBaseState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-agent-knowledge-base-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-agent-knowledge-base-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-agent-knowledge-base-request
                     'make-associate-agent-knowledge-base-request))
@@ -1310,11 +1839,22 @@
                           associate-agent-knowledge-base-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-agent-knowledge-base-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-agent-knowledge-base-response-"))
-   (agent-knowledge-base (common-lisp:error ":agentknowledgebase is required")
-    :type (common-lisp:or agent-knowledge-base common-lisp:null)))
+ (common-lisp:defclass associate-agent-knowledge-base-response common-lisp:nil
+                       ((agent-knowledge-base :initarg :agent-knowledge-base
+                         :initform
+                         (common-lisp:error ":agentknowledgebase is required")
+                         :type
+                         (common-lisp:or agent-knowledge-base common-lisp:null)
+                         :accessor
+                         struct-shape-associate-agent-knowledge-base-response-agent-knowledge-base
+                         :shape "AgentKnowledgeBase" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-agent-knowledge-base-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-agent-knowledge-base-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-agent-knowledge-base-response
                     'make-associate-agent-knowledge-base-response))
@@ -1345,13 +1885,30 @@
 (common-lisp:deftype bedrock-embedding-model-arn () 'common-lisp:string)
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (chunking-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-chunking-configuration-"))
-   (chunking-strategy (common-lisp:error ":chunkingstrategy is required") :type
-    (common-lisp:or chunking-strategy common-lisp:null))
-   (fixed-size-chunking-configuration common-lisp:nil :type
-    (common-lisp:or fixed-size-chunking-configuration common-lisp:null)))
+ (common-lisp:defclass chunking-configuration common-lisp:nil
+                       ((chunking-strategy :initarg :chunking-strategy
+                         :initform
+                         (common-lisp:error ":chunkingstrategy is required")
+                         :type
+                         (common-lisp:or chunking-strategy common-lisp:null)
+                         :accessor
+                         struct-shape-chunking-configuration-chunking-strategy
+                         :shape "ChunkingStrategy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (fixed-size-chunking-configuration :initarg
+                         :fixed-size-chunking-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or fixed-size-chunking-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-chunking-configuration-fixed-size-chunking-configuration
+                         :shape "FixedSizeChunkingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-chunking-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'chunking-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'chunking-configuration 'make-chunking-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1395,27 +1952,76 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-agent-action-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-agent-action-group-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or draft-version common-lisp:null))
-   (action-group-name (common-lisp:error ":actiongroupname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (parent-action-group-signature common-lisp:nil :type
-    (common-lisp:or action-group-signature common-lisp:null))
-   (action-group-executor common-lisp:nil :type
-    (common-lisp:or action-group-executor common-lisp:null))
-   (api-schema common-lisp:nil :type
-    (common-lisp:or apischema common-lisp:null))
-   (action-group-state common-lisp:nil :type
-    (common-lisp:or action-group-state common-lisp:null)))
+ (common-lisp:defclass create-agent-action-group-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-create-agent-action-group-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or draft-version common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-action-group-request-agent-version
+                         :shape "DraftVersion" :location "uri" :location-name
+                         "agentVersion")
+                        (action-group-name :initarg :action-group-name
+                         :initform
+                         (common-lisp:error ":actiongroupname is required")
+                         :type (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-agent-action-group-request-action-group-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-action-group-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-action-group-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parent-action-group-signature :initarg
+                         :parent-action-group-signature :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-group-signature
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-action-group-request-parent-action-group-signature
+                         :shape "ActionGroupSignature" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (action-group-executor :initarg :action-group-executor
+                         :initform common-lisp:nil :type
+                         (common-lisp:or action-group-executor
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-action-group-request-action-group-executor
+                         :shape "ActionGroupExecutor" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (api-schema :initarg :api-schema :initform
+                         common-lisp:nil :type
+                         (common-lisp:or apischema common-lisp:null) :accessor
+                         struct-shape-create-agent-action-group-request-api-schema
+                         :shape "APISchema" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-group-state :initarg :action-group-state
+                         :initform common-lisp:nil :type
+                         (common-lisp:or action-group-state common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-action-group-request-action-group-state
+                         :shape "ActionGroupState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-agent-action-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-agent-action-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-agent-action-group-request
                     'make-create-agent-action-group-request))
@@ -1486,11 +2092,22 @@
                           create-agent-action-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-agent-action-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-agent-action-group-response-"))
-   (agent-action-group (common-lisp:error ":agentactiongroup is required")
-    :type (common-lisp:or agent-action-group common-lisp:null)))
+ (common-lisp:defclass create-agent-action-group-response common-lisp:nil
+                       ((agent-action-group :initarg :agent-action-group
+                         :initform
+                         (common-lisp:error ":agentactiongroup is required")
+                         :type
+                         (common-lisp:or agent-action-group common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-action-group-response-agent-action-group
+                         :shape "AgentActionGroup" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-agent-action-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-agent-action-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-agent-action-group-response
                     'make-create-agent-action-group-response))
@@ -1517,20 +2134,50 @@
                           create-agent-action-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-agent-alias-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-agent-alias-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-alias-name (common-lisp:error ":agentaliasname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (routing-configuration common-lisp:nil :type
-    (common-lisp:or agent-alias-routing-configuration common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags-map common-lisp:null)))
+ (common-lisp:defclass create-agent-alias-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-create-agent-alias-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-alias-name :initarg :agent-alias-name :initform
+                         (common-lisp:error ":agentaliasname is required")
+                         :type (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-agent-alias-request-agent-alias-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-alias-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-alias-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (routing-configuration :initarg :routing-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or agent-alias-routing-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-alias-request-routing-configuration
+                         :shape "AgentAliasRoutingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags-map common-lisp:null) :accessor
+                         struct-shape-create-agent-alias-request-tags :shape
+                         "TagsMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-agent-alias-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-agent-alias-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-agent-alias-request
                     'make-create-agent-alias-request))
@@ -1586,11 +2233,19 @@
                           create-agent-alias-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-agent-alias-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-agent-alias-response-"))
-   (agent-alias (common-lisp:error ":agentalias is required") :type
-    (common-lisp:or agent-alias common-lisp:null)))
+ (common-lisp:defclass create-agent-alias-response common-lisp:nil
+                       ((agent-alias :initarg :agent-alias :initform
+                         (common-lisp:error ":agentalias is required") :type
+                         (common-lisp:or agent-alias common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-alias-response-agent-alias
+                         :shape "AgentAlias" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-agent-alias-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-agent-alias-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-agent-alias-response
                     'make-create-agent-alias-response))
@@ -1617,29 +2272,83 @@
                           create-agent-alias-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-agent-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-agent-request-"))
-   (agent-name (common-lisp:error ":agentname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (instruction common-lisp:nil :type
-    (common-lisp:or instruction common-lisp:null))
-   (foundation-model common-lisp:nil :type
-    (common-lisp:or model-identifier common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (idle-session-ttlin-seconds common-lisp:nil :type
-    (common-lisp:or session-ttl common-lisp:null))
-   (agent-resource-role-arn
-    (common-lisp:error ":agentresourcerolearn is required") :type
-    (common-lisp:or agent-role-arn common-lisp:null))
-   (customer-encryption-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags-map common-lisp:null))
-   (prompt-override-configuration common-lisp:nil :type
-    (common-lisp:or prompt-override-configuration common-lisp:null)))
+ (common-lisp:defclass create-agent-request common-lisp:nil
+                       ((agent-name :initarg :agent-name :initform
+                         (common-lisp:error ":agentname is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-agent-request-agent-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-request-client-token :shape
+                         "ClientToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (instruction :initarg :instruction :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instruction common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-request-instruction :shape
+                         "Instruction" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (foundation-model :initarg :foundation-model :initform
+                         common-lisp:nil :type
+                         (common-lisp:or model-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-request-foundation-model
+                         :shape "ModelIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-request-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (idle-session-ttlin-seconds :initarg
+                         :idle-session-ttlin-seconds :initform common-lisp:nil
+                         :type (common-lisp:or session-ttl common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-request-idle-session-ttlin-seconds
+                         :shape "SessionTTL" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-resource-role-arn :initarg
+                         :agent-resource-role-arn :initform
+                         (common-lisp:error
+                          ":agentresourcerolearn is required")
+                         :type (common-lisp:or agent-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-request-agent-resource-role-arn
+                         :shape "AgentRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (customer-encryption-key-arn :initarg
+                         :customer-encryption-key-arn :initform common-lisp:nil
+                         :type (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-request-customer-encryption-key-arn
+                         :shape "KmsKeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags-map common-lisp:null) :accessor
+                         struct-shape-create-agent-request-tags :shape
+                         "TagsMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (prompt-override-configuration :initarg
+                         :prompt-override-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or prompt-override-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-agent-request-prompt-override-configuration
+                         :shape "PromptOverrideConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-agent-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-agent-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-agent-request 'make-create-agent-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1726,11 +2435,18 @@
                         ((aws-sdk/generator/shape::input create-agent-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-agent-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-agent-response-"))
-   (agent (common-lisp:error ":agent is required") :type
-    (common-lisp:or agent common-lisp:null)))
+ (common-lisp:defclass create-agent-response common-lisp:nil
+                       ((agent :initarg :agent :initform
+                         (common-lisp:error ":agent is required") :type
+                         (common-lisp:or agent common-lisp:null) :accessor
+                         struct-shape-create-agent-response-agent :shape
+                         "Agent" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-agent-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-agent-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-agent-response 'make-create-agent-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1756,24 +2472,68 @@
                           create-agent-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-data-source-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-data-source-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (data-source-configuration
-    (common-lisp:error ":datasourceconfiguration is required") :type
-    (common-lisp:or data-source-configuration common-lisp:null))
-   (server-side-encryption-configuration common-lisp:nil :type
-    (common-lisp:or server-side-encryption-configuration common-lisp:null))
-   (vector-ingestion-configuration common-lisp:nil :type
-    (common-lisp:or vector-ingestion-configuration common-lisp:null)))
+ (common-lisp:defclass create-data-source-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-create-data-source-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-data-source-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-data-source-request-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-data-source-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (data-source-configuration :initarg
+                         :data-source-configuration :initform
+                         (common-lisp:error
+                          ":datasourceconfiguration is required")
+                         :type
+                         (common-lisp:or data-source-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-data-source-request-data-source-configuration
+                         :shape "DataSourceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (server-side-encryption-configuration :initarg
+                         :server-side-encryption-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or server-side-encryption-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-data-source-request-server-side-encryption-configuration
+                         :shape "ServerSideEncryptionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (vector-ingestion-configuration :initarg
+                         :vector-ingestion-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vector-ingestion-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-data-source-request-vector-ingestion-configuration
+                         :shape "VectorIngestionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-data-source-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-data-source-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-data-source-request
                     'make-create-data-source-request))
@@ -1838,11 +2598,19 @@
                           create-data-source-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-data-source-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-data-source-response-"))
-   (data-source (common-lisp:error ":datasource is required") :type
-    (common-lisp:or data-source common-lisp:null)))
+ (common-lisp:defclass create-data-source-response common-lisp:nil
+                       ((data-source :initarg :data-source :initform
+                         (common-lisp:error ":datasource is required") :type
+                         (common-lisp:or data-source common-lisp:null)
+                         :accessor
+                         struct-shape-create-data-source-response-data-source
+                         :shape "DataSource" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-data-source-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-data-source-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-data-source-response
                     'make-create-data-source-response))
@@ -1869,24 +2637,68 @@
                           create-data-source-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-knowledge-base-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-knowledge-base-request-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or knowledge-base-role-arn common-lisp:null))
-   (knowledge-base-configuration
-    (common-lisp:error ":knowledgebaseconfiguration is required") :type
-    (common-lisp:or knowledge-base-configuration common-lisp:null))
-   (storage-configuration
-    (common-lisp:error ":storageconfiguration is required") :type
-    (common-lisp:or storage-configuration common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags-map common-lisp:null)))
+ (common-lisp:defclass create-knowledge-base-request common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-knowledge-base-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-create-knowledge-base-request-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-create-knowledge-base-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or knowledge-base-role-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-knowledge-base-request-role-arn
+                         :shape "KnowledgeBaseRoleArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (knowledge-base-configuration :initarg
+                         :knowledge-base-configuration :initform
+                         (common-lisp:error
+                          ":knowledgebaseconfiguration is required")
+                         :type
+                         (common-lisp:or knowledge-base-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-knowledge-base-request-knowledge-base-configuration
+                         :shape "KnowledgeBaseConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (storage-configuration :initarg :storage-configuration
+                         :initform
+                         (common-lisp:error
+                          ":storageconfiguration is required")
+                         :type
+                         (common-lisp:or storage-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-knowledge-base-request-storage-configuration
+                         :shape "StorageConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags-map common-lisp:null) :accessor
+                         struct-shape-create-knowledge-base-request-tags :shape
+                         "TagsMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-knowledge-base-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-knowledge-base-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-knowledge-base-request
                     'make-create-knowledge-base-request))
@@ -1957,11 +2769,20 @@
                           create-knowledge-base-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-knowledge-base-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-knowledge-base-response-"))
-   (knowledge-base (common-lisp:error ":knowledgebase is required") :type
-    (common-lisp:or knowledge-base common-lisp:null)))
+ (common-lisp:defclass create-knowledge-base-response common-lisp:nil
+                       ((knowledge-base :initarg :knowledge-base :initform
+                         (common-lisp:error ":knowledgebase is required") :type
+                         (common-lisp:or knowledge-base common-lisp:null)
+                         :accessor
+                         struct-shape-create-knowledge-base-response-knowledge-base
+                         :shape "KnowledgeBase" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-knowledge-base-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-knowledge-base-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-knowledge-base-response
                     'make-create-knowledge-base-response))
@@ -1989,30 +2810,83 @@
    common-lisp:nil))
 (common-lisp:deftype creation-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (data-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-data-source-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or data-source-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (data-source-configuration
-    (common-lisp:error ":datasourceconfiguration is required") :type
-    (common-lisp:or data-source-configuration common-lisp:null))
-   (server-side-encryption-configuration common-lisp:nil :type
-    (common-lisp:or server-side-encryption-configuration common-lisp:null))
-   (vector-ingestion-configuration common-lisp:nil :type
-    (common-lisp:or vector-ingestion-configuration common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass data-source common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-data-source-knowledge-base-id :shape "Id"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-data-source-data-source-id :shape "Id"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-data-source-name :shape "Name" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or data-source-status common-lisp:null)
+                         :accessor struct-shape-data-source-status :shape
+                         "DataSourceStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-data-source-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (data-source-configuration :initarg
+                         :data-source-configuration :initform
+                         (common-lisp:error
+                          ":datasourceconfiguration is required")
+                         :type
+                         (common-lisp:or data-source-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-data-source-data-source-configuration
+                         :shape "DataSourceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (server-side-encryption-configuration :initarg
+                         :server-side-encryption-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or server-side-encryption-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-data-source-server-side-encryption-configuration
+                         :shape "ServerSideEncryptionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (vector-ingestion-configuration :initarg
+                         :vector-ingestion-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vector-ingestion-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-data-source-vector-ingestion-configuration
+                         :shape "VectorIngestionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-data-source-created-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-data-source-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-data-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'data-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'data-source 'make-data-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input data-source))
@@ -2097,13 +2971,26 @@
                         ((aws-sdk/generator/shape::input data-source))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (data-source-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-data-source-configuration-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or data-source-type common-lisp:null))
-   (s3configuration common-lisp:nil :type
-    (common-lisp:or s3data-source-configuration common-lisp:null)))
+ (common-lisp:defclass data-source-configuration common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or data-source-type common-lisp:null)
+                         :accessor struct-shape-data-source-configuration-type
+                         :shape "DataSourceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (s3configuration :initarg :s3configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or s3data-source-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-data-source-configuration-s3configuration
+                         :shape "S3DataSourceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-data-source-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'data-source-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'data-source-configuration
                     'make-data-source-configuration))
@@ -2146,21 +3033,49 @@
                            (trivial-types:proper-list data-source-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (data-source-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-data-source-summary-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or data-source-status common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass data-source-summary common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-data-source-summary-knowledge-base-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-data-source-summary-data-source-id :shape
+                         "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-data-source-summary-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or data-source-status common-lisp:null)
+                         :accessor struct-shape-data-source-summary-status
+                         :shape "DataSourceStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-data-source-summary-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-data-source-summary-updated-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-data-source-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'data-source-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'data-source-summary 'make-data-source-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2217,17 +3132,38 @@
 (common-lisp:deftype data-source-type () 'common-lisp:string)
 (common-lisp:deftype date-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-agent-action-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-agent-action-group-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or draft-version common-lisp:null))
-   (action-group-id (common-lisp:error ":actiongroupid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (skip-resource-in-use-check common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass delete-agent-action-group-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-agent-action-group-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or draft-version common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-action-group-request-agent-version
+                         :shape "DraftVersion" :location "uri" :location-name
+                         "agentVersion")
+                        (action-group-id :initarg :action-group-id :initform
+                         (common-lisp:error ":actiongroupid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-agent-action-group-request-action-group-id
+                         :shape "Id" :location "uri" :location-name
+                         "actionGroupId")
+                        (skip-resource-in-use-check :initarg
+                         :skip-resource-in-use-check :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-action-group-request-skip-resource-in-use-check
+                         :shape "Boolean" :location "querystring"
+                         :location-name "skipResourceInUseCheck"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-agent-action-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-agent-action-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-agent-action-group-request
                     'make-delete-agent-action-group-request))
@@ -2247,9 +3183,14 @@
                           delete-agent-action-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-agent-action-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-agent-action-group-response-")))
+ (common-lisp:defclass delete-agent-action-group-response common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-agent-action-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-agent-action-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-agent-action-group-response
                     'make-delete-agent-action-group-response))
@@ -2269,13 +3210,24 @@
                           delete-agent-action-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-agent-alias-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-agent-alias-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-alias-id (common-lisp:error ":agentaliasid is required") :type
-    (common-lisp:or agent-alias-id common-lisp:null)))
+ (common-lisp:defclass delete-agent-alias-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-agent-alias-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-alias-id :initarg :agent-alias-id :initform
+                         (common-lisp:error ":agentaliasid is required") :type
+                         (common-lisp:or agent-alias-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-alias-request-agent-alias-id
+                         :shape "AgentAliasId" :location "uri" :location-name
+                         "agentAliasId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-agent-alias-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-agent-alias-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-agent-alias-request
                     'make-delete-agent-alias-request))
@@ -2295,15 +3247,34 @@
                           delete-agent-alias-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-agent-alias-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-agent-alias-response-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-alias-id (common-lisp:error ":agentaliasid is required") :type
-    (common-lisp:or agent-alias-id common-lisp:null))
-   (agent-alias-status (common-lisp:error ":agentaliasstatus is required")
-    :type (common-lisp:or agent-alias-status common-lisp:null)))
+ (common-lisp:defclass delete-agent-alias-response common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-agent-alias-response-agent-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-alias-id :initarg :agent-alias-id :initform
+                         (common-lisp:error ":agentaliasid is required") :type
+                         (common-lisp:or agent-alias-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-alias-response-agent-alias-id
+                         :shape "AgentAliasId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-alias-status :initarg :agent-alias-status
+                         :initform
+                         (common-lisp:error ":agentaliasstatus is required")
+                         :type
+                         (common-lisp:or agent-alias-status common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-alias-response-agent-alias-status
+                         :shape "AgentAliasStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-agent-alias-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-agent-alias-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-agent-alias-response
                     'make-delete-agent-alias-response))
@@ -2344,13 +3315,24 @@
                           delete-agent-alias-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-agent-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-agent-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (skip-resource-in-use-check common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass delete-agent-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-agent-request-agent-id :shape "Id"
+                         :location "uri" :location-name "agentId")
+                        (skip-resource-in-use-check :initarg
+                         :skip-resource-in-use-check :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-request-skip-resource-in-use-check
+                         :shape "Boolean" :location "querystring"
+                         :location-name "skipResourceInUseCheck"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-agent-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-agent-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-agent-request 'make-delete-agent-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2363,13 +3345,25 @@
                         ((aws-sdk/generator/shape::input delete-agent-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-agent-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-agent-response-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-status (common-lisp:error ":agentstatus is required") :type
-    (common-lisp:or agent-status common-lisp:null)))
+ (common-lisp:defclass delete-agent-response common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-agent-response-agent-id :shape
+                         "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-status :initarg :agent-status :initform
+                         (common-lisp:error ":agentstatus is required") :type
+                         (common-lisp:or agent-status common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-response-agent-status :shape
+                         "AgentStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-agent-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-agent-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-agent-response 'make-delete-agent-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2402,15 +3396,31 @@
                           delete-agent-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-agent-version-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-agent-version-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or numerical-version common-lisp:null))
-   (skip-resource-in-use-check common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass delete-agent-version-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-agent-version-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or numerical-version common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-version-request-agent-version
+                         :shape "NumericalVersion" :location "uri"
+                         :location-name "agentVersion")
+                        (skip-resource-in-use-check :initarg
+                         :skip-resource-in-use-check :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-version-request-skip-resource-in-use-check
+                         :shape "Boolean" :location "querystring"
+                         :location-name "skipResourceInUseCheck"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-agent-version-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-agent-version-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-agent-version-request
                     'make-delete-agent-version-request))
@@ -2430,15 +3440,33 @@
                           delete-agent-version-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-agent-version-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-agent-version-response-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or numerical-version common-lisp:null))
-   (agent-status (common-lisp:error ":agentstatus is required") :type
-    (common-lisp:or agent-status common-lisp:null)))
+ (common-lisp:defclass delete-agent-version-response common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-agent-version-response-agent-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or numerical-version common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-version-response-agent-version
+                         :shape "NumericalVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-status :initarg :agent-status :initform
+                         (common-lisp:error ":agentstatus is required") :type
+                         (common-lisp:or agent-status common-lisp:null)
+                         :accessor
+                         struct-shape-delete-agent-version-response-agent-status
+                         :shape "AgentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-agent-version-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-agent-version-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-agent-version-response
                     'make-delete-agent-version-response))
@@ -2479,13 +3507,25 @@
                           delete-agent-version-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-data-source-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-data-source-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass delete-data-source-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-data-source-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-data-source-request-data-source-id
+                         :shape "Id" :location "uri" :location-name
+                         "dataSourceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-data-source-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-data-source-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-data-source-request
                     'make-delete-data-source-request))
@@ -2505,15 +3545,32 @@
                           delete-data-source-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-data-source-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-data-source-response-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or data-source-status common-lisp:null)))
+ (common-lisp:defclass delete-data-source-response common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-data-source-response-knowledge-base-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-data-source-response-data-source-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or data-source-status common-lisp:null)
+                         :accessor
+                         struct-shape-delete-data-source-response-status :shape
+                         "DataSourceStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-data-source-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-data-source-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-data-source-response
                     'make-delete-data-source-response))
@@ -2554,11 +3611,20 @@
                           delete-data-source-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-knowledge-base-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-knowledge-base-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass delete-knowledge-base-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-knowledge-base-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-knowledge-base-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-knowledge-base-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-knowledge-base-request
                     'make-delete-knowledge-base-request))
@@ -2578,13 +3644,28 @@
                           delete-knowledge-base-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-knowledge-base-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-knowledge-base-response-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or knowledge-base-status common-lisp:null)))
+ (common-lisp:defclass delete-knowledge-base-response common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-delete-knowledge-base-response-knowledge-base-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or knowledge-base-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-knowledge-base-response-status
+                         :shape "KnowledgeBaseStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-knowledge-base-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-knowledge-base-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-knowledge-base-response
                     'make-delete-knowledge-base-response))
@@ -2619,15 +3700,33 @@
    common-lisp:nil))
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-agent-knowledge-base-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-agent-knowledge-base-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or draft-version common-lisp:null))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass disassociate-agent-knowledge-base-request
+                       common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-disassociate-agent-knowledge-base-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or draft-version common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-agent-knowledge-base-request-agent-version
+                         :shape "DraftVersion" :location "uri" :location-name
+                         "agentVersion")
+                        (knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-disassociate-agent-knowledge-base-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-agent-knowledge-base-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-agent-knowledge-base-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-agent-knowledge-base-request
                     'make-disassociate-agent-knowledge-base-request))
@@ -2647,9 +3746,14 @@
                           disassociate-agent-knowledge-base-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-agent-knowledge-base-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-agent-knowledge-base-response-")))
+ (common-lisp:defclass disassociate-agent-knowledge-base-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-agent-knowledge-base-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-agent-knowledge-base-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-agent-knowledge-base-response
                     'make-disassociate-agent-knowledge-base-response))
@@ -2680,17 +3784,37 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype field-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (fixed-size-chunking-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-fixed-size-chunking-configuration-"))
-   (max-tokens (common-lisp:error ":maxtokens is required") :type
-    (common-lisp:or fixed-size-chunking-configuration-max-tokens-integer
-                    common-lisp:null))
-   (overlap-percentage (common-lisp:error ":overlappercentage is required")
-    :type
-    (common-lisp:or
-     fixed-size-chunking-configuration-overlap-percentage-integer
-     common-lisp:null)))
+ (common-lisp:defclass fixed-size-chunking-configuration common-lisp:nil
+                       ((max-tokens :initarg :max-tokens :initform
+                         (common-lisp:error ":maxtokens is required") :type
+                         (common-lisp:or
+                          fixed-size-chunking-configuration-max-tokens-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-fixed-size-chunking-configuration-max-tokens
+                         :shape
+                         "FixedSizeChunkingConfigurationMaxTokensInteger"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (overlap-percentage :initarg :overlap-percentage
+                         :initform
+                         (common-lisp:error ":overlappercentage is required")
+                         :type
+                         (common-lisp:or
+                          fixed-size-chunking-configuration-overlap-percentage-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-fixed-size-chunking-configuration-overlap-percentage
+                         :shape
+                         "FixedSizeChunkingConfigurationOverlapPercentageInteger"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-fixed-size-chunking-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'fixed-size-chunking-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'fixed-size-chunking-configuration
                     'make-fixed-size-chunking-configuration))
@@ -2729,15 +3853,30 @@
                      ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-action-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-action-group-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (action-group-id (common-lisp:error ":actiongroupid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass get-agent-action-group-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-agent-action-group-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-get-agent-action-group-request-agent-version
+                         :shape "Version" :location "uri" :location-name
+                         "agentVersion")
+                        (action-group-id :initarg :action-group-id :initform
+                         (common-lisp:error ":actiongroupid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-agent-action-group-request-action-group-id
+                         :shape "Id" :location "uri" :location-name
+                         "actionGroupId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-action-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-agent-action-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-action-group-request
                     'make-get-agent-action-group-request))
@@ -2757,11 +3896,22 @@
                           get-agent-action-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-action-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-action-group-response-"))
-   (agent-action-group (common-lisp:error ":agentactiongroup is required")
-    :type (common-lisp:or agent-action-group common-lisp:null)))
+ (common-lisp:defclass get-agent-action-group-response common-lisp:nil
+                       ((agent-action-group :initarg :agent-action-group
+                         :initform
+                         (common-lisp:error ":agentactiongroup is required")
+                         :type
+                         (common-lisp:or agent-action-group common-lisp:null)
+                         :accessor
+                         struct-shape-get-agent-action-group-response-agent-action-group
+                         :shape "AgentActionGroup" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-action-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-agent-action-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-action-group-response
                     'make-get-agent-action-group-response))
@@ -2788,13 +3938,24 @@
                           get-agent-action-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-alias-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-alias-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-alias-id (common-lisp:error ":agentaliasid is required") :type
-    (common-lisp:or agent-alias-id common-lisp:null)))
+ (common-lisp:defclass get-agent-alias-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-agent-alias-request-agent-id :shape
+                         "Id" :location "uri" :location-name "agentId")
+                        (agent-alias-id :initarg :agent-alias-id :initform
+                         (common-lisp:error ":agentaliasid is required") :type
+                         (common-lisp:or agent-alias-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-agent-alias-request-agent-alias-id
+                         :shape "AgentAliasId" :location "uri" :location-name
+                         "agentAliasId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-alias-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-agent-alias-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-alias-request 'make-get-agent-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2813,11 +3974,19 @@
                           get-agent-alias-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-alias-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-alias-response-"))
-   (agent-alias (common-lisp:error ":agentalias is required") :type
-    (common-lisp:or agent-alias common-lisp:null)))
+ (common-lisp:defclass get-agent-alias-response common-lisp:nil
+                       ((agent-alias :initarg :agent-alias :initform
+                         (common-lisp:error ":agentalias is required") :type
+                         (common-lisp:or agent-alias common-lisp:null)
+                         :accessor
+                         struct-shape-get-agent-alias-response-agent-alias
+                         :shape "AgentAlias" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-alias-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-agent-alias-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-alias-response 'make-get-agent-alias-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2843,15 +4012,31 @@
                           get-agent-alias-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-knowledge-base-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-knowledge-base-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass get-agent-knowledge-base-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-agent-knowledge-base-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-get-agent-knowledge-base-request-agent-version
+                         :shape "Version" :location "uri" :location-name
+                         "agentVersion")
+                        (knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-agent-knowledge-base-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-knowledge-base-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-agent-knowledge-base-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-knowledge-base-request
                     'make-get-agent-knowledge-base-request))
@@ -2871,11 +4056,22 @@
                           get-agent-knowledge-base-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-knowledge-base-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-knowledge-base-response-"))
-   (agent-knowledge-base (common-lisp:error ":agentknowledgebase is required")
-    :type (common-lisp:or agent-knowledge-base common-lisp:null)))
+ (common-lisp:defclass get-agent-knowledge-base-response common-lisp:nil
+                       ((agent-knowledge-base :initarg :agent-knowledge-base
+                         :initform
+                         (common-lisp:error ":agentknowledgebase is required")
+                         :type
+                         (common-lisp:or agent-knowledge-base common-lisp:null)
+                         :accessor
+                         struct-shape-get-agent-knowledge-base-response-agent-knowledge-base
+                         :shape "AgentKnowledgeBase" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-knowledge-base-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-agent-knowledge-base-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-knowledge-base-response
                     'make-get-agent-knowledge-base-response))
@@ -2903,11 +4099,17 @@
                           get-agent-knowledge-base-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass get-agent-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-agent-request-agent-id :shape "Id"
+                         :location "uri" :location-name "agentId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-agent-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-request 'make-get-agent-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2920,11 +4122,18 @@
                         ((aws-sdk/generator/shape::input get-agent-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-response-"))
-   (agent (common-lisp:error ":agent is required") :type
-    (common-lisp:or agent common-lisp:null)))
+ (common-lisp:defclass get-agent-response common-lisp:nil
+                       ((agent :initarg :agent :initform
+                         (common-lisp:error ":agent is required") :type
+                         (common-lisp:or agent common-lisp:null) :accessor
+                         struct-shape-get-agent-response-agent :shape "Agent"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-agent-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-response 'make-get-agent-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2944,13 +4153,24 @@
                         ((aws-sdk/generator/shape::input get-agent-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-version-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-version-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or numerical-version common-lisp:null)))
+ (common-lisp:defclass get-agent-version-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-agent-version-request-agent-id :shape
+                         "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or numerical-version common-lisp:null)
+                         :accessor
+                         struct-shape-get-agent-version-request-agent-version
+                         :shape "NumericalVersion" :location "uri"
+                         :location-name "agentVersion"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-version-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-agent-version-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-version-request
                     'make-get-agent-version-request))
@@ -2970,11 +4190,19 @@
                           get-agent-version-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agent-version-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agent-version-response-"))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or agent-version common-lisp:null)))
+ (common-lisp:defclass get-agent-version-response common-lisp:nil
+                       ((agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or agent-version common-lisp:null)
+                         :accessor
+                         struct-shape-get-agent-version-response-agent-version
+                         :shape "AgentVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agent-version-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-agent-version-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agent-version-response
                     'make-get-agent-version-response))
@@ -3001,13 +4229,25 @@
                           get-agent-version-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-data-source-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-data-source-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass get-data-source-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-data-source-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-data-source-request-data-source-id
+                         :shape "Id" :location "uri" :location-name
+                         "dataSourceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-data-source-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-data-source-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-data-source-request 'make-get-data-source-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3026,11 +4266,19 @@
                           get-data-source-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-data-source-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-data-source-response-"))
-   (data-source (common-lisp:error ":datasource is required") :type
-    (common-lisp:or data-source common-lisp:null)))
+ (common-lisp:defclass get-data-source-response common-lisp:nil
+                       ((data-source :initarg :data-source :initform
+                         (common-lisp:error ":datasource is required") :type
+                         (common-lisp:or data-source common-lisp:null)
+                         :accessor
+                         struct-shape-get-data-source-response-data-source
+                         :shape "DataSource" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-data-source-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-data-source-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-data-source-response 'make-get-data-source-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3056,15 +4304,31 @@
                           get-data-source-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-ingestion-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-ingestion-job-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (ingestion-job-id (common-lisp:error ":ingestionjobid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass get-ingestion-job-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-ingestion-job-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-ingestion-job-request-data-source-id
+                         :shape "Id" :location "uri" :location-name
+                         "dataSourceId")
+                        (ingestion-job-id :initarg :ingestion-job-id :initform
+                         (common-lisp:error ":ingestionjobid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-ingestion-job-request-ingestion-job-id
+                         :shape "Id" :location "uri" :location-name
+                         "ingestionJobId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-ingestion-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-ingestion-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-ingestion-job-request
                     'make-get-ingestion-job-request))
@@ -3084,11 +4348,19 @@
                           get-ingestion-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-ingestion-job-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-ingestion-job-response-"))
-   (ingestion-job (common-lisp:error ":ingestionjob is required") :type
-    (common-lisp:or ingestion-job common-lisp:null)))
+ (common-lisp:defclass get-ingestion-job-response common-lisp:nil
+                       ((ingestion-job :initarg :ingestion-job :initform
+                         (common-lisp:error ":ingestionjob is required") :type
+                         (common-lisp:or ingestion-job common-lisp:null)
+                         :accessor
+                         struct-shape-get-ingestion-job-response-ingestion-job
+                         :shape "IngestionJob" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-ingestion-job-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-ingestion-job-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-ingestion-job-response
                     'make-get-ingestion-job-response))
@@ -3115,11 +4387,19 @@
                           get-ingestion-job-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-knowledge-base-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-knowledge-base-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass get-knowledge-base-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-get-knowledge-base-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-knowledge-base-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-knowledge-base-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-knowledge-base-request
                     'make-get-knowledge-base-request))
@@ -3139,11 +4419,19 @@
                           get-knowledge-base-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-knowledge-base-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-knowledge-base-response-"))
-   (knowledge-base (common-lisp:error ":knowledgebase is required") :type
-    (common-lisp:or knowledge-base common-lisp:null)))
+ (common-lisp:defclass get-knowledge-base-response common-lisp:nil
+                       ((knowledge-base :initarg :knowledge-base :initform
+                         (common-lisp:error ":knowledgebase is required") :type
+                         (common-lisp:or knowledge-base common-lisp:null)
+                         :accessor
+                         struct-shape-get-knowledge-base-response-knowledge-base
+                         :shape "KnowledgeBase" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-knowledge-base-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-knowledge-base-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-knowledge-base-response
                     'make-get-knowledge-base-response))
@@ -3171,17 +4459,43 @@
    common-lisp:nil))
 (common-lisp:deftype id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (inference-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-inference-configuration-"))
-   (temperature common-lisp:nil :type
-    (common-lisp:or temperature common-lisp:null))
-   (top-p common-lisp:nil :type (common-lisp:or top-p common-lisp:null))
-   (top-k common-lisp:nil :type (common-lisp:or top-k common-lisp:null))
-   (maximum-length common-lisp:nil :type
-    (common-lisp:or maximum-length common-lisp:null))
-   (stop-sequences common-lisp:nil :type
-    (common-lisp:or stop-sequences common-lisp:null)))
+ (common-lisp:defclass inference-configuration common-lisp:nil
+                       ((temperature :initarg :temperature :initform
+                         common-lisp:nil :type
+                         (common-lisp:or temperature common-lisp:null)
+                         :accessor
+                         struct-shape-inference-configuration-temperature
+                         :shape "Temperature" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (top-p :initarg :top-p :initform common-lisp:nil :type
+                         (common-lisp:or top-p common-lisp:null) :accessor
+                         struct-shape-inference-configuration-top-p :shape
+                         "TopP" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (top-k :initarg :top-k :initform common-lisp:nil :type
+                         (common-lisp:or top-k common-lisp:null) :accessor
+                         struct-shape-inference-configuration-top-k :shape
+                         "TopK" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (maximum-length :initarg :maximum-length :initform
+                         common-lisp:nil :type
+                         (common-lisp:or maximum-length common-lisp:null)
+                         :accessor
+                         struct-shape-inference-configuration-maximum-length
+                         :shape "MaximumLength" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stop-sequences :initarg :stop-sequences :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stop-sequences common-lisp:null)
+                         :accessor
+                         struct-shape-inference-configuration-stop-sequences
+                         :shape "StopSequences" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-inference-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'inference-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'inference-configuration 'make-inference-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3235,27 +4549,68 @@
                           inference-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ingestion-job (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ingestion-job-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (ingestion-job-id (common-lisp:error ":ingestionjobid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or ingestion-job-status common-lisp:null))
-   (statistics common-lisp:nil :type
-    (common-lisp:or ingestion-job-statistics common-lisp:null))
-   (failure-reasons common-lisp:nil :type
-    (common-lisp:or failure-reasons common-lisp:null))
-   (started-at (common-lisp:error ":startedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass ingestion-job common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-ingestion-job-knowledge-base-id :shape
+                         "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-ingestion-job-data-source-id :shape "Id"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ingestion-job-id :initarg :ingestion-job-id :initform
+                         (common-lisp:error ":ingestionjobid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-ingestion-job-ingestion-job-id :shape
+                         "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-ingestion-job-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or ingestion-job-status common-lisp:null)
+                         :accessor struct-shape-ingestion-job-status :shape
+                         "IngestionJobStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (statistics :initarg :statistics :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ingestion-job-statistics
+                                         common-lisp:null)
+                         :accessor struct-shape-ingestion-job-statistics :shape
+                         "IngestionJobStatistics" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (failure-reasons :initarg :failure-reasons :initform
+                         common-lisp:nil :type
+                         (common-lisp:or failure-reasons common-lisp:null)
+                         :accessor struct-shape-ingestion-job-failure-reasons
+                         :shape "FailureReasons" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-at :initarg :started-at :initform
+                         (common-lisp:error ":startedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-ingestion-job-started-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-ingestion-job-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ingestion-job
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ingestion-job
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'ingestion-job 'make-ingestion-job))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input ingestion-job))
@@ -3330,15 +4685,33 @@
                         ((aws-sdk/generator/shape::input ingestion-job))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ingestion-job-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ingestion-job-filter-"))
-   (attribute (common-lisp:error ":attribute is required") :type
-    (common-lisp:or ingestion-job-filter-attribute common-lisp:null))
-   (operator (common-lisp:error ":operator is required") :type
-    (common-lisp:or ingestion-job-filter-operator common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or ingestion-job-filter-values common-lisp:null)))
+ (common-lisp:defclass ingestion-job-filter common-lisp:nil
+                       ((attribute :initarg :attribute :initform
+                         (common-lisp:error ":attribute is required") :type
+                         (common-lisp:or ingestion-job-filter-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-ingestion-job-filter-attribute
+                         :shape "IngestionJobFilterAttribute" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (operator :initarg :operator :initform
+                         (common-lisp:error ":operator is required") :type
+                         (common-lisp:or ingestion-job-filter-operator
+                                         common-lisp:null)
+                         :accessor struct-shape-ingestion-job-filter-operator
+                         :shape "IngestionJobFilterOperator" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (values :initarg :values :initform
+                         (common-lisp:error ":values is required") :type
+                         (common-lisp:or ingestion-job-filter-values
+                                         common-lisp:null)
+                         :accessor struct-shape-ingestion-job-filter-values
+                         :shape "IngestionJobFilterValues" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ingestion-job-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ingestion-job-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ingestion-job-filter 'make-ingestion-job-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3392,13 +4765,25 @@
                            (trivial-types:proper-list ingestion-job-filter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ingestion-job-sort-by (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ingestion-job-sort-by-"))
-   (attribute (common-lisp:error ":attribute is required") :type
-    (common-lisp:or ingestion-job-sort-by-attribute common-lisp:null))
-   (order (common-lisp:error ":order is required") :type
-    (common-lisp:or sort-order common-lisp:null)))
+ (common-lisp:defclass ingestion-job-sort-by common-lisp:nil
+                       ((attribute :initarg :attribute :initform
+                         (common-lisp:error ":attribute is required") :type
+                         (common-lisp:or ingestion-job-sort-by-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-ingestion-job-sort-by-attribute
+                         :shape "IngestionJobSortByAttribute" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (order :initarg :order :initform
+                         (common-lisp:error ":order is required") :type
+                         (common-lisp:or sort-order common-lisp:null) :accessor
+                         struct-shape-ingestion-job-sort-by-order :shape
+                         "SortOrder" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ingestion-job-sort-by
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ingestion-job-sort-by
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ingestion-job-sort-by 'make-ingestion-job-sort-by))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3432,19 +4817,49 @@
    common-lisp:nil))
 (common-lisp:deftype ingestion-job-sort-by-attribute () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (ingestion-job-statistics (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ingestion-job-statistics-"))
-   (number-of-documents-scanned common-lisp:nil :type
-    (common-lisp:or primitive-long common-lisp:null))
-   (number-of-new-documents-indexed common-lisp:nil :type
-    (common-lisp:or primitive-long common-lisp:null))
-   (number-of-modified-documents-indexed common-lisp:nil :type
-    (common-lisp:or primitive-long common-lisp:null))
-   (number-of-documents-deleted common-lisp:nil :type
-    (common-lisp:or primitive-long common-lisp:null))
-   (number-of-documents-failed common-lisp:nil :type
-    (common-lisp:or primitive-long common-lisp:null)))
+ (common-lisp:defclass ingestion-job-statistics common-lisp:nil
+                       ((number-of-documents-scanned :initarg
+                         :number-of-documents-scanned :initform common-lisp:nil
+                         :type (common-lisp:or primitive-long common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-statistics-number-of-documents-scanned
+                         :shape "PrimitiveLong" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-new-documents-indexed :initarg
+                         :number-of-new-documents-indexed :initform
+                         common-lisp:nil :type
+                         (common-lisp:or primitive-long common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-statistics-number-of-new-documents-indexed
+                         :shape "PrimitiveLong" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-modified-documents-indexed :initarg
+                         :number-of-modified-documents-indexed :initform
+                         common-lisp:nil :type
+                         (common-lisp:or primitive-long common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-statistics-number-of-modified-documents-indexed
+                         :shape "PrimitiveLong" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-documents-deleted :initarg
+                         :number-of-documents-deleted :initform common-lisp:nil
+                         :type (common-lisp:or primitive-long common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-statistics-number-of-documents-deleted
+                         :shape "PrimitiveLong" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-documents-failed :initarg
+                         :number-of-documents-failed :initform common-lisp:nil
+                         :type (common-lisp:or primitive-long common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-statistics-number-of-documents-failed
+                         :shape "PrimitiveLong" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ingestion-job-statistics
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ingestion-job-statistics
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ingestion-job-statistics 'make-ingestion-job-statistics))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3512,25 +4927,66 @@
                            (trivial-types:proper-list ingestion-job-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ingestion-job-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ingestion-job-summary-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (ingestion-job-id (common-lisp:error ":ingestionjobid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or ingestion-job-status common-lisp:null))
-   (started-at (common-lisp:error ":startedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (statistics common-lisp:nil :type
-    (common-lisp:or ingestion-job-statistics common-lisp:null)))
+ (common-lisp:defclass ingestion-job-summary common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-ingestion-job-summary-knowledge-base-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-ingestion-job-summary-data-source-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ingestion-job-id :initarg :ingestion-job-id :initform
+                         (common-lisp:error ":ingestionjobid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-ingestion-job-summary-ingestion-job-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-summary-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or ingestion-job-status common-lisp:null)
+                         :accessor struct-shape-ingestion-job-summary-status
+                         :shape "IngestionJobStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-at :initarg :started-at :initform
+                         (common-lisp:error ":startedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-summary-started-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-summary-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (statistics :initarg :statistics :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ingestion-job-statistics
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ingestion-job-summary-statistics :shape
+                         "IngestionJobStatistics" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ingestion-job-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ingestion-job-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ingestion-job-summary 'make-ingestion-job-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3615,33 +5071,94 @@
                     'internal-server-exception-message)))
 (common-lisp:deftype kms-key-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (knowledge-base (:copier common-lisp:nil)
-      (:conc-name "struct-shape-knowledge-base-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (knowledge-base-arn (common-lisp:error ":knowledgebasearn is required")
-    :type (common-lisp:or knowledge-base-arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or knowledge-base-role-arn common-lisp:null))
-   (knowledge-base-configuration
-    (common-lisp:error ":knowledgebaseconfiguration is required") :type
-    (common-lisp:or knowledge-base-configuration common-lisp:null))
-   (storage-configuration
-    (common-lisp:error ":storageconfiguration is required") :type
-    (common-lisp:or storage-configuration common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or knowledge-base-status common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null))
-   (failure-reasons common-lisp:nil :type
-    (common-lisp:or failure-reasons common-lisp:null)))
+ (common-lisp:defclass knowledge-base common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-knowledge-base-knowledge-base-id :shape
+                         "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-knowledge-base-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (knowledge-base-arn :initarg :knowledge-base-arn
+                         :initform
+                         (common-lisp:error ":knowledgebasearn is required")
+                         :type
+                         (common-lisp:or knowledge-base-arn common-lisp:null)
+                         :accessor
+                         struct-shape-knowledge-base-knowledge-base-arn :shape
+                         "KnowledgeBaseArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor struct-shape-knowledge-base-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or knowledge-base-role-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-knowledge-base-role-arn :shape
+                         "KnowledgeBaseRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (knowledge-base-configuration :initarg
+                         :knowledge-base-configuration :initform
+                         (common-lisp:error
+                          ":knowledgebaseconfiguration is required")
+                         :type
+                         (common-lisp:or knowledge-base-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-knowledge-base-knowledge-base-configuration
+                         :shape "KnowledgeBaseConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (storage-configuration :initarg :storage-configuration
+                         :initform
+                         (common-lisp:error
+                          ":storageconfiguration is required")
+                         :type
+                         (common-lisp:or storage-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-knowledge-base-storage-configuration
+                         :shape "StorageConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or knowledge-base-status
+                                         common-lisp:null)
+                         :accessor struct-shape-knowledge-base-status :shape
+                         "KnowledgeBaseStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-knowledge-base-created-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor struct-shape-knowledge-base-updated-at
+                         :shape "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (failure-reasons :initarg :failure-reasons :initform
+                         common-lisp:nil :type
+                         (common-lisp:or failure-reasons common-lisp:null)
+                         :accessor struct-shape-knowledge-base-failure-reasons
+                         :shape "FailureReasons" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-knowledge-base
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'knowledge-base
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'knowledge-base 'make-knowledge-base))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input knowledge-base))
@@ -3733,13 +5250,28 @@
    common-lisp:nil))
 (common-lisp:deftype knowledge-base-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (knowledge-base-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-knowledge-base-configuration-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or knowledge-base-type common-lisp:null))
-   (vector-knowledge-base-configuration common-lisp:nil :type
-    (common-lisp:or vector-knowledge-base-configuration common-lisp:null)))
+ (common-lisp:defclass knowledge-base-configuration common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or knowledge-base-type common-lisp:null)
+                         :accessor
+                         struct-shape-knowledge-base-configuration-type :shape
+                         "KnowledgeBaseType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vector-knowledge-base-configuration :initarg
+                         :vector-knowledge-base-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vector-knowledge-base-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-knowledge-base-configuration-vector-knowledge-base-configuration
+                         :shape "VectorKnowledgeBaseConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-knowledge-base-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'knowledge-base-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'knowledge-base-configuration
                     'make-knowledge-base-configuration))
@@ -3786,19 +5318,46 @@
                            (trivial-types:proper-list knowledge-base-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (knowledge-base-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-knowledge-base-summary-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or knowledge-base-status common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass knowledge-base-summary common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-knowledge-base-summary-knowledge-base-id
+                         :shape "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-knowledge-base-summary-name :shape "Name"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-knowledge-base-summary-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or knowledge-base-status
+                                         common-lisp:null)
+                         :accessor struct-shape-knowledge-base-summary-status
+                         :shape "KnowledgeBaseStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-at :initarg :updated-at :initform
+                         (common-lisp:error ":updatedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-knowledge-base-summary-updated-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-knowledge-base-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'knowledge-base-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'knowledge-base-summary 'make-knowledge-base-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3854,17 +5413,37 @@
 (common-lisp:deftype knowledge-base-type () 'common-lisp:string)
 (common-lisp:deftype lambda-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agent-action-groups-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agent-action-groups-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agent-action-groups-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-list-agent-action-groups-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-list-agent-action-groups-request-agent-version
+                         :shape "Version" :location "uri" :location-name
+                         "agentVersion")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-agent-action-groups-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agent-action-groups-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agent-action-groups-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-agent-action-groups-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agent-action-groups-request
                     'make-list-agent-action-groups-request))
@@ -3898,14 +5477,30 @@
                           list-agent-action-groups-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agent-action-groups-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agent-action-groups-response-"))
-   (action-group-summaries
-    (common-lisp:error ":actiongroupsummaries is required") :type
-    (common-lisp:or action-group-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agent-action-groups-response common-lisp:nil
+                       ((action-group-summaries :initarg
+                         :action-group-summaries :initform
+                         (common-lisp:error
+                          ":actiongroupsummaries is required")
+                         :type
+                         (common-lisp:or action-group-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-agent-action-groups-response-action-group-summaries
+                         :shape "ActionGroupSummaries" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agent-action-groups-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agent-action-groups-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-agent-action-groups-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agent-action-groups-response
                     'make-list-agent-action-groups-response))
@@ -3940,15 +5535,30 @@
                           list-agent-action-groups-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agent-aliases-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agent-aliases-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agent-aliases-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-list-agent-aliases-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-agent-aliases-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agent-aliases-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agent-aliases-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-agent-aliases-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agent-aliases-request
                     'make-list-agent-aliases-request))
@@ -3982,14 +5592,28 @@
                           list-agent-aliases-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agent-aliases-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agent-aliases-response-"))
-   (agent-alias-summaries
-    (common-lisp:error ":agentaliassummaries is required") :type
-    (common-lisp:or agent-alias-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agent-aliases-response common-lisp:nil
+                       ((agent-alias-summaries :initarg :agent-alias-summaries
+                         :initform
+                         (common-lisp:error ":agentaliassummaries is required")
+                         :type
+                         (common-lisp:or agent-alias-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-agent-aliases-response-agent-alias-summaries
+                         :shape "AgentAliasSummaries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agent-aliases-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agent-aliases-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-agent-aliases-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agent-aliases-response
                     'make-list-agent-aliases-response))
@@ -4024,17 +5648,37 @@
                           list-agent-aliases-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agent-knowledge-bases-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agent-knowledge-bases-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agent-knowledge-bases-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-list-agent-knowledge-bases-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-list-agent-knowledge-bases-request-agent-version
+                         :shape "Version" :location "uri" :location-name
+                         "agentVersion")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-agent-knowledge-bases-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agent-knowledge-bases-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agent-knowledge-bases-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-agent-knowledge-bases-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agent-knowledge-bases-request
                     'make-list-agent-knowledge-bases-request))
@@ -4068,14 +5712,30 @@
                           list-agent-knowledge-bases-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agent-knowledge-bases-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agent-knowledge-bases-response-"))
-   (agent-knowledge-base-summaries
-    (common-lisp:error ":agentknowledgebasesummaries is required") :type
-    (common-lisp:or agent-knowledge-base-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agent-knowledge-bases-response common-lisp:nil
+                       ((agent-knowledge-base-summaries :initarg
+                         :agent-knowledge-base-summaries :initform
+                         (common-lisp:error
+                          ":agentknowledgebasesummaries is required")
+                         :type
+                         (common-lisp:or agent-knowledge-base-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-agent-knowledge-bases-response-agent-knowledge-base-summaries
+                         :shape "AgentKnowledgeBaseSummaries" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agent-knowledge-bases-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agent-knowledge-bases-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-agent-knowledge-bases-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agent-knowledge-bases-response
                     'make-list-agent-knowledge-bases-response))
@@ -4110,15 +5770,30 @@
                           list-agent-knowledge-bases-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agent-versions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agent-versions-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agent-versions-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-list-agent-versions-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-agent-versions-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agent-versions-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agent-versions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-agent-versions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agent-versions-request
                     'make-list-agent-versions-request))
@@ -4152,14 +5827,29 @@
                           list-agent-versions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agent-versions-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agent-versions-response-"))
-   (agent-version-summaries
-    (common-lisp:error ":agentversionsummaries is required") :type
-    (common-lisp:or agent-version-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agent-versions-response common-lisp:nil
+                       ((agent-version-summaries :initarg
+                         :agent-version-summaries :initform
+                         (common-lisp:error
+                          ":agentversionsummaries is required")
+                         :type
+                         (common-lisp:or agent-version-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-agent-versions-response-agent-version-summaries
+                         :shape "AgentVersionSummaries" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agent-versions-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agent-versions-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-agent-versions-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agent-versions-response
                     'make-list-agent-versions-response))
@@ -4194,13 +5884,24 @@
                           list-agent-versions-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agents-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agents-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agents-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor struct-shape-list-agents-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agents-request-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agents-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-agents-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agents-request 'make-list-agents-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4227,13 +5928,26 @@
                         ((aws-sdk/generator/shape::input list-agents-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-agents-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-agents-response-"))
-   (agent-summaries (common-lisp:error ":agentsummaries is required") :type
-    (common-lisp:or agent-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-agents-response common-lisp:nil
+                       ((agent-summaries :initarg :agent-summaries :initform
+                         (common-lisp:error ":agentsummaries is required")
+                         :type
+                         (common-lisp:or agent-summaries common-lisp:null)
+                         :accessor
+                         struct-shape-list-agents-response-agent-summaries
+                         :shape "AgentSummaries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-agents-response-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-agents-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-agents-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-agents-response 'make-list-agents-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4260,15 +5974,32 @@
                         ((aws-sdk/generator/shape::input list-agents-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-data-sources-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-data-sources-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-data-sources-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-list-data-sources-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-data-sources-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-data-sources-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-data-sources-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-data-sources-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-data-sources-request
                     'make-list-data-sources-request))
@@ -4302,14 +6033,28 @@
                           list-data-sources-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-data-sources-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-data-sources-response-"))
-   (data-source-summaries
-    (common-lisp:error ":datasourcesummaries is required") :type
-    (common-lisp:or data-source-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-data-sources-response common-lisp:nil
+                       ((data-source-summaries :initarg :data-source-summaries
+                         :initform
+                         (common-lisp:error ":datasourcesummaries is required")
+                         :type
+                         (common-lisp:or data-source-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-data-sources-response-data-source-summaries
+                         :shape "DataSourceSummaries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-data-sources-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-data-sources-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-data-sources-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-data-sources-response
                     'make-list-data-sources-response))
@@ -4344,21 +6089,54 @@
                           list-data-sources-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-ingestion-jobs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-ingestion-jobs-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or ingestion-job-filters common-lisp:null))
-   (sort-by common-lisp:nil :type
-    (common-lisp:or ingestion-job-sort-by common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-ingestion-jobs-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-list-ingestion-jobs-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-list-ingestion-jobs-request-data-source-id
+                         :shape "Id" :location "uri" :location-name
+                         "dataSourceId")
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or ingestion-job-filters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-ingestion-jobs-request-filters
+                         :shape "IngestionJobFilters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sort-by :initarg :sort-by :initform common-lisp:nil
+                         :type
+                         (common-lisp:or ingestion-job-sort-by
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-ingestion-jobs-request-sort-by
+                         :shape "IngestionJobSortBy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-ingestion-jobs-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-ingestion-jobs-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-ingestion-jobs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-ingestion-jobs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-ingestion-jobs-request
                     'make-list-ingestion-jobs-request))
@@ -4406,14 +6184,29 @@
                           list-ingestion-jobs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-ingestion-jobs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-ingestion-jobs-response-"))
-   (ingestion-job-summaries
-    (common-lisp:error ":ingestionjobsummaries is required") :type
-    (common-lisp:or ingestion-job-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-ingestion-jobs-response common-lisp:nil
+                       ((ingestion-job-summaries :initarg
+                         :ingestion-job-summaries :initform
+                         (common-lisp:error
+                          ":ingestionjobsummaries is required")
+                         :type
+                         (common-lisp:or ingestion-job-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-ingestion-jobs-response-ingestion-job-summaries
+                         :shape "IngestionJobSummaries" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-ingestion-jobs-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-ingestion-jobs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-ingestion-jobs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-ingestion-jobs-response
                     'make-list-ingestion-jobs-response))
@@ -4448,13 +6241,25 @@
                           list-ingestion-jobs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-knowledge-bases-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-knowledge-bases-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-knowledge-bases-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-knowledge-bases-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-knowledge-bases-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-knowledge-bases-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-knowledge-bases-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-knowledge-bases-request
                     'make-list-knowledge-bases-request))
@@ -4488,14 +6293,30 @@
                           list-knowledge-bases-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-knowledge-bases-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-knowledge-bases-response-"))
-   (knowledge-base-summaries
-    (common-lisp:error ":knowledgebasesummaries is required") :type
-    (common-lisp:or knowledge-base-summaries common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-knowledge-bases-response common-lisp:nil
+                       ((knowledge-base-summaries :initarg
+                         :knowledge-base-summaries :initform
+                         (common-lisp:error
+                          ":knowledgebasesummaries is required")
+                         :type
+                         (common-lisp:or knowledge-base-summaries
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-knowledge-bases-response-knowledge-base-summaries
+                         :shape "KnowledgeBaseSummaries" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-knowledge-bases-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-knowledge-bases-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-knowledge-bases-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-knowledge-bases-response
                     'make-list-knowledge-bases-response))
@@ -4530,11 +6351,21 @@
                           list-knowledge-bases-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or taggable-resources-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or taggable-resources-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "TaggableResourcesArn" :location "uri"
+                         :location-name "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -4554,10 +6385,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tags-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -4593,15 +6432,39 @@
 (common-lisp:deftype open-search-serverless-collection-arn ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (open-search-serverless-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-open-search-serverless-configuration-"))
-   (collection-arn (common-lisp:error ":collectionarn is required") :type
-    (common-lisp:or open-search-serverless-collection-arn common-lisp:null))
-   (vector-index-name (common-lisp:error ":vectorindexname is required") :type
-    (common-lisp:or open-search-serverless-index-name common-lisp:null))
-   (field-mapping (common-lisp:error ":fieldmapping is required") :type
-    (common-lisp:or open-search-serverless-field-mapping common-lisp:null)))
+ (common-lisp:defclass open-search-serverless-configuration common-lisp:nil
+                       ((collection-arn :initarg :collection-arn :initform
+                         (common-lisp:error ":collectionarn is required") :type
+                         (common-lisp:or open-search-serverless-collection-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-open-search-serverless-configuration-collection-arn
+                         :shape "OpenSearchServerlessCollectionArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (vector-index-name :initarg :vector-index-name
+                         :initform
+                         (common-lisp:error ":vectorindexname is required")
+                         :type
+                         (common-lisp:or open-search-serverless-index-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-open-search-serverless-configuration-vector-index-name
+                         :shape "OpenSearchServerlessIndexName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (field-mapping :initarg :field-mapping :initform
+                         (common-lisp:error ":fieldmapping is required") :type
+                         (common-lisp:or open-search-serverless-field-mapping
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-open-search-serverless-configuration-field-mapping
+                         :shape "OpenSearchServerlessFieldMapping" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-open-search-serverless-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'open-search-serverless-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'open-search-serverless-configuration
                     'make-open-search-serverless-configuration))
@@ -4642,15 +6505,31 @@
                           open-search-serverless-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (open-search-serverless-field-mapping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-open-search-serverless-field-mapping-"))
-   (vector-field (common-lisp:error ":vectorfield is required") :type
-    (common-lisp:or field-name common-lisp:null))
-   (text-field (common-lisp:error ":textfield is required") :type
-    (common-lisp:or field-name common-lisp:null))
-   (metadata-field (common-lisp:error ":metadatafield is required") :type
-    (common-lisp:or field-name common-lisp:null)))
+ (common-lisp:defclass open-search-serverless-field-mapping common-lisp:nil
+                       ((vector-field :initarg :vector-field :initform
+                         (common-lisp:error ":vectorfield is required") :type
+                         (common-lisp:or field-name common-lisp:null) :accessor
+                         struct-shape-open-search-serverless-field-mapping-vector-field
+                         :shape "FieldName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (text-field :initarg :text-field :initform
+                         (common-lisp:error ":textfield is required") :type
+                         (common-lisp:or field-name common-lisp:null) :accessor
+                         struct-shape-open-search-serverless-field-mapping-text-field
+                         :shape "FieldName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata-field :initarg :metadata-field :initform
+                         (common-lisp:error ":metadatafield is required") :type
+                         (common-lisp:or field-name common-lisp:null) :accessor
+                         struct-shape-open-search-serverless-field-mapping-metadata-field
+                         :shape "FieldName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-open-search-serverless-field-mapping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'open-search-serverless-field-mapping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'open-search-serverless-field-mapping
                     'make-open-search-serverless-field-mapping))
@@ -4693,18 +6572,46 @@
 (common-lisp:deftype open-search-serverless-index-name () 'common-lisp:string)
 (common-lisp:deftype payload () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pinecone-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pinecone-configuration-"))
-   (connection-string (common-lisp:error ":connectionstring is required") :type
-    (common-lisp:or pinecone-connection-string common-lisp:null))
-   (credentials-secret-arn
-    (common-lisp:error ":credentialssecretarn is required") :type
-    (common-lisp:or secret-arn common-lisp:null))
-   (namespace common-lisp:nil :type
-    (common-lisp:or pinecone-namespace common-lisp:null))
-   (field-mapping (common-lisp:error ":fieldmapping is required") :type
-    (common-lisp:or pinecone-field-mapping common-lisp:null)))
+ (common-lisp:defclass pinecone-configuration common-lisp:nil
+                       ((connection-string :initarg :connection-string
+                         :initform
+                         (common-lisp:error ":connectionstring is required")
+                         :type
+                         (common-lisp:or pinecone-connection-string
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-pinecone-configuration-connection-string
+                         :shape "PineconeConnectionString" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (credentials-secret-arn :initarg
+                         :credentials-secret-arn :initform
+                         (common-lisp:error
+                          ":credentialssecretarn is required")
+                         :type (common-lisp:or secret-arn common-lisp:null)
+                         :accessor
+                         struct-shape-pinecone-configuration-credentials-secret-arn
+                         :shape "SecretArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace :initarg :namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pinecone-namespace common-lisp:null)
+                         :accessor
+                         struct-shape-pinecone-configuration-namespace :shape
+                         "PineconeNamespace" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (field-mapping :initarg :field-mapping :initform
+                         (common-lisp:error ":fieldmapping is required") :type
+                         (common-lisp:or pinecone-field-mapping
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-pinecone-configuration-field-mapping
+                         :shape "PineconeFieldMapping" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pinecone-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pinecone-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'pinecone-configuration 'make-pinecone-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4753,13 +6660,24 @@
    common-lisp:nil))
 (common-lisp:deftype pinecone-connection-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (pinecone-field-mapping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pinecone-field-mapping-"))
-   (text-field (common-lisp:error ":textfield is required") :type
-    (common-lisp:or field-name common-lisp:null))
-   (metadata-field (common-lisp:error ":metadatafield is required") :type
-    (common-lisp:or field-name common-lisp:null)))
+ (common-lisp:defclass pinecone-field-mapping common-lisp:nil
+                       ((text-field :initarg :text-field :initform
+                         (common-lisp:error ":textfield is required") :type
+                         (common-lisp:or field-name common-lisp:null) :accessor
+                         struct-shape-pinecone-field-mapping-text-field :shape
+                         "FieldName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metadata-field :initarg :metadata-field :initform
+                         (common-lisp:error ":metadatafield is required") :type
+                         (common-lisp:or field-name common-lisp:null) :accessor
+                         struct-shape-pinecone-field-mapping-metadata-field
+                         :shape "FieldName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pinecone-field-mapping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pinecone-field-mapping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'pinecone-field-mapping 'make-pinecone-field-mapping))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4793,11 +6711,17 @@
    common-lisp:nil))
 (common-lisp:deftype pinecone-namespace () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (prepare-agent-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-prepare-agent-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null)))
+ (common-lisp:defclass prepare-agent-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-prepare-agent-request-agent-id :shape
+                         "Id" :location "uri" :location-name "agentId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-prepare-agent-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'prepare-agent-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'prepare-agent-request 'make-prepare-agent-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4816,17 +6740,38 @@
                           prepare-agent-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (prepare-agent-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-prepare-agent-response-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-status (common-lisp:error ":agentstatus is required") :type
-    (common-lisp:or agent-status common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (prepared-at (common-lisp:error ":preparedat is required") :type
-    (common-lisp:or date-timestamp common-lisp:null)))
+ (common-lisp:defclass prepare-agent-response common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-prepare-agent-response-agent-id :shape
+                         "Id" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agent-status :initarg :agent-status :initform
+                         (common-lisp:error ":agentstatus is required") :type
+                         (common-lisp:or agent-status common-lisp:null)
+                         :accessor
+                         struct-shape-prepare-agent-response-agent-status
+                         :shape "AgentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or version common-lisp:null) :accessor
+                         struct-shape-prepare-agent-response-agent-version
+                         :shape "Version" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prepared-at :initarg :prepared-at :initform
+                         (common-lisp:error ":preparedat is required") :type
+                         (common-lisp:or date-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-prepare-agent-response-prepared-at :shape
+                         "DateTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-prepare-agent-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'prepare-agent-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'prepare-agent-response 'make-prepare-agent-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4874,21 +6819,56 @@
    common-lisp:nil))
 (common-lisp:deftype primitive-long () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (prompt-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-prompt-configuration-"))
-   (prompt-type common-lisp:nil :type
-    (common-lisp:or prompt-type common-lisp:null))
-   (prompt-creation-mode common-lisp:nil :type
-    (common-lisp:or creation-mode common-lisp:null))
-   (prompt-state common-lisp:nil :type
-    (common-lisp:or prompt-state common-lisp:null))
-   (base-prompt-template common-lisp:nil :type
-    (common-lisp:or base-prompt-template common-lisp:null))
-   (inference-configuration common-lisp:nil :type
-    (common-lisp:or inference-configuration common-lisp:null))
-   (parser-mode common-lisp:nil :type
-    (common-lisp:or creation-mode common-lisp:null)))
+ (common-lisp:defclass prompt-configuration common-lisp:nil
+                       ((prompt-type :initarg :prompt-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or prompt-type common-lisp:null)
+                         :accessor
+                         struct-shape-prompt-configuration-prompt-type :shape
+                         "PromptType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (prompt-creation-mode :initarg :prompt-creation-mode
+                         :initform common-lisp:nil :type
+                         (common-lisp:or creation-mode common-lisp:null)
+                         :accessor
+                         struct-shape-prompt-configuration-prompt-creation-mode
+                         :shape "CreationMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prompt-state :initarg :prompt-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or prompt-state common-lisp:null)
+                         :accessor
+                         struct-shape-prompt-configuration-prompt-state :shape
+                         "PromptState" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (base-prompt-template :initarg :base-prompt-template
+                         :initform common-lisp:nil :type
+                         (common-lisp:or base-prompt-template common-lisp:null)
+                         :accessor
+                         struct-shape-prompt-configuration-base-prompt-template
+                         :shape "BasePromptTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (inference-configuration :initarg
+                         :inference-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or inference-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-prompt-configuration-inference-configuration
+                         :shape "InferenceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (parser-mode :initarg :parser-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or creation-mode common-lisp:null)
+                         :accessor
+                         struct-shape-prompt-configuration-parser-mode :shape
+                         "CreationMode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-prompt-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'prompt-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'prompt-configuration 'make-prompt-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4954,14 +6934,30 @@
                            (trivial-types:proper-list prompt-configuration))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (prompt-override-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-prompt-override-configuration-"))
-   (prompt-configurations
-    (common-lisp:error ":promptconfigurations is required") :type
-    (common-lisp:or prompt-configurations common-lisp:null))
-   (override-lambda common-lisp:nil :type
-    (common-lisp:or lambda-arn common-lisp:null)))
+ (common-lisp:defclass prompt-override-configuration common-lisp:nil
+                       ((prompt-configurations :initarg :prompt-configurations
+                         :initform
+                         (common-lisp:error
+                          ":promptconfigurations is required")
+                         :type
+                         (common-lisp:or prompt-configurations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-prompt-override-configuration-prompt-configurations
+                         :shape "PromptConfigurations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (override-lambda :initarg :override-lambda :initform
+                         common-lisp:nil :type
+                         (common-lisp:or lambda-arn common-lisp:null) :accessor
+                         struct-shape-prompt-override-configuration-override-lambda
+                         :shape "LambdaArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-prompt-override-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'prompt-override-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'prompt-override-configuration
                     'make-prompt-override-configuration))
@@ -4999,20 +6995,45 @@
 (common-lisp:deftype prompt-type () 'common-lisp:string)
 (common-lisp:deftype rds-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (rds-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rds-configuration-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or rds-arn common-lisp:null))
-   (credentials-secret-arn
-    (common-lisp:error ":credentialssecretarn is required") :type
-    (common-lisp:or secret-arn common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or rds-database-name common-lisp:null))
-   (table-name (common-lisp:error ":tablename is required") :type
-    (common-lisp:or rds-table-name common-lisp:null))
-   (field-mapping (common-lisp:error ":fieldmapping is required") :type
-    (common-lisp:or rds-field-mapping common-lisp:null)))
+ (common-lisp:defclass rds-configuration common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or rds-arn common-lisp:null) :accessor
+                         struct-shape-rds-configuration-resource-arn :shape
+                         "RdsArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (credentials-secret-arn :initarg
+                         :credentials-secret-arn :initform
+                         (common-lisp:error
+                          ":credentialssecretarn is required")
+                         :type (common-lisp:or secret-arn common-lisp:null)
+                         :accessor
+                         struct-shape-rds-configuration-credentials-secret-arn
+                         :shape "SecretArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or rds-database-name common-lisp:null)
+                         :accessor struct-shape-rds-configuration-database-name
+                         :shape "RdsDatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (table-name :initarg :table-name :initform
+                         (common-lisp:error ":tablename is required") :type
+                         (common-lisp:or rds-table-name common-lisp:null)
+                         :accessor struct-shape-rds-configuration-table-name
+                         :shape "RdsTableName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (field-mapping :initarg :field-mapping :initform
+                         (common-lisp:error ":fieldmapping is required") :type
+                         (common-lisp:or rds-field-mapping common-lisp:null)
+                         :accessor struct-shape-rds-configuration-field-mapping
+                         :shape "RdsFieldMapping" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rds-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rds-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rds-configuration 'make-rds-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5062,17 +7083,39 @@
    common-lisp:nil))
 (common-lisp:deftype rds-database-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (rds-field-mapping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rds-field-mapping-"))
-   (primary-key-field (common-lisp:error ":primarykeyfield is required") :type
-    (common-lisp:or column-name common-lisp:null))
-   (vector-field (common-lisp:error ":vectorfield is required") :type
-    (common-lisp:or column-name common-lisp:null))
-   (text-field (common-lisp:error ":textfield is required") :type
-    (common-lisp:or column-name common-lisp:null))
-   (metadata-field (common-lisp:error ":metadatafield is required") :type
-    (common-lisp:or column-name common-lisp:null)))
+ (common-lisp:defclass rds-field-mapping common-lisp:nil
+                       ((primary-key-field :initarg :primary-key-field
+                         :initform
+                         (common-lisp:error ":primarykeyfield is required")
+                         :type (common-lisp:or column-name common-lisp:null)
+                         :accessor
+                         struct-shape-rds-field-mapping-primary-key-field
+                         :shape "ColumnName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (vector-field :initarg :vector-field :initform
+                         (common-lisp:error ":vectorfield is required") :type
+                         (common-lisp:or column-name common-lisp:null)
+                         :accessor struct-shape-rds-field-mapping-vector-field
+                         :shape "ColumnName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (text-field :initarg :text-field :initform
+                         (common-lisp:error ":textfield is required") :type
+                         (common-lisp:or column-name common-lisp:null)
+                         :accessor struct-shape-rds-field-mapping-text-field
+                         :shape "ColumnName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata-field :initarg :metadata-field :initform
+                         (common-lisp:error ":metadatafield is required") :type
+                         (common-lisp:or column-name common-lisp:null)
+                         :accessor
+                         struct-shape-rds-field-mapping-metadata-field :shape
+                         "ColumnName" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rds-field-mapping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rds-field-mapping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rds-field-mapping 'make-rds-field-mapping))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5123,18 +7166,48 @@
                            (trivial-types:proper-list recommended-action))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (redis-enterprise-cloud-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-redis-enterprise-cloud-configuration-"))
-   (endpoint (common-lisp:error ":endpoint is required") :type
-    (common-lisp:or redis-enterprise-cloud-endpoint common-lisp:null))
-   (vector-index-name (common-lisp:error ":vectorindexname is required") :type
-    (common-lisp:or redis-enterprise-cloud-index-name common-lisp:null))
-   (credentials-secret-arn
-    (common-lisp:error ":credentialssecretarn is required") :type
-    (common-lisp:or secret-arn common-lisp:null))
-   (field-mapping (common-lisp:error ":fieldmapping is required") :type
-    (common-lisp:or redis-enterprise-cloud-field-mapping common-lisp:null)))
+ (common-lisp:defclass redis-enterprise-cloud-configuration common-lisp:nil
+                       ((endpoint :initarg :endpoint :initform
+                         (common-lisp:error ":endpoint is required") :type
+                         (common-lisp:or redis-enterprise-cloud-endpoint
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-redis-enterprise-cloud-configuration-endpoint
+                         :shape "RedisEnterpriseCloudEndpoint" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (vector-index-name :initarg :vector-index-name
+                         :initform
+                         (common-lisp:error ":vectorindexname is required")
+                         :type
+                         (common-lisp:or redis-enterprise-cloud-index-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-redis-enterprise-cloud-configuration-vector-index-name
+                         :shape "RedisEnterpriseCloudIndexName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (credentials-secret-arn :initarg
+                         :credentials-secret-arn :initform
+                         (common-lisp:error
+                          ":credentialssecretarn is required")
+                         :type (common-lisp:or secret-arn common-lisp:null)
+                         :accessor
+                         struct-shape-redis-enterprise-cloud-configuration-credentials-secret-arn
+                         :shape "SecretArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (field-mapping :initarg :field-mapping :initform
+                         (common-lisp:error ":fieldmapping is required") :type
+                         (common-lisp:or redis-enterprise-cloud-field-mapping
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-redis-enterprise-cloud-configuration-field-mapping
+                         :shape "RedisEnterpriseCloudFieldMapping" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-redis-enterprise-cloud-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'redis-enterprise-cloud-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'redis-enterprise-cloud-configuration
                     'make-redis-enterprise-cloud-configuration))
@@ -5184,15 +7257,31 @@
    common-lisp:nil))
 (common-lisp:deftype redis-enterprise-cloud-endpoint () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (redis-enterprise-cloud-field-mapping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-redis-enterprise-cloud-field-mapping-"))
-   (vector-field (common-lisp:error ":vectorfield is required") :type
-    (common-lisp:or field-name common-lisp:null))
-   (text-field (common-lisp:error ":textfield is required") :type
-    (common-lisp:or field-name common-lisp:null))
-   (metadata-field (common-lisp:error ":metadatafield is required") :type
-    (common-lisp:or field-name common-lisp:null)))
+ (common-lisp:defclass redis-enterprise-cloud-field-mapping common-lisp:nil
+                       ((vector-field :initarg :vector-field :initform
+                         (common-lisp:error ":vectorfield is required") :type
+                         (common-lisp:or field-name common-lisp:null) :accessor
+                         struct-shape-redis-enterprise-cloud-field-mapping-vector-field
+                         :shape "FieldName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (text-field :initarg :text-field :initform
+                         (common-lisp:error ":textfield is required") :type
+                         (common-lisp:or field-name common-lisp:null) :accessor
+                         struct-shape-redis-enterprise-cloud-field-mapping-text-field
+                         :shape "FieldName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata-field :initarg :metadata-field :initform
+                         (common-lisp:error ":metadatafield is required") :type
+                         (common-lisp:or field-name common-lisp:null) :accessor
+                         struct-shape-redis-enterprise-cloud-field-mapping-metadata-field
+                         :shape "FieldName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-redis-enterprise-cloud-field-mapping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'redis-enterprise-cloud-field-mapping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'redis-enterprise-cloud-field-mapping
                     'make-redis-enterprise-cloud-field-mapping))
@@ -5244,13 +7333,25 @@
 (common-lisp:deftype s3bucket-arn () 'common-lisp:string)
 (common-lisp:deftype s3bucket-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3data-source-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3data-source-configuration-"))
-   (bucket-arn (common-lisp:error ":bucketarn is required") :type
-    (common-lisp:or s3bucket-arn common-lisp:null))
-   (inclusion-prefixes common-lisp:nil :type
-    (common-lisp:or s3prefixes common-lisp:null)))
+ (common-lisp:defclass s3data-source-configuration common-lisp:nil
+                       ((bucket-arn :initarg :bucket-arn :initform
+                         (common-lisp:error ":bucketarn is required") :type
+                         (common-lisp:or s3bucket-arn common-lisp:null)
+                         :accessor
+                         struct-shape-s3data-source-configuration-bucket-arn
+                         :shape "S3BucketArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (inclusion-prefixes :initarg :inclusion-prefixes
+                         :initform common-lisp:nil :type
+                         (common-lisp:or s3prefixes common-lisp:null) :accessor
+                         struct-shape-s3data-source-configuration-inclusion-prefixes
+                         :shape "S3Prefixes" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-s3data-source-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 's3data-source-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 's3data-source-configuration
                     'make-s3data-source-configuration))
@@ -5284,13 +7385,24 @@
                           s3data-source-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3identifier (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3identifier-"))
-   (s3bucket-name common-lisp:nil :type
-    (common-lisp:or s3bucket-name common-lisp:null))
-   (s3object-key common-lisp:nil :type
-    (common-lisp:or s3object-key common-lisp:null)))
+ (common-lisp:defclass s3identifier common-lisp:nil
+                       ((s3bucket-name :initarg :s3bucket-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or s3bucket-name common-lisp:null)
+                         :accessor struct-shape-s3identifier-s3bucket-name
+                         :shape "S3BucketName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (s3object-key :initarg :s3object-key :initform
+                         common-lisp:nil :type
+                         (common-lisp:or s3object-key common-lisp:null)
+                         :accessor struct-shape-s3identifier-s3object-key
+                         :shape "S3ObjectKey" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-s3identifier
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 's3identifier
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 's3identifier 'make-s3identifier))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input s3identifier))
@@ -5326,11 +7438,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype secret-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (server-side-encryption-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-server-side-encryption-configuration-"))
-   (kms-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null)))
+ (common-lisp:defclass server-side-encryption-configuration common-lisp:nil
+                       ((kms-key-arn :initarg :kms-key-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-server-side-encryption-configuration-kms-key-arn
+                         :shape "KmsKeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-server-side-encryption-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'server-side-encryption-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'server-side-encryption-configuration
                     'make-server-side-encryption-configuration))
@@ -5367,17 +7488,39 @@
 (common-lisp:deftype session-ttl () 'common-lisp:integer)
 (common-lisp:deftype sort-order () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-ingestion-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-ingestion-job-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null)))
+ (common-lisp:defclass start-ingestion-job-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-start-ingestion-job-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-start-ingestion-job-request-data-source-id
+                         :shape "Id" :location "uri" :location-name
+                         "dataSourceId")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-start-ingestion-job-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-start-ingestion-job-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-ingestion-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-ingestion-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-ingestion-job-request
                     'make-start-ingestion-job-request))
@@ -5411,11 +7554,19 @@
                           start-ingestion-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-ingestion-job-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-ingestion-job-response-"))
-   (ingestion-job (common-lisp:error ":ingestionjob is required") :type
-    (common-lisp:or ingestion-job common-lisp:null)))
+ (common-lisp:defclass start-ingestion-job-response common-lisp:nil
+                       ((ingestion-job :initarg :ingestion-job :initform
+                         (common-lisp:error ":ingestionjob is required") :type
+                         (common-lisp:or ingestion-job common-lisp:null)
+                         :accessor
+                         struct-shape-start-ingestion-job-response-ingestion-job
+                         :shape "IngestionJob" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-ingestion-job-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-ingestion-job-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-ingestion-job-response
                     'make-start-ingestion-job-response))
@@ -5449,19 +7600,53 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (storage-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-storage-configuration-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or knowledge-base-storage-type common-lisp:null))
-   (opensearch-serverless-configuration common-lisp:nil :type
-    (common-lisp:or open-search-serverless-configuration common-lisp:null))
-   (pinecone-configuration common-lisp:nil :type
-    (common-lisp:or pinecone-configuration common-lisp:null))
-   (redis-enterprise-cloud-configuration common-lisp:nil :type
-    (common-lisp:or redis-enterprise-cloud-configuration common-lisp:null))
-   (rds-configuration common-lisp:nil :type
-    (common-lisp:or rds-configuration common-lisp:null)))
+ (common-lisp:defclass storage-configuration common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or knowledge-base-storage-type
+                                         common-lisp:null)
+                         :accessor struct-shape-storage-configuration-type
+                         :shape "KnowledgeBaseStorageType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (opensearch-serverless-configuration :initarg
+                         :opensearch-serverless-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or open-search-serverless-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-storage-configuration-opensearch-serverless-configuration
+                         :shape "OpenSearchServerlessConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pinecone-configuration :initarg
+                         :pinecone-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or pinecone-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-storage-configuration-pinecone-configuration
+                         :shape "PineconeConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (redis-enterprise-cloud-configuration :initarg
+                         :redis-enterprise-cloud-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or redis-enterprise-cloud-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-storage-configuration-redis-enterprise-cloud-configuration
+                         :shape "RedisEnterpriseCloudConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (rds-configuration :initarg :rds-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or rds-configuration common-lisp:null)
+                         :accessor
+                         struct-shape-storage-configuration-rds-configuration
+                         :shape "RdsConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-storage-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'storage-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'storage-configuration 'make-storage-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5527,13 +7712,26 @@
                            (trivial-types:proper-list tag-key))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or taggable-resources-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or taggable-resources-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "TaggableResourcesArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tags-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape
+                         "TagsMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5553,9 +7751,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5593,13 +7794,26 @@
 (common-lisp:deftype top-k () 'common-lisp:integer)
 (common-lisp:deftype top-p () 'common-lisp:single-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or taggable-resources-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or taggable-resources-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "TaggableResourcesArn" :location "uri"
+                         :location-name "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5618,9 +7832,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5639,27 +7856,75 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-agent-action-group-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-agent-action-group-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or draft-version common-lisp:null))
-   (action-group-id (common-lisp:error ":actiongroupid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (action-group-name (common-lisp:error ":actiongroupname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (parent-action-group-signature common-lisp:nil :type
-    (common-lisp:or action-group-signature common-lisp:null))
-   (action-group-executor common-lisp:nil :type
-    (common-lisp:or action-group-executor common-lisp:null))
-   (action-group-state common-lisp:nil :type
-    (common-lisp:or action-group-state common-lisp:null))
-   (api-schema common-lisp:nil :type
-    (common-lisp:or apischema common-lisp:null)))
+ (common-lisp:defclass update-agent-action-group-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-agent-action-group-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or draft-version common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-action-group-request-agent-version
+                         :shape "DraftVersion" :location "uri" :location-name
+                         "agentVersion")
+                        (action-group-id :initarg :action-group-id :initform
+                         (common-lisp:error ":actiongroupid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-agent-action-group-request-action-group-id
+                         :shape "Id" :location "uri" :location-name
+                         "actionGroupId")
+                        (action-group-name :initarg :action-group-name
+                         :initform
+                         (common-lisp:error ":actiongroupname is required")
+                         :type (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-agent-action-group-request-action-group-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-action-group-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (parent-action-group-signature :initarg
+                         :parent-action-group-signature :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-group-signature
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-action-group-request-parent-action-group-signature
+                         :shape "ActionGroupSignature" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (action-group-executor :initarg :action-group-executor
+                         :initform common-lisp:nil :type
+                         (common-lisp:or action-group-executor
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-action-group-request-action-group-executor
+                         :shape "ActionGroupExecutor" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-group-state :initarg :action-group-state
+                         :initform common-lisp:nil :type
+                         (common-lisp:or action-group-state common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-action-group-request-action-group-state
+                         :shape "ActionGroupState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (api-schema :initarg :api-schema :initform
+                         common-lisp:nil :type
+                         (common-lisp:or apischema common-lisp:null) :accessor
+                         struct-shape-update-agent-action-group-request-api-schema
+                         :shape "APISchema" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-agent-action-group-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-agent-action-group-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-agent-action-group-request
                     'make-update-agent-action-group-request))
@@ -5723,11 +7988,22 @@
                           update-agent-action-group-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-agent-action-group-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-agent-action-group-response-"))
-   (agent-action-group (common-lisp:error ":agentactiongroup is required")
-    :type (common-lisp:or agent-action-group common-lisp:null)))
+ (common-lisp:defclass update-agent-action-group-response common-lisp:nil
+                       ((agent-action-group :initarg :agent-action-group
+                         :initform
+                         (common-lisp:error ":agentactiongroup is required")
+                         :type
+                         (common-lisp:or agent-action-group common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-action-group-response-agent-action-group
+                         :shape "AgentActionGroup" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-agent-action-group-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-agent-action-group-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-agent-action-group-response
                     'make-update-agent-action-group-response))
@@ -5754,19 +8030,45 @@
                           update-agent-action-group-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-agent-alias-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-agent-alias-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-alias-id (common-lisp:error ":agentaliasid is required") :type
-    (common-lisp:or agent-alias-id common-lisp:null))
-   (agent-alias-name (common-lisp:error ":agentaliasname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (routing-configuration common-lisp:nil :type
-    (common-lisp:or agent-alias-routing-configuration common-lisp:null)))
+ (common-lisp:defclass update-agent-alias-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-agent-alias-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-alias-id :initarg :agent-alias-id :initform
+                         (common-lisp:error ":agentaliasid is required") :type
+                         (common-lisp:or agent-alias-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-alias-request-agent-alias-id
+                         :shape "AgentAliasId" :location "uri" :location-name
+                         "agentAliasId")
+                        (agent-alias-name :initarg :agent-alias-name :initform
+                         (common-lisp:error ":agentaliasname is required")
+                         :type (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-agent-alias-request-agent-alias-name
+                         :shape "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-alias-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (routing-configuration :initarg :routing-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or agent-alias-routing-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-alias-request-routing-configuration
+                         :shape "AgentAliasRoutingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-agent-alias-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-agent-alias-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-agent-alias-request
                     'make-update-agent-alias-request))
@@ -5808,11 +8110,19 @@
                           update-agent-alias-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-agent-alias-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-agent-alias-response-"))
-   (agent-alias (common-lisp:error ":agentalias is required") :type
-    (common-lisp:or agent-alias common-lisp:null)))
+ (common-lisp:defclass update-agent-alias-response common-lisp:nil
+                       ((agent-alias :initarg :agent-alias :initform
+                         (common-lisp:error ":agentalias is required") :type
+                         (common-lisp:or agent-alias common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-alias-response-agent-alias
+                         :shape "AgentAlias" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-agent-alias-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-agent-alias-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-agent-alias-response
                     'make-update-agent-alias-response))
@@ -5839,19 +8149,46 @@
                           update-agent-alias-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-agent-knowledge-base-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-agent-knowledge-base-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-version (common-lisp:error ":agentversion is required") :type
-    (common-lisp:or draft-version common-lisp:null))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (knowledge-base-state common-lisp:nil :type
-    (common-lisp:or knowledge-base-state common-lisp:null)))
+ (common-lisp:defclass update-agent-knowledge-base-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-agent-knowledge-base-request-agent-id
+                         :shape "Id" :location "uri" :location-name "agentId")
+                        (agent-version :initarg :agent-version :initform
+                         (common-lisp:error ":agentversion is required") :type
+                         (common-lisp:or draft-version common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-knowledge-base-request-agent-version
+                         :shape "DraftVersion" :location "uri" :location-name
+                         "agentVersion")
+                        (knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-agent-knowledge-base-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-knowledge-base-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (knowledge-base-state :initarg :knowledge-base-state
+                         :initform common-lisp:nil :type
+                         (common-lisp:or knowledge-base-state common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-knowledge-base-request-knowledge-base-state
+                         :shape "KnowledgeBaseState" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-agent-knowledge-base-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-agent-knowledge-base-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-agent-knowledge-base-request
                     'make-update-agent-knowledge-base-request))
@@ -5886,11 +8223,22 @@
                           update-agent-knowledge-base-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-agent-knowledge-base-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-agent-knowledge-base-response-"))
-   (agent-knowledge-base (common-lisp:error ":agentknowledgebase is required")
-    :type (common-lisp:or agent-knowledge-base common-lisp:null)))
+ (common-lisp:defclass update-agent-knowledge-base-response common-lisp:nil
+                       ((agent-knowledge-base :initarg :agent-knowledge-base
+                         :initform
+                         (common-lisp:error ":agentknowledgebase is required")
+                         :type
+                         (common-lisp:or agent-knowledge-base common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-knowledge-base-response-agent-knowledge-base
+                         :shape "AgentKnowledgeBase" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-agent-knowledge-base-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-agent-knowledge-base-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-agent-knowledge-base-response
                     'make-update-agent-knowledge-base-response))
@@ -5918,28 +8266,76 @@
                           update-agent-knowledge-base-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-agent-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-agent-request-"))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (agent-name (common-lisp:error ":agentname is required") :type
-    (common-lisp:or name common-lisp:null))
-   (instruction common-lisp:nil :type
-    (common-lisp:or instruction common-lisp:null))
-   (foundation-model common-lisp:nil :type
-    (common-lisp:or model-identifier common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (idle-session-ttlin-seconds common-lisp:nil :type
-    (common-lisp:or session-ttl common-lisp:null))
-   (agent-resource-role-arn
-    (common-lisp:error ":agentresourcerolearn is required") :type
-    (common-lisp:or agent-role-arn common-lisp:null))
-   (customer-encryption-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (prompt-override-configuration common-lisp:nil :type
-    (common-lisp:or prompt-override-configuration common-lisp:null)))
+ (common-lisp:defclass update-agent-request common-lisp:nil
+                       ((agent-id :initarg :agent-id :initform
+                         (common-lisp:error ":agentid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-agent-request-agent-id :shape "Id"
+                         :location "uri" :location-name "agentId")
+                        (agent-name :initarg :agent-name :initform
+                         (common-lisp:error ":agentname is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-agent-request-agent-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (instruction :initarg :instruction :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instruction common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-request-instruction :shape
+                         "Instruction" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (foundation-model :initarg :foundation-model :initform
+                         common-lisp:nil :type
+                         (common-lisp:or model-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-request-foundation-model
+                         :shape "ModelIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-request-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (idle-session-ttlin-seconds :initarg
+                         :idle-session-ttlin-seconds :initform common-lisp:nil
+                         :type (common-lisp:or session-ttl common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-request-idle-session-ttlin-seconds
+                         :shape "SessionTTL" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agent-resource-role-arn :initarg
+                         :agent-resource-role-arn :initform
+                         (common-lisp:error
+                          ":agentresourcerolearn is required")
+                         :type (common-lisp:or agent-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-request-agent-resource-role-arn
+                         :shape "AgentRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (customer-encryption-key-arn :initarg
+                         :customer-encryption-key-arn :initform common-lisp:nil
+                         :type (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-request-customer-encryption-key-arn
+                         :shape "KmsKeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prompt-override-configuration :initarg
+                         :prompt-override-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or prompt-override-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-agent-request-prompt-override-configuration
+                         :shape "PromptOverrideConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-agent-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-agent-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-agent-request 'make-update-agent-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6012,11 +8408,18 @@
                         ((aws-sdk/generator/shape::input update-agent-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-agent-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-agent-response-"))
-   (agent (common-lisp:error ":agent is required") :type
-    (common-lisp:or agent common-lisp:null)))
+ (common-lisp:defclass update-agent-response common-lisp:nil
+                       ((agent :initarg :agent :initform
+                         (common-lisp:error ":agent is required") :type
+                         (common-lisp:or agent common-lisp:null) :accessor
+                         struct-shape-update-agent-response-agent :shape
+                         "Agent" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-agent-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-agent-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-agent-response 'make-update-agent-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6042,24 +8445,67 @@
                           update-agent-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-data-source-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-data-source-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (data-source-id (common-lisp:error ":datasourceid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (data-source-configuration
-    (common-lisp:error ":datasourceconfiguration is required") :type
-    (common-lisp:or data-source-configuration common-lisp:null))
-   (server-side-encryption-configuration common-lisp:nil :type
-    (common-lisp:or server-side-encryption-configuration common-lisp:null))
-   (vector-ingestion-configuration common-lisp:nil :type
-    (common-lisp:or vector-ingestion-configuration common-lisp:null)))
+ (common-lisp:defclass update-data-source-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-data-source-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (data-source-id :initarg :data-source-id :initform
+                         (common-lisp:error ":datasourceid is required") :type
+                         (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-data-source-request-data-source-id
+                         :shape "Id" :location "uri" :location-name
+                         "dataSourceId")
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-data-source-request-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-data-source-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (data-source-configuration :initarg
+                         :data-source-configuration :initform
+                         (common-lisp:error
+                          ":datasourceconfiguration is required")
+                         :type
+                         (common-lisp:or data-source-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-data-source-request-data-source-configuration
+                         :shape "DataSourceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (server-side-encryption-configuration :initarg
+                         :server-side-encryption-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or server-side-encryption-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-data-source-request-server-side-encryption-configuration
+                         :shape "ServerSideEncryptionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (vector-ingestion-configuration :initarg
+                         :vector-ingestion-configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or vector-ingestion-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-data-source-request-vector-ingestion-configuration
+                         :shape "VectorIngestionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-data-source-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-data-source-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-data-source-request
                     'make-update-data-source-request))
@@ -6117,11 +8563,19 @@
                           update-data-source-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-data-source-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-data-source-response-"))
-   (data-source (common-lisp:error ":datasource is required") :type
-    (common-lisp:or data-source common-lisp:null)))
+ (common-lisp:defclass update-data-source-response common-lisp:nil
+                       ((data-source :initarg :data-source :initform
+                         (common-lisp:error ":datasource is required") :type
+                         (common-lisp:or data-source common-lisp:null)
+                         :accessor
+                         struct-shape-update-data-source-response-data-source
+                         :shape "DataSource" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-data-source-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-data-source-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-data-source-response
                     'make-update-data-source-response))
@@ -6148,23 +8602,63 @@
                           update-data-source-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-knowledge-base-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-knowledge-base-request-"))
-   (knowledge-base-id (common-lisp:error ":knowledgebaseid is required") :type
-    (common-lisp:or id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or knowledge-base-role-arn common-lisp:null))
-   (knowledge-base-configuration
-    (common-lisp:error ":knowledgebaseconfiguration is required") :type
-    (common-lisp:or knowledge-base-configuration common-lisp:null))
-   (storage-configuration
-    (common-lisp:error ":storageconfiguration is required") :type
-    (common-lisp:or storage-configuration common-lisp:null)))
+ (common-lisp:defclass update-knowledge-base-request common-lisp:nil
+                       ((knowledge-base-id :initarg :knowledge-base-id
+                         :initform
+                         (common-lisp:error ":knowledgebaseid is required")
+                         :type (common-lisp:or id common-lisp:null) :accessor
+                         struct-shape-update-knowledge-base-request-knowledge-base-id
+                         :shape "Id" :location "uri" :location-name
+                         "knowledgeBaseId")
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name common-lisp:null) :accessor
+                         struct-shape-update-knowledge-base-request-name :shape
+                         "Name" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-update-knowledge-base-request-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or knowledge-base-role-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-knowledge-base-request-role-arn
+                         :shape "KnowledgeBaseRoleArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (knowledge-base-configuration :initarg
+                         :knowledge-base-configuration :initform
+                         (common-lisp:error
+                          ":knowledgebaseconfiguration is required")
+                         :type
+                         (common-lisp:or knowledge-base-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-knowledge-base-request-knowledge-base-configuration
+                         :shape "KnowledgeBaseConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (storage-configuration :initarg :storage-configuration
+                         :initform
+                         (common-lisp:error
+                          ":storageconfiguration is required")
+                         :type
+                         (common-lisp:or storage-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-knowledge-base-request-storage-configuration
+                         :shape "StorageConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-knowledge-base-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-knowledge-base-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-knowledge-base-request
                     'make-update-knowledge-base-request))
@@ -6221,11 +8715,20 @@
                           update-knowledge-base-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-knowledge-base-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-knowledge-base-response-"))
-   (knowledge-base (common-lisp:error ":knowledgebase is required") :type
-    (common-lisp:or knowledge-base common-lisp:null)))
+ (common-lisp:defclass update-knowledge-base-response common-lisp:nil
+                       ((knowledge-base :initarg :knowledge-base :initform
+                         (common-lisp:error ":knowledgebase is required") :type
+                         (common-lisp:or knowledge-base common-lisp:null)
+                         :accessor
+                         struct-shape-update-knowledge-base-response-knowledge-base
+                         :shape "KnowledgeBase" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-knowledge-base-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-knowledge-base-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-knowledge-base-response
                     'make-update-knowledge-base-response))
@@ -6262,13 +8765,25 @@
   (common-lisp:list 'validation-exception 'validation-exception-message
                     'validation-exception-field-list)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-field-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-blank-string common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or non-blank-string common-lisp:null)))
+ (common-lisp:defclass validation-exception-field common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or non-blank-string common-lisp:null)
+                         :accessor struct-shape-validation-exception-field-name
+                         :shape "NonBlankString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or non-blank-string common-lisp:null)
+                         :accessor
+                         struct-shape-validation-exception-field-message :shape
+                         "NonBlankString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-field
                     'make-validation-exception-field))
@@ -6311,11 +8826,22 @@
                             validation-exception-field))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (vector-ingestion-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-vector-ingestion-configuration-"))
-   (chunking-configuration common-lisp:nil :type
-    (common-lisp:or chunking-configuration common-lisp:null)))
+ (common-lisp:defclass vector-ingestion-configuration common-lisp:nil
+                       ((chunking-configuration :initarg
+                         :chunking-configuration :initform common-lisp:nil
+                         :type
+                         (common-lisp:or chunking-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-vector-ingestion-configuration-chunking-configuration
+                         :shape "ChunkingConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-vector-ingestion-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'vector-ingestion-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'vector-ingestion-configuration
                     'make-vector-ingestion-configuration))
@@ -6343,11 +8869,23 @@
                           vector-ingestion-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (vector-knowledge-base-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-vector-knowledge-base-configuration-"))
-   (embedding-model-arn (common-lisp:error ":embeddingmodelarn is required")
-    :type (common-lisp:or bedrock-embedding-model-arn common-lisp:null)))
+ (common-lisp:defclass vector-knowledge-base-configuration common-lisp:nil
+                       ((embedding-model-arn :initarg :embedding-model-arn
+                         :initform
+                         (common-lisp:error ":embeddingmodelarn is required")
+                         :type
+                         (common-lisp:or bedrock-embedding-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-vector-knowledge-base-configuration-embedding-model-arn
+                         :shape "BedrockEmbeddingModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-vector-knowledge-base-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'vector-knowledge-base-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'vector-knowledge-base-configuration
                     'make-vector-knowledge-base-configuration))

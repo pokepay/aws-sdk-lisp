@@ -38,11 +38,17 @@
     ("TooManyRequestsException" . too-many-requests-exception)
     ("TooManyTagsException" . too-many-tags-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (access-log (:copier common-lisp:nil)
-      (:conc-name "struct-shape-access-log-"))
-   (file common-lisp:nil :type
-    (common-lisp:or file-access-log common-lisp:null)))
+ (common-lisp:defclass access-log common-lisp:nil
+                       ((file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or file-access-log common-lisp:null)
+                         :accessor struct-shape-access-log-file :shape
+                         "FileAccessLog" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-access-log
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'access-log
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'access-log 'make-access-log))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input access-log))
@@ -63,13 +69,29 @@
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (aws-cloud-map-instance-attribute (:copier common-lisp:nil)
-      (:conc-name "struct-shape-aws-cloud-map-instance-attribute-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or aws-cloud-map-instance-attribute-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or aws-cloud-map-instance-attribute-value common-lisp:null)))
+ (common-lisp:defclass aws-cloud-map-instance-attribute common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or aws-cloud-map-instance-attribute-key
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-aws-cloud-map-instance-attribute-key
+                         :shape "AwsCloudMapInstanceAttributeKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or aws-cloud-map-instance-attribute-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-aws-cloud-map-instance-attribute-value
+                         :shape "AwsCloudMapInstanceAttributeValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-aws-cloud-map-instance-attribute
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'aws-cloud-map-instance-attribute
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'aws-cloud-map-instance-attribute
                     'make-aws-cloud-map-instance-attribute))
@@ -117,17 +139,42 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype aws-cloud-map-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (aws-cloud-map-service-discovery (:copier common-lisp:nil)
-      (:conc-name "struct-shape-aws-cloud-map-service-discovery-"))
-   (attributes common-lisp:nil :type
-    (common-lisp:or aws-cloud-map-instance-attributes common-lisp:null))
-   (ip-preference common-lisp:nil :type
-    (common-lisp:or ip-preference common-lisp:null))
-   (namespace-name (common-lisp:error ":namespacename is required") :type
-    (common-lisp:or aws-cloud-map-name common-lisp:null))
-   (service-name (common-lisp:error ":servicename is required") :type
-    (common-lisp:or aws-cloud-map-name common-lisp:null)))
+ (common-lisp:defclass aws-cloud-map-service-discovery common-lisp:nil
+                       ((attributes :initarg :attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or aws-cloud-map-instance-attributes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-aws-cloud-map-service-discovery-attributes
+                         :shape "AwsCloudMapInstanceAttributes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ip-preference :initarg :ip-preference :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ip-preference common-lisp:null)
+                         :accessor
+                         struct-shape-aws-cloud-map-service-discovery-ip-preference
+                         :shape "IpPreference" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (namespace-name :initarg :namespace-name :initform
+                         (common-lisp:error ":namespacename is required") :type
+                         (common-lisp:or aws-cloud-map-name common-lisp:null)
+                         :accessor
+                         struct-shape-aws-cloud-map-service-discovery-namespace-name
+                         :shape "AwsCloudMapName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-name :initarg :service-name :initform
+                         (common-lisp:error ":servicename is required") :type
+                         (common-lisp:or aws-cloud-map-name common-lisp:null)
+                         :accessor
+                         struct-shape-aws-cloud-map-service-discovery-service-name
+                         :shape "AwsCloudMapName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-aws-cloud-map-service-discovery
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'aws-cloud-map-service-discovery
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'aws-cloud-map-service-discovery
                     'make-aws-cloud-map-service-discovery))
@@ -175,10 +222,19 @@
                           aws-cloud-map-service-discovery))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (backend (:copier common-lisp:nil) (:conc-name "struct-shape-backend-"))
-   (virtual-service common-lisp:nil :type
-    (common-lisp:or virtual-service-backend common-lisp:null)))
+ (common-lisp:defclass backend common-lisp:nil
+                       ((virtual-service :initarg :virtual-service :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-service-backend
+                                         common-lisp:null)
+                         :accessor struct-shape-backend-virtual-service :shape
+                         "VirtualServiceBackend" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-backend
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'backend
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'backend 'make-backend))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input backend))
@@ -197,11 +253,18 @@
                         ((aws-sdk/generator/shape::input backend))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (backend-defaults (:copier common-lisp:nil)
-      (:conc-name "struct-shape-backend-defaults-"))
-   (client-policy common-lisp:nil :type
-    (common-lisp:or client-policy common-lisp:null)))
+ (common-lisp:defclass backend-defaults common-lisp:nil
+                       ((client-policy :initarg :client-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-policy common-lisp:null)
+                         :accessor struct-shape-backend-defaults-client-policy
+                         :shape "ClientPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-backend-defaults
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'backend-defaults
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'backend-defaults 'make-backend-defaults))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -244,11 +307,17 @@
                            (trivial-types:proper-list arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (client-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-client-policy-"))
-   (tls common-lisp:nil :type
-    (common-lisp:or client-policy-tls common-lisp:null)))
+ (common-lisp:defclass client-policy common-lisp:nil
+                       ((tls :initarg :tls :initform common-lisp:nil :type
+                         (common-lisp:or client-policy-tls common-lisp:null)
+                         :accessor struct-shape-client-policy-tls :shape
+                         "ClientPolicyTls" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-client-policy
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'client-policy
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'client-policy 'make-client-policy))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input client-policy))
@@ -267,15 +336,36 @@
                         ((aws-sdk/generator/shape::input client-policy))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (client-policy-tls (:copier common-lisp:nil)
-      (:conc-name "struct-shape-client-policy-tls-"))
-   (certificate common-lisp:nil :type
-    (common-lisp:or client-tls-certificate common-lisp:null))
-   (enforce common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (ports common-lisp:nil :type (common-lisp:or port-set common-lisp:null))
-   (validation (common-lisp:error ":validation is required") :type
-    (common-lisp:or tls-validation-context common-lisp:null)))
+ (common-lisp:defclass client-policy-tls common-lisp:nil
+                       ((certificate :initarg :certificate :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-tls-certificate
+                                         common-lisp:null)
+                         :accessor struct-shape-client-policy-tls-certificate
+                         :shape "ClientTlsCertificate" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (enforce :initarg :enforce :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor struct-shape-client-policy-tls-enforce
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ports :initarg :ports :initform common-lisp:nil :type
+                         (common-lisp:or port-set common-lisp:null) :accessor
+                         struct-shape-client-policy-tls-ports :shape "PortSet"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (validation :initarg :validation :initform
+                         (common-lisp:error ":validation is required") :type
+                         (common-lisp:or tls-validation-context
+                                         common-lisp:null)
+                         :accessor struct-shape-client-policy-tls-validation
+                         :shape "TlsValidationContext" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-client-policy-tls
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'client-policy-tls
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'client-policy-tls 'make-client-policy-tls))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -316,13 +406,24 @@
                         ((aws-sdk/generator/shape::input client-policy-tls))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (client-tls-certificate (:copier common-lisp:nil)
-      (:conc-name "struct-shape-client-tls-certificate-"))
-   (file common-lisp:nil :type
-    (common-lisp:or listener-tls-file-certificate common-lisp:null))
-   (sds common-lisp:nil :type
-    (common-lisp:or listener-tls-sds-certificate common-lisp:null)))
+ (common-lisp:defclass client-tls-certificate common-lisp:nil
+                       ((file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or listener-tls-file-certificate
+                                         common-lisp:null)
+                         :accessor struct-shape-client-tls-certificate-file
+                         :shape "ListenerTlsFileCertificate" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sds :initarg :sds :initform common-lisp:nil :type
+                         (common-lisp:or listener-tls-sds-certificate
+                                         common-lisp:null)
+                         :accessor struct-shape-client-tls-certificate-sds
+                         :shape "ListenerTlsSdsCertificate" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-client-tls-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'client-tls-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'client-tls-certificate 'make-client-tls-certificate))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -362,22 +463,58 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-gateway-route-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-gateway-route-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (gateway-route-name (common-lisp:error ":gatewayroutename is required")
-    :type (common-lisp:or resource-name common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or gateway-route-spec common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass create-gateway-route-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-gateway-route-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (gateway-route-name :initarg :gateway-route-name
+                         :initform
+                         (common-lisp:error ":gatewayroutename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-gateway-route-input-gateway-route-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-gateway-route-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-gateway-route-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or gateway-route-spec common-lisp:null)
+                         :accessor struct-shape-create-gateway-route-input-spec
+                         :shape "GatewayRouteSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-gateway-route-input-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-gateway-route-input-virtual-gateway-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualGatewayName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-gateway-route-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-gateway-route-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-gateway-route-input
                     'make-create-gateway-route-input))
@@ -425,11 +562,19 @@
                           create-gateway-route-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-gateway-route-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-gateway-route-output-"))
-   (gateway-route (common-lisp:error ":gatewayroute is required") :type
-    (common-lisp:or gateway-route-data common-lisp:null)))
+ (common-lisp:defclass create-gateway-route-output common-lisp:nil
+                       ((gateway-route :initarg :gateway-route :initform
+                         (common-lisp:error ":gatewayroute is required") :type
+                         (common-lisp:or gateway-route-data common-lisp:null)
+                         :accessor
+                         struct-shape-create-gateway-route-output-gateway-route
+                         :shape "GatewayRouteData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-gateway-route-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-gateway-route-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-gateway-route-output
                     'make-create-gateway-route-output))
@@ -456,15 +601,34 @@
                           create-gateway-route-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'gateway-route)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-mesh-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-mesh-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (spec common-lisp:nil :type (common-lisp:or mesh-spec common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass create-mesh-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-mesh-input-client-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-create-mesh-input-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform common-lisp:nil :type
+                         (common-lisp:or mesh-spec common-lisp:null) :accessor
+                         struct-shape-create-mesh-input-spec :shape "MeshSpec"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-mesh-input-tags :shape "TagList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-mesh-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-mesh-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-mesh-input 'make-create-mesh-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -505,11 +669,18 @@
                         ((aws-sdk/generator/shape::input create-mesh-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-mesh-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-mesh-output-"))
-   (mesh (common-lisp:error ":mesh is required") :type
-    (common-lisp:or mesh-data common-lisp:null)))
+ (common-lisp:defclass create-mesh-output common-lisp:nil
+                       ((mesh :initarg :mesh :initform
+                         (common-lisp:error ":mesh is required") :type
+                         (common-lisp:or mesh-data common-lisp:null) :accessor
+                         struct-shape-create-mesh-output-mesh :shape "MeshData"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-mesh-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-mesh-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-mesh-output 'make-create-mesh-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -529,22 +700,55 @@
                         ((aws-sdk/generator/shape::input create-mesh-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'mesh)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-route-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-route-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (route-name (common-lisp:error ":routename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or route-spec common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass create-route-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-route-input-client-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-create-route-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-route-input-mesh-owner :shape
+                         "AccountId" :location "querystring" :location-name
+                         "meshOwner")
+                        (route-name :initarg :route-name :initform
+                         (common-lisp:error ":routename is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-create-route-input-route-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or route-spec common-lisp:null) :accessor
+                         struct-shape-create-route-input-spec :shape
+                         "RouteSpec" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-route-input-tags :shape "TagList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-route-input-virtual-router-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualRouterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-route-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-route-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-route-input 'make-create-route-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -585,11 +789,18 @@
                         ((aws-sdk/generator/shape::input create-route-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-route-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-route-output-"))
-   (route (common-lisp:error ":route is required") :type
-    (common-lisp:or route-data common-lisp:null)))
+ (common-lisp:defclass create-route-output common-lisp:nil
+                       ((route :initarg :route :initform
+                         (common-lisp:error ":route is required") :type
+                         (common-lisp:or route-data common-lisp:null) :accessor
+                         struct-shape-create-route-output-route :shape
+                         "RouteData" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-route-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-route-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-route-output 'make-create-route-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -609,20 +820,51 @@
                         ((aws-sdk/generator/shape::input create-route-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'route)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-virtual-gateway-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-virtual-gateway-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-gateway-spec common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass create-virtual-gateway-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-virtual-gateway-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-gateway-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-virtual-gateway-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-gateway-spec common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-gateway-input-spec :shape
+                         "VirtualGatewaySpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-virtual-gateway-input-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-gateway-input-virtual-gateway-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-virtual-gateway-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-virtual-gateway-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-virtual-gateway-input
                     'make-create-virtual-gateway-input))
@@ -671,11 +913,21 @@
                           create-virtual-gateway-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-virtual-gateway-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-virtual-gateway-output-"))
-   (virtual-gateway (common-lisp:error ":virtualgateway is required") :type
-    (common-lisp:or virtual-gateway-data common-lisp:null)))
+ (common-lisp:defclass create-virtual-gateway-output common-lisp:nil
+                       ((virtual-gateway :initarg :virtual-gateway :initform
+                         (common-lisp:error ":virtualgateway is required")
+                         :type
+                         (common-lisp:or virtual-gateway-data common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-gateway-output-virtual-gateway
+                         :shape "VirtualGatewayData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-virtual-gateway-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-virtual-gateway-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-virtual-gateway-output
                     'make-create-virtual-gateway-output))
@@ -702,20 +954,50 @@
                           create-virtual-gateway-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-gateway)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-virtual-node-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-virtual-node-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-node-spec common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (virtual-node-name (common-lisp:error ":virtualnodename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass create-virtual-node-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-virtual-node-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-node-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-virtual-node-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-node-spec common-lisp:null)
+                         :accessor struct-shape-create-virtual-node-input-spec
+                         :shape "VirtualNodeSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-virtual-node-input-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-node-name :initarg :virtual-node-name
+                         :initform
+                         (common-lisp:error ":virtualnodename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-node-input-virtual-node-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-virtual-node-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-virtual-node-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-virtual-node-input
                     'make-create-virtual-node-input))
@@ -763,11 +1045,19 @@
                           create-virtual-node-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-virtual-node-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-virtual-node-output-"))
-   (virtual-node (common-lisp:error ":virtualnode is required") :type
-    (common-lisp:or virtual-node-data common-lisp:null)))
+ (common-lisp:defclass create-virtual-node-output common-lisp:nil
+                       ((virtual-node :initarg :virtual-node :initform
+                         (common-lisp:error ":virtualnode is required") :type
+                         (common-lisp:or virtual-node-data common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-node-output-virtual-node
+                         :shape "VirtualNodeData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-virtual-node-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-virtual-node-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-virtual-node-output
                     'make-create-virtual-node-output))
@@ -794,20 +1084,51 @@
                           create-virtual-node-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-node)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-virtual-router-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-virtual-router-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-router-spec common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass create-virtual-router-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-virtual-router-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-router-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-virtual-router-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-router-spec common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-router-input-spec :shape
+                         "VirtualRouterSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-virtual-router-input-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-router-input-virtual-router-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-virtual-router-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-virtual-router-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-virtual-router-input
                     'make-create-virtual-router-input))
@@ -855,11 +1176,19 @@
                           create-virtual-router-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-virtual-router-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-virtual-router-output-"))
-   (virtual-router (common-lisp:error ":virtualrouter is required") :type
-    (common-lisp:or virtual-router-data common-lisp:null)))
+ (common-lisp:defclass create-virtual-router-output common-lisp:nil
+                       ((virtual-router :initarg :virtual-router :initform
+                         (common-lisp:error ":virtualrouter is required") :type
+                         (common-lisp:or virtual-router-data common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-router-output-virtual-router
+                         :shape "VirtualRouterData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-virtual-router-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-virtual-router-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-virtual-router-output
                     'make-create-virtual-router-output))
@@ -886,20 +1215,51 @@
                           create-virtual-router-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-router)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-virtual-service-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-virtual-service-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-service-spec common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (virtual-service-name (common-lisp:error ":virtualservicename is required")
-    :type (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass create-virtual-service-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-virtual-service-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-service-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-virtual-service-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-service-spec common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-service-input-spec :shape
+                         "VirtualServiceSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-create-virtual-service-input-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-service-name :initarg :virtual-service-name
+                         :initform
+                         (common-lisp:error ":virtualservicename is required")
+                         :type (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-service-input-virtual-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-virtual-service-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-virtual-service-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-virtual-service-input
                     'make-create-virtual-service-input))
@@ -948,11 +1308,21 @@
                           create-virtual-service-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-virtual-service-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-virtual-service-output-"))
-   (virtual-service (common-lisp:error ":virtualservice is required") :type
-    (common-lisp:or virtual-service-data common-lisp:null)))
+ (common-lisp:defclass create-virtual-service-output common-lisp:nil
+                       ((virtual-service :initarg :virtual-service :initform
+                         (common-lisp:error ":virtualservice is required")
+                         :type
+                         (common-lisp:or virtual-service-data common-lisp:null)
+                         :accessor
+                         struct-shape-create-virtual-service-output-virtual-service
+                         :shape "VirtualServiceData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-virtual-service-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-virtual-service-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-virtual-service-output
                     'make-create-virtual-service-output))
@@ -980,17 +1350,41 @@
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-service)))
 (common-lisp:deftype default-gateway-route-rewrite () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-gateway-route-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-gateway-route-input-"))
-   (gateway-route-name (common-lisp:error ":gatewayroutename is required")
-    :type (common-lisp:or resource-name common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass delete-gateway-route-input common-lisp:nil
+                       ((gateway-route-name :initarg :gateway-route-name
+                         :initform
+                         (common-lisp:error ":gatewayroutename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-gateway-route-input-gateway-route-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "gatewayRouteName")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-gateway-route-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-gateway-route-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-gateway-route-input-virtual-gateway-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualGatewayName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-gateway-route-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-gateway-route-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-gateway-route-input
                     'make-delete-gateway-route-input))
@@ -1010,11 +1404,19 @@
                           delete-gateway-route-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-gateway-route-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-gateway-route-output-"))
-   (gateway-route (common-lisp:error ":gatewayroute is required") :type
-    (common-lisp:or gateway-route-data common-lisp:null)))
+ (common-lisp:defclass delete-gateway-route-output common-lisp:nil
+                       ((gateway-route :initarg :gateway-route :initform
+                         (common-lisp:error ":gatewayroute is required") :type
+                         (common-lisp:or gateway-route-data common-lisp:null)
+                         :accessor
+                         struct-shape-delete-gateway-route-output-gateway-route
+                         :shape "GatewayRouteData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-gateway-route-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-gateway-route-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-gateway-route-output
                     'make-delete-gateway-route-output))
@@ -1041,11 +1443,18 @@
                           delete-gateway-route-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'gateway-route)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-mesh-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-mesh-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass delete-mesh-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-delete-mesh-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-mesh-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-mesh-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-mesh-input 'make-delete-mesh-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1058,11 +1467,18 @@
                         ((aws-sdk/generator/shape::input delete-mesh-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-mesh-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-mesh-output-"))
-   (mesh (common-lisp:error ":mesh is required") :type
-    (common-lisp:or mesh-data common-lisp:null)))
+ (common-lisp:defclass delete-mesh-output common-lisp:nil
+                       ((mesh :initarg :mesh :initform
+                         (common-lisp:error ":mesh is required") :type
+                         (common-lisp:or mesh-data common-lisp:null) :accessor
+                         struct-shape-delete-mesh-output-mesh :shape "MeshData"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-mesh-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-mesh-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-mesh-output 'make-delete-mesh-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1082,17 +1498,38 @@
                         ((aws-sdk/generator/shape::input delete-mesh-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'mesh)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-route-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-route-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (route-name (common-lisp:error ":routename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass delete-route-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-delete-route-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-route-input-mesh-owner :shape
+                         "AccountId" :location "querystring" :location-name
+                         "meshOwner")
+                        (route-name :initarg :route-name :initform
+                         (common-lisp:error ":routename is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-delete-route-input-route-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "routeName")
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-route-input-virtual-router-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualRouterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-route-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-route-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-route-input 'make-delete-route-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1105,11 +1542,18 @@
                         ((aws-sdk/generator/shape::input delete-route-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-route-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-route-output-"))
-   (route (common-lisp:error ":route is required") :type
-    (common-lisp:or route-data common-lisp:null)))
+ (common-lisp:defclass delete-route-output common-lisp:nil
+                       ((route :initarg :route :initform
+                         (common-lisp:error ":route is required") :type
+                         (common-lisp:or route-data common-lisp:null) :accessor
+                         struct-shape-delete-route-output-route :shape
+                         "RouteData" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-route-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-route-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-route-output 'make-delete-route-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1129,15 +1573,33 @@
                         ((aws-sdk/generator/shape::input delete-route-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'route)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-virtual-gateway-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-virtual-gateway-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass delete-virtual-gateway-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-gateway-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-virtual-gateway-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-gateway-input-virtual-gateway-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualGatewayName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-virtual-gateway-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-virtual-gateway-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-gateway-input
                     'make-delete-virtual-gateway-input))
@@ -1157,11 +1619,21 @@
                           delete-virtual-gateway-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-virtual-gateway-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-virtual-gateway-output-"))
-   (virtual-gateway (common-lisp:error ":virtualgateway is required") :type
-    (common-lisp:or virtual-gateway-data common-lisp:null)))
+ (common-lisp:defclass delete-virtual-gateway-output common-lisp:nil
+                       ((virtual-gateway :initarg :virtual-gateway :initform
+                         (common-lisp:error ":virtualgateway is required")
+                         :type
+                         (common-lisp:or virtual-gateway-data common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-gateway-output-virtual-gateway
+                         :shape "VirtualGatewayData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-virtual-gateway-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-virtual-gateway-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-gateway-output
                     'make-delete-virtual-gateway-output))
@@ -1188,15 +1660,33 @@
                           delete-virtual-gateway-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-gateway)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-virtual-node-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-virtual-node-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-node-name (common-lisp:error ":virtualnodename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass delete-virtual-node-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-node-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-virtual-node-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-node-name :initarg :virtual-node-name
+                         :initform
+                         (common-lisp:error ":virtualnodename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-node-input-virtual-node-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualNodeName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-virtual-node-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-virtual-node-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-node-input
                     'make-delete-virtual-node-input))
@@ -1216,11 +1706,19 @@
                           delete-virtual-node-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-virtual-node-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-virtual-node-output-"))
-   (virtual-node (common-lisp:error ":virtualnode is required") :type
-    (common-lisp:or virtual-node-data common-lisp:null)))
+ (common-lisp:defclass delete-virtual-node-output common-lisp:nil
+                       ((virtual-node :initarg :virtual-node :initform
+                         (common-lisp:error ":virtualnode is required") :type
+                         (common-lisp:or virtual-node-data common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-node-output-virtual-node
+                         :shape "VirtualNodeData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-virtual-node-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-virtual-node-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-node-output
                     'make-delete-virtual-node-output))
@@ -1247,15 +1745,33 @@
                           delete-virtual-node-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-node)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-virtual-router-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-virtual-router-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass delete-virtual-router-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-router-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-virtual-router-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-router-input-virtual-router-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualRouterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-virtual-router-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-virtual-router-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-router-input
                     'make-delete-virtual-router-input))
@@ -1275,11 +1791,19 @@
                           delete-virtual-router-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-virtual-router-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-virtual-router-output-"))
-   (virtual-router (common-lisp:error ":virtualrouter is required") :type
-    (common-lisp:or virtual-router-data common-lisp:null)))
+ (common-lisp:defclass delete-virtual-router-output common-lisp:nil
+                       ((virtual-router :initarg :virtual-router :initform
+                         (common-lisp:error ":virtualrouter is required") :type
+                         (common-lisp:or virtual-router-data common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-router-output-virtual-router
+                         :shape "VirtualRouterData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-virtual-router-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-virtual-router-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-router-output
                     'make-delete-virtual-router-output))
@@ -1306,15 +1830,33 @@
                           delete-virtual-router-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-router)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-virtual-service-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-virtual-service-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-service-name (common-lisp:error ":virtualservicename is required")
-    :type (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass delete-virtual-service-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-service-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-delete-virtual-service-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-service-name :initarg :virtual-service-name
+                         :initform
+                         (common-lisp:error ":virtualservicename is required")
+                         :type (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-service-input-virtual-service-name
+                         :shape "ServiceName" :location "uri" :location-name
+                         "virtualServiceName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-virtual-service-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-virtual-service-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-service-input
                     'make-delete-virtual-service-input))
@@ -1334,11 +1876,21 @@
                           delete-virtual-service-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-virtual-service-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-virtual-service-output-"))
-   (virtual-service (common-lisp:error ":virtualservice is required") :type
-    (common-lisp:or virtual-service-data common-lisp:null)))
+ (common-lisp:defclass delete-virtual-service-output common-lisp:nil
+                       ((virtual-service :initarg :virtual-service :initform
+                         (common-lisp:error ":virtualservice is required")
+                         :type
+                         (common-lisp:or virtual-service-data common-lisp:null)
+                         :accessor
+                         struct-shape-delete-virtual-service-output-virtual-service
+                         :shape "VirtualServiceData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-virtual-service-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-virtual-service-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-service-output
                     'make-delete-virtual-service-output))
@@ -1365,17 +1917,41 @@
                           delete-virtual-service-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-service)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-gateway-route-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-gateway-route-input-"))
-   (gateway-route-name (common-lisp:error ":gatewayroutename is required")
-    :type (common-lisp:or resource-name common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass describe-gateway-route-input common-lisp:nil
+                       ((gateway-route-name :initarg :gateway-route-name
+                         :initform
+                         (common-lisp:error ":gatewayroutename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-gateway-route-input-gateway-route-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "gatewayRouteName")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-gateway-route-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-gateway-route-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-gateway-route-input-virtual-gateway-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualGatewayName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-gateway-route-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-gateway-route-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-gateway-route-input
                     'make-describe-gateway-route-input))
@@ -1395,11 +1971,20 @@
                           describe-gateway-route-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-gateway-route-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-gateway-route-output-"))
-   (gateway-route (common-lisp:error ":gatewayroute is required") :type
-    (common-lisp:or gateway-route-data common-lisp:null)))
+ (common-lisp:defclass describe-gateway-route-output common-lisp:nil
+                       ((gateway-route :initarg :gateway-route :initform
+                         (common-lisp:error ":gatewayroute is required") :type
+                         (common-lisp:or gateway-route-data common-lisp:null)
+                         :accessor
+                         struct-shape-describe-gateway-route-output-gateway-route
+                         :shape "GatewayRouteData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-gateway-route-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-gateway-route-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-gateway-route-output
                     'make-describe-gateway-route-output))
@@ -1426,13 +2011,24 @@
                           describe-gateway-route-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'gateway-route)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-mesh-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-mesh-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass describe-mesh-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-describe-mesh-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-mesh-input-mesh-owner :shape
+                         "AccountId" :location "querystring" :location-name
+                         "meshOwner"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-mesh-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-mesh-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-mesh-input 'make-describe-mesh-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1445,11 +2041,18 @@
                         ((aws-sdk/generator/shape::input describe-mesh-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-mesh-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-mesh-output-"))
-   (mesh (common-lisp:error ":mesh is required") :type
-    (common-lisp:or mesh-data common-lisp:null)))
+ (common-lisp:defclass describe-mesh-output common-lisp:nil
+                       ((mesh :initarg :mesh :initform
+                         (common-lisp:error ":mesh is required") :type
+                         (common-lisp:or mesh-data common-lisp:null) :accessor
+                         struct-shape-describe-mesh-output-mesh :shape
+                         "MeshData" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-mesh-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-mesh-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-mesh-output 'make-describe-mesh-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1469,17 +2072,38 @@
                         ((aws-sdk/generator/shape::input describe-mesh-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'mesh)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-route-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-route-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (route-name (common-lisp:error ":routename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass describe-route-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-describe-route-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-route-input-mesh-owner :shape
+                         "AccountId" :location "querystring" :location-name
+                         "meshOwner")
+                        (route-name :initarg :route-name :initform
+                         (common-lisp:error ":routename is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-describe-route-input-route-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "routeName")
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-route-input-virtual-router-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualRouterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-route-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-route-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-route-input 'make-describe-route-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1492,11 +2116,18 @@
                         ((aws-sdk/generator/shape::input describe-route-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-route-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-route-output-"))
-   (route (common-lisp:error ":route is required") :type
-    (common-lisp:or route-data common-lisp:null)))
+ (common-lisp:defclass describe-route-output common-lisp:nil
+                       ((route :initarg :route :initform
+                         (common-lisp:error ":route is required") :type
+                         (common-lisp:or route-data common-lisp:null) :accessor
+                         struct-shape-describe-route-output-route :shape
+                         "RouteData" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-route-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-route-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-route-output 'make-describe-route-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1522,15 +2153,34 @@
                           describe-route-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'route)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-virtual-gateway-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-virtual-gateway-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass describe-virtual-gateway-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-gateway-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-virtual-gateway-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-gateway-input-virtual-gateway-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualGatewayName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-virtual-gateway-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-virtual-gateway-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-virtual-gateway-input
                     'make-describe-virtual-gateway-input))
@@ -1550,11 +2200,21 @@
                           describe-virtual-gateway-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-virtual-gateway-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-virtual-gateway-output-"))
-   (virtual-gateway (common-lisp:error ":virtualgateway is required") :type
-    (common-lisp:or virtual-gateway-data common-lisp:null)))
+ (common-lisp:defclass describe-virtual-gateway-output common-lisp:nil
+                       ((virtual-gateway :initarg :virtual-gateway :initform
+                         (common-lisp:error ":virtualgateway is required")
+                         :type
+                         (common-lisp:or virtual-gateway-data common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-gateway-output-virtual-gateway
+                         :shape "VirtualGatewayData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-virtual-gateway-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-virtual-gateway-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-virtual-gateway-output
                     'make-describe-virtual-gateway-output))
@@ -1581,15 +2241,33 @@
                           describe-virtual-gateway-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-gateway)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-virtual-node-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-virtual-node-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-node-name (common-lisp:error ":virtualnodename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass describe-virtual-node-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-node-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-virtual-node-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-node-name :initarg :virtual-node-name
+                         :initform
+                         (common-lisp:error ":virtualnodename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-node-input-virtual-node-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualNodeName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-virtual-node-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-virtual-node-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-virtual-node-input
                     'make-describe-virtual-node-input))
@@ -1609,11 +2287,19 @@
                           describe-virtual-node-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-virtual-node-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-virtual-node-output-"))
-   (virtual-node (common-lisp:error ":virtualnode is required") :type
-    (common-lisp:or virtual-node-data common-lisp:null)))
+ (common-lisp:defclass describe-virtual-node-output common-lisp:nil
+                       ((virtual-node :initarg :virtual-node :initform
+                         (common-lisp:error ":virtualnode is required") :type
+                         (common-lisp:or virtual-node-data common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-node-output-virtual-node
+                         :shape "VirtualNodeData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-virtual-node-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-virtual-node-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-virtual-node-output
                     'make-describe-virtual-node-output))
@@ -1640,15 +2326,34 @@
                           describe-virtual-node-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-node)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-virtual-router-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-virtual-router-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass describe-virtual-router-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-router-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-virtual-router-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-router-input-virtual-router-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualRouterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-virtual-router-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-virtual-router-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-virtual-router-input
                     'make-describe-virtual-router-input))
@@ -1668,11 +2373,20 @@
                           describe-virtual-router-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-virtual-router-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-virtual-router-output-"))
-   (virtual-router (common-lisp:error ":virtualrouter is required") :type
-    (common-lisp:or virtual-router-data common-lisp:null)))
+ (common-lisp:defclass describe-virtual-router-output common-lisp:nil
+                       ((virtual-router :initarg :virtual-router :initform
+                         (common-lisp:error ":virtualrouter is required") :type
+                         (common-lisp:or virtual-router-data common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-router-output-virtual-router
+                         :shape "VirtualRouterData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-virtual-router-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-virtual-router-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-virtual-router-output
                     'make-describe-virtual-router-output))
@@ -1699,15 +2413,34 @@
                           describe-virtual-router-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-router)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-virtual-service-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-virtual-service-input-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (virtual-service-name (common-lisp:error ":virtualservicename is required")
-    :type (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass describe-virtual-service-input common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-service-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-describe-virtual-service-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (virtual-service-name :initarg :virtual-service-name
+                         :initform
+                         (common-lisp:error ":virtualservicename is required")
+                         :type (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-service-input-virtual-service-name
+                         :shape "ServiceName" :location "uri" :location-name
+                         "virtualServiceName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-virtual-service-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-virtual-service-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-virtual-service-input
                     'make-describe-virtual-service-input))
@@ -1727,11 +2460,21 @@
                           describe-virtual-service-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-virtual-service-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-virtual-service-output-"))
-   (virtual-service (common-lisp:error ":virtualservice is required") :type
-    (common-lisp:or virtual-service-data common-lisp:null)))
+ (common-lisp:defclass describe-virtual-service-output common-lisp:nil
+                       ((virtual-service :initarg :virtual-service :initform
+                         (common-lisp:error ":virtualservice is required")
+                         :type
+                         (common-lisp:or virtual-service-data common-lisp:null)
+                         :accessor
+                         struct-shape-describe-virtual-service-output-virtual-service
+                         :shape "VirtualServiceData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-virtual-service-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-virtual-service-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-virtual-service-output
                     'make-describe-virtual-service-output))
@@ -1759,15 +2502,32 @@
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-service)))
 (common-lisp:deftype dns-response-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dns-service-discovery (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dns-service-discovery-"))
-   (hostname (common-lisp:error ":hostname is required") :type
-    (common-lisp:or hostname common-lisp:null))
-   (ip-preference common-lisp:nil :type
-    (common-lisp:or ip-preference common-lisp:null))
-   (response-type common-lisp:nil :type
-    (common-lisp:or dns-response-type common-lisp:null)))
+ (common-lisp:defclass dns-service-discovery common-lisp:nil
+                       ((hostname :initarg :hostname :initform
+                         (common-lisp:error ":hostname is required") :type
+                         (common-lisp:or hostname common-lisp:null) :accessor
+                         struct-shape-dns-service-discovery-hostname :shape
+                         "Hostname" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ip-preference :initarg :ip-preference :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ip-preference common-lisp:null)
+                         :accessor
+                         struct-shape-dns-service-discovery-ip-preference
+                         :shape "IpPreference" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (response-type :initarg :response-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dns-response-type common-lisp:null)
+                         :accessor
+                         struct-shape-dns-service-discovery-response-type
+                         :shape "DnsResponseType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dns-service-discovery
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dns-service-discovery
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dns-service-discovery 'make-dns-service-discovery))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1807,11 +2567,22 @@
                           dns-service-discovery))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (duration (:copier common-lisp:nil) (:conc-name "struct-shape-duration-"))
-   (unit common-lisp:nil :type (common-lisp:or duration-unit common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or duration-value common-lisp:null)))
+ (common-lisp:defclass duration common-lisp:nil
+                       ((unit :initarg :unit :initform common-lisp:nil :type
+                         (common-lisp:or duration-unit common-lisp:null)
+                         :accessor struct-shape-duration-unit :shape
+                         "DurationUnit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or duration-value common-lisp:null)
+                         :accessor struct-shape-duration-value :shape
+                         "DurationValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-duration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'duration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'duration 'make-duration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input duration))
@@ -1839,11 +2610,18 @@
 (common-lisp:deftype duration-unit () 'common-lisp:string)
 (common-lisp:deftype duration-value () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (egress-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-egress-filter-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or egress-filter-type common-lisp:null)))
+ (common-lisp:defclass egress-filter common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or egress-filter-type common-lisp:null)
+                         :accessor struct-shape-egress-filter-type :shape
+                         "EgressFilterType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-egress-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'egress-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'egress-filter 'make-egress-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input egress-filter))
@@ -1864,13 +2642,23 @@
 (common-lisp:deftype egress-filter-type () 'common-lisp:string)
 (common-lisp:deftype exact-host-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (file-access-log (:copier common-lisp:nil)
-      (:conc-name "struct-shape-file-access-log-"))
-   (format common-lisp:nil :type
-    (common-lisp:or logging-format common-lisp:null))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or file-path common-lisp:null)))
+ (common-lisp:defclass file-access-log common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or logging-format common-lisp:null)
+                         :accessor struct-shape-file-access-log-format :shape
+                         "LoggingFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (path :initarg :path :initform
+                         (common-lisp:error ":path is required") :type
+                         (common-lisp:or file-path common-lisp:null) :accessor
+                         struct-shape-file-access-log-path :shape "FilePath"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-file-access-log
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'file-access-log
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'file-access-log 'make-file-access-log))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input file-access-log))
@@ -1904,21 +2692,52 @@
  (common-lisp:export
   (common-lisp:list 'forbidden-exception 'forbidden-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (gateway-route-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gateway-route-data-"))
-   (gateway-route-name (common-lisp:error ":gatewayroutename is required")
-    :type (common-lisp:or resource-name common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or resource-metadata common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or gateway-route-spec common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or gateway-route-status common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass gateway-route-data common-lisp:nil
+                       ((gateway-route-name :initarg :gateway-route-name
+                         :initform
+                         (common-lisp:error ":gatewayroutename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-data-gateway-route-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-gateway-route-data-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or resource-metadata common-lisp:null)
+                         :accessor struct-shape-gateway-route-data-metadata
+                         :shape "ResourceMetadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or gateway-route-spec common-lisp:null)
+                         :accessor struct-shape-gateway-route-data-spec :shape
+                         "GatewayRouteSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or gateway-route-status common-lisp:null)
+                         :accessor struct-shape-gateway-route-data-status
+                         :shape "GatewayRouteStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-data-virtual-gateway-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gateway-route-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'gateway-route-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gateway-route-data 'make-gateway-route-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1974,13 +2793,25 @@
                         ((aws-sdk/generator/shape::input gateway-route-data))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (gateway-route-hostname-match (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gateway-route-hostname-match-"))
-   (exact common-lisp:nil :type
-    (common-lisp:or exact-host-name common-lisp:null))
-   (suffix common-lisp:nil :type
-    (common-lisp:or suffix-hostname common-lisp:null)))
+ (common-lisp:defclass gateway-route-hostname-match common-lisp:nil
+                       ((exact :initarg :exact :initform common-lisp:nil :type
+                         (common-lisp:or exact-host-name common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-hostname-match-exact :shape
+                         "ExactHostName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suffix :initarg :suffix :initform common-lisp:nil
+                         :type
+                         (common-lisp:or suffix-hostname common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-hostname-match-suffix
+                         :shape "SuffixHostname" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gateway-route-hostname-match
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'gateway-route-hostname-match
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gateway-route-hostname-match
                     'make-gateway-route-hostname-match))
@@ -2014,11 +2845,22 @@
                           gateway-route-hostname-match))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (gateway-route-hostname-rewrite (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gateway-route-hostname-rewrite-"))
-   (default-target-hostname common-lisp:nil :type
-    (common-lisp:or default-gateway-route-rewrite common-lisp:null)))
+ (common-lisp:defclass gateway-route-hostname-rewrite common-lisp:nil
+                       ((default-target-hostname :initarg
+                         :default-target-hostname :initform common-lisp:nil
+                         :type
+                         (common-lisp:or default-gateway-route-rewrite
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-hostname-rewrite-default-target-hostname
+                         :shape "DefaultGatewayRouteRewrite" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gateway-route-hostname-rewrite
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'gateway-route-hostname-rewrite
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gateway-route-hostname-rewrite
                     'make-gateway-route-hostname-rewrite))
@@ -2055,27 +2897,70 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype gateway-route-priority () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (gateway-route-ref (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gateway-route-ref-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (gateway-route-name (common-lisp:error ":gatewayroutename is required")
-    :type (common-lisp:or resource-name common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner (common-lisp:error ":meshowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-owner (common-lisp:error ":resourceowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or long common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass gateway-route-ref common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-gateway-route-ref-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-gateway-route-ref-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (gateway-route-name :initarg :gateway-route-name
+                         :initform
+                         (common-lisp:error ":gatewayroutename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-ref-gateway-route-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-gateway-route-ref-last-updated-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-gateway-route-ref-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-owner :initarg :mesh-owner :initform
+                         (common-lisp:error ":meshowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-gateway-route-ref-mesh-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-owner :initarg :resource-owner :initform
+                         (common-lisp:error ":resourceowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-gateway-route-ref-resource-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-gateway-route-ref-version :shape "Long"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-ref-virtual-gateway-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gateway-route-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'gateway-route-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gateway-route-ref 'make-gateway-route-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2152,17 +3037,37 @@
                         ((aws-sdk/generator/shape::input gateway-route-ref))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (gateway-route-spec (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gateway-route-spec-"))
-   (grpc-route common-lisp:nil :type
-    (common-lisp:or grpc-gateway-route common-lisp:null))
-   (http2route common-lisp:nil :type
-    (common-lisp:or http-gateway-route common-lisp:null))
-   (http-route common-lisp:nil :type
-    (common-lisp:or http-gateway-route common-lisp:null))
-   (priority common-lisp:nil :type
-    (common-lisp:or gateway-route-priority common-lisp:null)))
+ (common-lisp:defclass gateway-route-spec common-lisp:nil
+                       ((grpc-route :initarg :grpc-route :initform
+                         common-lisp:nil :type
+                         (common-lisp:or grpc-gateway-route common-lisp:null)
+                         :accessor struct-shape-gateway-route-spec-grpc-route
+                         :shape "GrpcGatewayRoute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (http2route :initarg :http2route :initform
+                         common-lisp:nil :type
+                         (common-lisp:or http-gateway-route common-lisp:null)
+                         :accessor struct-shape-gateway-route-spec-http2route
+                         :shape "HttpGatewayRoute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (http-route :initarg :http-route :initform
+                         common-lisp:nil :type
+                         (common-lisp:or http-gateway-route common-lisp:null)
+                         :accessor struct-shape-gateway-route-spec-http-route
+                         :shape "HttpGatewayRoute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (priority :initarg :priority :initform common-lisp:nil
+                         :type
+                         (common-lisp:or gateway-route-priority
+                                         common-lisp:null)
+                         :accessor struct-shape-gateway-route-spec-priority
+                         :shape "GatewayRoutePriority" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gateway-route-spec
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'gateway-route-spec
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gateway-route-spec 'make-gateway-route-spec))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2203,11 +3108,19 @@
                         ((aws-sdk/generator/shape::input gateway-route-spec))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (gateway-route-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gateway-route-status-"))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or gateway-route-status-code common-lisp:null)))
+ (common-lisp:defclass gateway-route-status common-lisp:nil
+                       ((status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or gateway-route-status-code
+                                         common-lisp:null)
+                         :accessor struct-shape-gateway-route-status-status
+                         :shape "GatewayRouteStatusCode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gateway-route-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'gateway-route-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gateway-route-status 'make-gateway-route-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2228,12 +3141,26 @@
    common-lisp:nil))
 (common-lisp:deftype gateway-route-status-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (gateway-route-target (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gateway-route-target-"))
-   (port common-lisp:nil :type (common-lisp:or listener-port common-lisp:null))
-   (virtual-service (common-lisp:error ":virtualservice is required") :type
-    (common-lisp:or gateway-route-virtual-service common-lisp:null)))
+ (common-lisp:defclass gateway-route-target common-lisp:nil
+                       ((port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or listener-port common-lisp:null)
+                         :accessor struct-shape-gateway-route-target-port
+                         :shape "ListenerPort" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-service :initarg :virtual-service :initform
+                         (common-lisp:error ":virtualservice is required")
+                         :type
+                         (common-lisp:or gateway-route-virtual-service
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-target-virtual-service
+                         :shape "GatewayRouteVirtualService" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gateway-route-target
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'gateway-route-target
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gateway-route-target 'make-gateway-route-target))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2260,11 +3187,21 @@
                         ((aws-sdk/generator/shape::input gateway-route-target))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (gateway-route-virtual-service (:copier common-lisp:nil)
-      (:conc-name "struct-shape-gateway-route-virtual-service-"))
-   (virtual-service-name (common-lisp:error ":virtualservicename is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass gateway-route-virtual-service common-lisp:nil
+                       ((virtual-service-name :initarg :virtual-service-name
+                         :initform
+                         (common-lisp:error ":virtualservicename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-gateway-route-virtual-service-virtual-service-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-gateway-route-virtual-service
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'gateway-route-virtual-service
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'gateway-route-virtual-service
                     'make-gateway-route-virtual-service))
@@ -2292,13 +3229,26 @@
                           gateway-route-virtual-service))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-gateway-route (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-gateway-route-"))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or grpc-gateway-route-action common-lisp:null))
-   (match (common-lisp:error ":match is required") :type
-    (common-lisp:or grpc-gateway-route-match common-lisp:null)))
+ (common-lisp:defclass grpc-gateway-route common-lisp:nil
+                       ((action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or grpc-gateway-route-action
+                                         common-lisp:null)
+                         :accessor struct-shape-grpc-gateway-route-action
+                         :shape "GrpcGatewayRouteAction" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (match :initarg :match :initform
+                         (common-lisp:error ":match is required") :type
+                         (common-lisp:or grpc-gateway-route-match
+                                         common-lisp:null)
+                         :accessor struct-shape-grpc-gateway-route-match :shape
+                         "GrpcGatewayRouteMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-gateway-route
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-gateway-route
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-gateway-route 'make-grpc-gateway-route))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2325,13 +3275,27 @@
                         ((aws-sdk/generator/shape::input grpc-gateway-route))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-gateway-route-action (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-gateway-route-action-"))
-   (rewrite common-lisp:nil :type
-    (common-lisp:or grpc-gateway-route-rewrite common-lisp:null))
-   (target (common-lisp:error ":target is required") :type
-    (common-lisp:or gateway-route-target common-lisp:null)))
+ (common-lisp:defclass grpc-gateway-route-action common-lisp:nil
+                       ((rewrite :initarg :rewrite :initform common-lisp:nil
+                         :type
+                         (common-lisp:or grpc-gateway-route-rewrite
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-action-rewrite :shape
+                         "GrpcGatewayRouteRewrite" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target :initarg :target :initform
+                         (common-lisp:error ":target is required") :type
+                         (common-lisp:or gateway-route-target common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-action-target :shape
+                         "GatewayRouteTarget" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-gateway-route-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-gateway-route-action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-gateway-route-action
                     'make-grpc-gateway-route-action))
@@ -2365,16 +3329,40 @@
                           grpc-gateway-route-action))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-gateway-route-match (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-gateway-route-match-"))
-   (hostname common-lisp:nil :type
-    (common-lisp:or gateway-route-hostname-match common-lisp:null))
-   (metadata common-lisp:nil :type
-    (common-lisp:or grpc-gateway-route-metadata-list common-lisp:null))
-   (port common-lisp:nil :type (common-lisp:or listener-port common-lisp:null))
-   (service-name common-lisp:nil :type
-    (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass grpc-gateway-route-match common-lisp:nil
+                       ((hostname :initarg :hostname :initform common-lisp:nil
+                         :type
+                         (common-lisp:or gateway-route-hostname-match
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-match-hostname :shape
+                         "GatewayRouteHostnameMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform common-lisp:nil
+                         :type
+                         (common-lisp:or grpc-gateway-route-metadata-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-match-metadata :shape
+                         "GrpcGatewayRouteMetadataList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or listener-port common-lisp:null)
+                         :accessor struct-shape-grpc-gateway-route-match-port
+                         :shape "ListenerPort" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-name :initarg :service-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-match-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-gateway-route-match
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-gateway-route-match
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-gateway-route-match 'make-grpc-gateway-route-match))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2421,14 +3409,32 @@
                           grpc-gateway-route-match))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-gateway-route-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-gateway-route-metadata-"))
-   (invert common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (match common-lisp:nil :type
-    (common-lisp:or grpc-metadata-match-method common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or header-name common-lisp:null)))
+ (common-lisp:defclass grpc-gateway-route-metadata common-lisp:nil
+                       ((invert :initarg :invert :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-metadata-invert :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (match :initarg :match :initform common-lisp:nil :type
+                         (common-lisp:or grpc-metadata-match-method
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-metadata-match :shape
+                         "GrpcMetadataMatchMethod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or header-name common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-metadata-name :shape
+                         "HeaderName" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-gateway-route-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-gateway-route-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-gateway-route-metadata
                     'make-grpc-gateway-route-metadata))
@@ -2478,11 +3484,20 @@
                             grpc-gateway-route-metadata))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-gateway-route-rewrite (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-gateway-route-rewrite-"))
-   (hostname common-lisp:nil :type
-    (common-lisp:or gateway-route-hostname-rewrite common-lisp:null)))
+ (common-lisp:defclass grpc-gateway-route-rewrite common-lisp:nil
+                       ((hostname :initarg :hostname :initform common-lisp:nil
+                         :type
+                         (common-lisp:or gateway-route-hostname-rewrite
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-gateway-route-rewrite-hostname
+                         :shape "GatewayRouteHostnameRewrite" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-gateway-route-rewrite
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-gateway-route-rewrite
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-gateway-route-rewrite
                     'make-grpc-gateway-route-rewrite))
@@ -2509,16 +3524,42 @@
                           grpc-gateway-route-rewrite))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-metadata-match-method (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-metadata-match-method-"))
-   (exact common-lisp:nil :type (common-lisp:or header-match common-lisp:null))
-   (prefix common-lisp:nil :type
-    (common-lisp:or header-match common-lisp:null))
-   (range common-lisp:nil :type (common-lisp:or match-range common-lisp:null))
-   (regex common-lisp:nil :type (common-lisp:or header-match common-lisp:null))
-   (suffix common-lisp:nil :type
-    (common-lisp:or header-match common-lisp:null)))
+ (common-lisp:defclass grpc-metadata-match-method common-lisp:nil
+                       ((exact :initarg :exact :initform common-lisp:nil :type
+                         (common-lisp:or header-match common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-metadata-match-method-exact :shape
+                         "HeaderMatch" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or header-match common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-metadata-match-method-prefix :shape
+                         "HeaderMatch" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (range :initarg :range :initform common-lisp:nil :type
+                         (common-lisp:or match-range common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-metadata-match-method-range :shape
+                         "MatchRange" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (regex :initarg :regex :initform common-lisp:nil :type
+                         (common-lisp:or header-match common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-metadata-match-method-regex :shape
+                         "HeaderMatch" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (suffix :initarg :suffix :initform common-lisp:nil
+                         :type (common-lisp:or header-match common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-metadata-match-method-suffix :shape
+                         "HeaderMatch" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-metadata-match-method
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-metadata-match-method
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-metadata-match-method
                     'make-grpc-metadata-match-method))
@@ -2573,19 +3614,50 @@
                           grpc-metadata-match-method))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-retry-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-retry-policy-"))
-   (grpc-retry-events common-lisp:nil :type
-    (common-lisp:or grpc-retry-policy-events common-lisp:null))
-   (http-retry-events common-lisp:nil :type
-    (common-lisp:or http-retry-policy-events common-lisp:null))
-   (max-retries (common-lisp:error ":maxretries is required") :type
-    (common-lisp:or max-retries common-lisp:null))
-   (per-retry-timeout (common-lisp:error ":perretrytimeout is required") :type
-    (common-lisp:or duration common-lisp:null))
-   (tcp-retry-events common-lisp:nil :type
-    (common-lisp:or tcp-retry-policy-events common-lisp:null)))
+ (common-lisp:defclass grpc-retry-policy common-lisp:nil
+                       ((grpc-retry-events :initarg :grpc-retry-events
+                         :initform common-lisp:nil :type
+                         (common-lisp:or grpc-retry-policy-events
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-retry-policy-grpc-retry-events
+                         :shape "GrpcRetryPolicyEvents" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (http-retry-events :initarg :http-retry-events
+                         :initform common-lisp:nil :type
+                         (common-lisp:or http-retry-policy-events
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-retry-policy-http-retry-events
+                         :shape "HttpRetryPolicyEvents" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (max-retries :initarg :max-retries :initform
+                         (common-lisp:error ":maxretries is required") :type
+                         (common-lisp:or max-retries common-lisp:null)
+                         :accessor struct-shape-grpc-retry-policy-max-retries
+                         :shape "MaxRetries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (per-retry-timeout :initarg :per-retry-timeout
+                         :initform
+                         (common-lisp:error ":perretrytimeout is required")
+                         :type (common-lisp:or duration common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-retry-policy-per-retry-timeout
+                         :shape "Duration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tcp-retry-events :initarg :tcp-retry-events :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tcp-retry-policy-events
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-retry-policy-tcp-retry-events :shape
+                         "TcpRetryPolicyEvents" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-retry-policy
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-retry-policy
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-retry-policy 'make-grpc-retry-policy))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2642,17 +3714,35 @@
                            (trivial-types:proper-list grpc-retry-policy-event))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-route (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-route-"))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or grpc-route-action common-lisp:null))
-   (match (common-lisp:error ":match is required") :type
-    (common-lisp:or grpc-route-match common-lisp:null))
-   (retry-policy common-lisp:nil :type
-    (common-lisp:or grpc-retry-policy common-lisp:null))
-   (timeout common-lisp:nil :type
-    (common-lisp:or grpc-timeout common-lisp:null)))
+ (common-lisp:defclass grpc-route common-lisp:nil
+                       ((action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or grpc-route-action common-lisp:null)
+                         :accessor struct-shape-grpc-route-action :shape
+                         "GrpcRouteAction" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (match :initarg :match :initform
+                         (common-lisp:error ":match is required") :type
+                         (common-lisp:or grpc-route-match common-lisp:null)
+                         :accessor struct-shape-grpc-route-match :shape
+                         "GrpcRouteMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retry-policy :initarg :retry-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or grpc-retry-policy common-lisp:null)
+                         :accessor struct-shape-grpc-route-retry-policy :shape
+                         "GrpcRetryPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timeout :initarg :timeout :initform common-lisp:nil
+                         :type (common-lisp:or grpc-timeout common-lisp:null)
+                         :accessor struct-shape-grpc-route-timeout :shape
+                         "GrpcTimeout" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-route
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-route
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'grpc-route 'make-grpc-route))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input grpc-route))
@@ -2692,11 +3782,20 @@
                         ((aws-sdk/generator/shape::input grpc-route))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-route-action (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-route-action-"))
-   (weighted-targets (common-lisp:error ":weightedtargets is required") :type
-    (common-lisp:or weighted-targets common-lisp:null)))
+ (common-lisp:defclass grpc-route-action common-lisp:nil
+                       ((weighted-targets :initarg :weighted-targets :initform
+                         (common-lisp:error ":weightedtargets is required")
+                         :type
+                         (common-lisp:or weighted-targets common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-route-action-weighted-targets :shape
+                         "WeightedTargets" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-route-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-route-action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-route-action 'make-grpc-route-action))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2716,16 +3815,36 @@
                         ((aws-sdk/generator/shape::input grpc-route-action))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-route-match (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-route-match-"))
-   (metadata common-lisp:nil :type
-    (common-lisp:or grpc-route-metadata-list common-lisp:null))
-   (method-name common-lisp:nil :type
-    (common-lisp:or method-name common-lisp:null))
-   (port common-lisp:nil :type (common-lisp:or listener-port common-lisp:null))
-   (service-name common-lisp:nil :type
-    (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass grpc-route-match common-lisp:nil
+                       ((metadata :initarg :metadata :initform common-lisp:nil
+                         :type
+                         (common-lisp:or grpc-route-metadata-list
+                                         common-lisp:null)
+                         :accessor struct-shape-grpc-route-match-metadata
+                         :shape "GrpcRouteMetadataList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (method-name :initarg :method-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or method-name common-lisp:null)
+                         :accessor struct-shape-grpc-route-match-method-name
+                         :shape "MethodName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or listener-port common-lisp:null)
+                         :accessor struct-shape-grpc-route-match-port :shape
+                         "ListenerPort" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-name :initarg :service-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-name common-lisp:null)
+                         :accessor struct-shape-grpc-route-match-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-route-match
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-route-match
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-route-match 'make-grpc-route-match))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2766,14 +3885,29 @@
                         ((aws-sdk/generator/shape::input grpc-route-match))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-route-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-route-metadata-"))
-   (invert common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (match common-lisp:nil :type
-    (common-lisp:or grpc-route-metadata-match-method common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or header-name common-lisp:null)))
+ (common-lisp:defclass grpc-route-metadata common-lisp:nil
+                       ((invert :initarg :invert :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor struct-shape-grpc-route-metadata-invert
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (match :initarg :match :initform common-lisp:nil :type
+                         (common-lisp:or grpc-route-metadata-match-method
+                                         common-lisp:null)
+                         :accessor struct-shape-grpc-route-metadata-match
+                         :shape "GrpcRouteMetadataMatchMethod" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or header-name common-lisp:null)
+                         :accessor struct-shape-grpc-route-metadata-name :shape
+                         "HeaderName" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-route-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-route-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-route-metadata 'make-grpc-route-metadata))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2815,16 +3949,43 @@
                            (trivial-types:proper-list grpc-route-metadata))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-route-metadata-match-method (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-route-metadata-match-method-"))
-   (exact common-lisp:nil :type (common-lisp:or header-match common-lisp:null))
-   (prefix common-lisp:nil :type
-    (common-lisp:or header-match common-lisp:null))
-   (range common-lisp:nil :type (common-lisp:or match-range common-lisp:null))
-   (regex common-lisp:nil :type (common-lisp:or header-match common-lisp:null))
-   (suffix common-lisp:nil :type
-    (common-lisp:or header-match common-lisp:null)))
+ (common-lisp:defclass grpc-route-metadata-match-method common-lisp:nil
+                       ((exact :initarg :exact :initform common-lisp:nil :type
+                         (common-lisp:or header-match common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-route-metadata-match-method-exact
+                         :shape "HeaderMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or header-match common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-route-metadata-match-method-prefix
+                         :shape "HeaderMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (range :initarg :range :initform common-lisp:nil :type
+                         (common-lisp:or match-range common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-route-metadata-match-method-range
+                         :shape "MatchRange" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (regex :initarg :regex :initform common-lisp:nil :type
+                         (common-lisp:or header-match common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-route-metadata-match-method-regex
+                         :shape "HeaderMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suffix :initarg :suffix :initform common-lisp:nil
+                         :type (common-lisp:or header-match common-lisp:null)
+                         :accessor
+                         struct-shape-grpc-route-metadata-match-method-suffix
+                         :shape "HeaderMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-route-metadata-match-method
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'grpc-route-metadata-match-method
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'grpc-route-metadata-match-method
                     'make-grpc-route-metadata-match-method))
@@ -2879,12 +4040,23 @@
                           grpc-route-metadata-match-method))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grpc-timeout (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grpc-timeout-"))
-   (idle common-lisp:nil :type (common-lisp:or duration common-lisp:null))
-   (per-request common-lisp:nil :type
-    (common-lisp:or duration common-lisp:null)))
+ (common-lisp:defclass grpc-timeout common-lisp:nil
+                       ((idle :initarg :idle :initform common-lisp:nil :type
+                         (common-lisp:or duration common-lisp:null) :accessor
+                         struct-shape-grpc-timeout-idle :shape "Duration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (per-request :initarg :per-request :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration common-lisp:null) :accessor
+                         struct-shape-grpc-timeout-per-request :shape
+                         "Duration" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grpc-timeout
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grpc-timeout
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'grpc-timeout 'make-grpc-timeout))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input grpc-timeout))
@@ -2911,16 +4083,37 @@
    common-lisp:nil))
 (common-lisp:deftype header-match () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (header-match-method (:copier common-lisp:nil)
-      (:conc-name "struct-shape-header-match-method-"))
-   (exact common-lisp:nil :type (common-lisp:or header-match common-lisp:null))
-   (prefix common-lisp:nil :type
-    (common-lisp:or header-match common-lisp:null))
-   (range common-lisp:nil :type (common-lisp:or match-range common-lisp:null))
-   (regex common-lisp:nil :type (common-lisp:or header-match common-lisp:null))
-   (suffix common-lisp:nil :type
-    (common-lisp:or header-match common-lisp:null)))
+ (common-lisp:defclass header-match-method common-lisp:nil
+                       ((exact :initarg :exact :initform common-lisp:nil :type
+                         (common-lisp:or header-match common-lisp:null)
+                         :accessor struct-shape-header-match-method-exact
+                         :shape "HeaderMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or header-match common-lisp:null)
+                         :accessor struct-shape-header-match-method-prefix
+                         :shape "HeaderMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (range :initarg :range :initform common-lisp:nil :type
+                         (common-lisp:or match-range common-lisp:null)
+                         :accessor struct-shape-header-match-method-range
+                         :shape "MatchRange" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (regex :initarg :regex :initform common-lisp:nil :type
+                         (common-lisp:or header-match common-lisp:null)
+                         :accessor struct-shape-header-match-method-regex
+                         :shape "HeaderMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (suffix :initarg :suffix :initform common-lisp:nil
+                         :type (common-lisp:or header-match common-lisp:null)
+                         :accessor struct-shape-header-match-method-suffix
+                         :shape "HeaderMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-header-match-method
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'header-match-method
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'header-match-method 'make-header-match-method))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2970,21 +4163,65 @@
 (common-lisp:deftype header-name () 'common-lisp:string)
 (common-lisp:deftype health-check-interval-millis () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (health-check-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-health-check-policy-"))
-   (healthy-threshold (common-lisp:error ":healthythreshold is required") :type
-    (common-lisp:or health-check-threshold common-lisp:null))
-   (interval-millis (common-lisp:error ":intervalmillis is required") :type
-    (common-lisp:or health-check-interval-millis common-lisp:null))
-   (path common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (port common-lisp:nil :type (common-lisp:or port-number common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or port-protocol common-lisp:null))
-   (timeout-millis (common-lisp:error ":timeoutmillis is required") :type
-    (common-lisp:or health-check-timeout-millis common-lisp:null))
-   (unhealthy-threshold (common-lisp:error ":unhealthythreshold is required")
-    :type (common-lisp:or health-check-threshold common-lisp:null)))
+ (common-lisp:defclass health-check-policy common-lisp:nil
+                       ((healthy-threshold :initarg :healthy-threshold
+                         :initform
+                         (common-lisp:error ":healthythreshold is required")
+                         :type
+                         (common-lisp:or health-check-threshold
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-health-check-policy-healthy-threshold
+                         :shape "HealthCheckThreshold" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (interval-millis :initarg :interval-millis :initform
+                         (common-lisp:error ":intervalmillis is required")
+                         :type
+                         (common-lisp:or health-check-interval-millis
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-health-check-policy-interval-millis
+                         :shape "HealthCheckIntervalMillis" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (path :initarg :path :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-health-check-policy-path :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or port-number common-lisp:null)
+                         :accessor struct-shape-health-check-policy-port :shape
+                         "PortNumber" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or port-protocol common-lisp:null)
+                         :accessor struct-shape-health-check-policy-protocol
+                         :shape "PortProtocol" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timeout-millis :initarg :timeout-millis :initform
+                         (common-lisp:error ":timeoutmillis is required") :type
+                         (common-lisp:or health-check-timeout-millis
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-health-check-policy-timeout-millis :shape
+                         "HealthCheckTimeoutMillis" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unhealthy-threshold :initarg :unhealthy-threshold
+                         :initform
+                         (common-lisp:error ":unhealthythreshold is required")
+                         :type
+                         (common-lisp:or health-check-threshold
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-health-check-policy-unhealthy-threshold
+                         :shape "HealthCheckThreshold" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-health-check-policy
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'health-check-policy
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'health-check-policy 'make-health-check-policy))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3049,13 +4286,26 @@
 (common-lisp:deftype health-check-timeout-millis () 'common-lisp:integer)
 (common-lisp:deftype hostname () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-gateway-route (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-gateway-route-"))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or http-gateway-route-action common-lisp:null))
-   (match (common-lisp:error ":match is required") :type
-    (common-lisp:or http-gateway-route-match common-lisp:null)))
+ (common-lisp:defclass http-gateway-route common-lisp:nil
+                       ((action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or http-gateway-route-action
+                                         common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-action
+                         :shape "HttpGatewayRouteAction" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (match :initarg :match :initform
+                         (common-lisp:error ":match is required") :type
+                         (common-lisp:or http-gateway-route-match
+                                         common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-match :shape
+                         "HttpGatewayRouteMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-gateway-route
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-gateway-route
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-gateway-route 'make-http-gateway-route))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3082,13 +4332,27 @@
                         ((aws-sdk/generator/shape::input http-gateway-route))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-gateway-route-action (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-gateway-route-action-"))
-   (rewrite common-lisp:nil :type
-    (common-lisp:or http-gateway-route-rewrite common-lisp:null))
-   (target (common-lisp:error ":target is required") :type
-    (common-lisp:or gateway-route-target common-lisp:null)))
+ (common-lisp:defclass http-gateway-route-action common-lisp:nil
+                       ((rewrite :initarg :rewrite :initform common-lisp:nil
+                         :type
+                         (common-lisp:or http-gateway-route-rewrite
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-action-rewrite :shape
+                         "HttpGatewayRouteRewrite" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target :initarg :target :initform
+                         (common-lisp:error ":target is required") :type
+                         (common-lisp:or gateway-route-target common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-action-target :shape
+                         "GatewayRouteTarget" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-gateway-route-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-gateway-route-action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-gateway-route-action
                     'make-http-gateway-route-action))
@@ -3122,14 +4386,29 @@
                           http-gateway-route-action))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-gateway-route-header (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-gateway-route-header-"))
-   (invert common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (match common-lisp:nil :type
-    (common-lisp:or header-match-method common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or header-name common-lisp:null)))
+ (common-lisp:defclass http-gateway-route-header common-lisp:nil
+                       ((invert :initarg :invert :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-header-invert :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (match :initarg :match :initform common-lisp:nil :type
+                         (common-lisp:or header-match-method common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-header-match
+                         :shape "HeaderMatchMethod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or header-name common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-header-name
+                         :shape "HeaderName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-gateway-route-header
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-gateway-route-header
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-gateway-route-header
                     'make-http-gateway-route-header))
@@ -3179,20 +4458,56 @@
                             http-gateway-route-header))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-gateway-route-match (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-gateway-route-match-"))
-   (headers common-lisp:nil :type
-    (common-lisp:or http-gateway-route-headers common-lisp:null))
-   (hostname common-lisp:nil :type
-    (common-lisp:or gateway-route-hostname-match common-lisp:null))
-   (method common-lisp:nil :type (common-lisp:or http-method common-lisp:null))
-   (path common-lisp:nil :type
-    (common-lisp:or http-path-match common-lisp:null))
-   (port common-lisp:nil :type (common-lisp:or listener-port common-lisp:null))
-   (prefix common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (query-parameters common-lisp:nil :type
-    (common-lisp:or http-query-parameters common-lisp:null)))
+ (common-lisp:defclass http-gateway-route-match common-lisp:nil
+                       ((headers :initarg :headers :initform common-lisp:nil
+                         :type
+                         (common-lisp:or http-gateway-route-headers
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-match-headers :shape
+                         "HttpGatewayRouteHeaders" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (hostname :initarg :hostname :initform common-lisp:nil
+                         :type
+                         (common-lisp:or gateway-route-hostname-match
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-match-hostname :shape
+                         "GatewayRouteHostnameMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (method :initarg :method :initform common-lisp:nil
+                         :type (common-lisp:or http-method common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-match-method
+                         :shape "HttpMethod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (path :initarg :path :initform common-lisp:nil :type
+                         (common-lisp:or http-path-match common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-match-path
+                         :shape "HttpPathMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or listener-port common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-match-port
+                         :shape "ListenerPort" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-match-prefix
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (query-parameters :initarg :query-parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or http-query-parameters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-match-query-parameters
+                         :shape "HttpQueryParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-gateway-route-match
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-gateway-route-match
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-gateway-route-match 'make-http-gateway-route-match))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3260,11 +4575,19 @@
                           http-gateway-route-match))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-gateway-route-path-rewrite (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-gateway-route-path-rewrite-"))
-   (exact common-lisp:nil :type
-    (common-lisp:or http-path-exact common-lisp:null)))
+ (common-lisp:defclass http-gateway-route-path-rewrite common-lisp:nil
+                       ((exact :initarg :exact :initform common-lisp:nil :type
+                         (common-lisp:or http-path-exact common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-path-rewrite-exact
+                         :shape "HttpPathExact" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-gateway-route-path-rewrite
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'http-gateway-route-path-rewrite
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-gateway-route-path-rewrite
                     'make-http-gateway-route-path-rewrite))
@@ -3292,13 +4615,28 @@
    common-lisp:nil))
 (common-lisp:deftype http-gateway-route-prefix () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-gateway-route-prefix-rewrite (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-gateway-route-prefix-rewrite-"))
-   (default-prefix common-lisp:nil :type
-    (common-lisp:or default-gateway-route-rewrite common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or http-gateway-route-prefix common-lisp:null)))
+ (common-lisp:defclass http-gateway-route-prefix-rewrite common-lisp:nil
+                       ((default-prefix :initarg :default-prefix :initform
+                         common-lisp:nil :type
+                         (common-lisp:or default-gateway-route-rewrite
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-prefix-rewrite-default-prefix
+                         :shape "DefaultGatewayRouteRewrite" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or http-gateway-route-prefix
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-prefix-rewrite-value
+                         :shape "HttpGatewayRoutePrefix" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-gateway-route-prefix-rewrite
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'http-gateway-route-prefix-rewrite
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-gateway-route-prefix-rewrite
                     'make-http-gateway-route-prefix-rewrite))
@@ -3332,15 +4670,34 @@
                           http-gateway-route-prefix-rewrite))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-gateway-route-rewrite (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-gateway-route-rewrite-"))
-   (hostname common-lisp:nil :type
-    (common-lisp:or gateway-route-hostname-rewrite common-lisp:null))
-   (path common-lisp:nil :type
-    (common-lisp:or http-gateway-route-path-rewrite common-lisp:null))
-   (prefix common-lisp:nil :type
-    (common-lisp:or http-gateway-route-prefix-rewrite common-lisp:null)))
+ (common-lisp:defclass http-gateway-route-rewrite common-lisp:nil
+                       ((hostname :initarg :hostname :initform common-lisp:nil
+                         :type
+                         (common-lisp:or gateway-route-hostname-rewrite
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-rewrite-hostname
+                         :shape "GatewayRouteHostnameRewrite" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (path :initarg :path :initform common-lisp:nil :type
+                         (common-lisp:or http-gateway-route-path-rewrite
+                                         common-lisp:null)
+                         :accessor struct-shape-http-gateway-route-rewrite-path
+                         :shape "HttpGatewayRoutePathRewrite" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type
+                         (common-lisp:or http-gateway-route-prefix-rewrite
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-gateway-route-rewrite-prefix :shape
+                         "HttpGatewayRoutePrefixRewrite" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-gateway-route-rewrite
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-gateway-route-rewrite
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-gateway-route-rewrite
                     'make-http-gateway-route-rewrite))
@@ -3383,13 +4740,22 @@
 (common-lisp:deftype http-method () 'common-lisp:string)
 (common-lisp:deftype http-path-exact () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-path-match (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-path-match-"))
-   (exact common-lisp:nil :type
-    (common-lisp:or http-path-exact common-lisp:null))
-   (regex common-lisp:nil :type
-    (common-lisp:or http-path-regex common-lisp:null)))
+ (common-lisp:defclass http-path-match common-lisp:nil
+                       ((exact :initarg :exact :initform common-lisp:nil :type
+                         (common-lisp:or http-path-exact common-lisp:null)
+                         :accessor struct-shape-http-path-match-exact :shape
+                         "HttpPathExact" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (regex :initarg :regex :initform common-lisp:nil :type
+                         (common-lisp:or http-path-regex common-lisp:null)
+                         :accessor struct-shape-http-path-match-regex :shape
+                         "HttpPathRegex" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-path-match
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-path-match
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'http-path-match 'make-http-path-match))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input http-path-match))
@@ -3416,13 +4782,24 @@
    common-lisp:nil))
 (common-lisp:deftype http-path-regex () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-query-parameter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-query-parameter-"))
-   (match common-lisp:nil :type
-    (common-lisp:or query-parameter-match common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or query-parameter-name common-lisp:null)))
+ (common-lisp:defclass http-query-parameter common-lisp:nil
+                       ((match :initarg :match :initform common-lisp:nil :type
+                         (common-lisp:or query-parameter-match
+                                         common-lisp:null)
+                         :accessor struct-shape-http-query-parameter-match
+                         :shape "QueryParameterMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or query-parameter-name common-lisp:null)
+                         :accessor struct-shape-http-query-parameter-name
+                         :shape "QueryParameterName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-query-parameter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-query-parameter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-query-parameter 'make-http-query-parameter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3457,17 +4834,42 @@
                            (trivial-types:proper-list http-query-parameter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-retry-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-retry-policy-"))
-   (http-retry-events common-lisp:nil :type
-    (common-lisp:or http-retry-policy-events common-lisp:null))
-   (max-retries (common-lisp:error ":maxretries is required") :type
-    (common-lisp:or max-retries common-lisp:null))
-   (per-retry-timeout (common-lisp:error ":perretrytimeout is required") :type
-    (common-lisp:or duration common-lisp:null))
-   (tcp-retry-events common-lisp:nil :type
-    (common-lisp:or tcp-retry-policy-events common-lisp:null)))
+ (common-lisp:defclass http-retry-policy common-lisp:nil
+                       ((http-retry-events :initarg :http-retry-events
+                         :initform common-lisp:nil :type
+                         (common-lisp:or http-retry-policy-events
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-retry-policy-http-retry-events
+                         :shape "HttpRetryPolicyEvents" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (max-retries :initarg :max-retries :initform
+                         (common-lisp:error ":maxretries is required") :type
+                         (common-lisp:or max-retries common-lisp:null)
+                         :accessor struct-shape-http-retry-policy-max-retries
+                         :shape "MaxRetries" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (per-retry-timeout :initarg :per-retry-timeout
+                         :initform
+                         (common-lisp:error ":perretrytimeout is required")
+                         :type (common-lisp:or duration common-lisp:null)
+                         :accessor
+                         struct-shape-http-retry-policy-per-retry-timeout
+                         :shape "Duration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tcp-retry-events :initarg :tcp-retry-events :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tcp-retry-policy-events
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-retry-policy-tcp-retry-events :shape
+                         "TcpRetryPolicyEvents" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-retry-policy
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-retry-policy
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-retry-policy 'make-http-retry-policy))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3517,17 +4919,35 @@
                            (trivial-types:proper-list http-retry-policy-event))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-route (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-route-"))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or http-route-action common-lisp:null))
-   (match (common-lisp:error ":match is required") :type
-    (common-lisp:or http-route-match common-lisp:null))
-   (retry-policy common-lisp:nil :type
-    (common-lisp:or http-retry-policy common-lisp:null))
-   (timeout common-lisp:nil :type
-    (common-lisp:or http-timeout common-lisp:null)))
+ (common-lisp:defclass http-route common-lisp:nil
+                       ((action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or http-route-action common-lisp:null)
+                         :accessor struct-shape-http-route-action :shape
+                         "HttpRouteAction" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (match :initarg :match :initform
+                         (common-lisp:error ":match is required") :type
+                         (common-lisp:or http-route-match common-lisp:null)
+                         :accessor struct-shape-http-route-match :shape
+                         "HttpRouteMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (retry-policy :initarg :retry-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or http-retry-policy common-lisp:null)
+                         :accessor struct-shape-http-route-retry-policy :shape
+                         "HttpRetryPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timeout :initarg :timeout :initform common-lisp:nil
+                         :type (common-lisp:or http-timeout common-lisp:null)
+                         :accessor struct-shape-http-route-timeout :shape
+                         "HttpTimeout" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-route
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-route
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'http-route 'make-http-route))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input http-route))
@@ -3567,11 +4987,20 @@
                         ((aws-sdk/generator/shape::input http-route))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-route-action (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-route-action-"))
-   (weighted-targets (common-lisp:error ":weightedtargets is required") :type
-    (common-lisp:or weighted-targets common-lisp:null)))
+ (common-lisp:defclass http-route-action common-lisp:nil
+                       ((weighted-targets :initarg :weighted-targets :initform
+                         (common-lisp:error ":weightedtargets is required")
+                         :type
+                         (common-lisp:or weighted-targets common-lisp:null)
+                         :accessor
+                         struct-shape-http-route-action-weighted-targets :shape
+                         "WeightedTargets" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-route-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-route-action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-route-action 'make-http-route-action))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3591,14 +5020,28 @@
                         ((aws-sdk/generator/shape::input http-route-action))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-route-header (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-route-header-"))
-   (invert common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (match common-lisp:nil :type
-    (common-lisp:or header-match-method common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or header-name common-lisp:null)))
+ (common-lisp:defclass http-route-header common-lisp:nil
+                       ((invert :initarg :invert :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor struct-shape-http-route-header-invert :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (match :initarg :match :initform common-lisp:nil :type
+                         (common-lisp:or header-match-method common-lisp:null)
+                         :accessor struct-shape-http-route-header-match :shape
+                         "HeaderMatchMethod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or header-name common-lisp:null)
+                         :accessor struct-shape-http-route-header-name :shape
+                         "HeaderName" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-route-header
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-route-header
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-route-header 'make-http-route-header))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3640,20 +5083,51 @@
                            (trivial-types:proper-list http-route-header))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-route-match (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-route-match-"))
-   (headers common-lisp:nil :type
-    (common-lisp:or http-route-headers common-lisp:null))
-   (method common-lisp:nil :type (common-lisp:or http-method common-lisp:null))
-   (path common-lisp:nil :type
-    (common-lisp:or http-path-match common-lisp:null))
-   (port common-lisp:nil :type (common-lisp:or listener-port common-lisp:null))
-   (prefix common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (query-parameters common-lisp:nil :type
-    (common-lisp:or http-query-parameters common-lisp:null))
-   (scheme common-lisp:nil :type
-    (common-lisp:or http-scheme common-lisp:null)))
+ (common-lisp:defclass http-route-match common-lisp:nil
+                       ((headers :initarg :headers :initform common-lisp:nil
+                         :type
+                         (common-lisp:or http-route-headers common-lisp:null)
+                         :accessor struct-shape-http-route-match-headers :shape
+                         "HttpRouteHeaders" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (method :initarg :method :initform common-lisp:nil
+                         :type (common-lisp:or http-method common-lisp:null)
+                         :accessor struct-shape-http-route-match-method :shape
+                         "HttpMethod" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (path :initarg :path :initform common-lisp:nil :type
+                         (common-lisp:or http-path-match common-lisp:null)
+                         :accessor struct-shape-http-route-match-path :shape
+                         "HttpPathMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or listener-port common-lisp:null)
+                         :accessor struct-shape-http-route-match-port :shape
+                         "ListenerPort" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (prefix :initarg :prefix :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-http-route-match-prefix :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (query-parameters :initarg :query-parameters :initform
+                         common-lisp:nil :type
+                         (common-lisp:or http-query-parameters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-http-route-match-query-parameters :shape
+                         "HttpQueryParameters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (scheme :initarg :scheme :initform common-lisp:nil
+                         :type (common-lisp:or http-scheme common-lisp:null)
+                         :accessor struct-shape-http-route-match-scheme :shape
+                         "HttpScheme" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-route-match
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-route-match
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'http-route-match 'make-http-route-match))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3716,12 +5190,23 @@
    common-lisp:nil))
 (common-lisp:deftype http-scheme () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (http-timeout (:copier common-lisp:nil)
-      (:conc-name "struct-shape-http-timeout-"))
-   (idle common-lisp:nil :type (common-lisp:or duration common-lisp:null))
-   (per-request common-lisp:nil :type
-    (common-lisp:or duration common-lisp:null)))
+ (common-lisp:defclass http-timeout common-lisp:nil
+                       ((idle :initarg :idle :initform common-lisp:nil :type
+                         (common-lisp:or duration common-lisp:null) :accessor
+                         struct-shape-http-timeout-idle :shape "Duration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (per-request :initarg :per-request :initform
+                         common-lisp:nil :type
+                         (common-lisp:or duration common-lisp:null) :accessor
+                         struct-shape-http-timeout-per-request :shape
+                         "Duration" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-http-timeout
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'http-timeout
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'http-timeout 'make-http-timeout))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input http-timeout))
@@ -3764,13 +5249,24 @@
                            (trivial-types:proper-list json-format-ref))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (json-format-ref (:copier common-lisp:nil)
-      (:conc-name "struct-shape-json-format-ref-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or json-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or json-value common-lisp:null)))
+ (common-lisp:defclass json-format-ref common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or json-key common-lisp:null) :accessor
+                         struct-shape-json-format-ref-key :shape "JsonKey"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or json-value common-lisp:null) :accessor
+                         struct-shape-json-format-ref-value :shape "JsonValue"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-json-format-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'json-format-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'json-format-ref 'make-json-format-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input json-format-ref))
@@ -3806,18 +5302,45 @@
   (common-lisp:list 'limit-exceeded-exception
                     'limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-gateway-routes-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-gateway-routes-input-"))
-   (limit common-lisp:nil :type
-    (common-lisp:or list-gateway-routes-limit common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass list-gateway-routes-input common-lisp:nil
+                       ((limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or list-gateway-routes-limit
+                                         common-lisp:null)
+                         :accessor struct-shape-list-gateway-routes-input-limit
+                         :shape "ListGatewayRoutesLimit" :location
+                         "querystring" :location-name "limit")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-gateway-routes-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-gateway-routes-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-gateway-routes-input-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken")
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-gateway-routes-input-virtual-gateway-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualGatewayName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-gateway-routes-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-gateway-routes-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-gateway-routes-input
                     'make-list-gateway-routes-input))
@@ -3838,12 +5361,25 @@
    common-lisp:nil))
 (common-lisp:deftype list-gateway-routes-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-gateway-routes-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-gateway-routes-output-"))
-   (gateway-routes (common-lisp:error ":gatewayroutes is required") :type
-    (common-lisp:or gateway-route-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-gateway-routes-output common-lisp:nil
+                       ((gateway-routes :initarg :gateway-routes :initform
+                         (common-lisp:error ":gatewayroutes is required") :type
+                         (common-lisp:or gateway-route-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-gateway-routes-output-gateway-routes
+                         :shape "GatewayRouteList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-gateway-routes-output-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-gateway-routes-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-gateway-routes-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-gateway-routes-output
                     'make-list-gateway-routes-output))
@@ -3877,12 +5413,23 @@
                           list-gateway-routes-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-meshes-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-meshes-input-"))
-   (limit common-lisp:nil :type
-    (common-lisp:or list-meshes-limit common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-meshes-input common-lisp:nil
+                       ((limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or list-meshes-limit common-lisp:null)
+                         :accessor struct-shape-list-meshes-input-limit :shape
+                         "ListMeshesLimit" :location "querystring"
+                         :location-name "limit")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-meshes-input-next-token :shape
+                         "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-meshes-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-meshes-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-meshes-input 'make-list-meshes-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3896,12 +5443,24 @@
    common-lisp:nil))
 (common-lisp:deftype list-meshes-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-meshes-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-meshes-output-"))
-   (meshes (common-lisp:error ":meshes is required") :type
-    (common-lisp:or mesh-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-meshes-output common-lisp:nil
+                       ((meshes :initarg :meshes :initform
+                         (common-lisp:error ":meshes is required") :type
+                         (common-lisp:or mesh-list common-lisp:null) :accessor
+                         struct-shape-list-meshes-output-meshes :shape
+                         "MeshList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-meshes-output-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-meshes-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-meshes-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-meshes-output 'make-list-meshes-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3928,18 +5487,43 @@
                         ((aws-sdk/generator/shape::input list-meshes-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-routes-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-routes-input-"))
-   (limit common-lisp:nil :type
-    (common-lisp:or list-routes-limit common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass list-routes-input common-lisp:nil
+                       ((limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or list-routes-limit common-lisp:null)
+                         :accessor struct-shape-list-routes-input-limit :shape
+                         "ListRoutesLimit" :location "querystring"
+                         :location-name "limit")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-list-routes-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-routes-input-mesh-owner :shape
+                         "AccountId" :location "querystring" :location-name
+                         "meshOwner")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-routes-input-next-token :shape
+                         "String" :location "querystring" :location-name
+                         "nextToken")
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-routes-input-virtual-router-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualRouterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-routes-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-routes-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-routes-input 'make-list-routes-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3953,12 +5537,24 @@
    common-lisp:nil))
 (common-lisp:deftype list-routes-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-routes-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-routes-output-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (routes (common-lisp:error ":routes is required") :type
-    (common-lisp:or route-list common-lisp:null)))
+ (common-lisp:defclass list-routes-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-routes-output-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (routes :initarg :routes :initform
+                         (common-lisp:error ":routes is required") :type
+                         (common-lisp:or route-list common-lisp:null) :accessor
+                         struct-shape-list-routes-output-routes :shape
+                         "RouteList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-routes-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-routes-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-routes-output 'make-list-routes-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3985,13 +5581,29 @@
                         ((aws-sdk/generator/shape::input list-routes-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-input-"))
-   (limit common-lisp:nil :type (common-lisp:or tags-limit common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-input common-lisp:nil
+                       ((limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or tags-limit common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-input-limit :shape
+                         "TagsLimit" :location "querystring" :location-name
+                         "limit")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-input-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken")
+                        (resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-input-resource-arn
+                         :shape "Arn" :location "querystring" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-for-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-input
                     'make-list-tags-for-resource-input))
@@ -4011,12 +5623,25 @@
                           list-tags-for-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-output-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-output-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-output-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-output
                     'make-list-tags-for-resource-output))
@@ -4050,16 +5675,38 @@
                           list-tags-for-resource-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-virtual-gateways-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-virtual-gateways-input-"))
-   (limit common-lisp:nil :type
-    (common-lisp:or list-virtual-gateways-limit common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-virtual-gateways-input common-lisp:nil
+                       ((limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or list-virtual-gateways-limit
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-gateways-input-limit :shape
+                         "ListVirtualGatewaysLimit" :location "querystring"
+                         :location-name "limit")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-gateways-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-virtual-gateways-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-virtual-gateways-input-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-virtual-gateways-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-virtual-gateways-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-virtual-gateways-input
                     'make-list-virtual-gateways-input))
@@ -4080,12 +5727,26 @@
    common-lisp:nil))
 (common-lisp:deftype list-virtual-gateways-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-virtual-gateways-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-virtual-gateways-output-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (virtual-gateways (common-lisp:error ":virtualgateways is required") :type
-    (common-lisp:or virtual-gateway-list common-lisp:null)))
+ (common-lisp:defclass list-virtual-gateways-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-virtual-gateways-output-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-gateways :initarg :virtual-gateways :initform
+                         (common-lisp:error ":virtualgateways is required")
+                         :type
+                         (common-lisp:or virtual-gateway-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-gateways-output-virtual-gateways
+                         :shape "VirtualGatewayList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-virtual-gateways-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-virtual-gateways-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-virtual-gateways-output
                     'make-list-virtual-gateways-output))
@@ -4119,16 +5780,37 @@
                           list-virtual-gateways-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-virtual-nodes-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-virtual-nodes-input-"))
-   (limit common-lisp:nil :type
-    (common-lisp:or list-virtual-nodes-limit common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-virtual-nodes-input common-lisp:nil
+                       ((limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or list-virtual-nodes-limit
+                                         common-lisp:null)
+                         :accessor struct-shape-list-virtual-nodes-input-limit
+                         :shape "ListVirtualNodesLimit" :location "querystring"
+                         :location-name "limit")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-nodes-input-mesh-name :shape
+                         "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-virtual-nodes-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-virtual-nodes-input-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-virtual-nodes-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-virtual-nodes-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-virtual-nodes-input 'make-list-virtual-nodes-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4148,12 +5830,25 @@
    common-lisp:nil))
 (common-lisp:deftype list-virtual-nodes-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-virtual-nodes-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-virtual-nodes-output-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (virtual-nodes (common-lisp:error ":virtualnodes is required") :type
-    (common-lisp:or virtual-node-list common-lisp:null)))
+ (common-lisp:defclass list-virtual-nodes-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-virtual-nodes-output-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-nodes :initarg :virtual-nodes :initform
+                         (common-lisp:error ":virtualnodes is required") :type
+                         (common-lisp:or virtual-node-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-nodes-output-virtual-nodes
+                         :shape "VirtualNodeList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-virtual-nodes-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-virtual-nodes-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-virtual-nodes-output
                     'make-list-virtual-nodes-output))
@@ -4187,16 +5882,38 @@
                           list-virtual-nodes-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-virtual-routers-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-virtual-routers-input-"))
-   (limit common-lisp:nil :type
-    (common-lisp:or list-virtual-routers-limit common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-virtual-routers-input common-lisp:nil
+                       ((limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or list-virtual-routers-limit
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-routers-input-limit :shape
+                         "ListVirtualRoutersLimit" :location "querystring"
+                         :location-name "limit")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-routers-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-virtual-routers-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-virtual-routers-input-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-virtual-routers-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-virtual-routers-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-virtual-routers-input
                     'make-list-virtual-routers-input))
@@ -4217,12 +5934,26 @@
    common-lisp:nil))
 (common-lisp:deftype list-virtual-routers-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-virtual-routers-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-virtual-routers-output-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (virtual-routers (common-lisp:error ":virtualrouters is required") :type
-    (common-lisp:or virtual-router-list common-lisp:null)))
+ (common-lisp:defclass list-virtual-routers-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-virtual-routers-output-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-routers :initarg :virtual-routers :initform
+                         (common-lisp:error ":virtualrouters is required")
+                         :type
+                         (common-lisp:or virtual-router-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-routers-output-virtual-routers
+                         :shape "VirtualRouterList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-virtual-routers-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-virtual-routers-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-virtual-routers-output
                     'make-list-virtual-routers-output))
@@ -4256,16 +5987,38 @@
                           list-virtual-routers-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-virtual-services-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-virtual-services-input-"))
-   (limit common-lisp:nil :type
-    (common-lisp:or list-virtual-services-limit common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-virtual-services-input common-lisp:nil
+                       ((limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or list-virtual-services-limit
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-services-input-limit :shape
+                         "ListVirtualServicesLimit" :location "querystring"
+                         :location-name "limit")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-services-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-virtual-services-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-virtual-services-input-next-token
+                         :shape "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-virtual-services-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-virtual-services-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-virtual-services-input
                     'make-list-virtual-services-input))
@@ -4286,12 +6039,26 @@
    common-lisp:nil))
 (common-lisp:deftype list-virtual-services-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-virtual-services-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-virtual-services-output-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (virtual-services (common-lisp:error ":virtualservices is required") :type
-    (common-lisp:or virtual-service-list common-lisp:null)))
+ (common-lisp:defclass list-virtual-services-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-virtual-services-output-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-services :initarg :virtual-services :initform
+                         (common-lisp:error ":virtualservices is required")
+                         :type
+                         (common-lisp:or virtual-service-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-virtual-services-output-virtual-services
+                         :shape "VirtualServiceList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-virtual-services-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-virtual-services-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-virtual-services-output
                     'make-list-virtual-services-output))
@@ -4325,19 +6092,48 @@
                           list-virtual-services-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener (:copier common-lisp:nil) (:conc-name "struct-shape-listener-"))
-   (connection-pool common-lisp:nil :type
-    (common-lisp:or virtual-node-connection-pool common-lisp:null))
-   (health-check common-lisp:nil :type
-    (common-lisp:or health-check-policy common-lisp:null))
-   (outlier-detection common-lisp:nil :type
-    (common-lisp:or outlier-detection common-lisp:null))
-   (port-mapping (common-lisp:error ":portmapping is required") :type
-    (common-lisp:or port-mapping common-lisp:null))
-   (timeout common-lisp:nil :type
-    (common-lisp:or listener-timeout common-lisp:null))
-   (tls common-lisp:nil :type (common-lisp:or listener-tls common-lisp:null)))
+ (common-lisp:defclass listener common-lisp:nil
+                       ((connection-pool :initarg :connection-pool :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-node-connection-pool
+                                         common-lisp:null)
+                         :accessor struct-shape-listener-connection-pool :shape
+                         "VirtualNodeConnectionPool" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (health-check :initarg :health-check :initform
+                         common-lisp:nil :type
+                         (common-lisp:or health-check-policy common-lisp:null)
+                         :accessor struct-shape-listener-health-check :shape
+                         "HealthCheckPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (outlier-detection :initarg :outlier-detection
+                         :initform common-lisp:nil :type
+                         (common-lisp:or outlier-detection common-lisp:null)
+                         :accessor struct-shape-listener-outlier-detection
+                         :shape "OutlierDetection" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (port-mapping :initarg :port-mapping :initform
+                         (common-lisp:error ":portmapping is required") :type
+                         (common-lisp:or port-mapping common-lisp:null)
+                         :accessor struct-shape-listener-port-mapping :shape
+                         "PortMapping" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (timeout :initarg :timeout :initform common-lisp:nil
+                         :type
+                         (common-lisp:or listener-timeout common-lisp:null)
+                         :accessor struct-shape-listener-timeout :shape
+                         "ListenerTimeout" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tls :initarg :tls :initform common-lisp:nil :type
+                         (common-lisp:or listener-tls common-lisp:null)
+                         :accessor struct-shape-listener-tls :shape
+                         "ListenerTls" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'listener
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'listener 'make-listener))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input listener))
@@ -4392,13 +6188,32 @@
    common-lisp:nil))
 (common-lisp:deftype listener-port () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-timeout (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-timeout-"))
-   (grpc common-lisp:nil :type (common-lisp:or grpc-timeout common-lisp:null))
-   (http common-lisp:nil :type (common-lisp:or http-timeout common-lisp:null))
-   (http2 common-lisp:nil :type (common-lisp:or http-timeout common-lisp:null))
-   (tcp common-lisp:nil :type (common-lisp:or tcp-timeout common-lisp:null)))
+ (common-lisp:defclass listener-timeout common-lisp:nil
+                       ((grpc :initarg :grpc :initform common-lisp:nil :type
+                         (common-lisp:or grpc-timeout common-lisp:null)
+                         :accessor struct-shape-listener-timeout-grpc :shape
+                         "GrpcTimeout" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (http :initarg :http :initform common-lisp:nil :type
+                         (common-lisp:or http-timeout common-lisp:null)
+                         :accessor struct-shape-listener-timeout-http :shape
+                         "HttpTimeout" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (http2 :initarg :http2 :initform common-lisp:nil :type
+                         (common-lisp:or http-timeout common-lisp:null)
+                         :accessor struct-shape-listener-timeout-http2 :shape
+                         "HttpTimeout" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tcp :initarg :tcp :initform common-lisp:nil :type
+                         (common-lisp:or tcp-timeout common-lisp:null)
+                         :accessor struct-shape-listener-timeout-tcp :shape
+                         "TcpTimeout" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener-timeout
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'listener-timeout
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'listener-timeout 'make-listener-timeout))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4439,15 +6254,32 @@
                         ((aws-sdk/generator/shape::input listener-timeout))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-tls (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-tls-"))
-   (certificate (common-lisp:error ":certificate is required") :type
-    (common-lisp:or listener-tls-certificate common-lisp:null))
-   (mode (common-lisp:error ":mode is required") :type
-    (common-lisp:or listener-tls-mode common-lisp:null))
-   (validation common-lisp:nil :type
-    (common-lisp:or listener-tls-validation-context common-lisp:null)))
+ (common-lisp:defclass listener-tls common-lisp:nil
+                       ((certificate :initarg :certificate :initform
+                         (common-lisp:error ":certificate is required") :type
+                         (common-lisp:or listener-tls-certificate
+                                         common-lisp:null)
+                         :accessor struct-shape-listener-tls-certificate :shape
+                         "ListenerTlsCertificate" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mode :initarg :mode :initform
+                         (common-lisp:error ":mode is required") :type
+                         (common-lisp:or listener-tls-mode common-lisp:null)
+                         :accessor struct-shape-listener-tls-mode :shape
+                         "ListenerTlsMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (validation :initarg :validation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or listener-tls-validation-context
+                                         common-lisp:null)
+                         :accessor struct-shape-listener-tls-validation :shape
+                         "ListenerTlsValidationContext" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener-tls
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'listener-tls
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'listener-tls 'make-listener-tls))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input listener-tls))
@@ -4480,11 +6312,18 @@
                         ((aws-sdk/generator/shape::input listener-tls))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-tls-acm-certificate (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-tls-acm-certificate-"))
-   (certificate-arn (common-lisp:error ":certificatearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass listener-tls-acm-certificate common-lisp:nil
+                       ((certificate-arn :initarg :certificate-arn :initform
+                         (common-lisp:error ":certificatearn is required")
+                         :type (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-listener-tls-acm-certificate-certificate-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener-tls-acm-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'listener-tls-acm-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'listener-tls-acm-certificate
                     'make-listener-tls-acm-certificate))
@@ -4511,15 +6350,30 @@
                           listener-tls-acm-certificate))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-tls-certificate (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-tls-certificate-"))
-   (acm common-lisp:nil :type
-    (common-lisp:or listener-tls-acm-certificate common-lisp:null))
-   (file common-lisp:nil :type
-    (common-lisp:or listener-tls-file-certificate common-lisp:null))
-   (sds common-lisp:nil :type
-    (common-lisp:or listener-tls-sds-certificate common-lisp:null)))
+ (common-lisp:defclass listener-tls-certificate common-lisp:nil
+                       ((acm :initarg :acm :initform common-lisp:nil :type
+                         (common-lisp:or listener-tls-acm-certificate
+                                         common-lisp:null)
+                         :accessor struct-shape-listener-tls-certificate-acm
+                         :shape "ListenerTlsAcmCertificate" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or listener-tls-file-certificate
+                                         common-lisp:null)
+                         :accessor struct-shape-listener-tls-certificate-file
+                         :shape "ListenerTlsFileCertificate" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sds :initarg :sds :initform common-lisp:nil :type
+                         (common-lisp:or listener-tls-sds-certificate
+                                         common-lisp:null)
+                         :accessor struct-shape-listener-tls-certificate-sds
+                         :shape "ListenerTlsSdsCertificate" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener-tls-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'listener-tls-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'listener-tls-certificate 'make-listener-tls-certificate))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4559,13 +6413,27 @@
                           listener-tls-certificate))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-tls-file-certificate (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-tls-file-certificate-"))
-   (certificate-chain (common-lisp:error ":certificatechain is required") :type
-    (common-lisp:or file-path common-lisp:null))
-   (private-key (common-lisp:error ":privatekey is required") :type
-    (common-lisp:or file-path common-lisp:null)))
+ (common-lisp:defclass listener-tls-file-certificate common-lisp:nil
+                       ((certificate-chain :initarg :certificate-chain
+                         :initform
+                         (common-lisp:error ":certificatechain is required")
+                         :type (common-lisp:or file-path common-lisp:null)
+                         :accessor
+                         struct-shape-listener-tls-file-certificate-certificate-chain
+                         :shape "FilePath" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (private-key :initarg :private-key :initform
+                         (common-lisp:error ":privatekey is required") :type
+                         (common-lisp:or file-path common-lisp:null) :accessor
+                         struct-shape-listener-tls-file-certificate-private-key
+                         :shape "FilePath" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener-tls-file-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'listener-tls-file-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'listener-tls-file-certificate
                     'make-listener-tls-file-certificate))
@@ -4600,11 +6468,19 @@
    common-lisp:nil))
 (common-lisp:deftype listener-tls-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-tls-sds-certificate (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-tls-sds-certificate-"))
-   (secret-name (common-lisp:error ":secretname is required") :type
-    (common-lisp:or sds-secret-name common-lisp:null)))
+ (common-lisp:defclass listener-tls-sds-certificate common-lisp:nil
+                       ((secret-name :initarg :secret-name :initform
+                         (common-lisp:error ":secretname is required") :type
+                         (common-lisp:or sds-secret-name common-lisp:null)
+                         :accessor
+                         struct-shape-listener-tls-sds-certificate-secret-name
+                         :shape "SdsSecretName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener-tls-sds-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'listener-tls-sds-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'listener-tls-sds-certificate
                     'make-listener-tls-sds-certificate))
@@ -4631,13 +6507,30 @@
                           listener-tls-sds-certificate))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-tls-validation-context (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-tls-validation-context-"))
-   (subject-alternative-names common-lisp:nil :type
-    (common-lisp:or subject-alternative-names common-lisp:null))
-   (trust (common-lisp:error ":trust is required") :type
-    (common-lisp:or listener-tls-validation-context-trust common-lisp:null)))
+ (common-lisp:defclass listener-tls-validation-context common-lisp:nil
+                       ((subject-alternative-names :initarg
+                         :subject-alternative-names :initform common-lisp:nil
+                         :type
+                         (common-lisp:or subject-alternative-names
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-listener-tls-validation-context-subject-alternative-names
+                         :shape "SubjectAlternativeNames" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (trust :initarg :trust :initform
+                         (common-lisp:error ":trust is required") :type
+                         (common-lisp:or listener-tls-validation-context-trust
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-listener-tls-validation-context-trust
+                         :shape "ListenerTlsValidationContextTrust" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener-tls-validation-context
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'listener-tls-validation-context
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'listener-tls-validation-context
                     'make-listener-tls-validation-context))
@@ -4672,13 +6565,27 @@
                           listener-tls-validation-context))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (listener-tls-validation-context-trust (:copier common-lisp:nil)
-      (:conc-name "struct-shape-listener-tls-validation-context-trust-"))
-   (file common-lisp:nil :type
-    (common-lisp:or tls-validation-context-file-trust common-lisp:null))
-   (sds common-lisp:nil :type
-    (common-lisp:or tls-validation-context-sds-trust common-lisp:null)))
+ (common-lisp:defclass listener-tls-validation-context-trust common-lisp:nil
+                       ((file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or tls-validation-context-file-trust
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-listener-tls-validation-context-trust-file
+                         :shape "TlsValidationContextFileTrust" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sds :initarg :sds :initform common-lisp:nil :type
+                         (common-lisp:or tls-validation-context-sds-trust
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-listener-tls-validation-context-trust-sds
+                         :shape "TlsValidationContextSdsTrust" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-listener-tls-validation-context-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'listener-tls-validation-context-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'listener-tls-validation-context-trust
                     'make-listener-tls-validation-context-trust))
@@ -4719,10 +6626,18 @@
                            (trivial-types:proper-list listener))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (logging (:copier common-lisp:nil) (:conc-name "struct-shape-logging-"))
-   (access-log common-lisp:nil :type
-    (common-lisp:or access-log common-lisp:null)))
+ (common-lisp:defclass logging common-lisp:nil
+                       ((access-log :initarg :access-log :initform
+                         common-lisp:nil :type
+                         (common-lisp:or access-log common-lisp:null) :accessor
+                         struct-shape-logging-access-log :shape "AccessLog"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-logging
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'logging
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'logging 'make-logging))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input logging))
@@ -4741,11 +6656,22 @@
                         ((aws-sdk/generator/shape::input logging))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (logging-format (:copier common-lisp:nil)
-      (:conc-name "struct-shape-logging-format-"))
-   (json common-lisp:nil :type (common-lisp:or json-format common-lisp:null))
-   (text common-lisp:nil :type (common-lisp:or text-format common-lisp:null)))
+ (common-lisp:defclass logging-format common-lisp:nil
+                       ((json :initarg :json :initform common-lisp:nil :type
+                         (common-lisp:or json-format common-lisp:null)
+                         :accessor struct-shape-logging-format-json :shape
+                         "JsonFormat" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (text :initarg :text :initform common-lisp:nil :type
+                         (common-lisp:or text-format common-lisp:null)
+                         :accessor struct-shape-logging-format-text :shape
+                         "TextFormat" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-logging-format
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'logging-format
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'logging-format 'make-logging-format))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input logging-format))
@@ -4772,13 +6698,22 @@
    common-lisp:nil))
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (match-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-match-range-"))
-   (end (common-lisp:error ":end is required") :type
-    (common-lisp:or long common-lisp:null))
-   (start (common-lisp:error ":start is required") :type
-    (common-lisp:or long common-lisp:null)))
+ (common-lisp:defclass match-range common-lisp:nil
+                       ((end :initarg :end :initform
+                         (common-lisp:error ":end is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-match-range-end :shape "Long" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start :initarg :start :initform
+                         (common-lisp:error ":start is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-match-range-start :shape "Long" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-match-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'match-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'match-range 'make-match-range))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input match-range))
@@ -4808,17 +6743,36 @@
 (common-lisp:deftype max-requests () 'common-lisp:integer)
 (common-lisp:deftype max-retries () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (mesh-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mesh-data-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or resource-metadata common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or mesh-spec common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or mesh-status common-lisp:null)))
+ (common-lisp:defclass mesh-data common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-mesh-data-mesh-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or resource-metadata common-lisp:null)
+                         :accessor struct-shape-mesh-data-metadata :shape
+                         "ResourceMetadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or mesh-spec common-lisp:null) :accessor
+                         struct-shape-mesh-data-spec :shape "MeshSpec"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or mesh-status common-lisp:null)
+                         :accessor struct-shape-mesh-data-status :shape
+                         "MeshStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mesh-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mesh-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mesh-data 'make-mesh-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mesh-data))
@@ -4865,22 +6819,52 @@
                            (trivial-types:proper-list mesh-ref))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mesh-ref (:copier common-lisp:nil) (:conc-name "struct-shape-mesh-ref-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner (common-lisp:error ":meshowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-owner (common-lisp:error ":resourceowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or long common-lisp:null)))
+ (common-lisp:defclass mesh-ref common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-mesh-ref-arn :shape "Arn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-mesh-ref-created-at :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-mesh-ref-last-updated-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-mesh-ref-mesh-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-owner :initarg :mesh-owner :initform
+                         (common-lisp:error ":meshowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-mesh-ref-mesh-owner :shape "AccountId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-owner :initarg :resource-owner :initform
+                         (common-lisp:error ":resourceowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-mesh-ref-resource-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-mesh-ref-version :shape "Long" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mesh-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mesh-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mesh-ref 'make-mesh-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mesh-ref))
@@ -4941,11 +6925,19 @@
                         ((aws-sdk/generator/shape::input mesh-ref))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mesh-service-discovery (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mesh-service-discovery-"))
-   (ip-preference common-lisp:nil :type
-    (common-lisp:or ip-preference common-lisp:null)))
+ (common-lisp:defclass mesh-service-discovery common-lisp:nil
+                       ((ip-preference :initarg :ip-preference :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ip-preference common-lisp:null)
+                         :accessor
+                         struct-shape-mesh-service-discovery-ip-preference
+                         :shape "IpPreference" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mesh-service-discovery
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mesh-service-discovery
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'mesh-service-discovery 'make-mesh-service-discovery))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4971,13 +6963,25 @@
                           mesh-service-discovery))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mesh-spec (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mesh-spec-"))
-   (egress-filter common-lisp:nil :type
-    (common-lisp:or egress-filter common-lisp:null))
-   (service-discovery common-lisp:nil :type
-    (common-lisp:or mesh-service-discovery common-lisp:null)))
+ (common-lisp:defclass mesh-spec common-lisp:nil
+                       ((egress-filter :initarg :egress-filter :initform
+                         common-lisp:nil :type
+                         (common-lisp:or egress-filter common-lisp:null)
+                         :accessor struct-shape-mesh-spec-egress-filter :shape
+                         "EgressFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-discovery :initarg :service-discovery
+                         :initform common-lisp:nil :type
+                         (common-lisp:or mesh-service-discovery
+                                         common-lisp:null)
+                         :accessor struct-shape-mesh-spec-service-discovery
+                         :shape "MeshServiceDiscovery" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mesh-spec
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mesh-spec
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mesh-spec 'make-mesh-spec))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mesh-spec))
@@ -5003,11 +7007,18 @@
                         ((aws-sdk/generator/shape::input mesh-spec))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (mesh-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-mesh-status-"))
-   (status common-lisp:nil :type
-    (common-lisp:or mesh-status-code common-lisp:null)))
+ (common-lisp:defclass mesh-status common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or mesh-status-code common-lisp:null)
+                         :accessor struct-shape-mesh-status-status :shape
+                         "MeshStatusCode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-mesh-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'mesh-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'mesh-status 'make-mesh-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input mesh-status))
@@ -5035,19 +7046,47 @@
  (common-lisp:export
   (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (outlier-detection (:copier common-lisp:nil)
-      (:conc-name "struct-shape-outlier-detection-"))
-   (base-ejection-duration
-    (common-lisp:error ":baseejectionduration is required") :type
-    (common-lisp:or duration common-lisp:null))
-   (interval (common-lisp:error ":interval is required") :type
-    (common-lisp:or duration common-lisp:null))
-   (max-ejection-percent (common-lisp:error ":maxejectionpercent is required")
-    :type
-    (common-lisp:or outlier-detection-max-ejection-percent common-lisp:null))
-   (max-server-errors (common-lisp:error ":maxservererrors is required") :type
-    (common-lisp:or outlier-detection-max-server-errors common-lisp:null)))
+ (common-lisp:defclass outlier-detection common-lisp:nil
+                       ((base-ejection-duration :initarg
+                         :base-ejection-duration :initform
+                         (common-lisp:error
+                          ":baseejectionduration is required")
+                         :type (common-lisp:or duration common-lisp:null)
+                         :accessor
+                         struct-shape-outlier-detection-base-ejection-duration
+                         :shape "Duration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (interval :initarg :interval :initform
+                         (common-lisp:error ":interval is required") :type
+                         (common-lisp:or duration common-lisp:null) :accessor
+                         struct-shape-outlier-detection-interval :shape
+                         "Duration" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-ejection-percent :initarg :max-ejection-percent
+                         :initform
+                         (common-lisp:error ":maxejectionpercent is required")
+                         :type
+                         (common-lisp:or outlier-detection-max-ejection-percent
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-outlier-detection-max-ejection-percent
+                         :shape "OutlierDetectionMaxEjectionPercent" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (max-server-errors :initarg :max-server-errors
+                         :initform
+                         (common-lisp:error ":maxservererrors is required")
+                         :type
+                         (common-lisp:or outlier-detection-max-server-errors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-outlier-detection-max-server-errors
+                         :shape "OutlierDetectionMaxServerErrors" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-outlier-detection
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'outlier-detection
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'outlier-detection 'make-outlier-detection))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5095,13 +7134,24 @@
   'common-lisp:integer)
 (common-lisp:deftype percent-int () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (port-mapping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-port-mapping-"))
-   (port (common-lisp:error ":port is required") :type
-    (common-lisp:or port-number common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or port-protocol common-lisp:null)))
+ (common-lisp:defclass port-mapping common-lisp:nil
+                       ((port :initarg :port :initform
+                         (common-lisp:error ":port is required") :type
+                         (common-lisp:or port-number common-lisp:null)
+                         :accessor struct-shape-port-mapping-port :shape
+                         "PortNumber" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or port-protocol common-lisp:null)
+                         :accessor struct-shape-port-mapping-protocol :shape
+                         "PortProtocol" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-port-mapping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'port-mapping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'port-mapping 'make-port-mapping))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input port-mapping))
@@ -5136,10 +7186,17 @@
                            (trivial-types:proper-list port-number))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (query-parameter-match (:copier common-lisp:nil)
-      (:conc-name "struct-shape-query-parameter-match-"))
-   (exact common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass query-parameter-match common-lisp:nil
+                       ((exact :initarg :exact :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-query-parameter-match-exact :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-query-parameter-match
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'query-parameter-match
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'query-parameter-match 'make-query-parameter-match))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5174,23 +7231,54 @@
   (common-lisp:list 'resource-in-use-exception
                     'resource-in-use-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-metadata (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-metadata-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (mesh-owner (common-lisp:error ":meshowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-owner (common-lisp:error ":resourceowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (uid (common-lisp:error ":uid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or long common-lisp:null)))
+ (common-lisp:defclass resource-metadata common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-resource-metadata-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-resource-metadata-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-resource-metadata-last-updated-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-owner :initarg :mesh-owner :initform
+                         (common-lisp:error ":meshowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-resource-metadata-mesh-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-owner :initarg :resource-owner :initform
+                         (common-lisp:error ":resourceowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-resource-metadata-resource-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (uid :initarg :uid :initform
+                         (common-lisp:error ":uid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-resource-metadata-uid :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-resource-metadata-version :shape "Long"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-metadata
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-metadata
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resource-metadata 'make-resource-metadata))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5253,21 +7341,49 @@
    common-lisp:nil))
 (common-lisp:deftype resource-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (route-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-route-data-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or resource-metadata common-lisp:null))
-   (route-name (common-lisp:error ":routename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or route-spec common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or route-status common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass route-data common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-route-data-mesh-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or resource-metadata common-lisp:null)
+                         :accessor struct-shape-route-data-metadata :shape
+                         "ResourceMetadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (route-name :initarg :route-name :initform
+                         (common-lisp:error ":routename is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-route-data-route-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or route-spec common-lisp:null) :accessor
+                         struct-shape-route-data-spec :shape "RouteSpec"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or route-status common-lisp:null)
+                         :accessor struct-shape-route-data-status :shape
+                         "RouteStatus" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-route-data-virtual-router-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-route-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'route-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'route-data 'make-route-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input route-data))
@@ -5329,27 +7445,65 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype route-priority () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (route-ref (:copier common-lisp:nil)
-      (:conc-name "struct-shape-route-ref-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner (common-lisp:error ":meshowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-owner (common-lisp:error ":resourceowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (route-name (common-lisp:error ":routename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or long common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass route-ref common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-route-ref-arn :shape "Arn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-route-ref-created-at :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-route-ref-last-updated-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-route-ref-mesh-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-owner :initarg :mesh-owner :initform
+                         (common-lisp:error ":meshowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-route-ref-mesh-owner :shape "AccountId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-owner :initarg :resource-owner :initform
+                         (common-lisp:error ":resourceowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-route-ref-resource-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (route-name :initarg :route-name :initform
+                         (common-lisp:error ":routename is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-route-ref-route-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-route-ref-version :shape "Long" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-route-ref-virtual-router-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-route-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'route-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'route-ref 'make-route-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input route-ref))
@@ -5424,19 +7578,41 @@
                         ((aws-sdk/generator/shape::input route-ref))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (route-spec (:copier common-lisp:nil)
-      (:conc-name "struct-shape-route-spec-"))
-   (grpc-route common-lisp:nil :type
-    (common-lisp:or grpc-route common-lisp:null))
-   (http2route common-lisp:nil :type
-    (common-lisp:or http-route common-lisp:null))
-   (http-route common-lisp:nil :type
-    (common-lisp:or http-route common-lisp:null))
-   (priority common-lisp:nil :type
-    (common-lisp:or route-priority common-lisp:null))
-   (tcp-route common-lisp:nil :type
-    (common-lisp:or tcp-route common-lisp:null)))
+ (common-lisp:defclass route-spec common-lisp:nil
+                       ((grpc-route :initarg :grpc-route :initform
+                         common-lisp:nil :type
+                         (common-lisp:or grpc-route common-lisp:null) :accessor
+                         struct-shape-route-spec-grpc-route :shape "GrpcRoute"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (http2route :initarg :http2route :initform
+                         common-lisp:nil :type
+                         (common-lisp:or http-route common-lisp:null) :accessor
+                         struct-shape-route-spec-http2route :shape "HttpRoute"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (http-route :initarg :http-route :initform
+                         common-lisp:nil :type
+                         (common-lisp:or http-route common-lisp:null) :accessor
+                         struct-shape-route-spec-http-route :shape "HttpRoute"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (priority :initarg :priority :initform common-lisp:nil
+                         :type (common-lisp:or route-priority common-lisp:null)
+                         :accessor struct-shape-route-spec-priority :shape
+                         "RoutePriority" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tcp-route :initarg :tcp-route :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tcp-route common-lisp:null) :accessor
+                         struct-shape-route-spec-tcp-route :shape "TcpRoute"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-route-spec
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'route-spec
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'route-spec 'make-route-spec))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input route-spec))
@@ -5483,11 +7659,18 @@
                         ((aws-sdk/generator/shape::input route-spec))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (route-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-route-status-"))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or route-status-code common-lisp:null)))
+ (common-lisp:defclass route-status common-lisp:nil
+                       ((status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or route-status-code common-lisp:null)
+                         :accessor struct-shape-route-status-status :shape
+                         "RouteStatusCode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-route-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'route-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'route-status 'make-route-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input route-status))
@@ -5508,13 +7691,25 @@
 (common-lisp:deftype route-status-code () 'common-lisp:string)
 (common-lisp:deftype sds-secret-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-discovery (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-discovery-"))
-   (aws-cloud-map common-lisp:nil :type
-    (common-lisp:or aws-cloud-map-service-discovery common-lisp:null))
-   (dns common-lisp:nil :type
-    (common-lisp:or dns-service-discovery common-lisp:null)))
+ (common-lisp:defclass service-discovery common-lisp:nil
+                       ((aws-cloud-map :initarg :aws-cloud-map :initform
+                         common-lisp:nil :type
+                         (common-lisp:or aws-cloud-map-service-discovery
+                                         common-lisp:null)
+                         :accessor struct-shape-service-discovery-aws-cloud-map
+                         :shape "AwsCloudMapServiceDiscovery" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (dns :initarg :dns :initform common-lisp:nil :type
+                         (common-lisp:or dns-service-discovery
+                                         common-lisp:null)
+                         :accessor struct-shape-service-discovery-dns :shape
+                         "DnsServiceDiscovery" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-service-discovery
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'service-discovery
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'service-discovery 'make-service-discovery))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5561,11 +7756,21 @@
                             subject-alternative-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subject-alternative-name-matchers (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subject-alternative-name-matchers-"))
-   (exact (common-lisp:error ":exact is required") :type
-    (common-lisp:or subject-alternative-name-list common-lisp:null)))
+ (common-lisp:defclass subject-alternative-name-matchers common-lisp:nil
+                       ((exact :initarg :exact :initform
+                         (common-lisp:error ":exact is required") :type
+                         (common-lisp:or subject-alternative-name-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-subject-alternative-name-matchers-exact
+                         :shape "SubjectAlternativeNameList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-subject-alternative-name-matchers
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'subject-alternative-name-matchers
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'subject-alternative-name-matchers
                     'make-subject-alternative-name-matchers))
@@ -5592,11 +7797,19 @@
                           subject-alternative-name-matchers))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subject-alternative-names (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subject-alternative-names-"))
-   (match (common-lisp:error ":match is required") :type
-    (common-lisp:or subject-alternative-name-matchers common-lisp:null)))
+ (common-lisp:defclass subject-alternative-names common-lisp:nil
+                       ((match :initarg :match :initform
+                         (common-lisp:error ":match is required") :type
+                         (common-lisp:or subject-alternative-name-matchers
+                                         common-lisp:null)
+                         :accessor struct-shape-subject-alternative-names-match
+                         :shape "SubjectAlternativeNameMatchers" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-subject-alternative-names
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'subject-alternative-names
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'subject-alternative-names
                     'make-subject-alternative-names))
@@ -5639,12 +7852,22 @@
                            (trivial-types:proper-list tag-ref))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-ref (:copier common-lisp:nil) (:conc-name "struct-shape-tag-ref-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag-ref common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-ref-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-ref-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag-ref 'make-tag-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag-ref))
@@ -5670,13 +7893,24 @@
                         ((aws-sdk/generator/shape::input tag-ref))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass tag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-resource-arn :shape
+                         "Arn" :location "querystring" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-tags :shape "TagList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5696,9 +7930,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-output-")))
+ (common-lisp:defclass tag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-output 'make-tag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5722,15 +7959,28 @@
                            (trivial-types:proper-list tcp-retry-policy-event))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tcp-route (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tcp-route-"))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or tcp-route-action common-lisp:null))
-   (match common-lisp:nil :type
-    (common-lisp:or tcp-route-match common-lisp:null))
-   (timeout common-lisp:nil :type
-    (common-lisp:or tcp-timeout common-lisp:null)))
+ (common-lisp:defclass tcp-route common-lisp:nil
+                       ((action :initarg :action :initform
+                         (common-lisp:error ":action is required") :type
+                         (common-lisp:or tcp-route-action common-lisp:null)
+                         :accessor struct-shape-tcp-route-action :shape
+                         "TcpRouteAction" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (match :initarg :match :initform common-lisp:nil :type
+                         (common-lisp:or tcp-route-match common-lisp:null)
+                         :accessor struct-shape-tcp-route-match :shape
+                         "TcpRouteMatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (timeout :initarg :timeout :initform common-lisp:nil
+                         :type (common-lisp:or tcp-timeout common-lisp:null)
+                         :accessor struct-shape-tcp-route-timeout :shape
+                         "TcpTimeout" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tcp-route
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tcp-route
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tcp-route 'make-tcp-route))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tcp-route))
@@ -5763,11 +8013,20 @@
                         ((aws-sdk/generator/shape::input tcp-route))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tcp-route-action (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tcp-route-action-"))
-   (weighted-targets (common-lisp:error ":weightedtargets is required") :type
-    (common-lisp:or weighted-targets common-lisp:null)))
+ (common-lisp:defclass tcp-route-action common-lisp:nil
+                       ((weighted-targets :initarg :weighted-targets :initform
+                         (common-lisp:error ":weightedtargets is required")
+                         :type
+                         (common-lisp:or weighted-targets common-lisp:null)
+                         :accessor
+                         struct-shape-tcp-route-action-weighted-targets :shape
+                         "WeightedTargets" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tcp-route-action
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tcp-route-action
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tcp-route-action 'make-tcp-route-action))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5787,11 +8046,17 @@
                         ((aws-sdk/generator/shape::input tcp-route-action))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tcp-route-match (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tcp-route-match-"))
-   (port common-lisp:nil :type
-    (common-lisp:or listener-port common-lisp:null)))
+ (common-lisp:defclass tcp-route-match common-lisp:nil
+                       ((port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or listener-port common-lisp:null)
+                         :accessor struct-shape-tcp-route-match-port :shape
+                         "ListenerPort" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tcp-route-match
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tcp-route-match
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tcp-route-match 'make-tcp-route-match))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tcp-route-match))
@@ -5810,10 +8075,17 @@
                         ((aws-sdk/generator/shape::input tcp-route-match))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tcp-timeout (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tcp-timeout-"))
-   (idle common-lisp:nil :type (common-lisp:or duration common-lisp:null)))
+ (common-lisp:defclass tcp-timeout common-lisp:nil
+                       ((idle :initarg :idle :initform common-lisp:nil :type
+                         (common-lisp:or duration common-lisp:null) :accessor
+                         struct-shape-tcp-timeout-idle :shape "Duration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tcp-timeout
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tcp-timeout
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tcp-timeout 'make-tcp-timeout))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tcp-timeout))
@@ -5834,13 +8106,28 @@
 (common-lisp:deftype text-format () 'common-lisp:string)
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tls-validation-context (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tls-validation-context-"))
-   (subject-alternative-names common-lisp:nil :type
-    (common-lisp:or subject-alternative-names common-lisp:null))
-   (trust (common-lisp:error ":trust is required") :type
-    (common-lisp:or tls-validation-context-trust common-lisp:null)))
+ (common-lisp:defclass tls-validation-context common-lisp:nil
+                       ((subject-alternative-names :initarg
+                         :subject-alternative-names :initform common-lisp:nil
+                         :type
+                         (common-lisp:or subject-alternative-names
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-tls-validation-context-subject-alternative-names
+                         :shape "SubjectAlternativeNames" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (trust :initarg :trust :initform
+                         (common-lisp:error ":trust is required") :type
+                         (common-lisp:or tls-validation-context-trust
+                                         common-lisp:null)
+                         :accessor struct-shape-tls-validation-context-trust
+                         :shape "TlsValidationContextTrust" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tls-validation-context
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tls-validation-context
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tls-validation-context 'make-tls-validation-context))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5874,12 +8161,24 @@
                           tls-validation-context))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tls-validation-context-acm-trust (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tls-validation-context-acm-trust-"))
-   (certificate-authority-arns
-    (common-lisp:error ":certificateauthorityarns is required") :type
-    (common-lisp:or certificate-authority-arns common-lisp:null)))
+ (common-lisp:defclass tls-validation-context-acm-trust common-lisp:nil
+                       ((certificate-authority-arns :initarg
+                         :certificate-authority-arns :initform
+                         (common-lisp:error
+                          ":certificateauthorityarns is required")
+                         :type
+                         (common-lisp:or certificate-authority-arns
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-tls-validation-context-acm-trust-certificate-authority-arns
+                         :shape "CertificateAuthorityArns" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tls-validation-context-acm-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'tls-validation-context-acm-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tls-validation-context-acm-trust
                     'make-tls-validation-context-acm-trust))
@@ -5907,11 +8206,21 @@
                           tls-validation-context-acm-trust))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tls-validation-context-file-trust (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tls-validation-context-file-trust-"))
-   (certificate-chain (common-lisp:error ":certificatechain is required") :type
-    (common-lisp:or file-path common-lisp:null)))
+ (common-lisp:defclass tls-validation-context-file-trust common-lisp:nil
+                       ((certificate-chain :initarg :certificate-chain
+                         :initform
+                         (common-lisp:error ":certificatechain is required")
+                         :type (common-lisp:or file-path common-lisp:null)
+                         :accessor
+                         struct-shape-tls-validation-context-file-trust-certificate-chain
+                         :shape "FilePath" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tls-validation-context-file-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'tls-validation-context-file-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tls-validation-context-file-trust
                     'make-tls-validation-context-file-trust))
@@ -5938,11 +8247,20 @@
                           tls-validation-context-file-trust))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tls-validation-context-sds-trust (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tls-validation-context-sds-trust-"))
-   (secret-name (common-lisp:error ":secretname is required") :type
-    (common-lisp:or sds-secret-name common-lisp:null)))
+ (common-lisp:defclass tls-validation-context-sds-trust common-lisp:nil
+                       ((secret-name :initarg :secret-name :initform
+                         (common-lisp:error ":secretname is required") :type
+                         (common-lisp:or sds-secret-name common-lisp:null)
+                         :accessor
+                         struct-shape-tls-validation-context-sds-trust-secret-name
+                         :shape "SdsSecretName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tls-validation-context-sds-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'tls-validation-context-sds-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tls-validation-context-sds-trust
                     'make-tls-validation-context-sds-trust))
@@ -5969,15 +8287,33 @@
                           tls-validation-context-sds-trust))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tls-validation-context-trust (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tls-validation-context-trust-"))
-   (acm common-lisp:nil :type
-    (common-lisp:or tls-validation-context-acm-trust common-lisp:null))
-   (file common-lisp:nil :type
-    (common-lisp:or tls-validation-context-file-trust common-lisp:null))
-   (sds common-lisp:nil :type
-    (common-lisp:or tls-validation-context-sds-trust common-lisp:null)))
+ (common-lisp:defclass tls-validation-context-trust common-lisp:nil
+                       ((acm :initarg :acm :initform common-lisp:nil :type
+                         (common-lisp:or tls-validation-context-acm-trust
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-tls-validation-context-trust-acm :shape
+                         "TlsValidationContextAcmTrust" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or tls-validation-context-file-trust
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-tls-validation-context-trust-file :shape
+                         "TlsValidationContextFileTrust" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sds :initarg :sds :initform common-lisp:nil :type
+                         (common-lisp:or tls-validation-context-sds-trust
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-tls-validation-context-trust-sds :shape
+                         "TlsValidationContextSdsTrust" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tls-validation-context-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tls-validation-context-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tls-validation-context-trust
                     'make-tls-validation-context-trust))
@@ -6033,13 +8369,24 @@
  (common-lisp:export
   (common-lisp:list 'too-many-tags-exception 'too-many-tags-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-input-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-input-resource-arn :shape
+                         "Arn" :location "querystring" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-input-tag-keys
+                         :shape "TagKeyList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6059,9 +8406,12 @@
                         ((aws-sdk/generator/shape::input untag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-output-")))
+ (common-lisp:defclass untag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-output 'make-untag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6080,21 +8430,53 @@
                           untag-resource-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-gateway-route-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-gateway-route-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (gateway-route-name (common-lisp:error ":gatewayroutename is required")
-    :type (common-lisp:or resource-name common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or gateway-route-spec common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass update-gateway-route-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-gateway-route-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (gateway-route-name :initarg :gateway-route-name
+                         :initform
+                         (common-lisp:error ":gatewayroutename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-gateway-route-input-gateway-route-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "gatewayRouteName")
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-gateway-route-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-gateway-route-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or gateway-route-spec common-lisp:null)
+                         :accessor struct-shape-update-gateway-route-input-spec
+                         :shape "GatewayRouteSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-gateway-route-input-virtual-gateway-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualGatewayName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-gateway-route-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-gateway-route-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-gateway-route-input
                     'make-update-gateway-route-input))
@@ -6128,11 +8510,19 @@
                           update-gateway-route-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-gateway-route-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-gateway-route-output-"))
-   (gateway-route (common-lisp:error ":gatewayroute is required") :type
-    (common-lisp:or gateway-route-data common-lisp:null)))
+ (common-lisp:defclass update-gateway-route-output common-lisp:nil
+                       ((gateway-route :initarg :gateway-route :initform
+                         (common-lisp:error ":gatewayroute is required") :type
+                         (common-lisp:or gateway-route-data common-lisp:null)
+                         :accessor
+                         struct-shape-update-gateway-route-output-gateway-route
+                         :shape "GatewayRouteData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-gateway-route-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-gateway-route-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-gateway-route-output
                     'make-update-gateway-route-output))
@@ -6159,14 +8549,29 @@
                           update-gateway-route-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'gateway-route)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-mesh-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-mesh-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (spec common-lisp:nil :type (common-lisp:or mesh-spec common-lisp:null)))
+ (common-lisp:defclass update-mesh-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-mesh-input-client-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-update-mesh-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (spec :initarg :spec :initform common-lisp:nil :type
+                         (common-lisp:or mesh-spec common-lisp:null) :accessor
+                         struct-shape-update-mesh-input-spec :shape "MeshSpec"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-mesh-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-mesh-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-mesh-input 'make-update-mesh-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6193,11 +8598,18 @@
                         ((aws-sdk/generator/shape::input update-mesh-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-mesh-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-mesh-output-"))
-   (mesh (common-lisp:error ":mesh is required") :type
-    (common-lisp:or mesh-data common-lisp:null)))
+ (common-lisp:defclass update-mesh-output common-lisp:nil
+                       ((mesh :initarg :mesh :initform
+                         (common-lisp:error ":mesh is required") :type
+                         (common-lisp:or mesh-data common-lisp:null) :accessor
+                         struct-shape-update-mesh-output-mesh :shape "MeshData"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-mesh-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-mesh-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-mesh-output 'make-update-mesh-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6217,21 +8629,50 @@
                         ((aws-sdk/generator/shape::input update-mesh-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'mesh)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-route-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-route-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (route-name (common-lisp:error ":routename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or route-spec common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass update-route-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-route-input-client-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-update-route-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-route-input-mesh-owner :shape
+                         "AccountId" :location "querystring" :location-name
+                         "meshOwner")
+                        (route-name :initarg :route-name :initform
+                         (common-lisp:error ":routename is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-update-route-input-route-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "routeName")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or route-spec common-lisp:null) :accessor
+                         struct-shape-update-route-input-spec :shape
+                         "RouteSpec" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-route-input-virtual-router-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualRouterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-route-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-route-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-route-input 'make-update-route-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6258,11 +8699,18 @@
                         ((aws-sdk/generator/shape::input update-route-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-route-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-route-output-"))
-   (route (common-lisp:error ":route is required") :type
-    (common-lisp:or route-data common-lisp:null)))
+ (common-lisp:defclass update-route-output common-lisp:nil
+                       ((route :initarg :route :initform
+                         (common-lisp:error ":route is required") :type
+                         (common-lisp:or route-data common-lisp:null) :accessor
+                         struct-shape-update-route-output-route :shape
+                         "RouteData" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-route-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-route-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-route-output 'make-update-route-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6282,19 +8730,46 @@
                         ((aws-sdk/generator/shape::input update-route-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'route)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-virtual-gateway-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-virtual-gateway-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-gateway-spec common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass update-virtual-gateway-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-virtual-gateway-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-gateway-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-virtual-gateway-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-gateway-spec common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-gateway-input-spec :shape
+                         "VirtualGatewaySpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-gateway-input-virtual-gateway-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualGatewayName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-virtual-gateway-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-virtual-gateway-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-virtual-gateway-input
                     'make-update-virtual-gateway-input))
@@ -6328,11 +8803,21 @@
                           update-virtual-gateway-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-virtual-gateway-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-virtual-gateway-output-"))
-   (virtual-gateway (common-lisp:error ":virtualgateway is required") :type
-    (common-lisp:or virtual-gateway-data common-lisp:null)))
+ (common-lisp:defclass update-virtual-gateway-output common-lisp:nil
+                       ((virtual-gateway :initarg :virtual-gateway :initform
+                         (common-lisp:error ":virtualgateway is required")
+                         :type
+                         (common-lisp:or virtual-gateway-data common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-gateway-output-virtual-gateway
+                         :shape "VirtualGatewayData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-virtual-gateway-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-virtual-gateway-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-virtual-gateway-output
                     'make-update-virtual-gateway-output))
@@ -6359,19 +8844,45 @@
                           update-virtual-gateway-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-gateway)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-virtual-node-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-virtual-node-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-node-spec common-lisp:null))
-   (virtual-node-name (common-lisp:error ":virtualnodename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass update-virtual-node-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-virtual-node-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-node-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-virtual-node-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-node-spec common-lisp:null)
+                         :accessor struct-shape-update-virtual-node-input-spec
+                         :shape "VirtualNodeSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-node-name :initarg :virtual-node-name
+                         :initform
+                         (common-lisp:error ":virtualnodename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-node-input-virtual-node-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualNodeName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-virtual-node-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-virtual-node-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-virtual-node-input
                     'make-update-virtual-node-input))
@@ -6405,11 +8916,19 @@
                           update-virtual-node-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-virtual-node-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-virtual-node-output-"))
-   (virtual-node (common-lisp:error ":virtualnode is required") :type
-    (common-lisp:or virtual-node-data common-lisp:null)))
+ (common-lisp:defclass update-virtual-node-output common-lisp:nil
+                       ((virtual-node :initarg :virtual-node :initform
+                         (common-lisp:error ":virtualnode is required") :type
+                         (common-lisp:or virtual-node-data common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-node-output-virtual-node
+                         :shape "VirtualNodeData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-virtual-node-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-virtual-node-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-virtual-node-output
                     'make-update-virtual-node-output))
@@ -6436,19 +8955,46 @@
                           update-virtual-node-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-node)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-virtual-router-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-virtual-router-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-router-spec common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass update-virtual-router-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-virtual-router-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-router-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-virtual-router-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-router-spec common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-router-input-spec :shape
+                         "VirtualRouterSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-router-input-virtual-router-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "virtualRouterName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-virtual-router-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-virtual-router-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-virtual-router-input
                     'make-update-virtual-router-input))
@@ -6482,11 +9028,19 @@
                           update-virtual-router-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-virtual-router-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-virtual-router-output-"))
-   (virtual-router (common-lisp:error ":virtualrouter is required") :type
-    (common-lisp:or virtual-router-data common-lisp:null)))
+ (common-lisp:defclass update-virtual-router-output common-lisp:nil
+                       ((virtual-router :initarg :virtual-router :initform
+                         (common-lisp:error ":virtualrouter is required") :type
+                         (common-lisp:or virtual-router-data common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-router-output-virtual-router
+                         :shape "VirtualRouterData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-virtual-router-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-virtual-router-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-virtual-router-output
                     'make-update-virtual-router-output))
@@ -6513,19 +9067,46 @@
                           update-virtual-router-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-router)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-virtual-service-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-virtual-service-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-service-spec common-lisp:null))
-   (virtual-service-name (common-lisp:error ":virtualservicename is required")
-    :type (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass update-virtual-service-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-virtual-service-input-client-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-service-input-mesh-name
+                         :shape "ResourceName" :location "uri" :location-name
+                         "meshName")
+                        (mesh-owner :initarg :mesh-owner :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-virtual-service-input-mesh-owner
+                         :shape "AccountId" :location "querystring"
+                         :location-name "meshOwner")
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-service-spec common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-service-input-spec :shape
+                         "VirtualServiceSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-service-name :initarg :virtual-service-name
+                         :initform
+                         (common-lisp:error ":virtualservicename is required")
+                         :type (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-service-input-virtual-service-name
+                         :shape "ServiceName" :location "uri" :location-name
+                         "virtualServiceName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-virtual-service-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-virtual-service-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-virtual-service-input
                     'make-update-virtual-service-input))
@@ -6559,11 +9140,21 @@
                           update-virtual-service-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-virtual-service-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-virtual-service-output-"))
-   (virtual-service (common-lisp:error ":virtualservice is required") :type
-    (common-lisp:or virtual-service-data common-lisp:null)))
+ (common-lisp:defclass update-virtual-service-output common-lisp:nil
+                       ((virtual-service :initarg :virtual-service :initform
+                         (common-lisp:error ":virtualservice is required")
+                         :type
+                         (common-lisp:or virtual-service-data common-lisp:null)
+                         :accessor
+                         struct-shape-update-virtual-service-output-virtual-service
+                         :shape "VirtualServiceData" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-virtual-service-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-virtual-service-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-virtual-service-output
                     'make-update-virtual-service-output))
@@ -6590,11 +9181,18 @@
                           update-virtual-service-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'virtual-service)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-access-log (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-access-log-"))
-   (file common-lisp:nil :type
-    (common-lisp:or virtual-gateway-file-access-log common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-access-log common-lisp:nil
+                       ((file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-file-access-log
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-access-log-file
+                         :shape "VirtualGatewayFileAccessLog" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-access-log
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-access-log
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-access-log
                     'make-virtual-gateway-access-log))
@@ -6621,11 +9219,21 @@
                           virtual-gateway-access-log))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-backend-defaults (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-backend-defaults-"))
-   (client-policy common-lisp:nil :type
-    (common-lisp:or virtual-gateway-client-policy common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-backend-defaults common-lisp:nil
+                       ((client-policy :initarg :client-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-client-policy
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-backend-defaults-client-policy
+                         :shape "VirtualGatewayClientPolicy" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-backend-defaults
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-backend-defaults
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-backend-defaults
                     'make-virtual-gateway-backend-defaults))
@@ -6660,11 +9268,20 @@
                            (trivial-types:proper-list arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-client-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-client-policy-"))
-   (tls common-lisp:nil :type
-    (common-lisp:or virtual-gateway-client-policy-tls common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-client-policy common-lisp:nil
+                       ((tls :initarg :tls :initform common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-client-policy-tls
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-client-policy-tls :shape
+                         "VirtualGatewayClientPolicyTls" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-client-policy
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-client-policy
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-client-policy
                     'make-virtual-gateway-client-policy))
@@ -6691,15 +9308,40 @@
                           virtual-gateway-client-policy))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-client-policy-tls (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-client-policy-tls-"))
-   (certificate common-lisp:nil :type
-    (common-lisp:or virtual-gateway-client-tls-certificate common-lisp:null))
-   (enforce common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (ports common-lisp:nil :type (common-lisp:or port-set common-lisp:null))
-   (validation (common-lisp:error ":validation is required") :type
-    (common-lisp:or virtual-gateway-tls-validation-context common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-client-policy-tls common-lisp:nil
+                       ((certificate :initarg :certificate :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-client-tls-certificate
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-client-policy-tls-certificate
+                         :shape "VirtualGatewayClientTlsCertificate" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (enforce :initarg :enforce :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-client-policy-tls-enforce
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ports :initarg :ports :initform common-lisp:nil :type
+                         (common-lisp:or port-set common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-client-policy-tls-ports
+                         :shape "PortSet" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (validation :initarg :validation :initform
+                         (common-lisp:error ":validation is required") :type
+                         (common-lisp:or virtual-gateway-tls-validation-context
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-client-policy-tls-validation
+                         :shape "VirtualGatewayTlsValidationContext" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-client-policy-tls
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-client-policy-tls
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-client-policy-tls
                     'make-virtual-gateway-client-policy-tls))
@@ -6747,15 +9389,31 @@
                           virtual-gateway-client-policy-tls))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-client-tls-certificate (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-client-tls-certificate-"))
-   (file common-lisp:nil :type
-    (common-lisp:or virtual-gateway-listener-tls-file-certificate
-                    common-lisp:null))
-   (sds common-lisp:nil :type
-    (common-lisp:or virtual-gateway-listener-tls-sds-certificate
-                    common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-client-tls-certificate common-lisp:nil
+                       ((file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-listener-tls-file-certificate
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-client-tls-certificate-file
+                         :shape "VirtualGatewayListenerTlsFileCertificate"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sds :initarg :sds :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-listener-tls-sds-certificate
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-client-tls-certificate-sds
+                         :shape "VirtualGatewayListenerTlsSdsCertificate"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-client-tls-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-client-tls-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-client-tls-certificate
                     'make-virtual-gateway-client-tls-certificate))
@@ -6789,15 +9447,34 @@
                           virtual-gateway-client-tls-certificate))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-connection-pool-"))
-   (grpc common-lisp:nil :type
-    (common-lisp:or virtual-gateway-grpc-connection-pool common-lisp:null))
-   (http common-lisp:nil :type
-    (common-lisp:or virtual-gateway-http-connection-pool common-lisp:null))
-   (http2 common-lisp:nil :type
-    (common-lisp:or virtual-gateway-http2connection-pool common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-connection-pool common-lisp:nil
+                       ((grpc :initarg :grpc :initform common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-grpc-connection-pool
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-connection-pool-grpc
+                         :shape "VirtualGatewayGrpcConnectionPool" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (http :initarg :http :initform common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-http-connection-pool
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-connection-pool-http
+                         :shape "VirtualGatewayHttpConnectionPool" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (http2 :initarg :http2 :initform common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-http2connection-pool
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-connection-pool-http2
+                         :shape "VirtualGatewayHttp2ConnectionPool" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-connection-pool
                     'make-virtual-gateway-connection-pool))
@@ -6838,19 +9515,45 @@
                           virtual-gateway-connection-pool))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-data-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or resource-metadata common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-gateway-spec common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or virtual-gateway-status common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-data common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-data-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or resource-metadata common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-data-metadata
+                         :shape "ResourceMetadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-gateway-spec common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-data-spec
+                         :shape "VirtualGatewaySpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or virtual-gateway-status
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-data-status
+                         :shape "VirtualGatewayStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-data-virtual-gateway-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-data 'make-virtual-gateway-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -6899,13 +9602,25 @@
                         ((aws-sdk/generator/shape::input virtual-gateway-data))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-file-access-log (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-file-access-log-"))
-   (format common-lisp:nil :type
-    (common-lisp:or logging-format common-lisp:null))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or file-path common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-file-access-log common-lisp:nil
+                       ((format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or logging-format common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-file-access-log-format
+                         :shape "LoggingFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (path :initarg :path :initform
+                         (common-lisp:error ":path is required") :type
+                         (common-lisp:or file-path common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-file-access-log-path
+                         :shape "FilePath" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-file-access-log
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-file-access-log
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-file-access-log
                     'make-virtual-gateway-file-access-log))
@@ -6939,11 +9654,20 @@
                           virtual-gateway-file-access-log))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-grpc-connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-grpc-connection-pool-"))
-   (max-requests (common-lisp:error ":maxrequests is required") :type
-    (common-lisp:or max-requests common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-grpc-connection-pool common-lisp:nil
+                       ((max-requests :initarg :max-requests :initform
+                         (common-lisp:error ":maxrequests is required") :type
+                         (common-lisp:or max-requests common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-grpc-connection-pool-max-requests
+                         :shape "MaxRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-grpc-connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-grpc-connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-grpc-connection-pool
                     'make-virtual-gateway-grpc-connection-pool))
@@ -6972,24 +9696,73 @@
 (common-lisp:deftype virtual-gateway-health-check-interval-millis ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-health-check-policy (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-health-check-policy-"))
-   (healthy-threshold (common-lisp:error ":healthythreshold is required") :type
-    (common-lisp:or virtual-gateway-health-check-threshold common-lisp:null))
-   (interval-millis (common-lisp:error ":intervalmillis is required") :type
-    (common-lisp:or virtual-gateway-health-check-interval-millis
-                    common-lisp:null))
-   (path common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (port common-lisp:nil :type (common-lisp:or port-number common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or virtual-gateway-port-protocol common-lisp:null))
-   (timeout-millis (common-lisp:error ":timeoutmillis is required") :type
-    (common-lisp:or virtual-gateway-health-check-timeout-millis
-                    common-lisp:null))
-   (unhealthy-threshold (common-lisp:error ":unhealthythreshold is required")
-    :type
-    (common-lisp:or virtual-gateway-health-check-threshold common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-health-check-policy common-lisp:nil
+                       ((healthy-threshold :initarg :healthy-threshold
+                         :initform
+                         (common-lisp:error ":healthythreshold is required")
+                         :type
+                         (common-lisp:or virtual-gateway-health-check-threshold
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-health-check-policy-healthy-threshold
+                         :shape "VirtualGatewayHealthCheckThreshold" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (interval-millis :initarg :interval-millis :initform
+                         (common-lisp:error ":intervalmillis is required")
+                         :type
+                         (common-lisp:or
+                          virtual-gateway-health-check-interval-millis
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-health-check-policy-interval-millis
+                         :shape "VirtualGatewayHealthCheckIntervalMillis"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (path :initarg :path :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-health-check-policy-path
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or port-number common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-health-check-policy-port
+                         :shape "PortNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or virtual-gateway-port-protocol
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-health-check-policy-protocol
+                         :shape "VirtualGatewayPortProtocol" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (timeout-millis :initarg :timeout-millis :initform
+                         (common-lisp:error ":timeoutmillis is required") :type
+                         (common-lisp:or
+                          virtual-gateway-health-check-timeout-millis
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-health-check-policy-timeout-millis
+                         :shape "VirtualGatewayHealthCheckTimeoutMillis"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (unhealthy-threshold :initarg :unhealthy-threshold
+                         :initform
+                         (common-lisp:error ":unhealthythreshold is required")
+                         :type
+                         (common-lisp:or virtual-gateway-health-check-threshold
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-health-check-policy-unhealthy-threshold
+                         :shape "VirtualGatewayHealthCheckThreshold" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-health-check-policy
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-health-check-policy
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-health-check-policy
                     'make-virtual-gateway-health-check-policy))
@@ -7062,11 +9835,20 @@
 (common-lisp:deftype virtual-gateway-health-check-timeout-millis ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-http2connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-http2connection-pool-"))
-   (max-requests (common-lisp:error ":maxrequests is required") :type
-    (common-lisp:or max-requests common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-http2connection-pool common-lisp:nil
+                       ((max-requests :initarg :max-requests :initform
+                         (common-lisp:error ":maxrequests is required") :type
+                         (common-lisp:or max-requests common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-http2connection-pool-max-requests
+                         :shape "MaxRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-http2connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-http2connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-http2connection-pool
                     'make-virtual-gateway-http2connection-pool))
@@ -7093,13 +9875,28 @@
                           virtual-gateway-http2connection-pool))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-http-connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-http-connection-pool-"))
-   (max-connections (common-lisp:error ":maxconnections is required") :type
-    (common-lisp:or max-connections common-lisp:null))
-   (max-pending-requests common-lisp:nil :type
-    (common-lisp:or max-pending-requests common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-http-connection-pool common-lisp:nil
+                       ((max-connections :initarg :max-connections :initform
+                         (common-lisp:error ":maxconnections is required")
+                         :type
+                         (common-lisp:or max-connections common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-http-connection-pool-max-connections
+                         :shape "MaxConnections" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-pending-requests :initarg :max-pending-requests
+                         :initform common-lisp:nil :type
+                         (common-lisp:or max-pending-requests common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-http-connection-pool-max-pending-requests
+                         :shape "MaxPendingRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-http-connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-http-connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-http-connection-pool
                     'make-virtual-gateway-http-connection-pool))
@@ -7142,17 +9939,42 @@
                            (trivial-types:proper-list virtual-gateway-ref))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-listener (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-listener-"))
-   (connection-pool common-lisp:nil :type
-    (common-lisp:or virtual-gateway-connection-pool common-lisp:null))
-   (health-check common-lisp:nil :type
-    (common-lisp:or virtual-gateway-health-check-policy common-lisp:null))
-   (port-mapping (common-lisp:error ":portmapping is required") :type
-    (common-lisp:or virtual-gateway-port-mapping common-lisp:null))
-   (tls common-lisp:nil :type
-    (common-lisp:or virtual-gateway-listener-tls common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-listener common-lisp:nil
+                       ((connection-pool :initarg :connection-pool :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-connection-pool
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-connection-pool
+                         :shape "VirtualGatewayConnectionPool" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (health-check :initarg :health-check :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-health-check-policy
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-health-check
+                         :shape "VirtualGatewayHealthCheckPolicy" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (port-mapping :initarg :port-mapping :initform
+                         (common-lisp:error ":portmapping is required") :type
+                         (common-lisp:or virtual-gateway-port-mapping
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-port-mapping
+                         :shape "VirtualGatewayPortMapping" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tls :initarg :tls :initform common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-listener-tls
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-listener-tls
+                         :shape "VirtualGatewayListenerTls" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-listener
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-listener
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-listener 'make-virtual-gateway-listener))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7199,16 +10021,40 @@
                           virtual-gateway-listener))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-listener-tls (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-listener-tls-"))
-   (certificate (common-lisp:error ":certificate is required") :type
-    (common-lisp:or virtual-gateway-listener-tls-certificate common-lisp:null))
-   (mode (common-lisp:error ":mode is required") :type
-    (common-lisp:or virtual-gateway-listener-tls-mode common-lisp:null))
-   (validation common-lisp:nil :type
-    (common-lisp:or virtual-gateway-listener-tls-validation-context
-                    common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-listener-tls common-lisp:nil
+                       ((certificate :initarg :certificate :initform
+                         (common-lisp:error ":certificate is required") :type
+                         (common-lisp:or
+                          virtual-gateway-listener-tls-certificate
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-certificate
+                         :shape "VirtualGatewayListenerTlsCertificate"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mode :initarg :mode :initform
+                         (common-lisp:error ":mode is required") :type
+                         (common-lisp:or virtual-gateway-listener-tls-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-mode :shape
+                         "VirtualGatewayListenerTlsMode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (validation :initarg :validation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-listener-tls-validation-context
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-validation
+                         :shape "VirtualGatewayListenerTlsValidationContext"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-listener-tls
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-listener-tls
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-listener-tls
                     'make-virtual-gateway-listener-tls))
@@ -7249,12 +10095,20 @@
                           virtual-gateway-listener-tls))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-listener-tls-acm-certificate (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-listener-tls-acm-certificate-"))
-   (certificate-arn (common-lisp:error ":certificatearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-listener-tls-acm-certificate
+                       common-lisp:nil
+                       ((certificate-arn :initarg :certificate-arn :initform
+                         (common-lisp:error ":certificatearn is required")
+                         :type (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-listener-tls-acm-certificate-certificate-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-listener-tls-acm-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-listener-tls-acm-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-listener-tls-acm-certificate
                     'make-virtual-gateway-listener-tls-acm-certificate))
@@ -7281,18 +10135,40 @@
                           virtual-gateway-listener-tls-acm-certificate))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-listener-tls-certificate (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-listener-tls-certificate-"))
-   (acm common-lisp:nil :type
-    (common-lisp:or virtual-gateway-listener-tls-acm-certificate
-                    common-lisp:null))
-   (file common-lisp:nil :type
-    (common-lisp:or virtual-gateway-listener-tls-file-certificate
-                    common-lisp:null))
-   (sds common-lisp:nil :type
-    (common-lisp:or virtual-gateway-listener-tls-sds-certificate
-                    common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-listener-tls-certificate common-lisp:nil
+                       ((acm :initarg :acm :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-listener-tls-acm-certificate
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-certificate-acm
+                         :shape "VirtualGatewayListenerTlsAcmCertificate"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-listener-tls-file-certificate
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-certificate-file
+                         :shape "VirtualGatewayListenerTlsFileCertificate"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sds :initarg :sds :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-listener-tls-sds-certificate
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-certificate-sds
+                         :shape "VirtualGatewayListenerTlsSdsCertificate"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-listener-tls-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-listener-tls-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-listener-tls-certificate
                     'make-virtual-gateway-listener-tls-certificate))
@@ -7333,14 +10209,28 @@
                           virtual-gateway-listener-tls-certificate))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-listener-tls-file-certificate (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-listener-tls-file-certificate-"))
-   (certificate-chain (common-lisp:error ":certificatechain is required") :type
-    (common-lisp:or file-path common-lisp:null))
-   (private-key (common-lisp:error ":privatekey is required") :type
-    (common-lisp:or file-path common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-listener-tls-file-certificate
+                       common-lisp:nil
+                       ((certificate-chain :initarg :certificate-chain
+                         :initform
+                         (common-lisp:error ":certificatechain is required")
+                         :type (common-lisp:or file-path common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-file-certificate-certificate-chain
+                         :shape "FilePath" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (private-key :initarg :private-key :initform
+                         (common-lisp:error ":privatekey is required") :type
+                         (common-lisp:or file-path common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-listener-tls-file-certificate-private-key
+                         :shape "FilePath" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-listener-tls-file-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-listener-tls-file-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-listener-tls-file-certificate
                     'make-virtual-gateway-listener-tls-file-certificate))
@@ -7375,12 +10265,22 @@
    common-lisp:nil))
 (common-lisp:deftype virtual-gateway-listener-tls-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-listener-tls-sds-certificate (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-listener-tls-sds-certificate-"))
-   (secret-name (common-lisp:error ":secretname is required") :type
-    (common-lisp:or virtual-gateway-sds-secret-name common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-listener-tls-sds-certificate
+                       common-lisp:nil
+                       ((secret-name :initarg :secret-name :initform
+                         (common-lisp:error ":secretname is required") :type
+                         (common-lisp:or virtual-gateway-sds-secret-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-sds-certificate-secret-name
+                         :shape "VirtualGatewaySdsSecretName" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-listener-tls-sds-certificate
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-listener-tls-sds-certificate
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-listener-tls-sds-certificate
                     'make-virtual-gateway-listener-tls-sds-certificate))
@@ -7407,15 +10307,34 @@
                           virtual-gateway-listener-tls-sds-certificate))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-listener-tls-validation-context (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-listener-tls-validation-context-"))
-   (subject-alternative-names common-lisp:nil :type
-    (common-lisp:or subject-alternative-names common-lisp:null))
-   (trust (common-lisp:error ":trust is required") :type
-    (common-lisp:or virtual-gateway-listener-tls-validation-context-trust
-                    common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-listener-tls-validation-context
+                       common-lisp:nil
+                       ((subject-alternative-names :initarg
+                         :subject-alternative-names :initform common-lisp:nil
+                         :type
+                         (common-lisp:or subject-alternative-names
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-validation-context-subject-alternative-names
+                         :shape "SubjectAlternativeNames" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (trust :initarg :trust :initform
+                         (common-lisp:error ":trust is required") :type
+                         (common-lisp:or
+                          virtual-gateway-listener-tls-validation-context-trust
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-validation-context-trust
+                         :shape
+                         "VirtualGatewayListenerTlsValidationContextTrust"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-listener-tls-validation-context
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-listener-tls-validation-context
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-listener-tls-validation-context
                     'make-virtual-gateway-listener-tls-validation-context))
@@ -7450,17 +10369,32 @@
                           virtual-gateway-listener-tls-validation-context))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-listener-tls-validation-context-trust
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-listener-tls-validation-context-trust-"))
-   (file common-lisp:nil :type
-    (common-lisp:or virtual-gateway-tls-validation-context-file-trust
-                    common-lisp:null))
-   (sds common-lisp:nil :type
-    (common-lisp:or virtual-gateway-tls-validation-context-sds-trust
-                    common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-listener-tls-validation-context-trust
+                       common-lisp:nil
+                       ((file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-tls-validation-context-file-trust
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-validation-context-trust-file
+                         :shape "VirtualGatewayTlsValidationContextFileTrust"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sds :initarg :sds :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-tls-validation-context-sds-trust
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-listener-tls-validation-context-trust-sds
+                         :shape "VirtualGatewayTlsValidationContextSdsTrust"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-listener-tls-validation-context-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-listener-tls-validation-context-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-listener-tls-validation-context-trust
                     'make-virtual-gateway-listener-tls-validation-context-trust))
@@ -7503,11 +10437,20 @@
                             virtual-gateway-listener))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-logging (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-logging-"))
-   (access-log common-lisp:nil :type
-    (common-lisp:or virtual-gateway-access-log common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-logging common-lisp:nil
+                       ((access-log :initarg :access-log :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-access-log
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-logging-access-log :shape
+                         "VirtualGatewayAccessLog" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-logging
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-logging
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-logging 'make-virtual-gateway-logging))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7533,13 +10476,27 @@
                           virtual-gateway-logging))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-port-mapping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-port-mapping-"))
-   (port (common-lisp:error ":port is required") :type
-    (common-lisp:or port-number common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or virtual-gateway-port-protocol common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-port-mapping common-lisp:nil
+                       ((port :initarg :port :initform
+                         (common-lisp:error ":port is required") :type
+                         (common-lisp:or port-number common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-port-mapping-port :shape
+                         "PortNumber" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (protocol :initarg :protocol :initform
+                         (common-lisp:error ":protocol is required") :type
+                         (common-lisp:or virtual-gateway-port-protocol
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-port-mapping-protocol
+                         :shape "VirtualGatewayPortProtocol" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-port-mapping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-port-mapping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-port-mapping
                     'make-virtual-gateway-port-mapping))
@@ -7574,25 +10531,62 @@
    common-lisp:nil))
 (common-lisp:deftype virtual-gateway-port-protocol () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-ref (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-ref-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner (common-lisp:error ":meshowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-owner (common-lisp:error ":resourceowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or long common-lisp:null))
-   (virtual-gateway-name (common-lisp:error ":virtualgatewayname is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-ref common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-ref-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-ref-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-ref-last-updated-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-ref-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-owner :initarg :mesh-owner :initform
+                         (common-lisp:error ":meshowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-ref-mesh-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-owner :initarg :resource-owner :initform
+                         (common-lisp:error ":resourceowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-ref-resource-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-virtual-gateway-ref-version :shape "Long"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-gateway-name :initarg :virtual-gateway-name
+                         :initform
+                         (common-lisp:error ":virtualgatewayname is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-ref-virtual-gateway-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-ref 'make-virtual-gateway-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7663,15 +10657,34 @@
    common-lisp:nil))
 (common-lisp:deftype virtual-gateway-sds-secret-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-spec (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-spec-"))
-   (backend-defaults common-lisp:nil :type
-    (common-lisp:or virtual-gateway-backend-defaults common-lisp:null))
-   (listeners (common-lisp:error ":listeners is required") :type
-    (common-lisp:or virtual-gateway-listeners common-lisp:null))
-   (logging common-lisp:nil :type
-    (common-lisp:or virtual-gateway-logging common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-spec common-lisp:nil
+                       ((backend-defaults :initarg :backend-defaults :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-gateway-backend-defaults
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-spec-backend-defaults
+                         :shape "VirtualGatewayBackendDefaults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (listeners :initarg :listeners :initform
+                         (common-lisp:error ":listeners is required") :type
+                         (common-lisp:or virtual-gateway-listeners
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-spec-listeners
+                         :shape "VirtualGatewayListeners" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (logging :initarg :logging :initform common-lisp:nil
+                         :type
+                         (common-lisp:or virtual-gateway-logging
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-spec-logging
+                         :shape "VirtualGatewayLogging" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-spec
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-spec
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-spec 'make-virtual-gateway-spec))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7705,11 +10718,19 @@
                         ((aws-sdk/generator/shape::input virtual-gateway-spec))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-status-"))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or virtual-gateway-status-code common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-status common-lisp:nil
+                       ((status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or virtual-gateway-status-code
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-gateway-status-status
+                         :shape "VirtualGatewayStatusCode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-gateway-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-status 'make-virtual-gateway-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -7736,14 +10757,32 @@
    common-lisp:nil))
 (common-lisp:deftype virtual-gateway-status-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-tls-validation-context (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-gateway-tls-validation-context-"))
-   (subject-alternative-names common-lisp:nil :type
-    (common-lisp:or subject-alternative-names common-lisp:null))
-   (trust (common-lisp:error ":trust is required") :type
-    (common-lisp:or virtual-gateway-tls-validation-context-trust
-                    common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-tls-validation-context common-lisp:nil
+                       ((subject-alternative-names :initarg
+                         :subject-alternative-names :initform common-lisp:nil
+                         :type
+                         (common-lisp:or subject-alternative-names
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-tls-validation-context-subject-alternative-names
+                         :shape "SubjectAlternativeNames" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (trust :initarg :trust :initform
+                         (common-lisp:error ":trust is required") :type
+                         (common-lisp:or
+                          virtual-gateway-tls-validation-context-trust
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-tls-validation-context-trust
+                         :shape "VirtualGatewayTlsValidationContextTrust"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-tls-validation-context
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-tls-validation-context
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-tls-validation-context
                     'make-virtual-gateway-tls-validation-context))
@@ -7778,15 +10817,27 @@
                           virtual-gateway-tls-validation-context))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-tls-validation-context-acm-trust
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-tls-validation-context-acm-trust-"))
-   (certificate-authority-arns
-    (common-lisp:error ":certificateauthorityarns is required") :type
-    (common-lisp:or virtual-gateway-certificate-authority-arns
-                    common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-tls-validation-context-acm-trust
+                       common-lisp:nil
+                       ((certificate-authority-arns :initarg
+                         :certificate-authority-arns :initform
+                         (common-lisp:error
+                          ":certificateauthorityarns is required")
+                         :type
+                         (common-lisp:or
+                          virtual-gateway-certificate-authority-arns
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-tls-validation-context-acm-trust-certificate-authority-arns
+                         :shape "VirtualGatewayCertificateAuthorityArns"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-tls-validation-context-acm-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-tls-validation-context-acm-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-tls-validation-context-acm-trust
                     'make-virtual-gateway-tls-validation-context-acm-trust))
@@ -7814,13 +10865,22 @@
                           virtual-gateway-tls-validation-context-acm-trust))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-tls-validation-context-file-trust
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-tls-validation-context-file-trust-"))
-   (certificate-chain (common-lisp:error ":certificatechain is required") :type
-    (common-lisp:or file-path common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-tls-validation-context-file-trust
+                       common-lisp:nil
+                       ((certificate-chain :initarg :certificate-chain
+                         :initform
+                         (common-lisp:error ":certificatechain is required")
+                         :type (common-lisp:or file-path common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-tls-validation-context-file-trust-certificate-chain
+                         :shape "FilePath" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-tls-validation-context-file-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-tls-validation-context-file-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-tls-validation-context-file-trust
                     'make-virtual-gateway-tls-validation-context-file-trust))
@@ -7847,13 +10907,22 @@
                           virtual-gateway-tls-validation-context-file-trust))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-tls-validation-context-sds-trust
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-tls-validation-context-sds-trust-"))
-   (secret-name (common-lisp:error ":secretname is required") :type
-    (common-lisp:or virtual-gateway-sds-secret-name common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-tls-validation-context-sds-trust
+                       common-lisp:nil
+                       ((secret-name :initarg :secret-name :initform
+                         (common-lisp:error ":secretname is required") :type
+                         (common-lisp:or virtual-gateway-sds-secret-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-tls-validation-context-sds-trust-secret-name
+                         :shape "VirtualGatewaySdsSecretName" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-tls-validation-context-sds-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-tls-validation-context-sds-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-tls-validation-context-sds-trust
                     'make-virtual-gateway-tls-validation-context-sds-trust))
@@ -7880,19 +10949,41 @@
                           virtual-gateway-tls-validation-context-sds-trust))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-gateway-tls-validation-context-trust (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-virtual-gateway-tls-validation-context-trust-"))
-   (acm common-lisp:nil :type
-    (common-lisp:or virtual-gateway-tls-validation-context-acm-trust
-                    common-lisp:null))
-   (file common-lisp:nil :type
-    (common-lisp:or virtual-gateway-tls-validation-context-file-trust
-                    common-lisp:null))
-   (sds common-lisp:nil :type
-    (common-lisp:or virtual-gateway-tls-validation-context-sds-trust
-                    common-lisp:null)))
+ (common-lisp:defclass virtual-gateway-tls-validation-context-trust
+                       common-lisp:nil
+                       ((acm :initarg :acm :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-tls-validation-context-acm-trust
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-tls-validation-context-trust-acm
+                         :shape "VirtualGatewayTlsValidationContextAcmTrust"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (file :initarg :file :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-tls-validation-context-file-trust
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-tls-validation-context-trust-file
+                         :shape "VirtualGatewayTlsValidationContextFileTrust"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sds :initarg :sds :initform common-lisp:nil :type
+                         (common-lisp:or
+                          virtual-gateway-tls-validation-context-sds-trust
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-gateway-tls-validation-context-trust-sds
+                         :shape "VirtualGatewayTlsValidationContextSdsTrust"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-gateway-tls-validation-context-trust
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-gateway-tls-validation-context-trust
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-gateway-tls-validation-context-trust
                     'make-virtual-gateway-tls-validation-context-trust))
@@ -7933,17 +11024,40 @@
                           virtual-gateway-tls-validation-context-trust))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-connection-pool-"))
-   (grpc common-lisp:nil :type
-    (common-lisp:or virtual-node-grpc-connection-pool common-lisp:null))
-   (http common-lisp:nil :type
-    (common-lisp:or virtual-node-http-connection-pool common-lisp:null))
-   (http2 common-lisp:nil :type
-    (common-lisp:or virtual-node-http2connection-pool common-lisp:null))
-   (tcp common-lisp:nil :type
-    (common-lisp:or virtual-node-tcp-connection-pool common-lisp:null)))
+ (common-lisp:defclass virtual-node-connection-pool common-lisp:nil
+                       ((grpc :initarg :grpc :initform common-lisp:nil :type
+                         (common-lisp:or virtual-node-grpc-connection-pool
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-connection-pool-grpc :shape
+                         "VirtualNodeGrpcConnectionPool" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (http :initarg :http :initform common-lisp:nil :type
+                         (common-lisp:or virtual-node-http-connection-pool
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-connection-pool-http :shape
+                         "VirtualNodeHttpConnectionPool" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (http2 :initarg :http2 :initform common-lisp:nil :type
+                         (common-lisp:or virtual-node-http2connection-pool
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-connection-pool-http2 :shape
+                         "VirtualNodeHttp2ConnectionPool" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tcp :initarg :tcp :initform common-lisp:nil :type
+                         (common-lisp:or virtual-node-tcp-connection-pool
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-connection-pool-tcp :shape
+                         "VirtualNodeTcpConnectionPool" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-node-connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-connection-pool
                     'make-virtual-node-connection-pool))
@@ -7991,19 +11105,44 @@
                           virtual-node-connection-pool))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-data-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or resource-metadata common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-node-spec common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or virtual-node-status common-lisp:null))
-   (virtual-node-name (common-lisp:error ":virtualnodename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass virtual-node-data common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-virtual-node-data-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or resource-metadata common-lisp:null)
+                         :accessor struct-shape-virtual-node-data-metadata
+                         :shape "ResourceMetadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-node-spec common-lisp:null)
+                         :accessor struct-shape-virtual-node-data-spec :shape
+                         "VirtualNodeSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or virtual-node-status common-lisp:null)
+                         :accessor struct-shape-virtual-node-data-status :shape
+                         "VirtualNodeStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-node-name :initarg :virtual-node-name
+                         :initform
+                         (common-lisp:error ":virtualnodename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-data-virtual-node-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-node-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-data 'make-virtual-node-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8051,11 +11190,20 @@
                         ((aws-sdk/generator/shape::input virtual-node-data))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-grpc-connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-grpc-connection-pool-"))
-   (max-requests (common-lisp:error ":maxrequests is required") :type
-    (common-lisp:or max-requests common-lisp:null)))
+ (common-lisp:defclass virtual-node-grpc-connection-pool common-lisp:nil
+                       ((max-requests :initarg :max-requests :initform
+                         (common-lisp:error ":maxrequests is required") :type
+                         (common-lisp:or max-requests common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-grpc-connection-pool-max-requests
+                         :shape "MaxRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-grpc-connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-node-grpc-connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-grpc-connection-pool
                     'make-virtual-node-grpc-connection-pool))
@@ -8082,11 +11230,20 @@
                           virtual-node-grpc-connection-pool))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-http2connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-http2connection-pool-"))
-   (max-requests (common-lisp:error ":maxrequests is required") :type
-    (common-lisp:or max-requests common-lisp:null)))
+ (common-lisp:defclass virtual-node-http2connection-pool common-lisp:nil
+                       ((max-requests :initarg :max-requests :initform
+                         (common-lisp:error ":maxrequests is required") :type
+                         (common-lisp:or max-requests common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-http2connection-pool-max-requests
+                         :shape "MaxRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-http2connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-node-http2connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-http2connection-pool
                     'make-virtual-node-http2connection-pool))
@@ -8113,13 +11270,28 @@
                           virtual-node-http2connection-pool))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-http-connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-http-connection-pool-"))
-   (max-connections (common-lisp:error ":maxconnections is required") :type
-    (common-lisp:or max-connections common-lisp:null))
-   (max-pending-requests common-lisp:nil :type
-    (common-lisp:or max-pending-requests common-lisp:null)))
+ (common-lisp:defclass virtual-node-http-connection-pool common-lisp:nil
+                       ((max-connections :initarg :max-connections :initform
+                         (common-lisp:error ":maxconnections is required")
+                         :type
+                         (common-lisp:or max-connections common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-http-connection-pool-max-connections
+                         :shape "MaxConnections" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-pending-requests :initarg :max-pending-requests
+                         :initform common-lisp:nil :type
+                         (common-lisp:or max-pending-requests common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-http-connection-pool-max-pending-requests
+                         :shape "MaxPendingRequests" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-http-connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-node-http-connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-http-connection-pool
                     'make-virtual-node-http-connection-pool))
@@ -8162,25 +11334,62 @@
                            (trivial-types:proper-list virtual-node-ref))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-ref (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-ref-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner (common-lisp:error ":meshowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-owner (common-lisp:error ":resourceowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or long common-lisp:null))
-   (virtual-node-name (common-lisp:error ":virtualnodename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass virtual-node-ref common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-virtual-node-ref-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-virtual-node-ref-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-virtual-node-ref-last-updated-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-virtual-node-ref-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-owner :initarg :mesh-owner :initform
+                         (common-lisp:error ":meshowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-virtual-node-ref-mesh-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-owner :initarg :resource-owner :initform
+                         (common-lisp:error ":resourceowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-virtual-node-ref-resource-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-virtual-node-ref-version :shape "Long"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-node-name :initarg :virtual-node-name
+                         :initform
+                         (common-lisp:error ":virtualnodename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-ref-virtual-node-name :shape
+                         "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-node-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-ref 'make-virtual-node-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8249,11 +11458,21 @@
                         ((aws-sdk/generator/shape::input virtual-node-ref))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-service-provider (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-service-provider-"))
-   (virtual-node-name (common-lisp:error ":virtualnodename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass virtual-node-service-provider common-lisp:nil
+                       ((virtual-node-name :initarg :virtual-node-name
+                         :initform
+                         (common-lisp:error ":virtualnodename is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-service-provider-virtual-node-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-service-provider
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-node-service-provider
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-service-provider
                     'make-virtual-node-service-provider))
@@ -8280,17 +11499,42 @@
                           virtual-node-service-provider))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-spec (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-spec-"))
-   (backend-defaults common-lisp:nil :type
-    (common-lisp:or backend-defaults common-lisp:null))
-   (backends common-lisp:nil :type (common-lisp:or backends common-lisp:null))
-   (listeners common-lisp:nil :type
-    (common-lisp:or listeners common-lisp:null))
-   (logging common-lisp:nil :type (common-lisp:or logging common-lisp:null))
-   (service-discovery common-lisp:nil :type
-    (common-lisp:or service-discovery common-lisp:null)))
+ (common-lisp:defclass virtual-node-spec common-lisp:nil
+                       ((backend-defaults :initarg :backend-defaults :initform
+                         common-lisp:nil :type
+                         (common-lisp:or backend-defaults common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-spec-backend-defaults :shape
+                         "BackendDefaults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (backends :initarg :backends :initform common-lisp:nil
+                         :type (common-lisp:or backends common-lisp:null)
+                         :accessor struct-shape-virtual-node-spec-backends
+                         :shape "Backends" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (listeners :initarg :listeners :initform
+                         common-lisp:nil :type
+                         (common-lisp:or listeners common-lisp:null) :accessor
+                         struct-shape-virtual-node-spec-listeners :shape
+                         "Listeners" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (logging :initarg :logging :initform common-lisp:nil
+                         :type (common-lisp:or logging common-lisp:null)
+                         :accessor struct-shape-virtual-node-spec-logging
+                         :shape "Logging" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-discovery :initarg :service-discovery
+                         :initform common-lisp:nil :type
+                         (common-lisp:or service-discovery common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-spec-service-discovery
+                         :shape "ServiceDiscovery" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-spec
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-node-spec
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-spec 'make-virtual-node-spec))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8338,11 +11582,19 @@
                         ((aws-sdk/generator/shape::input virtual-node-spec))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-status-"))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or virtual-node-status-code common-lisp:null)))
+ (common-lisp:defclass virtual-node-status common-lisp:nil
+                       ((status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or virtual-node-status-code
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-node-status-status
+                         :shape "VirtualNodeStatusCode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-node-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-status 'make-virtual-node-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8363,11 +11615,21 @@
    common-lisp:nil))
 (common-lisp:deftype virtual-node-status-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-node-tcp-connection-pool (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-node-tcp-connection-pool-"))
-   (max-connections (common-lisp:error ":maxconnections is required") :type
-    (common-lisp:or max-connections common-lisp:null)))
+ (common-lisp:defclass virtual-node-tcp-connection-pool common-lisp:nil
+                       ((max-connections :initarg :max-connections :initform
+                         (common-lisp:error ":maxconnections is required")
+                         :type
+                         (common-lisp:or max-connections common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-node-tcp-connection-pool-max-connections
+                         :shape "MaxConnections" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-node-tcp-connection-pool
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-node-tcp-connection-pool
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-node-tcp-connection-pool
                     'make-virtual-node-tcp-connection-pool))
@@ -8394,19 +11656,45 @@
                           virtual-node-tcp-connection-pool))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-router-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-router-data-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or resource-metadata common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-router-spec common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or virtual-router-status common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass virtual-router-data common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-virtual-router-data-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or resource-metadata common-lisp:null)
+                         :accessor struct-shape-virtual-router-data-metadata
+                         :shape "ResourceMetadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-router-spec common-lisp:null)
+                         :accessor struct-shape-virtual-router-data-spec :shape
+                         "VirtualRouterSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or virtual-router-status
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-router-data-status
+                         :shape "VirtualRouterStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-router-data-virtual-router-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-router-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-router-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-router-data 'make-virtual-router-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8462,11 +11750,19 @@
                            (trivial-types:proper-list virtual-router-ref))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-router-listener (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-router-listener-"))
-   (port-mapping (common-lisp:error ":portmapping is required") :type
-    (common-lisp:or port-mapping common-lisp:null)))
+ (common-lisp:defclass virtual-router-listener common-lisp:nil
+                       ((port-mapping :initarg :port-mapping :initform
+                         (common-lisp:error ":portmapping is required") :type
+                         (common-lisp:or port-mapping common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-router-listener-port-mapping
+                         :shape "PortMapping" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-router-listener
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-router-listener
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-router-listener 'make-virtual-router-listener))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8500,25 +11796,62 @@
                            (trivial-types:proper-list virtual-router-listener))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-router-ref (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-router-ref-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner (common-lisp:error ":meshowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-owner (common-lisp:error ":resourceowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or long common-lisp:null))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass virtual-router-ref common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-virtual-router-ref-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-virtual-router-ref-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-virtual-router-ref-last-updated-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-virtual-router-ref-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-owner :initarg :mesh-owner :initform
+                         (common-lisp:error ":meshowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-virtual-router-ref-mesh-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-owner :initarg :resource-owner :initform
+                         (common-lisp:error ":resourceowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-virtual-router-ref-resource-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-virtual-router-ref-version :shape "Long"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-router-ref-virtual-router-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-router-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-router-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-router-ref 'make-virtual-router-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8587,11 +11920,21 @@
                         ((aws-sdk/generator/shape::input virtual-router-ref))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-router-service-provider (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-router-service-provider-"))
-   (virtual-router-name (common-lisp:error ":virtualroutername is required")
-    :type (common-lisp:or resource-name common-lisp:null)))
+ (common-lisp:defclass virtual-router-service-provider common-lisp:nil
+                       ((virtual-router-name :initarg :virtual-router-name
+                         :initform
+                         (common-lisp:error ":virtualroutername is required")
+                         :type (common-lisp:or resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-router-service-provider-virtual-router-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-router-service-provider
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'virtual-router-service-provider
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-router-service-provider
                     'make-virtual-router-service-provider))
@@ -8618,11 +11961,19 @@
                           virtual-router-service-provider))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-router-spec (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-router-spec-"))
-   (listeners common-lisp:nil :type
-    (common-lisp:or virtual-router-listeners common-lisp:null)))
+ (common-lisp:defclass virtual-router-spec common-lisp:nil
+                       ((listeners :initarg :listeners :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-router-listeners
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-router-spec-listeners
+                         :shape "VirtualRouterListeners" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-router-spec
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-router-spec
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-router-spec 'make-virtual-router-spec))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8642,11 +11993,19 @@
                         ((aws-sdk/generator/shape::input virtual-router-spec))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-router-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-router-status-"))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or virtual-router-status-code common-lisp:null)))
+ (common-lisp:defclass virtual-router-status common-lisp:nil
+                       ((status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or virtual-router-status-code
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-router-status-status
+                         :shape "VirtualRouterStatusCode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-router-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-router-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-router-status 'make-virtual-router-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8673,13 +12032,27 @@
    common-lisp:nil))
 (common-lisp:deftype virtual-router-status-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-service-backend (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-service-backend-"))
-   (client-policy common-lisp:nil :type
-    (common-lisp:or client-policy common-lisp:null))
-   (virtual-service-name (common-lisp:error ":virtualservicename is required")
-    :type (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass virtual-service-backend common-lisp:nil
+                       ((client-policy :initarg :client-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-policy common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-service-backend-client-policy
+                         :shape "ClientPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-service-name :initarg :virtual-service-name
+                         :initform
+                         (common-lisp:error ":virtualservicename is required")
+                         :type (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-service-backend-virtual-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-service-backend
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-service-backend
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-service-backend 'make-virtual-service-backend))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8713,19 +12086,45 @@
                           virtual-service-backend))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-service-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-service-data-"))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or resource-metadata common-lisp:null))
-   (spec (common-lisp:error ":spec is required") :type
-    (common-lisp:or virtual-service-spec common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or virtual-service-status common-lisp:null))
-   (virtual-service-name (common-lisp:error ":virtualservicename is required")
-    :type (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass virtual-service-data common-lisp:nil
+                       ((mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-virtual-service-data-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or resource-metadata common-lisp:null)
+                         :accessor struct-shape-virtual-service-data-metadata
+                         :shape "ResourceMetadata" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (spec :initarg :spec :initform
+                         (common-lisp:error ":spec is required") :type
+                         (common-lisp:or virtual-service-spec common-lisp:null)
+                         :accessor struct-shape-virtual-service-data-spec
+                         :shape "VirtualServiceSpec" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or virtual-service-status
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-service-data-status
+                         :shape "VirtualServiceStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (virtual-service-name :initarg :virtual-service-name
+                         :initform
+                         (common-lisp:error ":virtualservicename is required")
+                         :type (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-service-data-virtual-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-service-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-service-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-service-data 'make-virtual-service-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8782,13 +12181,28 @@
                            (trivial-types:proper-list virtual-service-ref))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-service-provider (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-service-provider-"))
-   (virtual-node common-lisp:nil :type
-    (common-lisp:or virtual-node-service-provider common-lisp:null))
-   (virtual-router common-lisp:nil :type
-    (common-lisp:or virtual-router-service-provider common-lisp:null)))
+ (common-lisp:defclass virtual-service-provider common-lisp:nil
+                       ((virtual-node :initarg :virtual-node :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-node-service-provider
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-service-provider-virtual-node
+                         :shape "VirtualNodeServiceProvider" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (virtual-router :initarg :virtual-router :initform
+                         common-lisp:nil :type
+                         (common-lisp:or virtual-router-service-provider
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-service-provider-virtual-router
+                         :shape "VirtualRouterServiceProvider" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-service-provider
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-service-provider
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-service-provider 'make-virtual-service-provider))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8821,25 +12235,62 @@
                           virtual-service-provider))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-service-ref (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-service-ref-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (mesh-name (common-lisp:error ":meshname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (mesh-owner (common-lisp:error ":meshowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (resource-owner (common-lisp:error ":resourceowner is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or long common-lisp:null))
-   (virtual-service-name (common-lisp:error ":virtualservicename is required")
-    :type (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass virtual-service-ref common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-virtual-service-ref-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-virtual-service-ref-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-virtual-service-ref-last-updated-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-name :initarg :mesh-name :initform
+                         (common-lisp:error ":meshname is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-virtual-service-ref-mesh-name
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (mesh-owner :initarg :mesh-owner :initform
+                         (common-lisp:error ":meshowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-virtual-service-ref-mesh-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-owner :initarg :resource-owner :initform
+                         (common-lisp:error ":resourceowner is required") :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-virtual-service-ref-resource-owner :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version :initarg :version :initform
+                         (common-lisp:error ":version is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-virtual-service-ref-version :shape "Long"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (virtual-service-name :initarg :virtual-service-name
+                         :initform
+                         (common-lisp:error ":virtualservicename is required")
+                         :type (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-virtual-service-ref-virtual-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-service-ref
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-service-ref
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-service-ref 'make-virtual-service-ref))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8909,11 +12360,19 @@
                         ((aws-sdk/generator/shape::input virtual-service-ref))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-service-spec (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-service-spec-"))
-   (provider common-lisp:nil :type
-    (common-lisp:or virtual-service-provider common-lisp:null)))
+ (common-lisp:defclass virtual-service-spec common-lisp:nil
+                       ((provider :initarg :provider :initform common-lisp:nil
+                         :type
+                         (common-lisp:or virtual-service-provider
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-service-spec-provider
+                         :shape "VirtualServiceProvider" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-service-spec
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-service-spec
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-service-spec 'make-virtual-service-spec))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8933,11 +12392,19 @@
                         ((aws-sdk/generator/shape::input virtual-service-spec))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (virtual-service-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-virtual-service-status-"))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or virtual-service-status-code common-lisp:null)))
+ (common-lisp:defclass virtual-service-status common-lisp:nil
+                       ((status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or virtual-service-status-code
+                                         common-lisp:null)
+                         :accessor struct-shape-virtual-service-status-status
+                         :shape "VirtualServiceStatusCode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-virtual-service-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'virtual-service-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'virtual-service-status 'make-virtual-service-status))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -8964,14 +12431,29 @@
    common-lisp:nil))
 (common-lisp:deftype virtual-service-status-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (weighted-target (:copier common-lisp:nil)
-      (:conc-name "struct-shape-weighted-target-"))
-   (port common-lisp:nil :type (common-lisp:or listener-port common-lisp:null))
-   (virtual-node (common-lisp:error ":virtualnode is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (weight (common-lisp:error ":weight is required") :type
-    (common-lisp:or percent-int common-lisp:null)))
+ (common-lisp:defclass weighted-target common-lisp:nil
+                       ((port :initarg :port :initform common-lisp:nil :type
+                         (common-lisp:or listener-port common-lisp:null)
+                         :accessor struct-shape-weighted-target-port :shape
+                         "ListenerPort" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (virtual-node :initarg :virtual-node :initform
+                         (common-lisp:error ":virtualnode is required") :type
+                         (common-lisp:or resource-name common-lisp:null)
+                         :accessor struct-shape-weighted-target-virtual-node
+                         :shape "ResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (weight :initarg :weight :initform
+                         (common-lisp:error ":weight is required") :type
+                         (common-lisp:or percent-int common-lisp:null)
+                         :accessor struct-shape-weighted-target-weight :shape
+                         "PercentInt" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-weighted-target
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'weighted-target
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'weighted-target 'make-weighted-target))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input weighted-target))

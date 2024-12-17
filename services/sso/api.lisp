@@ -35,15 +35,30 @@
 (common-lisp:deftype access-token-type () 'common-lisp:string)
 (common-lisp:deftype account-id-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-info-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id-type common-lisp:null))
-   (account-name common-lisp:nil :type
-    (common-lisp:or account-name-type common-lisp:null))
-   (email-address common-lisp:nil :type
-    (common-lisp:or email-address-type common-lisp:null)))
+ (common-lisp:defclass account-info common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id-type common-lisp:null)
+                         :accessor struct-shape-account-info-account-id :shape
+                         "AccountIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-name :initarg :account-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-name-type common-lisp:null)
+                         :accessor struct-shape-account-info-account-name
+                         :shape "AccountNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (email-address :initarg :email-address :initform
+                         common-lisp:nil :type
+                         (common-lisp:or email-address-type common-lisp:null)
+                         :accessor struct-shape-account-info-email-address
+                         :shape "EmailAddressType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-account-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'account-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'account-info 'make-account-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input account-info))
@@ -88,15 +103,33 @@
 (common-lisp:deftype error-description () 'common-lisp:string)
 (common-lisp:deftype expiration-timestamp-type () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-role-credentials-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-role-credentials-request-"))
-   (role-name (common-lisp:error ":rolename is required") :type
-    (common-lisp:or role-name-type common-lisp:null))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or account-id-type common-lisp:null))
-   (access-token (common-lisp:error ":accesstoken is required") :type
-    (common-lisp:or access-token-type common-lisp:null)))
+ (common-lisp:defclass get-role-credentials-request common-lisp:nil
+                       ((role-name :initarg :role-name :initform
+                         (common-lisp:error ":rolename is required") :type
+                         (common-lisp:or role-name-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-role-credentials-request-role-name
+                         :shape "RoleNameType" :location "querystring"
+                         :location-name "role_name")
+                        (account-id :initarg :account-id :initform
+                         (common-lisp:error ":accountid is required") :type
+                         (common-lisp:or account-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-role-credentials-request-account-id
+                         :shape "AccountIdType" :location "querystring"
+                         :location-name "account_id")
+                        (access-token :initarg :access-token :initform
+                         (common-lisp:error ":accesstoken is required") :type
+                         (common-lisp:or access-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-role-credentials-request-access-token
+                         :shape "AccessTokenType" :location "header"
+                         :location-name "x-amz-sso_bearer_token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-role-credentials-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-role-credentials-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-role-credentials-request
                     'make-get-role-credentials-request))
@@ -121,11 +154,20 @@
                           get-role-credentials-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-role-credentials-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-role-credentials-response-"))
-   (role-credentials common-lisp:nil :type
-    (common-lisp:or role-credentials common-lisp:null)))
+ (common-lisp:defclass get-role-credentials-response common-lisp:nil
+                       ((role-credentials :initarg :role-credentials :initform
+                         common-lisp:nil :type
+                         (common-lisp:or role-credentials common-lisp:null)
+                         :accessor
+                         struct-shape-get-role-credentials-response-role-credentials
+                         :shape "RoleCredentials" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-role-credentials-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-role-credentials-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-role-credentials-response
                     'make-get-role-credentials-response))
@@ -160,17 +202,40 @@
   (common-lisp:list 'invalid-request-exception
                     'invalid-request-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-account-roles-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-account-roles-request-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-result-type common-lisp:null))
-   (access-token (common-lisp:error ":accesstoken is required") :type
-    (common-lisp:or access-token-type common-lisp:null))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or account-id-type common-lisp:null)))
+ (common-lisp:defclass list-account-roles-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-roles-request-next-token
+                         :shape "NextTokenType" :location "querystring"
+                         :location-name "next_token")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-result-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-roles-request-max-results
+                         :shape "MaxResultType" :location "querystring"
+                         :location-name "max_result")
+                        (access-token :initarg :access-token :initform
+                         (common-lisp:error ":accesstoken is required") :type
+                         (common-lisp:or access-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-roles-request-access-token
+                         :shape "AccessTokenType" :location "header"
+                         :location-name "x-amz-sso_bearer_token")
+                        (account-id :initarg :account-id :initform
+                         (common-lisp:error ":accountid is required") :type
+                         (common-lisp:or account-id-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-roles-request-account-id
+                         :shape "AccountIdType" :location "querystring"
+                         :location-name "account_id"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-account-roles-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-account-roles-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-account-roles-request
                     'make-list-account-roles-request))
@@ -195,13 +260,26 @@
                           list-account-roles-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-account-roles-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-account-roles-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null))
-   (role-list common-lisp:nil :type
-    (common-lisp:or role-list-type common-lisp:null)))
+ (common-lisp:defclass list-account-roles-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-roles-response-next-token
+                         :shape "NextTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-list :initarg :role-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or role-list-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-roles-response-role-list
+                         :shape "RoleListType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-account-roles-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-account-roles-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-account-roles-response
                     'make-list-account-roles-response))
@@ -235,15 +313,33 @@
                           list-account-roles-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-accounts-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-accounts-request-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-result-type common-lisp:null))
-   (access-token (common-lisp:error ":accesstoken is required") :type
-    (common-lisp:or access-token-type common-lisp:null)))
+ (common-lisp:defclass list-accounts-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-accounts-request-next-token :shape
+                         "NextTokenType" :location "querystring" :location-name
+                         "next_token")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-result-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-accounts-request-max-results :shape
+                         "MaxResultType" :location "querystring" :location-name
+                         "max_result")
+                        (access-token :initarg :access-token :initform
+                         (common-lisp:error ":accesstoken is required") :type
+                         (common-lisp:or access-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-accounts-request-access-token :shape
+                         "AccessTokenType" :location "header" :location-name
+                         "x-amz-sso_bearer_token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-accounts-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-accounts-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-accounts-request 'make-list-accounts-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -267,13 +363,26 @@
                           list-accounts-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-accounts-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-accounts-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-type common-lisp:null))
-   (account-list common-lisp:nil :type
-    (common-lisp:or account-list-type common-lisp:null)))
+ (common-lisp:defclass list-accounts-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-accounts-response-next-token :shape
+                         "NextTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-list :initarg :account-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-list-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-accounts-response-account-list
+                         :shape "AccountListType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-accounts-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-accounts-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-accounts-response 'make-list-accounts-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -306,11 +415,18 @@
                           list-accounts-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (logout-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-logout-request-"))
-   (access-token (common-lisp:error ":accesstoken is required") :type
-    (common-lisp:or access-token-type common-lisp:null)))
+ (common-lisp:defclass logout-request common-lisp:nil
+                       ((access-token :initarg :access-token :initform
+                         (common-lisp:error ":accesstoken is required") :type
+                         (common-lisp:or access-token-type common-lisp:null)
+                         :accessor struct-shape-logout-request-access-token
+                         :shape "AccessTokenType" :location "header"
+                         :location-name "x-amz-sso_bearer_token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-logout-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'logout-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'logout-request 'make-logout-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input logout-request))
@@ -337,17 +453,39 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (role-credentials (:copier common-lisp:nil)
-      (:conc-name "struct-shape-role-credentials-"))
-   (access-key-id common-lisp:nil :type
-    (common-lisp:or access-key-type common-lisp:null))
-   (secret-access-key common-lisp:nil :type
-    (common-lisp:or secret-access-key-type common-lisp:null))
-   (session-token common-lisp:nil :type
-    (common-lisp:or session-token-type common-lisp:null))
-   (expiration common-lisp:nil :type
-    (common-lisp:or expiration-timestamp-type common-lisp:null)))
+ (common-lisp:defclass role-credentials common-lisp:nil
+                       ((access-key-id :initarg :access-key-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or access-key-type common-lisp:null)
+                         :accessor struct-shape-role-credentials-access-key-id
+                         :shape "AccessKeyType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-access-key :initarg :secret-access-key
+                         :initform common-lisp:nil :type
+                         (common-lisp:or secret-access-key-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-role-credentials-secret-access-key :shape
+                         "SecretAccessKeyType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (session-token :initarg :session-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or session-token-type common-lisp:null)
+                         :accessor struct-shape-role-credentials-session-token
+                         :shape "SessionTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiration :initarg :expiration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or expiration-timestamp-type
+                                         common-lisp:null)
+                         :accessor struct-shape-role-credentials-expiration
+                         :shape "ExpirationTimestampType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-role-credentials
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'role-credentials
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'role-credentials 'make-role-credentials))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -388,13 +526,24 @@
                         ((aws-sdk/generator/shape::input role-credentials))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (role-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-role-info-"))
-   (role-name common-lisp:nil :type
-    (common-lisp:or role-name-type common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id-type common-lisp:null)))
+ (common-lisp:defclass role-info common-lisp:nil
+                       ((role-name :initarg :role-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or role-name-type common-lisp:null)
+                         :accessor struct-shape-role-info-role-name :shape
+                         "RoleNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id-type common-lisp:null)
+                         :accessor struct-shape-role-info-account-id :shape
+                         "AccountIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-role-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'role-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'role-info 'make-role-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input role-info))

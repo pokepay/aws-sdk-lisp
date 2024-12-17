@@ -60,24 +60,69 @@
  (common-lisp:export
   (common-lisp:list 'configuration-exception 'configuration-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-notification-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-notification-rule-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or notification-rule-name common-lisp:null))
-   (event-type-ids (common-lisp:error ":event-type-ids is required") :type
-    (common-lisp:or event-type-ids common-lisp:null))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or notification-rule-resource common-lisp:null))
-   (targets (common-lisp:error ":targets is required") :type
-    (common-lisp:or targets common-lisp:null))
-   (detail-type (common-lisp:error ":detail-type is required") :type
-    (common-lisp:or detail-type common-lisp:null))
-   (client-request-token common-lisp:nil :type
-    (common-lisp:or client-request-token common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or notification-rule-status common-lisp:null)))
+ (common-lisp:defclass create-notification-rule-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or notification-rule-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-rule-request-name
+                         :shape "NotificationRuleName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (event-type-ids :initarg :event-type-ids :initform
+                         (common-lisp:error ":event-type-ids is required")
+                         :type (common-lisp:or event-type-ids common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-rule-request-event-type-ids
+                         :shape "EventTypeIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform
+                         (common-lisp:error ":resource is required") :type
+                         (common-lisp:or notification-rule-resource
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-rule-request-resource
+                         :shape "NotificationRuleResource" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (targets :initarg :targets :initform
+                         (common-lisp:error ":targets is required") :type
+                         (common-lisp:or targets common-lisp:null) :accessor
+                         struct-shape-create-notification-rule-request-targets
+                         :shape "Targets" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (detail-type :initarg :detail-type :initform
+                         (common-lisp:error ":detail-type is required") :type
+                         (common-lisp:or detail-type common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-rule-request-detail-type
+                         :shape "DetailType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-request-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-rule-request-client-request-token
+                         :shape "ClientRequestToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-notification-rule-request-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or notification-rule-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-rule-request-status
+                         :shape "NotificationRuleStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-notification-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-notification-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-notification-rule-request
                     'make-create-notification-rule-request))
@@ -154,11 +199,20 @@
                           create-notification-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-notification-rule-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-notification-rule-result-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or notification-rule-arn common-lisp:null)))
+ (common-lisp:defclass create-notification-rule-result common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-notification-rule-result-arn
+                         :shape "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-notification-rule-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-notification-rule-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-notification-rule-result
                     'make-create-notification-rule-result))
@@ -186,11 +240,21 @@
    common-lisp:nil))
 (common-lisp:deftype created-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-notification-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-notification-rule-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null)))
+ (common-lisp:defclass delete-notification-rule-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-notification-rule-request-arn
+                         :shape "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-notification-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-notification-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-notification-rule-request
                     'make-delete-notification-rule-request))
@@ -217,11 +281,20 @@
                           delete-notification-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-notification-rule-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-notification-rule-result-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or notification-rule-arn common-lisp:null)))
+ (common-lisp:defclass delete-notification-rule-result common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-notification-rule-result-arn
+                         :shape "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-notification-rule-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-notification-rule-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-notification-rule-result
                     'make-delete-notification-rule-result))
@@ -248,13 +321,27 @@
                           delete-notification-rule-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-target-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-target-request-"))
-   (target-address (common-lisp:error ":target-address is required") :type
-    (common-lisp:or target-address common-lisp:null))
-   (force-unsubscribe-all common-lisp:nil :type
-    (common-lisp:or force-unsubscribe-all common-lisp:null)))
+ (common-lisp:defclass delete-target-request common-lisp:nil
+                       ((target-address :initarg :target-address :initform
+                         (common-lisp:error ":target-address is required")
+                         :type (common-lisp:or target-address common-lisp:null)
+                         :accessor
+                         struct-shape-delete-target-request-target-address
+                         :shape "TargetAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (force-unsubscribe-all :initarg :force-unsubscribe-all
+                         :initform common-lisp:nil :type
+                         (common-lisp:or force-unsubscribe-all
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-target-request-force-unsubscribe-all
+                         :shape "ForceUnsubscribeAll" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-target-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-target-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-target-request 'make-delete-target-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -288,9 +375,12 @@
                           delete-target-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-target-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-target-result-")))
+ (common-lisp:defclass delete-target-result common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-target-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-target-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-target-result 'make-delete-target-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -303,11 +393,21 @@
                         ((aws-sdk/generator/shape::input delete-target-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-notification-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-notification-rule-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null)))
+ (common-lisp:defclass describe-notification-rule-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-request-arn
+                         :shape "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-notification-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-notification-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-notification-rule-request
                     'make-describe-notification-rule-request))
@@ -334,30 +434,93 @@
                           describe-notification-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-notification-rule-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-notification-rule-result-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or notification-rule-name common-lisp:null))
-   (event-types common-lisp:nil :type
-    (common-lisp:or event-type-batch common-lisp:null))
-   (resource common-lisp:nil :type
-    (common-lisp:or notification-rule-resource common-lisp:null))
-   (targets common-lisp:nil :type
-    (common-lisp:or targets-batch common-lisp:null))
-   (detail-type common-lisp:nil :type
-    (common-lisp:or detail-type common-lisp:null))
-   (created-by common-lisp:nil :type
-    (common-lisp:or notification-rule-created-by common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or notification-rule-status common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or created-timestamp common-lisp:null))
-   (last-modified-timestamp common-lisp:nil :type
-    (common-lisp:or last-modified-timestamp common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass describe-notification-rule-result common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-arn
+                         :shape "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or notification-rule-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-name
+                         :shape "NotificationRuleName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (event-types :initarg :event-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-type-batch common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-event-types
+                         :shape "EventTypeBatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource :initarg :resource :initform common-lisp:nil
+                         :type
+                         (common-lisp:or notification-rule-resource
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-resource
+                         :shape "NotificationRuleResource" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type (common-lisp:or targets-batch common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-targets
+                         :shape "TargetsBatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (detail-type :initarg :detail-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or detail-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-detail-type
+                         :shape "DetailType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-by :initarg :created-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or notification-rule-created-by
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-created-by
+                         :shape "NotificationRuleCreatedBy" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or notification-rule-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-status
+                         :shape "NotificationRuleStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or created-timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-created-timestamp
+                         :shape "CreatedTimestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-timestamp :initarg
+                         :last-modified-timestamp :initform common-lisp:nil
+                         :type
+                         (common-lisp:or last-modified-timestamp
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-notification-rule-result-last-modified-timestamp
+                         :shape "LastModifiedTimestamp" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-describe-notification-rule-result-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-notification-rule-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-notification-rule-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-notification-rule-result
                     'make-describe-notification-rule-result))
@@ -474,17 +637,39 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype event-type-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (event-type-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-event-type-summary-"))
-   (event-type-id common-lisp:nil :type
-    (common-lisp:or event-type-id common-lisp:null))
-   (service-name common-lisp:nil :type
-    (common-lisp:or service-name common-lisp:null))
-   (event-type-name common-lisp:nil :type
-    (common-lisp:or event-type-name common-lisp:null))
-   (resource-type common-lisp:nil :type
-    (common-lisp:or resource-type common-lisp:null)))
+ (common-lisp:defclass event-type-summary common-lisp:nil
+                       ((event-type-id :initarg :event-type-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-type-id common-lisp:null)
+                         :accessor
+                         struct-shape-event-type-summary-event-type-id :shape
+                         "EventTypeId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (service-name :initarg :service-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-name common-lisp:null)
+                         :accessor struct-shape-event-type-summary-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (event-type-name :initarg :event-type-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-type-name common-lisp:null)
+                         :accessor
+                         struct-shape-event-type-summary-event-type-name :shape
+                         "EventTypeName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-type :initarg :resource-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-type common-lisp:null)
+                         :accessor
+                         struct-shape-event-type-summary-resource-type :shape
+                         "ResourceType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-event-type-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'event-type-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'event-type-summary 'make-event-type-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -543,13 +728,26 @@
   (common-lisp:list 'limit-exceeded-exception
                     'limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-event-types-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-event-types-filter-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or list-event-types-filter-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or list-event-types-filter-value common-lisp:null)))
+ (common-lisp:defclass list-event-types-filter common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or list-event-types-filter-name
+                                         common-lisp:null)
+                         :accessor struct-shape-list-event-types-filter-name
+                         :shape "ListEventTypesFilterName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or list-event-types-filter-value
+                                         common-lisp:null)
+                         :accessor struct-shape-list-event-types-filter-value
+                         :shape "ListEventTypesFilterValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-event-types-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-event-types-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-event-types-filter 'make-list-event-types-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -592,15 +790,33 @@
                            (trivial-types:proper-list list-event-types-filter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-event-types-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-event-types-request-"))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-event-types-filters common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-event-types-request common-lisp:nil
+                       ((filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-event-types-filters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-event-types-request-filters :shape
+                         "ListEventTypesFilters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-event-types-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-event-types-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-event-types-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-event-types-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-event-types-request 'make-list-event-types-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -640,13 +856,25 @@
                           list-event-types-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-event-types-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-event-types-result-"))
-   (event-types common-lisp:nil :type
-    (common-lisp:or event-type-batch common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-event-types-result common-lisp:nil
+                       ((event-types :initarg :event-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-type-batch common-lisp:null)
+                         :accessor
+                         struct-shape-list-event-types-result-event-types
+                         :shape "EventTypeBatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-event-types-result-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-event-types-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-event-types-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-event-types-result 'make-list-event-types-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -679,13 +907,29 @@
                           list-event-types-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-notification-rules-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-notification-rules-filter-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or list-notification-rules-filter-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or list-notification-rules-filter-value common-lisp:null)))
+ (common-lisp:defclass list-notification-rules-filter common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or list-notification-rules-filter-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-notification-rules-filter-name
+                         :shape "ListNotificationRulesFilterName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or list-notification-rules-filter-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-notification-rules-filter-value
+                         :shape "ListNotificationRulesFilterValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-notification-rules-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-notification-rules-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-notification-rules-filter
                     'make-list-notification-rules-filter))
@@ -731,15 +975,34 @@
                             list-notification-rules-filter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-notification-rules-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-notification-rules-request-"))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-notification-rules-filters common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-notification-rules-request common-lisp:nil
+                       ((filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-notification-rules-filters
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-notification-rules-request-filters
+                         :shape "ListNotificationRulesFilters" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-notification-rules-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-notification-rules-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-notification-rules-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-notification-rules-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-notification-rules-request
                     'make-list-notification-rules-request))
@@ -780,13 +1043,27 @@
                           list-notification-rules-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-notification-rules-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-notification-rules-result-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (notification-rules common-lisp:nil :type
-    (common-lisp:or notification-rule-batch common-lisp:null)))
+ (common-lisp:defclass list-notification-rules-result common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-notification-rules-result-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (notification-rules :initarg :notification-rules
+                         :initform common-lisp:nil :type
+                         (common-lisp:or notification-rule-batch
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-notification-rules-result-notification-rules
+                         :shape "NotificationRuleBatch" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-notification-rules-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-notification-rules-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-notification-rules-result
                     'make-list-notification-rules-result))
@@ -820,11 +1097,21 @@
                           list-notification-rules-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-arn :shape
+                         "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -851,10 +1138,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-result-"))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-result common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-result-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-result
                     'make-list-tags-for-resource-result))
@@ -881,13 +1176,26 @@
                           list-tags-for-resource-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-targets-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-targets-filter-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or list-targets-filter-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or list-targets-filter-value common-lisp:null)))
+ (common-lisp:defclass list-targets-filter common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or list-targets-filter-name
+                                         common-lisp:null)
+                         :accessor struct-shape-list-targets-filter-name :shape
+                         "ListTargetsFilterName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or list-targets-filter-value
+                                         common-lisp:null)
+                         :accessor struct-shape-list-targets-filter-value
+                         :shape "ListTargetsFilterValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-targets-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-targets-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-targets-filter 'make-list-targets-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -924,15 +1232,31 @@
                            (trivial-types:proper-list list-targets-filter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-targets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-targets-request-"))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-targets-filters common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-targets-request common-lisp:nil
+                       ((filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-targets-filters common-lisp:null)
+                         :accessor struct-shape-list-targets-request-filters
+                         :shape "ListTargetsFilters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-targets-request-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-targets-request-max-results :shape
+                         "MaxResults" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-targets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-targets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-targets-request 'make-list-targets-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -966,13 +1290,23 @@
                         ((aws-sdk/generator/shape::input list-targets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-targets-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-targets-result-"))
-   (targets common-lisp:nil :type
-    (common-lisp:or targets-batch common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-targets-result common-lisp:nil
+                       ((targets :initarg :targets :initform common-lisp:nil
+                         :type (common-lisp:or targets-batch common-lisp:null)
+                         :accessor struct-shape-list-targets-result-targets
+                         :shape "TargetsBatch" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-targets-result-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-targets-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-targets-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-targets-result 'make-list-targets-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1017,13 +1351,23 @@
 (common-lisp:deftype notification-rule-resource () 'common-lisp:string)
 (common-lisp:deftype notification-rule-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (notification-rule-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-notification-rule-summary-"))
-   (id common-lisp:nil :type
-    (common-lisp:or notification-rule-id common-lisp:null))
-   (arn common-lisp:nil :type
-    (common-lisp:or notification-rule-arn common-lisp:null)))
+ (common-lisp:defclass notification-rule-summary common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or notification-rule-id common-lisp:null)
+                         :accessor struct-shape-notification-rule-summary-id
+                         :shape "NotificationRuleId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-notification-rule-summary-arn
+                         :shape "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-notification-rule-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'notification-rule-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'notification-rule-summary
                     'make-notification-rule-summary))
@@ -1075,15 +1419,32 @@
 (common-lisp:deftype resource-type () 'common-lisp:string)
 (common-lisp:deftype service-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (subscribe-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subscribe-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null))
-   (target (common-lisp:error ":target is required") :type
-    (common-lisp:or target common-lisp:null))
-   (client-request-token common-lisp:nil :type
-    (common-lisp:or client-request-token common-lisp:null)))
+ (common-lisp:defclass subscribe-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-subscribe-request-arn :shape
+                         "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target :initarg :target :initform
+                         (common-lisp:error ":target is required") :type
+                         (common-lisp:or target common-lisp:null) :accessor
+                         struct-shape-subscribe-request-target :shape "Target"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-request-token :initarg :client-request-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or client-request-token common-lisp:null)
+                         :accessor
+                         struct-shape-subscribe-request-client-request-token
+                         :shape "ClientRequestToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-subscribe-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'subscribe-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'subscribe-request 'make-subscribe-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1118,11 +1479,18 @@
                         ((aws-sdk/generator/shape::input subscribe-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (subscribe-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-subscribe-result-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or notification-rule-arn common-lisp:null)))
+ (common-lisp:defclass subscribe-result common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-subscribe-result-arn :shape
+                         "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-subscribe-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'subscribe-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'subscribe-result 'make-subscribe-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1150,13 +1518,25 @@
                            (trivial-types:proper-list tag-key))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-tag-resource-request-arn :shape
+                         "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "Tags"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1183,10 +1563,17 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-result-"))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass tag-resource-result common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-tag-resource-result-tags :shape "Tags"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-result 'make-tag-resource-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1214,12 +1601,24 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (target (:copier common-lisp:nil) (:conc-name "struct-shape-target-"))
-   (target-type common-lisp:nil :type
-    (common-lisp:or target-type common-lisp:null))
-   (target-address common-lisp:nil :type
-    (common-lisp:or target-address common-lisp:null)))
+ (common-lisp:defclass target common-lisp:nil
+                       ((target-type :initarg :target-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-type common-lisp:null)
+                         :accessor struct-shape-target-target-type :shape
+                         "TargetType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (target-address :initarg :target-address :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-address common-lisp:null)
+                         :accessor struct-shape-target-target-address :shape
+                         "TargetAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'target
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'target 'make-target))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input target))
@@ -1247,15 +1646,30 @@
 (common-lisp:deftype target-address () 'common-lisp:string)
 (common-lisp:deftype target-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (target-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-target-summary-"))
-   (target-address common-lisp:nil :type
-    (common-lisp:or target-address common-lisp:null))
-   (target-type common-lisp:nil :type
-    (common-lisp:or target-type common-lisp:null))
-   (target-status common-lisp:nil :type
-    (common-lisp:or target-status common-lisp:null)))
+ (common-lisp:defclass target-summary common-lisp:nil
+                       ((target-address :initarg :target-address :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-address common-lisp:null)
+                         :accessor struct-shape-target-summary-target-address
+                         :shape "TargetAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-type :initarg :target-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-type common-lisp:null)
+                         :accessor struct-shape-target-summary-target-type
+                         :shape "TargetType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-status :initarg :target-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-status common-lisp:null)
+                         :accessor struct-shape-target-summary-target-status
+                         :shape "TargetStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-target-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'target-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'target-summary 'make-target-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input target-summary))
@@ -1304,13 +1718,26 @@
                            (trivial-types:proper-list target-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsubscribe-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsubscribe-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null))
-   (target-address (common-lisp:error ":target-address is required") :type
-    (common-lisp:or target-address common-lisp:null)))
+ (common-lisp:defclass unsubscribe-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-unsubscribe-request-arn :shape
+                         "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (target-address :initarg :target-address :initform
+                         (common-lisp:error ":target-address is required")
+                         :type (common-lisp:or target-address common-lisp:null)
+                         :accessor
+                         struct-shape-unsubscribe-request-target-address :shape
+                         "TargetAddress" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-unsubscribe-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'unsubscribe-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'unsubscribe-request 'make-unsubscribe-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1337,11 +1764,19 @@
                         ((aws-sdk/generator/shape::input unsubscribe-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsubscribe-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-unsubscribe-result-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null)))
+ (common-lisp:defclass unsubscribe-result common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-unsubscribe-result-arn :shape
+                         "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-unsubscribe-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'unsubscribe-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'unsubscribe-result 'make-unsubscribe-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1361,13 +1796,25 @@
                         ((aws-sdk/generator/shape::input unsubscribe-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-arn
+                         :shape "NotificationRuleArn" :location "uri"
+                         :location-name "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or tag-keys common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-tag-keys :shape
+                         "TagKeys" :location "querystring" :location-name
+                         "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1386,9 +1833,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-result-")))
+ (common-lisp:defclass untag-resource-result common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-result 'make-untag-resource-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1407,20 +1857,56 @@
                           untag-resource-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-notification-rule-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-notification-rule-request-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or notification-rule-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or notification-rule-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or notification-rule-status common-lisp:null))
-   (event-type-ids common-lisp:nil :type
-    (common-lisp:or event-type-ids common-lisp:null))
-   (targets common-lisp:nil :type (common-lisp:or targets common-lisp:null))
-   (detail-type common-lisp:nil :type
-    (common-lisp:or detail-type common-lisp:null)))
+ (common-lisp:defclass update-notification-rule-request common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or notification-rule-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-rule-request-arn
+                         :shape "NotificationRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or notification-rule-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-rule-request-name
+                         :shape "NotificationRuleName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or notification-rule-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-rule-request-status
+                         :shape "NotificationRuleStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (event-type-ids :initarg :event-type-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or event-type-ids common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-rule-request-event-type-ids
+                         :shape "EventTypeIds" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (targets :initarg :targets :initform common-lisp:nil
+                         :type (common-lisp:or targets common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-rule-request-targets
+                         :shape "Targets" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (detail-type :initarg :detail-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or detail-type common-lisp:null)
+                         :accessor
+                         struct-shape-update-notification-rule-request-detail-type
+                         :shape "DetailType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-notification-rule-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-notification-rule-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-notification-rule-request
                     'make-update-notification-rule-request))
@@ -1482,9 +1968,14 @@
                           update-notification-rule-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-notification-rule-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-notification-rule-result-")))
+ (common-lisp:defclass update-notification-rule-result common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-notification-rule-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-notification-rule-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-notification-rule-result
                     'make-update-notification-rule-result))

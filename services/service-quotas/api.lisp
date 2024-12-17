@@ -67,9 +67,14 @@
 (common-lisp:deftype amazon-resource-name () 'common-lisp:string)
 (common-lisp:deftype applied-level-enum () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-service-quota-template-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-service-quota-template-request-")))
+ (common-lisp:defclass associate-service-quota-template-request common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-service-quota-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-service-quota-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-service-quota-template-request
                     'make-associate-service-quota-template-request))
@@ -89,9 +94,14 @@
                           associate-service-quota-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-service-quota-template-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-service-quota-template-response-")))
+ (common-lisp:defclass associate-service-quota-template-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-service-quota-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-service-quota-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-service-quota-template-response
                     'make-associate-service-quota-template-response))
@@ -114,17 +124,32 @@
 (common-lisp:deftype customer-service-engagement-id () 'common-lisp:string)
 (common-lisp:deftype date-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-service-quota-increase-request-from-template-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-service-quota-increase-request-from-template-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (quota-code (common-lisp:error ":quota-code is required") :type
-    (common-lisp:or quota-code common-lisp:null))
-   (aws-region (common-lisp:error ":aws-region is required") :type
-    (common-lisp:or aws-region common-lisp:null)))
+ (common-lisp:defclass
+  delete-service-quota-increase-request-from-template-request common-lisp:nil
+  ((service-code :initarg :service-code :initform
+    (common-lisp:error ":service-code is required") :type
+    (common-lisp:or service-code common-lisp:null) :accessor
+    struct-shape-delete-service-quota-increase-request-from-template-request-service-code
+    :shape "ServiceCode" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (quota-code :initarg :quota-code :initform
+    (common-lisp:error ":quota-code is required") :type
+    (common-lisp:or quota-code common-lisp:null) :accessor
+    struct-shape-delete-service-quota-increase-request-from-template-request-quota-code
+    :shape "QuotaCode" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (aws-region :initarg :aws-region :initform
+    (common-lisp:error ":aws-region is required") :type
+    (common-lisp:or aws-region common-lisp:null) :accessor
+    struct-shape-delete-service-quota-increase-request-from-template-request-aws-region
+    :shape "AwsRegion" :location common-lisp:nil :location-name
+    common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-service-quota-increase-request-from-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-service-quota-increase-request-from-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'delete-service-quota-increase-request-from-template-request
@@ -166,11 +191,14 @@
                           delete-service-quota-increase-request-from-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-service-quota-increase-request-from-template-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-service-quota-increase-request-from-template-response-")))
+ (common-lisp:defclass
+  delete-service-quota-increase-request-from-template-response common-lisp:nil
+  common-lisp:nil (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-service-quota-increase-request-from-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-service-quota-increase-request-from-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'delete-service-quota-increase-request-from-template-response
@@ -199,10 +227,14 @@
   (common-lisp:list 'dependency-access-denied-exception
                     'dependency-access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-service-quota-template-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-disassociate-service-quota-template-request-")))
+ (common-lisp:defclass disassociate-service-quota-template-request
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-service-quota-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-service-quota-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-service-quota-template-request
                     'make-disassociate-service-quota-template-request))
@@ -222,10 +254,14 @@
                           disassociate-service-quota-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-service-quota-template-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-disassociate-service-quota-template-response-")))
+ (common-lisp:defclass disassociate-service-quota-template-response
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-service-quota-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-service-quota-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-service-quota-template-response
                     'make-disassociate-service-quota-template-response))
@@ -247,13 +283,24 @@
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (error-reason (:copier common-lisp:nil)
-      (:conc-name "struct-shape-error-reason-"))
-   (error-code common-lisp:nil :type
-    (common-lisp:or error-code common-lisp:null))
-   (error-message common-lisp:nil :type
-    (common-lisp:or error-message common-lisp:null)))
+ (common-lisp:defclass error-reason common-lisp:nil
+                       ((error-code :initarg :error-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-code common-lisp:null) :accessor
+                         struct-shape-error-reason-error-code :shape
+                         "ErrorCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-message common-lisp:null)
+                         :accessor struct-shape-error-reason-error-message
+                         :shape "ErrorMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-error-reason
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'error-reason
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'error-reason 'make-error-reason))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input error-reason))
@@ -280,13 +327,26 @@
    common-lisp:nil))
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-awsdefault-service-quota-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-awsdefault-service-quota-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (quota-code (common-lisp:error ":quota-code is required") :type
-    (common-lisp:or quota-code common-lisp:null)))
+ (common-lisp:defclass get-awsdefault-service-quota-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-get-awsdefault-service-quota-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-code :initarg :quota-code :initform
+                         (common-lisp:error ":quota-code is required") :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-get-awsdefault-service-quota-request-quota-code
+                         :shape "QuotaCode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-awsdefault-service-quota-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-awsdefault-service-quota-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-awsdefault-service-quota-request
                     'make-get-awsdefault-service-quota-request))
@@ -320,11 +380,19 @@
                           get-awsdefault-service-quota-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-awsdefault-service-quota-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-awsdefault-service-quota-response-"))
-   (quota common-lisp:nil :type
-    (common-lisp:or service-quota common-lisp:null)))
+ (common-lisp:defclass get-awsdefault-service-quota-response common-lisp:nil
+                       ((quota :initarg :quota :initform common-lisp:nil :type
+                         (common-lisp:or service-quota common-lisp:null)
+                         :accessor
+                         struct-shape-get-awsdefault-service-quota-response-quota
+                         :shape "ServiceQuota" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-awsdefault-service-quota-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-awsdefault-service-quota-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-awsdefault-service-quota-response
                     'make-get-awsdefault-service-quota-response))
@@ -351,11 +419,14 @@
                           get-awsdefault-service-quota-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-association-for-service-quota-template-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-association-for-service-quota-template-request-")))
+ (common-lisp:defclass get-association-for-service-quota-template-request
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-association-for-service-quota-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-association-for-service-quota-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-association-for-service-quota-template-request
                     'make-get-association-for-service-quota-template-request))
@@ -375,14 +446,25 @@
                           get-association-for-service-quota-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-association-for-service-quota-template-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-association-for-service-quota-template-response-"))
-   (service-quota-template-association-status common-lisp:nil :type
-    (common-lisp:or service-quota-template-association-status
-                    common-lisp:null)))
+ (common-lisp:defclass get-association-for-service-quota-template-response
+                       common-lisp:nil
+                       ((service-quota-template-association-status :initarg
+                         :service-quota-template-association-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          service-quota-template-association-status
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-get-association-for-service-quota-template-response-service-quota-template-association-status
+                         :shape "ServiceQuotaTemplateAssociationStatus"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-association-for-service-quota-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-association-for-service-quota-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-association-for-service-quota-template-response
                     'make-get-association-for-service-quota-template-response))
@@ -410,11 +492,20 @@
                           get-association-for-service-quota-template-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-requested-service-quota-change-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-requested-service-quota-change-request-"))
-   (request-id (common-lisp:error ":request-id is required") :type
-    (common-lisp:or request-id common-lisp:null)))
+ (common-lisp:defclass get-requested-service-quota-change-request
+                       common-lisp:nil
+                       ((request-id :initarg :request-id :initform
+                         (common-lisp:error ":request-id is required") :type
+                         (common-lisp:or request-id common-lisp:null) :accessor
+                         struct-shape-get-requested-service-quota-change-request-request-id
+                         :shape "RequestId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-requested-service-quota-change-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-requested-service-quota-change-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-requested-service-quota-change-request
                     'make-get-requested-service-quota-change-request))
@@ -441,11 +532,22 @@
                           get-requested-service-quota-change-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-requested-service-quota-change-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-requested-service-quota-change-response-"))
-   (requested-quota common-lisp:nil :type
-    (common-lisp:or requested-service-quota-change common-lisp:null)))
+ (common-lisp:defclass get-requested-service-quota-change-response
+                       common-lisp:nil
+                       ((requested-quota :initarg :requested-quota :initform
+                         common-lisp:nil :type
+                         (common-lisp:or requested-service-quota-change
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-requested-service-quota-change-response-requested-quota
+                         :shape "RequestedServiceQuotaChange" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-requested-service-quota-change-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-requested-service-quota-change-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-requested-service-quota-change-response
                     'make-get-requested-service-quota-change-response))
@@ -472,17 +574,33 @@
                           get-requested-service-quota-change-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-service-quota-increase-request-from-template-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-service-quota-increase-request-from-template-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (quota-code (common-lisp:error ":quota-code is required") :type
-    (common-lisp:or quota-code common-lisp:null))
-   (aws-region (common-lisp:error ":aws-region is required") :type
-    (common-lisp:or aws-region common-lisp:null)))
+ (common-lisp:defclass get-service-quota-increase-request-from-template-request
+                       common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-get-service-quota-increase-request-from-template-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-code :initarg :quota-code :initform
+                         (common-lisp:error ":quota-code is required") :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-get-service-quota-increase-request-from-template-request-quota-code
+                         :shape "QuotaCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aws-region :initarg :aws-region :initform
+                         (common-lisp:error ":aws-region is required") :type
+                         (common-lisp:or aws-region common-lisp:null) :accessor
+                         struct-shape-get-service-quota-increase-request-from-template-request-aws-region
+                         :shape "AwsRegion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-service-quota-increase-request-from-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-service-quota-increase-request-from-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-service-quota-increase-request-from-template-request
                     'make-get-service-quota-increase-request-from-template-request))
@@ -523,14 +641,22 @@
                           get-service-quota-increase-request-from-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-service-quota-increase-request-from-template-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-service-quota-increase-request-from-template-response-"))
-   (service-quota-increase-request-in-template common-lisp:nil :type
+ (common-lisp:defclass
+  get-service-quota-increase-request-from-template-response common-lisp:nil
+  ((service-quota-increase-request-in-template :initarg
+    :service-quota-increase-request-in-template :initform common-lisp:nil :type
     (common-lisp:or service-quota-increase-request-in-template
-                    common-lisp:null)))
+                    common-lisp:null)
+    :accessor
+    struct-shape-get-service-quota-increase-request-from-template-response-service-quota-increase-request-in-template
+    :shape "ServiceQuotaIncreaseRequestInTemplate" :location common-lisp:nil
+    :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-service-quota-increase-request-from-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-service-quota-increase-request-from-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-service-quota-increase-request-from-template-response
                     'make-get-service-quota-increase-request-from-template-response))
@@ -558,15 +684,32 @@
                           get-service-quota-increase-request-from-template-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-service-quota-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-service-quota-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (quota-code (common-lisp:error ":quota-code is required") :type
-    (common-lisp:or quota-code common-lisp:null))
-   (context-id common-lisp:nil :type
-    (common-lisp:or quota-context-id common-lisp:null)))
+ (common-lisp:defclass get-service-quota-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-get-service-quota-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-code :initarg :quota-code :initform
+                         (common-lisp:error ":quota-code is required") :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-get-service-quota-request-quota-code
+                         :shape "QuotaCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (context-id :initarg :context-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-context-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-service-quota-request-context-id
+                         :shape "QuotaContextId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-service-quota-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-service-quota-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-service-quota-request
                     'make-get-service-quota-request))
@@ -607,11 +750,18 @@
                           get-service-quota-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-service-quota-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-service-quota-response-"))
-   (quota common-lisp:nil :type
-    (common-lisp:or service-quota common-lisp:null)))
+ (common-lisp:defclass get-service-quota-response common-lisp:nil
+                       ((quota :initarg :quota :initform common-lisp:nil :type
+                         (common-lisp:or service-quota common-lisp:null)
+                         :accessor
+                         struct-shape-get-service-quota-response-quota :shape
+                         "ServiceQuota" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-service-quota-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-service-quota-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-service-quota-response
                     'make-get-service-quota-response))
@@ -677,15 +827,33 @@
   (common-lisp:list 'invalid-resource-state-exception
                     'invalid-resource-state-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-awsdefault-service-quotas-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-awsdefault-service-quotas-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-awsdefault-service-quotas-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-list-awsdefault-service-quotas-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-awsdefault-service-quotas-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-awsdefault-service-quotas-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-awsdefault-service-quotas-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-awsdefault-service-quotas-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-awsdefault-service-quotas-request
                     'make-list-awsdefault-service-quotas-request))
@@ -726,13 +894,27 @@
                           list-awsdefault-service-quotas-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-awsdefault-service-quotas-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-awsdefault-service-quotas-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (quotas common-lisp:nil :type
-    (common-lisp:or service-quota-list-definition common-lisp:null)))
+ (common-lisp:defclass list-awsdefault-service-quotas-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-awsdefault-service-quotas-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quotas :initarg :quotas :initform common-lisp:nil
+                         :type
+                         (common-lisp:or service-quota-list-definition
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-awsdefault-service-quotas-response-quotas
+                         :shape "ServiceQuotaListDefinition" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-awsdefault-service-quotas-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-awsdefault-service-quotas-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-awsdefault-service-quotas-response
                     'make-list-awsdefault-service-quotas-response))
@@ -766,23 +948,47 @@
                           list-awsdefault-service-quotas-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-requested-service-quota-change-history-by-quota-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-requested-service-quota-change-history-by-quota-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (quota-code (common-lisp:error ":quota-code is required") :type
-    (common-lisp:or quota-code common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or request-status common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (quota-requested-at-level common-lisp:nil :type
-    (common-lisp:or applied-level-enum common-lisp:null)))
+ (common-lisp:defclass
+  list-requested-service-quota-change-history-by-quota-request common-lisp:nil
+  ((service-code :initarg :service-code :initform
+    (common-lisp:error ":service-code is required") :type
+    (common-lisp:or service-code common-lisp:null) :accessor
+    struct-shape-list-requested-service-quota-change-history-by-quota-request-service-code
+    :shape "ServiceCode" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (quota-code :initarg :quota-code :initform
+    (common-lisp:error ":quota-code is required") :type
+    (common-lisp:or quota-code common-lisp:null) :accessor
+    struct-shape-list-requested-service-quota-change-history-by-quota-request-quota-code
+    :shape "QuotaCode" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (status :initarg :status :initform common-lisp:nil :type
+    (common-lisp:or request-status common-lisp:null) :accessor
+    struct-shape-list-requested-service-quota-change-history-by-quota-request-status
+    :shape "RequestStatus" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (next-token :initarg :next-token :initform common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null) :accessor
+    struct-shape-list-requested-service-quota-change-history-by-quota-request-next-token
+    :shape "NextToken" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (max-results :initarg :max-results :initform common-lisp:nil :type
+    (common-lisp:or max-results common-lisp:null) :accessor
+    struct-shape-list-requested-service-quota-change-history-by-quota-request-max-results
+    :shape "MaxResults" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (quota-requested-at-level :initarg :quota-requested-at-level :initform
+    common-lisp:nil :type (common-lisp:or applied-level-enum common-lisp:null)
+    :accessor
+    struct-shape-list-requested-service-quota-change-history-by-quota-request-quota-requested-at-level
+    :shape "AppliedLevelEnum" :location common-lisp:nil :location-name
+    common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-requested-service-quota-change-history-by-quota-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-requested-service-quota-change-history-by-quota-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'list-requested-service-quota-change-history-by-quota-request
@@ -846,16 +1052,26 @@
                           list-requested-service-quota-change-history-by-quota-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-requested-service-quota-change-history-by-quota-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-requested-service-quota-change-history-by-quota-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (requested-quotas common-lisp:nil :type
+ (common-lisp:defclass
+  list-requested-service-quota-change-history-by-quota-response common-lisp:nil
+  ((next-token :initarg :next-token :initform common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null) :accessor
+    struct-shape-list-requested-service-quota-change-history-by-quota-response-next-token
+    :shape "NextToken" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (requested-quotas :initarg :requested-quotas :initform common-lisp:nil :type
     (common-lisp:or requested-service-quota-change-history-list-definition
-                    common-lisp:null)))
+                    common-lisp:null)
+    :accessor
+    struct-shape-list-requested-service-quota-change-history-by-quota-response-requested-quotas
+    :shape "RequestedServiceQuotaChangeHistoryListDefinition" :location
+    common-lisp:nil :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-requested-service-quota-change-history-by-quota-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-requested-service-quota-change-history-by-quota-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'list-requested-service-quota-change-history-by-quota-response
@@ -890,21 +1106,48 @@
                           list-requested-service-quota-change-history-by-quota-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-requested-service-quota-change-history-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-requested-service-quota-change-history-request-"))
-   (service-code common-lisp:nil :type
-    (common-lisp:or service-code common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or request-status common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (quota-requested-at-level common-lisp:nil :type
-    (common-lisp:or applied-level-enum common-lisp:null)))
+ (common-lisp:defclass list-requested-service-quota-change-history-request
+                       common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-list-requested-service-quota-change-history-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or request-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-requested-service-quota-change-history-request-status
+                         :shape "RequestStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-requested-service-quota-change-history-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-requested-service-quota-change-history-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-requested-at-level :initarg
+                         :quota-requested-at-level :initform common-lisp:nil
+                         :type
+                         (common-lisp:or applied-level-enum common-lisp:null)
+                         :accessor
+                         struct-shape-list-requested-service-quota-change-history-request-quota-requested-at-level
+                         :shape "AppliedLevelEnum" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-requested-service-quota-change-history-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-requested-service-quota-change-history-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-requested-service-quota-change-history-request
                     'make-list-requested-service-quota-change-history-request))
@@ -960,16 +1203,31 @@
                           list-requested-service-quota-change-history-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-requested-service-quota-change-history-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-requested-service-quota-change-history-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (requested-quotas common-lisp:nil :type
-    (common-lisp:or requested-service-quota-change-history-list-definition
-                    common-lisp:null)))
+ (common-lisp:defclass list-requested-service-quota-change-history-response
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-requested-service-quota-change-history-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (requested-quotas :initarg :requested-quotas :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          requested-service-quota-change-history-list-definition
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-requested-service-quota-change-history-response-requested-quotas
+                         :shape
+                         "RequestedServiceQuotaChangeHistoryListDefinition"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-requested-service-quota-change-history-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-requested-service-quota-change-history-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-requested-service-quota-change-history-response
                     'make-list-requested-service-quota-change-history-response))
@@ -1003,19 +1261,40 @@
                           list-requested-service-quota-change-history-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-service-quota-increase-requests-in-template-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-service-quota-increase-requests-in-template-request-"))
-   (service-code common-lisp:nil :type
-    (common-lisp:or service-code common-lisp:null))
-   (aws-region common-lisp:nil :type
-    (common-lisp:or aws-region common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-service-quota-increase-requests-in-template-request
+                       common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-list-service-quota-increase-requests-in-template-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aws-region :initarg :aws-region :initform
+                         common-lisp:nil :type
+                         (common-lisp:or aws-region common-lisp:null) :accessor
+                         struct-shape-list-service-quota-increase-requests-in-template-request-aws-region
+                         :shape "AwsRegion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-service-quota-increase-requests-in-template-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-service-quota-increase-requests-in-template-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-service-quota-increase-requests-in-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-service-quota-increase-requests-in-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-service-quota-increase-requests-in-template-request
                     'make-list-service-quota-increase-requests-in-template-request))
@@ -1063,16 +1342,28 @@
                           list-service-quota-increase-requests-in-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-service-quota-increase-requests-in-template-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-service-quota-increase-requests-in-template-response-"))
-   (service-quota-increase-request-in-template-list common-lisp:nil :type
+ (common-lisp:defclass
+  list-service-quota-increase-requests-in-template-response common-lisp:nil
+  ((service-quota-increase-request-in-template-list :initarg
+    :service-quota-increase-request-in-template-list :initform common-lisp:nil
+    :type
     (common-lisp:or service-quota-increase-request-in-template-list
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+                    common-lisp:null)
+    :accessor
+    struct-shape-list-service-quota-increase-requests-in-template-response-service-quota-increase-request-in-template-list
+    :shape "ServiceQuotaIncreaseRequestInTemplateList" :location
+    common-lisp:nil :location-name common-lisp:nil)
+   (next-token :initarg :next-token :initform common-lisp:nil :type
+    (common-lisp:or next-token common-lisp:null) :accessor
+    struct-shape-list-service-quota-increase-requests-in-template-response-next-token
+    :shape "NextToken" :location common-lisp:nil :location-name
+    common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-service-quota-increase-requests-in-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-service-quota-increase-requests-in-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-service-quota-increase-requests-in-template-response
                     'make-list-service-quota-increase-requests-in-template-response))
@@ -1107,19 +1398,46 @@
                           list-service-quota-increase-requests-in-template-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-service-quotas-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-service-quotas-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (quota-code common-lisp:nil :type
-    (common-lisp:or quota-code common-lisp:null))
-   (quota-applied-at-level common-lisp:nil :type
-    (common-lisp:or applied-level-enum common-lisp:null)))
+ (common-lisp:defclass list-service-quotas-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-list-service-quotas-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-service-quotas-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-service-quotas-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-code :initarg :quota-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-list-service-quotas-request-quota-code
+                         :shape "QuotaCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-applied-at-level :initarg
+                         :quota-applied-at-level :initform common-lisp:nil
+                         :type
+                         (common-lisp:or applied-level-enum common-lisp:null)
+                         :accessor
+                         struct-shape-list-service-quotas-request-quota-applied-at-level
+                         :shape "AppliedLevelEnum" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-service-quotas-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-service-quotas-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-service-quotas-request
                     'make-list-service-quotas-request))
@@ -1175,13 +1493,26 @@
                           list-service-quotas-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-service-quotas-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-service-quotas-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (quotas common-lisp:nil :type
-    (common-lisp:or service-quota-list-definition common-lisp:null)))
+ (common-lisp:defclass list-service-quotas-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-service-quotas-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quotas :initarg :quotas :initform common-lisp:nil
+                         :type
+                         (common-lisp:or service-quota-list-definition
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-service-quotas-response-quotas
+                         :shape "ServiceQuotaListDefinition" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-service-quotas-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-service-quotas-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-service-quotas-response
                     'make-list-service-quotas-response))
@@ -1215,13 +1546,25 @@
                           list-service-quotas-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-services-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-services-request-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-services-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-services-request-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-services-request-max-results :shape
+                         "MaxResults" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-services-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-services-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-services-request 'make-list-services-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1254,13 +1597,25 @@
                           list-services-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-services-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-services-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (services common-lisp:nil :type
-    (common-lisp:or service-info-list-definition common-lisp:null)))
+ (common-lisp:defclass list-services-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-services-response-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (services :initarg :services :initform common-lisp:nil
+                         :type
+                         (common-lisp:or service-info-list-definition
+                                         common-lisp:null)
+                         :accessor struct-shape-list-services-response-services
+                         :shape "ServiceInfoListDefinition" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-services-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-services-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-services-response 'make-list-services-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1293,11 +1648,20 @@
                           list-services-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -1324,10 +1688,19 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or output-tags common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or output-tags common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "OutputTags" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -1366,17 +1739,39 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (metric-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-metric-info-"))
-   (metric-namespace common-lisp:nil :type
-    (common-lisp:or quota-metric-namespace common-lisp:null))
-   (metric-name common-lisp:nil :type
-    (common-lisp:or quota-metric-name common-lisp:null))
-   (metric-dimensions common-lisp:nil :type
-    (common-lisp:or metric-dimensions-map-definition common-lisp:null))
-   (metric-statistic-recommendation common-lisp:nil :type
-    (common-lisp:or statistic common-lisp:null)))
+ (common-lisp:defclass metric-info common-lisp:nil
+                       ((metric-namespace :initarg :metric-namespace :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-metric-namespace
+                                         common-lisp:null)
+                         :accessor struct-shape-metric-info-metric-namespace
+                         :shape "QuotaMetricNamespace" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (metric-name :initarg :metric-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-metric-name common-lisp:null)
+                         :accessor struct-shape-metric-info-metric-name :shape
+                         "QuotaMetricName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metric-dimensions :initarg :metric-dimensions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or metric-dimensions-map-definition
+                                         common-lisp:null)
+                         :accessor struct-shape-metric-info-metric-dimensions
+                         :shape "MetricDimensionsMapDefinition" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (metric-statistic-recommendation :initarg
+                         :metric-statistic-recommendation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or statistic common-lisp:null) :accessor
+                         struct-shape-metric-info-metric-statistic-recommendation
+                         :shape "Statistic" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-metric-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'metric-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'metric-info 'make-metric-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input metric-info))
@@ -1451,19 +1846,40 @@
 (common-lisp:deftype period-unit () 'common-lisp:string)
 (common-lisp:deftype period-value () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-service-quota-increase-request-into-template-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-put-service-quota-increase-request-into-template-request-"))
-   (quota-code (common-lisp:error ":quota-code is required") :type
-    (common-lisp:or quota-code common-lisp:null))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (aws-region (common-lisp:error ":aws-region is required") :type
-    (common-lisp:or aws-region common-lisp:null))
-   (desired-value (common-lisp:error ":desired-value is required") :type
-    (common-lisp:or quota-value common-lisp:null)))
+ (common-lisp:defclass put-service-quota-increase-request-into-template-request
+                       common-lisp:nil
+                       ((quota-code :initarg :quota-code :initform
+                         (common-lisp:error ":quota-code is required") :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-put-service-quota-increase-request-into-template-request-quota-code
+                         :shape "QuotaCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-put-service-quota-increase-request-into-template-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aws-region :initarg :aws-region :initform
+                         (common-lisp:error ":aws-region is required") :type
+                         (common-lisp:or aws-region common-lisp:null) :accessor
+                         struct-shape-put-service-quota-increase-request-into-template-request-aws-region
+                         :shape "AwsRegion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (desired-value :initarg :desired-value :initform
+                         (common-lisp:error ":desired-value is required") :type
+                         (common-lisp:or quota-value common-lisp:null)
+                         :accessor
+                         struct-shape-put-service-quota-increase-request-into-template-request-desired-value
+                         :shape "QuotaValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-service-quota-increase-request-into-template-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-service-quota-increase-request-into-template-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-service-quota-increase-request-into-template-request
                     'make-put-service-quota-increase-request-into-template-request))
@@ -1511,14 +1927,22 @@
                           put-service-quota-increase-request-into-template-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-service-quota-increase-request-into-template-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-put-service-quota-increase-request-into-template-response-"))
-   (service-quota-increase-request-in-template common-lisp:nil :type
+ (common-lisp:defclass
+  put-service-quota-increase-request-into-template-response common-lisp:nil
+  ((service-quota-increase-request-in-template :initarg
+    :service-quota-increase-request-in-template :initform common-lisp:nil :type
     (common-lisp:or service-quota-increase-request-in-template
-                    common-lisp:null)))
+                    common-lisp:null)
+    :accessor
+    struct-shape-put-service-quota-increase-request-into-template-response-service-quota-increase-request-in-template
+    :shape "ServiceQuotaIncreaseRequestInTemplate" :location common-lisp:nil
+    :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-service-quota-increase-request-into-template-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-service-quota-increase-request-into-template-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-service-quota-increase-request-into-template-response
                     'make-put-service-quota-increase-request-into-template-response))
@@ -1550,15 +1974,33 @@
 (common-lisp:deftype quota-code () 'common-lisp:string)
 (common-lisp:deftype quota-context-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (quota-context-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-quota-context-info-"))
-   (context-scope common-lisp:nil :type
-    (common-lisp:or quota-context-scope common-lisp:null))
-   (context-scope-type common-lisp:nil :type
-    (common-lisp:or quota-context-scope-type common-lisp:null))
-   (context-id common-lisp:nil :type
-    (common-lisp:or quota-context-id common-lisp:null)))
+ (common-lisp:defclass quota-context-info common-lisp:nil
+                       ((context-scope :initarg :context-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-context-scope common-lisp:null)
+                         :accessor
+                         struct-shape-quota-context-info-context-scope :shape
+                         "QuotaContextScope" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (context-scope-type :initarg :context-scope-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or quota-context-scope-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-quota-context-info-context-scope-type
+                         :shape "QuotaContextScopeType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (context-id :initarg :context-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-context-id common-lisp:null)
+                         :accessor struct-shape-quota-context-info-context-id
+                         :shape "QuotaContextId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-quota-context-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'quota-context-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'quota-context-info 'make-quota-context-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1605,13 +2047,24 @@
 (common-lisp:deftype quota-metric-namespace () 'common-lisp:string)
 (common-lisp:deftype quota-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (quota-period (:copier common-lisp:nil)
-      (:conc-name "struct-shape-quota-period-"))
-   (period-value common-lisp:nil :type
-    (common-lisp:or period-value common-lisp:null))
-   (period-unit common-lisp:nil :type
-    (common-lisp:or period-unit common-lisp:null)))
+ (common-lisp:defclass quota-period common-lisp:nil
+                       ((period-value :initarg :period-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or period-value common-lisp:null)
+                         :accessor struct-shape-quota-period-period-value
+                         :shape "PeriodValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (period-unit :initarg :period-unit :initform
+                         common-lisp:nil :type
+                         (common-lisp:or period-unit common-lisp:null)
+                         :accessor struct-shape-quota-period-period-unit :shape
+                         "PeriodUnit" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-quota-period
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'quota-period
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'quota-period 'make-quota-period))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input quota-period))
@@ -1640,17 +2093,40 @@
 (common-lisp:deftype quota-value () 'common-lisp:double-float)
 (common-lisp:deftype request-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-service-quota-increase-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-request-service-quota-increase-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (quota-code (common-lisp:error ":quota-code is required") :type
-    (common-lisp:or quota-code common-lisp:null))
-   (desired-value (common-lisp:error ":desired-value is required") :type
-    (common-lisp:or quota-value common-lisp:null))
-   (context-id common-lisp:nil :type
-    (common-lisp:or quota-context-id common-lisp:null)))
+ (common-lisp:defclass request-service-quota-increase-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-request-service-quota-increase-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-code :initarg :quota-code :initform
+                         (common-lisp:error ":quota-code is required") :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-request-service-quota-increase-request-quota-code
+                         :shape "QuotaCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (desired-value :initarg :desired-value :initform
+                         (common-lisp:error ":desired-value is required") :type
+                         (common-lisp:or quota-value common-lisp:null)
+                         :accessor
+                         struct-shape-request-service-quota-increase-request-desired-value
+                         :shape "QuotaValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (context-id :initarg :context-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-context-id common-lisp:null)
+                         :accessor
+                         struct-shape-request-service-quota-increase-request-context-id
+                         :shape "QuotaContextId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-request-service-quota-increase-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'request-service-quota-increase-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'request-service-quota-increase-request
                     'make-request-service-quota-increase-request))
@@ -1698,11 +2174,21 @@
                           request-service-quota-increase-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (request-service-quota-increase-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-request-service-quota-increase-response-"))
-   (requested-quota common-lisp:nil :type
-    (common-lisp:or requested-service-quota-change common-lisp:null)))
+ (common-lisp:defclass request-service-quota-increase-response common-lisp:nil
+                       ((requested-quota :initarg :requested-quota :initform
+                         common-lisp:nil :type
+                         (common-lisp:or requested-service-quota-change
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-request-service-quota-increase-response-requested-quota
+                         :shape "RequestedServiceQuotaChange" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-request-service-quota-increase-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'request-service-quota-increase-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'request-service-quota-increase-response
                     'make-request-service-quota-increase-response))
@@ -1730,38 +2216,116 @@
    common-lisp:nil))
 (common-lisp:deftype request-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (requested-service-quota-change (:copier common-lisp:nil)
-      (:conc-name "struct-shape-requested-service-quota-change-"))
-   (id common-lisp:nil :type (common-lisp:or request-id common-lisp:null))
-   (case-id common-lisp:nil :type
-    (common-lisp:or customer-service-engagement-id common-lisp:null))
-   (service-code common-lisp:nil :type
-    (common-lisp:or service-code common-lisp:null))
-   (service-name common-lisp:nil :type
-    (common-lisp:or service-name common-lisp:null))
-   (quota-code common-lisp:nil :type
-    (common-lisp:or quota-code common-lisp:null))
-   (quota-name common-lisp:nil :type
-    (common-lisp:or quota-name common-lisp:null))
-   (desired-value common-lisp:nil :type
-    (common-lisp:or quota-value common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or request-status common-lisp:null))
-   (created common-lisp:nil :type (common-lisp:or date-time common-lisp:null))
-   (last-updated common-lisp:nil :type
-    (common-lisp:or date-time common-lisp:null))
-   (requester common-lisp:nil :type
-    (common-lisp:or requester common-lisp:null))
-   (quota-arn common-lisp:nil :type
-    (common-lisp:or quota-arn common-lisp:null))
-   (global-quota common-lisp:nil :type
-    (common-lisp:or global-quota common-lisp:null))
-   (unit common-lisp:nil :type (common-lisp:or quota-unit common-lisp:null))
-   (quota-requested-at-level common-lisp:nil :type
-    (common-lisp:or applied-level-enum common-lisp:null))
-   (quota-context common-lisp:nil :type
-    (common-lisp:or quota-context-info common-lisp:null)))
+ (common-lisp:defclass requested-service-quota-change common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or request-id common-lisp:null) :accessor
+                         struct-shape-requested-service-quota-change-id :shape
+                         "RequestId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (case-id :initarg :case-id :initform common-lisp:nil
+                         :type
+                         (common-lisp:or customer-service-engagement-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-case-id
+                         :shape "CustomerServiceEngagementId" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (service-code :initarg :service-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-name :initarg :service-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-code :initarg :quota-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-requested-service-quota-change-quota-code
+                         :shape "QuotaCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-name :initarg :quota-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-name common-lisp:null) :accessor
+                         struct-shape-requested-service-quota-change-quota-name
+                         :shape "QuotaName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (desired-value :initarg :desired-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-value common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-desired-value
+                         :shape "QuotaValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or request-status common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-status
+                         :shape "RequestStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created :initarg :created :initform common-lisp:nil
+                         :type (common-lisp:or date-time common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-created
+                         :shape "DateTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated :initarg :last-updated :initform
+                         common-lisp:nil :type
+                         (common-lisp:or date-time common-lisp:null) :accessor
+                         struct-shape-requested-service-quota-change-last-updated
+                         :shape "DateTime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (requester :initarg :requester :initform
+                         common-lisp:nil :type
+                         (common-lisp:or requester common-lisp:null) :accessor
+                         struct-shape-requested-service-quota-change-requester
+                         :shape "Requester" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-arn :initarg :quota-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-arn common-lisp:null) :accessor
+                         struct-shape-requested-service-quota-change-quota-arn
+                         :shape "QuotaArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (global-quota :initarg :global-quota :initform
+                         common-lisp:nil :type
+                         (common-lisp:or global-quota common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-global-quota
+                         :shape "GlobalQuota" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unit :initarg :unit :initform common-lisp:nil :type
+                         (common-lisp:or quota-unit common-lisp:null) :accessor
+                         struct-shape-requested-service-quota-change-unit
+                         :shape "QuotaUnit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-requested-at-level :initarg
+                         :quota-requested-at-level :initform common-lisp:nil
+                         :type
+                         (common-lisp:or applied-level-enum common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-quota-requested-at-level
+                         :shape "AppliedLevelEnum" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-context :initarg :quota-context :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-context-info common-lisp:null)
+                         :accessor
+                         struct-shape-requested-service-quota-change-quota-context
+                         :shape "QuotaContextInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-requested-service-quota-change
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'requested-service-quota-change
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'requested-service-quota-change
                     'make-requested-service-quota-change))
@@ -1920,13 +2484,24 @@
  (common-lisp:export
   (common-lisp:list 'service-exception 'service-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-info (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-info-"))
-   (service-code common-lisp:nil :type
-    (common-lisp:or service-code common-lisp:null))
-   (service-name common-lisp:nil :type
-    (common-lisp:or service-name common-lisp:null)))
+ (common-lisp:defclass service-info common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor struct-shape-service-info-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-name :initarg :service-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-name common-lisp:null)
+                         :accessor struct-shape-service-info-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-service-info
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'service-info
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'service-info 'make-service-info))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input service-info))
@@ -1961,35 +2536,95 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype service-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-quota (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-quota-"))
-   (service-code common-lisp:nil :type
-    (common-lisp:or service-code common-lisp:null))
-   (service-name common-lisp:nil :type
-    (common-lisp:or service-name common-lisp:null))
-   (quota-arn common-lisp:nil :type
-    (common-lisp:or quota-arn common-lisp:null))
-   (quota-code common-lisp:nil :type
-    (common-lisp:or quota-code common-lisp:null))
-   (quota-name common-lisp:nil :type
-    (common-lisp:or quota-name common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or quota-value common-lisp:null))
-   (unit common-lisp:nil :type (common-lisp:or quota-unit common-lisp:null))
-   (adjustable common-lisp:nil :type
-    (common-lisp:or quota-adjustable common-lisp:null))
-   (global-quota common-lisp:nil :type
-    (common-lisp:or global-quota common-lisp:null))
-   (usage-metric common-lisp:nil :type
-    (common-lisp:or metric-info common-lisp:null))
-   (period common-lisp:nil :type
-    (common-lisp:or quota-period common-lisp:null))
-   (error-reason common-lisp:nil :type
-    (common-lisp:or error-reason common-lisp:null))
-   (quota-applied-at-level common-lisp:nil :type
-    (common-lisp:or applied-level-enum common-lisp:null))
-   (quota-context common-lisp:nil :type
-    (common-lisp:or quota-context-info common-lisp:null)))
+ (common-lisp:defclass service-quota common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor struct-shape-service-quota-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-name :initarg :service-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-name common-lisp:null)
+                         :accessor struct-shape-service-quota-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-arn :initarg :quota-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-arn common-lisp:null) :accessor
+                         struct-shape-service-quota-quota-arn :shape "QuotaArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (quota-code :initarg :quota-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-service-quota-quota-code :shape
+                         "QuotaCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (quota-name :initarg :quota-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-name common-lisp:null) :accessor
+                         struct-shape-service-quota-quota-name :shape
+                         "QuotaName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or quota-value common-lisp:null)
+                         :accessor struct-shape-service-quota-value :shape
+                         "QuotaValue" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (unit :initarg :unit :initform common-lisp:nil :type
+                         (common-lisp:or quota-unit common-lisp:null) :accessor
+                         struct-shape-service-quota-unit :shape "QuotaUnit"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (adjustable :initarg :adjustable :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-adjustable common-lisp:null)
+                         :accessor struct-shape-service-quota-adjustable :shape
+                         "QuotaAdjustable" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (global-quota :initarg :global-quota :initform
+                         common-lisp:nil :type
+                         (common-lisp:or global-quota common-lisp:null)
+                         :accessor struct-shape-service-quota-global-quota
+                         :shape "GlobalQuota" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-metric :initarg :usage-metric :initform
+                         common-lisp:nil :type
+                         (common-lisp:or metric-info common-lisp:null)
+                         :accessor struct-shape-service-quota-usage-metric
+                         :shape "MetricInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (period :initarg :period :initform common-lisp:nil
+                         :type (common-lisp:or quota-period common-lisp:null)
+                         :accessor struct-shape-service-quota-period :shape
+                         "QuotaPeriod" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (error-reason :initarg :error-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or error-reason common-lisp:null)
+                         :accessor struct-shape-service-quota-error-reason
+                         :shape "ErrorReason" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-applied-at-level :initarg
+                         :quota-applied-at-level :initform common-lisp:nil
+                         :type
+                         (common-lisp:or applied-level-enum common-lisp:null)
+                         :accessor
+                         struct-shape-service-quota-quota-applied-at-level
+                         :shape "AppliedLevelEnum" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-context :initarg :quota-context :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-context-info common-lisp:null)
+                         :accessor struct-shape-service-quota-quota-context
+                         :shape "QuotaContextInfo" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-service-quota
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'service-quota
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'service-quota 'make-service-quota))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input service-quota))
@@ -2100,24 +2735,65 @@
                         ((aws-sdk/generator/shape::input service-quota))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-quota-increase-request-in-template (:copier common-lisp:nil)
-      (:conc-name "struct-shape-service-quota-increase-request-in-template-"))
-   (service-code common-lisp:nil :type
-    (common-lisp:or service-code common-lisp:null))
-   (service-name common-lisp:nil :type
-    (common-lisp:or service-name common-lisp:null))
-   (quota-code common-lisp:nil :type
-    (common-lisp:or quota-code common-lisp:null))
-   (quota-name common-lisp:nil :type
-    (common-lisp:or quota-name common-lisp:null))
-   (desired-value common-lisp:nil :type
-    (common-lisp:or quota-value common-lisp:null))
-   (aws-region common-lisp:nil :type
-    (common-lisp:or aws-region common-lisp:null))
-   (unit common-lisp:nil :type (common-lisp:or quota-unit common-lisp:null))
-   (global-quota common-lisp:nil :type
-    (common-lisp:or global-quota common-lisp:null)))
+ (common-lisp:defclass service-quota-increase-request-in-template
+                       common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-service-quota-increase-request-in-template-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service-name :initarg :service-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or service-name common-lisp:null)
+                         :accessor
+                         struct-shape-service-quota-increase-request-in-template-service-name
+                         :shape "ServiceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-code :initarg :quota-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-code common-lisp:null) :accessor
+                         struct-shape-service-quota-increase-request-in-template-quota-code
+                         :shape "QuotaCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quota-name :initarg :quota-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-name common-lisp:null) :accessor
+                         struct-shape-service-quota-increase-request-in-template-quota-name
+                         :shape "QuotaName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (desired-value :initarg :desired-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or quota-value common-lisp:null)
+                         :accessor
+                         struct-shape-service-quota-increase-request-in-template-desired-value
+                         :shape "QuotaValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aws-region :initarg :aws-region :initform
+                         common-lisp:nil :type
+                         (common-lisp:or aws-region common-lisp:null) :accessor
+                         struct-shape-service-quota-increase-request-in-template-aws-region
+                         :shape "AwsRegion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unit :initarg :unit :initform common-lisp:nil :type
+                         (common-lisp:or quota-unit common-lisp:null) :accessor
+                         struct-shape-service-quota-increase-request-in-template-unit
+                         :shape "QuotaUnit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (global-quota :initarg :global-quota :initform
+                         common-lisp:nil :type
+                         (common-lisp:or global-quota common-lisp:null)
+                         :accessor
+                         struct-shape-service-quota-increase-request-in-template-global-quota
+                         :shape "GlobalQuota" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-service-quota-increase-request-in-template
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'service-quota-increase-request-in-template
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'service-quota-increase-request-in-template
                     'make-service-quota-increase-request-in-template))
@@ -2221,12 +2897,21 @@
                     'service-quota-template-not-in-use-exception-message)))
 (common-lisp:deftype statistic () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -2261,13 +2946,25 @@
   (common-lisp:list 'tag-policy-violation-exception
                     'tag-policy-violation-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or input-tags common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or input-tags common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape
+                         "InputTags" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2294,9 +2991,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2339,13 +3039,25 @@
  (common-lisp:export
   (common-lisp:list 'too-many-tags-exception 'too-many-tags-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or input-tag-keys common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or amazon-resource-name common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "AmazonResourceName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or input-tag-keys common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "InputTagKeys" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2378,9 +3090,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

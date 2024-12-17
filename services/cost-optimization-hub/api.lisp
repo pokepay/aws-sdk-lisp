@@ -42,17 +42,38 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-enrollment-status (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-enrollment-status-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (created-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or enrollment-status common-lisp:null)))
+ (common-lisp:defclass account-enrollment-status common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-account-enrollment-status-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-timestamp :initarg :created-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-account-enrollment-status-created-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-timestamp :initarg
+                         :last-updated-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-account-enrollment-status-last-updated-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or enrollment-status common-lisp:null)
+                         :accessor
+                         struct-shape-account-enrollment-status-status :shape
+                         "EnrollmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-account-enrollment-status
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'account-enrollment-status
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'account-enrollment-status
                     'make-account-enrollment-status))
@@ -128,11 +149,24 @@
                            (trivial-types:proper-list action-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (block-storage-performance-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-block-storage-performance-configuration-"))
-   (iops common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (throughput common-lisp:nil :type (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass block-storage-performance-configuration common-lisp:nil
+                       ((iops :initarg :iops :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-block-storage-performance-configuration-iops
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (throughput :initarg :throughput :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-block-storage-performance-configuration-throughput
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-block-storage-performance-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'block-storage-performance-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'block-storage-performance-configuration
                     'make-block-storage-performance-configuration))
@@ -167,15 +201,34 @@
    common-lisp:nil))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (compute-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-compute-configuration-"))
-   (architecture common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (memory-size-in-mb common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (platform common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (v-cpu common-lisp:nil :type (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass compute-configuration common-lisp:nil
+                       ((architecture :initarg :architecture :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-compute-configuration-architecture :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (memory-size-in-mb :initarg :memory-size-in-mb
+                         :initform common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-compute-configuration-memory-size-in-mb
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (platform :initarg :platform :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-compute-configuration-platform
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (v-cpu :initarg :v-cpu :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-compute-configuration-v-cpu :shape
+                         "Double" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-compute-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'compute-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'compute-configuration 'make-compute-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -222,13 +275,28 @@
                           compute-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (compute-savings-plans (:copier common-lisp:nil)
-      (:conc-name "struct-shape-compute-savings-plans-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or compute-savings-plans-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or savings-plans-cost-calculation common-lisp:null)))
+ (common-lisp:defclass compute-savings-plans common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or compute-savings-plans-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-compute-savings-plans-configuration
+                         :shape "ComputeSavingsPlansConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or savings-plans-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-compute-savings-plans-cost-calculation
+                         :shape "SavingsPlansCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-compute-savings-plans
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'compute-savings-plans
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'compute-savings-plans 'make-compute-savings-plans))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -261,16 +329,36 @@
                           compute-savings-plans))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (compute-savings-plans-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-compute-savings-plans-configuration-"))
-   (account-scope common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (hourly-commitment common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (payment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (term common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass compute-savings-plans-configuration common-lisp:nil
+                       ((account-scope :initarg :account-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-compute-savings-plans-configuration-account-scope
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (hourly-commitment :initarg :hourly-commitment
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-compute-savings-plans-configuration-hourly-commitment
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payment-option :initarg :payment-option :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-compute-savings-plans-configuration-payment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term :initarg :term :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-compute-savings-plans-configuration-term
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-compute-savings-plans-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'compute-savings-plans-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'compute-savings-plans-configuration
                     'make-compute-savings-plans-configuration))
@@ -320,13 +408,26 @@
 (common-lisp:deftype datetime () 'common-lisp:string)
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (ebs-volume (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ebs-volume-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or ebs-volume-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or resource-cost-calculation common-lisp:null)))
+ (common-lisp:defclass ebs-volume common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ebs-volume-configuration
+                                         common-lisp:null)
+                         :accessor struct-shape-ebs-volume-configuration :shape
+                         "EbsVolumeConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-cost-calculation
+                                         common-lisp:null)
+                         :accessor struct-shape-ebs-volume-cost-calculation
+                         :shape "ResourceCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ebs-volume
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ebs-volume
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'ebs-volume 'make-ebs-volume))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input ebs-volume))
@@ -352,15 +453,36 @@
                         ((aws-sdk/generator/shape::input ebs-volume))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ebs-volume-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ebs-volume-configuration-"))
-   (attachment-state common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (performance common-lisp:nil :type
-    (common-lisp:or block-storage-performance-configuration common-lisp:null))
-   (storage common-lisp:nil :type
-    (common-lisp:or storage-configuration common-lisp:null)))
+ (common-lisp:defclass ebs-volume-configuration common-lisp:nil
+                       ((attachment-state :initarg :attachment-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ebs-volume-configuration-attachment-state
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (performance :initarg :performance :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          block-storage-performance-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-ebs-volume-configuration-performance
+                         :shape "BlockStoragePerformanceConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (storage :initarg :storage :initform common-lisp:nil
+                         :type
+                         (common-lisp:or storage-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ebs-volume-configuration-storage :shape
+                         "StorageConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ebs-volume-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ebs-volume-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ebs-volume-configuration 'make-ebs-volume-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -400,13 +522,28 @@
                           ebs-volume-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ec2auto-scaling-group (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ec2auto-scaling-group-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or ec2auto-scaling-group-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or resource-cost-calculation common-lisp:null)))
+ (common-lisp:defclass ec2auto-scaling-group common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ec2auto-scaling-group-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ec2auto-scaling-group-configuration
+                         :shape "Ec2AutoScalingGroupConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ec2auto-scaling-group-cost-calculation
+                         :shape "ResourceCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ec2auto-scaling-group
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ec2auto-scaling-group
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ec2auto-scaling-group 'make-ec2auto-scaling-group))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -439,11 +576,21 @@
                           ec2auto-scaling-group))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ec2auto-scaling-group-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ec2auto-scaling-group-configuration-"))
-   (instance common-lisp:nil :type
-    (common-lisp:or instance-configuration common-lisp:null)))
+ (common-lisp:defclass ec2auto-scaling-group-configuration common-lisp:nil
+                       ((instance :initarg :instance :initform common-lisp:nil
+                         :type
+                         (common-lisp:or instance-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ec2auto-scaling-group-configuration-instance
+                         :shape "InstanceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ec2auto-scaling-group-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'ec2auto-scaling-group-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ec2auto-scaling-group-configuration
                     'make-ec2auto-scaling-group-configuration))
@@ -470,13 +617,26 @@
                           ec2auto-scaling-group-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ec2instance (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ec2instance-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or ec2instance-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or resource-cost-calculation common-lisp:null)))
+ (common-lisp:defclass ec2instance common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ec2instance-configuration
+                                         common-lisp:null)
+                         :accessor struct-shape-ec2instance-configuration
+                         :shape "Ec2InstanceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-cost-calculation
+                                         common-lisp:null)
+                         :accessor struct-shape-ec2instance-cost-calculation
+                         :shape "ResourceCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ec2instance
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ec2instance
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'ec2instance 'make-ec2instance))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input ec2instance))
@@ -502,11 +662,20 @@
                         ((aws-sdk/generator/shape::input ec2instance))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ec2instance-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ec2instance-configuration-"))
-   (instance common-lisp:nil :type
-    (common-lisp:or instance-configuration common-lisp:null)))
+ (common-lisp:defclass ec2instance-configuration common-lisp:nil
+                       ((instance :initarg :instance :initform common-lisp:nil
+                         :type
+                         (common-lisp:or instance-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ec2instance-configuration-instance :shape
+                         "InstanceConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ec2instance-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ec2instance-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ec2instance-configuration
                     'make-ec2instance-configuration))
@@ -533,13 +702,30 @@
                           ec2instance-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ec2instance-savings-plans (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ec2instance-savings-plans-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or ec2instance-savings-plans-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or savings-plans-cost-calculation common-lisp:null)))
+ (common-lisp:defclass ec2instance-savings-plans common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          ec2instance-savings-plans-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-ec2instance-savings-plans-configuration
+                         :shape "Ec2InstanceSavingsPlansConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or savings-plans-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ec2instance-savings-plans-cost-calculation
+                         :shape "SavingsPlansCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ec2instance-savings-plans
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ec2instance-savings-plans
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ec2instance-savings-plans
                     'make-ec2instance-savings-plans))
@@ -573,20 +759,48 @@
                           ec2instance-savings-plans))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ec2instance-savings-plans-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ec2instance-savings-plans-configuration-"))
-   (account-scope common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (hourly-commitment common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-family common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (payment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (savings-plans-region common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (term common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass ec2instance-savings-plans-configuration common-lisp:nil
+                       ((account-scope :initarg :account-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2instance-savings-plans-configuration-account-scope
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (hourly-commitment :initarg :hourly-commitment
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2instance-savings-plans-configuration-hourly-commitment
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-family :initarg :instance-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2instance-savings-plans-configuration-instance-family
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payment-option :initarg :payment-option :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2instance-savings-plans-configuration-payment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (savings-plans-region :initarg :savings-plans-region
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2instance-savings-plans-configuration-savings-plans-region
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term :initarg :term :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2instance-savings-plans-configuration-term
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ec2instance-savings-plans-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'ec2instance-savings-plans-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ec2instance-savings-plans-configuration
                     'make-ec2instance-savings-plans-configuration))
@@ -649,13 +863,28 @@
                           ec2instance-savings-plans-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ec2reserved-instances (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ec2reserved-instances-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or ec2reserved-instances-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or reserved-instances-cost-calculation common-lisp:null)))
+ (common-lisp:defclass ec2reserved-instances common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ec2reserved-instances-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ec2reserved-instances-configuration
+                         :shape "Ec2ReservedInstancesConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reserved-instances-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ec2reserved-instances-cost-calculation
+                         :shape "ReservedInstancesCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ec2reserved-instances
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ec2reserved-instances
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ec2reserved-instances 'make-ec2reserved-instances))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -688,37 +917,112 @@
                           ec2reserved-instances))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ec2reserved-instances-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ec2reserved-instances-configuration-"))
-   (account-scope common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (current-generation common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-family common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (monthly-recurring-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (normalized-units-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (number-of-instances-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (offering-class common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (payment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (platform common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (reserved-instances-region common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (size-flex-eligible common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (tenancy common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (term common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (upfront-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass ec2reserved-instances-configuration common-lisp:nil
+                       ((account-scope :initarg :account-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-account-scope
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (current-generation :initarg :current-generation
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-current-generation
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-family :initarg :instance-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-instance-family
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-type :initarg :instance-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-instance-type
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monthly-recurring-cost :initarg
+                         :monthly-recurring-cost :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-ec2reserved-instances-configuration-monthly-recurring-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (normalized-units-to-purchase :initarg
+                         :normalized-units-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-normalized-units-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-instances-to-purchase :initarg
+                         :number-of-instances-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-number-of-instances-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (offering-class :initarg :offering-class :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-offering-class
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payment-option :initarg :payment-option :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-payment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (platform :initarg :platform :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-ec2reserved-instances-configuration-platform
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reserved-instances-region :initarg
+                         :reserved-instances-region :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-ec2reserved-instances-configuration-reserved-instances-region
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-ec2reserved-instances-configuration-service
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (size-flex-eligible :initarg :size-flex-eligible
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-size-flex-eligible
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tenancy :initarg :tenancy :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-ec2reserved-instances-configuration-tenancy
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term :initarg :term :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-term
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upfront-cost :initarg :upfront-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-ec2reserved-instances-configuration-upfront-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ec2reserved-instances-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'ec2reserved-instances-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ec2reserved-instances-configuration
                     'make-ec2reserved-instances-configuration))
@@ -854,13 +1158,26 @@
                           ec2reserved-instances-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ecs-service (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ecs-service-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or ecs-service-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or resource-cost-calculation common-lisp:null)))
+ (common-lisp:defclass ecs-service common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ecs-service-configuration
+                                         common-lisp:null)
+                         :accessor struct-shape-ecs-service-configuration
+                         :shape "EcsServiceConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-cost-calculation
+                                         common-lisp:null)
+                         :accessor struct-shape-ecs-service-cost-calculation
+                         :shape "ResourceCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ecs-service
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ecs-service
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'ecs-service 'make-ecs-service))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input ecs-service))
@@ -886,11 +1203,20 @@
                         ((aws-sdk/generator/shape::input ecs-service))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ecs-service-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ecs-service-configuration-"))
-   (compute common-lisp:nil :type
-    (common-lisp:or compute-configuration common-lisp:null)))
+ (common-lisp:defclass ecs-service-configuration common-lisp:nil
+                       ((compute :initarg :compute :initform common-lisp:nil
+                         :type
+                         (common-lisp:or compute-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-ecs-service-configuration-compute :shape
+                         "ComputeConfiguration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ecs-service-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ecs-service-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'ecs-service-configuration
                     'make-ecs-service-configuration))
@@ -917,14 +1243,31 @@
                           ecs-service-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (elasti-cache-reserved-instances (:copier common-lisp:nil)
-      (:conc-name "struct-shape-elasti-cache-reserved-instances-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or elasti-cache-reserved-instances-configuration
-                    common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or reserved-instances-cost-calculation common-lisp:null)))
+ (common-lisp:defclass elasti-cache-reserved-instances common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          elasti-cache-reserved-instances-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration
+                         :shape "ElastiCacheReservedInstancesConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reserved-instances-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-elasti-cache-reserved-instances-cost-calculation
+                         :shape "ReservedInstancesCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-elasti-cache-reserved-instances
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'elasti-cache-reserved-instances
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'elasti-cache-reserved-instances
                     'make-elasti-cache-reserved-instances))
@@ -958,34 +1301,95 @@
                           elasti-cache-reserved-instances))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (elasti-cache-reserved-instances-configuration (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-elasti-cache-reserved-instances-configuration-"))
-   (account-scope common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (current-generation common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-family common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (monthly-recurring-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (normalized-units-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (number-of-instances-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (payment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (reserved-instances-region common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (size-flex-eligible common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (term common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (upfront-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass elasti-cache-reserved-instances-configuration
+                       common-lisp:nil
+                       ((account-scope :initarg :account-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-account-scope
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (current-generation :initarg :current-generation
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-current-generation
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-family :initarg :instance-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-instance-family
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-type :initarg :instance-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-instance-type
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monthly-recurring-cost :initarg
+                         :monthly-recurring-cost :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-monthly-recurring-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (normalized-units-to-purchase :initarg
+                         :normalized-units-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-normalized-units-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-instances-to-purchase :initarg
+                         :number-of-instances-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-number-of-instances-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payment-option :initarg :payment-option :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-payment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reserved-instances-region :initarg
+                         :reserved-instances-region :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-reserved-instances-region
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-service
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (size-flex-eligible :initarg :size-flex-eligible
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-size-flex-eligible
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term :initarg :term :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-term
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upfront-cost :initarg :upfront-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-elasti-cache-reserved-instances-configuration-upfront-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-elasti-cache-reserved-instances-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'elasti-cache-reserved-instances-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'elasti-cache-reserved-instances-configuration
                     'make-elasti-cache-reserved-instances-configuration))
@@ -1101,15 +1505,32 @@
    common-lisp:nil))
 (common-lisp:deftype enrollment-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (estimated-discounts (:copier common-lisp:nil)
-      (:conc-name "struct-shape-estimated-discounts-"))
-   (other-discount common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (reserved-instances-discount common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (savings-plans-discount common-lisp:nil :type
-    (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass estimated-discounts common-lisp:nil
+                       ((other-discount :initarg :other-discount :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-estimated-discounts-other-discount :shape
+                         "Double" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (reserved-instances-discount :initarg
+                         :reserved-instances-discount :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-estimated-discounts-reserved-instances-discount
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (savings-plans-discount :initarg
+                         :savings-plans-discount :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-estimated-discounts-savings-plans-discount
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-estimated-discounts
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'estimated-discounts
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'estimated-discounts 'make-estimated-discounts))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1145,29 +1566,78 @@
                         ((aws-sdk/generator/shape::input estimated-discounts))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (filter (:copier common-lisp:nil) (:conc-name "struct-shape-filter-"))
-   (account-ids common-lisp:nil :type
-    (common-lisp:or account-id-list common-lisp:null))
-   (action-types common-lisp:nil :type
-    (common-lisp:or action-type-list common-lisp:null))
-   (implementation-efforts common-lisp:nil :type
-    (common-lisp:or implementation-effort-list common-lisp:null))
-   (recommendation-ids common-lisp:nil :type
-    (common-lisp:or recommendation-id-list common-lisp:null))
-   (regions common-lisp:nil :type
-    (common-lisp:or region-list common-lisp:null))
-   (resource-arns common-lisp:nil :type
-    (common-lisp:or resource-arn-list common-lisp:null))
-   (resource-ids common-lisp:nil :type
-    (common-lisp:or resource-id-list common-lisp:null))
-   (resource-types common-lisp:nil :type
-    (common-lisp:or resource-type-list common-lisp:null))
-   (restart-needed common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (rollback-possible common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass filter common-lisp:nil
+                       ((account-ids :initarg :account-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id-list common-lisp:null)
+                         :accessor struct-shape-filter-account-ids :shape
+                         "AccountIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-types :initarg :action-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-type-list common-lisp:null)
+                         :accessor struct-shape-filter-action-types :shape
+                         "ActionTypeList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (implementation-efforts :initarg
+                         :implementation-efforts :initform common-lisp:nil
+                         :type
+                         (common-lisp:or implementation-effort-list
+                                         common-lisp:null)
+                         :accessor struct-shape-filter-implementation-efforts
+                         :shape "ImplementationEffortList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (recommendation-ids :initarg :recommendation-ids
+                         :initform common-lisp:nil :type
+                         (common-lisp:or recommendation-id-list
+                                         common-lisp:null)
+                         :accessor struct-shape-filter-recommendation-ids
+                         :shape "RecommendationIdList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (regions :initarg :regions :initform common-lisp:nil
+                         :type (common-lisp:or region-list common-lisp:null)
+                         :accessor struct-shape-filter-regions :shape
+                         "RegionList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-arns :initarg :resource-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn-list common-lisp:null)
+                         :accessor struct-shape-filter-resource-arns :shape
+                         "ResourceArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-ids :initarg :resource-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id-list common-lisp:null)
+                         :accessor struct-shape-filter-resource-ids :shape
+                         "ResourceIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-types :initarg :resource-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-type-list common-lisp:null)
+                         :accessor struct-shape-filter-resource-types :shape
+                         "ResourceTypeList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (restart-needed :initarg :restart-needed :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-filter-restart-needed :shape "Boolean"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (rollback-possible :initarg :rollback-possible
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-filter-rollback-possible :shape "Boolean"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-filter-tags :shape "TagList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input filter))
@@ -1257,9 +1727,12 @@
                         ((aws-sdk/generator/shape::input filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-preferences-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-preferences-request-")))
+ (common-lisp:defclass get-preferences-request common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-preferences-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-preferences-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-preferences-request 'make-get-preferences-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1278,13 +1751,30 @@
                           get-preferences-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-preferences-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-preferences-response-"))
-   (member-account-discount-visibility common-lisp:nil :type
-    (common-lisp:or member-account-discount-visibility common-lisp:null))
-   (savings-estimation-mode common-lisp:nil :type
-    (common-lisp:or savings-estimation-mode common-lisp:null)))
+ (common-lisp:defclass get-preferences-response common-lisp:nil
+                       ((member-account-discount-visibility :initarg
+                         :member-account-discount-visibility :initform
+                         common-lisp:nil :type
+                         (common-lisp:or member-account-discount-visibility
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-preferences-response-member-account-discount-visibility
+                         :shape "MemberAccountDiscountVisibility" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (savings-estimation-mode :initarg
+                         :savings-estimation-mode :initform common-lisp:nil
+                         :type
+                         (common-lisp:or savings-estimation-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-preferences-response-savings-estimation-mode
+                         :shape "SavingsEstimationMode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-preferences-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-preferences-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-preferences-response 'make-get-preferences-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1319,11 +1809,20 @@
                           get-preferences-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-recommendation-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-recommendation-request-"))
-   (recommendation-id (common-lisp:error ":recommendationid is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-recommendation-request common-lisp:nil
+                       ((recommendation-id :initarg :recommendation-id
+                         :initform
+                         (common-lisp:error ":recommendationid is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-request-recommendation-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-recommendation-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-recommendation-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-recommendation-request
                     'make-get-recommendation-request))
@@ -1350,50 +1849,166 @@
                           get-recommendation-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-recommendation-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-recommendation-response-"))
-   (account-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (action-type common-lisp:nil :type
-    (common-lisp:or action-type common-lisp:null))
-   (cost-calculation-lookback-period-in-days common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (current-resource-details common-lisp:nil :type
-    (common-lisp:or resource-details common-lisp:null))
-   (current-resource-type common-lisp:nil :type
-    (common-lisp:or resource-type common-lisp:null))
-   (estimated-monthly-cost common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-monthly-savings common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-savings-over-cost-calculation-lookback-period common-lisp:nil
-    :type (common-lisp:or double common-lisp:null))
-   (estimated-savings-percentage common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (implementation-effort common-lisp:nil :type
-    (common-lisp:or implementation-effort common-lisp:null))
-   (last-refresh-timestamp common-lisp:nil :type
-    (common-lisp:or datetime common-lisp:null))
-   (recommendation-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (recommendation-lookback-period-in-days common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (recommended-resource-details common-lisp:nil :type
-    (common-lisp:or resource-details common-lisp:null))
-   (recommended-resource-type common-lisp:nil :type
-    (common-lisp:or resource-type common-lisp:null))
-   (region common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (resource-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (restart-needed common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (rollback-possible common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (source common-lisp:nil :type (common-lisp:or source common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass get-recommendation-response common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-account-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (action-type :initarg :action-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or action-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-action-type
+                         :shape "ActionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (cost-calculation-lookback-period-in-days :initarg
+                         :cost-calculation-lookback-period-in-days :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-cost-calculation-lookback-period-in-days
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-currency-code
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (current-resource-details :initarg
+                         :current-resource-details :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-details common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-current-resource-details
+                         :shape "ResourceDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (current-resource-type :initarg :current-resource-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or resource-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-current-resource-type
+                         :shape "ResourceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-monthly-cost :initarg
+                         :estimated-monthly-cost :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-estimated-monthly-cost
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-monthly-savings :initarg
+                         :estimated-monthly-savings :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-estimated-monthly-savings
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-savings-over-cost-calculation-lookback-period
+                         :initarg
+                         :estimated-savings-over-cost-calculation-lookback-period
+                         :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-estimated-savings-over-cost-calculation-lookback-period
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-savings-percentage :initarg
+                         :estimated-savings-percentage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-estimated-savings-percentage
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (implementation-effort :initarg :implementation-effort
+                         :initform common-lisp:nil :type
+                         (common-lisp:or implementation-effort
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-implementation-effort
+                         :shape "ImplementationEffort" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-refresh-timestamp :initarg
+                         :last-refresh-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or datetime common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-last-refresh-timestamp
+                         :shape "Datetime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommendation-id :initarg :recommendation-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-recommendation-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommendation-lookback-period-in-days :initarg
+                         :recommendation-lookback-period-in-days :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-recommendation-lookback-period-in-days
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommended-resource-details :initarg
+                         :recommended-resource-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-details common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-recommended-resource-details
+                         :shape "ResourceDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommended-resource-type :initarg
+                         :recommended-resource-type :initform common-lisp:nil
+                         :type (common-lisp:or resource-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-recommended-resource-type
+                         :shape "ResourceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (region :initarg :region :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-region :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-arn :initarg :resource-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-resource-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-resource-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (restart-needed :initarg :restart-needed :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-restart-needed
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rollback-possible :initarg :rollback-possible
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-rollback-possible
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source :initarg :source :initform common-lisp:nil
+                         :type (common-lisp:or source common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-source :shape
+                         "Source" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-get-recommendation-response-tags :shape
+                         "TagList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-recommendation-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-recommendation-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-recommendation-response
                     'make-get-recommendation-response))
@@ -1595,10 +2210,17 @@
                            (trivial-types:proper-list implementation-effort))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (instance-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-instance-configuration-"))
-   (type common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass instance-configuration common-lisp:nil
+                       ((type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-instance-configuration-type :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-instance-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'instance-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'instance-configuration 'make-instance-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1633,13 +2255,27 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lambda-function (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lambda-function-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or lambda-function-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or resource-cost-calculation common-lisp:null)))
+ (common-lisp:defclass lambda-function common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or lambda-function-configuration
+                                         common-lisp:null)
+                         :accessor struct-shape-lambda-function-configuration
+                         :shape "LambdaFunctionConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-cost-calculation :shape
+                         "ResourceCostCalculation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lambda-function
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'lambda-function
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'lambda-function 'make-lambda-function))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input lambda-function))
@@ -1665,11 +2301,21 @@
                         ((aws-sdk/generator/shape::input lambda-function))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (lambda-function-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-lambda-function-configuration-"))
-   (compute common-lisp:nil :type
-    (common-lisp:or compute-configuration common-lisp:null)))
+ (common-lisp:defclass lambda-function-configuration common-lisp:nil
+                       ((compute :initarg :compute :initform common-lisp:nil
+                         :type
+                         (common-lisp:or compute-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-lambda-function-configuration-compute
+                         :shape "ComputeConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-lambda-function-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'lambda-function-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'lambda-function-configuration
                     'make-lambda-function-configuration))
@@ -1696,16 +2342,40 @@
                           lambda-function-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-enrollment-statuses-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-enrollment-statuses-request-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (include-organization-info common-lisp:nil :type
-    (common-lisp:or primitive-boolean common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-enrollment-statuses-request common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-enrollment-statuses-request-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-organization-info :initarg
+                         :include-organization-info :initform common-lisp:nil
+                         :type
+                         (common-lisp:or primitive-boolean common-lisp:null)
+                         :accessor
+                         struct-shape-list-enrollment-statuses-request-include-organization-info
+                         :shape "PrimitiveBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-enrollment-statuses-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-enrollment-statuses-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-enrollment-statuses-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-enrollment-statuses-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-enrollment-statuses-request
                     'make-list-enrollment-statuses-request))
@@ -1754,14 +2424,33 @@
                           list-enrollment-statuses-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-enrollment-statuses-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-enrollment-statuses-response-"))
-   (include-member-accounts common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (items common-lisp:nil :type
-    (common-lisp:or account-enrollment-statuses common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-enrollment-statuses-response common-lisp:nil
+                       ((include-member-accounts :initarg
+                         :include-member-accounts :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-list-enrollment-statuses-response-include-member-accounts
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (items :initarg :items :initform common-lisp:nil :type
+                         (common-lisp:or account-enrollment-statuses
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-enrollment-statuses-response-items
+                         :shape "AccountEnrollmentStatuses" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-enrollment-statuses-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-enrollment-statuses-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-enrollment-statuses-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-enrollment-statuses-response
                     'make-list-enrollment-statuses-response))
@@ -1803,16 +2492,42 @@
                           list-enrollment-statuses-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recommendation-summaries-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recommendation-summaries-request-"))
-   (filter common-lisp:nil :type (common-lisp:or filter common-lisp:null))
-   (group-by (common-lisp:error ":groupby is required") :type
-    (common-lisp:or string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-recommendation-summaries-request-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-recommendation-summaries-request common-lisp:nil
+                       ((filter :initarg :filter :initform common-lisp:nil
+                         :type (common-lisp:or filter common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-summaries-request-filter
+                         :shape "Filter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (group-by :initarg :group-by :initform
+                         (common-lisp:error ":groupby is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-recommendation-summaries-request-group-by
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-recommendation-summaries-request-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-summaries-request-max-results
+                         :shape
+                         "ListRecommendationSummariesRequestMaxResultsInteger"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-recommendation-summaries-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recommendation-summaries-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-recommendation-summaries-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recommendation-summaries-request
                     'make-list-recommendation-summaries-request))
@@ -1863,17 +2578,45 @@
                      ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recommendation-summaries-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recommendation-summaries-response-"))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (estimated-total-deduped-savings common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (group-by common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (items common-lisp:nil :type
-    (common-lisp:or recommendation-summaries-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-recommendation-summaries-response common-lisp:nil
+                       ((currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-recommendation-summaries-response-currency-code
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-total-deduped-savings :initarg
+                         :estimated-total-deduped-savings :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-list-recommendation-summaries-response-estimated-total-deduped-savings
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (group-by :initarg :group-by :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-summaries-response-group-by
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (items :initarg :items :initform common-lisp:nil :type
+                         (common-lisp:or recommendation-summaries-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-summaries-response-items
+                         :shape "RecommendationSummariesList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-recommendation-summaries-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recommendation-summaries-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-recommendation-summaries-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recommendation-summaries-response
                     'make-list-recommendation-summaries-response))
@@ -1929,17 +2672,48 @@
                           list-recommendation-summaries-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recommendations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recommendations-request-"))
-   (filter common-lisp:nil :type (common-lisp:or filter common-lisp:null))
-   (include-all-recommendations common-lisp:nil :type
-    (common-lisp:or primitive-boolean common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-recommendations-request-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (order-by common-lisp:nil :type (common-lisp:or order-by common-lisp:null)))
+ (common-lisp:defclass list-recommendations-request common-lisp:nil
+                       ((filter :initarg :filter :initform common-lisp:nil
+                         :type (common-lisp:or filter common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-filter
+                         :shape "Filter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-all-recommendations :initarg
+                         :include-all-recommendations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or primitive-boolean common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-include-all-recommendations
+                         :shape "PrimitiveBoolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-recommendations-request-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-max-results
+                         :shape "ListRecommendationsRequestMaxResultsInteger"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-recommendations-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (order-by :initarg :order-by :initform common-lisp:nil
+                         :type (common-lisp:or order-by common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-order-by
+                         :shape "OrderBy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recommendations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-recommendations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recommendations-request
                     'make-list-recommendations-request))
@@ -1997,12 +2771,25 @@
 (common-lisp:deftype list-recommendations-request-max-results-integer ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recommendations-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recommendations-response-"))
-   (items common-lisp:nil :type
-    (common-lisp:or recommendation-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-recommendations-response common-lisp:nil
+                       ((items :initarg :items :initform common-lisp:nil :type
+                         (common-lisp:or recommendation-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-response-items
+                         :shape "RecommendationList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-recommendations-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recommendations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-recommendations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recommendations-response
                     'make-list-recommendations-response))
@@ -2038,14 +2825,31 @@
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:deftype member-account-discount-visibility () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (open-search-reserved-instances (:copier common-lisp:nil)
-      (:conc-name "struct-shape-open-search-reserved-instances-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or open-search-reserved-instances-configuration
-                    common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or reserved-instances-cost-calculation common-lisp:null)))
+ (common-lisp:defclass open-search-reserved-instances common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          open-search-reserved-instances-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-open-search-reserved-instances-configuration
+                         :shape "OpenSearchReservedInstancesConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reserved-instances-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-open-search-reserved-instances-cost-calculation
+                         :shape "ReservedInstancesCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-open-search-reserved-instances
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'open-search-reserved-instances
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'open-search-reserved-instances
                     'make-open-search-reserved-instances))
@@ -2079,32 +2883,89 @@
                           open-search-reserved-instances))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (open-search-reserved-instances-configuration (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-open-search-reserved-instances-configuration-"))
-   (account-scope common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (current-generation common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (monthly-recurring-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (normalized-units-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (number-of-instances-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (payment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (reserved-instances-region common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (size-flex-eligible common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (term common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (upfront-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass open-search-reserved-instances-configuration
+                       common-lisp:nil
+                       ((account-scope :initarg :account-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-account-scope
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (current-generation :initarg :current-generation
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-current-generation
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-type :initarg :instance-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-instance-type
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monthly-recurring-cost :initarg
+                         :monthly-recurring-cost :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-open-search-reserved-instances-configuration-monthly-recurring-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (normalized-units-to-purchase :initarg
+                         :normalized-units-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-normalized-units-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-instances-to-purchase :initarg
+                         :number-of-instances-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-number-of-instances-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payment-option :initarg :payment-option :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-payment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reserved-instances-region :initarg
+                         :reserved-instances-region :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-open-search-reserved-instances-configuration-reserved-instances-region
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-open-search-reserved-instances-configuration-service
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (size-flex-eligible :initarg :size-flex-eligible
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-size-flex-eligible
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term :initarg :term :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-term
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upfront-cost :initarg :upfront-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-open-search-reserved-instances-configuration-upfront-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-open-search-reserved-instances-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'open-search-reserved-instances-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'open-search-reserved-instances-configuration
                     'make-open-search-reserved-instances-configuration))
@@ -2213,10 +3074,22 @@
    common-lisp:nil))
 (common-lisp:deftype order () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (order-by (:copier common-lisp:nil) (:conc-name "struct-shape-order-by-"))
-   (dimension common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (order common-lisp:nil :type (common-lisp:or order common-lisp:null)))
+ (common-lisp:defclass order-by common-lisp:nil
+                       ((dimension :initarg :dimension :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-order-by-dimension :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (order :initarg :order :initform common-lisp:nil :type
+                         (common-lisp:or order common-lisp:null) :accessor
+                         struct-shape-order-by-order :shape "Order" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-order-by
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'order-by
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'order-by 'make-order-by))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input order-by))
@@ -2243,13 +3116,28 @@
    common-lisp:nil))
 (common-lisp:deftype primitive-boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (rds-reserved-instances (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rds-reserved-instances-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or rds-reserved-instances-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or reserved-instances-cost-calculation common-lisp:null)))
+ (common-lisp:defclass rds-reserved-instances common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rds-reserved-instances-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rds-reserved-instances-configuration
+                         :shape "RdsReservedInstancesConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reserved-instances-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-rds-reserved-instances-cost-calculation
+                         :shape "ReservedInstancesCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rds-reserved-instances
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rds-reserved-instances
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rds-reserved-instances 'make-rds-reserved-instances))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2282,41 +3170,118 @@
                           rds-reserved-instances))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rds-reserved-instances-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rds-reserved-instances-configuration-"))
-   (account-scope common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (current-generation common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (database-edition common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (database-engine common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (deployment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-family common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (license-model common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (monthly-recurring-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (normalized-units-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (number-of-instances-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (payment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (reserved-instances-region common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (size-flex-eligible common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (term common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (upfront-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass rds-reserved-instances-configuration common-lisp:nil
+                       ((account-scope :initarg :account-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-account-scope
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (current-generation :initarg :current-generation
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-current-generation
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-edition :initarg :database-edition :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-database-edition
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (database-engine :initarg :database-engine :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-database-engine
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (deployment-option :initarg :deployment-option
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-deployment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-family :initarg :instance-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-instance-family
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-type :initarg :instance-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-instance-type
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (license-model :initarg :license-model :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-license-model
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monthly-recurring-cost :initarg
+                         :monthly-recurring-cost :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-rds-reserved-instances-configuration-monthly-recurring-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (normalized-units-to-purchase :initarg
+                         :normalized-units-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-normalized-units-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-instances-to-purchase :initarg
+                         :number-of-instances-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-number-of-instances-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payment-option :initarg :payment-option :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-payment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reserved-instances-region :initarg
+                         :reserved-instances-region :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-rds-reserved-instances-configuration-reserved-instances-region
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-rds-reserved-instances-configuration-service
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (size-flex-eligible :initarg :size-flex-eligible
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-size-flex-eligible
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term :initarg :term :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-term
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upfront-cost :initarg :upfront-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-rds-reserved-instances-configuration-upfront-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rds-reserved-instances-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'rds-reserved-instances-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'rds-reserved-instances-configuration
                     'make-rds-reserved-instances-configuration))
@@ -2459,45 +3424,143 @@
                           rds-reserved-instances-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-"))
-   (account-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (action-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (current-resource-summary common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (current-resource-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (estimated-monthly-cost common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-monthly-savings common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-savings-percentage common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (implementation-effort common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (last-refresh-timestamp common-lisp:nil :type
-    (common-lisp:or datetime common-lisp:null))
-   (recommendation-id common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (recommendation-lookback-period-in-days common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (recommended-resource-summary common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (recommended-resource-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (region common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (resource-arn common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (restart-needed common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (rollback-possible common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (source common-lisp:nil :type (common-lisp:or source common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
+ (common-lisp:defclass recommendation common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-account-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (action-type :initarg :action-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-action-type :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-currency-code :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (current-resource-summary :initarg
+                         :current-resource-summary :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-current-resource-summary
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (current-resource-type :initarg :current-resource-type
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-current-resource-type
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-monthly-cost :initarg
+                         :estimated-monthly-cost :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-estimated-monthly-cost
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-monthly-savings :initarg
+                         :estimated-monthly-savings :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-estimated-monthly-savings
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-savings-percentage :initarg
+                         :estimated-savings-percentage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-recommendation-estimated-savings-percentage
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (implementation-effort :initarg :implementation-effort
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-implementation-effort
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-refresh-timestamp :initarg
+                         :last-refresh-timestamp :initform common-lisp:nil
+                         :type (common-lisp:or datetime common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-last-refresh-timestamp
+                         :shape "Datetime" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommendation-id :initarg :recommendation-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-recommendation-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (recommendation-lookback-period-in-days :initarg
+                         :recommendation-lookback-period-in-days :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-recommendation-recommendation-lookback-period-in-days
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommended-resource-summary :initarg
+                         :recommended-resource-summary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-recommended-resource-summary
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommended-resource-type :initarg
+                         :recommended-resource-type :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-recommended-resource-type
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (region :initarg :region :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-recommendation-region :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-arn :initarg :resource-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-resource-arn :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-id :initarg :resource-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-resource-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (restart-needed :initarg :restart-needed :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-recommendation-restart-needed :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (rollback-possible :initarg :rollback-possible
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-recommendation-rollback-possible :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (source :initarg :source :initform common-lisp:nil
+                         :type (common-lisp:or source common-lisp:null)
+                         :accessor struct-shape-recommendation-source :shape
+                         "Source" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-list common-lisp:null) :accessor
+                         struct-shape-recommendation-tags :shape "TagList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'recommendation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'recommendation 'make-recommendation))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input recommendation))
@@ -2690,14 +3753,30 @@
                            (trivial-types:proper-list recommendation-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-summary-"))
-   (estimated-monthly-savings common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (group common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (recommendation-count common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass recommendation-summary common-lisp:nil
+                       ((estimated-monthly-savings :initarg
+                         :estimated-monthly-savings :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-summary-estimated-monthly-savings
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (group :initarg :group :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-summary-group :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (recommendation-count :initarg :recommendation-count
+                         :initform common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-recommendation-summary-recommendation-count
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'recommendation-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'recommendation-summary 'make-recommendation-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2739,14 +3818,30 @@
                           recommendation-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (redshift-reserved-instances (:copier common-lisp:nil)
-      (:conc-name "struct-shape-redshift-reserved-instances-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or redshift-reserved-instances-configuration
-                    common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or reserved-instances-cost-calculation common-lisp:null)))
+ (common-lisp:defclass redshift-reserved-instances common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          redshift-reserved-instances-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-redshift-reserved-instances-configuration
+                         :shape "RedshiftReservedInstancesConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or reserved-instances-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-redshift-reserved-instances-cost-calculation
+                         :shape "ReservedInstancesCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-redshift-reserved-instances
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'redshift-reserved-instances
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'redshift-reserved-instances
                     'make-redshift-reserved-instances))
@@ -2780,33 +3875,95 @@
                           redshift-reserved-instances))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (redshift-reserved-instances-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-redshift-reserved-instances-configuration-"))
-   (account-scope common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (current-generation common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-family common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (instance-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (monthly-recurring-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (normalized-units-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (number-of-instances-to-purchase common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (payment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (reserved-instances-region common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (size-flex-eligible common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (term common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (upfront-cost common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass redshift-reserved-instances-configuration
+                       common-lisp:nil
+                       ((account-scope :initarg :account-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-account-scope
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (current-generation :initarg :current-generation
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-current-generation
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-family :initarg :instance-family :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-instance-family
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (instance-type :initarg :instance-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-instance-type
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monthly-recurring-cost :initarg
+                         :monthly-recurring-cost :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-redshift-reserved-instances-configuration-monthly-recurring-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (normalized-units-to-purchase :initarg
+                         :normalized-units-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-normalized-units-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (number-of-instances-to-purchase :initarg
+                         :number-of-instances-to-purchase :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-number-of-instances-to-purchase
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payment-option :initarg :payment-option :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-payment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reserved-instances-region :initarg
+                         :reserved-instances-region :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-redshift-reserved-instances-configuration-reserved-instances-region
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-redshift-reserved-instances-configuration-service
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (size-flex-eligible :initarg :size-flex-eligible
+                         :initform common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-size-flex-eligible
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term :initarg :term :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-term
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upfront-cost :initarg :upfront-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-redshift-reserved-instances-configuration-upfront-cost
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-redshift-reserved-instances-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'redshift-reserved-instances-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'redshift-reserved-instances-configuration
                     'make-redshift-reserved-instances-configuration))
@@ -2928,11 +4085,21 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (reserved-instances-cost-calculation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-reserved-instances-cost-calculation-"))
-   (pricing common-lisp:nil :type
-    (common-lisp:or reserved-instances-pricing common-lisp:null)))
+ (common-lisp:defclass reserved-instances-cost-calculation common-lisp:nil
+                       ((pricing :initarg :pricing :initform common-lisp:nil
+                         :type
+                         (common-lisp:or reserved-instances-pricing
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-reserved-instances-cost-calculation-pricing
+                         :shape "ReservedInstancesPricing" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-reserved-instances-cost-calculation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'reserved-instances-cost-calculation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'reserved-instances-cost-calculation
                     'make-reserved-instances-cost-calculation))
@@ -2959,17 +4126,39 @@
                           reserved-instances-cost-calculation))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (reserved-instances-pricing (:copier common-lisp:nil)
-      (:conc-name "struct-shape-reserved-instances-pricing-"))
-   (estimated-monthly-amortized-reservation-cost common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-on-demand-cost common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (monthly-reservation-eligible-cost common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (savings-percentage common-lisp:nil :type
-    (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass reserved-instances-pricing common-lisp:nil
+                       ((estimated-monthly-amortized-reservation-cost :initarg
+                         :estimated-monthly-amortized-reservation-cost
+                         :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-reserved-instances-pricing-estimated-monthly-amortized-reservation-cost
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-on-demand-cost :initarg
+                         :estimated-on-demand-cost :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-reserved-instances-pricing-estimated-on-demand-cost
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monthly-reservation-eligible-cost :initarg
+                         :monthly-reservation-eligible-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-reserved-instances-pricing-monthly-reservation-eligible-cost
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (savings-percentage :initarg :savings-percentage
+                         :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-reserved-instances-pricing-savings-percentage
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-reserved-instances-pricing
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'reserved-instances-pricing
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'reserved-instances-pricing
                     'make-reserved-instances-pricing))
@@ -3027,12 +4216,25 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-cost-calculation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-cost-calculation-"))
-   (pricing common-lisp:nil :type
-    (common-lisp:or resource-pricing common-lisp:null))
-   (usages common-lisp:nil :type (common-lisp:or usage-list common-lisp:null)))
+ (common-lisp:defclass resource-cost-calculation common-lisp:nil
+                       ((pricing :initarg :pricing :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-pricing common-lisp:null)
+                         :accessor
+                         struct-shape-resource-cost-calculation-pricing :shape
+                         "ResourcePricing" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usages :initarg :usages :initform common-lisp:nil
+                         :type (common-lisp:or usage-list common-lisp:null)
+                         :accessor
+                         struct-shape-resource-cost-calculation-usages :shape
+                         "UsageList" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-cost-calculation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-cost-calculation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resource-cost-calculation
                     'make-resource-cost-calculation))
@@ -3066,35 +4268,115 @@
                           resource-cost-calculation))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-details-"))
-   (compute-savings-plans common-lisp:nil :type
-    (common-lisp:or compute-savings-plans common-lisp:null))
-   (ebs-volume common-lisp:nil :type
-    (common-lisp:or ebs-volume common-lisp:null))
-   (ec2auto-scaling-group common-lisp:nil :type
-    (common-lisp:or ec2auto-scaling-group common-lisp:null))
-   (ec2instance common-lisp:nil :type
-    (common-lisp:or ec2instance common-lisp:null))
-   (ec2instance-savings-plans common-lisp:nil :type
-    (common-lisp:or ec2instance-savings-plans common-lisp:null))
-   (ec2reserved-instances common-lisp:nil :type
-    (common-lisp:or ec2reserved-instances common-lisp:null))
-   (ecs-service common-lisp:nil :type
-    (common-lisp:or ecs-service common-lisp:null))
-   (elasti-cache-reserved-instances common-lisp:nil :type
-    (common-lisp:or elasti-cache-reserved-instances common-lisp:null))
-   (lambda-function common-lisp:nil :type
-    (common-lisp:or lambda-function common-lisp:null))
-   (open-search-reserved-instances common-lisp:nil :type
-    (common-lisp:or open-search-reserved-instances common-lisp:null))
-   (rds-reserved-instances common-lisp:nil :type
-    (common-lisp:or rds-reserved-instances common-lisp:null))
-   (redshift-reserved-instances common-lisp:nil :type
-    (common-lisp:or redshift-reserved-instances common-lisp:null))
-   (sage-maker-savings-plans common-lisp:nil :type
-    (common-lisp:or sage-maker-savings-plans common-lisp:null)))
+ (common-lisp:defclass resource-details common-lisp:nil
+                       ((compute-savings-plans :initarg :compute-savings-plans
+                         :initform common-lisp:nil :type
+                         (common-lisp:or compute-savings-plans
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-compute-savings-plans
+                         :shape "ComputeSavingsPlans" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ebs-volume :initarg :ebs-volume :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ebs-volume common-lisp:null) :accessor
+                         struct-shape-resource-details-ebs-volume :shape
+                         "EbsVolume" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ec2auto-scaling-group :initarg :ec2auto-scaling-group
+                         :initform common-lisp:nil :type
+                         (common-lisp:or ec2auto-scaling-group
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-ec2auto-scaling-group
+                         :shape "Ec2AutoScalingGroup" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ec2instance :initarg :ec2instance :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ec2instance common-lisp:null)
+                         :accessor struct-shape-resource-details-ec2instance
+                         :shape "Ec2Instance" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ec2instance-savings-plans :initarg
+                         :ec2instance-savings-plans :initform common-lisp:nil
+                         :type
+                         (common-lisp:or ec2instance-savings-plans
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-ec2instance-savings-plans
+                         :shape "Ec2InstanceSavingsPlans" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ec2reserved-instances :initarg :ec2reserved-instances
+                         :initform common-lisp:nil :type
+                         (common-lisp:or ec2reserved-instances
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-ec2reserved-instances
+                         :shape "Ec2ReservedInstances" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (ecs-service :initarg :ecs-service :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ecs-service common-lisp:null)
+                         :accessor struct-shape-resource-details-ecs-service
+                         :shape "EcsService" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (elasti-cache-reserved-instances :initarg
+                         :elasti-cache-reserved-instances :initform
+                         common-lisp:nil :type
+                         (common-lisp:or elasti-cache-reserved-instances
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-elasti-cache-reserved-instances
+                         :shape "ElastiCacheReservedInstances" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (lambda-function :initarg :lambda-function :initform
+                         common-lisp:nil :type
+                         (common-lisp:or lambda-function common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-lambda-function :shape
+                         "LambdaFunction" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (open-search-reserved-instances :initarg
+                         :open-search-reserved-instances :initform
+                         common-lisp:nil :type
+                         (common-lisp:or open-search-reserved-instances
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-open-search-reserved-instances
+                         :shape "OpenSearchReservedInstances" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (rds-reserved-instances :initarg
+                         :rds-reserved-instances :initform common-lisp:nil
+                         :type
+                         (common-lisp:or rds-reserved-instances
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-rds-reserved-instances
+                         :shape "RdsReservedInstances" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (redshift-reserved-instances :initarg
+                         :redshift-reserved-instances :initform common-lisp:nil
+                         :type
+                         (common-lisp:or redshift-reserved-instances
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-redshift-reserved-instances
+                         :shape "RedshiftReservedInstances" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sage-maker-savings-plans :initarg
+                         :sage-maker-savings-plans :initform common-lisp:nil
+                         :type
+                         (common-lisp:or sage-maker-savings-plans
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-resource-details-sage-maker-savings-plans
+                         :shape "SageMakerSavingsPlans" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resource-details 'make-resource-details))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3225,17 +4507,40 @@
                     'resource-not-found-exception-message
                     'resource-not-found-exception-resource-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-pricing (:copier common-lisp:nil)
-      (:conc-name "struct-shape-resource-pricing-"))
-   (estimated-cost-after-discounts common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-cost-before-discounts common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-discounts common-lisp:nil :type
-    (common-lisp:or estimated-discounts common-lisp:null))
-   (estimated-net-unused-amortized-commitments common-lisp:nil :type
-    (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass resource-pricing common-lisp:nil
+                       ((estimated-cost-after-discounts :initarg
+                         :estimated-cost-after-discounts :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-resource-pricing-estimated-cost-after-discounts
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-cost-before-discounts :initarg
+                         :estimated-cost-before-discounts :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-resource-pricing-estimated-cost-before-discounts
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-discounts :initarg :estimated-discounts
+                         :initform common-lisp:nil :type
+                         (common-lisp:or estimated-discounts common-lisp:null)
+                         :accessor
+                         struct-shape-resource-pricing-estimated-discounts
+                         :shape "EstimatedDiscounts" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-net-unused-amortized-commitments :initarg
+                         :estimated-net-unused-amortized-commitments :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-resource-pricing-estimated-net-unused-amortized-commitments
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource-pricing
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource-pricing
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'resource-pricing 'make-resource-pricing))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3288,13 +4593,28 @@
                            (trivial-types:proper-list resource-type))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (sage-maker-savings-plans (:copier common-lisp:nil)
-      (:conc-name "struct-shape-sage-maker-savings-plans-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or sage-maker-savings-plans-configuration common-lisp:null))
-   (cost-calculation common-lisp:nil :type
-    (common-lisp:or savings-plans-cost-calculation common-lisp:null)))
+ (common-lisp:defclass sage-maker-savings-plans common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sage-maker-savings-plans-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-sage-maker-savings-plans-configuration
+                         :shape "SageMakerSavingsPlansConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (cost-calculation :initarg :cost-calculation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or savings-plans-cost-calculation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-sage-maker-savings-plans-cost-calculation
+                         :shape "SavingsPlansCostCalculation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-sage-maker-savings-plans
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'sage-maker-savings-plans
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'sage-maker-savings-plans 'make-sage-maker-savings-plans))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3327,16 +4647,36 @@
                           sage-maker-savings-plans))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (sage-maker-savings-plans-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-sage-maker-savings-plans-configuration-"))
-   (account-scope common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (hourly-commitment common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (payment-option common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (term common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass sage-maker-savings-plans-configuration common-lisp:nil
+                       ((account-scope :initarg :account-scope :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-sage-maker-savings-plans-configuration-account-scope
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (hourly-commitment :initarg :hourly-commitment
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-sage-maker-savings-plans-configuration-hourly-commitment
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (payment-option :initarg :payment-option :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-sage-maker-savings-plans-configuration-payment-option
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term :initarg :term :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-sage-maker-savings-plans-configuration-term
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-sage-maker-savings-plans-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'sage-maker-savings-plans-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'sage-maker-savings-plans-configuration
                     'make-sage-maker-savings-plans-configuration))
@@ -3385,11 +4725,21 @@
    common-lisp:nil))
 (common-lisp:deftype savings-estimation-mode () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (savings-plans-cost-calculation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-savings-plans-cost-calculation-"))
-   (pricing common-lisp:nil :type
-    (common-lisp:or savings-plans-pricing common-lisp:null)))
+ (common-lisp:defclass savings-plans-cost-calculation common-lisp:nil
+                       ((pricing :initarg :pricing :initform common-lisp:nil
+                         :type
+                         (common-lisp:or savings-plans-pricing
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-savings-plans-cost-calculation-pricing
+                         :shape "SavingsPlansPricing" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-savings-plans-cost-calculation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'savings-plans-cost-calculation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'savings-plans-cost-calculation
                     'make-savings-plans-cost-calculation))
@@ -3416,17 +4766,39 @@
                           savings-plans-cost-calculation))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (savings-plans-pricing (:copier common-lisp:nil)
-      (:conc-name "struct-shape-savings-plans-pricing-"))
-   (estimated-monthly-commitment common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-on-demand-cost common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (monthly-savings-plans-eligible-cost common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (savings-percentage common-lisp:nil :type
-    (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass savings-plans-pricing common-lisp:nil
+                       ((estimated-monthly-commitment :initarg
+                         :estimated-monthly-commitment :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-savings-plans-pricing-estimated-monthly-commitment
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-on-demand-cost :initarg
+                         :estimated-on-demand-cost :initform common-lisp:nil
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-savings-plans-pricing-estimated-on-demand-cost
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (monthly-savings-plans-eligible-cost :initarg
+                         :monthly-savings-plans-eligible-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-savings-plans-pricing-monthly-savings-plans-eligible-cost
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (savings-percentage :initarg :savings-percentage
+                         :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-savings-plans-pricing-savings-percentage
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-savings-plans-pricing
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'savings-plans-pricing
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'savings-plans-pricing 'make-savings-plans-pricing))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3477,11 +4849,23 @@
    common-lisp:nil))
 (common-lisp:deftype source () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (storage-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-storage-configuration-"))
-   (size-in-gb common-lisp:nil :type (common-lisp:or double common-lisp:null))
-   (type common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass storage-configuration common-lisp:nil
+                       ((size-in-gb :initarg :size-in-gb :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-storage-configuration-size-in-gb :shape
+                         "Double" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-storage-configuration-type :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-storage-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'storage-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'storage-configuration 'make-storage-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3515,10 +4899,19 @@
    common-lisp:nil))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))
@@ -3559,13 +4952,27 @@
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-enrollment-status-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-enrollment-status-request-"))
-   (include-member-accounts common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or enrollment-status common-lisp:null)))
+ (common-lisp:defclass update-enrollment-status-request common-lisp:nil
+                       ((include-member-accounts :initarg
+                         :include-member-accounts :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-update-enrollment-status-request-include-member-accounts
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or enrollment-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-enrollment-status-request-status
+                         :shape "EnrollmentStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-enrollment-status-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-enrollment-status-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-enrollment-status-request
                     'make-update-enrollment-status-request))
@@ -3600,10 +5007,19 @@
                           update-enrollment-status-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-enrollment-status-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-enrollment-status-response-"))
-   (status common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass update-enrollment-status-response common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-update-enrollment-status-response-status
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-enrollment-status-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-enrollment-status-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-enrollment-status-response
                     'make-update-enrollment-status-response))
@@ -3630,13 +5046,30 @@
                           update-enrollment-status-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-preferences-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-preferences-request-"))
-   (member-account-discount-visibility common-lisp:nil :type
-    (common-lisp:or member-account-discount-visibility common-lisp:null))
-   (savings-estimation-mode common-lisp:nil :type
-    (common-lisp:or savings-estimation-mode common-lisp:null)))
+ (common-lisp:defclass update-preferences-request common-lisp:nil
+                       ((member-account-discount-visibility :initarg
+                         :member-account-discount-visibility :initform
+                         common-lisp:nil :type
+                         (common-lisp:or member-account-discount-visibility
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-preferences-request-member-account-discount-visibility
+                         :shape "MemberAccountDiscountVisibility" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (savings-estimation-mode :initarg
+                         :savings-estimation-mode :initform common-lisp:nil
+                         :type
+                         (common-lisp:or savings-estimation-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-preferences-request-savings-estimation-mode
+                         :shape "SavingsEstimationMode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-preferences-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-preferences-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-preferences-request
                     'make-update-preferences-request))
@@ -3672,13 +5105,30 @@
                           update-preferences-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-preferences-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-preferences-response-"))
-   (member-account-discount-visibility common-lisp:nil :type
-    (common-lisp:or member-account-discount-visibility common-lisp:null))
-   (savings-estimation-mode common-lisp:nil :type
-    (common-lisp:or savings-estimation-mode common-lisp:null)))
+ (common-lisp:defclass update-preferences-response common-lisp:nil
+                       ((member-account-discount-visibility :initarg
+                         :member-account-discount-visibility :initform
+                         common-lisp:nil :type
+                         (common-lisp:or member-account-discount-visibility
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-preferences-response-member-account-discount-visibility
+                         :shape "MemberAccountDiscountVisibility" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (savings-estimation-mode :initarg
+                         :savings-estimation-mode :initform common-lisp:nil
+                         :type
+                         (common-lisp:or savings-estimation-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-preferences-response-savings-estimation-mode
+                         :shape "SavingsEstimationMode" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-preferences-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-preferences-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-preferences-response
                     'make-update-preferences-response))
@@ -3714,15 +5164,39 @@
                           update-preferences-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (usage (:copier common-lisp:nil) (:conc-name "struct-shape-usage-"))
-   (operation common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (product-code common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (unit common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (usage-amount common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (usage-type common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass usage common-lisp:nil
+                       ((operation :initarg :operation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-usage-operation :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (product-code :initarg :product-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-usage-product-code :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (unit :initarg :unit :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-usage-unit :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (usage-amount :initarg :usage-amount :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-usage-usage-amount :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (usage-type :initarg :usage-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-usage-usage-type :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-usage
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'usage
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'usage 'make-usage))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input usage))
@@ -3789,13 +5263,24 @@
                     'validation-exception-message
                     'validation-exception-reason)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-detail-"))
-   (field-name (common-lisp:error ":fieldname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass validation-exception-detail common-lisp:nil
+                       ((field-name :initarg :field-name :initform
+                         (common-lisp:error ":fieldname is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-detail-field-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-detail-message
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-detail
                     'make-validation-exception-detail))

@@ -42,11 +42,19 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-report-definition-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-report-definition-request-"))
-   (report-id (common-lisp:error ":reportid is required") :type
-    (common-lisp:or report-id common-lisp:null)))
+ (common-lisp:defclass delete-report-definition-request common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         (common-lisp:error ":reportid is required") :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-delete-report-definition-request-report-id
+                         :shape "ReportId" :location "uri" :location-name
+                         "reportId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-report-definition-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-report-definition-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-report-definition-request
                     'make-delete-report-definition-request))
@@ -66,11 +74,19 @@
                           delete-report-definition-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-report-definition-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-report-definition-result-"))
-   (report-id common-lisp:nil :type
-    (common-lisp:or report-id common-lisp:null)))
+ (common-lisp:defclass delete-report-definition-result common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-delete-report-definition-result-report-id
+                         :shape "ReportId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-report-definition-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-report-definition-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-report-definition-result
                     'make-delete-report-definition-result))
@@ -99,11 +115,19 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype format () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-report-definition-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-report-definition-request-"))
-   (report-id (common-lisp:error ":reportid is required") :type
-    (common-lisp:or report-id common-lisp:null)))
+ (common-lisp:defclass get-report-definition-request common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         (common-lisp:error ":reportid is required") :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-get-report-definition-request-report-id
+                         :shape "ReportId" :location "uri" :location-name
+                         "reportId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-report-definition-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-report-definition-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-report-definition-request
                     'make-get-report-definition-request))
@@ -123,24 +147,62 @@
                           get-report-definition-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-report-definition-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-report-definition-result-"))
-   (report-id (common-lisp:error ":reportid is required") :type
-    (common-lisp:or report-id common-lisp:null))
-   (report-description (common-lisp:error ":reportdescription is required")
-    :type (common-lisp:or report-description common-lisp:null))
-   (report-frequency (common-lisp:error ":reportfrequency is required") :type
-    (common-lisp:or report-frequency common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or format common-lisp:null))
-   (destination-s3location
-    (common-lisp:error ":destinations3location is required") :type
-    (common-lisp:or s3location common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated (common-lisp:error ":lastupdated is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass get-report-definition-result common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         (common-lisp:error ":reportid is required") :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-get-report-definition-result-report-id
+                         :shape "ReportId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (report-description :initarg :report-description
+                         :initform
+                         (common-lisp:error ":reportdescription is required")
+                         :type
+                         (common-lisp:or report-description common-lisp:null)
+                         :accessor
+                         struct-shape-get-report-definition-result-report-description
+                         :shape "ReportDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (report-frequency :initarg :report-frequency :initform
+                         (common-lisp:error ":reportfrequency is required")
+                         :type
+                         (common-lisp:or report-frequency common-lisp:null)
+                         :accessor
+                         struct-shape-get-report-definition-result-report-frequency
+                         :shape "ReportFrequency" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or format common-lisp:null) :accessor
+                         struct-shape-get-report-definition-result-format
+                         :shape "Format" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-s3location :initarg
+                         :destination-s3location :initform
+                         (common-lisp:error
+                          ":destinations3location is required")
+                         :type (common-lisp:or s3location common-lisp:null)
+                         :accessor
+                         struct-shape-get-report-definition-result-destination-s3location
+                         :shape "S3Location" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         (common-lisp:error ":createdat is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-report-definition-result-created-at
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated :initarg :last-updated :initform
+                         (common-lisp:error ":lastupdated is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-report-definition-result-last-updated
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-report-definition-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-report-definition-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-report-definition-result
                     'make-get-report-definition-result))
@@ -210,11 +272,22 @@
                           get-report-definition-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (import-application-usage-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-import-application-usage-request-"))
-   (source-s3location (common-lisp:error ":sources3location is required") :type
-    (common-lisp:or source-s3location common-lisp:null)))
+ (common-lisp:defclass import-application-usage-request common-lisp:nil
+                       ((source-s3location :initarg :source-s3location
+                         :initform
+                         (common-lisp:error ":sources3location is required")
+                         :type
+                         (common-lisp:or source-s3location common-lisp:null)
+                         :accessor
+                         struct-shape-import-application-usage-request-source-s3location
+                         :shape "SourceS3Location" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-import-application-usage-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'import-application-usage-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'import-application-usage-request
                     'make-import-application-usage-request))
@@ -241,11 +314,19 @@
                           import-application-usage-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (import-application-usage-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-import-application-usage-result-"))
-   (import-id (common-lisp:error ":importid is required") :type
-    (common-lisp:or import-id common-lisp:null)))
+ (common-lisp:defclass import-application-usage-result common-lisp:nil
+                       ((import-id :initarg :import-id :initform
+                         (common-lisp:error ":importid is required") :type
+                         (common-lisp:or import-id common-lisp:null) :accessor
+                         struct-shape-import-application-usage-result-import-id
+                         :shape "ImportId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-import-application-usage-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'import-application-usage-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'import-application-usage-result
                     'make-import-application-usage-result))
@@ -282,12 +363,25 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-report-definitions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-report-definitions-request-"))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null)))
+ (common-lisp:defclass list-report-definitions-request common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-report-definitions-request-next-token
+                         :shape "Token" :location "querystring" :location-name
+                         "nextToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-list-report-definitions-request-max-results
+                         :shape "Integer" :location "querystring"
+                         :location-name "maxResults"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-report-definitions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-report-definitions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-report-definitions-request
                     'make-list-report-definitions-request))
@@ -307,12 +401,27 @@
                           list-report-definitions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-report-definitions-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-report-definitions-result-"))
-   (report-definitions common-lisp:nil :type
-    (common-lisp:or report-definition-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-report-definitions-result common-lisp:nil
+                       ((report-definitions :initarg :report-definitions
+                         :initform common-lisp:nil :type
+                         (common-lisp:or report-definition-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-report-definitions-result-report-definitions
+                         :shape "ReportDefinitionList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-report-definitions-result-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-report-definitions-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-report-definitions-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-report-definitions-result
                     'make-list-report-definitions-result))
@@ -346,20 +455,51 @@
                           list-report-definitions-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-report-definition-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-report-definition-request-"))
-   (report-id (common-lisp:error ":reportid is required") :type
-    (common-lisp:or report-id common-lisp:null))
-   (report-description (common-lisp:error ":reportdescription is required")
-    :type (common-lisp:or report-description common-lisp:null))
-   (report-frequency (common-lisp:error ":reportfrequency is required") :type
-    (common-lisp:or report-frequency common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or format common-lisp:null))
-   (destination-s3location
-    (common-lisp:error ":destinations3location is required") :type
-    (common-lisp:or s3location common-lisp:null)))
+ (common-lisp:defclass put-report-definition-request common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         (common-lisp:error ":reportid is required") :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-put-report-definition-request-report-id
+                         :shape "ReportId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (report-description :initarg :report-description
+                         :initform
+                         (common-lisp:error ":reportdescription is required")
+                         :type
+                         (common-lisp:or report-description common-lisp:null)
+                         :accessor
+                         struct-shape-put-report-definition-request-report-description
+                         :shape "ReportDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (report-frequency :initarg :report-frequency :initform
+                         (common-lisp:error ":reportfrequency is required")
+                         :type
+                         (common-lisp:or report-frequency common-lisp:null)
+                         :accessor
+                         struct-shape-put-report-definition-request-report-frequency
+                         :shape "ReportFrequency" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or format common-lisp:null) :accessor
+                         struct-shape-put-report-definition-request-format
+                         :shape "Format" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-s3location :initarg
+                         :destination-s3location :initform
+                         (common-lisp:error
+                          ":destinations3location is required")
+                         :type (common-lisp:or s3location common-lisp:null)
+                         :accessor
+                         struct-shape-put-report-definition-request-destination-s3location
+                         :shape "S3Location" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-report-definition-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-report-definition-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-report-definition-request
                     'make-put-report-definition-request))
@@ -415,11 +555,18 @@
                           put-report-definition-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-report-definition-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-report-definition-result-"))
-   (report-id common-lisp:nil :type
-    (common-lisp:or report-id common-lisp:null)))
+ (common-lisp:defclass put-report-definition-result common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-put-report-definition-result-report-id
+                         :shape "ReportId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-report-definition-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-report-definition-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-report-definition-result
                     'make-put-report-definition-result))
@@ -446,22 +593,56 @@
                           put-report-definition-result))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (report-definition (:copier common-lisp:nil)
-      (:conc-name "struct-shape-report-definition-"))
-   (report-id common-lisp:nil :type
-    (common-lisp:or report-id common-lisp:null))
-   (report-description common-lisp:nil :type
-    (common-lisp:or report-description common-lisp:null))
-   (report-frequency common-lisp:nil :type
-    (common-lisp:or report-frequency common-lisp:null))
-   (format common-lisp:nil :type (common-lisp:or format common-lisp:null))
-   (destination-s3location common-lisp:nil :type
-    (common-lisp:or s3location common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass report-definition common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-report-definition-report-id :shape
+                         "ReportId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (report-description :initarg :report-description
+                         :initform common-lisp:nil :type
+                         (common-lisp:or report-description common-lisp:null)
+                         :accessor
+                         struct-shape-report-definition-report-description
+                         :shape "ReportDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (report-frequency :initarg :report-frequency :initform
+                         common-lisp:nil :type
+                         (common-lisp:or report-frequency common-lisp:null)
+                         :accessor
+                         struct-shape-report-definition-report-frequency :shape
+                         "ReportFrequency" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format :initarg :format :initform common-lisp:nil
+                         :type (common-lisp:or format common-lisp:null)
+                         :accessor struct-shape-report-definition-format :shape
+                         "Format" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (destination-s3location :initarg
+                         :destination-s3location :initform common-lisp:nil
+                         :type (common-lisp:or s3location common-lisp:null)
+                         :accessor
+                         struct-shape-report-definition-destination-s3location
+                         :shape "S3Location" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-report-definition-created-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-report-definition-last-updated-at :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-report-definition
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'report-definition
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'report-definition 'make-report-definition))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -538,13 +719,24 @@
 (common-lisp:deftype s3bucket-region () 'common-lisp:string)
 (common-lisp:deftype s3key () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3location (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3location-"))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or s3bucket common-lisp:null))
-   (prefix (common-lisp:error ":prefix is required") :type
-    (common-lisp:or s3prefix common-lisp:null)))
+ (common-lisp:defclass s3location common-lisp:nil
+                       ((bucket :initarg :bucket :initform
+                         (common-lisp:error ":bucket is required") :type
+                         (common-lisp:or s3bucket common-lisp:null) :accessor
+                         struct-shape-s3location-bucket :shape "S3Bucket"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (prefix :initarg :prefix :initform
+                         (common-lisp:error ":prefix is required") :type
+                         (common-lisp:or s3prefix common-lisp:null) :accessor
+                         struct-shape-s3location-prefix :shape "S3Prefix"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-s3location
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 's3location
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 's3location 'make-s3location))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input s3location))
@@ -579,15 +771,30 @@
   (common-lisp:list 'service-quota-exceeded-exception
                     'service-quota-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (source-s3location (:copier common-lisp:nil)
-      (:conc-name "struct-shape-source-s3location-"))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or s3bucket common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or s3key common-lisp:null))
-   (region common-lisp:nil :type
-    (common-lisp:or s3bucket-region common-lisp:null)))
+ (common-lisp:defclass source-s3location common-lisp:nil
+                       ((bucket :initarg :bucket :initform
+                         (common-lisp:error ":bucket is required") :type
+                         (common-lisp:or s3bucket common-lisp:null) :accessor
+                         struct-shape-source-s3location-bucket :shape
+                         "S3Bucket" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or s3key common-lisp:null) :accessor
+                         struct-shape-source-s3location-key :shape "S3Key"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (region :initarg :region :initform common-lisp:nil
+                         :type
+                         (common-lisp:or s3bucket-region common-lisp:null)
+                         :accessor struct-shape-source-s3location-region :shape
+                         "S3BucketRegion" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-source-s3location
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'source-s3location
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'source-s3location 'make-source-s3location))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -630,20 +837,51 @@
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-report-definition-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-report-definition-request-"))
-   (report-id (common-lisp:error ":reportid is required") :type
-    (common-lisp:or report-id common-lisp:null))
-   (report-description (common-lisp:error ":reportdescription is required")
-    :type (common-lisp:or report-description common-lisp:null))
-   (report-frequency (common-lisp:error ":reportfrequency is required") :type
-    (common-lisp:or report-frequency common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or format common-lisp:null))
-   (destination-s3location
-    (common-lisp:error ":destinations3location is required") :type
-    (common-lisp:or s3location common-lisp:null)))
+ (common-lisp:defclass update-report-definition-request common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         (common-lisp:error ":reportid is required") :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-update-report-definition-request-report-id
+                         :shape "ReportId" :location "uri" :location-name
+                         "reportId")
+                        (report-description :initarg :report-description
+                         :initform
+                         (common-lisp:error ":reportdescription is required")
+                         :type
+                         (common-lisp:or report-description common-lisp:null)
+                         :accessor
+                         struct-shape-update-report-definition-request-report-description
+                         :shape "ReportDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (report-frequency :initarg :report-frequency :initform
+                         (common-lisp:error ":reportfrequency is required")
+                         :type
+                         (common-lisp:or report-frequency common-lisp:null)
+                         :accessor
+                         struct-shape-update-report-definition-request-report-frequency
+                         :shape "ReportFrequency" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or format common-lisp:null) :accessor
+                         struct-shape-update-report-definition-request-format
+                         :shape "Format" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (destination-s3location :initarg
+                         :destination-s3location :initform
+                         (common-lisp:error
+                          ":destinations3location is required")
+                         :type (common-lisp:or s3location common-lisp:null)
+                         :accessor
+                         struct-shape-update-report-definition-request-destination-s3location
+                         :shape "S3Location" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-report-definition-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-report-definition-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-report-definition-request
                     'make-update-report-definition-request))
@@ -692,11 +930,19 @@
                           update-report-definition-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-report-definition-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-report-definition-result-"))
-   (report-id common-lisp:nil :type
-    (common-lisp:or report-id common-lisp:null)))
+ (common-lisp:defclass update-report-definition-result common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-update-report-definition-result-report-id
+                         :shape "ReportId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-report-definition-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-report-definition-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-report-definition-result
                     'make-update-report-definition-result))

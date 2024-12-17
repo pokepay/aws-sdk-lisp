@@ -48,17 +48,40 @@
   (common-lisp:list 'conflict-exception 'conflict-exception-message
                     'conflict-exception-amzn-error-type)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-link-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-link-input-"))
-   (label-template (common-lisp:error ":label-template is required") :type
-    (common-lisp:or label-template common-lisp:null))
-   (resource-types (common-lisp:error ":resource-types is required") :type
-    (common-lisp:or resource-types-input common-lisp:null))
-   (sink-identifier (common-lisp:error ":sink-identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or tag-map-input common-lisp:null)))
+ (common-lisp:defclass create-link-input common-lisp:nil
+                       ((label-template :initarg :label-template :initform
+                         (common-lisp:error ":label-template is required")
+                         :type (common-lisp:or label-template common-lisp:null)
+                         :accessor
+                         struct-shape-create-link-input-label-template :shape
+                         "LabelTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-types :initarg :resource-types :initform
+                         (common-lisp:error ":resource-types is required")
+                         :type
+                         (common-lisp:or resource-types-input common-lisp:null)
+                         :accessor
+                         struct-shape-create-link-input-resource-types :shape
+                         "ResourceTypesInput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sink-identifier :initarg :sink-identifier :initform
+                         (common-lisp:error ":sink-identifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-create-link-input-sink-identifier :shape
+                         "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map-input common-lisp:null)
+                         :accessor struct-shape-create-link-input-tags :shape
+                         "TagMapInput" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-link-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-link-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-link-input 'make-create-link-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -99,19 +122,51 @@
                         ((aws-sdk/generator/shape::input create-link-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-link-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-link-output-"))
-   (arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (label common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (label-template common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (resource-types common-lisp:nil :type
-    (common-lisp:or resource-types-output common-lisp:null))
-   (sink-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or tag-map-output common-lisp:null)))
+ (common-lisp:defclass create-link-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-link-output-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-link-output-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (label :initarg :label :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-link-output-label :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (label-template :initarg :label-template :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-link-output-label-template :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-types :initarg :resource-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-types-output
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-link-output-resource-types :shape
+                         "ResourceTypesOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sink-arn :initarg :sink-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-create-link-output-sink-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map-output common-lisp:null)
+                         :accessor struct-shape-create-link-output-tags :shape
+                         "TagMapOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-link-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-link-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-link-output 'make-create-link-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -173,13 +228,23 @@
                         ((aws-sdk/generator/shape::input create-link-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-sink-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-sink-input-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or sink-name common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or tag-map-input common-lisp:null)))
+ (common-lisp:defclass create-sink-input common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or sink-name common-lisp:null) :accessor
+                         struct-shape-create-sink-input-name :shape "SinkName"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map-input common-lisp:null)
+                         :accessor struct-shape-create-sink-input-tags :shape
+                         "TagMapInput" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-sink-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-sink-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-sink-input 'make-create-sink-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -206,14 +271,32 @@
                         ((aws-sdk/generator/shape::input create-sink-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-sink-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-sink-output-"))
-   (arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or tag-map-output common-lisp:null)))
+ (common-lisp:defclass create-sink-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-sink-output-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-sink-output-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-create-sink-output-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map-output common-lisp:null)
+                         :accessor struct-shape-create-sink-output-tags :shape
+                         "TagMapOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-sink-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-sink-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-sink-output 'make-create-sink-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -254,11 +337,18 @@
                         ((aws-sdk/generator/shape::input create-sink-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-link-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-link-input-"))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass delete-link-input common-lisp:nil
+                       ((identifier :initarg :identifier :initform
+                         (common-lisp:error ":identifier is required") :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor struct-shape-delete-link-input-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-link-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-link-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-link-input 'make-delete-link-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -278,9 +368,12 @@
                         ((aws-sdk/generator/shape::input delete-link-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-link-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-link-output-")))
+ (common-lisp:defclass delete-link-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-link-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-link-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-link-output 'make-delete-link-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -293,11 +386,18 @@
                         ((aws-sdk/generator/shape::input delete-link-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-sink-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-sink-input-"))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass delete-sink-input common-lisp:nil
+                       ((identifier :initarg :identifier :initform
+                         (common-lisp:error ":identifier is required") :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor struct-shape-delete-sink-input-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-sink-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-sink-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-sink-input 'make-delete-sink-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -317,9 +417,12 @@
                         ((aws-sdk/generator/shape::input delete-sink-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-sink-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-sink-output-")))
+ (common-lisp:defclass delete-sink-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-sink-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-sink-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-sink-output 'make-delete-sink-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -332,11 +435,18 @@
                         ((aws-sdk/generator/shape::input delete-sink-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-link-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-link-input-"))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass get-link-input common-lisp:nil
+                       ((identifier :initarg :identifier :initform
+                         (common-lisp:error ":identifier is required") :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor struct-shape-get-link-input-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-link-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-link-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-link-input 'make-get-link-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-link-input))
@@ -355,19 +465,50 @@
                         ((aws-sdk/generator/shape::input get-link-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-link-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-link-output-"))
-   (arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (label common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (label-template common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (resource-types common-lisp:nil :type
-    (common-lisp:or resource-types-output common-lisp:null))
-   (sink-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or tag-map-output common-lisp:null)))
+ (common-lisp:defclass get-link-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-link-output-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-link-output-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (label :initarg :label :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-link-output-label :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (label-template :initarg :label-template :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-link-output-label-template :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-types :initarg :resource-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-types-output
+                                         common-lisp:null)
+                         :accessor struct-shape-get-link-output-resource-types
+                         :shape "ResourceTypesOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sink-arn :initarg :sink-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-get-link-output-sink-arn :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map-output common-lisp:null)
+                         :accessor struct-shape-get-link-output-tags :shape
+                         "TagMapOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-link-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-link-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-link-output 'make-get-link-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-link-output))
@@ -428,11 +569,18 @@
                         ((aws-sdk/generator/shape::input get-link-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sink-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sink-input-"))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass get-sink-input common-lisp:nil
+                       ((identifier :initarg :identifier :initform
+                         (common-lisp:error ":identifier is required") :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor struct-shape-get-sink-input-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sink-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-sink-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-sink-input 'make-get-sink-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-sink-input))
@@ -451,14 +599,32 @@
                         ((aws-sdk/generator/shape::input get-sink-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sink-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sink-output-"))
-   (arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or tag-map-output common-lisp:null)))
+ (common-lisp:defclass get-sink-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sink-output-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sink-output-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-sink-output-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map-output common-lisp:null)
+                         :accessor struct-shape-get-sink-output-tags :shape
+                         "TagMapOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sink-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-sink-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-sink-output 'make-get-sink-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-sink-output))
@@ -498,11 +664,20 @@
                         ((aws-sdk/generator/shape::input get-sink-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sink-policy-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sink-policy-input-"))
-   (sink-identifier (common-lisp:error ":sink-identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass get-sink-policy-input common-lisp:nil
+                       ((sink-identifier :initarg :sink-identifier :initform
+                         (common-lisp:error ":sink-identifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-get-sink-policy-input-sink-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sink-policy-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-sink-policy-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sink-policy-input 'make-get-sink-policy-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -528,12 +703,27 @@
                           get-sink-policy-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-sink-policy-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-sink-policy-output-"))
-   (sink-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (sink-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (policy common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-sink-policy-output common-lisp:nil
+                       ((sink-arn :initarg :sink-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-get-sink-policy-output-sink-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sink-id :initarg :sink-id :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-get-sink-policy-output-sink-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy :initarg :policy :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-get-sink-policy-output-policy
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-sink-policy-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-sink-policy-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-sink-policy-output 'make-get-sink-policy-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -595,15 +785,34 @@
                     'invalid-parameter-exception-amzn-error-type)))
 (common-lisp:deftype label-template () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-attached-links-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-attached-links-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-attached-links-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (sink-identifier (common-lisp:error ":sink-identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null)))
+ (common-lisp:defclass list-attached-links-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-attached-links-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-attached-links-input-max-results
+                         :shape "ListAttachedLinksMaxResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-attached-links-input-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sink-identifier :initarg :sink-identifier :initform
+                         (common-lisp:error ":sink-identifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-list-attached-links-input-sink-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-attached-links-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-attached-links-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-attached-links-input
                     'make-list-attached-links-input))
@@ -644,13 +853,31 @@
                           list-attached-links-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-attached-links-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-attached-links-item-"))
-   (label common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (link-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (resource-types common-lisp:nil :type
-    (common-lisp:or resource-types-output common-lisp:null)))
+ (common-lisp:defclass list-attached-links-item common-lisp:nil
+                       ((label :initarg :label :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-attached-links-item-label :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (link-arn :initarg :link-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-list-attached-links-item-link-arn :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-types :initarg :resource-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-types-output
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-attached-links-item-resource-types
+                         :shape "ResourceTypesOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-attached-links-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-attached-links-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-attached-links-item 'make-list-attached-links-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -700,12 +927,26 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype list-attached-links-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-attached-links-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-attached-links-output-"))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or list-attached-links-items common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-attached-links-output common-lisp:nil
+                       ((items :initarg :items :initform
+                         (common-lisp:error ":items is required") :type
+                         (common-lisp:or list-attached-links-items
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-attached-links-output-items :shape
+                         "ListAttachedLinksItems" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-attached-links-output-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-attached-links-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-attached-links-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-attached-links-output
                     'make-list-attached-links-output))
@@ -739,13 +980,25 @@
                           list-attached-links-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-links-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-links-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-links-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-links-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-links-max-results
+                                         common-lisp:null)
+                         :accessor struct-shape-list-links-input-max-results
+                         :shape "ListLinksMaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-links-input-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-links-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-links-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-links-input 'make-list-links-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -772,15 +1025,39 @@
                         ((aws-sdk/generator/shape::input list-links-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-links-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-links-item-"))
-   (arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (label common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (resource-types common-lisp:nil :type
-    (common-lisp:or resource-types-output common-lisp:null))
-   (sink-arn common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-links-item common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-links-item-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-links-item-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (label :initarg :label :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-links-item-label :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-types :initarg :resource-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-types-output
+                                         common-lisp:null)
+                         :accessor struct-shape-list-links-item-resource-types
+                         :shape "ResourceTypesOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sink-arn :initarg :sink-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-list-links-item-sink-arn :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-links-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-links-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'list-links-item 'make-list-links-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input list-links-item))
@@ -836,12 +1113,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype list-links-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-links-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-links-output-"))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or list-links-items common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-links-output common-lisp:nil
+                       ((items :initarg :items :initform
+                         (common-lisp:error ":items is required") :type
+                         (common-lisp:or list-links-items common-lisp:null)
+                         :accessor struct-shape-list-links-output-items :shape
+                         "ListLinksItems" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-links-output-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-links-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-links-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-links-output 'make-list-links-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -868,13 +1157,25 @@
                         ((aws-sdk/generator/shape::input list-links-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sinks-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sinks-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-sinks-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-sinks-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-sinks-max-results
+                                         common-lisp:null)
+                         :accessor struct-shape-list-sinks-input-max-results
+                         :shape "ListSinksMaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-sinks-input-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sinks-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-sinks-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sinks-input 'make-list-sinks-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -901,12 +1202,27 @@
                         ((aws-sdk/generator/shape::input list-sinks-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sinks-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sinks-item-"))
-   (arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (name common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-sinks-item common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sinks-item-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sinks-item-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sinks-item-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sinks-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-sinks-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'list-sinks-item 'make-list-sinks-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input list-sinks-item))
@@ -948,12 +1264,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype list-sinks-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-sinks-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-sinks-output-"))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or list-sinks-items common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-sinks-output common-lisp:nil
+                       ((items :initarg :items :initform
+                         (common-lisp:error ":items is required") :type
+                         (common-lisp:or list-sinks-items common-lisp:null)
+                         :accessor struct-shape-list-sinks-output-items :shape
+                         "ListSinksItems" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-sinks-output-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-sinks-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-sinks-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-sinks-output 'make-list-sinks-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -980,11 +1308,18 @@
                         ((aws-sdk/generator/shape::input list-sinks-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-input-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-input-resource-arn
+                         :shape "Arn" :location "uri" :location-name
+                         "ResourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-tags-for-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-input
                     'make-list-tags-for-resource-input))
@@ -1004,11 +1339,19 @@
                           list-tags-for-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-output-"))
-   (tags common-lisp:nil :type
-    (common-lisp:or tag-map-output common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-output common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map-output common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-output-tags :shape
+                         "TagMapOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-output
                     'make-list-tags-for-resource-output))
@@ -1047,13 +1390,26 @@
                     'missing-required-parameter-exception-amzn-error-type)))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-sink-policy-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-sink-policy-input-"))
-   (sink-identifier (common-lisp:error ":sink-identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null))
-   (policy (common-lisp:error ":policy is required") :type
-    (common-lisp:or sink-policy common-lisp:null)))
+ (common-lisp:defclass put-sink-policy-input common-lisp:nil
+                       ((sink-identifier :initarg :sink-identifier :initform
+                         (common-lisp:error ":sink-identifier is required")
+                         :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-put-sink-policy-input-sink-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy :initarg :policy :initform
+                         (common-lisp:error ":policy is required") :type
+                         (common-lisp:or sink-policy common-lisp:null)
+                         :accessor struct-shape-put-sink-policy-input-policy
+                         :shape "SinkPolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-sink-policy-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-sink-policy-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-sink-policy-input 'make-put-sink-policy-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1086,12 +1442,27 @@
                           put-sink-policy-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-sink-policy-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-sink-policy-output-"))
-   (sink-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (sink-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (policy common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass put-sink-policy-output common-lisp:nil
+                       ((sink-arn :initarg :sink-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-put-sink-policy-output-sink-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sink-id :initarg :sink-id :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-put-sink-policy-output-sink-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy :initarg :policy :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-put-sink-policy-output-policy
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-sink-policy-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-sink-policy-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-sink-policy-output 'make-put-sink-policy-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1196,13 +1567,23 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-input-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map-input common-lisp:null)))
+ (common-lisp:defclass tag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-input-resource-arn :shape
+                         "Arn" :location "uri" :location-name "ResourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map-input common-lisp:null)
+                         :accessor struct-shape-tag-resource-input-tags :shape
+                         "TagMapInput" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1222,9 +1603,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-output-")))
+ (common-lisp:defclass tag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-output 'make-tag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1245,13 +1629,23 @@
  (common-lisp:export
   (common-lisp:list 'too-many-tags-exception 'too-many-tags-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-input-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+ (common-lisp:defclass untag-resource-input common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-input-resource-arn :shape
+                         "Arn" :location "uri" :location-name "ResourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or tag-keys common-lisp:null) :accessor
+                         struct-shape-untag-resource-input-tag-keys :shape
+                         "TagKeys" :location "querystring" :location-name
+                         "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1264,9 +1658,12 @@
                         ((aws-sdk/generator/shape::input untag-resource-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-output-")))
+ (common-lisp:defclass untag-resource-output common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-output 'make-untag-resource-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1285,13 +1682,26 @@
                           untag-resource-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-link-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-link-input-"))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-identifier common-lisp:null))
-   (resource-types (common-lisp:error ":resource-types is required") :type
-    (common-lisp:or resource-types-input common-lisp:null)))
+ (common-lisp:defclass update-link-input common-lisp:nil
+                       ((identifier :initarg :identifier :initform
+                         (common-lisp:error ":identifier is required") :type
+                         (common-lisp:or resource-identifier common-lisp:null)
+                         :accessor struct-shape-update-link-input-identifier
+                         :shape "ResourceIdentifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-types :initarg :resource-types :initform
+                         (common-lisp:error ":resource-types is required")
+                         :type
+                         (common-lisp:or resource-types-input common-lisp:null)
+                         :accessor
+                         struct-shape-update-link-input-resource-types :shape
+                         "ResourceTypesInput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-link-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-link-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-link-input 'make-update-link-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1318,19 +1728,52 @@
                         ((aws-sdk/generator/shape::input update-link-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-link-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-link-output-"))
-   (arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (label common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (label-template common-lisp:nil :type
-    (common-lisp:or label-template common-lisp:null))
-   (resource-types common-lisp:nil :type
-    (common-lisp:or resource-types-output common-lisp:null))
-   (sink-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or tag-map-output common-lisp:null)))
+ (common-lisp:defclass update-link-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-link-output-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-link-output-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (label :initarg :label :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-update-link-output-label :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (label-template :initarg :label-template :initform
+                         common-lisp:nil :type
+                         (common-lisp:or label-template common-lisp:null)
+                         :accessor
+                         struct-shape-update-link-output-label-template :shape
+                         "LabelTemplate" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-types :initarg :resource-types :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-types-output
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-link-output-resource-types :shape
+                         "ResourceTypesOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sink-arn :initarg :sink-arn :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-update-link-output-sink-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map-output common-lisp:null)
+                         :accessor struct-shape-update-link-output-tags :shape
+                         "TagMapOutput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-link-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-link-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-link-output 'make-update-link-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

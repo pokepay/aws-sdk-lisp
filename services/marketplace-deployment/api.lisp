@@ -55,13 +55,26 @@
   (common-lisp:list 'conflict-exception 'conflict-exception-message
                     'conflict-exception-resource-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deployment-parameter-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deployment-parameter-input-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or deployment-parameter-name common-lisp:null))
-   (secret-string (common-lisp:error ":secretstring is required") :type
-    (common-lisp:or secret-string common-lisp:null)))
+ (common-lisp:defclass deployment-parameter-input common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or deployment-parameter-name
+                                         common-lisp:null)
+                         :accessor struct-shape-deployment-parameter-input-name
+                         :shape "DeploymentParameterName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (secret-string :initarg :secret-string :initform
+                         (common-lisp:error ":secretstring is required") :type
+                         (common-lisp:or secret-string common-lisp:null)
+                         :accessor
+                         struct-shape-deployment-parameter-input-secret-string
+                         :shape "SecretString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-deployment-parameter-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'deployment-parameter-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'deployment-parameter-input
                     'make-deployment-parameter-input))
@@ -106,11 +119,19 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "String" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -130,10 +151,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -160,22 +189,63 @@
                           list-tags-for-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-deployment-parameter-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-deployment-parameter-request-"))
-   (agreement-id (common-lisp:error ":agreementid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (catalog (common-lisp:error ":catalog is required") :type
-    (common-lisp:or catalog common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (deployment-parameter (common-lisp:error ":deploymentparameter is required")
-    :type (common-lisp:or deployment-parameter-input common-lisp:null))
-   (expiration-date common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (product-id (common-lisp:error ":productid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags-map common-lisp:null)))
+ (common-lisp:defclass put-deployment-parameter-request common-lisp:nil
+                       ((agreement-id :initarg :agreement-id :initform
+                         (common-lisp:error ":agreementid is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-deployment-parameter-request-agreement-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (catalog :initarg :catalog :initform
+                         (common-lisp:error ":catalog is required") :type
+                         (common-lisp:or catalog common-lisp:null) :accessor
+                         struct-shape-put-deployment-parameter-request-catalog
+                         :shape "Catalog" :location "uri" :location-name
+                         "catalog")
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-put-deployment-parameter-request-client-token
+                         :shape "ClientToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (deployment-parameter :initarg :deployment-parameter
+                         :initform
+                         (common-lisp:error ":deploymentparameter is required")
+                         :type
+                         (common-lisp:or deployment-parameter-input
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-deployment-parameter-request-deployment-parameter
+                         :shape "DeploymentParameterInput" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expiration-date :initarg :expiration-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-deployment-parameter-request-expiration-date
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (product-id :initarg :product-id :initform
+                         (common-lisp:error ":productid is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-deployment-parameter-request-product-id
+                         :shape "ResourceId" :location "uri" :location-name
+                         "productId")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags-map common-lisp:null) :accessor
+                         struct-shape-put-deployment-parameter-request-tags
+                         :shape "TagsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-deployment-parameter-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-deployment-parameter-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-deployment-parameter-request
                     'make-put-deployment-parameter-request))
@@ -231,17 +301,45 @@
                           put-deployment-parameter-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-deployment-parameter-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-deployment-parameter-response-"))
-   (agreement-id (common-lisp:error ":agreementid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (deployment-parameter-id
-    (common-lisp:error ":deploymentparameterid is required") :type
-    (common-lisp:or deployment-parameter-resource-identifier common-lisp:null))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags-map common-lisp:null)))
+ (common-lisp:defclass put-deployment-parameter-response common-lisp:nil
+                       ((agreement-id :initarg :agreement-id :initform
+                         (common-lisp:error ":agreementid is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-deployment-parameter-response-agreement-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (deployment-parameter-id :initarg
+                         :deployment-parameter-id :initform
+                         (common-lisp:error
+                          ":deploymentparameterid is required")
+                         :type
+                         (common-lisp:or
+                          deployment-parameter-resource-identifier
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-put-deployment-parameter-response-deployment-parameter-id
+                         :shape "DeploymentParameterResourceIdentifier"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-put-deployment-parameter-response-resource-arn
+                         :shape "ResourceArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags-map common-lisp:null) :accessor
+                         struct-shape-put-deployment-parameter-response-tags
+                         :shape "TagsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-deployment-parameter-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-deployment-parameter-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-deployment-parameter-response
                     'make-put-deployment-parameter-response))
@@ -319,12 +417,22 @@
 (common-lisp:deftype synthetic-timestamp-date-time () 'common-lisp:string)
 (common-lisp:deftype tag-key () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "String" :location "uri" :location-name "resourceArn")
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "Tags"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -344,9 +452,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -387,13 +498,24 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "String" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or string-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "StringList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -412,9 +534,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

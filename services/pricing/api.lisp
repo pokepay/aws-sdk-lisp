@@ -50,10 +50,17 @@
                            (trivial-types:proper-list string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (attribute-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attribute-value-"))
-   (value common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass attribute-value common-lisp:nil
+                       ((value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-attribute-value-value :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-attribute-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'attribute-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'attribute-value 'make-attribute-value))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input attribute-value))
@@ -82,16 +89,37 @@
 (common-lisp:deftype boxed-integer () 'common-lisp:integer)
 (common-lisp:deftype currency-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-services-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-services-request-"))
-   (service-code common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (format-version common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or boxed-integer common-lisp:null)))
+ (common-lisp:defclass describe-services-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-services-request-service-code
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format-version :initarg :format-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-services-request-format-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-services-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boxed-integer common-lisp:null)
+                         :accessor
+                         struct-shape-describe-services-request-max-results
+                         :shape "BoxedInteger" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-services-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-services-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-services-request
                     'make-describe-services-request))
@@ -139,14 +167,30 @@
                           describe-services-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-services-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-services-response-"))
-   (services common-lisp:nil :type
-    (common-lisp:or service-list common-lisp:null))
-   (format-version common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass describe-services-response common-lisp:nil
+                       ((services :initarg :services :initform common-lisp:nil
+                         :type (common-lisp:or service-list common-lisp:null)
+                         :accessor
+                         struct-shape-describe-services-response-services
+                         :shape "ServiceList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format-version :initarg :format-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-services-response-format-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-describe-services-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-services-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-services-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-services-response
                     'make-describe-services-response))
@@ -204,14 +248,28 @@
                            (trivial-types:proper-list file-format))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (filter (:copier common-lisp:nil) (:conc-name "struct-shape-filter-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or filter-type common-lisp:null))
-   (field (common-lisp:error ":field is required") :type
-    (common-lisp:or string common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass filter common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or filter-type common-lisp:null)
+                         :accessor struct-shape-filter-type :shape "FilterType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (field :initarg :field :initform
+                         (common-lisp:error ":field is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-filter-field :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-filter-value :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input filter))
@@ -252,16 +310,38 @@
                            (trivial-types:proper-list filter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-attribute-values-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-attribute-values-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or boxed-integer common-lisp:null)))
+ (common-lisp:defclass get-attribute-values-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-attribute-values-request-service-code
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attribute-name :initarg :attribute-name :initform
+                         (common-lisp:error ":attribute-name is required")
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-get-attribute-values-request-attribute-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-attribute-values-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boxed-integer common-lisp:null)
+                         :accessor
+                         struct-shape-get-attribute-values-request-max-results
+                         :shape "BoxedInteger" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-attribute-values-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-attribute-values-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-attribute-values-request
                     'make-get-attribute-values-request))
@@ -309,12 +389,26 @@
                           get-attribute-values-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-attribute-values-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-attribute-values-response-"))
-   (attribute-values common-lisp:nil :type
-    (common-lisp:or attribute-value-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-attribute-values-response common-lisp:nil
+                       ((attribute-values :initarg :attribute-values :initform
+                         common-lisp:nil :type
+                         (common-lisp:or attribute-value-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-attribute-values-response-attribute-values
+                         :shape "AttributeValueList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-attribute-values-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-attribute-values-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-attribute-values-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-attribute-values-response
                     'make-get-attribute-values-response))
@@ -348,13 +442,27 @@
                           get-attribute-values-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-price-list-file-url-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-price-list-file-url-request-"))
-   (price-list-arn (common-lisp:error ":price-list-arn is required") :type
-    (common-lisp:or price-list-arn common-lisp:null))
-   (file-format (common-lisp:error ":file-format is required") :type
-    (common-lisp:or file-format common-lisp:null)))
+ (common-lisp:defclass get-price-list-file-url-request common-lisp:nil
+                       ((price-list-arn :initarg :price-list-arn :initform
+                         (common-lisp:error ":price-list-arn is required")
+                         :type (common-lisp:or price-list-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-price-list-file-url-request-price-list-arn
+                         :shape "PriceListArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (file-format :initarg :file-format :initform
+                         (common-lisp:error ":file-format is required") :type
+                         (common-lisp:or file-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-price-list-file-url-request-file-format
+                         :shape "FileFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-price-list-file-url-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-price-list-file-url-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-price-list-file-url-request
                     'make-get-price-list-file-url-request))
@@ -388,10 +496,18 @@
                           get-price-list-file-url-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-price-list-file-url-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-price-list-file-url-response-"))
-   (url common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-price-list-file-url-response common-lisp:nil
+                       ((url :initarg :url :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-price-list-file-url-response-url
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-price-list-file-url-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-price-list-file-url-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-price-list-file-url-response
                     'make-get-price-list-file-url-response))
@@ -418,17 +534,42 @@
                           get-price-list-file-url-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-products-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-products-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or string common-lisp:null))
-   (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null))
-   (format-version common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or boxed-integer common-lisp:null)))
+ (common-lisp:defclass get-products-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-products-request-service-code :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filters common-lisp:null)
+                         :accessor struct-shape-get-products-request-filters
+                         :shape "Filters" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format-version :initarg :format-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-products-request-format-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-products-request-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boxed-integer common-lisp:null)
+                         :accessor
+                         struct-shape-get-products-request-max-results :shape
+                         "BoxedInteger" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-products-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-products-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-products-request 'make-get-products-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -476,14 +617,32 @@
                         ((aws-sdk/generator/shape::input get-products-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-products-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-products-response-"))
-   (format-version common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (price-list common-lisp:nil :type
-    (common-lisp:or price-list-json-items common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-products-response common-lisp:nil
+                       ((format-version :initarg :format-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-products-response-format-version
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (price-list :initarg :price-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or price-list-json-items
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-products-response-price-list :shape
+                         "PriceListJsonItems" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-products-response-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-products-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-products-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-products-response 'make-get-products-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -547,20 +706,53 @@
   (common-lisp:list 'invalid-parameter-exception
                     'invalid-parameter-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-price-lists-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-price-lists-request-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or service-code common-lisp:null))
-   (effective-date (common-lisp:error ":effective-date is required") :type
-    (common-lisp:or effective-date common-lisp:null))
-   (region-code common-lisp:nil :type
-    (common-lisp:or region-code common-lisp:null))
-   (currency-code (common-lisp:error ":currency-code is required") :type
-    (common-lisp:or currency-code common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-price-lists-request common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or service-code common-lisp:null)
+                         :accessor
+                         struct-shape-list-price-lists-request-service-code
+                         :shape "ServiceCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (effective-date :initarg :effective-date :initform
+                         (common-lisp:error ":effective-date is required")
+                         :type (common-lisp:or effective-date common-lisp:null)
+                         :accessor
+                         struct-shape-list-price-lists-request-effective-date
+                         :shape "EffectiveDate" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (region-code :initarg :region-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or region-code common-lisp:null)
+                         :accessor
+                         struct-shape-list-price-lists-request-region-code
+                         :shape "RegionCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         (common-lisp:error ":currency-code is required") :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor
+                         struct-shape-list-price-lists-request-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-price-lists-request-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-price-lists-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-price-lists-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-price-lists-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-price-lists-request 'make-list-price-lists-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -621,12 +813,25 @@
                           list-price-lists-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-price-lists-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-price-lists-response-"))
-   (price-lists common-lisp:nil :type
-    (common-lisp:or price-lists common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-price-lists-response common-lisp:nil
+                       ((price-lists :initarg :price-lists :initform
+                         common-lisp:nil :type
+                         (common-lisp:or price-lists common-lisp:null)
+                         :accessor
+                         struct-shape-list-price-lists-response-price-lists
+                         :shape "PriceLists" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-price-lists-response-next-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-price-lists-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-price-lists-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-price-lists-response
                     'make-list-price-lists-response))
@@ -668,17 +873,36 @@
  (common-lisp:export
   (common-lisp:list 'not-found-exception 'not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (price-list (:copier common-lisp:nil)
-      (:conc-name "struct-shape-price-list-"))
-   (price-list-arn common-lisp:nil :type
-    (common-lisp:or price-list-arn common-lisp:null))
-   (region-code common-lisp:nil :type
-    (common-lisp:or region-code common-lisp:null))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null))
-   (file-formats common-lisp:nil :type
-    (common-lisp:or file-formats common-lisp:null)))
+ (common-lisp:defclass price-list common-lisp:nil
+                       ((price-list-arn :initarg :price-list-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or price-list-arn common-lisp:null)
+                         :accessor struct-shape-price-list-price-list-arn
+                         :shape "PriceListArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (region-code :initarg :region-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or region-code common-lisp:null)
+                         :accessor struct-shape-price-list-region-code :shape
+                         "RegionCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor struct-shape-price-list-currency-code :shape
+                         "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (file-formats :initarg :file-formats :initform
+                         common-lisp:nil :type
+                         (common-lisp:or file-formats common-lisp:null)
+                         :accessor struct-shape-price-list-file-formats :shape
+                         "FileFormats" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-price-list
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'price-list
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'price-list 'make-price-list))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input price-list))
@@ -736,12 +960,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype region-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service (:copier common-lisp:nil) (:conc-name "struct-shape-service-"))
-   (service-code (common-lisp:error ":service-code is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attribute-names common-lisp:nil :type
-    (common-lisp:or attribute-name-list common-lisp:null)))
+ (common-lisp:defclass service common-lisp:nil
+                       ((service-code :initarg :service-code :initform
+                         (common-lisp:error ":service-code is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-service-service-code :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (attribute-names :initarg :attribute-names :initform
+                         common-lisp:nil :type
+                         (common-lisp:or attribute-name-list common-lisp:null)
+                         :accessor struct-shape-service-attribute-names :shape
+                         "AttributeNameList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-service
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'service
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'service 'make-service))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input service))

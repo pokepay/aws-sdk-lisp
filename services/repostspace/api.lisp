@@ -69,21 +69,52 @@
                     'conflict-exception-resource-type)))
 (common-lisp:deftype content-size () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-space-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-space-input-"))
-   (description common-lisp:nil :type
-    (common-lisp:or space-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or space-name common-lisp:null))
-   (role-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (subdomain (common-lisp:error ":subdomain is required") :type
-    (common-lisp:or space-subdomain common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null))
-   (tier (common-lisp:error ":tier is required") :type
-    (common-lisp:or tier-level common-lisp:null))
-   (user-kmskey common-lisp:nil :type
-    (common-lisp:or kmskey common-lisp:null)))
+ (common-lisp:defclass create-space-input common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or space-description common-lisp:null)
+                         :accessor struct-shape-create-space-input-description
+                         :shape "SpaceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or space-name common-lisp:null) :accessor
+                         struct-shape-create-space-input-name :shape
+                         "SpaceName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-create-space-input-role-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (subdomain :initarg :subdomain :initform
+                         (common-lisp:error ":subdomain is required") :type
+                         (common-lisp:or space-subdomain common-lisp:null)
+                         :accessor struct-shape-create-space-input-subdomain
+                         :shape "SpaceSubdomain" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-create-space-input-tags :shape "Tags"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tier :initarg :tier :initform
+                         (common-lisp:error ":tier is required") :type
+                         (common-lisp:or tier-level common-lisp:null) :accessor
+                         struct-shape-create-space-input-tier :shape
+                         "TierLevel" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-kmskey :initarg :user-kmskey :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kmskey common-lisp:null) :accessor
+                         struct-shape-create-space-input-user-kmskey :shape
+                         "KMSKey" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-space-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-space-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-space-input 'make-create-space-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -145,11 +176,18 @@
                         ((aws-sdk/generator/shape::input create-space-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-space-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-space-output-"))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null)))
+ (common-lisp:defclass create-space-output common-lisp:nil
+                       ((space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-create-space-output-space-id :shape
+                         "SpaceId" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-space-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-space-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-space-output 'make-create-space-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -169,11 +207,17 @@
                         ((aws-sdk/generator/shape::input create-space-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-space-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-space-input-"))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null)))
+ (common-lisp:defclass delete-space-input common-lisp:nil
+                       ((space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-delete-space-input-space-id :shape
+                         "SpaceId" :location "uri" :location-name "spaceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-space-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-space-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-space-input 'make-delete-space-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -186,13 +230,22 @@
                         ((aws-sdk/generator/shape::input delete-space-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (deregister-admin-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-deregister-admin-input-"))
-   (admin-id (common-lisp:error ":adminid is required") :type
-    (common-lisp:or admin-id common-lisp:null))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null)))
+ (common-lisp:defclass deregister-admin-input common-lisp:nil
+                       ((admin-id :initarg :admin-id :initform
+                         (common-lisp:error ":adminid is required") :type
+                         (common-lisp:or admin-id common-lisp:null) :accessor
+                         struct-shape-deregister-admin-input-admin-id :shape
+                         "AdminId" :location "uri" :location-name "adminId")
+                        (space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-deregister-admin-input-space-id :shape
+                         "SpaceId" :location "uri" :location-name "spaceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-deregister-admin-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'deregister-admin-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'deregister-admin-input 'make-deregister-admin-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -211,11 +264,17 @@
                           deregister-admin-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-space-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-space-input-"))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null)))
+ (common-lisp:defclass get-space-input common-lisp:nil
+                       ((space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-get-space-input-space-id :shape "SpaceId"
+                         :location "uri" :location-name "spaceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-space-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-space-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-space-input 'make-get-space-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-space-input))
@@ -227,48 +286,143 @@
                         ((aws-sdk/generator/shape::input get-space-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-space-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-space-output-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (client-id (common-lisp:error ":clientid is required") :type
-    (common-lisp:or client-id common-lisp:null))
-   (configuration-status (common-lisp:error ":configurationstatus is required")
-    :type (common-lisp:or configuration-status common-lisp:null))
-   (content-size common-lisp:nil :type
-    (common-lisp:or content-size common-lisp:null))
-   (create-date-time (common-lisp:error ":createdatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (customer-role-arn common-lisp:nil :type
-    (common-lisp:or arn common-lisp:null))
-   (delete-date-time common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or space-description common-lisp:null))
-   (group-admins common-lisp:nil :type
-    (common-lisp:or group-admins common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or space-name common-lisp:null))
-   (random-domain (common-lisp:error ":randomdomain is required") :type
-    (common-lisp:or url common-lisp:null))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or provisioning-status common-lisp:null))
-   (storage-limit (common-lisp:error ":storagelimit is required") :type
-    (common-lisp:or storage-limit common-lisp:null))
-   (tier (common-lisp:error ":tier is required") :type
-    (common-lisp:or tier-level common-lisp:null))
-   (user-admins common-lisp:nil :type
-    (common-lisp:or user-admins common-lisp:null))
-   (user-count common-lisp:nil :type
-    (common-lisp:or user-count common-lisp:null))
-   (user-kmskey common-lisp:nil :type (common-lisp:or kmskey common-lisp:null))
-   (vanity-domain (common-lisp:error ":vanitydomain is required") :type
-    (common-lisp:or url common-lisp:null))
-   (vanity-domain-status (common-lisp:error ":vanitydomainstatus is required")
-    :type (common-lisp:or vanity-domain-status common-lisp:null)))
+ (common-lisp:defclass get-space-output common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-space-output-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-id :initarg :client-id :initform
+                         (common-lisp:error ":clientid is required") :type
+                         (common-lisp:or client-id common-lisp:null) :accessor
+                         struct-shape-get-space-output-client-id :shape
+                         "ClientId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (configuration-status :initarg :configuration-status
+                         :initform
+                         (common-lisp:error ":configurationstatus is required")
+                         :type
+                         (common-lisp:or configuration-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-space-output-configuration-status
+                         :shape "ConfigurationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-size :initarg :content-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-size common-lisp:null)
+                         :accessor struct-shape-get-space-output-content-size
+                         :shape "ContentSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (create-date-time :initarg :create-date-time :initform
+                         (common-lisp:error ":createdatetime is required")
+                         :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-space-output-create-date-time :shape
+                         "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (customer-role-arn :initarg :customer-role-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-get-space-output-customer-role-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (delete-date-time :initarg :delete-date-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-space-output-delete-date-time :shape
+                         "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or space-description common-lisp:null)
+                         :accessor struct-shape-get-space-output-description
+                         :shape "SpaceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (group-admins :initarg :group-admins :initform
+                         common-lisp:nil :type
+                         (common-lisp:or group-admins common-lisp:null)
+                         :accessor struct-shape-get-space-output-group-admins
+                         :shape "GroupAdmins" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or space-name common-lisp:null) :accessor
+                         struct-shape-get-space-output-name :shape "SpaceName"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (random-domain :initarg :random-domain :initform
+                         (common-lisp:error ":randomdomain is required") :type
+                         (common-lisp:or url common-lisp:null) :accessor
+                         struct-shape-get-space-output-random-domain :shape
+                         "Url" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-get-space-output-space-id :shape
+                         "SpaceId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or provisioning-status common-lisp:null)
+                         :accessor struct-shape-get-space-output-status :shape
+                         "ProvisioningStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (storage-limit :initarg :storage-limit :initform
+                         (common-lisp:error ":storagelimit is required") :type
+                         (common-lisp:or storage-limit common-lisp:null)
+                         :accessor struct-shape-get-space-output-storage-limit
+                         :shape "StorageLimit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tier :initarg :tier :initform
+                         (common-lisp:error ":tier is required") :type
+                         (common-lisp:or tier-level common-lisp:null) :accessor
+                         struct-shape-get-space-output-tier :shape "TierLevel"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-admins :initarg :user-admins :initform
+                         common-lisp:nil :type
+                         (common-lisp:or user-admins common-lisp:null)
+                         :accessor struct-shape-get-space-output-user-admins
+                         :shape "UserAdmins" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (user-count :initarg :user-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or user-count common-lisp:null) :accessor
+                         struct-shape-get-space-output-user-count :shape
+                         "UserCount" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-kmskey :initarg :user-kmskey :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kmskey common-lisp:null) :accessor
+                         struct-shape-get-space-output-user-kmskey :shape
+                         "KMSKey" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vanity-domain :initarg :vanity-domain :initform
+                         (common-lisp:error ":vanitydomain is required") :type
+                         (common-lisp:or url common-lisp:null) :accessor
+                         struct-shape-get-space-output-vanity-domain :shape
+                         "Url" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vanity-domain-status :initarg :vanity-domain-status
+                         :initform
+                         (common-lisp:error ":vanitydomainstatus is required")
+                         :type
+                         (common-lisp:or vanity-domain-status common-lisp:null)
+                         :accessor
+                         struct-shape-get-space-output-vanity-domain-status
+                         :shape "VanityDomainStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-space-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-space-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-space-output 'make-get-space-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -445,12 +599,24 @@
 (common-lisp:deftype invite-title () 'common-lisp:string)
 (common-lisp:deftype kmskey () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-spaces-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-spaces-input-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-spaces-limit common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass list-spaces-input common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-spaces-limit common-lisp:null)
+                         :accessor struct-shape-list-spaces-input-max-results
+                         :shape "ListSpacesLimit" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-spaces-input-next-token :shape
+                         "String" :location "querystring" :location-name
+                         "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-spaces-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-spaces-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-spaces-input 'make-list-spaces-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -464,12 +630,24 @@
    common-lisp:nil))
 (common-lisp:deftype list-spaces-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-spaces-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-spaces-output-"))
-   (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (spaces (common-lisp:error ":spaces is required") :type
-    (common-lisp:or spaces-list common-lisp:null)))
+ (common-lisp:defclass list-spaces-output common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-spaces-output-next-token :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (spaces :initarg :spaces :initform
+                         (common-lisp:error ":spaces is required") :type
+                         (common-lisp:or spaces-list common-lisp:null)
+                         :accessor struct-shape-list-spaces-output-spaces
+                         :shape "SpacesList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-spaces-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-spaces-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-spaces-output 'make-list-spaces-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -496,11 +674,19 @@
                         ((aws-sdk/generator/shape::input list-spaces-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "Arn" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -520,10 +706,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "Tags" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -551,13 +745,22 @@
    common-lisp:nil))
 (common-lisp:deftype provisioning-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (register-admin-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-register-admin-input-"))
-   (admin-id (common-lisp:error ":adminid is required") :type
-    (common-lisp:or admin-id common-lisp:null))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null)))
+ (common-lisp:defclass register-admin-input common-lisp:nil
+                       ((admin-id :initarg :admin-id :initform
+                         (common-lisp:error ":adminid is required") :type
+                         (common-lisp:or admin-id common-lisp:null) :accessor
+                         struct-shape-register-admin-input-admin-id :shape
+                         "AdminId" :location "uri" :location-name "adminId")
+                        (space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-register-admin-input-space-id :shape
+                         "SpaceId" :location "uri" :location-name "spaceId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-register-admin-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'register-admin-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'register-admin-input 'make-register-admin-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -584,17 +787,35 @@
                     'resource-not-found-exception-resource-id
                     'resource-not-found-exception-resource-type)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (send-invites-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-send-invites-input-"))
-   (accessor-ids (common-lisp:error ":accessorids is required") :type
-    (common-lisp:or accessor-id-list common-lisp:null))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or invite-body common-lisp:null))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null))
-   (title (common-lisp:error ":title is required") :type
-    (common-lisp:or invite-title common-lisp:null)))
+ (common-lisp:defclass send-invites-input common-lisp:nil
+                       ((accessor-ids :initarg :accessor-ids :initform
+                         (common-lisp:error ":accessorids is required") :type
+                         (common-lisp:or accessor-id-list common-lisp:null)
+                         :accessor struct-shape-send-invites-input-accessor-ids
+                         :shape "AccessorIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (body :initarg :body :initform
+                         (common-lisp:error ":body is required") :type
+                         (common-lisp:or invite-body common-lisp:null)
+                         :accessor struct-shape-send-invites-input-body :shape
+                         "InviteBody" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-send-invites-input-space-id :shape
+                         "SpaceId" :location "uri" :location-name "spaceId")
+                        (title :initarg :title :initform
+                         (common-lisp:error ":title is required") :type
+                         (common-lisp:or invite-title common-lisp:null)
+                         :accessor struct-shape-send-invites-input-title :shape
+                         "InviteTitle" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-send-invites-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'send-invites-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'send-invites-input 'make-send-invites-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -648,40 +869,114 @@
                     'service-quota-exceeded-exception-resource-type
                     'service-quota-exceeded-exception-service-code)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (space-data (:copier common-lisp:nil)
-      (:conc-name "struct-shape-space-data-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (configuration-status (common-lisp:error ":configurationstatus is required")
-    :type (common-lisp:or configuration-status common-lisp:null))
-   (content-size common-lisp:nil :type
-    (common-lisp:or content-size common-lisp:null))
-   (create-date-time (common-lisp:error ":createdatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (delete-date-time common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or space-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or space-name common-lisp:null))
-   (random-domain (common-lisp:error ":randomdomain is required") :type
-    (common-lisp:or url common-lisp:null))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or provisioning-status common-lisp:null))
-   (storage-limit (common-lisp:error ":storagelimit is required") :type
-    (common-lisp:or storage-limit common-lisp:null))
-   (tier (common-lisp:error ":tier is required") :type
-    (common-lisp:or tier-level common-lisp:null))
-   (user-count common-lisp:nil :type
-    (common-lisp:or user-count common-lisp:null))
-   (user-kmskey common-lisp:nil :type (common-lisp:or kmskey common-lisp:null))
-   (vanity-domain (common-lisp:error ":vanitydomain is required") :type
-    (common-lisp:or url common-lisp:null))
-   (vanity-domain-status (common-lisp:error ":vanitydomainstatus is required")
-    :type (common-lisp:or vanity-domain-status common-lisp:null)))
+ (common-lisp:defclass space-data common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-space-data-arn :shape "Arn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (configuration-status :initarg :configuration-status
+                         :initform
+                         (common-lisp:error ":configurationstatus is required")
+                         :type
+                         (common-lisp:or configuration-status common-lisp:null)
+                         :accessor struct-shape-space-data-configuration-status
+                         :shape "ConfigurationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-size :initarg :content-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-size common-lisp:null)
+                         :accessor struct-shape-space-data-content-size :shape
+                         "ContentSize" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (create-date-time :initarg :create-date-time :initform
+                         (common-lisp:error ":createdatetime is required")
+                         :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor struct-shape-space-data-create-date-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (delete-date-time :initarg :delete-date-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor struct-shape-space-data-delete-date-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or space-description common-lisp:null)
+                         :accessor struct-shape-space-data-description :shape
+                         "SpaceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or space-name common-lisp:null) :accessor
+                         struct-shape-space-data-name :shape "SpaceName"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (random-domain :initarg :random-domain :initform
+                         (common-lisp:error ":randomdomain is required") :type
+                         (common-lisp:or url common-lisp:null) :accessor
+                         struct-shape-space-data-random-domain :shape "Url"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-space-data-space-id :shape "SpaceId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or provisioning-status common-lisp:null)
+                         :accessor struct-shape-space-data-status :shape
+                         "ProvisioningStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (storage-limit :initarg :storage-limit :initform
+                         (common-lisp:error ":storagelimit is required") :type
+                         (common-lisp:or storage-limit common-lisp:null)
+                         :accessor struct-shape-space-data-storage-limit :shape
+                         "StorageLimit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tier :initarg :tier :initform
+                         (common-lisp:error ":tier is required") :type
+                         (common-lisp:or tier-level common-lisp:null) :accessor
+                         struct-shape-space-data-tier :shape "TierLevel"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-count :initarg :user-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or user-count common-lisp:null) :accessor
+                         struct-shape-space-data-user-count :shape "UserCount"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-kmskey :initarg :user-kmskey :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kmskey common-lisp:null) :accessor
+                         struct-shape-space-data-user-kmskey :shape "KMSKey"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vanity-domain :initarg :vanity-domain :initform
+                         (common-lisp:error ":vanitydomain is required") :type
+                         (common-lisp:or url common-lisp:null) :accessor
+                         struct-shape-space-data-vanity-domain :shape "Url"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (vanity-domain-status :initarg :vanity-domain-status
+                         :initform
+                         (common-lisp:error ":vanitydomainstatus is required")
+                         :type
+                         (common-lisp:or vanity-domain-status common-lisp:null)
+                         :accessor struct-shape-space-data-vanity-domain-status
+                         :shape "VanityDomainStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-space-data
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'space-data
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'space-data 'make-space-data))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input space-data))
@@ -829,13 +1124,23 @@
                            (trivial-types:proper-list tag-key))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "Arn" :location "uri" :location-name "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "Tags"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -855,9 +1160,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -901,13 +1209,24 @@
                     'throttling-exception-service-code)))
 (common-lisp:deftype tier-level () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "Arn" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -926,9 +1245,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -947,15 +1269,33 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-space-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-space-input-"))
-   (description common-lisp:nil :type
-    (common-lisp:or space-description common-lisp:null))
-   (role-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (space-id (common-lisp:error ":spaceid is required") :type
-    (common-lisp:or space-id common-lisp:null))
-   (tier common-lisp:nil :type (common-lisp:or tier-level common-lisp:null)))
+ (common-lisp:defclass update-space-input common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or space-description common-lisp:null)
+                         :accessor struct-shape-update-space-input-description
+                         :shape "SpaceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform common-lisp:nil
+                         :type (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-update-space-input-role-arn :shape "Arn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (space-id :initarg :space-id :initform
+                         (common-lisp:error ":spaceid is required") :type
+                         (common-lisp:or space-id common-lisp:null) :accessor
+                         struct-shape-update-space-input-space-id :shape
+                         "SpaceId" :location "uri" :location-name "spaceId")
+                        (tier :initarg :tier :initform common-lisp:nil :type
+                         (common-lisp:or tier-level common-lisp:null) :accessor
+                         struct-shape-update-space-input-tier :shape
+                         "TierLevel" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-space-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-space-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-space-input 'make-update-space-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1011,13 +1351,24 @@
                     'validation-exception-message
                     'validation-exception-reason)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-field-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass validation-exception-field common-lisp:nil
+                       ((message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-message :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-field
                     'make-validation-exception-field))

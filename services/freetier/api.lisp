@@ -32,15 +32,30 @@
     ("ValidationException" . validation-exception)))
 (common-lisp:deftype dimension () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dimension-values (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dimension-values-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or dimension common-lisp:null))
-   (match-options (common-lisp:error ":match-options is required") :type
-    (common-lisp:or match-options common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or values common-lisp:null)))
+ (common-lisp:defclass dimension-values common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or dimension common-lisp:null) :accessor
+                         struct-shape-dimension-values-key :shape "Dimension"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (match-options :initarg :match-options :initform
+                         (common-lisp:error ":match-options is required") :type
+                         (common-lisp:or match-options common-lisp:null)
+                         :accessor struct-shape-dimension-values-match-options
+                         :shape "MatchOptions" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (values :initarg :values :initform
+                         (common-lisp:error ":values is required") :type
+                         (common-lisp:or values common-lisp:null) :accessor
+                         struct-shape-dimension-values-values :shape "Values"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dimension-values
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dimension-values
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dimension-values 'make-dimension-values))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -74,14 +89,33 @@
                         ((aws-sdk/generator/shape::input dimension-values))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (expression (:copier common-lisp:nil)
-      (:conc-name "struct-shape-expression-"))
-   (and common-lisp:nil :type (common-lisp:or expressions common-lisp:null))
-   (dimensions common-lisp:nil :type
-    (common-lisp:or dimension-values common-lisp:null))
-   (not common-lisp:nil :type (common-lisp:or expression common-lisp:null))
-   (or common-lisp:nil :type (common-lisp:or expressions common-lisp:null)))
+ (common-lisp:defclass expression common-lisp:nil
+                       ((and :initarg :and :initform common-lisp:nil :type
+                         (common-lisp:or expressions common-lisp:null)
+                         :accessor struct-shape-expression-and :shape
+                         "Expressions" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (dimensions :initarg :dimensions :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dimension-values common-lisp:null)
+                         :accessor struct-shape-expression-dimensions :shape
+                         "DimensionValues" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (not :initarg :not :initform common-lisp:nil :type
+                         (common-lisp:or expression common-lisp:null) :accessor
+                         struct-shape-expression-not :shape "Expression"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (or :initarg :or :initform common-lisp:nil :type
+                         (common-lisp:or expressions common-lisp:null)
+                         :accessor struct-shape-expression-or :shape
+                         "Expressions" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-expression
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'expression
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'expression 'make-expression))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input expression))
@@ -128,29 +162,70 @@
                            (trivial-types:proper-list expression))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (free-tier-usage (:copier common-lisp:nil)
-      (:conc-name "struct-shape-free-tier-usage-"))
-   (actual-usage-amount common-lisp:nil :type
-    (common-lisp:or generic-double common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null))
-   (forecasted-usage-amount common-lisp:nil :type
-    (common-lisp:or generic-double common-lisp:null))
-   (free-tier-type common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null))
-   (limit common-lisp:nil :type
-    (common-lisp:or generic-double common-lisp:null))
-   (operation common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null))
-   (region common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null))
-   (service common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null))
-   (unit common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null))
-   (usage-type common-lisp:nil :type
-    (common-lisp:or generic-string common-lisp:null)))
+ (common-lisp:defclass free-tier-usage common-lisp:nil
+                       ((actual-usage-amount :initarg :actual-usage-amount
+                         :initform common-lisp:nil :type
+                         (common-lisp:or generic-double common-lisp:null)
+                         :accessor
+                         struct-shape-free-tier-usage-actual-usage-amount
+                         :shape "GenericDouble" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor struct-shape-free-tier-usage-description
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (forecasted-usage-amount :initarg
+                         :forecasted-usage-amount :initform common-lisp:nil
+                         :type (common-lisp:or generic-double common-lisp:null)
+                         :accessor
+                         struct-shape-free-tier-usage-forecasted-usage-amount
+                         :shape "GenericDouble" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (free-tier-type :initarg :free-tier-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor struct-shape-free-tier-usage-free-tier-type
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (limit :initarg :limit :initform common-lisp:nil :type
+                         (common-lisp:or generic-double common-lisp:null)
+                         :accessor struct-shape-free-tier-usage-limit :shape
+                         "GenericDouble" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operation :initarg :operation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor struct-shape-free-tier-usage-operation
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (region :initarg :region :initform common-lisp:nil
+                         :type (common-lisp:or generic-string common-lisp:null)
+                         :accessor struct-shape-free-tier-usage-region :shape
+                         "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or generic-string common-lisp:null)
+                         :accessor struct-shape-free-tier-usage-service :shape
+                         "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unit :initarg :unit :initform common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor struct-shape-free-tier-usage-unit :shape
+                         "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-type :initarg :usage-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or generic-string common-lisp:null)
+                         :accessor struct-shape-free-tier-usage-usage-type
+                         :shape "GenericString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-free-tier-usage
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'free-tier-usage
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'free-tier-usage 'make-free-tier-usage))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input free-tier-usage))
@@ -243,14 +318,32 @@
 (common-lisp:deftype generic-double () 'common-lisp:double-float)
 (common-lisp:deftype generic-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-free-tier-usage-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-free-tier-usage-request-"))
-   (filter common-lisp:nil :type (common-lisp:or expression common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-page-token common-lisp:null)))
+ (common-lisp:defclass get-free-tier-usage-request common-lisp:nil
+                       ((filter :initarg :filter :initform common-lisp:nil
+                         :type (common-lisp:or expression common-lisp:null)
+                         :accessor
+                         struct-shape-get-free-tier-usage-request-filter :shape
+                         "Expression" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-free-tier-usage-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-page-token common-lisp:null)
+                         :accessor
+                         struct-shape-get-free-tier-usage-request-next-token
+                         :shape "NextPageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-free-tier-usage-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-free-tier-usage-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-free-tier-usage-request
                     'make-get-free-tier-usage-request))
@@ -291,13 +384,27 @@
                           get-free-tier-usage-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-free-tier-usage-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-free-tier-usage-response-"))
-   (free-tier-usages (common-lisp:error ":freetierusages is required") :type
-    (common-lisp:or free-tier-usages common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-page-token common-lisp:null)))
+ (common-lisp:defclass get-free-tier-usage-response common-lisp:nil
+                       ((free-tier-usages :initarg :free-tier-usages :initform
+                         (common-lisp:error ":freetierusages is required")
+                         :type
+                         (common-lisp:or free-tier-usages common-lisp:null)
+                         :accessor
+                         struct-shape-get-free-tier-usage-response-free-tier-usages
+                         :shape "FreeTierUsages" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-page-token common-lisp:null)
+                         :accessor
+                         struct-shape-get-free-tier-usage-response-next-token
+                         :shape "NextPageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-free-tier-usage-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-free-tier-usage-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-free-tier-usage-response
                     'make-get-free-tier-usage-response))

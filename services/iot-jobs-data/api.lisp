@@ -48,17 +48,41 @@
                     'certificate-validation-exception-message)))
 (common-lisp:deftype describe-job-execution-job-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-job-execution-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-job-execution-request-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or describe-job-execution-job-id common-lisp:null))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
-   (include-job-document common-lisp:nil :type
-    (common-lisp:or include-job-document common-lisp:null))
-   (execution-number common-lisp:nil :type
-    (common-lisp:or execution-number common-lisp:null)))
+ (common-lisp:defclass describe-job-execution-request common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or describe-job-execution-job-id
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-job-execution-request-job-id
+                         :shape "DescribeJobExecutionJobId" :location "uri"
+                         :location-name "jobId")
+                        (thing-name :initarg :thing-name :initform
+                         (common-lisp:error ":thingname is required") :type
+                         (common-lisp:or thing-name common-lisp:null) :accessor
+                         struct-shape-describe-job-execution-request-thing-name
+                         :shape "ThingName" :location "uri" :location-name
+                         "thingName")
+                        (include-job-document :initarg :include-job-document
+                         :initform common-lisp:nil :type
+                         (common-lisp:or include-job-document common-lisp:null)
+                         :accessor
+                         struct-shape-describe-job-execution-request-include-job-document
+                         :shape "IncludeJobDocument" :location "querystring"
+                         :location-name "includeJobDocument")
+                        (execution-number :initarg :execution-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-number common-lisp:null)
+                         :accessor
+                         struct-shape-describe-job-execution-request-execution-number
+                         :shape "ExecutionNumber" :location "querystring"
+                         :location-name "executionNumber"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-job-execution-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-job-execution-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-job-execution-request
                     'make-describe-job-execution-request))
@@ -78,11 +102,20 @@
                           describe-job-execution-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-job-execution-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-job-execution-response-"))
-   (execution common-lisp:nil :type
-    (common-lisp:or job-execution common-lisp:null)))
+ (common-lisp:defclass describe-job-execution-response common-lisp:nil
+                       ((execution :initarg :execution :initform
+                         common-lisp:nil :type
+                         (common-lisp:or job-execution common-lisp:null)
+                         :accessor
+                         struct-shape-describe-job-execution-response-execution
+                         :shape "JobExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-job-execution-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-job-execution-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-job-execution-response
                     'make-describe-job-execution-response))
@@ -120,11 +153,19 @@
 (common-lisp:deftype execution-number () 'common-lisp:integer)
 (common-lisp:deftype expected-version () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-pending-job-executions-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-pending-job-executions-request-"))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null)))
+ (common-lisp:defclass get-pending-job-executions-request common-lisp:nil
+                       ((thing-name :initarg :thing-name :initform
+                         (common-lisp:error ":thingname is required") :type
+                         (common-lisp:or thing-name common-lisp:null) :accessor
+                         struct-shape-get-pending-job-executions-request-thing-name
+                         :shape "ThingName" :location "uri" :location-name
+                         "thingName"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-pending-job-executions-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-pending-job-executions-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-pending-job-executions-request
                     'make-get-pending-job-executions-request))
@@ -144,13 +185,29 @@
                           get-pending-job-executions-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-pending-job-executions-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-pending-job-executions-response-"))
-   (in-progress-jobs common-lisp:nil :type
-    (common-lisp:or job-execution-summary-list common-lisp:null))
-   (queued-jobs common-lisp:nil :type
-    (common-lisp:or job-execution-summary-list common-lisp:null)))
+ (common-lisp:defclass get-pending-job-executions-response common-lisp:nil
+                       ((in-progress-jobs :initarg :in-progress-jobs :initform
+                         common-lisp:nil :type
+                         (common-lisp:or job-execution-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-pending-job-executions-response-in-progress-jobs
+                         :shape "JobExecutionSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (queued-jobs :initarg :queued-jobs :initform
+                         common-lisp:nil :type
+                         (common-lisp:or job-execution-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-pending-job-executions-response-queued-jobs
+                         :shape "JobExecutionSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-pending-job-executions-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-pending-job-executions-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-pending-job-executions-response
                     'make-get-pending-job-executions-response))
@@ -203,30 +260,80 @@
                     'invalid-state-transition-exception-message)))
 (common-lisp:deftype job-document () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (job-execution (:copier common-lisp:nil)
-      (:conc-name "struct-shape-job-execution-"))
-   (job-id common-lisp:nil :type (common-lisp:or job-id common-lisp:null))
-   (thing-name common-lisp:nil :type
-    (common-lisp:or thing-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or job-execution-status common-lisp:null))
-   (status-details common-lisp:nil :type
-    (common-lisp:or details-map common-lisp:null))
-   (queued-at common-lisp:nil :type
-    (common-lisp:or queued-at common-lisp:null))
-   (started-at common-lisp:nil :type
-    (common-lisp:or started-at common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or last-updated-at common-lisp:null))
-   (approximate-seconds-before-timed-out common-lisp:nil :type
-    (common-lisp:or approximate-seconds-before-timed-out common-lisp:null))
-   (version-number common-lisp:nil :type
-    (common-lisp:or version-number common-lisp:null))
-   (execution-number common-lisp:nil :type
-    (common-lisp:or execution-number common-lisp:null))
-   (job-document common-lisp:nil :type
-    (common-lisp:or job-document common-lisp:null)))
+ (common-lisp:defclass job-execution common-lisp:nil
+                       ((job-id :initarg :job-id :initform common-lisp:nil
+                         :type (common-lisp:or job-id common-lisp:null)
+                         :accessor struct-shape-job-execution-job-id :shape
+                         "JobId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (thing-name :initarg :thing-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or thing-name common-lisp:null) :accessor
+                         struct-shape-job-execution-thing-name :shape
+                         "ThingName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or job-execution-status common-lisp:null)
+                         :accessor struct-shape-job-execution-status :shape
+                         "JobExecutionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-details :initarg :status-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or details-map common-lisp:null)
+                         :accessor struct-shape-job-execution-status-details
+                         :shape "DetailsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (queued-at :initarg :queued-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or queued-at common-lisp:null) :accessor
+                         struct-shape-job-execution-queued-at :shape "QueuedAt"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (started-at :initarg :started-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or started-at common-lisp:null) :accessor
+                         struct-shape-job-execution-started-at :shape
+                         "StartedAt" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or last-updated-at common-lisp:null)
+                         :accessor struct-shape-job-execution-last-updated-at
+                         :shape "LastUpdatedAt" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (approximate-seconds-before-timed-out :initarg
+                         :approximate-seconds-before-timed-out :initform
+                         common-lisp:nil :type
+                         (common-lisp:or approximate-seconds-before-timed-out
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-job-execution-approximate-seconds-before-timed-out
+                         :shape "ApproximateSecondsBeforeTimedOut" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (version-number :initarg :version-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or version-number common-lisp:null)
+                         :accessor struct-shape-job-execution-version-number
+                         :shape "VersionNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-number :initarg :execution-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-number common-lisp:null)
+                         :accessor struct-shape-job-execution-execution-number
+                         :shape "ExecutionNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (job-document :initarg :job-document :initform
+                         common-lisp:nil :type
+                         (common-lisp:or job-document common-lisp:null)
+                         :accessor struct-shape-job-execution-job-document
+                         :shape "JobDocument" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-job-execution
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'job-execution
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'job-execution 'make-job-execution))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input job-execution))
@@ -316,15 +423,32 @@
                         ((aws-sdk/generator/shape::input job-execution))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (job-execution-state (:copier common-lisp:nil)
-      (:conc-name "struct-shape-job-execution-state-"))
-   (status common-lisp:nil :type
-    (common-lisp:or job-execution-status common-lisp:null))
-   (status-details common-lisp:nil :type
-    (common-lisp:or details-map common-lisp:null))
-   (version-number common-lisp:nil :type
-    (common-lisp:or version-number common-lisp:null)))
+ (common-lisp:defclass job-execution-state common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or job-execution-status common-lisp:null)
+                         :accessor struct-shape-job-execution-state-status
+                         :shape "JobExecutionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-details :initarg :status-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or details-map common-lisp:null)
+                         :accessor
+                         struct-shape-job-execution-state-status-details :shape
+                         "DetailsMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (version-number :initarg :version-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or version-number common-lisp:null)
+                         :accessor
+                         struct-shape-job-execution-state-version-number :shape
+                         "VersionNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-job-execution-state
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'job-execution-state
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'job-execution-state 'make-job-execution-state))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -359,20 +483,50 @@
    common-lisp:nil))
 (common-lisp:deftype job-execution-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (job-execution-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-job-execution-summary-"))
-   (job-id common-lisp:nil :type (common-lisp:or job-id common-lisp:null))
-   (queued-at common-lisp:nil :type
-    (common-lisp:or queued-at common-lisp:null))
-   (started-at common-lisp:nil :type
-    (common-lisp:or started-at common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or last-updated-at common-lisp:null))
-   (version-number common-lisp:nil :type
-    (common-lisp:or version-number common-lisp:null))
-   (execution-number common-lisp:nil :type
-    (common-lisp:or execution-number common-lisp:null)))
+ (common-lisp:defclass job-execution-summary common-lisp:nil
+                       ((job-id :initarg :job-id :initform common-lisp:nil
+                         :type (common-lisp:or job-id common-lisp:null)
+                         :accessor struct-shape-job-execution-summary-job-id
+                         :shape "JobId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (queued-at :initarg :queued-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or queued-at common-lisp:null) :accessor
+                         struct-shape-job-execution-summary-queued-at :shape
+                         "QueuedAt" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (started-at :initarg :started-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or started-at common-lisp:null) :accessor
+                         struct-shape-job-execution-summary-started-at :shape
+                         "StartedAt" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or last-updated-at common-lisp:null)
+                         :accessor
+                         struct-shape-job-execution-summary-last-updated-at
+                         :shape "LastUpdatedAt" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-number :initarg :version-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or version-number common-lisp:null)
+                         :accessor
+                         struct-shape-job-execution-summary-version-number
+                         :shape "VersionNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-number :initarg :execution-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-number common-lisp:null)
+                         :accessor
+                         struct-shape-job-execution-summary-execution-number
+                         :shape "ExecutionNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-job-execution-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'job-execution-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'job-execution-summary 'make-job-execution-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -460,15 +614,35 @@
   (common-lisp:list 'service-unavailable-exception
                     'service-unavailable-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-next-pending-job-execution-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-next-pending-job-execution-request-"))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
-   (status-details common-lisp:nil :type
-    (common-lisp:or details-map common-lisp:null))
-   (step-timeout-in-minutes common-lisp:nil :type
-    (common-lisp:or step-timeout-in-minutes common-lisp:null)))
+ (common-lisp:defclass start-next-pending-job-execution-request common-lisp:nil
+                       ((thing-name :initarg :thing-name :initform
+                         (common-lisp:error ":thingname is required") :type
+                         (common-lisp:or thing-name common-lisp:null) :accessor
+                         struct-shape-start-next-pending-job-execution-request-thing-name
+                         :shape "ThingName" :location "uri" :location-name
+                         "thingName")
+                        (status-details :initarg :status-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or details-map common-lisp:null)
+                         :accessor
+                         struct-shape-start-next-pending-job-execution-request-status-details
+                         :shape "DetailsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (step-timeout-in-minutes :initarg
+                         :step-timeout-in-minutes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or step-timeout-in-minutes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-next-pending-job-execution-request-step-timeout-in-minutes
+                         :shape "StepTimeoutInMinutes" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-next-pending-job-execution-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-next-pending-job-execution-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-next-pending-job-execution-request
                     'make-start-next-pending-job-execution-request))
@@ -503,11 +677,21 @@
                           start-next-pending-job-execution-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-next-pending-job-execution-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-next-pending-job-execution-response-"))
-   (execution common-lisp:nil :type
-    (common-lisp:or job-execution common-lisp:null)))
+ (common-lisp:defclass start-next-pending-job-execution-response
+                       common-lisp:nil
+                       ((execution :initarg :execution :initform
+                         common-lisp:nil :type
+                         (common-lisp:or job-execution common-lisp:null)
+                         :accessor
+                         struct-shape-start-next-pending-job-execution-response-execution
+                         :shape "JobExecution" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-next-pending-job-execution-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-next-pending-job-execution-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-next-pending-job-execution-response
                     'make-start-next-pending-job-execution-response))
@@ -555,27 +739,76 @@
   (common-lisp:list 'throttling-exception 'throttling-exception-message
                     'throttling-exception-payload)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-job-execution-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-job-execution-request-"))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or job-execution-status common-lisp:null))
-   (status-details common-lisp:nil :type
-    (common-lisp:or details-map common-lisp:null))
-   (step-timeout-in-minutes common-lisp:nil :type
-    (common-lisp:or step-timeout-in-minutes common-lisp:null))
-   (expected-version common-lisp:nil :type
-    (common-lisp:or expected-version common-lisp:null))
-   (include-job-execution-state common-lisp:nil :type
-    (common-lisp:or include-execution-state common-lisp:null))
-   (include-job-document common-lisp:nil :type
-    (common-lisp:or include-job-document common-lisp:null))
-   (execution-number common-lisp:nil :type
-    (common-lisp:or execution-number common-lisp:null)))
+ (common-lisp:defclass update-job-execution-request common-lisp:nil
+                       ((job-id :initarg :job-id :initform
+                         (common-lisp:error ":jobid is required") :type
+                         (common-lisp:or job-id common-lisp:null) :accessor
+                         struct-shape-update-job-execution-request-job-id
+                         :shape "JobId" :location "uri" :location-name "jobId")
+                        (thing-name :initarg :thing-name :initform
+                         (common-lisp:error ":thingname is required") :type
+                         (common-lisp:or thing-name common-lisp:null) :accessor
+                         struct-shape-update-job-execution-request-thing-name
+                         :shape "ThingName" :location "uri" :location-name
+                         "thingName")
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or job-execution-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-request-status
+                         :shape "JobExecutionStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-details :initarg :status-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or details-map common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-request-status-details
+                         :shape "DetailsMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (step-timeout-in-minutes :initarg
+                         :step-timeout-in-minutes :initform common-lisp:nil
+                         :type
+                         (common-lisp:or step-timeout-in-minutes
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-request-step-timeout-in-minutes
+                         :shape "StepTimeoutInMinutes" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expected-version :initarg :expected-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or expected-version common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-request-expected-version
+                         :shape "ExpectedVersion" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-job-execution-state :initarg
+                         :include-job-execution-state :initform common-lisp:nil
+                         :type
+                         (common-lisp:or include-execution-state
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-request-include-job-execution-state
+                         :shape "IncludeExecutionState" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (include-job-document :initarg :include-job-document
+                         :initform common-lisp:nil :type
+                         (common-lisp:or include-job-document common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-request-include-job-document
+                         :shape "IncludeJobDocument" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (execution-number :initarg :execution-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or execution-number common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-request-execution-number
+                         :shape "ExecutionNumber" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-job-execution-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-job-execution-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-job-execution-request
                     'make-update-job-execution-request))
@@ -647,13 +880,27 @@
                           update-job-execution-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-job-execution-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-job-execution-response-"))
-   (execution-state common-lisp:nil :type
-    (common-lisp:or job-execution-state common-lisp:null))
-   (job-document common-lisp:nil :type
-    (common-lisp:or job-document common-lisp:null)))
+ (common-lisp:defclass update-job-execution-response common-lisp:nil
+                       ((execution-state :initarg :execution-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or job-execution-state common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-response-execution-state
+                         :shape "JobExecutionState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (job-document :initarg :job-document :initform
+                         common-lisp:nil :type
+                         (common-lisp:or job-document common-lisp:null)
+                         :accessor
+                         struct-shape-update-job-execution-response-job-document
+                         :shape "JobDocument" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-job-execution-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-job-execution-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-job-execution-response
                     'make-update-job-execution-response))

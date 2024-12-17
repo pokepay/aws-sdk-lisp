@@ -35,19 +35,41 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (entitlement (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entitlement-"))
-   (product-code common-lisp:nil :type
-    (common-lisp:or product-code common-lisp:null))
-   (dimension common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null))
-   (customer-identifier common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or entitlement-value common-lisp:null))
-   (expiration-date common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass entitlement common-lisp:nil
+                       ((product-code :initarg :product-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or product-code common-lisp:null)
+                         :accessor struct-shape-entitlement-product-code :shape
+                         "ProductCode" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (dimension :initarg :dimension :initform
+                         common-lisp:nil :type
+                         (common-lisp:or non-empty-string common-lisp:null)
+                         :accessor struct-shape-entitlement-dimension :shape
+                         "NonEmptyString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (customer-identifier :initarg :customer-identifier
+                         :initform common-lisp:nil :type
+                         (common-lisp:or non-empty-string common-lisp:null)
+                         :accessor struct-shape-entitlement-customer-identifier
+                         :shape "NonEmptyString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or entitlement-value common-lisp:null)
+                         :accessor struct-shape-entitlement-value :shape
+                         "EntitlementValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiration-date :initarg :expiration-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-entitlement-expiration-date :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-entitlement
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'entitlement
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'entitlement 'make-entitlement))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input entitlement))
@@ -102,17 +124,36 @@
                            (trivial-types:proper-list entitlement))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (entitlement-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-entitlement-value-"))
-   (integer-value common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (double-value common-lisp:nil :type
-    (common-lisp:or double common-lisp:null))
-   (boolean-value common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (string-value common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass entitlement-value common-lisp:nil
+                       ((integer-value :initarg :integer-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-entitlement-value-integer-value :shape
+                         "Integer" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (double-value :initarg :double-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-entitlement-value-double-value :shape
+                         "Double" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (boolean-value :initarg :boolean-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-entitlement-value-boolean-value :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (string-value :initarg :string-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-entitlement-value-string-value :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-entitlement-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'entitlement-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'entitlement-value 'make-entitlement-value))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -172,17 +213,40 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-entitlements-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-entitlements-request-"))
-   (product-code (common-lisp:error ":product-code is required") :type
-    (common-lisp:or product-code common-lisp:null))
-   (filter common-lisp:nil :type
-    (common-lisp:or get-entitlement-filters common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or page-size-integer common-lisp:null)))
+ (common-lisp:defclass get-entitlements-request common-lisp:nil
+                       ((product-code :initarg :product-code :initform
+                         (common-lisp:error ":product-code is required") :type
+                         (common-lisp:or product-code common-lisp:null)
+                         :accessor
+                         struct-shape-get-entitlements-request-product-code
+                         :shape "ProductCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filter :initarg :filter :initform common-lisp:nil
+                         :type
+                         (common-lisp:or get-entitlement-filters
+                                         common-lisp:null)
+                         :accessor struct-shape-get-entitlements-request-filter
+                         :shape "GetEntitlementFilters" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or non-empty-string common-lisp:null)
+                         :accessor
+                         struct-shape-get-entitlements-request-next-token
+                         :shape "NonEmptyString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-size-integer common-lisp:null)
+                         :accessor
+                         struct-shape-get-entitlements-request-max-results
+                         :shape "PageSizeInteger" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-entitlements-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-entitlements-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-entitlements-request 'make-get-entitlements-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -229,13 +293,26 @@
                           get-entitlements-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-entitlements-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-entitlements-result-"))
-   (entitlements common-lisp:nil :type
-    (common-lisp:or entitlement-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+ (common-lisp:defclass get-entitlements-result common-lisp:nil
+                       ((entitlements :initarg :entitlements :initform
+                         common-lisp:nil :type
+                         (common-lisp:or entitlement-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-entitlements-result-entitlements
+                         :shape "EntitlementList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or non-empty-string common-lisp:null)
+                         :accessor
+                         struct-shape-get-entitlements-result-next-token :shape
+                         "NonEmptyString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-entitlements-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-entitlements-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-entitlements-result 'make-get-entitlements-result))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers

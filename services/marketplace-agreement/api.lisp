@@ -35,31 +35,95 @@
     ("ValidationException" . validation-exception)))
 (common-lisp:deftype awsaccount-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (accepted-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-accepted-term-"))
-   (byol-pricing-term common-lisp:nil :type
-    (common-lisp:or byol-pricing-term common-lisp:null))
-   (configurable-upfront-pricing-term common-lisp:nil :type
-    (common-lisp:or configurable-upfront-pricing-term common-lisp:null))
-   (fixed-upfront-pricing-term common-lisp:nil :type
-    (common-lisp:or fixed-upfront-pricing-term common-lisp:null))
-   (free-trial-pricing-term common-lisp:nil :type
-    (common-lisp:or free-trial-pricing-term common-lisp:null))
-   (legal-term common-lisp:nil :type
-    (common-lisp:or legal-term common-lisp:null))
-   (payment-schedule-term common-lisp:nil :type
-    (common-lisp:or payment-schedule-term common-lisp:null))
-   (recurring-payment-term common-lisp:nil :type
-    (common-lisp:or recurring-payment-term common-lisp:null))
-   (renewal-term common-lisp:nil :type
-    (common-lisp:or renewal-term common-lisp:null))
-   (support-term common-lisp:nil :type
-    (common-lisp:or support-term common-lisp:null))
-   (usage-based-pricing-term common-lisp:nil :type
-    (common-lisp:or usage-based-pricing-term common-lisp:null))
-   (validity-term common-lisp:nil :type
-    (common-lisp:or validity-term common-lisp:null)))
+ (common-lisp:defclass accepted-term common-lisp:nil
+                       ((byol-pricing-term :initarg :byol-pricing-term
+                         :initform common-lisp:nil :type
+                         (common-lisp:or byol-pricing-term common-lisp:null)
+                         :accessor struct-shape-accepted-term-byol-pricing-term
+                         :shape "ByolPricingTerm" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configurable-upfront-pricing-term :initarg
+                         :configurable-upfront-pricing-term :initform
+                         common-lisp:nil :type
+                         (common-lisp:or configurable-upfront-pricing-term
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-accepted-term-configurable-upfront-pricing-term
+                         :shape "ConfigurableUpfrontPricingTerm" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (fixed-upfront-pricing-term :initarg
+                         :fixed-upfront-pricing-term :initform common-lisp:nil
+                         :type
+                         (common-lisp:or fixed-upfront-pricing-term
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-accepted-term-fixed-upfront-pricing-term
+                         :shape "FixedUpfrontPricingTerm" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (free-trial-pricing-term :initarg
+                         :free-trial-pricing-term :initform common-lisp:nil
+                         :type
+                         (common-lisp:or free-trial-pricing-term
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-accepted-term-free-trial-pricing-term
+                         :shape "FreeTrialPricingTerm" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (legal-term :initarg :legal-term :initform
+                         common-lisp:nil :type
+                         (common-lisp:or legal-term common-lisp:null) :accessor
+                         struct-shape-accepted-term-legal-term :shape
+                         "LegalTerm" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (payment-schedule-term :initarg :payment-schedule-term
+                         :initform common-lisp:nil :type
+                         (common-lisp:or payment-schedule-term
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-accepted-term-payment-schedule-term
+                         :shape "PaymentScheduleTerm" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recurring-payment-term :initarg
+                         :recurring-payment-term :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recurring-payment-term
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-accepted-term-recurring-payment-term
+                         :shape "RecurringPaymentTerm" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (renewal-term :initarg :renewal-term :initform
+                         common-lisp:nil :type
+                         (common-lisp:or renewal-term common-lisp:null)
+                         :accessor struct-shape-accepted-term-renewal-term
+                         :shape "RenewalTerm" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (support-term :initarg :support-term :initform
+                         common-lisp:nil :type
+                         (common-lisp:or support-term common-lisp:null)
+                         :accessor struct-shape-accepted-term-support-term
+                         :shape "SupportTerm" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-based-pricing-term :initarg
+                         :usage-based-pricing-term :initform common-lisp:nil
+                         :type
+                         (common-lisp:or usage-based-pricing-term
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-accepted-term-usage-based-pricing-term
+                         :shape "UsageBasedPricingTerm" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (validity-term :initarg :validity-term :initform
+                         common-lisp:nil :type
+                         (common-lisp:or validity-term common-lisp:null)
+                         :accessor struct-shape-accepted-term-validity-term
+                         :shape "ValidityTerm" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-accepted-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'accepted-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'accepted-term 'make-accepted-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input accepted-term))
@@ -162,10 +226,18 @@
                            (trivial-types:proper-list accepted-term))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (acceptor (:copier common-lisp:nil) (:conc-name "struct-shape-acceptor-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or awsaccount-id common-lisp:null)))
+ (common-lisp:defclass acceptor common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or awsaccount-id common-lisp:null)
+                         :accessor struct-shape-acceptor-account-id :shape
+                         "AWSAccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-acceptor
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'acceptor
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'acceptor 'make-acceptor))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input acceptor))
@@ -197,24 +269,66 @@
 (common-lisp:deftype agreement-status () 'common-lisp:string)
 (common-lisp:deftype agreement-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (agreement-view-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-agreement-view-summary-"))
-   (acceptance-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (acceptor common-lisp:nil :type (common-lisp:or acceptor common-lisp:null))
-   (agreement-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (agreement-type common-lisp:nil :type
-    (common-lisp:or agreement-type common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
-   (proposal-summary common-lisp:nil :type
-    (common-lisp:or proposal-summary common-lisp:null))
-   (proposer common-lisp:nil :type (common-lisp:or proposer common-lisp:null))
-   (start-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or agreement-status common-lisp:null)))
+ (common-lisp:defclass agreement-view-summary common-lisp:nil
+                       ((acceptance-time :initarg :acceptance-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-agreement-view-summary-acceptance-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (acceptor :initarg :acceptor :initform common-lisp:nil
+                         :type (common-lisp:or acceptor common-lisp:null)
+                         :accessor struct-shape-agreement-view-summary-acceptor
+                         :shape "Acceptor" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agreement-id :initarg :agreement-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-agreement-view-summary-agreement-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agreement-type :initarg :agreement-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or agreement-type common-lisp:null)
+                         :accessor
+                         struct-shape-agreement-view-summary-agreement-type
+                         :shape "AgreementType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-agreement-view-summary-end-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (proposal-summary :initarg :proposal-summary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or proposal-summary common-lisp:null)
+                         :accessor
+                         struct-shape-agreement-view-summary-proposal-summary
+                         :shape "ProposalSummary" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (proposer :initarg :proposer :initform common-lisp:nil
+                         :type (common-lisp:or proposer common-lisp:null)
+                         :accessor struct-shape-agreement-view-summary-proposer
+                         :shape "Proposer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-agreement-view-summary-start-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or agreement-status common-lisp:null)
+                         :accessor struct-shape-agreement-view-summary-status
+                         :shape "AgreementStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-agreement-view-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'agreement-view-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'agreement-view-summary 'make-agreement-view-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -306,11 +420,18 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype bounded-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (byol-pricing-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-byol-pricing-term-"))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass byol-pricing-term common-lisp:nil
+                       ((type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-byol-pricing-term-type :shape
+                         "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-byol-pricing-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'byol-pricing-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'byol-pricing-term 'make-byol-pricing-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -331,18 +452,45 @@
    common-lisp:nil))
 (common-lisp:deftype catalog () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (configurable-upfront-pricing-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configurable-upfront-pricing-term-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or configurable-upfront-pricing-term-configuration
-                    common-lisp:null))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null))
-   (rate-cards common-lisp:nil :type
-    (common-lisp:or configurable-upfront-rate-card-list common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass configurable-upfront-pricing-term common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          configurable-upfront-pricing-term-configuration
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-pricing-term-configuration
+                         :shape "ConfigurableUpfrontPricingTermConfiguration"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-pricing-term-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rate-cards :initarg :rate-cards :initform
+                         common-lisp:nil :type
+                         (common-lisp:or configurable-upfront-rate-card-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-pricing-term-rate-cards
+                         :shape "ConfigurableUpfrontRateCardList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-pricing-term-type
+                         :shape "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configurable-upfront-pricing-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'configurable-upfront-pricing-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configurable-upfront-pricing-term
                     'make-configurable-upfront-pricing-term))
@@ -390,14 +538,28 @@
                           configurable-upfront-pricing-term))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configurable-upfront-pricing-term-configuration (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-configurable-upfront-pricing-term-configuration-"))
-   (dimensions (common-lisp:error ":dimensions is required") :type
-    (common-lisp:or dimension-list common-lisp:null))
-   (selector-value (common-lisp:error ":selectorvalue is required") :type
-    (common-lisp:or bounded-string common-lisp:null)))
+ (common-lisp:defclass configurable-upfront-pricing-term-configuration
+                       common-lisp:nil
+                       ((dimensions :initarg :dimensions :initform
+                         (common-lisp:error ":dimensions is required") :type
+                         (common-lisp:or dimension-list common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-pricing-term-configuration-dimensions
+                         :shape "DimensionList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (selector-value :initarg :selector-value :initform
+                         (common-lisp:error ":selectorvalue is required") :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-pricing-term-configuration-selector-value
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configurable-upfront-pricing-term-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'configurable-upfront-pricing-term-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configurable-upfront-pricing-term-configuration
                     'make-configurable-upfront-pricing-term-configuration))
@@ -431,14 +593,33 @@
                           configurable-upfront-pricing-term-configuration))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configurable-upfront-rate-card-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configurable-upfront-rate-card-item-"))
-   (constraints common-lisp:nil :type
-    (common-lisp:or constraints common-lisp:null))
-   (rate-card common-lisp:nil :type
-    (common-lisp:or rate-card-list common-lisp:null))
-   (selector common-lisp:nil :type (common-lisp:or selector common-lisp:null)))
+ (common-lisp:defclass configurable-upfront-rate-card-item common-lisp:nil
+                       ((constraints :initarg :constraints :initform
+                         common-lisp:nil :type
+                         (common-lisp:or constraints common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-rate-card-item-constraints
+                         :shape "Constraints" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rate-card :initarg :rate-card :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rate-card-list common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-rate-card-item-rate-card
+                         :shape "RateCardList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (selector :initarg :selector :initform common-lisp:nil
+                         :type (common-lisp:or selector common-lisp:null)
+                         :accessor
+                         struct-shape-configurable-upfront-rate-card-item-selector
+                         :shape "Selector" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configurable-upfront-rate-card-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'configurable-upfront-rate-card-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configurable-upfront-rate-card-item
                     'make-configurable-upfront-rate-card-item))
@@ -488,13 +669,27 @@
                             configurable-upfront-rate-card-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (constraints (:copier common-lisp:nil)
-      (:conc-name "struct-shape-constraints-"))
-   (multiple-dimension-selection common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (quantity-configuration common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null)))
+ (common-lisp:defclass constraints common-lisp:nil
+                       ((multiple-dimension-selection :initarg
+                         :multiple-dimension-selection :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-constraints-multiple-dimension-selection
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (quantity-configuration :initarg
+                         :quantity-configuration :initform common-lisp:nil
+                         :type (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-constraints-quantity-configuration :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-constraints
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'constraints
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'constraints 'make-constraints))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input constraints))
@@ -523,11 +718,19 @@
    common-lisp:nil))
 (common-lisp:deftype currency-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-agreement-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-agreement-input-"))
-   (agreement-id (common-lisp:error ":agreementid is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+ (common-lisp:defclass describe-agreement-input common-lisp:nil
+                       ((agreement-id :initarg :agreement-id :initform
+                         (common-lisp:error ":agreementid is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-input-agreement-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-agreement-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-agreement-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-agreement-input 'make-describe-agreement-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -553,26 +756,77 @@
                           describe-agreement-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-agreement-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-agreement-output-"))
-   (acceptance-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (acceptor common-lisp:nil :type (common-lisp:or acceptor common-lisp:null))
-   (agreement-id common-lisp:nil :type
-    (common-lisp:or resource-id common-lisp:null))
-   (agreement-type common-lisp:nil :type
-    (common-lisp:or agreement-type common-lisp:null))
-   (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
-   (estimated-charges common-lisp:nil :type
-    (common-lisp:or estimated-charges common-lisp:null))
-   (proposal-summary common-lisp:nil :type
-    (common-lisp:or proposal-summary common-lisp:null))
-   (proposer common-lisp:nil :type (common-lisp:or proposer common-lisp:null))
-   (start-time common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or agreement-status common-lisp:null)))
+ (common-lisp:defclass describe-agreement-output common-lisp:nil
+                       ((acceptance-time :initarg :acceptance-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-describe-agreement-output-acceptance-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (acceptor :initarg :acceptor :initform common-lisp:nil
+                         :type (common-lisp:or acceptor common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-output-acceptor :shape
+                         "Acceptor" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agreement-id :initarg :agreement-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-output-agreement-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agreement-type :initarg :agreement-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or agreement-type common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-output-agreement-type
+                         :shape "AgreementType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-time :initarg :end-time :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-output-end-time :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (estimated-charges :initarg :estimated-charges
+                         :initform common-lisp:nil :type
+                         (common-lisp:or estimated-charges common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-output-estimated-charges
+                         :shape "EstimatedCharges" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (proposal-summary :initarg :proposal-summary :initform
+                         common-lisp:nil :type
+                         (common-lisp:or proposal-summary common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-output-proposal-summary
+                         :shape "ProposalSummary" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (proposer :initarg :proposer :initform common-lisp:nil
+                         :type (common-lisp:or proposer common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-output-proposer :shape
+                         "Proposer" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-describe-agreement-output-start-time
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or agreement-status common-lisp:null)
+                         :accessor
+                         struct-shape-describe-agreement-output-status :shape
+                         "AgreementStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-agreement-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'describe-agreement-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-agreement-output
                     'make-describe-agreement-output))
@@ -662,13 +916,25 @@
                           describe-agreement-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dimension (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dimension-"))
-   (dimension-key (common-lisp:error ":dimensionkey is required") :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (dimension-value (common-lisp:error ":dimensionvalue is required") :type
-    (common-lisp:or zero-value-integer common-lisp:null)))
+ (common-lisp:defclass dimension common-lisp:nil
+                       ((dimension-key :initarg :dimension-key :initform
+                         (common-lisp:error ":dimensionkey is required") :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-dimension-dimension-key :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (dimension-value :initarg :dimension-value :initform
+                         (common-lisp:error ":dimensionvalue is required")
+                         :type
+                         (common-lisp:or zero-value-integer common-lisp:null)
+                         :accessor struct-shape-dimension-dimension-value
+                         :shape "ZeroValueInteger" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dimension
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dimension
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'dimension 'make-dimension))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input dimension))
@@ -701,14 +967,27 @@
                            (trivial-types:proper-list dimension))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (document-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-document-item-"))
-   (type common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (url common-lisp:nil :type (common-lisp:or bounded-string common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null)))
+ (common-lisp:defclass document-item common-lisp:nil
+                       ((type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-document-item-type :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (url :initarg :url :initform common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-document-item-url :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-document-item-version :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-document-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'document-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'document-item 'make-document-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input document-item))
@@ -749,13 +1028,25 @@
                            (trivial-types:proper-list document-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (estimated-charges (:copier common-lisp:nil)
-      (:conc-name "struct-shape-estimated-charges-"))
-   (agreement-value common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null)))
+ (common-lisp:defclass estimated-charges common-lisp:nil
+                       ((agreement-value :initarg :agreement-value :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-estimated-charges-agreement-value :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor struct-shape-estimated-charges-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-estimated-charges
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'estimated-charges
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'estimated-charges 'make-estimated-charges))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -783,11 +1074,23 @@
    common-lisp:nil))
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (filter (:copier common-lisp:nil) (:conc-name "struct-shape-filter-"))
-   (name common-lisp:nil :type (common-lisp:or filter-name common-lisp:null))
-   (values common-lisp:nil :type
-    (common-lisp:or filter-value-list common-lisp:null)))
+ (common-lisp:defclass filter common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or filter-name common-lisp:null)
+                         :accessor struct-shape-filter-name :shape "FilterName"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (values :initarg :values :initform common-lisp:nil
+                         :type
+                         (common-lisp:or filter-value-list common-lisp:null)
+                         :accessor struct-shape-filter-values :shape
+                         "FilterValueList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input filter))
@@ -830,18 +1133,43 @@
                            (trivial-types:proper-list filter-value))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (fixed-upfront-pricing-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-fixed-upfront-pricing-term-"))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null))
-   (duration common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (grants common-lisp:nil :type (common-lisp:or grant-list common-lisp:null))
-   (price common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass fixed-upfront-pricing-term common-lisp:nil
+                       ((currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor
+                         struct-shape-fixed-upfront-pricing-term-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (duration :initarg :duration :initform common-lisp:nil
+                         :type (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-fixed-upfront-pricing-term-duration
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (grants :initarg :grants :initform common-lisp:nil
+                         :type (common-lisp:or grant-list common-lisp:null)
+                         :accessor
+                         struct-shape-fixed-upfront-pricing-term-grants :shape
+                         "GrantList" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (price :initarg :price :initform common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-fixed-upfront-pricing-term-price :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-fixed-upfront-pricing-term-type
+                         :shape "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-fixed-upfront-pricing-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'fixed-upfront-pricing-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'fixed-upfront-pricing-term
                     'make-fixed-upfront-pricing-term))
@@ -896,14 +1224,29 @@
                           fixed-upfront-pricing-term))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (free-trial-pricing-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-free-trial-pricing-term-"))
-   (duration common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (grants common-lisp:nil :type (common-lisp:or grant-list common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass free-trial-pricing-term common-lisp:nil
+                       ((duration :initarg :duration :initform common-lisp:nil
+                         :type (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-free-trial-pricing-term-duration :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (grants :initarg :grants :initform common-lisp:nil
+                         :type (common-lisp:or grant-list common-lisp:null)
+                         :accessor struct-shape-free-trial-pricing-term-grants
+                         :shape "GrantList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-free-trial-pricing-term-type
+                         :shape "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-free-trial-pricing-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'free-trial-pricing-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'free-trial-pricing-term 'make-free-trial-pricing-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -943,15 +1286,32 @@
                           free-trial-pricing-term))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agreement-terms-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agreement-terms-input-"))
-   (agreement-id (common-lisp:error ":agreementid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass get-agreement-terms-input common-lisp:nil
+                       ((agreement-id :initarg :agreement-id :initform
+                         (common-lisp:error ":agreementid is required") :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-agreement-terms-input-agreement-id
+                         :shape "ResourceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-agreement-terms-input-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-get-agreement-terms-input-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agreement-terms-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-agreement-terms-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agreement-terms-input
                     'make-get-agreement-terms-input))
@@ -992,13 +1352,25 @@
                           get-agreement-terms-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-agreement-terms-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-agreement-terms-output-"))
-   (accepted-terms common-lisp:nil :type
-    (common-lisp:or accepted-term-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass get-agreement-terms-output common-lisp:nil
+                       ((accepted-terms :initarg :accepted-terms :initform
+                         common-lisp:nil :type
+                         (common-lisp:or accepted-term-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-agreement-terms-output-accepted-terms
+                         :shape "AcceptedTermList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-get-agreement-terms-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-agreement-terms-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-agreement-terms-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-agreement-terms-output
                     'make-get-agreement-terms-output))
@@ -1032,13 +1404,26 @@
                           get-agreement-terms-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (grant-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-grant-item-"))
-   (dimension-key common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (max-quantity common-lisp:nil :type
-    (common-lisp:or positive-integer-with-default-value-one common-lisp:null)))
+ (common-lisp:defclass grant-item common-lisp:nil
+                       ((dimension-key :initarg :dimension-key :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-grant-item-dimension-key :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-quantity :initarg :max-quantity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          positive-integer-with-default-value-one
+                          common-lisp:null)
+                         :accessor struct-shape-grant-item-max-quantity :shape
+                         "PositiveIntegerWithDefaultValueOne" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-grant-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'grant-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'grant-item 'make-grant-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input grant-item))
@@ -1082,13 +1467,24 @@
                     'internal-server-exception-message
                     'internal-server-exception-request-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (legal-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-legal-term-"))
-   (documents common-lisp:nil :type
-    (common-lisp:or document-list common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass legal-term common-lisp:nil
+                       ((documents :initarg :documents :initform
+                         common-lisp:nil :type
+                         (common-lisp:or document-list common-lisp:null)
+                         :accessor struct-shape-legal-term-documents :shape
+                         "DocumentList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-legal-term-type :shape
+                         "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-legal-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'legal-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'legal-term 'make-legal-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input legal-term))
@@ -1117,15 +1513,30 @@
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype offer-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (payment-schedule-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-payment-schedule-term-"))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null))
-   (schedule common-lisp:nil :type
-    (common-lisp:or schedule-list common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass payment-schedule-term common-lisp:nil
+                       ((currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor
+                         struct-shape-payment-schedule-term-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (schedule :initarg :schedule :initform common-lisp:nil
+                         :type (common-lisp:or schedule-list common-lisp:null)
+                         :accessor struct-shape-payment-schedule-term-schedule
+                         :shape "ScheduleList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-payment-schedule-term-type
+                         :shape "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-payment-schedule-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'payment-schedule-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'payment-schedule-term 'make-payment-schedule-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1167,12 +1578,23 @@
 (common-lisp:deftype positive-integer-with-default-value-one ()
   'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (proposal-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-proposal-summary-"))
-   (offer-id common-lisp:nil :type (common-lisp:or offer-id common-lisp:null))
-   (resources common-lisp:nil :type
-    (common-lisp:or resources common-lisp:null)))
+ (common-lisp:defclass proposal-summary common-lisp:nil
+                       ((offer-id :initarg :offer-id :initform common-lisp:nil
+                         :type (common-lisp:or offer-id common-lisp:null)
+                         :accessor struct-shape-proposal-summary-offer-id
+                         :shape "OfferId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resources :initarg :resources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resources common-lisp:null) :accessor
+                         struct-shape-proposal-summary-resources :shape
+                         "Resources" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-proposal-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'proposal-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'proposal-summary 'make-proposal-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1199,10 +1621,18 @@
                         ((aws-sdk/generator/shape::input proposal-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (proposer (:copier common-lisp:nil) (:conc-name "struct-shape-proposer-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or awsaccount-id common-lisp:null)))
+ (common-lisp:defclass proposer common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or awsaccount-id common-lisp:null)
+                         :accessor struct-shape-proposer-account-id :shape
+                         "AWSAccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-proposer
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'proposer
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'proposer 'make-proposer))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input proposer))
@@ -1221,13 +1651,23 @@
                         ((aws-sdk/generator/shape::input proposer))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (rate-card-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-rate-card-item-"))
-   (dimension-key common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (price common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null)))
+ (common-lisp:defclass rate-card-item common-lisp:nil
+                       ((dimension-key :initarg :dimension-key :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-rate-card-item-dimension-key
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (price :initarg :price :initform common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-rate-card-item-price :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-rate-card-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'rate-card-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'rate-card-item 'make-rate-card-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input rate-card-item))
@@ -1261,17 +1701,37 @@
                            (trivial-types:proper-list rate-card-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (recurring-payment-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recurring-payment-term-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null))
-   (price common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass recurring-payment-term common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-recurring-payment-term-billing-period
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor
+                         struct-shape-recurring-payment-term-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (price :initarg :price :initform common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-recurring-payment-term-price
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-recurring-payment-term-type
+                         :shape "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recurring-payment-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'recurring-payment-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'recurring-payment-term 'make-recurring-payment-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1318,13 +1778,25 @@
                           recurring-payment-term))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (renewal-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-renewal-term-"))
-   (configuration common-lisp:nil :type
-    (common-lisp:or renewal-term-configuration common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass renewal-term common-lisp:nil
+                       ((configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or renewal-term-configuration
+                                         common-lisp:null)
+                         :accessor struct-shape-renewal-term-configuration
+                         :shape "RenewalTermConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-renewal-term-type :shape
+                         "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-renewal-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'renewal-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'renewal-term 'make-renewal-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input renewal-term))
@@ -1350,11 +1822,20 @@
                         ((aws-sdk/generator/shape::input renewal-term))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (renewal-term-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-renewal-term-configuration-"))
-   (enable-auto-renew (common-lisp:error ":enableautorenew is required") :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass renewal-term-configuration common-lisp:nil
+                       ((enable-auto-renew :initarg :enable-auto-renew
+                         :initform
+                         (common-lisp:error ":enableautorenew is required")
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-renewal-term-configuration-enable-auto-renew
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-renewal-term-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'renewal-term-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'renewal-term-configuration
                     'make-renewal-term-configuration))
@@ -1382,11 +1863,23 @@
    common-lisp:nil))
 (common-lisp:deftype request-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource (:copier common-lisp:nil) (:conc-name "struct-shape-resource-"))
-   (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or agreement-resource-type common-lisp:null)))
+ (common-lisp:defclass resource common-lisp:nil
+                       ((id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or resource-id common-lisp:null)
+                         :accessor struct-shape-resource-id :shape "ResourceId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or agreement-resource-type
+                                         common-lisp:null)
+                         :accessor struct-shape-resource-type :shape
+                         "AgreementResourceType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-resource
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'resource
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'resource 'make-resource))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input resource))
@@ -1438,13 +1931,24 @@
                            (trivial-types:proper-list resource))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (schedule-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-schedule-item-"))
-   (charge-amount common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (charge-date common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass schedule-item common-lisp:nil
+                       ((charge-amount :initarg :charge-amount :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-schedule-item-charge-amount
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (charge-date :initarg :charge-date :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-schedule-item-charge-date :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-schedule-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'schedule-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'schedule-item 'make-schedule-item))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input schedule-item))
@@ -1478,17 +1982,40 @@
                            (trivial-types:proper-list schedule-item))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (search-agreements-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-search-agreements-input-"))
-   (catalog common-lisp:nil :type (common-lisp:or catalog common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or filter-list common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (sort common-lisp:nil :type (common-lisp:or sort common-lisp:null)))
+ (common-lisp:defclass search-agreements-input common-lisp:nil
+                       ((catalog :initarg :catalog :initform common-lisp:nil
+                         :type (common-lisp:or catalog common-lisp:null)
+                         :accessor struct-shape-search-agreements-input-catalog
+                         :shape "Catalog" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type (common-lisp:or filter-list common-lisp:null)
+                         :accessor struct-shape-search-agreements-input-filters
+                         :shape "FilterList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-search-agreements-input-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-search-agreements-input-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sort :initarg :sort :initform common-lisp:nil :type
+                         (common-lisp:or sort common-lisp:null) :accessor
+                         struct-shape-search-agreements-input-sort :shape
+                         "Sort" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-search-agreements-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'search-agreements-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'search-agreements-input 'make-search-agreements-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1542,13 +2069,27 @@
                           search-agreements-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (search-agreements-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-search-agreements-output-"))
-   (agreement-view-summaries common-lisp:nil :type
-    (common-lisp:or agreement-view-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass search-agreements-output common-lisp:nil
+                       ((agreement-view-summaries :initarg
+                         :agreement-view-summaries :initform common-lisp:nil
+                         :type
+                         (common-lisp:or agreement-view-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-search-agreements-output-agreement-view-summaries
+                         :shape "AgreementViewSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-search-agreements-output-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-search-agreements-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'search-agreements-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'search-agreements-output 'make-search-agreements-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1582,12 +2123,22 @@
                           search-agreements-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (selector (:copier common-lisp:nil) (:conc-name "struct-shape-selector-"))
-   (type common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (value common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null)))
+ (common-lisp:defclass selector common-lisp:nil
+                       ((type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-selector-type :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-selector-value :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'selector 'make-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input selector))
@@ -1613,11 +2164,22 @@
                         ((aws-sdk/generator/shape::input selector))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (sort (:copier common-lisp:nil) (:conc-name "struct-shape-sort-"))
-   (sort-by common-lisp:nil :type (common-lisp:or sort-by common-lisp:null))
-   (sort-order common-lisp:nil :type
-    (common-lisp:or sort-order common-lisp:null)))
+ (common-lisp:defclass sort common-lisp:nil
+                       ((sort-by :initarg :sort-by :initform common-lisp:nil
+                         :type (common-lisp:or sort-by common-lisp:null)
+                         :accessor struct-shape-sort-sort-by :shape "SortBy"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sort-order :initarg :sort-order :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sort-order common-lisp:null) :accessor
+                         struct-shape-sort-sort-order :shape "SortOrder"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-sort (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'sort
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'sort 'make-sort))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input sort))
@@ -1645,13 +2207,24 @@
 (common-lisp:deftype sort-by () 'common-lisp:string)
 (common-lisp:deftype sort-order () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (support-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-support-term-"))
-   (refund-policy common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass support-term common-lisp:nil
+                       ((refund-policy :initarg :refund-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-support-term-refund-policy
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-support-term-type :shape
+                         "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-support-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'support-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'support-term 'make-support-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input support-term))
@@ -1689,15 +2262,33 @@
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:deftype unversioned-term-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (usage-based-pricing-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-usage-based-pricing-term-"))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null))
-   (rate-cards common-lisp:nil :type
-    (common-lisp:or usage-based-rate-card-list common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass usage-based-pricing-term common-lisp:nil
+                       ((currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor
+                         struct-shape-usage-based-pricing-term-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (rate-cards :initarg :rate-cards :initform
+                         common-lisp:nil :type
+                         (common-lisp:or usage-based-rate-card-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-usage-based-pricing-term-rate-cards
+                         :shape "UsageBasedRateCardList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-usage-based-pricing-term-type
+                         :shape "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-usage-based-pricing-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'usage-based-pricing-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'usage-based-pricing-term 'make-usage-based-pricing-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1737,11 +2328,19 @@
                           usage-based-pricing-term))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (usage-based-rate-card-item (:copier common-lisp:nil)
-      (:conc-name "struct-shape-usage-based-rate-card-item-"))
-   (rate-card common-lisp:nil :type
-    (common-lisp:or rate-card-list common-lisp:null)))
+ (common-lisp:defclass usage-based-rate-card-item common-lisp:nil
+                       ((rate-card :initarg :rate-card :initform
+                         common-lisp:nil :type
+                         (common-lisp:or rate-card-list common-lisp:null)
+                         :accessor
+                         struct-shape-usage-based-rate-card-item-rate-card
+                         :shape "RateCardList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-usage-based-rate-card-item
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'usage-based-rate-card-item
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'usage-based-rate-card-item
                     'make-usage-based-rate-card-item))
@@ -1792,13 +2391,25 @@
                     'validation-exception-message 'validation-exception-reason
                     'validation-exception-request-id)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-field-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bounded-string common-lisp:null)))
+ (common-lisp:defclass validation-exception-field common-lisp:nil
+                       ((message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-validation-exception-field-message :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor struct-shape-validation-exception-field-name
+                         :shape "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-field
                     'make-validation-exception-field))
@@ -1842,17 +2453,37 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype validation-exception-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (validity-term (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validity-term-"))
-   (agreement-duration common-lisp:nil :type
-    (common-lisp:or bounded-string common-lisp:null))
-   (agreement-end-date common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (agreement-start-date common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or unversioned-term-type common-lisp:null)))
+ (common-lisp:defclass validity-term common-lisp:nil
+                       ((agreement-duration :initarg :agreement-duration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or bounded-string common-lisp:null)
+                         :accessor
+                         struct-shape-validity-term-agreement-duration :shape
+                         "BoundedString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (agreement-end-date :initarg :agreement-end-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-validity-term-agreement-end-date :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (agreement-start-date :initarg :agreement-start-date
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-validity-term-agreement-start-date :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or unversioned-term-type
+                                         common-lisp:null)
+                         :accessor struct-shape-validity-term-type :shape
+                         "UnversionedTermType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validity-term
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validity-term
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'validity-term 'make-validity-term))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input validity-term))

@@ -53,17 +53,40 @@
                             account-associations-list-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-associations-list-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-associations-list-element-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (billing-group-arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (account-name common-lisp:nil :type
-    (common-lisp:or account-name common-lisp:null))
-   (account-email common-lisp:nil :type
-    (common-lisp:or account-email common-lisp:null)))
+ (common-lisp:defclass account-associations-list-element common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-account-associations-list-element-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (billing-group-arn :initarg :billing-group-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor
+                         struct-shape-account-associations-list-element-billing-group-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-name :initarg :account-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-name common-lisp:null)
+                         :accessor
+                         struct-shape-account-associations-list-element-account-name
+                         :shape "AccountName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-email :initarg :account-email :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-email common-lisp:null)
+                         :accessor
+                         struct-shape-account-associations-list-element-account-email
+                         :shape "AccountEmail" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-account-associations-list-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'account-associations-list-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'account-associations-list-element
                     'make-account-associations-list-element))
@@ -112,13 +135,27 @@
    common-lisp:nil))
 (common-lisp:deftype account-email () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-grouping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-grouping-"))
-   (linked-account-ids (common-lisp:error ":linked-account-ids is required")
-    :type (common-lisp:or account-id-list common-lisp:null))
-   (auto-associate common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass account-grouping common-lisp:nil
+                       ((linked-account-ids :initarg :linked-account-ids
+                         :initform
+                         (common-lisp:error ":linked-account-ids is required")
+                         :type
+                         (common-lisp:or account-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-account-grouping-linked-account-ids
+                         :shape "AccountIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (auto-associate :initarg :auto-associate :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-account-grouping-auto-associate :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-account-grouping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'account-grouping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'account-grouping 'make-account-grouping))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -164,13 +201,25 @@
 (common-lisp:deftype account-name () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-accounts-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-accounts-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (account-ids (common-lisp:error ":account-ids is required") :type
-    (common-lisp:or account-id-list common-lisp:null)))
+ (common-lisp:defclass associate-accounts-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-associate-accounts-input-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-ids :initarg :account-ids :initform
+                         (common-lisp:error ":account-ids is required") :type
+                         (common-lisp:or account-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-associate-accounts-input-account-ids
+                         :shape "AccountIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-accounts-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'associate-accounts-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-accounts-input 'make-associate-accounts-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -203,11 +252,17 @@
                           associate-accounts-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-accounts-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-accounts-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null)))
+ (common-lisp:defclass associate-accounts-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-associate-accounts-output-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-accounts-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'associate-accounts-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-accounts-output
                     'make-associate-accounts-output))
@@ -234,13 +289,30 @@
                           associate-accounts-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-pricing-rules-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-pricing-rules-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or pricing-plan-arn common-lisp:null))
-   (pricing-rule-arns (common-lisp:error ":pricing-rule-arns is required")
-    :type (common-lisp:or pricing-rule-arns-non-empty-input common-lisp:null)))
+ (common-lisp:defclass associate-pricing-rules-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor
+                         struct-shape-associate-pricing-rules-input-arn :shape
+                         "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-rule-arns :initarg :pricing-rule-arns
+                         :initform
+                         (common-lisp:error ":pricing-rule-arns is required")
+                         :type
+                         (common-lisp:or pricing-rule-arns-non-empty-input
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-pricing-rules-input-pricing-rule-arns
+                         :shape "PricingRuleArnsNonEmptyInput" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-pricing-rules-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-pricing-rules-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-pricing-rules-input
                     'make-associate-pricing-rules-input))
@@ -274,11 +346,19 @@
                           associate-pricing-rules-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-pricing-rules-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-pricing-rules-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-plan-arn common-lisp:null)))
+ (common-lisp:defclass associate-pricing-rules-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor
+                         struct-shape-associate-pricing-rules-output-arn :shape
+                         "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-pricing-rules-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-pricing-rules-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-pricing-rules-output
                     'make-associate-pricing-rules-output))
@@ -305,12 +385,25 @@
                           associate-pricing-rules-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-resource-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-resource-error-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (reason common-lisp:nil :type
-    (common-lisp:or associate-resource-error-reason common-lisp:null)))
+ (common-lisp:defclass associate-resource-error common-lisp:nil
+                       ((message :initarg :message :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resource-error-message :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (reason :initarg :reason :initform common-lisp:nil
+                         :type
+                         (common-lisp:or associate-resource-error-reason
+                                         common-lisp:null)
+                         :accessor struct-shape-associate-resource-error-reason
+                         :shape "AssociateResourceErrorReason" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-resource-error
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'associate-resource-error
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-resource-error 'make-associate-resource-error))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -344,13 +437,27 @@
    common-lisp:nil))
 (common-lisp:deftype associate-resource-error-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (associate-resource-response-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-associate-resource-response-element-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-association-element common-lisp:null))
-   (error common-lisp:nil :type
-    (common-lisp:or associate-resource-error common-lisp:null)))
+ (common-lisp:defclass associate-resource-response-element common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-association-element
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resource-response-element-arn
+                         :shape "CustomLineItemAssociationElement" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (error :initarg :error :initform common-lisp:nil :type
+                         (common-lisp:or associate-resource-error
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-associate-resource-response-element-error
+                         :shape "AssociateResourceError" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-associate-resource-response-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'associate-resource-response-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'associate-resource-response-element
                     'make-associate-resource-response-element))
@@ -394,11 +501,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype association () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (attribute (:copier common-lisp:nil)
-      (:conc-name "struct-shape-attribute-"))
-   (key common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass attribute common-lisp:nil
+                       ((key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-attribute-key :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-attribute-value :shape "String" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-attribute
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'attribute
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'attribute 'make-attribute))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input attribute))
@@ -432,17 +548,38 @@
                            (trivial-types:proper-list attribute))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-associate-resources-to-custom-line-item-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-batch-associate-resources-to-custom-line-item-input-"))
-   (target-arn (common-lisp:error ":target-arn is required") :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (resource-arns (common-lisp:error ":resource-arns is required") :type
-    (common-lisp:or custom-line-item-batch-associations-list common-lisp:null))
-   (billing-period-range common-lisp:nil :type
-    (common-lisp:or custom-line-item-billing-period-range common-lisp:null)))
+ (common-lisp:defclass batch-associate-resources-to-custom-line-item-input
+                       common-lisp:nil
+                       ((target-arn :initarg :target-arn :initform
+                         (common-lisp:error ":target-arn is required") :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-batch-associate-resources-to-custom-line-item-input-target-arn
+                         :shape "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-arns :initarg :resource-arns :initform
+                         (common-lisp:error ":resource-arns is required") :type
+                         (common-lisp:or
+                          custom-line-item-batch-associations-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-batch-associate-resources-to-custom-line-item-input-resource-arns
+                         :shape "CustomLineItemBatchAssociationsList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-period-range :initarg :billing-period-range
+                         :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-billing-period-range
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-associate-resources-to-custom-line-item-input-billing-period-range
+                         :shape "CustomLineItemBillingPeriodRange" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-associate-resources-to-custom-line-item-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-associate-resources-to-custom-line-item-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-associate-resources-to-custom-line-item-input
                     'make-batch-associate-resources-to-custom-line-item-input))
@@ -484,15 +621,32 @@
                           batch-associate-resources-to-custom-line-item-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-associate-resources-to-custom-line-item-output
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-batch-associate-resources-to-custom-line-item-output-"))
-   (successfully-associated-resources common-lisp:nil :type
-    (common-lisp:or associate-resources-response-list common-lisp:null))
-   (failed-associated-resources common-lisp:nil :type
-    (common-lisp:or associate-resources-response-list common-lisp:null)))
+ (common-lisp:defclass batch-associate-resources-to-custom-line-item-output
+                       common-lisp:nil
+                       ((successfully-associated-resources :initarg
+                         :successfully-associated-resources :initform
+                         common-lisp:nil :type
+                         (common-lisp:or associate-resources-response-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-associate-resources-to-custom-line-item-output-successfully-associated-resources
+                         :shape "AssociateResourcesResponseList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (failed-associated-resources :initarg
+                         :failed-associated-resources :initform common-lisp:nil
+                         :type
+                         (common-lisp:or associate-resources-response-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-associate-resources-to-custom-line-item-output-failed-associated-resources
+                         :shape "AssociateResourcesResponseList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-associate-resources-to-custom-line-item-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-associate-resources-to-custom-line-item-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-associate-resources-to-custom-line-item-output
                     'make-batch-associate-resources-to-custom-line-item-output))
@@ -528,18 +682,39 @@
                           batch-associate-resources-to-custom-line-item-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-disassociate-resources-from-custom-line-item-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-batch-disassociate-resources-from-custom-line-item-input-"))
-   (target-arn (common-lisp:error ":target-arn is required") :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (resource-arns (common-lisp:error ":resource-arns is required") :type
-    (common-lisp:or custom-line-item-batch-disassociations-list
-                    common-lisp:null))
-   (billing-period-range common-lisp:nil :type
-    (common-lisp:or custom-line-item-billing-period-range common-lisp:null)))
+ (common-lisp:defclass batch-disassociate-resources-from-custom-line-item-input
+                       common-lisp:nil
+                       ((target-arn :initarg :target-arn :initform
+                         (common-lisp:error ":target-arn is required") :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-batch-disassociate-resources-from-custom-line-item-input-target-arn
+                         :shape "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resource-arns :initarg :resource-arns :initform
+                         (common-lisp:error ":resource-arns is required") :type
+                         (common-lisp:or
+                          custom-line-item-batch-disassociations-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-batch-disassociate-resources-from-custom-line-item-input-resource-arns
+                         :shape "CustomLineItemBatchDisassociationsList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (billing-period-range :initarg :billing-period-range
+                         :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-billing-period-range
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-disassociate-resources-from-custom-line-item-input-billing-period-range
+                         :shape "CustomLineItemBillingPeriodRange" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-disassociate-resources-from-custom-line-item-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-disassociate-resources-from-custom-line-item-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-disassociate-resources-from-custom-line-item-input
                     'make-batch-disassociate-resources-from-custom-line-item-input))
@@ -581,15 +756,28 @@
                           batch-disassociate-resources-from-custom-line-item-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-disassociate-resources-from-custom-line-item-output
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-batch-disassociate-resources-from-custom-line-item-output-"))
-   (successfully-disassociated-resources common-lisp:nil :type
-    (common-lisp:or disassociate-resources-response-list common-lisp:null))
-   (failed-disassociated-resources common-lisp:nil :type
-    (common-lisp:or disassociate-resources-response-list common-lisp:null)))
+ (common-lisp:defclass
+  batch-disassociate-resources-from-custom-line-item-output common-lisp:nil
+  ((successfully-disassociated-resources :initarg
+    :successfully-disassociated-resources :initform common-lisp:nil :type
+    (common-lisp:or disassociate-resources-response-list common-lisp:null)
+    :accessor
+    struct-shape-batch-disassociate-resources-from-custom-line-item-output-successfully-disassociated-resources
+    :shape "DisassociateResourcesResponseList" :location common-lisp:nil
+    :location-name common-lisp:nil)
+   (failed-disassociated-resources :initarg :failed-disassociated-resources
+    :initform common-lisp:nil :type
+    (common-lisp:or disassociate-resources-response-list common-lisp:null)
+    :accessor
+    struct-shape-batch-disassociate-resources-from-custom-line-item-output-failed-disassociated-resources
+    :shape "DisassociateResourcesResponseList" :location common-lisp:nil
+    :location-name common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-disassociate-resources-from-custom-line-item-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-disassociate-resources-from-custom-line-item-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-disassociate-resources-from-custom-line-item-output
                     'make-batch-disassociate-resources-from-custom-line-item-output))
@@ -635,18 +823,51 @@
                            (trivial-types:proper-list billing-group-arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (billing-group-cost-report-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-billing-group-cost-report-element-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (awscost common-lisp:nil :type (common-lisp:or awscost common-lisp:null))
-   (proforma-cost common-lisp:nil :type
-    (common-lisp:or proforma-cost common-lisp:null))
-   (margin common-lisp:nil :type (common-lisp:or margin common-lisp:null))
-   (margin-percentage common-lisp:nil :type
-    (common-lisp:or margin-percentage common-lisp:null))
-   (currency common-lisp:nil :type (common-lisp:or currency common-lisp:null)))
+ (common-lisp:defclass billing-group-cost-report-element common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-element-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (awscost :initarg :awscost :initform common-lisp:nil
+                         :type (common-lisp:or awscost common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-element-awscost
+                         :shape "AWSCost" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (proforma-cost :initarg :proforma-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or proforma-cost common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-element-proforma-cost
+                         :shape "ProformaCost" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (margin :initarg :margin :initform common-lisp:nil
+                         :type (common-lisp:or margin common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-element-margin
+                         :shape "Margin" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (margin-percentage :initarg :margin-percentage
+                         :initform common-lisp:nil :type
+                         (common-lisp:or margin-percentage common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-element-margin-percentage
+                         :shape "MarginPercentage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (currency :initarg :currency :initform common-lisp:nil
+                         :type (common-lisp:or currency common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-element-currency
+                         :shape "Currency" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-billing-group-cost-report-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'billing-group-cost-report-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'billing-group-cost-report-element
                     'make-billing-group-cost-report-element))
@@ -717,20 +938,58 @@
                             billing-group-cost-report-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (billing-group-cost-report-result-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-billing-group-cost-report-result-element-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (awscost common-lisp:nil :type (common-lisp:or awscost common-lisp:null))
-   (proforma-cost common-lisp:nil :type
-    (common-lisp:or proforma-cost common-lisp:null))
-   (margin common-lisp:nil :type (common-lisp:or margin common-lisp:null))
-   (margin-percentage common-lisp:nil :type
-    (common-lisp:or margin-percentage common-lisp:null))
-   (currency common-lisp:nil :type (common-lisp:or currency common-lisp:null))
-   (attributes common-lisp:nil :type
-    (common-lisp:or attributes-list common-lisp:null)))
+ (common-lisp:defclass billing-group-cost-report-result-element common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-result-element-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (awscost :initarg :awscost :initform common-lisp:nil
+                         :type (common-lisp:or awscost common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-result-element-awscost
+                         :shape "AWSCost" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (proforma-cost :initarg :proforma-cost :initform
+                         common-lisp:nil :type
+                         (common-lisp:or proforma-cost common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-result-element-proforma-cost
+                         :shape "ProformaCost" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (margin :initarg :margin :initform common-lisp:nil
+                         :type (common-lisp:or margin common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-result-element-margin
+                         :shape "Margin" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (margin-percentage :initarg :margin-percentage
+                         :initform common-lisp:nil :type
+                         (common-lisp:or margin-percentage common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-result-element-margin-percentage
+                         :shape "MarginPercentage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (currency :initarg :currency :initform common-lisp:nil
+                         :type (common-lisp:or currency common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-result-element-currency
+                         :shape "Currency" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (attributes :initarg :attributes :initform
+                         common-lisp:nil :type
+                         (common-lisp:or attributes-list common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-cost-report-result-element-attributes
+                         :shape "AttributesList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-billing-group-cost-report-result-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'billing-group-cost-report-result-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'billing-group-cost-report-result-element
                     'make-billing-group-cost-report-result-element))
@@ -819,31 +1078,85 @@
                             billing-group-list-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (billing-group-list-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-billing-group-list-element-"))
-   (name common-lisp:nil :type
-    (common-lisp:or billing-group-name common-lisp:null))
-   (arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or billing-group-description common-lisp:null))
-   (primary-account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (computation-preference common-lisp:nil :type
-    (common-lisp:or computation-preference common-lisp:null))
-   (size common-lisp:nil :type
-    (common-lisp:or number-of-accounts common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or billing-group-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or billing-group-status-reason common-lisp:null))
-   (account-grouping common-lisp:nil :type
-    (common-lisp:or list-billing-group-account-grouping common-lisp:null)))
+ (common-lisp:defclass billing-group-list-element common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-name common-lisp:null)
+                         :accessor struct-shape-billing-group-list-element-name
+                         :shape "BillingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-billing-group-list-element-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-list-element-description
+                         :shape "BillingGroupDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (primary-account-id :initarg :primary-account-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-billing-group-list-element-primary-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (computation-preference :initarg
+                         :computation-preference :initform common-lisp:nil
+                         :type
+                         (common-lisp:or computation-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-list-element-computation-preference
+                         :shape "ComputationPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (size :initarg :size :initform common-lisp:nil :type
+                         (common-lisp:or number-of-accounts common-lisp:null)
+                         :accessor struct-shape-billing-group-list-element-size
+                         :shape "NumberOfAccounts" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-billing-group-list-element-creation-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-billing-group-list-element-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or billing-group-status common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-list-element-status :shape
+                         "BillingGroupStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-list-element-status-reason
+                         :shape "BillingGroupStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (account-grouping :initarg :account-grouping :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-billing-group-account-grouping
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-billing-group-list-element-account-grouping
+                         :shape "ListBillingGroupAccountGrouping" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-billing-group-list-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'billing-group-list-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'billing-group-list-element
                     'make-billing-group-list-element))
@@ -953,15 +1266,30 @@
 (common-lisp:deftype billing-group-status-reason () 'common-lisp:string)
 (common-lisp:deftype billing-period () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (billing-period-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-billing-period-range-"))
-   (inclusive-start-billing-period
-    (common-lisp:error ":inclusive-start-billing-period is required") :type
-    (common-lisp:or billing-period common-lisp:null))
-   (exclusive-end-billing-period
-    (common-lisp:error ":exclusive-end-billing-period is required") :type
-    (common-lisp:or billing-period common-lisp:null)))
+ (common-lisp:defclass billing-period-range common-lisp:nil
+                       ((inclusive-start-billing-period :initarg
+                         :inclusive-start-billing-period :initform
+                         (common-lisp:error
+                          ":inclusive-start-billing-period is required")
+                         :type (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-billing-period-range-inclusive-start-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (exclusive-end-billing-period :initarg
+                         :exclusive-end-billing-period :initform
+                         (common-lisp:error
+                          ":exclusive-end-billing-period is required")
+                         :type (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-billing-period-range-exclusive-end-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-billing-period-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'billing-period-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'billing-period-range 'make-billing-period-range))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -992,11 +1320,21 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype client-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (computation-preference (:copier common-lisp:nil)
-      (:conc-name "struct-shape-computation-preference-"))
-   (pricing-plan-arn (common-lisp:error ":pricing-plan-arn is required") :type
-    (common-lisp:or pricing-plan-full-arn common-lisp:null)))
+ (common-lisp:defclass computation-preference common-lisp:nil
+                       ((pricing-plan-arn :initarg :pricing-plan-arn :initform
+                         (common-lisp:error ":pricing-plan-arn is required")
+                         :type
+                         (common-lisp:or pricing-plan-full-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-computation-preference-pricing-plan-arn
+                         :shape "PricingPlanFullArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-computation-preference
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'computation-preference
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'computation-preference 'make-computation-preference))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1039,23 +1377,63 @@
                     'conflict-exception-reason)))
 (common-lisp:deftype conflict-exception-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-billing-group-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-billing-group-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or billing-group-name common-lisp:null))
-   (account-grouping (common-lisp:error ":account-grouping is required") :type
-    (common-lisp:or account-grouping common-lisp:null))
-   (computation-preference
-    (common-lisp:error ":computation-preference is required") :type
-    (common-lisp:or computation-preference common-lisp:null))
-   (primary-account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or billing-group-description common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-billing-group-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-billing-group-input-client-token
+                         :shape "ClientToken" :location "header" :location-name
+                         "X-Amzn-Client-Token")
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or billing-group-name common-lisp:null)
+                         :accessor struct-shape-create-billing-group-input-name
+                         :shape "BillingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-grouping :initarg :account-grouping :initform
+                         (common-lisp:error ":account-grouping is required")
+                         :type
+                         (common-lisp:or account-grouping common-lisp:null)
+                         :accessor
+                         struct-shape-create-billing-group-input-account-grouping
+                         :shape "AccountGrouping" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (computation-preference :initarg
+                         :computation-preference :initform
+                         (common-lisp:error
+                          ":computation-preference is required")
+                         :type
+                         (common-lisp:or computation-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-billing-group-input-computation-preference
+                         :shape "ComputationPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (primary-account-id :initarg :primary-account-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-billing-group-input-primary-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-billing-group-input-description
+                         :shape "BillingGroupDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-billing-group-input-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-billing-group-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-billing-group-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-billing-group-input
                     'make-create-billing-group-input))
@@ -1123,11 +1501,17 @@
                           create-billing-group-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-billing-group-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-billing-group-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null)))
+ (common-lisp:defclass create-billing-group-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-create-billing-group-output-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-billing-group-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-billing-group-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-billing-group-output
                     'make-create-billing-group-output))
@@ -1154,24 +1538,73 @@
                           create-billing-group-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-custom-line-item-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-custom-line-item-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or custom-line-item-name common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or custom-line-item-description common-lisp:null))
-   (billing-group-arn (common-lisp:error ":billing-group-arn is required")
-    :type (common-lisp:or billing-group-arn common-lisp:null))
-   (billing-period-range common-lisp:nil :type
-    (common-lisp:or custom-line-item-billing-period-range common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (charge-details (common-lisp:error ":charge-details is required") :type
-    (common-lisp:or custom-line-item-charge-details common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass create-custom-line-item-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-custom-line-item-input-client-token
+                         :shape "ClientToken" :location "header" :location-name
+                         "X-Amzn-Client-Token")
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or custom-line-item-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-custom-line-item-input-name :shape
+                         "CustomLineItemName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         (common-lisp:error ":description is required") :type
+                         (common-lisp:or custom-line-item-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-custom-line-item-input-description
+                         :shape "CustomLineItemDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-group-arn :initarg :billing-group-arn
+                         :initform
+                         (common-lisp:error ":billing-group-arn is required")
+                         :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-custom-line-item-input-billing-group-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (billing-period-range :initarg :billing-period-range
+                         :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-billing-period-range
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-custom-line-item-input-billing-period-range
+                         :shape "CustomLineItemBillingPeriodRange" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-custom-line-item-input-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (charge-details :initarg :charge-details :initform
+                         (common-lisp:error ":charge-details is required")
+                         :type
+                         (common-lisp:or custom-line-item-charge-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-custom-line-item-input-charge-details
+                         :shape "CustomLineItemChargeDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-create-custom-line-item-input-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-custom-line-item-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-custom-line-item-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-custom-line-item-input
                     'make-create-custom-line-item-input))
@@ -1246,11 +1679,19 @@
                           create-custom-line-item-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-custom-line-item-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-custom-line-item-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-arn common-lisp:null)))
+ (common-lisp:defclass create-custom-line-item-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-custom-line-item-output-arn :shape
+                         "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-custom-line-item-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-custom-line-item-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-custom-line-item-output
                     'make-create-custom-line-item-output))
@@ -1277,11 +1718,19 @@
                           create-custom-line-item-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-free-tier-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-free-tier-config-"))
-   (activated (common-lisp:error ":activated is required") :type
-    (common-lisp:or tiering-activated common-lisp:null)))
+ (common-lisp:defclass create-free-tier-config common-lisp:nil
+                       ((activated :initarg :activated :initform
+                         (common-lisp:error ":activated is required") :type
+                         (common-lisp:or tiering-activated common-lisp:null)
+                         :accessor
+                         struct-shape-create-free-tier-config-activated :shape
+                         "TieringActivated" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-free-tier-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-free-tier-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-free-tier-config 'make-create-free-tier-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1307,18 +1756,46 @@
                           create-free-tier-config))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-pricing-plan-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-pricing-plan-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or pricing-plan-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or pricing-plan-description common-lisp:null))
-   (pricing-rule-arns common-lisp:nil :type
-    (common-lisp:or pricing-rule-arns-input common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-pricing-plan-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-plan-input-client-token
+                         :shape "ClientToken" :location "header" :location-name
+                         "X-Amzn-Client-Token")
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or pricing-plan-name common-lisp:null)
+                         :accessor struct-shape-create-pricing-plan-input-name
+                         :shape "PricingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-plan-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-plan-input-description
+                         :shape "PricingPlanDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (pricing-rule-arns :initarg :pricing-rule-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-arns-input
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-plan-input-pricing-rule-arns
+                         :shape "PricingRuleArnsInput" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-pricing-plan-input-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-pricing-plan-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-pricing-plan-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-pricing-plan-input
                     'make-create-pricing-plan-input))
@@ -1371,11 +1848,17 @@
                           create-pricing-plan-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-pricing-plan-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-pricing-plan-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-plan-arn common-lisp:null)))
+ (common-lisp:defclass create-pricing-plan-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor struct-shape-create-pricing-plan-output-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-pricing-plan-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-pricing-plan-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-pricing-plan-output
                     'make-create-pricing-plan-output))
@@ -1402,31 +1885,89 @@
                           create-pricing-plan-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-pricing-rule-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-pricing-rule-input-"))
-   (client-token common-lisp:nil :type
-    (common-lisp:or client-token common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or pricing-rule-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or pricing-rule-description common-lisp:null))
-   (scope (common-lisp:error ":scope is required") :type
-    (common-lisp:or pricing-rule-scope common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or pricing-rule-type common-lisp:null))
-   (modifier-percentage common-lisp:nil :type
-    (common-lisp:or modifier-percentage common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or service common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (billing-entity common-lisp:nil :type
-    (common-lisp:or billing-entity common-lisp:null))
-   (tiering common-lisp:nil :type
-    (common-lisp:or create-tiering-input common-lisp:null))
-   (usage-type common-lisp:nil :type
-    (common-lisp:or usage-type common-lisp:null))
-   (operation common-lisp:nil :type
-    (common-lisp:or operation common-lisp:null)))
+ (common-lisp:defclass create-pricing-rule-input common-lisp:nil
+                       ((client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-token common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-rule-input-client-token
+                         :shape "ClientToken" :location "header" :location-name
+                         "X-Amzn-Client-Token")
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or pricing-rule-name common-lisp:null)
+                         :accessor struct-shape-create-pricing-rule-input-name
+                         :shape "PricingRuleName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-rule-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-rule-input-description
+                         :shape "PricingRuleDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scope :initarg :scope :initform
+                         (common-lisp:error ":scope is required") :type
+                         (common-lisp:or pricing-rule-scope common-lisp:null)
+                         :accessor struct-shape-create-pricing-rule-input-scope
+                         :shape "PricingRuleScope" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or pricing-rule-type common-lisp:null)
+                         :accessor struct-shape-create-pricing-rule-input-type
+                         :shape "PricingRuleType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modifier-percentage :initarg :modifier-percentage
+                         :initform common-lisp:nil :type
+                         (common-lisp:or modifier-percentage common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-rule-input-modifier-percentage
+                         :shape "ModifierPercentage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or service common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-rule-input-service :shape
+                         "Service" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-pricing-rule-input-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (billing-entity :initarg :billing-entity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-entity common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-rule-input-billing-entity
+                         :shape "BillingEntity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tiering :initarg :tiering :initform common-lisp:nil
+                         :type
+                         (common-lisp:or create-tiering-input common-lisp:null)
+                         :accessor
+                         struct-shape-create-pricing-rule-input-tiering :shape
+                         "CreateTieringInput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-type :initarg :usage-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or usage-type common-lisp:null) :accessor
+                         struct-shape-create-pricing-rule-input-usage-type
+                         :shape "UsageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operation :initarg :operation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or operation common-lisp:null) :accessor
+                         struct-shape-create-pricing-rule-input-operation
+                         :shape "Operation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-pricing-rule-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-pricing-rule-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-pricing-rule-input
                     'make-create-pricing-rule-input))
@@ -1528,11 +2069,17 @@
                           create-pricing-rule-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-pricing-rule-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-pricing-rule-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-rule-arn common-lisp:null)))
+ (common-lisp:defclass create-pricing-rule-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-arn common-lisp:null)
+                         :accessor struct-shape-create-pricing-rule-output-arn
+                         :shape "PricingRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-pricing-rule-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-pricing-rule-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-pricing-rule-output
                     'make-create-pricing-rule-output))
@@ -1559,11 +2106,19 @@
                           create-pricing-rule-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-tiering-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-tiering-input-"))
-   (free-tier (common-lisp:error ":free-tier is required") :type
-    (common-lisp:or create-free-tier-config common-lisp:null)))
+ (common-lisp:defclass create-tiering-input common-lisp:nil
+                       ((free-tier :initarg :free-tier :initform
+                         (common-lisp:error ":free-tier is required") :type
+                         (common-lisp:or create-free-tier-config
+                                         common-lisp:null)
+                         :accessor struct-shape-create-tiering-input-free-tier
+                         :shape "CreateFreeTierConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-tiering-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'create-tiering-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-tiering-input 'make-create-tiering-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1623,14 +2178,30 @@
                             custom-line-item-association-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (custom-line-item-billing-period-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-custom-line-item-billing-period-range-"))
-   (inclusive-start-billing-period
-    (common-lisp:error ":inclusive-start-billing-period is required") :type
-    (common-lisp:or billing-period common-lisp:null))
-   (exclusive-end-billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null)))
+ (common-lisp:defclass custom-line-item-billing-period-range common-lisp:nil
+                       ((inclusive-start-billing-period :initarg
+                         :inclusive-start-billing-period :initform
+                         (common-lisp:error
+                          ":inclusive-start-billing-period is required")
+                         :type (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-billing-period-range-inclusive-start-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (exclusive-end-billing-period :initarg
+                         :exclusive-end-billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-billing-period-range-exclusive-end-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-custom-line-item-billing-period-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'custom-line-item-billing-period-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'custom-line-item-billing-period-range
                     'make-custom-line-item-billing-period-range))
@@ -1666,18 +2237,46 @@
                           custom-line-item-billing-period-range))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (custom-line-item-charge-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-custom-line-item-charge-details-"))
-   (flat common-lisp:nil :type
-    (common-lisp:or custom-line-item-flat-charge-details common-lisp:null))
-   (percentage common-lisp:nil :type
-    (common-lisp:or custom-line-item-percentage-charge-details
-                    common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or custom-line-item-type common-lisp:null))
-   (line-item-filters common-lisp:nil :type
-    (common-lisp:or line-item-filters-list common-lisp:null)))
+ (common-lisp:defclass custom-line-item-charge-details common-lisp:nil
+                       ((flat :initarg :flat :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-flat-charge-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-charge-details-flat
+                         :shape "CustomLineItemFlatChargeDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (percentage :initarg :percentage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          custom-line-item-percentage-charge-details
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-charge-details-percentage
+                         :shape "CustomLineItemPercentageChargeDetails"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or custom-line-item-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-charge-details-type
+                         :shape "CustomLineItemType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (line-item-filters :initarg :line-item-filters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or line-item-filters-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-charge-details-line-item-filters
+                         :shape "LineItemFiltersList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-custom-line-item-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'custom-line-item-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'custom-line-item-charge-details
                     'make-custom-line-item-charge-details))
@@ -1727,11 +2326,21 @@
 (common-lisp:deftype custom-line-item-charge-value () 'common-lisp:double-float)
 (common-lisp:deftype custom-line-item-description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (custom-line-item-flat-charge-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-custom-line-item-flat-charge-details-"))
-   (charge-value (common-lisp:error ":charge-value is required") :type
-    (common-lisp:or custom-line-item-charge-value common-lisp:null)))
+ (common-lisp:defclass custom-line-item-flat-charge-details common-lisp:nil
+                       ((charge-value :initarg :charge-value :initform
+                         (common-lisp:error ":charge-value is required") :type
+                         (common-lisp:or custom-line-item-charge-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-flat-charge-details-charge-value
+                         :shape "CustomLineItemChargeValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-custom-line-item-flat-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'custom-line-item-flat-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'custom-line-item-flat-charge-details
                     'make-custom-line-item-flat-charge-details))
@@ -1767,31 +2376,90 @@
                             custom-line-item-list-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (custom-line-item-list-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-custom-line-item-list-element-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or custom-line-item-name common-lisp:null))
-   (charge-details common-lisp:nil :type
-    (common-lisp:or list-custom-line-item-charge-details common-lisp:null))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or custom-line-item-description common-lisp:null))
-   (product-code common-lisp:nil :type
-    (common-lisp:or custom-line-item-product-code common-lisp:null))
-   (billing-group-arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (association-size common-lisp:nil :type
-    (common-lisp:or number-of-associations common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass custom-line-item-list-element common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-list-element-arn :shape
+                         "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-list-element-name :shape
+                         "CustomLineItemName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (charge-details :initarg :charge-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-custom-line-item-charge-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-list-element-charge-details
+                         :shape "ListCustomLineItemChargeDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-list-element-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or custom-line-item-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-list-element-description
+                         :shape "CustomLineItemDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (product-code :initarg :product-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or custom-line-item-product-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-list-element-product-code
+                         :shape "CustomLineItemProductCode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-group-arn :initarg :billing-group-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-list-element-billing-group-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-custom-line-item-list-element-creation-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-custom-line-item-list-element-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (association-size :initarg :association-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or number-of-associations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-list-element-association-size
+                         :shape "NumberOfAssociations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-custom-line-item-list-element-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-custom-line-item-list-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'custom-line-item-list-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'custom-line-item-list-element
                     'make-custom-line-item-list-element))
@@ -1897,13 +2565,32 @@
                            (trivial-types:proper-list custom-line-item-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (custom-line-item-percentage-charge-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-custom-line-item-percentage-charge-details-"))
-   (percentage-value (common-lisp:error ":percentage-value is required") :type
-    (common-lisp:or custom-line-item-percentage-charge-value common-lisp:null))
-   (associated-values common-lisp:nil :type
-    (common-lisp:or custom-line-item-associations-list common-lisp:null)))
+ (common-lisp:defclass custom-line-item-percentage-charge-details
+                       common-lisp:nil
+                       ((percentage-value :initarg :percentage-value :initform
+                         (common-lisp:error ":percentage-value is required")
+                         :type
+                         (common-lisp:or
+                          custom-line-item-percentage-charge-value
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-percentage-charge-details-percentage-value
+                         :shape "CustomLineItemPercentageChargeValue" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (associated-values :initarg :associated-values
+                         :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-associations-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-percentage-charge-details-associated-values
+                         :shape "CustomLineItemAssociationsList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-custom-line-item-percentage-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'custom-line-item-percentage-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'custom-line-item-percentage-charge-details
                     'make-custom-line-item-percentage-charge-details))
@@ -1951,36 +2638,110 @@
                             custom-line-item-version-list-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (custom-line-item-version-list-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-custom-line-item-version-list-element-"))
-   (name common-lisp:nil :type
-    (common-lisp:or custom-line-item-name common-lisp:null))
-   (charge-details common-lisp:nil :type
-    (common-lisp:or list-custom-line-item-charge-details common-lisp:null))
-   (currency-code common-lisp:nil :type
-    (common-lisp:or currency-code common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or custom-line-item-description common-lisp:null))
-   (product-code common-lisp:nil :type
-    (common-lisp:or custom-line-item-product-code common-lisp:null))
-   (billing-group-arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (association-size common-lisp:nil :type
-    (common-lisp:or number-of-associations common-lisp:null))
-   (start-billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (end-billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (start-time common-lisp:nil :type (common-lisp:or instant common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null)))
+ (common-lisp:defclass custom-line-item-version-list-element common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-name
+                         :shape "CustomLineItemName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (charge-details :initarg :charge-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-custom-line-item-charge-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-charge-details
+                         :shape "ListCustomLineItemChargeDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (currency-code :initarg :currency-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or currency-code common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-currency-code
+                         :shape "CurrencyCode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or custom-line-item-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-description
+                         :shape "CustomLineItemDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (product-code :initarg :product-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or custom-line-item-product-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-product-code
+                         :shape "CustomLineItemProductCode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-group-arn :initarg :billing-group-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-billing-group-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-custom-line-item-version-list-element-creation-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-custom-line-item-version-list-element-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (association-size :initarg :association-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or number-of-associations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-association-size
+                         :shape "NumberOfAssociations" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-billing-period :initarg :start-billing-period
+                         :initform common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-start-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-billing-period :initarg :end-billing-period
+                         :initform common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-end-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-custom-line-item-version-list-element-arn
+                         :shape "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-custom-line-item-version-list-element-start-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-custom-line-item-version-list-element-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-custom-line-item-version-list-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'custom-line-item-version-list-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'custom-line-item-version-list-element
                     'make-custom-line-item-version-list-element))
@@ -2099,11 +2860,18 @@
                           custom-line-item-version-list-element))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-billing-group-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-billing-group-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or billing-group-arn common-lisp:null)))
+ (common-lisp:defclass delete-billing-group-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-delete-billing-group-input-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-billing-group-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-billing-group-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-billing-group-input
                     'make-delete-billing-group-input))
@@ -2130,11 +2898,17 @@
                           delete-billing-group-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-billing-group-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-billing-group-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null)))
+ (common-lisp:defclass delete-billing-group-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-delete-billing-group-output-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-billing-group-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-billing-group-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-billing-group-output
                     'make-delete-billing-group-output))
@@ -2161,13 +2935,28 @@
                           delete-billing-group-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-custom-line-item-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-custom-line-item-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (billing-period-range common-lisp:nil :type
-    (common-lisp:or custom-line-item-billing-period-range common-lisp:null)))
+ (common-lisp:defclass delete-custom-line-item-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-custom-line-item-input-arn :shape
+                         "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (billing-period-range :initarg :billing-period-range
+                         :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-billing-period-range
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-custom-line-item-input-billing-period-range
+                         :shape "CustomLineItemBillingPeriodRange" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-custom-line-item-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-custom-line-item-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-custom-line-item-input
                     'make-delete-custom-line-item-input))
@@ -2202,11 +2991,19 @@
                           delete-custom-line-item-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-custom-line-item-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-custom-line-item-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-arn common-lisp:null)))
+ (common-lisp:defclass delete-custom-line-item-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-custom-line-item-output-arn :shape
+                         "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-custom-line-item-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-custom-line-item-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-custom-line-item-output
                     'make-delete-custom-line-item-output))
@@ -2233,11 +3030,18 @@
                           delete-custom-line-item-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-pricing-plan-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-pricing-plan-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or pricing-plan-arn common-lisp:null)))
+ (common-lisp:defclass delete-pricing-plan-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor struct-shape-delete-pricing-plan-input-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-pricing-plan-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-pricing-plan-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-pricing-plan-input
                     'make-delete-pricing-plan-input))
@@ -2264,11 +3068,17 @@
                           delete-pricing-plan-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-pricing-plan-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-pricing-plan-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-plan-arn common-lisp:null)))
+ (common-lisp:defclass delete-pricing-plan-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor struct-shape-delete-pricing-plan-output-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-pricing-plan-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-pricing-plan-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-pricing-plan-output
                     'make-delete-pricing-plan-output))
@@ -2295,11 +3105,18 @@
                           delete-pricing-plan-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-pricing-rule-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-pricing-rule-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or pricing-rule-arn common-lisp:null)))
+ (common-lisp:defclass delete-pricing-rule-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or pricing-rule-arn common-lisp:null)
+                         :accessor struct-shape-delete-pricing-rule-input-arn
+                         :shape "PricingRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-pricing-rule-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-pricing-rule-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-pricing-rule-input
                     'make-delete-pricing-rule-input))
@@ -2326,11 +3143,17 @@
                           delete-pricing-rule-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-pricing-rule-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-pricing-rule-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-rule-arn common-lisp:null)))
+ (common-lisp:defclass delete-pricing-rule-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-arn common-lisp:null)
+                         :accessor struct-shape-delete-pricing-rule-output-arn
+                         :shape "PricingRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-pricing-rule-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-pricing-rule-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-pricing-rule-output
                     'make-delete-pricing-rule-output))
@@ -2357,13 +3180,25 @@
                           delete-pricing-rule-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-accounts-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-accounts-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (account-ids (common-lisp:error ":account-ids is required") :type
-    (common-lisp:or account-id-list common-lisp:null)))
+ (common-lisp:defclass disassociate-accounts-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-disassociate-accounts-input-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-ids :initarg :account-ids :initform
+                         (common-lisp:error ":account-ids is required") :type
+                         (common-lisp:or account-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-accounts-input-account-ids
+                         :shape "AccountIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-accounts-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'disassociate-accounts-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-accounts-input
                     'make-disassociate-accounts-input))
@@ -2397,11 +3232,18 @@
                           disassociate-accounts-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-accounts-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-accounts-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null)))
+ (common-lisp:defclass disassociate-accounts-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-accounts-output-arn :shape
+                         "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-accounts-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'disassociate-accounts-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-accounts-output
                     'make-disassociate-accounts-output))
@@ -2428,13 +3270,30 @@
                           disassociate-accounts-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-pricing-rules-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-pricing-rules-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or pricing-plan-arn common-lisp:null))
-   (pricing-rule-arns (common-lisp:error ":pricing-rule-arns is required")
-    :type (common-lisp:or pricing-rule-arns-non-empty-input common-lisp:null)))
+ (common-lisp:defclass disassociate-pricing-rules-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-pricing-rules-input-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-rule-arns :initarg :pricing-rule-arns
+                         :initform
+                         (common-lisp:error ":pricing-rule-arns is required")
+                         :type
+                         (common-lisp:or pricing-rule-arns-non-empty-input
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-pricing-rules-input-pricing-rule-arns
+                         :shape "PricingRuleArnsNonEmptyInput" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-pricing-rules-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-pricing-rules-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-pricing-rules-input
                     'make-disassociate-pricing-rules-input))
@@ -2468,11 +3327,19 @@
                           disassociate-pricing-rules-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-pricing-rules-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-pricing-rules-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-plan-arn common-lisp:null)))
+ (common-lisp:defclass disassociate-pricing-rules-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-pricing-rules-output-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-pricing-rules-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-pricing-rules-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-pricing-rules-output
                     'make-disassociate-pricing-rules-output))
@@ -2499,13 +3366,27 @@
                           disassociate-pricing-rules-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (disassociate-resource-response-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-disassociate-resource-response-element-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-association-element common-lisp:null))
-   (error common-lisp:nil :type
-    (common-lisp:or associate-resource-error common-lisp:null)))
+ (common-lisp:defclass disassociate-resource-response-element common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-association-element
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resource-response-element-arn
+                         :shape "CustomLineItemAssociationElement" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (error :initarg :error :initform common-lisp:nil :type
+                         (common-lisp:or associate-resource-error
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-disassociate-resource-response-element-error
+                         :shape "AssociateResourceError" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-disassociate-resource-response-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'disassociate-resource-response-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'disassociate-resource-response-element
                     'make-disassociate-resource-response-element))
@@ -2548,11 +3429,18 @@
                             disassociate-resource-response-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (free-tier-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-free-tier-config-"))
-   (activated (common-lisp:error ":activated is required") :type
-    (common-lisp:or tiering-activated common-lisp:null)))
+ (common-lisp:defclass free-tier-config common-lisp:nil
+                       ((activated :initarg :activated :initform
+                         (common-lisp:error ":activated is required") :type
+                         (common-lisp:or tiering-activated common-lisp:null)
+                         :accessor struct-shape-free-tier-config-activated
+                         :shape "TieringActivated" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-free-tier-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'free-tier-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'free-tier-config 'make-free-tier-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2572,18 +3460,49 @@
                         ((aws-sdk/generator/shape::input free-tier-config))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-billing-group-cost-report-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-billing-group-cost-report-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (billing-period-range common-lisp:nil :type
-    (common-lisp:or billing-period-range common-lisp:null))
-   (group-by common-lisp:nil :type
-    (common-lisp:or group-by-attributes-list common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-billing-group-cost-report-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass get-billing-group-cost-report-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-billing-group-cost-report-input-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (billing-period-range :initarg :billing-period-range
+                         :initform common-lisp:nil :type
+                         (common-lisp:or billing-period-range common-lisp:null)
+                         :accessor
+                         struct-shape-get-billing-group-cost-report-input-billing-period-range
+                         :shape "BillingPeriodRange" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (group-by :initarg :group-by :initform common-lisp:nil
+                         :type
+                         (common-lisp:or group-by-attributes-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-billing-group-cost-report-input-group-by
+                         :shape "GroupByAttributesList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-billing-group-cost-report-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-billing-group-cost-report-input-max-results
+                         :shape "MaxBillingGroupCostReportResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-get-billing-group-cost-report-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-billing-group-cost-report-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-billing-group-cost-report-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-billing-group-cost-report-input
                     'make-get-billing-group-cost-report-input))
@@ -2639,12 +3558,28 @@
                           get-billing-group-cost-report-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-billing-group-cost-report-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-billing-group-cost-report-output-"))
-   (billing-group-cost-report-results common-lisp:nil :type
-    (common-lisp:or billing-group-cost-report-results-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass get-billing-group-cost-report-output common-lisp:nil
+                       ((billing-group-cost-report-results :initarg
+                         :billing-group-cost-report-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-cost-report-results-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-billing-group-cost-report-output-billing-group-cost-report-results
+                         :shape "BillingGroupCostReportResultsList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-get-billing-group-cost-report-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-billing-group-cost-report-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-billing-group-cost-report-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-billing-group-cost-report-output
                     'make-get-billing-group-cost-report-output))
@@ -2700,15 +3635,32 @@
                     'internal-server-exception-message
                     'internal-server-exception-retry-after-seconds)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (line-item-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-line-item-filter-"))
-   (attribute (common-lisp:error ":attribute is required") :type
-    (common-lisp:or line-item-filter-attribute-name common-lisp:null))
-   (match-option (common-lisp:error ":match-option is required") :type
-    (common-lisp:or match-option common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or line-item-filter-values-list common-lisp:null)))
+ (common-lisp:defclass line-item-filter common-lisp:nil
+                       ((attribute :initarg :attribute :initform
+                         (common-lisp:error ":attribute is required") :type
+                         (common-lisp:or line-item-filter-attribute-name
+                                         common-lisp:null)
+                         :accessor struct-shape-line-item-filter-attribute
+                         :shape "LineItemFilterAttributeName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (match-option :initarg :match-option :initform
+                         (common-lisp:error ":match-option is required") :type
+                         (common-lisp:or match-option common-lisp:null)
+                         :accessor struct-shape-line-item-filter-match-option
+                         :shape "MatchOption" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (values :initarg :values :initform
+                         (common-lisp:error ":values is required") :type
+                         (common-lisp:or line-item-filter-values-list
+                                         common-lisp:null)
+                         :accessor struct-shape-line-item-filter-values :shape
+                         "LineItemFilterValuesList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-line-item-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'line-item-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'line-item-filter 'make-line-item-filter))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2760,15 +3712,34 @@
                            (trivial-types:proper-list line-item-filter))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-account-associations-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-account-associations-filter-"))
-   (association common-lisp:nil :type
-    (common-lisp:or association common-lisp:null))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (account-ids common-lisp:nil :type
-    (common-lisp:or account-id-filter-list common-lisp:null)))
+ (common-lisp:defclass list-account-associations-filter common-lisp:nil
+                       ((association :initarg :association :initform
+                         common-lisp:nil :type
+                         (common-lisp:or association common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-associations-filter-association
+                         :shape "Association" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-account-associations-filter-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-ids :initarg :account-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id-filter-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-associations-filter-account-ids
+                         :shape "AccountIdFilterList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-account-associations-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-account-associations-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-account-associations-filter
                     'make-list-account-associations-filter))
@@ -2809,14 +3780,34 @@
                           list-account-associations-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-account-associations-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-account-associations-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-account-associations-filter common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-account-associations-input common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-associations-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-account-associations-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-associations-input-filters
+                         :shape "ListAccountAssociationsFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-account-associations-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-account-associations-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-account-associations-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-account-associations-input
                     'make-list-account-associations-input))
@@ -2857,12 +3848,27 @@
                           list-account-associations-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-account-associations-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-account-associations-output-"))
-   (linked-accounts common-lisp:nil :type
-    (common-lisp:or account-associations-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-account-associations-output common-lisp:nil
+                       ((linked-accounts :initarg :linked-accounts :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-associations-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-account-associations-output-linked-accounts
+                         :shape "AccountAssociationsList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-account-associations-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-account-associations-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-account-associations-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-account-associations-output
                     'make-list-account-associations-output))
@@ -2896,11 +3902,19 @@
                           list-account-associations-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-billing-group-account-grouping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-billing-group-account-grouping-"))
-   (auto-associate common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass list-billing-group-account-grouping common-lisp:nil
+                       ((auto-associate :initarg :auto-associate :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-list-billing-group-account-grouping-auto-associate
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-billing-group-account-grouping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-billing-group-account-grouping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-billing-group-account-grouping
                     'make-list-billing-group-account-grouping))
@@ -2927,11 +3941,21 @@
                           list-billing-group-account-grouping))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-billing-group-cost-reports-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-billing-group-cost-reports-filter-"))
-   (billing-group-arns common-lisp:nil :type
-    (common-lisp:or billing-group-arn-list common-lisp:null)))
+ (common-lisp:defclass list-billing-group-cost-reports-filter common-lisp:nil
+                       ((billing-group-arns :initarg :billing-group-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-group-cost-reports-filter-billing-group-arns
+                         :shape "BillingGroupArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-billing-group-cost-reports-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-billing-group-cost-reports-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-billing-group-cost-reports-filter
                     'make-list-billing-group-cost-reports-filter))
@@ -2958,16 +3982,42 @@
                           list-billing-group-cost-reports-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-billing-group-cost-reports-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-billing-group-cost-reports-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-billing-group-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-billing-group-cost-reports-filter common-lisp:null)))
+ (common-lisp:defclass list-billing-group-cost-reports-input common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-group-cost-reports-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-billing-group-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-group-cost-reports-input-max-results
+                         :shape "MaxBillingGroupResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-billing-group-cost-reports-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-billing-group-cost-reports-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-group-cost-reports-input-filters
+                         :shape "ListBillingGroupCostReportsFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-billing-group-cost-reports-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-billing-group-cost-reports-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-billing-group-cost-reports-input
                     'make-list-billing-group-cost-reports-input))
@@ -3015,12 +4065,28 @@
                           list-billing-group-cost-reports-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-billing-group-cost-reports-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-billing-group-cost-reports-output-"))
-   (billing-group-cost-reports common-lisp:nil :type
-    (common-lisp:or billing-group-cost-report-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-billing-group-cost-reports-output common-lisp:nil
+                       ((billing-group-cost-reports :initarg
+                         :billing-group-cost-reports :initform common-lisp:nil
+                         :type
+                         (common-lisp:or billing-group-cost-report-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-group-cost-reports-output-billing-group-cost-reports
+                         :shape "BillingGroupCostReportList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-billing-group-cost-reports-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-billing-group-cost-reports-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-billing-group-cost-reports-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-billing-group-cost-reports-output
                     'make-list-billing-group-cost-reports-output))
@@ -3055,17 +4121,40 @@
                           list-billing-group-cost-reports-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-billing-groups-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-billing-groups-filter-"))
-   (arns common-lisp:nil :type
-    (common-lisp:or billing-group-arn-list common-lisp:null))
-   (pricing-plan common-lisp:nil :type
-    (common-lisp:or pricing-plan-full-arn common-lisp:null))
-   (statuses common-lisp:nil :type
-    (common-lisp:or billing-group-status-list common-lisp:null))
-   (auto-associate common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass list-billing-groups-filter common-lisp:nil
+                       ((arns :initarg :arns :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn-list
+                                         common-lisp:null)
+                         :accessor struct-shape-list-billing-groups-filter-arns
+                         :shape "BillingGroupArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-plan :initarg :pricing-plan :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-plan-full-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-groups-filter-pricing-plan
+                         :shape "PricingPlanFullArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (statuses :initarg :statuses :initform common-lisp:nil
+                         :type
+                         (common-lisp:or billing-group-status-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-groups-filter-statuses
+                         :shape "BillingGroupStatusList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (auto-associate :initarg :auto-associate :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-list-billing-groups-filter-auto-associate
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-billing-groups-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-billing-groups-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-billing-groups-filter
                     'make-list-billing-groups-filter))
@@ -3113,16 +4202,41 @@
                           list-billing-groups-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-billing-groups-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-billing-groups-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-billing-group-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-billing-groups-filter common-lisp:null)))
+ (common-lisp:defclass list-billing-groups-input common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-groups-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-billing-group-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-groups-input-max-results
+                         :shape "MaxBillingGroupResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-billing-groups-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-billing-groups-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-groups-input-filters :shape
+                         "ListBillingGroupsFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-billing-groups-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-billing-groups-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-billing-groups-input
                     'make-list-billing-groups-input))
@@ -3170,12 +4284,25 @@
                           list-billing-groups-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-billing-groups-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-billing-groups-output-"))
-   (billing-groups common-lisp:nil :type
-    (common-lisp:or billing-group-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-billing-groups-output common-lisp:nil
+                       ((billing-groups :initarg :billing-groups :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-billing-groups-output-billing-groups
+                         :shape "BillingGroupList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-billing-groups-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-billing-groups-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-billing-groups-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-billing-groups-output
                     'make-list-billing-groups-output))
@@ -3209,19 +4336,47 @@
                           list-billing-groups-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-item-charge-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-custom-line-item-charge-details-"))
-   (flat common-lisp:nil :type
-    (common-lisp:or list-custom-line-item-flat-charge-details
-                    common-lisp:null))
-   (percentage common-lisp:nil :type
-    (common-lisp:or list-custom-line-item-percentage-charge-details
-                    common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or custom-line-item-type common-lisp:null))
-   (line-item-filters common-lisp:nil :type
-    (common-lisp:or line-item-filters-list common-lisp:null)))
+ (common-lisp:defclass list-custom-line-item-charge-details common-lisp:nil
+                       ((flat :initarg :flat :initform common-lisp:nil :type
+                         (common-lisp:or
+                          list-custom-line-item-flat-charge-details
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-charge-details-flat
+                         :shape "ListCustomLineItemFlatChargeDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (percentage :initarg :percentage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-custom-line-item-percentage-charge-details
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-charge-details-percentage
+                         :shape "ListCustomLineItemPercentageChargeDetails"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or custom-line-item-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-charge-details-type
+                         :shape "CustomLineItemType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (line-item-filters :initarg :line-item-filters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or line-item-filters-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-charge-details-line-item-filters
+                         :shape "LineItemFiltersList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-item-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-item-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-item-charge-details
                     'make-list-custom-line-item-charge-details))
@@ -3269,11 +4424,22 @@
                           list-custom-line-item-charge-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-item-flat-charge-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-custom-line-item-flat-charge-details-"))
-   (charge-value (common-lisp:error ":charge-value is required") :type
-    (common-lisp:or custom-line-item-charge-value common-lisp:null)))
+ (common-lisp:defclass list-custom-line-item-flat-charge-details
+                       common-lisp:nil
+                       ((charge-value :initarg :charge-value :initform
+                         (common-lisp:error ":charge-value is required") :type
+                         (common-lisp:or custom-line-item-charge-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-flat-charge-details-charge-value
+                         :shape "CustomLineItemChargeValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-item-flat-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-item-flat-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-item-flat-charge-details
                     'make-list-custom-line-item-flat-charge-details))
@@ -3300,13 +4466,24 @@
                           list-custom-line-item-flat-charge-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-item-percentage-charge-details (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-custom-line-item-percentage-charge-details-"))
-   (percentage-value (common-lisp:error ":percentage-value is required") :type
-    (common-lisp:or custom-line-item-percentage-charge-value
-                    common-lisp:null)))
+ (common-lisp:defclass list-custom-line-item-percentage-charge-details
+                       common-lisp:nil
+                       ((percentage-value :initarg :percentage-value :initform
+                         (common-lisp:error ":percentage-value is required")
+                         :type
+                         (common-lisp:or
+                          custom-line-item-percentage-charge-value
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-percentage-charge-details-percentage-value
+                         :shape "CustomLineItemPercentageChargeValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-item-percentage-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-item-percentage-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-item-percentage-charge-details
                     'make-list-custom-line-item-percentage-charge-details))
@@ -3333,15 +4510,25 @@
                           list-custom-line-item-percentage-charge-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-item-versions-billing-period-range-filter
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-custom-line-item-versions-billing-period-range-filter-"))
-   (start-billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (end-billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null)))
+ (common-lisp:defclass
+  list-custom-line-item-versions-billing-period-range-filter common-lisp:nil
+  ((start-billing-period :initarg :start-billing-period :initform
+    common-lisp:nil :type (common-lisp:or billing-period common-lisp:null)
+    :accessor
+    struct-shape-list-custom-line-item-versions-billing-period-range-filter-start-billing-period
+    :shape "BillingPeriod" :location common-lisp:nil :location-name
+    common-lisp:nil)
+   (end-billing-period :initarg :end-billing-period :initform common-lisp:nil
+    :type (common-lisp:or billing-period common-lisp:null) :accessor
+    struct-shape-list-custom-line-item-versions-billing-period-range-filter-end-billing-period
+    :shape "BillingPeriod" :location common-lisp:nil :location-name
+    common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-item-versions-billing-period-range-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-item-versions-billing-period-range-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-item-versions-billing-period-range-filter
                     'make-list-custom-line-item-versions-billing-period-range-filter))
@@ -3376,12 +4563,24 @@
                           list-custom-line-item-versions-billing-period-range-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-item-versions-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-custom-line-item-versions-filter-"))
-   (billing-period-range common-lisp:nil :type
-    (common-lisp:or list-custom-line-item-versions-billing-period-range-filter
-                    common-lisp:null)))
+ (common-lisp:defclass list-custom-line-item-versions-filter common-lisp:nil
+                       ((billing-period-range :initarg :billing-period-range
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          list-custom-line-item-versions-billing-period-range-filter
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-versions-filter-billing-period-range
+                         :shape
+                         "ListCustomLineItemVersionsBillingPeriodRangeFilter"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-item-versions-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-item-versions-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-item-versions-filter
                     'make-list-custom-line-item-versions-filter))
@@ -3409,16 +4608,42 @@
                           list-custom-line-item-versions-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-item-versions-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-custom-line-item-versions-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-custom-line-item-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-custom-line-item-versions-filter common-lisp:null)))
+ (common-lisp:defclass list-custom-line-item-versions-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-versions-input-arn
+                         :shape "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-custom-line-item-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-versions-input-max-results
+                         :shape "MaxCustomLineItemResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-custom-line-item-versions-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-custom-line-item-versions-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-versions-input-filters
+                         :shape "ListCustomLineItemVersionsFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-item-versions-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-item-versions-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-item-versions-input
                     'make-list-custom-line-item-versions-input))
@@ -3466,12 +4691,28 @@
                           list-custom-line-item-versions-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-item-versions-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-custom-line-item-versions-output-"))
-   (custom-line-item-versions common-lisp:nil :type
-    (common-lisp:or custom-line-item-version-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-custom-line-item-versions-output common-lisp:nil
+                       ((custom-line-item-versions :initarg
+                         :custom-line-item-versions :initform common-lisp:nil
+                         :type
+                         (common-lisp:or custom-line-item-version-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-item-versions-output-custom-line-item-versions
+                         :shape "CustomLineItemVersionList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-custom-line-item-versions-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-item-versions-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-item-versions-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-item-versions-output
                     'make-list-custom-line-item-versions-output))
@@ -3506,17 +4747,42 @@
                           list-custom-line-item-versions-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-items-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-custom-line-items-filter-"))
-   (names common-lisp:nil :type
-    (common-lisp:or custom-line-item-name-list common-lisp:null))
-   (billing-groups common-lisp:nil :type
-    (common-lisp:or billing-group-arn-list common-lisp:null))
-   (arns common-lisp:nil :type
-    (common-lisp:or custom-line-item-arns common-lisp:null))
-   (account-ids common-lisp:nil :type
-    (common-lisp:or account-id-list common-lisp:null)))
+ (common-lisp:defclass list-custom-line-items-filter common-lisp:nil
+                       ((names :initarg :names :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-name-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-items-filter-names
+                         :shape "CustomLineItemNameList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-groups :initarg :billing-groups :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-arn-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-items-filter-billing-groups
+                         :shape "BillingGroupArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arns :initarg :arns :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-arns
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-items-filter-arns :shape
+                         "CustomLineItemArns" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-ids :initarg :account-ids :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-items-filter-account-ids
+                         :shape "AccountIdList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-items-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-items-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-items-filter
                     'make-list-custom-line-items-filter))
@@ -3564,16 +4830,41 @@
                           list-custom-line-items-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-items-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-custom-line-items-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-custom-line-item-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-custom-line-items-filter common-lisp:null)))
+ (common-lisp:defclass list-custom-line-items-input common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-items-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-custom-line-item-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-items-input-max-results
+                         :shape "MaxCustomLineItemResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-custom-line-items-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-custom-line-items-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-items-input-filters
+                         :shape "ListCustomLineItemsFilter" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-items-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-custom-line-items-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-items-input
                     'make-list-custom-line-items-input))
@@ -3621,12 +4912,27 @@
                           list-custom-line-items-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-custom-line-items-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-custom-line-items-output-"))
-   (custom-line-items common-lisp:nil :type
-    (common-lisp:or custom-line-item-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-custom-line-items-output common-lisp:nil
+                       ((custom-line-items :initarg :custom-line-items
+                         :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-custom-line-items-output-custom-line-items
+                         :shape "CustomLineItemList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-custom-line-items-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-custom-line-items-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-custom-line-items-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-custom-line-items-output
                     'make-list-custom-line-items-output))
@@ -3660,18 +4966,43 @@
                           list-custom-line-items-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-plans-associated-with-pricing-rule-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-pricing-plans-associated-with-pricing-rule-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (pricing-rule-arn (common-lisp:error ":pricing-rule-arn is required") :type
-    (common-lisp:or pricing-rule-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-pricing-rule-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-pricing-plans-associated-with-pricing-rule-input
+                       common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-associated-with-pricing-rule-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-rule-arn :initarg :pricing-rule-arn :initform
+                         (common-lisp:error ":pricing-rule-arn is required")
+                         :type
+                         (common-lisp:or pricing-rule-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-associated-with-pricing-rule-input-pricing-rule-arn
+                         :shape "PricingRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-pricing-rule-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-associated-with-pricing-rule-input-max-results
+                         :shape "MaxPricingRuleResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-pricing-plans-associated-with-pricing-rule-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-plans-associated-with-pricing-rule-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-pricing-plans-associated-with-pricing-rule-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-plans-associated-with-pricing-rule-input
                     'make-list-pricing-plans-associated-with-pricing-rule-input))
@@ -3719,18 +5050,41 @@
                           list-pricing-plans-associated-with-pricing-rule-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-plans-associated-with-pricing-rule-output
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-pricing-plans-associated-with-pricing-rule-output-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (pricing-rule-arn common-lisp:nil :type
-    (common-lisp:or pricing-rule-arn common-lisp:null))
-   (pricing-plan-arns common-lisp:nil :type
-    (common-lisp:or pricing-plan-arns common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-pricing-plans-associated-with-pricing-rule-output
+                       common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-associated-with-pricing-rule-output-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-rule-arn :initarg :pricing-rule-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-rule-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-associated-with-pricing-rule-output-pricing-rule-arn
+                         :shape "PricingRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-plan-arns :initarg :pricing-plan-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arns common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-associated-with-pricing-rule-output-pricing-plan-arns
+                         :shape "PricingPlanArns" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-pricing-plans-associated-with-pricing-rule-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-plans-associated-with-pricing-rule-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-pricing-plans-associated-with-pricing-rule-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-plans-associated-with-pricing-rule-output
                     'make-list-pricing-plans-associated-with-pricing-rule-output))
@@ -3778,11 +5132,17 @@
                           list-pricing-plans-associated-with-pricing-rule-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-plans-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-pricing-plans-filter-"))
-   (arns common-lisp:nil :type
-    (common-lisp:or pricing-plan-arns common-lisp:null)))
+ (common-lisp:defclass list-pricing-plans-filter common-lisp:nil
+                       ((arns :initarg :arns :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arns common-lisp:null)
+                         :accessor struct-shape-list-pricing-plans-filter-arns
+                         :shape "PricingPlanArns" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-plans-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-pricing-plans-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-plans-filter
                     'make-list-pricing-plans-filter))
@@ -3809,16 +5169,41 @@
                           list-pricing-plans-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-plans-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-pricing-plans-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-pricing-plans-filter common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-pricing-plan-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-pricing-plans-input common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-pricing-plans-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-input-filters :shape
+                         "ListPricingPlansFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-pricing-plan-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-input-max-results
+                         :shape "MaxPricingPlanResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-pricing-plans-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-plans-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-pricing-plans-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-plans-input 'make-list-pricing-plans-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3865,14 +5250,32 @@
                           list-pricing-plans-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-plans-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-pricing-plans-output-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (pricing-plans common-lisp:nil :type
-    (common-lisp:or pricing-plan-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-pricing-plans-output common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-output-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-plans :initarg :pricing-plans :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-plan-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-plans-output-pricing-plans
+                         :shape "PricingPlanList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-pricing-plans-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-plans-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-pricing-plans-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-plans-output
                     'make-list-pricing-plans-output))
@@ -3913,18 +5316,43 @@
                           list-pricing-plans-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-rules-associated-to-pricing-plan-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-pricing-rules-associated-to-pricing-plan-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (pricing-plan-arn (common-lisp:error ":pricing-plan-arn is required") :type
-    (common-lisp:or pricing-plan-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-pricing-plan-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-pricing-rules-associated-to-pricing-plan-input
+                       common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-associated-to-pricing-plan-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-plan-arn :initarg :pricing-plan-arn :initform
+                         (common-lisp:error ":pricing-plan-arn is required")
+                         :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-associated-to-pricing-plan-input-pricing-plan-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-pricing-plan-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-associated-to-pricing-plan-input-max-results
+                         :shape "MaxPricingPlanResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-pricing-rules-associated-to-pricing-plan-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-rules-associated-to-pricing-plan-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-pricing-rules-associated-to-pricing-plan-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-rules-associated-to-pricing-plan-input
                     'make-list-pricing-rules-associated-to-pricing-plan-input))
@@ -3972,18 +5400,41 @@
                           list-pricing-rules-associated-to-pricing-plan-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-rules-associated-to-pricing-plan-output
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-pricing-rules-associated-to-pricing-plan-output-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (pricing-plan-arn common-lisp:nil :type
-    (common-lisp:or pricing-plan-arn common-lisp:null))
-   (pricing-rule-arns common-lisp:nil :type
-    (common-lisp:or pricing-rule-arns common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-pricing-rules-associated-to-pricing-plan-output
+                       common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-associated-to-pricing-plan-output-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-plan-arn :initarg :pricing-plan-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-associated-to-pricing-plan-output-pricing-plan-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-rule-arns :initarg :pricing-rule-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-arns common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-associated-to-pricing-plan-output-pricing-rule-arns
+                         :shape "PricingRuleArns" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-pricing-rules-associated-to-pricing-plan-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-rules-associated-to-pricing-plan-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-pricing-rules-associated-to-pricing-plan-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-rules-associated-to-pricing-plan-output
                     'make-list-pricing-rules-associated-to-pricing-plan-output))
@@ -4031,11 +5482,17 @@
                           list-pricing-rules-associated-to-pricing-plan-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-rules-filter (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-pricing-rules-filter-"))
-   (arns common-lisp:nil :type
-    (common-lisp:or pricing-rule-arns common-lisp:null)))
+ (common-lisp:defclass list-pricing-rules-filter common-lisp:nil
+                       ((arns :initarg :arns :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-arns common-lisp:null)
+                         :accessor struct-shape-list-pricing-rules-filter-arns
+                         :shape "PricingRuleArns" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-rules-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-pricing-rules-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-rules-filter
                     'make-list-pricing-rules-filter))
@@ -4062,16 +5519,41 @@
                           list-pricing-rules-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-rules-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-pricing-rules-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-pricing-rules-filter common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-pricing-rule-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-pricing-rules-input common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or list-pricing-rules-filter
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-input-filters :shape
+                         "ListPricingRulesFilter" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-pricing-rule-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-input-max-results
+                         :shape "MaxPricingRuleResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-pricing-rules-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-rules-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-pricing-rules-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-rules-input 'make-list-pricing-rules-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4118,14 +5600,32 @@
                           list-pricing-rules-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-pricing-rules-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-pricing-rules-output-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (pricing-rules common-lisp:nil :type
-    (common-lisp:or pricing-rule-list common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-pricing-rules-output common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-output-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-rules :initarg :pricing-rules :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-rule-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-pricing-rules-output-pricing-rules
+                         :shape "PricingRuleList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-pricing-rules-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-pricing-rules-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-pricing-rules-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-pricing-rules-output
                     'make-list-pricing-rules-output))
@@ -4166,13 +5666,22 @@
                           list-pricing-rules-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resources-associated-to-custom-line-item-filter
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-resources-associated-to-custom-line-item-filter-"))
-   (relationship common-lisp:nil :type
-    (common-lisp:or custom-line-item-relationship common-lisp:null)))
+ (common-lisp:defclass list-resources-associated-to-custom-line-item-filter
+                       common-lisp:nil
+                       ((relationship :initarg :relationship :initform
+                         common-lisp:nil :type
+                         (common-lisp:or custom-line-item-relationship
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-filter-relationship
+                         :shape "CustomLineItemRelationship" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resources-associated-to-custom-line-item-filter
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resources-associated-to-custom-line-item-filter
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resources-associated-to-custom-line-item-filter
                     'make-list-resources-associated-to-custom-line-item-filter))
@@ -4199,21 +5708,52 @@
                           list-resources-associated-to-custom-line-item-filter))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resources-associated-to-custom-line-item-input
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-resources-associated-to-custom-line-item-input-"))
-   (billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-custom-line-item-results common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
-   (filters common-lisp:nil :type
-    (common-lisp:or list-resources-associated-to-custom-line-item-filter
-                    common-lisp:null)))
+ (common-lisp:defclass list-resources-associated-to-custom-line-item-input
+                       common-lisp:nil
+                       ((billing-period :initarg :billing-period :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-period common-lisp:null)
+                         :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-input-billing-period
+                         :shape "BillingPeriod" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-input-arn
+                         :shape "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-custom-line-item-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-input-max-results
+                         :shape "MaxCustomLineItemResults" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-input-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (filters :initarg :filters :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          list-resources-associated-to-custom-line-item-filter
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-input-filters
+                         :shape "ListResourcesAssociatedToCustomLineItemFilter"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resources-associated-to-custom-line-item-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resources-associated-to-custom-line-item-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resources-associated-to-custom-line-item-input
                     'make-list-resources-associated-to-custom-line-item-input))
@@ -4268,17 +5808,37 @@
                           list-resources-associated-to-custom-line-item-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resources-associated-to-custom-line-item-output
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-resources-associated-to-custom-line-item-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (associated-resources common-lisp:nil :type
-    (common-lisp:or list-resources-associated-to-custom-line-item-response-list
-                    common-lisp:null))
-   (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass list-resources-associated-to-custom-line-item-output
+                       common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-output-arn
+                         :shape "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (associated-resources :initarg :associated-resources
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          list-resources-associated-to-custom-line-item-response-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-output-associated-resources
+                         :shape
+                         "ListResourcesAssociatedToCustomLineItemResponseList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-list-resources-associated-to-custom-line-item-output-next-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resources-associated-to-custom-line-item-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resources-associated-to-custom-line-item-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-resources-associated-to-custom-line-item-output
                     'make-list-resources-associated-to-custom-line-item-output))
@@ -4320,17 +5880,31 @@
                           list-resources-associated-to-custom-line-item-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-resources-associated-to-custom-line-item-response-element
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-resources-associated-to-custom-line-item-response-element-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-association-element common-lisp:null))
-   (relationship common-lisp:nil :type
-    (common-lisp:or custom-line-item-relationship common-lisp:null))
-   (end-billing-period common-lisp:nil :type
-    (common-lisp:or billing-period common-lisp:null)))
+ (common-lisp:defclass
+  list-resources-associated-to-custom-line-item-response-element
+  common-lisp:nil
+  ((arn :initarg :arn :initform common-lisp:nil :type
+    (common-lisp:or custom-line-item-association-element common-lisp:null)
+    :accessor
+    struct-shape-list-resources-associated-to-custom-line-item-response-element-arn
+    :shape "CustomLineItemAssociationElement" :location common-lisp:nil
+    :location-name common-lisp:nil)
+   (relationship :initarg :relationship :initform common-lisp:nil :type
+    (common-lisp:or custom-line-item-relationship common-lisp:null) :accessor
+    struct-shape-list-resources-associated-to-custom-line-item-response-element-relationship
+    :shape "CustomLineItemRelationship" :location common-lisp:nil
+    :location-name common-lisp:nil)
+   (end-billing-period :initarg :end-billing-period :initform common-lisp:nil
+    :type (common-lisp:or billing-period common-lisp:null) :accessor
+    struct-shape-list-resources-associated-to-custom-line-item-response-element-end-billing-period
+    :shape "BillingPeriod" :location common-lisp:nil :location-name
+    common-lisp:nil))
+  (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-resources-associated-to-custom-line-item-response-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-resources-associated-to-custom-line-item-response-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list
    'list-resources-associated-to-custom-line-item-response-element
@@ -4383,11 +5957,19 @@
                             list-resources-associated-to-custom-line-item-response-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "Arn" :location "uri" :location-name
+                         "ResourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -4407,10 +5989,18 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -4473,21 +6063,48 @@
                             pricing-plan-list-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (pricing-plan-list-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pricing-plan-list-element-"))
-   (name common-lisp:nil :type
-    (common-lisp:or pricing-plan-name common-lisp:null))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-plan-arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or pricing-plan-description common-lisp:null))
-   (size common-lisp:nil :type
-    (common-lisp:or number-of-associated-pricing-rules common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null)))
+ (common-lisp:defclass pricing-plan-list-element common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-name common-lisp:null)
+                         :accessor struct-shape-pricing-plan-list-element-name
+                         :shape "PricingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor struct-shape-pricing-plan-list-element-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-plan-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-pricing-plan-list-element-description
+                         :shape "PricingPlanDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (size :initarg :size :initform common-lisp:nil :type
+                         (common-lisp:or number-of-associated-pricing-rules
+                                         common-lisp:null)
+                         :accessor struct-shape-pricing-plan-list-element-size
+                         :shape "NumberOfAssociatedPricingRules" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-pricing-plan-list-element-creation-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-pricing-plan-list-element-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pricing-plan-list-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pricing-plan-list-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'pricing-plan-list-element
                     'make-pricing-plan-list-element))
@@ -4585,35 +6202,100 @@
                             pricing-rule-list-element))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (pricing-rule-list-element (:copier common-lisp:nil)
-      (:conc-name "struct-shape-pricing-rule-list-element-"))
-   (name common-lisp:nil :type
-    (common-lisp:or pricing-rule-name common-lisp:null))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-rule-arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or pricing-rule-description common-lisp:null))
-   (scope common-lisp:nil :type
-    (common-lisp:or pricing-rule-scope common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or pricing-rule-type common-lisp:null))
-   (modifier-percentage common-lisp:nil :type
-    (common-lisp:or modifier-percentage common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or service common-lisp:null))
-   (associated-pricing-plan-count common-lisp:nil :type
-    (common-lisp:or number-of-pricing-plans-associated-with common-lisp:null))
-   (creation-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (billing-entity common-lisp:nil :type
-    (common-lisp:or billing-entity common-lisp:null))
-   (tiering common-lisp:nil :type (common-lisp:or tiering common-lisp:null))
-   (usage-type common-lisp:nil :type
-    (common-lisp:or usage-type common-lisp:null))
-   (operation common-lisp:nil :type
-    (common-lisp:or operation common-lisp:null)))
+ (common-lisp:defclass pricing-rule-list-element common-lisp:nil
+                       ((name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-name common-lisp:null)
+                         :accessor struct-shape-pricing-rule-list-element-name
+                         :shape "PricingRuleName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-arn common-lisp:null)
+                         :accessor struct-shape-pricing-rule-list-element-arn
+                         :shape "PricingRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-rule-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-pricing-rule-list-element-description
+                         :shape "PricingRuleDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scope :initarg :scope :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-scope common-lisp:null)
+                         :accessor struct-shape-pricing-rule-list-element-scope
+                         :shape "PricingRuleScope" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-type common-lisp:null)
+                         :accessor struct-shape-pricing-rule-list-element-type
+                         :shape "PricingRuleType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modifier-percentage :initarg :modifier-percentage
+                         :initform common-lisp:nil :type
+                         (common-lisp:or modifier-percentage common-lisp:null)
+                         :accessor
+                         struct-shape-pricing-rule-list-element-modifier-percentage
+                         :shape "ModifierPercentage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or service common-lisp:null)
+                         :accessor
+                         struct-shape-pricing-rule-list-element-service :shape
+                         "Service" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (associated-pricing-plan-count :initarg
+                         :associated-pricing-plan-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          number-of-pricing-plans-associated-with
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-pricing-rule-list-element-associated-pricing-plan-count
+                         :shape "NumberOfPricingPlansAssociatedWith" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (creation-time :initarg :creation-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-pricing-rule-list-element-creation-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-pricing-rule-list-element-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (billing-entity :initarg :billing-entity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-entity common-lisp:null)
+                         :accessor
+                         struct-shape-pricing-rule-list-element-billing-entity
+                         :shape "BillingEntity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tiering :initarg :tiering :initform common-lisp:nil
+                         :type (common-lisp:or tiering common-lisp:null)
+                         :accessor
+                         struct-shape-pricing-rule-list-element-tiering :shape
+                         "Tiering" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (usage-type :initarg :usage-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or usage-type common-lisp:null) :accessor
+                         struct-shape-pricing-rule-list-element-usage-type
+                         :shape "UsageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operation :initarg :operation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or operation common-lisp:null) :accessor
+                         struct-shape-pricing-rule-list-element-operation
+                         :shape "Operation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-pricing-rule-list-element
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'pricing-rule-list-element
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'pricing-rule-list-element
                     'make-pricing-rule-list-element))
@@ -4788,13 +6470,23 @@
      (common-lisp:list
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "Arn" :location "uri" :location-name "ResourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4814,9 +6506,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4846,10 +6541,18 @@
   (common-lisp:list 'throttling-exception 'throttling-exception-message
                     'throttling-exception-retry-after-seconds)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tiering (:copier common-lisp:nil) (:conc-name "struct-shape-tiering-"))
-   (free-tier (common-lisp:error ":free-tier is required") :type
-    (common-lisp:or free-tier-config common-lisp:null)))
+ (common-lisp:defclass tiering common-lisp:nil
+                       ((free-tier :initarg :free-tier :initform
+                         (common-lisp:error ":free-tier is required") :type
+                         (common-lisp:or free-tier-config common-lisp:null)
+                         :accessor struct-shape-tiering-free-tier :shape
+                         "FreeTierConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tiering
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tiering
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tiering 'make-tiering))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tiering))
@@ -4870,13 +6573,24 @@
 (common-lisp:deftype tiering-activated () 'common-lisp:boolean)
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resource-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "Arn" :location "uri" :location-name
+                         "ResourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tag-keys is required") :type
+                         (common-lisp:or tag-key-list common-lisp:null)
+                         :accessor struct-shape-untag-resource-request-tag-keys
+                         :shape "TagKeyList" :location "querystring"
+                         :location-name "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4895,9 +6609,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -4916,11 +6633,19 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-billing-group-account-grouping (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-billing-group-account-grouping-"))
-   (auto-associate common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null)))
+ (common-lisp:defclass update-billing-group-account-grouping common-lisp:nil
+                       ((auto-associate :initarg :auto-associate :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-update-billing-group-account-grouping-auto-associate
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-billing-group-account-grouping
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-billing-group-account-grouping
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-billing-group-account-grouping
                     'make-update-billing-group-account-grouping))
@@ -4947,21 +6672,55 @@
                           update-billing-group-account-grouping))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-billing-group-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-billing-group-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or billing-group-name common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or billing-group-status common-lisp:null))
-   (computation-preference common-lisp:nil :type
-    (common-lisp:or computation-preference common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or billing-group-description common-lisp:null))
-   (account-grouping common-lisp:nil :type
-    (common-lisp:or update-billing-group-account-grouping common-lisp:null)))
+ (common-lisp:defclass update-billing-group-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-update-billing-group-input-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-name common-lisp:null)
+                         :accessor struct-shape-update-billing-group-input-name
+                         :shape "BillingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or billing-group-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-input-status :shape
+                         "BillingGroupStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (computation-preference :initarg
+                         :computation-preference :initform common-lisp:nil
+                         :type
+                         (common-lisp:or computation-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-input-computation-preference
+                         :shape "ComputationPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-input-description
+                         :shape "BillingGroupDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (account-grouping :initarg :account-grouping :initform
+                         common-lisp:nil :type
+                         (common-lisp:or update-billing-group-account-grouping
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-input-account-grouping
+                         :shape "UpdateBillingGroupAccountGrouping" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-billing-group-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-billing-group-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-billing-group-input
                     'make-update-billing-group-input))
@@ -5024,29 +6783,79 @@
                           update-billing-group-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-billing-group-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-billing-group-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or billing-group-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or billing-group-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or billing-group-description common-lisp:null))
-   (primary-account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (pricing-plan-arn common-lisp:nil :type
-    (common-lisp:or pricing-plan-arn common-lisp:null))
-   (size common-lisp:nil :type
-    (common-lisp:or number-of-accounts common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or billing-group-status common-lisp:null))
-   (status-reason common-lisp:nil :type
-    (common-lisp:or billing-group-status-reason common-lisp:null))
-   (account-grouping common-lisp:nil :type
-    (common-lisp:or update-billing-group-account-grouping common-lisp:null)))
+ (common-lisp:defclass update-billing-group-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-arn common-lisp:null)
+                         :accessor struct-shape-update-billing-group-output-arn
+                         :shape "BillingGroupArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-output-name :shape
+                         "BillingGroupName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-output-description
+                         :shape "BillingGroupDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (primary-account-id :initarg :primary-account-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-update-billing-group-output-primary-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pricing-plan-arn :initarg :pricing-plan-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-output-pricing-plan-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (size :initarg :size :initform common-lisp:nil :type
+                         (common-lisp:or number-of-accounts common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-output-size :shape
+                         "NumberOfAccounts" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-update-billing-group-output-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or billing-group-status common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-output-status :shape
+                         "BillingGroupStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-reason :initarg :status-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-group-status-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-output-status-reason
+                         :shape "BillingGroupStatusReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (account-grouping :initarg :account-grouping :initform
+                         common-lisp:nil :type
+                         (common-lisp:or update-billing-group-account-grouping
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-billing-group-output-account-grouping
+                         :shape "UpdateBillingGroupAccountGrouping" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-billing-group-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-billing-group-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-billing-group-output
                     'make-update-billing-group-output))
@@ -5136,17 +6945,40 @@
                           update-billing-group-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-custom-line-item-charge-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-custom-line-item-charge-details-"))
-   (flat common-lisp:nil :type
-    (common-lisp:or update-custom-line-item-flat-charge-details
-                    common-lisp:null))
-   (percentage common-lisp:nil :type
-    (common-lisp:or update-custom-line-item-percentage-charge-details
-                    common-lisp:null))
-   (line-item-filters common-lisp:nil :type
-    (common-lisp:or line-item-filters-list common-lisp:null)))
+ (common-lisp:defclass update-custom-line-item-charge-details common-lisp:nil
+                       ((flat :initarg :flat :initform common-lisp:nil :type
+                         (common-lisp:or
+                          update-custom-line-item-flat-charge-details
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-charge-details-flat
+                         :shape "UpdateCustomLineItemFlatChargeDetails"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (percentage :initarg :percentage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          update-custom-line-item-percentage-charge-details
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-charge-details-percentage
+                         :shape "UpdateCustomLineItemPercentageChargeDetails"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (line-item-filters :initarg :line-item-filters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or line-item-filters-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-charge-details-line-item-filters
+                         :shape "LineItemFiltersList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-custom-line-item-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-custom-line-item-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-custom-line-item-charge-details
                     'make-update-custom-line-item-charge-details))
@@ -5187,11 +7019,22 @@
                           update-custom-line-item-charge-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-custom-line-item-flat-charge-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-custom-line-item-flat-charge-details-"))
-   (charge-value (common-lisp:error ":charge-value is required") :type
-    (common-lisp:or custom-line-item-charge-value common-lisp:null)))
+ (common-lisp:defclass update-custom-line-item-flat-charge-details
+                       common-lisp:nil
+                       ((charge-value :initarg :charge-value :initform
+                         (common-lisp:error ":charge-value is required") :type
+                         (common-lisp:or custom-line-item-charge-value
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-flat-charge-details-charge-value
+                         :shape "CustomLineItemChargeValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-custom-line-item-flat-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-custom-line-item-flat-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-custom-line-item-flat-charge-details
                     'make-update-custom-line-item-flat-charge-details))
@@ -5218,19 +7061,51 @@
                           update-custom-line-item-flat-charge-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-custom-line-item-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-custom-line-item-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or custom-line-item-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or custom-line-item-description common-lisp:null))
-   (charge-details common-lisp:nil :type
-    (common-lisp:or update-custom-line-item-charge-details common-lisp:null))
-   (billing-period-range common-lisp:nil :type
-    (common-lisp:or custom-line-item-billing-period-range common-lisp:null)))
+ (common-lisp:defclass update-custom-line-item-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-input-arn :shape
+                         "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-input-name :shape
+                         "CustomLineItemName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or custom-line-item-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-input-description
+                         :shape "CustomLineItemDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (charge-details :initarg :charge-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or update-custom-line-item-charge-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-input-charge-details
+                         :shape "UpdateCustomLineItemChargeDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (billing-period-range :initarg :billing-period-range
+                         :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-billing-period-range
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-input-billing-period-range
+                         :shape "CustomLineItemBillingPeriodRange" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-custom-line-item-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-custom-line-item-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-custom-line-item-input
                     'make-update-custom-line-item-input))
@@ -5286,23 +7161,64 @@
                           update-custom-line-item-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-custom-line-item-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-custom-line-item-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or custom-line-item-arn common-lisp:null))
-   (billing-group-arn common-lisp:nil :type
-    (common-lisp:or billing-group-full-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or custom-line-item-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or custom-line-item-description common-lisp:null))
-   (charge-details common-lisp:nil :type
-    (common-lisp:or list-custom-line-item-charge-details common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (association-size common-lisp:nil :type
-    (common-lisp:or number-of-associations common-lisp:null)))
+ (common-lisp:defclass update-custom-line-item-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-output-arn :shape
+                         "CustomLineItemArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (billing-group-arn :initarg :billing-group-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or billing-group-full-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-output-billing-group-arn
+                         :shape "BillingGroupFullArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or custom-line-item-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-output-name
+                         :shape "CustomLineItemName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or custom-line-item-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-output-description
+                         :shape "CustomLineItemDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (charge-details :initarg :charge-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-custom-line-item-charge-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-output-charge-details
+                         :shape "ListCustomLineItemChargeDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-update-custom-line-item-output-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (association-size :initarg :association-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or number-of-associations
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-output-association-size
+                         :shape "NumberOfAssociations" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-custom-line-item-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-custom-line-item-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-custom-line-item-output
                     'make-update-custom-line-item-output))
@@ -5371,14 +7287,24 @@
                           update-custom-line-item-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-custom-line-item-percentage-charge-details
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-custom-line-item-percentage-charge-details-"))
-   (percentage-value (common-lisp:error ":percentage-value is required") :type
-    (common-lisp:or custom-line-item-percentage-charge-value
-                    common-lisp:null)))
+ (common-lisp:defclass update-custom-line-item-percentage-charge-details
+                       common-lisp:nil
+                       ((percentage-value :initarg :percentage-value :initform
+                         (common-lisp:error ":percentage-value is required")
+                         :type
+                         (common-lisp:or
+                          custom-line-item-percentage-charge-value
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-custom-line-item-percentage-charge-details-percentage-value
+                         :shape "CustomLineItemPercentageChargeValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-custom-line-item-percentage-charge-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-custom-line-item-percentage-charge-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-custom-line-item-percentage-charge-details
                     'make-update-custom-line-item-percentage-charge-details))
@@ -5405,11 +7331,19 @@
                           update-custom-line-item-percentage-charge-details))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-free-tier-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-free-tier-config-"))
-   (activated (common-lisp:error ":activated is required") :type
-    (common-lisp:or tiering-activated common-lisp:null)))
+ (common-lisp:defclass update-free-tier-config common-lisp:nil
+                       ((activated :initarg :activated :initform
+                         (common-lisp:error ":activated is required") :type
+                         (common-lisp:or tiering-activated common-lisp:null)
+                         :accessor
+                         struct-shape-update-free-tier-config-activated :shape
+                         "TieringActivated" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-free-tier-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-free-tier-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-free-tier-config 'make-update-free-tier-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5435,15 +7369,31 @@
                           update-free-tier-config))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-pricing-plan-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-pricing-plan-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or pricing-plan-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or pricing-plan-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or pricing-plan-description common-lisp:null)))
+ (common-lisp:defclass update-pricing-plan-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor struct-shape-update-pricing-plan-input-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-name common-lisp:null)
+                         :accessor struct-shape-update-pricing-plan-input-name
+                         :shape "PricingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-plan-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-plan-input-description
+                         :shape "PricingPlanDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-pricing-plan-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-pricing-plan-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-pricing-plan-input
                     'make-update-pricing-plan-input))
@@ -5484,19 +7434,42 @@
                           update-pricing-plan-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-pricing-plan-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-pricing-plan-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-plan-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or pricing-plan-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or pricing-plan-description common-lisp:null))
-   (size common-lisp:nil :type
-    (common-lisp:or number-of-associated-pricing-rules common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null)))
+ (common-lisp:defclass update-pricing-plan-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-arn common-lisp:null)
+                         :accessor struct-shape-update-pricing-plan-output-arn
+                         :shape "PricingPlanArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or pricing-plan-name common-lisp:null)
+                         :accessor struct-shape-update-pricing-plan-output-name
+                         :shape "PricingPlanName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-plan-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-plan-output-description
+                         :shape "PricingPlanDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (size :initarg :size :initform common-lisp:nil :type
+                         (common-lisp:or number-of-associated-pricing-rules
+                                         common-lisp:null)
+                         :accessor struct-shape-update-pricing-plan-output-size
+                         :shape "NumberOfAssociatedPricingRules" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-update-pricing-plan-output-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-pricing-plan-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-pricing-plan-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-pricing-plan-output
                     'make-update-pricing-plan-output))
@@ -5551,21 +7524,50 @@
                           update-pricing-plan-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-pricing-rule-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-pricing-rule-input-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or pricing-rule-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or pricing-rule-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or pricing-rule-description common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or pricing-rule-type common-lisp:null))
-   (modifier-percentage common-lisp:nil :type
-    (common-lisp:or modifier-percentage common-lisp:null))
-   (tiering common-lisp:nil :type
-    (common-lisp:or update-tiering-input common-lisp:null)))
+ (common-lisp:defclass update-pricing-rule-input common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or pricing-rule-arn common-lisp:null)
+                         :accessor struct-shape-update-pricing-rule-input-arn
+                         :shape "PricingRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-name common-lisp:null)
+                         :accessor struct-shape-update-pricing-rule-input-name
+                         :shape "PricingRuleName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-rule-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-input-description
+                         :shape "PricingRuleDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-type common-lisp:null)
+                         :accessor struct-shape-update-pricing-rule-input-type
+                         :shape "PricingRuleType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modifier-percentage :initarg :modifier-percentage
+                         :initform common-lisp:nil :type
+                         (common-lisp:or modifier-percentage common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-input-modifier-percentage
+                         :shape "ModifierPercentage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tiering :initarg :tiering :initform common-lisp:nil
+                         :type
+                         (common-lisp:or update-tiering-input common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-input-tiering :shape
+                         "UpdateTieringInput" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-pricing-rule-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-pricing-rule-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-pricing-rule-input
                     'make-update-pricing-rule-input))
@@ -5627,34 +7629,96 @@
                           update-pricing-rule-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-pricing-rule-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-pricing-rule-output-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or pricing-rule-arn common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or pricing-rule-name common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or pricing-rule-description common-lisp:null))
-   (scope common-lisp:nil :type
-    (common-lisp:or pricing-rule-scope common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or pricing-rule-type common-lisp:null))
-   (modifier-percentage common-lisp:nil :type
-    (common-lisp:or modifier-percentage common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or service common-lisp:null))
-   (associated-pricing-plan-count common-lisp:nil :type
-    (common-lisp:or number-of-pricing-plans-associated-with common-lisp:null))
-   (last-modified-time common-lisp:nil :type
-    (common-lisp:or instant common-lisp:null))
-   (billing-entity common-lisp:nil :type
-    (common-lisp:or billing-entity common-lisp:null))
-   (tiering common-lisp:nil :type
-    (common-lisp:or update-tiering-input common-lisp:null))
-   (usage-type common-lisp:nil :type
-    (common-lisp:or usage-type common-lisp:null))
-   (operation common-lisp:nil :type
-    (common-lisp:or operation common-lisp:null)))
+ (common-lisp:defclass update-pricing-rule-output common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-arn common-lisp:null)
+                         :accessor struct-shape-update-pricing-rule-output-arn
+                         :shape "PricingRuleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-name common-lisp:null)
+                         :accessor struct-shape-update-pricing-rule-output-name
+                         :shape "PricingRuleName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pricing-rule-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-output-description
+                         :shape "PricingRuleDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (scope :initarg :scope :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-scope common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-output-scope :shape
+                         "PricingRuleScope" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or pricing-rule-type common-lisp:null)
+                         :accessor struct-shape-update-pricing-rule-output-type
+                         :shape "PricingRuleType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (modifier-percentage :initarg :modifier-percentage
+                         :initform common-lisp:nil :type
+                         (common-lisp:or modifier-percentage common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-output-modifier-percentage
+                         :shape "ModifierPercentage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or service common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-output-service :shape
+                         "Service" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (associated-pricing-plan-count :initarg
+                         :associated-pricing-plan-count :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          number-of-pricing-plans-associated-with
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-output-associated-pricing-plan-count
+                         :shape "NumberOfPricingPlansAssociatedWith" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-modified-time :initarg :last-modified-time
+                         :initform common-lisp:nil :type
+                         (common-lisp:or instant common-lisp:null) :accessor
+                         struct-shape-update-pricing-rule-output-last-modified-time
+                         :shape "Instant" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (billing-entity :initarg :billing-entity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or billing-entity common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-output-billing-entity
+                         :shape "BillingEntity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tiering :initarg :tiering :initform common-lisp:nil
+                         :type
+                         (common-lisp:or update-tiering-input common-lisp:null)
+                         :accessor
+                         struct-shape-update-pricing-rule-output-tiering :shape
+                         "UpdateTieringInput" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (usage-type :initarg :usage-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or usage-type common-lisp:null) :accessor
+                         struct-shape-update-pricing-rule-output-usage-type
+                         :shape "UsageType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (operation :initarg :operation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or operation common-lisp:null) :accessor
+                         struct-shape-update-pricing-rule-output-operation
+                         :shape "Operation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-pricing-rule-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-pricing-rule-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-pricing-rule-output
                     'make-update-pricing-rule-output))
@@ -5766,11 +7830,19 @@
                           update-pricing-rule-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-tiering-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-tiering-input-"))
-   (free-tier (common-lisp:error ":free-tier is required") :type
-    (common-lisp:or update-free-tier-config common-lisp:null)))
+ (common-lisp:defclass update-tiering-input common-lisp:nil
+                       ((free-tier :initarg :free-tier :initform
+                         (common-lisp:error ":free-tier is required") :type
+                         (common-lisp:or update-free-tier-config
+                                         common-lisp:null)
+                         :accessor struct-shape-update-tiering-input-free-tier
+                         :shape "UpdateFreeTierConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-tiering-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'update-tiering-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-tiering-input 'make-update-tiering-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -5803,13 +7875,24 @@
   (common-lisp:list 'validation-exception 'validation-exception-message
                     'validation-exception-reason 'validation-exception-fields)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-field-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass validation-exception-field common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-message :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-field
                     'make-validation-exception-field))

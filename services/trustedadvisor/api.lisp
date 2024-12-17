@@ -45,26 +45,75 @@
 (common-lisp:deftype account-recommendation-arn () 'common-lisp:string)
 (common-lisp:deftype account-recommendation-identifier () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-recommendation-lifecycle-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-recommendation-lifecycle-summary-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (account-recommendation-arn common-lisp:nil :type
-    (common-lisp:or account-recommendation-arn common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (lifecycle-stage common-lisp:nil :type
-    (common-lisp:or recommendation-lifecycle-stage common-lisp:null))
-   (update-reason common-lisp:nil :type
-    (common-lisp:or recommendation-update-reason common-lisp:null))
-   (update-reason-code common-lisp:nil :type
-    (common-lisp:or update-recommendation-lifecycle-stage-reason-code
-                    common-lisp:null))
-   (updated-on-behalf-of common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (updated-on-behalf-of-job-title common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass account-recommendation-lifecycle-summary common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-account-recommendation-lifecycle-summary-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account-recommendation-arn :initarg
+                         :account-recommendation-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or account-recommendation-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-account-recommendation-lifecycle-summary-account-recommendation-arn
+                         :shape "AccountRecommendationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-account-recommendation-lifecycle-summary-last-updated-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (lifecycle-stage :initarg :lifecycle-stage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-lifecycle-stage
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-account-recommendation-lifecycle-summary-lifecycle-stage
+                         :shape "RecommendationLifecycleStage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-reason :initarg :update-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-update-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-account-recommendation-lifecycle-summary-update-reason
+                         :shape "RecommendationUpdateReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-reason-code :initarg :update-reason-code
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          update-recommendation-lifecycle-stage-reason-code
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-account-recommendation-lifecycle-summary-update-reason-code
+                         :shape "UpdateRecommendationLifecycleStageReasonCode"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-on-behalf-of :initarg :updated-on-behalf-of
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-account-recommendation-lifecycle-summary-updated-on-behalf-of
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-on-behalf-of-job-title :initarg
+                         :updated-on-behalf-of-job-title :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-account-recommendation-lifecycle-summary-updated-on-behalf-of-job-title
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-account-recommendation-lifecycle-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'account-recommendation-lifecycle-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'account-recommendation-lifecycle-summary
                     'make-account-recommendation-lifecycle-summary))
@@ -154,25 +203,63 @@
 (common-lisp:deftype check-arn () 'common-lisp:string)
 (common-lisp:deftype check-identifier () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (check-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-check-summary-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or check-arn common-lisp:null))
-   (aws-services (common-lisp:error ":awsservices is required") :type
-    (common-lisp:or recommendation-aws-service-list common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or string-map common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (pillars (common-lisp:error ":pillars is required") :type
-    (common-lisp:or recommendation-pillar-list common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or recommendation-source common-lisp:null)))
+ (common-lisp:defclass check-summary common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or check-arn common-lisp:null) :accessor
+                         struct-shape-check-summary-arn :shape "CheckArn"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (aws-services :initarg :aws-services :initform
+                         (common-lisp:error ":awsservices is required") :type
+                         (common-lisp:or recommendation-aws-service-list
+                                         common-lisp:null)
+                         :accessor struct-shape-check-summary-aws-services
+                         :shape "RecommendationAwsServiceList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         (common-lisp:error ":description is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-check-summary-description :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-check-summary-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or string-map common-lisp:null) :accessor
+                         struct-shape-check-summary-metadata :shape "StringMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-check-summary-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (pillars :initarg :pillars :initform
+                         (common-lisp:error ":pillars is required") :type
+                         (common-lisp:or recommendation-pillar-list
+                                         common-lisp:null)
+                         :accessor struct-shape-check-summary-pillars :shape
+                         "RecommendationPillarList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or recommendation-source
+                                         common-lisp:null)
+                         :accessor struct-shape-check-summary-source :shape
+                         "RecommendationSource" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-check-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'check-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'check-summary 'make-check-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input check-summary))
@@ -256,13 +343,25 @@
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-organization-recommendation-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-organization-recommendation-request-"))
-   (organization-recommendation-identifier
-    (common-lisp:error ":organizationrecommendationidentifier is required")
-    :type
-    (common-lisp:or organization-recommendation-identifier common-lisp:null)))
+ (common-lisp:defclass get-organization-recommendation-request common-lisp:nil
+                       ((organization-recommendation-identifier :initarg
+                         :organization-recommendation-identifier :initform
+                         (common-lisp:error
+                          ":organizationrecommendationidentifier is required")
+                         :type
+                         (common-lisp:or organization-recommendation-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-organization-recommendation-request-organization-recommendation-identifier
+                         :shape "OrganizationRecommendationIdentifier"
+                         :location "uri" :location-name
+                         "organizationRecommendationIdentifier"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-organization-recommendation-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-organization-recommendation-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-organization-recommendation-request
                     'make-get-organization-recommendation-request))
@@ -282,11 +381,22 @@
                           get-organization-recommendation-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-organization-recommendation-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-organization-recommendation-response-"))
-   (organization-recommendation common-lisp:nil :type
-    (common-lisp:or organization-recommendation common-lisp:null)))
+ (common-lisp:defclass get-organization-recommendation-response common-lisp:nil
+                       ((organization-recommendation :initarg
+                         :organization-recommendation :initform common-lisp:nil
+                         :type
+                         (common-lisp:or organization-recommendation
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-organization-recommendation-response-organization-recommendation
+                         :shape "OrganizationRecommendation" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-organization-recommendation-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-organization-recommendation-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-organization-recommendation-response
                     'make-get-organization-recommendation-response))
@@ -314,12 +424,23 @@
                           get-organization-recommendation-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-recommendation-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-recommendation-request-"))
-   (recommendation-identifier
-    (common-lisp:error ":recommendationidentifier is required") :type
-    (common-lisp:or account-recommendation-identifier common-lisp:null)))
+ (common-lisp:defclass get-recommendation-request common-lisp:nil
+                       ((recommendation-identifier :initarg
+                         :recommendation-identifier :initform
+                         (common-lisp:error
+                          ":recommendationidentifier is required")
+                         :type
+                         (common-lisp:or account-recommendation-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-request-recommendation-identifier
+                         :shape "AccountRecommendationIdentifier" :location
+                         "uri" :location-name "recommendationIdentifier"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-recommendation-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-recommendation-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-recommendation-request
                     'make-get-recommendation-request))
@@ -339,11 +460,19 @@
                           get-recommendation-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-recommendation-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-recommendation-response-"))
-   (recommendation common-lisp:nil :type
-    (common-lisp:or recommendation common-lisp:null)))
+ (common-lisp:defclass get-recommendation-response common-lisp:nil
+                       ((recommendation :initarg :recommendation :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation common-lisp:null)
+                         :accessor
+                         struct-shape-get-recommendation-response-recommendation
+                         :shape "Recommendation" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-recommendation-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-recommendation-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-recommendation-response
                     'make-get-recommendation-response))
@@ -378,21 +507,55 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-checks-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-checks-request-"))
-   (aws-service common-lisp:nil :type
-    (common-lisp:or recommendation-aws-service common-lisp:null))
-   (language common-lisp:nil :type
-    (common-lisp:or recommendation-language common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-checks-request-max-results-integer common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or list-checks-request-next-token-string common-lisp:null))
-   (pillar common-lisp:nil :type
-    (common-lisp:or recommendation-pillar common-lisp:null))
-   (source common-lisp:nil :type
-    (common-lisp:or recommendation-source common-lisp:null)))
+ (common-lisp:defclass list-checks-request common-lisp:nil
+                       ((aws-service :initarg :aws-service :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-aws-service
+                                         common-lisp:null)
+                         :accessor struct-shape-list-checks-request-aws-service
+                         :shape "RecommendationAwsService" :location
+                         "querystring" :location-name "awsService")
+                        (language :initarg :language :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-language
+                                         common-lisp:null)
+                         :accessor struct-shape-list-checks-request-language
+                         :shape "RecommendationLanguage" :location
+                         "querystring" :location-name "language")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-checks-request-max-results-integer
+                          common-lisp:null)
+                         :accessor struct-shape-list-checks-request-max-results
+                         :shape "ListChecksRequestMaxResultsInteger" :location
+                         "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-checks-request-next-token-string
+                                         common-lisp:null)
+                         :accessor struct-shape-list-checks-request-next-token
+                         :shape "ListChecksRequestNextTokenString" :location
+                         "querystring" :location-name "nextToken")
+                        (pillar :initarg :pillar :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-pillar
+                                         common-lisp:null)
+                         :accessor struct-shape-list-checks-request-pillar
+                         :shape "RecommendationPillar" :location "querystring"
+                         :location-name "pillar")
+                        (source :initarg :source :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-source
+                                         common-lisp:null)
+                         :accessor struct-shape-list-checks-request-source
+                         :shape "RecommendationSource" :location "querystring"
+                         :location-name "source"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-checks-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-checks-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-checks-request 'make-list-checks-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -409,13 +572,27 @@
 (common-lisp:deftype list-checks-request-next-token-string ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-checks-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-checks-response-"))
-   (check-summaries (common-lisp:error ":checksummaries is required") :type
-    (common-lisp:or check-summary-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or list-checks-response-next-token-string common-lisp:null)))
+ (common-lisp:defclass list-checks-response common-lisp:nil
+                       ((check-summaries :initarg :check-summaries :initform
+                         (common-lisp:error ":checksummaries is required")
+                         :type
+                         (common-lisp:or check-summary-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-checks-response-check-summaries
+                         :shape "CheckSummaryList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-checks-response-next-token-string
+                                         common-lisp:null)
+                         :accessor struct-shape-list-checks-response-next-token
+                         :shape "ListChecksResponseNextTokenString" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-checks-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-checks-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-checks-response 'make-list-checks-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -444,25 +621,52 @@
 (common-lisp:deftype list-checks-response-next-token-string ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-organization-recommendation-accounts-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-organization-recommendation-accounts-request-"))
-   (affected-account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or
-     list-organization-recommendation-accounts-request-max-results-integer
-     common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or
-     list-organization-recommendation-accounts-request-next-token-string
-     common-lisp:null))
-   (organization-recommendation-identifier
-    (common-lisp:error ":organizationrecommendationidentifier is required")
-    :type
-    (common-lisp:or organization-recommendation-identifier common-lisp:null)))
+ (common-lisp:defclass list-organization-recommendation-accounts-request
+                       common-lisp:nil
+                       ((affected-account-id :initarg :affected-account-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-organization-recommendation-accounts-request-affected-account-id
+                         :shape "AccountId" :location "querystring"
+                         :location-name "affectedAccountId")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendation-accounts-request-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-accounts-request-max-results
+                         :shape
+                         "ListOrganizationRecommendationAccountsRequestMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendation-accounts-request-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-accounts-request-next-token
+                         :shape
+                         "ListOrganizationRecommendationAccountsRequestNextTokenString"
+                         :location "querystring" :location-name "nextToken")
+                        (organization-recommendation-identifier :initarg
+                         :organization-recommendation-identifier :initform
+                         (common-lisp:error
+                          ":organizationrecommendationidentifier is required")
+                         :type
+                         (common-lisp:or organization-recommendation-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-accounts-request-organization-recommendation-identifier
+                         :shape "OrganizationRecommendationIdentifier"
+                         :location "uri" :location-name
+                         "organizationRecommendationIdentifier"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-organization-recommendation-accounts-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-organization-recommendation-accounts-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-organization-recommendation-accounts-request
                     'make-list-organization-recommendation-accounts-request))
@@ -488,20 +692,38 @@
                      ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-organization-recommendation-accounts-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-organization-recommendation-accounts-response-"))
-   (account-recommendation-lifecycle-summaries
-    (common-lisp:error ":accountrecommendationlifecyclesummaries is required")
-    :type
-    (common-lisp:or account-recommendation-lifecycle-summary-list
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or
-     list-organization-recommendation-accounts-response-next-token-string
-     common-lisp:null)))
+ (common-lisp:defclass list-organization-recommendation-accounts-response
+                       common-lisp:nil
+                       ((account-recommendation-lifecycle-summaries :initarg
+                         :account-recommendation-lifecycle-summaries :initform
+                         (common-lisp:error
+                          ":accountrecommendationlifecyclesummaries is required")
+                         :type
+                         (common-lisp:or
+                          account-recommendation-lifecycle-summary-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-accounts-response-account-recommendation-lifecycle-summaries
+                         :shape "AccountRecommendationLifecycleSummaryList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendation-accounts-response-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-accounts-response-next-token
+                         :shape
+                         "ListOrganizationRecommendationAccountsResponseNextTokenString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-organization-recommendation-accounts-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-organization-recommendation-accounts-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-organization-recommendation-accounts-response
                     'make-list-organization-recommendation-accounts-response))
@@ -539,28 +761,65 @@
                      ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-organization-recommendation-resources-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-organization-recommendation-resources-request-"))
-   (affected-account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or
-     list-organization-recommendation-resources-request-max-results-integer
-     common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or
-     list-organization-recommendation-resources-request-next-token-string
-     common-lisp:null))
-   (organization-recommendation-identifier
-    (common-lisp:error ":organizationrecommendationidentifier is required")
-    :type
-    (common-lisp:or organization-recommendation-identifier common-lisp:null))
-   (region-code common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or resource-status common-lisp:null)))
+ (common-lisp:defclass list-organization-recommendation-resources-request
+                       common-lisp:nil
+                       ((affected-account-id :initarg :affected-account-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-list-organization-recommendation-resources-request-affected-account-id
+                         :shape "AccountId" :location "querystring"
+                         :location-name "affectedAccountId")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendation-resources-request-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-resources-request-max-results
+                         :shape
+                         "ListOrganizationRecommendationResourcesRequestMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendation-resources-request-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-resources-request-next-token
+                         :shape
+                         "ListOrganizationRecommendationResourcesRequestNextTokenString"
+                         :location "querystring" :location-name "nextToken")
+                        (organization-recommendation-identifier :initarg
+                         :organization-recommendation-identifier :initform
+                         (common-lisp:error
+                          ":organizationrecommendationidentifier is required")
+                         :type
+                         (common-lisp:or organization-recommendation-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-resources-request-organization-recommendation-identifier
+                         :shape "OrganizationRecommendationIdentifier"
+                         :location "uri" :location-name
+                         "organizationRecommendationIdentifier")
+                        (region-code :initarg :region-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-organization-recommendation-resources-request-region-code
+                         :shape "String" :location "querystring" :location-name
+                         "regionCode")
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-resources-request-status
+                         :shape "ResourceStatus" :location "querystring"
+                         :location-name "status"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-organization-recommendation-resources-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-organization-recommendation-resources-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-organization-recommendation-resources-request
                     'make-list-organization-recommendation-resources-request))
@@ -586,21 +845,40 @@
                      ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-organization-recommendation-resources-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-organization-recommendation-resources-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or
-     list-organization-recommendation-resources-response-next-token-string
-     common-lisp:null))
-   (organization-recommendation-resource-summaries
-    (common-lisp:error
-     ":organizationrecommendationresourcesummaries is required")
-    :type
-    (common-lisp:or organization-recommendation-resource-summary-list
-                    common-lisp:null)))
+ (common-lisp:defclass list-organization-recommendation-resources-response
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendation-resources-response-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-resources-response-next-token
+                         :shape
+                         "ListOrganizationRecommendationResourcesResponseNextTokenString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (organization-recommendation-resource-summaries
+                         :initarg
+                         :organization-recommendation-resource-summaries
+                         :initform
+                         (common-lisp:error
+                          ":organizationrecommendationresourcesummaries is required")
+                         :type
+                         (common-lisp:or
+                          organization-recommendation-resource-summary-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendation-resources-response-organization-recommendation-resource-summaries
+                         :shape "OrganizationRecommendationResourceSummaryList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-organization-recommendation-resources-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-organization-recommendation-resources-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-organization-recommendation-resources-response
                     'make-list-organization-recommendation-resources-response))
@@ -638,32 +916,92 @@
                      ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-organization-recommendations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-organization-recommendations-request-"))
-   (after-last-updated-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (aws-service common-lisp:nil :type
-    (common-lisp:or recommendation-aws-service common-lisp:null))
-   (before-last-updated-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (check-identifier common-lisp:nil :type
-    (common-lisp:or check-identifier common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or
-     list-organization-recommendations-request-max-results-integer
-     common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or list-organization-recommendations-request-next-token-string
-                    common-lisp:null))
-   (pillar common-lisp:nil :type
-    (common-lisp:or recommendation-pillar common-lisp:null))
-   (source common-lisp:nil :type
-    (common-lisp:or recommendation-source common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or recommendation-status common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or recommendation-type common-lisp:null)))
+ (common-lisp:defclass list-organization-recommendations-request
+                       common-lisp:nil
+                       ((after-last-updated-at :initarg :after-last-updated-at
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-list-organization-recommendations-request-after-last-updated-at
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "afterLastUpdatedAt")
+                        (aws-service :initarg :aws-service :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-aws-service
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-aws-service
+                         :shape "RecommendationAwsService" :location
+                         "querystring" :location-name "awsService")
+                        (before-last-updated-at :initarg
+                         :before-last-updated-at :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-before-last-updated-at
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "beforeLastUpdatedAt")
+                        (check-identifier :initarg :check-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or check-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-check-identifier
+                         :shape "CheckIdentifier" :location "querystring"
+                         :location-name "checkIdentifier")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendations-request-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-max-results
+                         :shape
+                         "ListOrganizationRecommendationsRequestMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendations-request-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-next-token
+                         :shape
+                         "ListOrganizationRecommendationsRequestNextTokenString"
+                         :location "querystring" :location-name "nextToken")
+                        (pillar :initarg :pillar :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-pillar
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-pillar
+                         :shape "RecommendationPillar" :location "querystring"
+                         :location-name "pillar")
+                        (source :initarg :source :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-source
+                         :shape "RecommendationSource" :location "querystring"
+                         :location-name "source")
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-status
+                         :shape "RecommendationStatus" :location "querystring"
+                         :location-name "status")
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or recommendation-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-request-type
+                         :shape "RecommendationType" :location "querystring"
+                         :location-name "type"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-organization-recommendations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-organization-recommendations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-organization-recommendations-request
                     'make-list-organization-recommendations-request))
@@ -689,18 +1027,38 @@
                      ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-organization-recommendations-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-organization-recommendations-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or
-     list-organization-recommendations-response-next-token-string
-     common-lisp:null))
-   (organization-recommendation-summaries
-    (common-lisp:error ":organizationrecommendationsummaries is required")
-    :type
-    (common-lisp:or organization-recommendation-summary-list
-                    common-lisp:null)))
+ (common-lisp:defclass list-organization-recommendations-response
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-organization-recommendations-response-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-response-next-token
+                         :shape
+                         "ListOrganizationRecommendationsResponseNextTokenString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (organization-recommendation-summaries :initarg
+                         :organization-recommendation-summaries :initform
+                         (common-lisp:error
+                          ":organizationrecommendationsummaries is required")
+                         :type
+                         (common-lisp:or
+                          organization-recommendation-summary-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-organization-recommendations-response-organization-recommendation-summaries
+                         :shape "OrganizationRecommendationSummaryList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-organization-recommendations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-organization-recommendations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-organization-recommendations-response
                     'make-list-organization-recommendations-response))
@@ -738,21 +1096,57 @@
                      ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recommendation-resources-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recommendation-resources-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-recommendation-resources-request-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or list-recommendation-resources-request-next-token-string
-                    common-lisp:null))
-   (recommendation-identifier
-    (common-lisp:error ":recommendationidentifier is required") :type
-    (common-lisp:or account-recommendation-identifier common-lisp:null))
-   (region-code common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or resource-status common-lisp:null)))
+ (common-lisp:defclass list-recommendation-resources-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-recommendation-resources-request-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-resources-request-max-results
+                         :shape
+                         "ListRecommendationResourcesRequestMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-recommendation-resources-request-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-resources-request-next-token
+                         :shape
+                         "ListRecommendationResourcesRequestNextTokenString"
+                         :location "querystring" :location-name "nextToken")
+                        (recommendation-identifier :initarg
+                         :recommendation-identifier :initform
+                         (common-lisp:error
+                          ":recommendationidentifier is required")
+                         :type
+                         (common-lisp:or account-recommendation-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-resources-request-recommendation-identifier
+                         :shape "AccountRecommendationIdentifier" :location
+                         "uri" :location-name "recommendationIdentifier")
+                        (region-code :initarg :region-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-list-recommendation-resources-request-region-code
+                         :shape "String" :location "querystring" :location-name
+                         "regionCode")
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or resource-status common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-resources-request-status
+                         :shape "ResourceStatus" :location "querystring"
+                         :location-name "status"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recommendation-resources-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-recommendation-resources-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recommendation-resources-request
                     'make-list-recommendation-resources-request))
@@ -777,15 +1171,35 @@
 (common-lisp:deftype list-recommendation-resources-request-next-token-string ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recommendation-resources-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recommendation-resources-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or list-recommendation-resources-response-next-token-string
-                    common-lisp:null))
-   (recommendation-resource-summaries
-    (common-lisp:error ":recommendationresourcesummaries is required") :type
-    (common-lisp:or recommendation-resource-summary-list common-lisp:null)))
+ (common-lisp:defclass list-recommendation-resources-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-recommendation-resources-response-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-resources-response-next-token
+                         :shape
+                         "ListRecommendationResourcesResponseNextTokenString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (recommendation-resource-summaries :initarg
+                         :recommendation-resource-summaries :initform
+                         (common-lisp:error
+                          ":recommendationresourcesummaries is required")
+                         :type
+                         (common-lisp:or recommendation-resource-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendation-resources-response-recommendation-resource-summaries
+                         :shape "RecommendationResourceSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recommendation-resources-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-recommendation-resources-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recommendation-resources-response
                     'make-list-recommendation-resources-response))
@@ -823,31 +1237,88 @@
                      ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recommendations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recommendations-request-"))
-   (after-last-updated-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (aws-service common-lisp:nil :type
-    (common-lisp:or recommendation-aws-service common-lisp:null))
-   (before-last-updated-at common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (check-identifier common-lisp:nil :type
-    (common-lisp:or check-identifier common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-recommendations-request-max-results-integer
-                    common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or list-recommendations-request-next-token-string
-                    common-lisp:null))
-   (pillar common-lisp:nil :type
-    (common-lisp:or recommendation-pillar common-lisp:null))
-   (source common-lisp:nil :type
-    (common-lisp:or recommendation-source common-lisp:null))
-   (status common-lisp:nil :type
-    (common-lisp:or recommendation-status common-lisp:null))
-   (type common-lisp:nil :type
-    (common-lisp:or recommendation-type common-lisp:null)))
+ (common-lisp:defclass list-recommendations-request common-lisp:nil
+                       ((after-last-updated-at :initarg :after-last-updated-at
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-list-recommendations-request-after-last-updated-at
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "afterLastUpdatedAt")
+                        (aws-service :initarg :aws-service :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-aws-service
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-aws-service
+                         :shape "RecommendationAwsService" :location
+                         "querystring" :location-name "awsService")
+                        (before-last-updated-at :initarg
+                         :before-last-updated-at :initform common-lisp:nil
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-before-last-updated-at
+                         :shape "Timestamp" :location "querystring"
+                         :location-name "beforeLastUpdatedAt")
+                        (check-identifier :initarg :check-identifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or check-identifier common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-check-identifier
+                         :shape "CheckIdentifier" :location "querystring"
+                         :location-name "checkIdentifier")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-recommendations-request-max-results-integer
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-max-results
+                         :shape "ListRecommendationsRequestMaxResultsInteger"
+                         :location "querystring" :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-recommendations-request-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-next-token
+                         :shape "ListRecommendationsRequestNextTokenString"
+                         :location "querystring" :location-name "nextToken")
+                        (pillar :initarg :pillar :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-pillar
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-pillar
+                         :shape "RecommendationPillar" :location "querystring"
+                         :location-name "pillar")
+                        (source :initarg :source :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-source
+                         :shape "RecommendationSource" :location "querystring"
+                         :location-name "source")
+                        (status :initarg :status :initform common-lisp:nil
+                         :type
+                         (common-lisp:or recommendation-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-status
+                         :shape "RecommendationStatus" :location "querystring"
+                         :location-name "status")
+                        (type :initarg :type :initform common-lisp:nil :type
+                         (common-lisp:or recommendation-type common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-request-type :shape
+                         "RecommendationType" :location "querystring"
+                         :location-name "type"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recommendations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-recommendations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recommendations-request
                     'make-list-recommendations-request))
@@ -871,15 +1342,34 @@
 (common-lisp:deftype list-recommendations-request-next-token-string ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-recommendations-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-recommendations-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or list-recommendations-response-next-token-string
-                    common-lisp:null))
-   (recommendation-summaries
-    (common-lisp:error ":recommendationsummaries is required") :type
-    (common-lisp:or recommendation-summary-list common-lisp:null)))
+ (common-lisp:defclass list-recommendations-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          list-recommendations-response-next-token-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-response-next-token
+                         :shape "ListRecommendationsResponseNextTokenString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (recommendation-summaries :initarg
+                         :recommendation-summaries :initform
+                         (common-lisp:error
+                          ":recommendationsummaries is required")
+                         :type
+                         (common-lisp:or recommendation-summary-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-recommendations-response-recommendation-summaries
+                         :shape "RecommendationSummaryList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-recommendations-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-recommendations-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-recommendations-response
                     'make-list-recommendations-response))
@@ -917,52 +1407,172 @@
   'common-lisp:string)
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (organization-recommendation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-organization-recommendation-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or organization-recommendation-arn common-lisp:null))
-   (aws-services common-lisp:nil :type
-    (common-lisp:or recommendation-aws-service-list common-lisp:null))
-   (check-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (created-by common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (lifecycle-stage common-lisp:nil :type
-    (common-lisp:or recommendation-lifecycle-stage common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (pillar-specific-aggregates common-lisp:nil :type
-    (common-lisp:or recommendation-pillar-specific-aggregates
-                    common-lisp:null))
-   (pillars (common-lisp:error ":pillars is required") :type
-    (common-lisp:or recommendation-pillar-list common-lisp:null))
-   (resolved-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (resources-aggregates (common-lisp:error ":resourcesaggregates is required")
-    :type
-    (common-lisp:or recommendation-resources-aggregates common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or recommendation-source common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or recommendation-status common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or recommendation-type common-lisp:null))
-   (update-reason common-lisp:nil :type
-    (common-lisp:or recommendation-update-reason common-lisp:null))
-   (update-reason-code common-lisp:nil :type
-    (common-lisp:or update-recommendation-lifecycle-stage-reason-code
-                    common-lisp:null))
-   (updated-on-behalf-of common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (updated-on-behalf-of-job-title common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass organization-recommendation common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or organization-recommendation-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-organization-recommendation-arn
+                         :shape "OrganizationRecommendationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (aws-services :initarg :aws-services :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-aws-service-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-aws-services
+                         :shape "RecommendationAwsServiceList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (check-arn :initarg :check-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-check-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-by :initarg :created-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-created-by
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         (common-lisp:error ":description is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-description
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-last-updated-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (lifecycle-stage :initarg :lifecycle-stage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-lifecycle-stage
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-lifecycle-stage
+                         :shape "RecommendationLifecycleStage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (pillar-specific-aggregates :initarg
+                         :pillar-specific-aggregates :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          recommendation-pillar-specific-aggregates
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-pillar-specific-aggregates
+                         :shape "RecommendationPillarSpecificAggregates"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (pillars :initarg :pillars :initform
+                         (common-lisp:error ":pillars is required") :type
+                         (common-lisp:or recommendation-pillar-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-pillars
+                         :shape "RecommendationPillarList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resolved-at :initarg :resolved-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-resolved-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resources-aggregates :initarg :resources-aggregates
+                         :initform
+                         (common-lisp:error ":resourcesaggregates is required")
+                         :type
+                         (common-lisp:or recommendation-resources-aggregates
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-resources-aggregates
+                         :shape "RecommendationResourcesAggregates" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or recommendation-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-source :shape
+                         "RecommendationSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or recommendation-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-status :shape
+                         "RecommendationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or recommendation-type common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-type :shape
+                         "RecommendationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-reason :initarg :update-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-update-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-update-reason
+                         :shape "RecommendationUpdateReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-reason-code :initarg :update-reason-code
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          update-recommendation-lifecycle-stage-reason-code
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-update-reason-code
+                         :shape "UpdateRecommendationLifecycleStageReasonCode"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-on-behalf-of :initarg :updated-on-behalf-of
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-updated-on-behalf-of
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-on-behalf-of-job-title :initarg
+                         :updated-on-behalf-of-job-title :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-updated-on-behalf-of-job-title
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-organization-recommendation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'organization-recommendation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'organization-recommendation
                     'make-organization-recommendation))
@@ -1136,28 +1746,79 @@
 (common-lisp:deftype organization-recommendation-identifier ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (organization-recommendation-resource-summary (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-organization-recommendation-resource-summary-"))
-   (account-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or recommendation-resource-arn common-lisp:null))
-   (aws-resource-id (common-lisp:error ":awsresourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or string-map common-lisp:null))
-   (recommendation-arn (common-lisp:error ":recommendationarn is required")
-    :type (common-lisp:or organization-recommendation-arn common-lisp:null))
-   (region-code (common-lisp:error ":regioncode is required") :type
-    (common-lisp:or recommendation-region-code common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or resource-status common-lisp:null)))
+ (common-lisp:defclass organization-recommendation-resource-summary
+                       common-lisp:nil
+                       ((account-id :initarg :account-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-resource-summary-account-id
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or recommendation-resource-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-resource-summary-arn
+                         :shape "RecommendationResourceArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (aws-resource-id :initarg :aws-resource-id :initform
+                         (common-lisp:error ":awsresourceid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-resource-summary-aws-resource-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-resource-summary-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-resource-summary-last-updated-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or string-map common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-resource-summary-metadata
+                         :shape "StringMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommendation-arn :initarg :recommendation-arn
+                         :initform
+                         (common-lisp:error ":recommendationarn is required")
+                         :type
+                         (common-lisp:or organization-recommendation-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-resource-summary-recommendation-arn
+                         :shape "OrganizationRecommendationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (region-code :initarg :region-code :initform
+                         (common-lisp:error ":regioncode is required") :type
+                         (common-lisp:or recommendation-region-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-resource-summary-region-code
+                         :shape "RecommendationRegionCode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or resource-status common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-resource-summary-status
+                         :shape "ResourceStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-organization-recommendation-resource-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'organization-recommendation-resource-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'organization-recommendation-resource-summary
                     'make-organization-recommendation-resource-summary))
@@ -1249,38 +1910,123 @@
                             organization-recommendation-resource-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (organization-recommendation-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-organization-recommendation-summary-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or organization-recommendation-arn common-lisp:null))
-   (aws-services common-lisp:nil :type
-    (common-lisp:or recommendation-aws-service-list common-lisp:null))
-   (check-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (lifecycle-stage common-lisp:nil :type
-    (common-lisp:or recommendation-lifecycle-stage common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (pillar-specific-aggregates common-lisp:nil :type
-    (common-lisp:or recommendation-pillar-specific-aggregates
-                    common-lisp:null))
-   (pillars (common-lisp:error ":pillars is required") :type
-    (common-lisp:or recommendation-pillar-list common-lisp:null))
-   (resources-aggregates (common-lisp:error ":resourcesaggregates is required")
-    :type
-    (common-lisp:or recommendation-resources-aggregates common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or recommendation-source common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or recommendation-status common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or recommendation-type common-lisp:null)))
+ (common-lisp:defclass organization-recommendation-summary common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or organization-recommendation-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-arn
+                         :shape "OrganizationRecommendationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (aws-services :initarg :aws-services :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-aws-service-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-aws-services
+                         :shape "RecommendationAwsServiceList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (check-arn :initarg :check-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-summary-check-arn
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-summary-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-last-updated-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (lifecycle-stage :initarg :lifecycle-stage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-lifecycle-stage
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-lifecycle-stage
+                         :shape "RecommendationLifecycleStage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-organization-recommendation-summary-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (pillar-specific-aggregates :initarg
+                         :pillar-specific-aggregates :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          recommendation-pillar-specific-aggregates
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-pillar-specific-aggregates
+                         :shape "RecommendationPillarSpecificAggregates"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (pillars :initarg :pillars :initform
+                         (common-lisp:error ":pillars is required") :type
+                         (common-lisp:or recommendation-pillar-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-pillars
+                         :shape "RecommendationPillarList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resources-aggregates :initarg :resources-aggregates
+                         :initform
+                         (common-lisp:error ":resourcesaggregates is required")
+                         :type
+                         (common-lisp:or recommendation-resources-aggregates
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-resources-aggregates
+                         :shape "RecommendationResourcesAggregates" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or recommendation-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-source
+                         :shape "RecommendationSource" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or recommendation-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-status
+                         :shape "RecommendationStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or recommendation-type common-lisp:null)
+                         :accessor
+                         struct-shape-organization-recommendation-summary-type
+                         :shape "RecommendationType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-organization-recommendation-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'organization-recommendation-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'organization-recommendation-summary
                     'make-organization-recommendation-summary))
@@ -1409,52 +2155,162 @@
                             organization-recommendation-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or account-recommendation-arn common-lisp:null))
-   (aws-services common-lisp:nil :type
-    (common-lisp:or recommendation-aws-service-list common-lisp:null))
-   (check-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (created-by common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (lifecycle-stage common-lisp:nil :type
-    (common-lisp:or recommendation-lifecycle-stage common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (pillar-specific-aggregates common-lisp:nil :type
-    (common-lisp:or recommendation-pillar-specific-aggregates
-                    common-lisp:null))
-   (pillars (common-lisp:error ":pillars is required") :type
-    (common-lisp:or recommendation-pillar-list common-lisp:null))
-   (resolved-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (resources-aggregates (common-lisp:error ":resourcesaggregates is required")
-    :type
-    (common-lisp:or recommendation-resources-aggregates common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or recommendation-source common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or recommendation-status common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or recommendation-type common-lisp:null))
-   (update-reason common-lisp:nil :type
-    (common-lisp:or recommendation-update-reason common-lisp:null))
-   (update-reason-code common-lisp:nil :type
-    (common-lisp:or update-recommendation-lifecycle-stage-reason-code
-                    common-lisp:null))
-   (updated-on-behalf-of common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (updated-on-behalf-of-job-title common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass recommendation common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or account-recommendation-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-arn :shape
+                         "AccountRecommendationArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (aws-services :initarg :aws-services :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-aws-service-list
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-aws-services
+                         :shape "RecommendationAwsServiceList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (check-arn :initarg :check-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-check-arn :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-created-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-by :initarg :created-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-created-by :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         (common-lisp:error ":description is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-description :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-last-updated-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (lifecycle-stage :initarg :lifecycle-stage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-lifecycle-stage
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-lifecycle-stage
+                         :shape "RecommendationLifecycleStage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-name :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (pillar-specific-aggregates :initarg
+                         :pillar-specific-aggregates :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          recommendation-pillar-specific-aggregates
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-pillar-specific-aggregates
+                         :shape "RecommendationPillarSpecificAggregates"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (pillars :initarg :pillars :initform
+                         (common-lisp:error ":pillars is required") :type
+                         (common-lisp:or recommendation-pillar-list
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-pillars :shape
+                         "RecommendationPillarList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (resolved-at :initarg :resolved-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-resolved-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resources-aggregates :initarg :resources-aggregates
+                         :initform
+                         (common-lisp:error ":resourcesaggregates is required")
+                         :type
+                         (common-lisp:or recommendation-resources-aggregates
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-resources-aggregates
+                         :shape "RecommendationResourcesAggregates" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or recommendation-source
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-source :shape
+                         "RecommendationSource" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or recommendation-status
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-status :shape
+                         "RecommendationStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or recommendation-type common-lisp:null)
+                         :accessor struct-shape-recommendation-type :shape
+                         "RecommendationType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-reason :initarg :update-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-update-reason
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-update-reason
+                         :shape "RecommendationUpdateReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-reason-code :initarg :update-reason-code
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          update-recommendation-lifecycle-stage-reason-code
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-update-reason-code :shape
+                         "UpdateRecommendationLifecycleStageReasonCode"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (updated-on-behalf-of :initarg :updated-on-behalf-of
+                         :initform common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-updated-on-behalf-of
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (updated-on-behalf-of-job-title :initarg
+                         :updated-on-behalf-of-job-title :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-updated-on-behalf-of-job-title
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'recommendation
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'recommendation 'make-recommendation))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input recommendation))
@@ -1627,15 +2483,32 @@
                             recommendation-aws-service))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation-cost-optimizing-aggregates (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-cost-optimizing-aggregates-"))
-   (estimated-monthly-savings
-    (common-lisp:error ":estimatedmonthlysavings is required") :type
-    (common-lisp:or double common-lisp:null))
-   (estimated-percent-monthly-savings
-    (common-lisp:error ":estimatedpercentmonthlysavings is required") :type
-    (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass recommendation-cost-optimizing-aggregates
+                       common-lisp:nil
+                       ((estimated-monthly-savings :initarg
+                         :estimated-monthly-savings :initform
+                         (common-lisp:error
+                          ":estimatedmonthlysavings is required")
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-cost-optimizing-aggregates-estimated-monthly-savings
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (estimated-percent-monthly-savings :initarg
+                         :estimated-percent-monthly-savings :initform
+                         (common-lisp:error
+                          ":estimatedpercentmonthlysavings is required")
+                         :type (common-lisp:or double common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-cost-optimizing-aggregates-estimated-percent-monthly-savings
+                         :shape "Double" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation-cost-optimizing-aggregates
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'recommendation-cost-optimizing-aggregates
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'recommendation-cost-optimizing-aggregates
                     'make-recommendation-cost-optimizing-aggregates))
@@ -1682,12 +2555,24 @@
                            (trivial-types:proper-list recommendation-pillar))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation-pillar-specific-aggregates (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-pillar-specific-aggregates-"))
-   (cost-optimizing common-lisp:nil :type
-    (common-lisp:or recommendation-cost-optimizing-aggregates
-                    common-lisp:null)))
+ (common-lisp:defclass recommendation-pillar-specific-aggregates
+                       common-lisp:nil
+                       ((cost-optimizing :initarg :cost-optimizing :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          recommendation-cost-optimizing-aggregates
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-pillar-specific-aggregates-cost-optimizing
+                         :shape "RecommendationCostOptimizingAggregates"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation-pillar-specific-aggregates
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'recommendation-pillar-specific-aggregates
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'recommendation-pillar-specific-aggregates
                     'make-recommendation-pillar-specific-aggregates))
@@ -1716,25 +2601,72 @@
 (common-lisp:deftype recommendation-region-code () 'common-lisp:string)
 (common-lisp:deftype recommendation-resource-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation-resource-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-resource-summary-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or recommendation-resource-arn common-lisp:null))
-   (aws-resource-id (common-lisp:error ":awsresourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (last-updated-at (common-lisp:error ":lastupdatedat is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or string-map common-lisp:null))
-   (recommendation-arn (common-lisp:error ":recommendationarn is required")
-    :type (common-lisp:or account-recommendation-arn common-lisp:null))
-   (region-code (common-lisp:error ":regioncode is required") :type
-    (common-lisp:or recommendation-region-code common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or resource-status common-lisp:null)))
+ (common-lisp:defclass recommendation-resource-summary common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or recommendation-resource-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-resource-summary-arn
+                         :shape "RecommendationResourceArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (aws-resource-id :initarg :aws-resource-id :initform
+                         (common-lisp:error ":awsresourceid is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-resource-summary-aws-resource-id
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-resource-summary-id :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         (common-lisp:error ":lastupdatedat is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-resource-summary-last-updated-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (metadata :initarg :metadata :initform
+                         (common-lisp:error ":metadata is required") :type
+                         (common-lisp:or string-map common-lisp:null) :accessor
+                         struct-shape-recommendation-resource-summary-metadata
+                         :shape "StringMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (recommendation-arn :initarg :recommendation-arn
+                         :initform
+                         (common-lisp:error ":recommendationarn is required")
+                         :type
+                         (common-lisp:or account-recommendation-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-resource-summary-recommendation-arn
+                         :shape "AccountRecommendationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (region-code :initarg :region-code :initform
+                         (common-lisp:error ":regioncode is required") :type
+                         (common-lisp:or recommendation-region-code
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-resource-summary-region-code
+                         :shape "RecommendationRegionCode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or resource-status common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-resource-summary-status
+                         :shape "ResourceStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation-resource-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'recommendation-resource-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'recommendation-resource-summary
                     'make-recommendation-resource-summary))
@@ -1819,15 +2751,31 @@
                             recommendation-resource-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation-resources-aggregates (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-resources-aggregates-"))
-   (error-count (common-lisp:error ":errorcount is required") :type
-    (common-lisp:or long common-lisp:null))
-   (ok-count (common-lisp:error ":okcount is required") :type
-    (common-lisp:or long common-lisp:null))
-   (warning-count (common-lisp:error ":warningcount is required") :type
-    (common-lisp:or long common-lisp:null)))
+ (common-lisp:defclass recommendation-resources-aggregates common-lisp:nil
+                       ((error-count :initarg :error-count :initform
+                         (common-lisp:error ":errorcount is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-recommendation-resources-aggregates-error-count
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ok-count :initarg :ok-count :initform
+                         (common-lisp:error ":okcount is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-recommendation-resources-aggregates-ok-count
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (warning-count :initarg :warning-count :initform
+                         (common-lisp:error ":warningcount is required") :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-recommendation-resources-aggregates-warning-count
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation-resources-aggregates
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'recommendation-resources-aggregates
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'recommendation-resources-aggregates
                     'make-recommendation-resources-aggregates))
@@ -1870,38 +2818,117 @@
 (common-lisp:deftype recommendation-source () 'common-lisp:string)
 (common-lisp:deftype recommendation-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (recommendation-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-recommendation-summary-"))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or account-recommendation-arn common-lisp:null))
-   (aws-services common-lisp:nil :type
-    (common-lisp:or recommendation-aws-service-list common-lisp:null))
-   (check-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (last-updated-at common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (lifecycle-stage common-lisp:nil :type
-    (common-lisp:or recommendation-lifecycle-stage common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (pillar-specific-aggregates common-lisp:nil :type
-    (common-lisp:or recommendation-pillar-specific-aggregates
-                    common-lisp:null))
-   (pillars (common-lisp:error ":pillars is required") :type
-    (common-lisp:or recommendation-pillar-list common-lisp:null))
-   (resources-aggregates (common-lisp:error ":resourcesaggregates is required")
-    :type
-    (common-lisp:or recommendation-resources-aggregates common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or recommendation-source common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or recommendation-status common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or recommendation-type common-lisp:null)))
+ (common-lisp:defclass recommendation-summary common-lisp:nil
+                       ((arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or account-recommendation-arn
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-summary-arn
+                         :shape "AccountRecommendationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (aws-services :initarg :aws-services :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-aws-service-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-summary-aws-services
+                         :shape "RecommendationAwsServiceList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (check-arn :initarg :check-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-summary-check-arn :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-summary-created-at :shape
+                         "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-summary-id :shape "String"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-updated-at :initarg :last-updated-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-summary-last-updated-at
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (lifecycle-stage :initarg :lifecycle-stage :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-lifecycle-stage
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-summary-lifecycle-stage
+                         :shape "RecommendationLifecycleStage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-recommendation-summary-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (pillar-specific-aggregates :initarg
+                         :pillar-specific-aggregates :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          recommendation-pillar-specific-aggregates
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-summary-pillar-specific-aggregates
+                         :shape "RecommendationPillarSpecificAggregates"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (pillars :initarg :pillars :initform
+                         (common-lisp:error ":pillars is required") :type
+                         (common-lisp:or recommendation-pillar-list
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-summary-pillars
+                         :shape "RecommendationPillarList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (resources-aggregates :initarg :resources-aggregates
+                         :initform
+                         (common-lisp:error ":resourcesaggregates is required")
+                         :type
+                         (common-lisp:or recommendation-resources-aggregates
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-recommendation-summary-resources-aggregates
+                         :shape "RecommendationResourcesAggregates" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (source :initarg :source :initform
+                         (common-lisp:error ":source is required") :type
+                         (common-lisp:or recommendation-source
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-summary-source
+                         :shape "RecommendationSource" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or recommendation-status
+                                         common-lisp:null)
+                         :accessor struct-shape-recommendation-summary-status
+                         :shape "RecommendationStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or recommendation-type common-lisp:null)
+                         :accessor struct-shape-recommendation-summary-type
+                         :shape "RecommendationType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-recommendation-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'recommendation-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'recommendation-summary 'make-recommendation-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2056,22 +3083,53 @@
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-organization-recommendation-lifecycle-request
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-update-organization-recommendation-lifecycle-request-"))
-   (lifecycle-stage (common-lisp:error ":lifecyclestage is required") :type
-    (common-lisp:or update-recommendation-lifecycle-stage common-lisp:null))
-   (organization-recommendation-identifier
-    (common-lisp:error ":organizationrecommendationidentifier is required")
-    :type
-    (common-lisp:or organization-recommendation-identifier common-lisp:null))
-   (update-reason common-lisp:nil :type
-    (common-lisp:or recommendation-update-reason common-lisp:null))
-   (update-reason-code common-lisp:nil :type
-    (common-lisp:or update-recommendation-lifecycle-stage-reason-code
-                    common-lisp:null)))
+ (common-lisp:defclass update-organization-recommendation-lifecycle-request
+                       common-lisp:nil
+                       ((lifecycle-stage :initarg :lifecycle-stage :initform
+                         (common-lisp:error ":lifecyclestage is required")
+                         :type
+                         (common-lisp:or update-recommendation-lifecycle-stage
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-organization-recommendation-lifecycle-request-lifecycle-stage
+                         :shape "UpdateRecommendationLifecycleStage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (organization-recommendation-identifier :initarg
+                         :organization-recommendation-identifier :initform
+                         (common-lisp:error
+                          ":organizationrecommendationidentifier is required")
+                         :type
+                         (common-lisp:or organization-recommendation-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-organization-recommendation-lifecycle-request-organization-recommendation-identifier
+                         :shape "OrganizationRecommendationIdentifier"
+                         :location "uri" :location-name
+                         "organizationRecommendationIdentifier")
+                        (update-reason :initarg :update-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-update-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-organization-recommendation-lifecycle-request-update-reason
+                         :shape "RecommendationUpdateReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-reason-code :initarg :update-reason-code
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          update-recommendation-lifecycle-stage-reason-code
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-organization-recommendation-lifecycle-request-update-reason-code
+                         :shape "UpdateRecommendationLifecycleStageReasonCode"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-organization-recommendation-lifecycle-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-organization-recommendation-lifecycle-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-organization-recommendation-lifecycle-request
                     'make-update-organization-recommendation-lifecycle-request))
@@ -2112,19 +3170,51 @@
                           update-organization-recommendation-lifecycle-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-recommendation-lifecycle-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-recommendation-lifecycle-request-"))
-   (lifecycle-stage (common-lisp:error ":lifecyclestage is required") :type
-    (common-lisp:or update-recommendation-lifecycle-stage common-lisp:null))
-   (recommendation-identifier
-    (common-lisp:error ":recommendationidentifier is required") :type
-    (common-lisp:or account-recommendation-identifier common-lisp:null))
-   (update-reason common-lisp:nil :type
-    (common-lisp:or recommendation-update-reason common-lisp:null))
-   (update-reason-code common-lisp:nil :type
-    (common-lisp:or update-recommendation-lifecycle-stage-reason-code
-                    common-lisp:null)))
+ (common-lisp:defclass update-recommendation-lifecycle-request common-lisp:nil
+                       ((lifecycle-stage :initarg :lifecycle-stage :initform
+                         (common-lisp:error ":lifecyclestage is required")
+                         :type
+                         (common-lisp:or update-recommendation-lifecycle-stage
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-recommendation-lifecycle-request-lifecycle-stage
+                         :shape "UpdateRecommendationLifecycleStage" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (recommendation-identifier :initarg
+                         :recommendation-identifier :initform
+                         (common-lisp:error
+                          ":recommendationidentifier is required")
+                         :type
+                         (common-lisp:or account-recommendation-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-recommendation-lifecycle-request-recommendation-identifier
+                         :shape "AccountRecommendationIdentifier" :location
+                         "uri" :location-name "recommendationIdentifier")
+                        (update-reason :initarg :update-reason :initform
+                         common-lisp:nil :type
+                         (common-lisp:or recommendation-update-reason
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-recommendation-lifecycle-request-update-reason
+                         :shape "RecommendationUpdateReason" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-reason-code :initarg :update-reason-code
+                         :initform common-lisp:nil :type
+                         (common-lisp:or
+                          update-recommendation-lifecycle-stage-reason-code
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-recommendation-lifecycle-request-update-reason-code
+                         :shape "UpdateRecommendationLifecycleStageReasonCode"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-recommendation-lifecycle-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-recommendation-lifecycle-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-recommendation-lifecycle-request
                     'make-update-recommendation-lifecycle-request))

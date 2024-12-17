@@ -47,14 +47,31 @@
   (common-lisp:list 'client-limit-exceeded-exception
                     'client-limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (clip-fragment-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-clip-fragment-selector-"))
-   (fragment-selector-type
-    (common-lisp:error ":fragment-selector-type is required") :type
-    (common-lisp:or clip-fragment-selector-type common-lisp:null))
-   (timestamp-range (common-lisp:error ":timestamp-range is required") :type
-    (common-lisp:or clip-timestamp-range common-lisp:null)))
+ (common-lisp:defclass clip-fragment-selector common-lisp:nil
+                       ((fragment-selector-type :initarg
+                         :fragment-selector-type :initform
+                         (common-lisp:error
+                          ":fragment-selector-type is required")
+                         :type
+                         (common-lisp:or clip-fragment-selector-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-clip-fragment-selector-fragment-selector-type
+                         :shape "ClipFragmentSelectorType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (timestamp-range :initarg :timestamp-range :initform
+                         (common-lisp:error ":timestamp-range is required")
+                         :type
+                         (common-lisp:or clip-timestamp-range common-lisp:null)
+                         :accessor
+                         struct-shape-clip-fragment-selector-timestamp-range
+                         :shape "ClipTimestampRange" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-clip-fragment-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'clip-fragment-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'clip-fragment-selector 'make-clip-fragment-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -89,13 +106,25 @@
    common-lisp:nil))
 (common-lisp:deftype clip-fragment-selector-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (clip-timestamp-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-clip-timestamp-range-"))
-   (start-timestamp (common-lisp:error ":start-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-timestamp (common-lisp:error ":end-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass clip-timestamp-range common-lisp:nil
+                       ((start-timestamp :initarg :start-timestamp :initform
+                         (common-lisp:error ":start-timestamp is required")
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-clip-timestamp-range-start-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-timestamp :initarg :end-timestamp :initform
+                         (common-lisp:error ":end-timestamp is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-clip-timestamp-range-end-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-clip-timestamp-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'clip-timestamp-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'clip-timestamp-range 'make-clip-timestamp-range))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -126,13 +155,28 @@
 (common-lisp:deftype dashdisplay-fragment-number () 'common-lisp:string)
 (common-lisp:deftype dashdisplay-fragment-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dashfragment-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dashfragment-selector-"))
-   (fragment-selector-type common-lisp:nil :type
-    (common-lisp:or dashfragment-selector-type common-lisp:null))
-   (timestamp-range common-lisp:nil :type
-    (common-lisp:or dashtimestamp-range common-lisp:null)))
+ (common-lisp:defclass dashfragment-selector common-lisp:nil
+                       ((fragment-selector-type :initarg
+                         :fragment-selector-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or dashfragment-selector-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-dashfragment-selector-fragment-selector-type
+                         :shape "DASHFragmentSelectorType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (timestamp-range :initarg :timestamp-range :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dashtimestamp-range common-lisp:null)
+                         :accessor
+                         struct-shape-dashfragment-selector-timestamp-range
+                         :shape "DASHTimestampRange" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dashfragment-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dashfragment-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dashfragment-selector 'make-dashfragment-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -170,13 +214,24 @@
 (common-lisp:deftype dashplayback-mode () 'common-lisp:string)
 (common-lisp:deftype dashstreaming-session-url () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (dashtimestamp-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dashtimestamp-range-"))
-   (start-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass dashtimestamp-range common-lisp:nil
+                       ((start-timestamp :initarg :start-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-dashtimestamp-range-start-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-timestamp :initarg :end-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-dashtimestamp-range-end-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dashtimestamp-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dashtimestamp-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dashtimestamp-range 'make-dashtimestamp-range))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -215,18 +270,44 @@
 (common-lisp:deftype format-config-key () 'common-lisp:string)
 (common-lisp:deftype format-config-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (fragment (:copier common-lisp:nil) (:conc-name "struct-shape-fragment-"))
-   (fragment-number common-lisp:nil :type
-    (common-lisp:or fragment-number-string common-lisp:null))
-   (fragment-size-in-bytes common-lisp:nil :type
-    (common-lisp:or long common-lisp:null))
-   (producer-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (server-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (fragment-length-in-milliseconds common-lisp:nil :type
-    (common-lisp:or long common-lisp:null)))
+ (common-lisp:defclass fragment common-lisp:nil
+                       ((fragment-number :initarg :fragment-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or fragment-number-string
+                                         common-lisp:null)
+                         :accessor struct-shape-fragment-fragment-number :shape
+                         "FragmentNumberString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (fragment-size-in-bytes :initarg
+                         :fragment-size-in-bytes :initform common-lisp:nil
+                         :type (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-fragment-fragment-size-in-bytes :shape
+                         "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (producer-timestamp :initarg :producer-timestamp
+                         :initform common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-fragment-producer-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (server-timestamp :initarg :server-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-fragment-server-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (fragment-length-in-milliseconds :initarg
+                         :fragment-length-in-milliseconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long common-lisp:null) :accessor
+                         struct-shape-fragment-fragment-length-in-milliseconds
+                         :shape "Long" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-fragment
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'fragment
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'fragment 'make-fragment))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input fragment))
@@ -291,14 +372,31 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype fragment-number-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (fragment-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-fragment-selector-"))
-   (fragment-selector-type
-    (common-lisp:error ":fragment-selector-type is required") :type
-    (common-lisp:or fragment-selector-type common-lisp:null))
-   (timestamp-range (common-lisp:error ":timestamp-range is required") :type
-    (common-lisp:or timestamp-range common-lisp:null)))
+ (common-lisp:defclass fragment-selector common-lisp:nil
+                       ((fragment-selector-type :initarg
+                         :fragment-selector-type :initform
+                         (common-lisp:error
+                          ":fragment-selector-type is required")
+                         :type
+                         (common-lisp:or fragment-selector-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-fragment-selector-fragment-selector-type
+                         :shape "FragmentSelectorType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (timestamp-range :initarg :timestamp-range :initform
+                         (common-lisp:error ":timestamp-range is required")
+                         :type
+                         (common-lisp:or timestamp-range common-lisp:null)
+                         :accessor
+                         struct-shape-fragment-selector-timestamp-range :shape
+                         "TimestampRange" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-fragment-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'fragment-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'fragment-selector 'make-fragment-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -327,16 +425,35 @@
    common-lisp:nil))
 (common-lisp:deftype fragment-selector-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-clip-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-clip-input-"))
-   (stream-name common-lisp:nil :type
-    (common-lisp:or stream-name common-lisp:null))
-   (stream-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (clip-fragment-selector
-    (common-lisp:error ":clip-fragment-selector is required") :type
-    (common-lisp:or clip-fragment-selector common-lisp:null)))
+ (common-lisp:defclass get-clip-input common-lisp:nil
+                       ((stream-name :initarg :stream-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-name common-lisp:null)
+                         :accessor struct-shape-get-clip-input-stream-name
+                         :shape "StreamName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stream-arn :initarg :stream-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-get-clip-input-stream-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (clip-fragment-selector :initarg
+                         :clip-fragment-selector :initform
+                         (common-lisp:error
+                          ":clip-fragment-selector is required")
+                         :type
+                         (common-lisp:or clip-fragment-selector
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-clip-input-clip-fragment-selector
+                         :shape "ClipFragmentSelector" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-clip-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-clip-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-clip-input 'make-get-clip-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-clip-input))
@@ -370,12 +487,23 @@
                         ((aws-sdk/generator/shape::input get-clip-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-clip-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-clip-output-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or content-type common-lisp:null))
-   (payload common-lisp:nil :type (common-lisp:or payload common-lisp:null)))
+ (common-lisp:defclass get-clip-output common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-type common-lisp:null)
+                         :accessor struct-shape-get-clip-output-content-type
+                         :shape "ContentType" :location "header" :location-name
+                         "Content-Type")
+                        (payload :initarg :payload :initform common-lisp:nil
+                         :type (common-lisp:or payload common-lisp:null)
+                         :accessor struct-shape-get-clip-output-payload :shape
+                         "Payload" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-clip-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-clip-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-clip-output 'make-get-clip-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-clip-output))
@@ -398,24 +526,74 @@
                         ((aws-sdk/generator/shape::input get-clip-output))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'payload)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-dashstreaming-session-urlinput (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-dashstreaming-session-urlinput-"))
-   (stream-name common-lisp:nil :type
-    (common-lisp:or stream-name common-lisp:null))
-   (stream-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (playback-mode common-lisp:nil :type
-    (common-lisp:or dashplayback-mode common-lisp:null))
-   (display-fragment-timestamp common-lisp:nil :type
-    (common-lisp:or dashdisplay-fragment-timestamp common-lisp:null))
-   (display-fragment-number common-lisp:nil :type
-    (common-lisp:or dashdisplay-fragment-number common-lisp:null))
-   (dashfragment-selector common-lisp:nil :type
-    (common-lisp:or dashfragment-selector common-lisp:null))
-   (expires common-lisp:nil :type (common-lisp:or expires common-lisp:null))
-   (max-manifest-fragment-results common-lisp:nil :type
-    (common-lisp:or dashmax-results common-lisp:null)))
+ (common-lisp:defclass get-dashstreaming-session-urlinput common-lisp:nil
+                       ((stream-name :initarg :stream-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urlinput-stream-name
+                         :shape "StreamName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stream-arn :initarg :stream-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urlinput-stream-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (playback-mode :initarg :playback-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dashplayback-mode common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urlinput-playback-mode
+                         :shape "DASHPlaybackMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (display-fragment-timestamp :initarg
+                         :display-fragment-timestamp :initform common-lisp:nil
+                         :type
+                         (common-lisp:or dashdisplay-fragment-timestamp
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urlinput-display-fragment-timestamp
+                         :shape "DASHDisplayFragmentTimestamp" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (display-fragment-number :initarg
+                         :display-fragment-number :initform common-lisp:nil
+                         :type
+                         (common-lisp:or dashdisplay-fragment-number
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urlinput-display-fragment-number
+                         :shape "DASHDisplayFragmentNumber" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (dashfragment-selector :initarg :dashfragment-selector
+                         :initform common-lisp:nil :type
+                         (common-lisp:or dashfragment-selector
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urlinput-dashfragment-selector
+                         :shape "DASHFragmentSelector" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expires :initarg :expires :initform common-lisp:nil
+                         :type (common-lisp:or expires common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urlinput-expires
+                         :shape "Expires" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-manifest-fragment-results :initarg
+                         :max-manifest-fragment-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or dashmax-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urlinput-max-manifest-fragment-results
+                         :shape "DASHMaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-dashstreaming-session-urlinput
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-dashstreaming-session-urlinput
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-dashstreaming-session-urlinput
                     'make-get-dashstreaming-session-urlinput))
@@ -495,11 +673,22 @@
                           get-dashstreaming-session-urlinput))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-dashstreaming-session-urloutput (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-dashstreaming-session-urloutput-"))
-   (dashstreaming-session-url common-lisp:nil :type
-    (common-lisp:or dashstreaming-session-url common-lisp:null)))
+ (common-lisp:defclass get-dashstreaming-session-urloutput common-lisp:nil
+                       ((dashstreaming-session-url :initarg
+                         :dashstreaming-session-url :initform common-lisp:nil
+                         :type
+                         (common-lisp:or dashstreaming-session-url
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-dashstreaming-session-urloutput-dashstreaming-session-url
+                         :shape "DASHStreamingSessionURL" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-dashstreaming-session-urloutput
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-dashstreaming-session-urloutput
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-dashstreaming-session-urloutput
                     'make-get-dashstreaming-session-urloutput))
@@ -527,26 +716,79 @@
                           get-dashstreaming-session-urloutput))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-hlsstreaming-session-urlinput (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-hlsstreaming-session-urlinput-"))
-   (stream-name common-lisp:nil :type
-    (common-lisp:or stream-name common-lisp:null))
-   (stream-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (playback-mode common-lisp:nil :type
-    (common-lisp:or hlsplayback-mode common-lisp:null))
-   (hlsfragment-selector common-lisp:nil :type
-    (common-lisp:or hlsfragment-selector common-lisp:null))
-   (container-format common-lisp:nil :type
-    (common-lisp:or container-format common-lisp:null))
-   (discontinuity-mode common-lisp:nil :type
-    (common-lisp:or hlsdiscontinuity-mode common-lisp:null))
-   (display-fragment-timestamp common-lisp:nil :type
-    (common-lisp:or hlsdisplay-fragment-timestamp common-lisp:null))
-   (expires common-lisp:nil :type (common-lisp:or expires common-lisp:null))
-   (max-media-playlist-fragment-results common-lisp:nil :type
-    (common-lisp:or hlsmax-results common-lisp:null)))
+ (common-lisp:defclass get-hlsstreaming-session-urlinput common-lisp:nil
+                       ((stream-name :initarg :stream-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-stream-name
+                         :shape "StreamName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stream-arn :initarg :stream-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-stream-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (playback-mode :initarg :playback-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hlsplayback-mode common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-playback-mode
+                         :shape "HLSPlaybackMode" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (hlsfragment-selector :initarg :hlsfragment-selector
+                         :initform common-lisp:nil :type
+                         (common-lisp:or hlsfragment-selector common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-hlsfragment-selector
+                         :shape "HLSFragmentSelector" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (container-format :initarg :container-format :initform
+                         common-lisp:nil :type
+                         (common-lisp:or container-format common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-container-format
+                         :shape "ContainerFormat" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (discontinuity-mode :initarg :discontinuity-mode
+                         :initform common-lisp:nil :type
+                         (common-lisp:or hlsdiscontinuity-mode
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-discontinuity-mode
+                         :shape "HLSDiscontinuityMode" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (display-fragment-timestamp :initarg
+                         :display-fragment-timestamp :initform common-lisp:nil
+                         :type
+                         (common-lisp:or hlsdisplay-fragment-timestamp
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-display-fragment-timestamp
+                         :shape "HLSDisplayFragmentTimestamp" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expires :initarg :expires :initform common-lisp:nil
+                         :type (common-lisp:or expires common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-expires
+                         :shape "Expires" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-media-playlist-fragment-results :initarg
+                         :max-media-playlist-fragment-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hlsmax-results common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urlinput-max-media-playlist-fragment-results
+                         :shape "HLSMaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-hlsstreaming-session-urlinput
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-hlsstreaming-session-urlinput
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-hlsstreaming-session-urlinput
                     'make-get-hlsstreaming-session-urlinput))
@@ -632,11 +874,22 @@
                           get-hlsstreaming-session-urlinput))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-hlsstreaming-session-urloutput (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-hlsstreaming-session-urloutput-"))
-   (hlsstreaming-session-url common-lisp:nil :type
-    (common-lisp:or hlsstreaming-session-url common-lisp:null)))
+ (common-lisp:defclass get-hlsstreaming-session-urloutput common-lisp:nil
+                       ((hlsstreaming-session-url :initarg
+                         :hlsstreaming-session-url :initform common-lisp:nil
+                         :type
+                         (common-lisp:or hlsstreaming-session-url
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-hlsstreaming-session-urloutput-hlsstreaming-session-url
+                         :shape "HLSStreamingSessionURL" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-hlsstreaming-session-urloutput
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-hlsstreaming-session-urloutput
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-hlsstreaming-session-urloutput
                     'make-get-hlsstreaming-session-urloutput))
@@ -664,33 +917,90 @@
                           get-hlsstreaming-session-urloutput))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-images-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-images-input-"))
-   (stream-name common-lisp:nil :type
-    (common-lisp:or stream-name common-lisp:null))
-   (stream-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (image-selector-type (common-lisp:error ":image-selector-type is required")
-    :type (common-lisp:or image-selector-type common-lisp:null))
-   (start-timestamp (common-lisp:error ":start-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-timestamp (common-lisp:error ":end-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (sampling-interval common-lisp:nil :type
-    (common-lisp:or sampling-interval common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or format common-lisp:null))
-   (format-config common-lisp:nil :type
-    (common-lisp:or format-config common-lisp:null))
-   (width-pixels common-lisp:nil :type
-    (common-lisp:or width-pixels common-lisp:null))
-   (height-pixels common-lisp:nil :type
-    (common-lisp:or height-pixels common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or get-images-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass get-images-input common-lisp:nil
+                       ((stream-name :initarg :stream-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-name common-lisp:null)
+                         :accessor struct-shape-get-images-input-stream-name
+                         :shape "StreamName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stream-arn :initarg :stream-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-get-images-input-stream-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (image-selector-type :initarg :image-selector-type
+                         :initform
+                         (common-lisp:error ":image-selector-type is required")
+                         :type
+                         (common-lisp:or image-selector-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-images-input-image-selector-type
+                         :shape "ImageSelectorType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-timestamp :initarg :start-timestamp :initform
+                         (common-lisp:error ":start-timestamp is required")
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor
+                         struct-shape-get-images-input-start-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-timestamp :initarg :end-timestamp :initform
+                         (common-lisp:error ":end-timestamp is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-get-images-input-end-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sampling-interval :initarg :sampling-interval
+                         :initform common-lisp:nil :type
+                         (common-lisp:or sampling-interval common-lisp:null)
+                         :accessor
+                         struct-shape-get-images-input-sampling-interval :shape
+                         "SamplingInterval" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (format :initarg :format :initform
+                         (common-lisp:error ":format is required") :type
+                         (common-lisp:or format common-lisp:null) :accessor
+                         struct-shape-get-images-input-format :shape "Format"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (format-config :initarg :format-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or format-config common-lisp:null)
+                         :accessor struct-shape-get-images-input-format-config
+                         :shape "FormatConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (width-pixels :initarg :width-pixels :initform
+                         common-lisp:nil :type
+                         (common-lisp:or width-pixels common-lisp:null)
+                         :accessor struct-shape-get-images-input-width-pixels
+                         :shape "WidthPixels" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (height-pixels :initarg :height-pixels :initform
+                         common-lisp:nil :type
+                         (common-lisp:or height-pixels common-lisp:null)
+                         :accessor struct-shape-get-images-input-height-pixels
+                         :shape "HeightPixels" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or get-images-max-results
+                                         common-lisp:null)
+                         :accessor struct-shape-get-images-input-max-results
+                         :shape "GetImagesMaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-get-images-input-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-images-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-images-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-images-input 'make-get-images-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -788,12 +1098,23 @@
    common-lisp:nil))
 (common-lisp:deftype get-images-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-images-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-images-output-"))
-   (images common-lisp:nil :type (common-lisp:or images common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass get-images-output common-lisp:nil
+                       ((images :initarg :images :initform common-lisp:nil
+                         :type (common-lisp:or images common-lisp:null)
+                         :accessor struct-shape-get-images-output-images :shape
+                         "Images" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-get-images-output-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-images-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-images-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-images-output 'make-get-images-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -820,15 +1141,34 @@
                         ((aws-sdk/generator/shape::input get-images-output))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-media-for-fragment-list-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-media-for-fragment-list-input-"))
-   (stream-name common-lisp:nil :type
-    (common-lisp:or stream-name common-lisp:null))
-   (stream-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (fragments (common-lisp:error ":fragments is required") :type
-    (common-lisp:or fragment-number-list common-lisp:null)))
+ (common-lisp:defclass get-media-for-fragment-list-input common-lisp:nil
+                       ((stream-name :initarg :stream-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-name common-lisp:null)
+                         :accessor
+                         struct-shape-get-media-for-fragment-list-input-stream-name
+                         :shape "StreamName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stream-arn :initarg :stream-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-media-for-fragment-list-input-stream-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (fragments :initarg :fragments :initform
+                         (common-lisp:error ":fragments is required") :type
+                         (common-lisp:or fragment-number-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-media-for-fragment-list-input-fragments
+                         :shape "FragmentNumberList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-media-for-fragment-list-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-media-for-fragment-list-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-media-for-fragment-list-input
                     'make-get-media-for-fragment-list-input))
@@ -869,12 +1209,26 @@
                           get-media-for-fragment-list-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-media-for-fragment-list-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-media-for-fragment-list-output-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or content-type common-lisp:null))
-   (payload common-lisp:nil :type (common-lisp:or payload common-lisp:null)))
+ (common-lisp:defclass get-media-for-fragment-list-output common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-type common-lisp:null)
+                         :accessor
+                         struct-shape-get-media-for-fragment-list-output-content-type
+                         :shape "ContentType" :location "header" :location-name
+                         "Content-Type")
+                        (payload :initarg :payload :initform common-lisp:nil
+                         :type (common-lisp:or payload common-lisp:null)
+                         :accessor
+                         struct-shape-get-media-for-fragment-list-output-payload
+                         :shape "Payload" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-media-for-fragment-list-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-media-for-fragment-list-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-media-for-fragment-list-output
                     'make-get-media-for-fragment-list-output))
@@ -907,13 +1261,28 @@
 (common-lisp:deftype hlsdiscontinuity-mode () 'common-lisp:string)
 (common-lisp:deftype hlsdisplay-fragment-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (hlsfragment-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hlsfragment-selector-"))
-   (fragment-selector-type common-lisp:nil :type
-    (common-lisp:or hlsfragment-selector-type common-lisp:null))
-   (timestamp-range common-lisp:nil :type
-    (common-lisp:or hlstimestamp-range common-lisp:null)))
+ (common-lisp:defclass hlsfragment-selector common-lisp:nil
+                       ((fragment-selector-type :initarg
+                         :fragment-selector-type :initform common-lisp:nil
+                         :type
+                         (common-lisp:or hlsfragment-selector-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-hlsfragment-selector-fragment-selector-type
+                         :shape "HLSFragmentSelectorType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (timestamp-range :initarg :timestamp-range :initform
+                         common-lisp:nil :type
+                         (common-lisp:or hlstimestamp-range common-lisp:null)
+                         :accessor
+                         struct-shape-hlsfragment-selector-timestamp-range
+                         :shape "HLSTimestampRange" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-hlsfragment-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'hlsfragment-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'hlsfragment-selector 'make-hlsfragment-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -945,13 +1314,24 @@
 (common-lisp:deftype hlsplayback-mode () 'common-lisp:string)
 (common-lisp:deftype hlsstreaming-session-url () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (hlstimestamp-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-hlstimestamp-range-"))
-   (start-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass hlstimestamp-range common-lisp:nil
+                       ((start-timestamp :initarg :start-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-hlstimestamp-range-start-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (end-timestamp :initarg :end-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-hlstimestamp-range-end-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-hlstimestamp-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'hlstimestamp-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'hlstimestamp-range 'make-hlstimestamp-range))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -979,13 +1359,29 @@
    common-lisp:nil))
 (common-lisp:deftype height-pixels () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (image (:copier common-lisp:nil) (:conc-name "struct-shape-image-"))
-   (time-stamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (error common-lisp:nil :type (common-lisp:or image-error common-lisp:null))
-   (image-content common-lisp:nil :type
-    (common-lisp:or image-content common-lisp:null)))
+ (common-lisp:defclass image common-lisp:nil
+                       ((time-stamp :initarg :time-stamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-image-time-stamp :shape "Timestamp"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (error :initarg :error :initform common-lisp:nil :type
+                         (common-lisp:or image-error common-lisp:null)
+                         :accessor struct-shape-image-error :shape "ImageError"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (image-content :initarg :image-content :initform
+                         common-lisp:nil :type
+                         (common-lisp:or image-content common-lisp:null)
+                         :accessor struct-shape-image-image-content :shape
+                         "ImageContent" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-image
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'image
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'image 'make-image))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input image))
@@ -1052,19 +1448,46 @@
   (common-lisp:list 'invalid-media-frame-exception
                     'invalid-media-frame-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-fragments-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-fragments-input-"))
-   (stream-name common-lisp:nil :type
-    (common-lisp:or stream-name common-lisp:null))
-   (stream-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or list-fragments-max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (fragment-selector common-lisp:nil :type
-    (common-lisp:or fragment-selector common-lisp:null)))
+ (common-lisp:defclass list-fragments-input common-lisp:nil
+                       ((stream-name :initarg :stream-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-name common-lisp:null)
+                         :accessor
+                         struct-shape-list-fragments-input-stream-name :shape
+                         "StreamName" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (stream-arn :initarg :stream-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-list-fragments-input-stream-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or list-fragments-max-results
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-fragments-input-max-results :shape
+                         "ListFragmentsMaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-fragments-input-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (fragment-selector :initarg :fragment-selector
+                         :initform common-lisp:nil :type
+                         (common-lisp:or fragment-selector common-lisp:null)
+                         :accessor
+                         struct-shape-list-fragments-input-fragment-selector
+                         :shape "FragmentSelector" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-fragments-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-fragments-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-fragments-input 'make-list-fragments-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1113,13 +1536,24 @@
    common-lisp:nil))
 (common-lisp:deftype list-fragments-max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-fragments-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-fragments-output-"))
-   (fragments common-lisp:nil :type
-    (common-lisp:or fragment-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-fragments-output common-lisp:nil
+                       ((fragments :initarg :fragments :initform
+                         common-lisp:nil :type
+                         (common-lisp:or fragment-list common-lisp:null)
+                         :accessor struct-shape-list-fragments-output-fragments
+                         :shape "FragmentList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-fragments-output-next-token :shape
+                         "NextToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-fragments-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-fragments-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-fragments-output 'make-list-fragments-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1192,13 +1626,24 @@
 (common-lisp:deftype stream-name () 'common-lisp:string)
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (timestamp-range (:copier common-lisp:nil)
-      (:conc-name "struct-shape-timestamp-range-"))
-   (start-timestamp (common-lisp:error ":start-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-timestamp (common-lisp:error ":end-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+ (common-lisp:defclass timestamp-range common-lisp:nil
+                       ((start-timestamp :initarg :start-timestamp :initform
+                         (common-lisp:error ":start-timestamp is required")
+                         :type (common-lisp:or timestamp common-lisp:null)
+                         :accessor struct-shape-timestamp-range-start-timestamp
+                         :shape "Timestamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-timestamp :initarg :end-timestamp :initform
+                         (common-lisp:error ":end-timestamp is required") :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-timestamp-range-end-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-timestamp-range
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'timestamp-range
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'timestamp-range 'make-timestamp-range))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input timestamp-range))

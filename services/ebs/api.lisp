@@ -47,12 +47,24 @@
                     'access-denied-exception-reason)))
 (common-lisp:deftype access-denied-exception-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (block (:copier common-lisp:nil) (:conc-name "struct-shape-block-"))
-   (block-index common-lisp:nil :type
-    (common-lisp:or block-index common-lisp:null))
-   (block-token common-lisp:nil :type
-    (common-lisp:or block-token common-lisp:null)))
+ (common-lisp:defclass block common-lisp:nil
+                       ((block-index :initarg :block-index :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-index common-lisp:null)
+                         :accessor struct-shape-block-block-index :shape
+                         "BlockIndex" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (block-token :initarg :block-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-token common-lisp:null)
+                         :accessor struct-shape-block-block-token :shape
+                         "BlockToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-block
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'block
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'block 'make-block))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input block))
@@ -91,15 +103,31 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (changed-block (:copier common-lisp:nil)
-      (:conc-name "struct-shape-changed-block-"))
-   (block-index common-lisp:nil :type
-    (common-lisp:or block-index common-lisp:null))
-   (first-block-token common-lisp:nil :type
-    (common-lisp:or block-token common-lisp:null))
-   (second-block-token common-lisp:nil :type
-    (common-lisp:or block-token common-lisp:null)))
+ (common-lisp:defclass changed-block common-lisp:nil
+                       ((block-index :initarg :block-index :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-index common-lisp:null)
+                         :accessor struct-shape-changed-block-block-index
+                         :shape "BlockIndex" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (first-block-token :initarg :first-block-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-token common-lisp:null)
+                         :accessor struct-shape-changed-block-first-block-token
+                         :shape "BlockToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (second-block-token :initarg :second-block-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-token common-lisp:null)
+                         :accessor
+                         struct-shape-changed-block-second-block-token :shape
+                         "BlockToken" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-changed-block
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'changed-block
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'changed-block 'make-changed-block))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input changed-block))
@@ -144,19 +172,51 @@
 (common-lisp:deftype checksum-aggregation-method () 'common-lisp:string)
 (common-lisp:deftype checksum-algorithm () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (complete-snapshot-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-complete-snapshot-request-"))
-   (snapshot-id (common-lisp:error ":snapshot-id is required") :type
-    (common-lisp:or snapshot-id common-lisp:null))
-   (changed-blocks-count
-    (common-lisp:error ":changed-blocks-count is required") :type
-    (common-lisp:or changed-blocks-count common-lisp:null))
-   (checksum common-lisp:nil :type (common-lisp:or checksum common-lisp:null))
-   (checksum-algorithm common-lisp:nil :type
-    (common-lisp:or checksum-algorithm common-lisp:null))
-   (checksum-aggregation-method common-lisp:nil :type
-    (common-lisp:or checksum-aggregation-method common-lisp:null)))
+ (common-lisp:defclass complete-snapshot-request common-lisp:nil
+                       ((snapshot-id :initarg :snapshot-id :initform
+                         (common-lisp:error ":snapshot-id is required") :type
+                         (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-complete-snapshot-request-snapshot-id
+                         :shape "SnapshotId" :location "uri" :location-name
+                         "snapshotId")
+                        (changed-blocks-count :initarg :changed-blocks-count
+                         :initform
+                         (common-lisp:error
+                          ":changed-blocks-count is required")
+                         :type
+                         (common-lisp:or changed-blocks-count common-lisp:null)
+                         :accessor
+                         struct-shape-complete-snapshot-request-changed-blocks-count
+                         :shape "ChangedBlocksCount" :location "header"
+                         :location-name "x-amz-ChangedBlocksCount")
+                        (checksum :initarg :checksum :initform common-lisp:nil
+                         :type (common-lisp:or checksum common-lisp:null)
+                         :accessor
+                         struct-shape-complete-snapshot-request-checksum :shape
+                         "Checksum" :location "header" :location-name
+                         "x-amz-Checksum")
+                        (checksum-algorithm :initarg :checksum-algorithm
+                         :initform common-lisp:nil :type
+                         (common-lisp:or checksum-algorithm common-lisp:null)
+                         :accessor
+                         struct-shape-complete-snapshot-request-checksum-algorithm
+                         :shape "ChecksumAlgorithm" :location "header"
+                         :location-name "x-amz-Checksum-Algorithm")
+                        (checksum-aggregation-method :initarg
+                         :checksum-aggregation-method :initform common-lisp:nil
+                         :type
+                         (common-lisp:or checksum-aggregation-method
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-complete-snapshot-request-checksum-aggregation-method
+                         :shape "ChecksumAggregationMethod" :location "header"
+                         :location-name "x-amz-Checksum-Aggregation-Method"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-complete-snapshot-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'complete-snapshot-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'complete-snapshot-request
                     'make-complete-snapshot-request))
@@ -197,10 +257,18 @@
                           complete-snapshot-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (complete-snapshot-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-complete-snapshot-response-"))
-   (status common-lisp:nil :type (common-lisp:or status common-lisp:null)))
+ (common-lisp:defclass complete-snapshot-response common-lisp:nil
+                       ((status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or status common-lisp:null)
+                         :accessor
+                         struct-shape-complete-snapshot-response-status :shape
+                         "Status" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-complete-snapshot-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'complete-snapshot-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'complete-snapshot-response
                     'make-complete-snapshot-response))
@@ -245,15 +313,33 @@
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-snapshot-block-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-snapshot-block-request-"))
-   (snapshot-id (common-lisp:error ":snapshot-id is required") :type
-    (common-lisp:or snapshot-id common-lisp:null))
-   (block-index (common-lisp:error ":block-index is required") :type
-    (common-lisp:or block-index common-lisp:null))
-   (block-token (common-lisp:error ":block-token is required") :type
-    (common-lisp:or block-token common-lisp:null)))
+ (common-lisp:defclass get-snapshot-block-request common-lisp:nil
+                       ((snapshot-id :initarg :snapshot-id :initform
+                         (common-lisp:error ":snapshot-id is required") :type
+                         (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-get-snapshot-block-request-snapshot-id
+                         :shape "SnapshotId" :location "uri" :location-name
+                         "snapshotId")
+                        (block-index :initarg :block-index :initform
+                         (common-lisp:error ":block-index is required") :type
+                         (common-lisp:or block-index common-lisp:null)
+                         :accessor
+                         struct-shape-get-snapshot-block-request-block-index
+                         :shape "BlockIndex" :location "uri" :location-name
+                         "blockIndex")
+                        (block-token :initarg :block-token :initform
+                         (common-lisp:error ":block-token is required") :type
+                         (common-lisp:or block-token common-lisp:null)
+                         :accessor
+                         struct-shape-get-snapshot-block-request-block-token
+                         :shape "BlockToken" :location "querystring"
+                         :location-name "blockToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-snapshot-block-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-snapshot-block-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-snapshot-block-request
                     'make-get-snapshot-block-request))
@@ -273,16 +359,38 @@
                           get-snapshot-block-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-snapshot-block-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-snapshot-block-response-"))
-   (data-length common-lisp:nil :type
-    (common-lisp:or data-length common-lisp:null))
-   (block-data common-lisp:nil :type
-    (common-lisp:or block-data common-lisp:null))
-   (checksum common-lisp:nil :type (common-lisp:or checksum common-lisp:null))
-   (checksum-algorithm common-lisp:nil :type
-    (common-lisp:or checksum-algorithm common-lisp:null)))
+ (common-lisp:defclass get-snapshot-block-response common-lisp:nil
+                       ((data-length :initarg :data-length :initform
+                         common-lisp:nil :type
+                         (common-lisp:or data-length common-lisp:null)
+                         :accessor
+                         struct-shape-get-snapshot-block-response-data-length
+                         :shape "DataLength" :location "header" :location-name
+                         "x-amz-Data-Length")
+                        (block-data :initarg :block-data :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-data common-lisp:null) :accessor
+                         struct-shape-get-snapshot-block-response-block-data
+                         :shape "BlockData" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (checksum :initarg :checksum :initform common-lisp:nil
+                         :type (common-lisp:or checksum common-lisp:null)
+                         :accessor
+                         struct-shape-get-snapshot-block-response-checksum
+                         :shape "Checksum" :location "header" :location-name
+                         "x-amz-Checksum")
+                        (checksum-algorithm :initarg :checksum-algorithm
+                         :initform common-lisp:nil :type
+                         (common-lisp:or checksum-algorithm common-lisp:null)
+                         :accessor
+                         struct-shape-get-snapshot-block-response-checksum-algorithm
+                         :shape "ChecksumAlgorithm" :location "header"
+                         :location-name "x-amz-Checksum-Algorithm"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-snapshot-block-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-snapshot-block-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-snapshot-block-response
                     'make-get-snapshot-block-response))
@@ -332,19 +440,47 @@
                     'internal-server-exception-message)))
 (common-lisp:deftype kms-key-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-changed-blocks-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-changed-blocks-request-"))
-   (first-snapshot-id common-lisp:nil :type
-    (common-lisp:or snapshot-id common-lisp:null))
-   (second-snapshot-id (common-lisp:error ":second-snapshot-id is required")
-    :type (common-lisp:or snapshot-id common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (starting-block-index common-lisp:nil :type
-    (common-lisp:or block-index common-lisp:null)))
+ (common-lisp:defclass list-changed-blocks-request common-lisp:nil
+                       ((first-snapshot-id :initarg :first-snapshot-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-changed-blocks-request-first-snapshot-id
+                         :shape "SnapshotId" :location "querystring"
+                         :location-name "firstSnapshotId")
+                        (second-snapshot-id :initarg :second-snapshot-id
+                         :initform
+                         (common-lisp:error ":second-snapshot-id is required")
+                         :type (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-changed-blocks-request-second-snapshot-id
+                         :shape "SnapshotId" :location "uri" :location-name
+                         "secondSnapshotId")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-changed-blocks-request-next-token
+                         :shape "PageToken" :location "querystring"
+                         :location-name "pageToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-changed-blocks-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (starting-block-index :initarg :starting-block-index
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-index common-lisp:null)
+                         :accessor
+                         struct-shape-list-changed-blocks-request-starting-block-index
+                         :shape "BlockIndex" :location "querystring"
+                         :location-name "startingBlockIndex"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-changed-blocks-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-changed-blocks-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-changed-blocks-request
                     'make-list-changed-blocks-request))
@@ -364,19 +500,44 @@
                           list-changed-blocks-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-changed-blocks-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-changed-blocks-response-"))
-   (changed-blocks common-lisp:nil :type
-    (common-lisp:or changed-blocks common-lisp:null))
-   (expiry-time common-lisp:nil :type
-    (common-lisp:or time-stamp common-lisp:null))
-   (volume-size common-lisp:nil :type
-    (common-lisp:or volume-size common-lisp:null))
-   (block-size common-lisp:nil :type
-    (common-lisp:or block-size common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass list-changed-blocks-response common-lisp:nil
+                       ((changed-blocks :initarg :changed-blocks :initform
+                         common-lisp:nil :type
+                         (common-lisp:or changed-blocks common-lisp:null)
+                         :accessor
+                         struct-shape-list-changed-blocks-response-changed-blocks
+                         :shape "ChangedBlocks" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiry-time :initarg :expiry-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or time-stamp common-lisp:null) :accessor
+                         struct-shape-list-changed-blocks-response-expiry-time
+                         :shape "TimeStamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-size :initarg :volume-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or volume-size common-lisp:null)
+                         :accessor
+                         struct-shape-list-changed-blocks-response-volume-size
+                         :shape "VolumeSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-size :initarg :block-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-size common-lisp:null) :accessor
+                         struct-shape-list-changed-blocks-response-block-size
+                         :shape "BlockSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-changed-blocks-response-next-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-changed-blocks-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-changed-blocks-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-changed-blocks-response
                     'make-list-changed-blocks-response))
@@ -431,17 +592,39 @@
                           list-changed-blocks-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-snapshot-blocks-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-snapshot-blocks-request-"))
-   (snapshot-id (common-lisp:error ":snapshot-id is required") :type
-    (common-lisp:or snapshot-id common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (starting-block-index common-lisp:nil :type
-    (common-lisp:or block-index common-lisp:null)))
+ (common-lisp:defclass list-snapshot-blocks-request common-lisp:nil
+                       ((snapshot-id :initarg :snapshot-id :initform
+                         (common-lisp:error ":snapshot-id is required") :type
+                         (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-snapshot-blocks-request-snapshot-id
+                         :shape "SnapshotId" :location "uri" :location-name
+                         "snapshotId")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-snapshot-blocks-request-next-token
+                         :shape "PageToken" :location "querystring"
+                         :location-name "pageToken")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-snapshot-blocks-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (starting-block-index :initarg :starting-block-index
+                         :initform common-lisp:nil :type
+                         (common-lisp:or block-index common-lisp:null)
+                         :accessor
+                         struct-shape-list-snapshot-blocks-request-starting-block-index
+                         :shape "BlockIndex" :location "querystring"
+                         :location-name "startingBlockIndex"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-snapshot-blocks-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-snapshot-blocks-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-snapshot-blocks-request
                     'make-list-snapshot-blocks-request))
@@ -461,18 +644,44 @@
                           list-snapshot-blocks-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-snapshot-blocks-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-snapshot-blocks-response-"))
-   (blocks common-lisp:nil :type (common-lisp:or blocks common-lisp:null))
-   (expiry-time common-lisp:nil :type
-    (common-lisp:or time-stamp common-lisp:null))
-   (volume-size common-lisp:nil :type
-    (common-lisp:or volume-size common-lisp:null))
-   (block-size common-lisp:nil :type
-    (common-lisp:or block-size common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or page-token common-lisp:null)))
+ (common-lisp:defclass list-snapshot-blocks-response common-lisp:nil
+                       ((blocks :initarg :blocks :initform common-lisp:nil
+                         :type (common-lisp:or blocks common-lisp:null)
+                         :accessor
+                         struct-shape-list-snapshot-blocks-response-blocks
+                         :shape "Blocks" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiry-time :initarg :expiry-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or time-stamp common-lisp:null) :accessor
+                         struct-shape-list-snapshot-blocks-response-expiry-time
+                         :shape "TimeStamp" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (volume-size :initarg :volume-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or volume-size common-lisp:null)
+                         :accessor
+                         struct-shape-list-snapshot-blocks-response-volume-size
+                         :shape "VolumeSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-size :initarg :block-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-size common-lisp:null) :accessor
+                         struct-shape-list-snapshot-blocks-response-block-size
+                         :shape "BlockSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or page-token common-lisp:null) :accessor
+                         struct-shape-list-snapshot-blocks-response-next-token
+                         :shape "PageToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-snapshot-blocks-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-snapshot-blocks-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-snapshot-blocks-response
                     'make-list-snapshot-blocks-response))
@@ -531,22 +740,60 @@
 (common-lisp:deftype page-token () 'common-lisp:string)
 (common-lisp:deftype progress () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-snapshot-block-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-snapshot-block-request-"))
-   (snapshot-id (common-lisp:error ":snapshot-id is required") :type
-    (common-lisp:or snapshot-id common-lisp:null))
-   (block-index (common-lisp:error ":block-index is required") :type
-    (common-lisp:or block-index common-lisp:null))
-   (block-data (common-lisp:error ":block-data is required") :type
-    (common-lisp:or block-data common-lisp:null))
-   (data-length (common-lisp:error ":data-length is required") :type
-    (common-lisp:or data-length common-lisp:null))
-   (progress common-lisp:nil :type (common-lisp:or progress common-lisp:null))
-   (checksum (common-lisp:error ":checksum is required") :type
-    (common-lisp:or checksum common-lisp:null))
-   (checksum-algorithm (common-lisp:error ":checksum-algorithm is required")
-    :type (common-lisp:or checksum-algorithm common-lisp:null)))
+ (common-lisp:defclass put-snapshot-block-request common-lisp:nil
+                       ((snapshot-id :initarg :snapshot-id :initform
+                         (common-lisp:error ":snapshot-id is required") :type
+                         (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-put-snapshot-block-request-snapshot-id
+                         :shape "SnapshotId" :location "uri" :location-name
+                         "snapshotId")
+                        (block-index :initarg :block-index :initform
+                         (common-lisp:error ":block-index is required") :type
+                         (common-lisp:or block-index common-lisp:null)
+                         :accessor
+                         struct-shape-put-snapshot-block-request-block-index
+                         :shape "BlockIndex" :location "uri" :location-name
+                         "blockIndex")
+                        (block-data :initarg :block-data :initform
+                         (common-lisp:error ":block-data is required") :type
+                         (common-lisp:or block-data common-lisp:null) :accessor
+                         struct-shape-put-snapshot-block-request-block-data
+                         :shape "BlockData" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (data-length :initarg :data-length :initform
+                         (common-lisp:error ":data-length is required") :type
+                         (common-lisp:or data-length common-lisp:null)
+                         :accessor
+                         struct-shape-put-snapshot-block-request-data-length
+                         :shape "DataLength" :location "header" :location-name
+                         "x-amz-Data-Length")
+                        (progress :initarg :progress :initform common-lisp:nil
+                         :type (common-lisp:or progress common-lisp:null)
+                         :accessor
+                         struct-shape-put-snapshot-block-request-progress
+                         :shape "Progress" :location "header" :location-name
+                         "x-amz-Progress")
+                        (checksum :initarg :checksum :initform
+                         (common-lisp:error ":checksum is required") :type
+                         (common-lisp:or checksum common-lisp:null) :accessor
+                         struct-shape-put-snapshot-block-request-checksum
+                         :shape "Checksum" :location "header" :location-name
+                         "x-amz-Checksum")
+                        (checksum-algorithm :initarg :checksum-algorithm
+                         :initform
+                         (common-lisp:error ":checksum-algorithm is required")
+                         :type
+                         (common-lisp:or checksum-algorithm common-lisp:null)
+                         :accessor
+                         struct-shape-put-snapshot-block-request-checksum-algorithm
+                         :shape "ChecksumAlgorithm" :location "header"
+                         :location-name "x-amz-Checksum-Algorithm"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-snapshot-block-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-snapshot-block-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-snapshot-block-request
                     'make-put-snapshot-block-request))
@@ -590,12 +837,25 @@
                           put-snapshot-block-request))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'block-data)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-snapshot-block-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-snapshot-block-response-"))
-   (checksum common-lisp:nil :type (common-lisp:or checksum common-lisp:null))
-   (checksum-algorithm common-lisp:nil :type
-    (common-lisp:or checksum-algorithm common-lisp:null)))
+ (common-lisp:defclass put-snapshot-block-response common-lisp:nil
+                       ((checksum :initarg :checksum :initform common-lisp:nil
+                         :type (common-lisp:or checksum common-lisp:null)
+                         :accessor
+                         struct-shape-put-snapshot-block-response-checksum
+                         :shape "Checksum" :location "header" :location-name
+                         "x-amz-Checksum")
+                        (checksum-algorithm :initarg :checksum-algorithm
+                         :initform common-lisp:nil :type
+                         (common-lisp:or checksum-algorithm common-lisp:null)
+                         :accessor
+                         struct-shape-put-snapshot-block-response-checksum-algorithm
+                         :shape "ChecksumAlgorithm" :location "header"
+                         :location-name "x-amz-Checksum-Algorithm"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-snapshot-block-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-snapshot-block-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-snapshot-block-response
                     'make-put-snapshot-block-response))
@@ -663,22 +923,63 @@
   'common-lisp:string)
 (common-lisp:deftype snapshot-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-snapshot-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-snapshot-request-"))
-   (volume-size (common-lisp:error ":volume-size is required") :type
-    (common-lisp:or volume-size common-lisp:null))
-   (parent-snapshot-id common-lisp:nil :type
-    (common-lisp:or snapshot-id common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (client-token common-lisp:nil :type
-    (common-lisp:or idempotency-token common-lisp:null))
-   (encrypted common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (kms-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (timeout common-lisp:nil :type (common-lisp:or timeout common-lisp:null)))
+ (common-lisp:defclass start-snapshot-request common-lisp:nil
+                       ((volume-size :initarg :volume-size :initform
+                         (common-lisp:error ":volume-size is required") :type
+                         (common-lisp:or volume-size common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-request-volume-size :shape
+                         "VolumeSize" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (parent-snapshot-id :initarg :parent-snapshot-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-request-parent-snapshot-id
+                         :shape "SnapshotId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-start-snapshot-request-tags :shape "Tags"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-request-description :shape
+                         "Description" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (client-token :initarg :client-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or idempotency-token common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-request-client-token
+                         :shape "IdempotencyToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (encrypted :initarg :encrypted :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean common-lisp:null) :accessor
+                         struct-shape-start-snapshot-request-encrypted :shape
+                         "Boolean" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (kms-key-arn :initarg :kms-key-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-request-kms-key-arn :shape
+                         "KmsKeyArn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (timeout :initarg :timeout :initform common-lisp:nil
+                         :type (common-lisp:or timeout common-lisp:null)
+                         :accessor struct-shape-start-snapshot-request-timeout
+                         :shape "Timeout" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-snapshot-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-snapshot-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-snapshot-request 'make-start-snapshot-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -753,27 +1054,81 @@
                           start-snapshot-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-snapshot-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-snapshot-response-"))
-   (description common-lisp:nil :type
-    (common-lisp:or description common-lisp:null))
-   (snapshot-id common-lisp:nil :type
-    (common-lisp:or snapshot-id common-lisp:null))
-   (owner-id common-lisp:nil :type (common-lisp:or owner-id common-lisp:null))
-   (status common-lisp:nil :type (common-lisp:or status common-lisp:null))
-   (start-time common-lisp:nil :type
-    (common-lisp:or time-stamp common-lisp:null))
-   (volume-size common-lisp:nil :type
-    (common-lisp:or volume-size common-lisp:null))
-   (block-size common-lisp:nil :type
-    (common-lisp:or block-size common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null))
-   (parent-snapshot-id common-lisp:nil :type
-    (common-lisp:or snapshot-id common-lisp:null))
-   (kms-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (sse-type common-lisp:nil :type (common-lisp:or ssetype common-lisp:null)))
+ (common-lisp:defclass start-snapshot-response common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or description common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-response-description
+                         :shape "Description" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (snapshot-id :initarg :snapshot-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-response-snapshot-id
+                         :shape "SnapshotId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (owner-id :initarg :owner-id :initform common-lisp:nil
+                         :type (common-lisp:or owner-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-response-owner-id :shape
+                         "OwnerId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform common-lisp:nil
+                         :type (common-lisp:or status common-lisp:null)
+                         :accessor struct-shape-start-snapshot-response-status
+                         :shape "Status" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-time :initarg :start-time :initform
+                         common-lisp:nil :type
+                         (common-lisp:or time-stamp common-lisp:null) :accessor
+                         struct-shape-start-snapshot-response-start-time :shape
+                         "TimeStamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (volume-size :initarg :volume-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or volume-size common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-response-volume-size
+                         :shape "VolumeSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (block-size :initarg :block-size :initform
+                         common-lisp:nil :type
+                         (common-lisp:or block-size common-lisp:null) :accessor
+                         struct-shape-start-snapshot-response-block-size :shape
+                         "BlockSize" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tags common-lisp:null) :accessor
+                         struct-shape-start-snapshot-response-tags :shape
+                         "Tags" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (parent-snapshot-id :initarg :parent-snapshot-id
+                         :initform common-lisp:nil :type
+                         (common-lisp:or snapshot-id common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-response-parent-snapshot-id
+                         :shape "SnapshotId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-arn :initarg :kms-key-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-response-kms-key-arn
+                         :shape "KmsKeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sse-type :initarg :sse-type :initform common-lisp:nil
+                         :type (common-lisp:or ssetype common-lisp:null)
+                         :accessor
+                         struct-shape-start-snapshot-response-sse-type :shape
+                         "SSEType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-snapshot-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-snapshot-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-snapshot-response 'make-start-snapshot-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -870,10 +1225,19 @@
    common-lisp:nil))
 (common-lisp:deftype status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key common-lisp:nil :type (common-lisp:or tag-key common-lisp:null))
-   (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform common-lisp:nil :type
+                         (common-lisp:or tag-key common-lisp:null) :accessor
+                         struct-shape-tag-key :shape "TagKey" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform common-lisp:nil :type
+                         (common-lisp:or tag-value common-lisp:null) :accessor
+                         struct-shape-tag-value :shape "TagValue" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))

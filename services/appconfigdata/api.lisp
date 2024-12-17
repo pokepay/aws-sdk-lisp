@@ -32,11 +32,20 @@
     ("ResourceNotFoundException" . resource-not-found-exception)
     ("ThrottlingException" . throttling-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (bad-request-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-bad-request-details-"))
-   (invalid-parameters common-lisp:nil :type
-    (common-lisp:or invalid-parameter-map common-lisp:null)))
+ (common-lisp:defclass bad-request-details common-lisp:nil
+                       ((invalid-parameters :initarg :invalid-parameters
+                         :initform common-lisp:nil :type
+                         (common-lisp:or invalid-parameter-map
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-bad-request-details-invalid-parameters
+                         :shape "InvalidParameterMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-bad-request-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'bad-request-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'bad-request-details 'make-bad-request-details))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -70,11 +79,21 @@
                     'bad-request-exception-details)))
 (common-lisp:deftype bad-request-reason () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-latest-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-latest-configuration-request-"))
-   (configuration-token (common-lisp:error ":configuration-token is required")
-    :type (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass get-latest-configuration-request common-lisp:nil
+                       ((configuration-token :initarg :configuration-token
+                         :initform
+                         (common-lisp:error ":configuration-token is required")
+                         :type (common-lisp:or token common-lisp:null)
+                         :accessor
+                         struct-shape-get-latest-configuration-request-configuration-token
+                         :shape "Token" :location "querystring" :location-name
+                         "configuration_token"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-latest-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-latest-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-latest-configuration-request
                     'make-get-latest-configuration-request))
@@ -94,19 +113,46 @@
                           get-latest-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-latest-configuration-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-latest-configuration-response-"))
-   (next-poll-configuration-token common-lisp:nil :type
-    (common-lisp:or token common-lisp:null))
-   (next-poll-interval-in-seconds common-lisp:nil :type
-    (common-lisp:or integer common-lisp:null))
-   (content-type common-lisp:nil :type
-    (common-lisp:or string common-lisp:null))
-   (configuration common-lisp:nil :type
-    (common-lisp:or sensitive-blob common-lisp:null))
-   (version-label common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-latest-configuration-response common-lisp:nil
+                       ((next-poll-configuration-token :initarg
+                         :next-poll-configuration-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or token common-lisp:null) :accessor
+                         struct-shape-get-latest-configuration-response-next-poll-configuration-token
+                         :shape "Token" :location "header" :location-name
+                         "Next-Poll-Configuration-Token")
+                        (next-poll-interval-in-seconds :initarg
+                         :next-poll-interval-in-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or integer common-lisp:null) :accessor
+                         struct-shape-get-latest-configuration-response-next-poll-interval-in-seconds
+                         :shape "Integer" :location "header" :location-name
+                         "Next-Poll-Interval-In-Seconds")
+                        (content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-latest-configuration-response-content-type
+                         :shape "String" :location "header" :location-name
+                         "Content-Type")
+                        (configuration :initarg :configuration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sensitive-blob common-lisp:null)
+                         :accessor
+                         struct-shape-get-latest-configuration-response-configuration
+                         :shape "SensitiveBlob" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version-label :initarg :version-label :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-latest-configuration-response-version-label
+                         :shape "String" :location "header" :location-name
+                         "Version-Label"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-latest-configuration-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-latest-configuration-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-latest-configuration-response
                     'make-get-latest-configuration-response))
@@ -163,11 +209,20 @@
   (common-lisp:list 'internal-server-exception
                     'internal-server-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invalid-parameter-detail-"))
-   (problem common-lisp:nil :type
-    (common-lisp:or invalid-parameter-problem common-lisp:null)))
+ (common-lisp:defclass invalid-parameter-detail common-lisp:nil
+                       ((problem :initarg :problem :initform common-lisp:nil
+                         :type
+                         (common-lisp:or invalid-parameter-problem
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-invalid-parameter-detail-problem :shape
+                         "InvalidParameterProblem" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-invalid-parameter-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'invalid-parameter-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-detail 'make-invalid-parameter-detail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -220,20 +275,49 @@
 (common-lisp:deftype sensitive-blob ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-configuration-session-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-configuration-session-request-"))
-   (application-identifier
-    (common-lisp:error ":application-identifier is required") :type
-    (common-lisp:or identifier common-lisp:null))
-   (environment-identifier
-    (common-lisp:error ":environment-identifier is required") :type
-    (common-lisp:or identifier common-lisp:null))
-   (configuration-profile-identifier
-    (common-lisp:error ":configuration-profile-identifier is required") :type
-    (common-lisp:or identifier common-lisp:null))
-   (required-minimum-poll-interval-in-seconds common-lisp:nil :type
-    (common-lisp:or optional-poll-seconds common-lisp:null)))
+ (common-lisp:defclass start-configuration-session-request common-lisp:nil
+                       ((application-identifier :initarg
+                         :application-identifier :initform
+                         (common-lisp:error
+                          ":application-identifier is required")
+                         :type (common-lisp:or identifier common-lisp:null)
+                         :accessor
+                         struct-shape-start-configuration-session-request-application-identifier
+                         :shape "Identifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (environment-identifier :initarg
+                         :environment-identifier :initform
+                         (common-lisp:error
+                          ":environment-identifier is required")
+                         :type (common-lisp:or identifier common-lisp:null)
+                         :accessor
+                         struct-shape-start-configuration-session-request-environment-identifier
+                         :shape "Identifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration-profile-identifier :initarg
+                         :configuration-profile-identifier :initform
+                         (common-lisp:error
+                          ":configuration-profile-identifier is required")
+                         :type (common-lisp:or identifier common-lisp:null)
+                         :accessor
+                         struct-shape-start-configuration-session-request-configuration-profile-identifier
+                         :shape "Identifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (required-minimum-poll-interval-in-seconds :initarg
+                         :required-minimum-poll-interval-in-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or optional-poll-seconds
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-configuration-session-request-required-minimum-poll-interval-in-seconds
+                         :shape "OptionalPollSeconds" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-configuration-session-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-configuration-session-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-configuration-session-request
                     'make-start-configuration-session-request))
@@ -285,11 +369,20 @@
                           start-configuration-session-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-configuration-session-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-configuration-session-response-"))
-   (initial-configuration-token common-lisp:nil :type
-    (common-lisp:or token common-lisp:null)))
+ (common-lisp:defclass start-configuration-session-response common-lisp:nil
+                       ((initial-configuration-token :initarg
+                         :initial-configuration-token :initform common-lisp:nil
+                         :type (common-lisp:or token common-lisp:null)
+                         :accessor
+                         struct-shape-start-configuration-session-response-initial-configuration-token
+                         :shape "Token" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-configuration-session-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-configuration-session-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-configuration-session-response
                     'make-start-configuration-session-response))

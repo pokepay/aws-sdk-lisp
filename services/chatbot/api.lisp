@@ -76,13 +76,30 @@
     ("UpdateTeamsChannelConfigurationException"
      . update-teams-channel-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-preferences (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-preferences-"))
-   (user-authorization-required common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null))
-   (training-data-collection-enabled common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null)))
+ (common-lisp:defclass account-preferences common-lisp:nil
+                       ((user-authorization-required :initarg
+                         :user-authorization-required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-account-preferences-user-authorization-required
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (training-data-collection-enabled :initarg
+                         :training-data-collection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-account-preferences-training-data-collection-enabled
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-account-preferences
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'account-preferences
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'account-preferences 'make-account-preferences))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -115,22 +132,62 @@
 (common-lisp:deftype boolean-account-preference () 'common-lisp:boolean)
 (common-lisp:deftype chat-configuration-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (chime-webhook-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-chime-webhook-configuration-"))
-   (webhook-description (common-lisp:error ":webhook-description is required")
-    :type (common-lisp:or chime-webhook-description common-lisp:null))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (sns-topic-arns (common-lisp:error ":sns-topic-arns is required") :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (configuration-name common-lisp:nil :type
-    (common-lisp:or configuration-name common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null)))
+ (common-lisp:defclass chime-webhook-configuration common-lisp:nil
+                       ((webhook-description :initarg :webhook-description
+                         :initform
+                         (common-lisp:error ":webhook-description is required")
+                         :type
+                         (common-lisp:or chime-webhook-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-chime-webhook-configuration-webhook-description
+                         :shape "ChimeWebhookDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-chime-webhook-configuration-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         (common-lisp:error ":iam-role-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-chime-webhook-configuration-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         (common-lisp:error ":sns-topic-arns is required")
+                         :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-chime-webhook-configuration-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration-name :initarg :configuration-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or configuration-name common-lisp:null)
+                         :accessor
+                         struct-shape-chime-webhook-configuration-configuration-name
+                         :shape "ConfigurationName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-chime-webhook-configuration-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-chime-webhook-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'chime-webhook-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'chime-webhook-configuration
                     'make-chime-webhook-configuration))
@@ -205,14 +262,30 @@
 (common-lisp:deftype chime-webhook-url () 'common-lisp:string)
 (common-lisp:deftype configuration-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (configured-team (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configured-team-"))
-   (tenant-id (common-lisp:error ":tenant-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (team-id (common-lisp:error ":team-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (team-name common-lisp:nil :type (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass configured-team common-lisp:nil
+                       ((tenant-id :initarg :tenant-id :initform
+                         (common-lisp:error ":tenant-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-configured-team-tenant-id :shape "UUID"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (team-id :initarg :team-id :initform
+                         (common-lisp:error ":team-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-configured-team-team-id :shape "UUID"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (team-name :initarg :team-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-configured-team-team-name :shape "UUID"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configured-team
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'configured-team
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'configured-team 'make-configured-team))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input configured-team))
@@ -264,21 +337,62 @@
  (common-lisp:export
   (common-lisp:list 'create-chime-webhook-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-chime-webhook-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-chime-webhook-configuration-request-"))
-   (webhook-description (common-lisp:error ":webhook-description is required")
-    :type (common-lisp:or chime-webhook-description common-lisp:null))
-   (webhook-url (common-lisp:error ":webhook-url is required") :type
-    (common-lisp:or chime-webhook-url common-lisp:null))
-   (sns-topic-arns (common-lisp:error ":sns-topic-arns is required") :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (configuration-name (common-lisp:error ":configuration-name is required")
-    :type (common-lisp:or configuration-name common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null)))
+ (common-lisp:defclass create-chime-webhook-configuration-request
+                       common-lisp:nil
+                       ((webhook-description :initarg :webhook-description
+                         :initform
+                         (common-lisp:error ":webhook-description is required")
+                         :type
+                         (common-lisp:or chime-webhook-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-chime-webhook-configuration-request-webhook-description
+                         :shape "ChimeWebhookDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (webhook-url :initarg :webhook-url :initform
+                         (common-lisp:error ":webhook-url is required") :type
+                         (common-lisp:or chime-webhook-url common-lisp:null)
+                         :accessor
+                         struct-shape-create-chime-webhook-configuration-request-webhook-url
+                         :shape "ChimeWebhookUrl" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         (common-lisp:error ":sns-topic-arns is required")
+                         :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-chime-webhook-configuration-request-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         (common-lisp:error ":iam-role-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-create-chime-webhook-configuration-request-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (configuration-name :initarg :configuration-name
+                         :initform
+                         (common-lisp:error ":configuration-name is required")
+                         :type
+                         (common-lisp:or configuration-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-chime-webhook-configuration-request-configuration-name
+                         :shape "ConfigurationName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-chime-webhook-configuration-request-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-chime-webhook-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-chime-webhook-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-chime-webhook-configuration-request
                     'make-create-chime-webhook-configuration-request))
@@ -340,11 +454,22 @@
                           create-chime-webhook-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-chime-webhook-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-chime-webhook-configuration-result-"))
-   (webhook-configuration common-lisp:nil :type
-    (common-lisp:or chime-webhook-configuration common-lisp:null)))
+ (common-lisp:defclass create-chime-webhook-configuration-result
+                       common-lisp:nil
+                       ((webhook-configuration :initarg :webhook-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or chime-webhook-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-chime-webhook-configuration-result-webhook-configuration
+                         :shape "ChimeWebhookConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-chime-webhook-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-chime-webhook-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-chime-webhook-configuration-result
                     'make-create-chime-webhook-configuration-result))
@@ -378,27 +503,84 @@
  (common-lisp:export
   (common-lisp:list 'create-slack-channel-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-slack-channel-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-slack-channel-configuration-request-"))
-   (slack-team-id (common-lisp:error ":slack-team-id is required") :type
-    (common-lisp:or slack-team-id common-lisp:null))
-   (slack-channel-id (common-lisp:error ":slack-channel-id is required") :type
-    (common-lisp:or slack-channel-id common-lisp:null))
-   (slack-channel-name common-lisp:nil :type
-    (common-lisp:or slack-channel-display-name common-lisp:null))
-   (sns-topic-arns common-lisp:nil :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (configuration-name (common-lisp:error ":configuration-name is required")
-    :type (common-lisp:or configuration-name common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null))
-   (guardrail-policy-arns common-lisp:nil :type
-    (common-lisp:or guardrail-policy-arn-list common-lisp:null))
-   (user-authorization-required common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null)))
+ (common-lisp:defclass create-slack-channel-configuration-request
+                       common-lisp:nil
+                       ((slack-team-id :initarg :slack-team-id :initform
+                         (common-lisp:error ":slack-team-id is required") :type
+                         (common-lisp:or slack-team-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-request-slack-team-id
+                         :shape "SlackTeamId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-channel-id :initarg :slack-channel-id :initform
+                         (common-lisp:error ":slack-channel-id is required")
+                         :type
+                         (common-lisp:or slack-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-request-slack-channel-id
+                         :shape "SlackChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-channel-name :initarg :slack-channel-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or slack-channel-display-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-request-slack-channel-name
+                         :shape "SlackChannelDisplayName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-request-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         (common-lisp:error ":iam-role-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-create-slack-channel-configuration-request-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (configuration-name :initarg :configuration-name
+                         :initform
+                         (common-lisp:error ":configuration-name is required")
+                         :type
+                         (common-lisp:or configuration-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-request-configuration-name
+                         :shape "ConfigurationName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-request-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (guardrail-policy-arns :initarg :guardrail-policy-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or guardrail-policy-arn-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-request-guardrail-policy-arns
+                         :shape "GuardrailPolicyArnList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (user-authorization-required :initarg
+                         :user-authorization-required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-request-user-authorization-required
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-slack-channel-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-slack-channel-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-slack-channel-configuration-request
                     'make-create-slack-channel-configuration-request))
@@ -483,11 +665,22 @@
                           create-slack-channel-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-slack-channel-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-slack-channel-configuration-result-"))
-   (channel-configuration common-lisp:nil :type
-    (common-lisp:or slack-channel-configuration common-lisp:null)))
+ (common-lisp:defclass create-slack-channel-configuration-result
+                       common-lisp:nil
+                       ((channel-configuration :initarg :channel-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or slack-channel-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-slack-channel-configuration-result-channel-configuration
+                         :shape "SlackChannelConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-slack-channel-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-slack-channel-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-slack-channel-configuration-result
                     'make-create-slack-channel-configuration-result))
@@ -521,31 +714,93 @@
  (common-lisp:export
   (common-lisp:list 'create-teams-channel-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-teams-channel-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-teams-channel-configuration-request-"))
-   (channel-id (common-lisp:error ":channel-id is required") :type
-    (common-lisp:or teams-channel-id common-lisp:null))
-   (channel-name common-lisp:nil :type
-    (common-lisp:or teams-channel-name common-lisp:null))
-   (team-id (common-lisp:error ":team-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (team-name common-lisp:nil :type
-    (common-lisp:or team-name common-lisp:null))
-   (tenant-id (common-lisp:error ":tenant-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (sns-topic-arns common-lisp:nil :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (configuration-name (common-lisp:error ":configuration-name is required")
-    :type (common-lisp:or configuration-name common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null))
-   (guardrail-policy-arns common-lisp:nil :type
-    (common-lisp:or guardrail-policy-arn-list common-lisp:null))
-   (user-authorization-required common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null)))
+ (common-lisp:defclass create-teams-channel-configuration-request
+                       common-lisp:nil
+                       ((channel-id :initarg :channel-id :initform
+                         (common-lisp:error ":channel-id is required") :type
+                         (common-lisp:or teams-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-create-teams-channel-configuration-request-channel-id
+                         :shape "TeamsChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-name :initarg :channel-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or teams-channel-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-teams-channel-configuration-request-channel-name
+                         :shape "TeamsChannelName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (team-id :initarg :team-id :initform
+                         (common-lisp:error ":team-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-create-teams-channel-configuration-request-team-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (team-name :initarg :team-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or team-name common-lisp:null) :accessor
+                         struct-shape-create-teams-channel-configuration-request-team-name
+                         :shape "TeamName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tenant-id :initarg :tenant-id :initform
+                         (common-lisp:error ":tenant-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-create-teams-channel-configuration-request-tenant-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-teams-channel-configuration-request-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         (common-lisp:error ":iam-role-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-create-teams-channel-configuration-request-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (configuration-name :initarg :configuration-name
+                         :initform
+                         (common-lisp:error ":configuration-name is required")
+                         :type
+                         (common-lisp:or configuration-name common-lisp:null)
+                         :accessor
+                         struct-shape-create-teams-channel-configuration-request-configuration-name
+                         :shape "ConfigurationName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-teams-channel-configuration-request-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (guardrail-policy-arns :initarg :guardrail-policy-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or guardrail-policy-arn-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-teams-channel-configuration-request-guardrail-policy-arns
+                         :shape "GuardrailPolicyArnList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (user-authorization-required :initarg
+                         :user-authorization-required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-teams-channel-configuration-request-user-authorization-required
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-teams-channel-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-teams-channel-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-teams-channel-configuration-request
                     'make-create-teams-channel-configuration-request))
@@ -644,11 +899,22 @@
                           create-teams-channel-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-teams-channel-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-teams-channel-configuration-result-"))
-   (channel-configuration common-lisp:nil :type
-    (common-lisp:or teams-channel-configuration common-lisp:null)))
+ (common-lisp:defclass create-teams-channel-configuration-result
+                       common-lisp:nil
+                       ((channel-configuration :initarg :channel-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or teams-channel-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-teams-channel-configuration-result-channel-configuration
+                         :shape "TeamsChannelConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-teams-channel-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-teams-channel-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-teams-channel-configuration-result
                     'make-create-teams-channel-configuration-result))
@@ -683,12 +949,25 @@
  (common-lisp:export
   (common-lisp:list 'delete-chime-webhook-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-chime-webhook-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-chime-webhook-configuration-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null)))
+ (common-lisp:defclass delete-chime-webhook-configuration-request
+                       common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-chime-webhook-configuration-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-chime-webhook-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-chime-webhook-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-chime-webhook-configuration-request
                     'make-delete-chime-webhook-configuration-request))
@@ -716,9 +995,14 @@
                           delete-chime-webhook-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-chime-webhook-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-chime-webhook-configuration-result-")))
+ (common-lisp:defclass delete-chime-webhook-configuration-result
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-chime-webhook-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-chime-webhook-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-chime-webhook-configuration-result
                     'make-delete-chime-webhook-configuration-result))
@@ -744,15 +1028,31 @@
  (common-lisp:export
   (common-lisp:list 'delete-microsoft-teams-user-identity-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-microsoft-teams-user-identity-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-microsoft-teams-user-identity-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (user-id (common-lisp:error ":user-id is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass delete-microsoft-teams-user-identity-request
+                       common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-microsoft-teams-user-identity-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (user-id :initarg :user-id :initform
+                         (common-lisp:error ":user-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-delete-microsoft-teams-user-identity-request-user-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-microsoft-teams-user-identity-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-microsoft-teams-user-identity-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-microsoft-teams-user-identity-request
                     'make-delete-microsoft-teams-user-identity-request))
@@ -787,10 +1087,14 @@
                           delete-microsoft-teams-user-identity-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-microsoft-teams-user-identity-result (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-microsoft-teams-user-identity-result-")))
+ (common-lisp:defclass delete-microsoft-teams-user-identity-result
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-microsoft-teams-user-identity-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-microsoft-teams-user-identity-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-microsoft-teams-user-identity-result
                     'make-delete-microsoft-teams-user-identity-result))
@@ -816,12 +1120,25 @@
  (common-lisp:export
   (common-lisp:list 'delete-slack-channel-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-slack-channel-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-slack-channel-configuration-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null)))
+ (common-lisp:defclass delete-slack-channel-configuration-request
+                       common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-slack-channel-configuration-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-slack-channel-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-slack-channel-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-slack-channel-configuration-request
                     'make-delete-slack-channel-configuration-request))
@@ -849,9 +1166,14 @@
                           delete-slack-channel-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-slack-channel-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-slack-channel-configuration-result-")))
+ (common-lisp:defclass delete-slack-channel-configuration-result
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-slack-channel-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-slack-channel-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-slack-channel-configuration-result
                     'make-delete-slack-channel-configuration-result))
@@ -876,16 +1198,38 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'delete-slack-user-identity-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-slack-user-identity-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-slack-user-identity-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (slack-team-id (common-lisp:error ":slack-team-id is required") :type
-    (common-lisp:or slack-team-id common-lisp:null))
-   (slack-user-id (common-lisp:error ":slack-user-id is required") :type
-    (common-lisp:or slack-user-id common-lisp:null)))
+ (common-lisp:defclass delete-slack-user-identity-request common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-slack-user-identity-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (slack-team-id :initarg :slack-team-id :initform
+                         (common-lisp:error ":slack-team-id is required") :type
+                         (common-lisp:or slack-team-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-slack-user-identity-request-slack-team-id
+                         :shape "SlackTeamId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-user-id :initarg :slack-user-id :initform
+                         (common-lisp:error ":slack-user-id is required") :type
+                         (common-lisp:or slack-user-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-slack-user-identity-request-slack-user-id
+                         :shape "SlackUserId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-slack-user-identity-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-slack-user-identity-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-slack-user-identity-request
                     'make-delete-slack-user-identity-request))
@@ -927,9 +1271,14 @@
                           delete-slack-user-identity-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-slack-user-identity-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-slack-user-identity-result-")))
+ (common-lisp:defclass delete-slack-user-identity-result common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-slack-user-identity-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-slack-user-identity-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-slack-user-identity-result
                     'make-delete-slack-user-identity-result))
@@ -955,12 +1304,21 @@
  (common-lisp:export
   (common-lisp:list 'delete-slack-workspace-authorization-fault)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-slack-workspace-authorization-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-slack-workspace-authorization-request-"))
-   (slack-team-id (common-lisp:error ":slack-team-id is required") :type
-    (common-lisp:or slack-team-id common-lisp:null)))
+ (common-lisp:defclass delete-slack-workspace-authorization-request
+                       common-lisp:nil
+                       ((slack-team-id :initarg :slack-team-id :initform
+                         (common-lisp:error ":slack-team-id is required") :type
+                         (common-lisp:or slack-team-id common-lisp:null)
+                         :accessor
+                         struct-shape-delete-slack-workspace-authorization-request-slack-team-id
+                         :shape "SlackTeamId" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-slack-workspace-authorization-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-slack-workspace-authorization-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-slack-workspace-authorization-request
                     'make-delete-slack-workspace-authorization-request))
@@ -987,10 +1345,14 @@
                           delete-slack-workspace-authorization-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-slack-workspace-authorization-result (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-slack-workspace-authorization-result-")))
+ (common-lisp:defclass delete-slack-workspace-authorization-result
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-slack-workspace-authorization-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-slack-workspace-authorization-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-slack-workspace-authorization-result
                     'make-delete-slack-workspace-authorization-result))
@@ -1016,12 +1378,25 @@
  (common-lisp:export
   (common-lisp:list 'delete-teams-channel-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-teams-channel-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-teams-channel-configuration-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null)))
+ (common-lisp:defclass delete-teams-channel-configuration-request
+                       common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-teams-channel-configuration-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-teams-channel-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-teams-channel-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-teams-channel-configuration-request
                     'make-delete-teams-channel-configuration-request))
@@ -1049,9 +1424,14 @@
                           delete-teams-channel-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-teams-channel-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-teams-channel-configuration-result-")))
+ (common-lisp:defclass delete-teams-channel-configuration-result
+                       common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-teams-channel-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-teams-channel-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-teams-channel-configuration-result
                     'make-delete-teams-channel-configuration-result))
@@ -1077,11 +1457,19 @@
  (common-lisp:export
   (common-lisp:list 'delete-teams-configured-team-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-teams-configured-team-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-teams-configured-team-request-"))
-   (team-id (common-lisp:error ":team-id is required") :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass delete-teams-configured-team-request common-lisp:nil
+                       ((team-id :initarg :team-id :initform
+                         (common-lisp:error ":team-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-delete-teams-configured-team-request-team-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-teams-configured-team-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-teams-configured-team-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-teams-configured-team-request
                     'make-delete-teams-configured-team-request))
@@ -1108,9 +1496,14 @@
                           delete-teams-configured-team-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-teams-configured-team-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-teams-configured-team-result-")))
+ (common-lisp:defclass delete-teams-configured-team-result common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-teams-configured-team-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-teams-configured-team-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-teams-configured-team-result
                     'make-delete-teams-configured-team-result))
@@ -1136,16 +1529,37 @@
  (common-lisp:export
   (common-lisp:list 'describe-chime-webhook-configurations-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-chime-webhook-configurations-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-chime-webhook-configurations-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (chat-configuration-arn common-lisp:nil :type
-    (common-lisp:or chat-configuration-arn common-lisp:null)))
+ (common-lisp:defclass describe-chime-webhook-configurations-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-chime-webhook-configurations-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-describe-chime-webhook-configurations-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-chime-webhook-configurations-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-chime-webhook-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-chime-webhook-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-chime-webhook-configurations-request
                     'make-describe-chime-webhook-configurations-request))
@@ -1187,14 +1601,30 @@
                           describe-chime-webhook-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-chime-webhook-configurations-result (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-chime-webhook-configurations-result-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (webhook-configurations common-lisp:nil :type
-    (common-lisp:or chime-webhook-configuration-list common-lisp:null)))
+ (common-lisp:defclass describe-chime-webhook-configurations-result
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-describe-chime-webhook-configurations-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (webhook-configurations :initarg
+                         :webhook-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or chime-webhook-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-chime-webhook-configurations-result-webhook-configurations
+                         :shape "ChimeWebhookConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-chime-webhook-configurations-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-chime-webhook-configurations-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-chime-webhook-configurations-result
                     'make-describe-chime-webhook-configurations-result))
@@ -1235,16 +1665,37 @@
  (common-lisp:export
   (common-lisp:list 'describe-slack-channel-configurations-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-slack-channel-configurations-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-slack-channel-configurations-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (chat-configuration-arn common-lisp:nil :type
-    (common-lisp:or chat-configuration-arn common-lisp:null)))
+ (common-lisp:defclass describe-slack-channel-configurations-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-channel-configurations-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-channel-configurations-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-channel-configurations-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-slack-channel-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-slack-channel-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-slack-channel-configurations-request
                     'make-describe-slack-channel-configurations-request))
@@ -1286,14 +1737,30 @@
                           describe-slack-channel-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-slack-channel-configurations-result (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-describe-slack-channel-configurations-result-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (slack-channel-configurations common-lisp:nil :type
-    (common-lisp:or slack-channel-configuration-list common-lisp:null)))
+ (common-lisp:defclass describe-slack-channel-configurations-result
+                       common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-channel-configurations-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-channel-configurations :initarg
+                         :slack-channel-configurations :initform
+                         common-lisp:nil :type
+                         (common-lisp:or slack-channel-configuration-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-channel-configurations-result-slack-channel-configurations
+                         :shape "SlackChannelConfigurationList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-slack-channel-configurations-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-slack-channel-configurations-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-slack-channel-configurations-result
                     'make-describe-slack-channel-configurations-result))
@@ -1334,15 +1801,36 @@
  (common-lisp:export
   (common-lisp:list 'describe-slack-user-identities-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-slack-user-identities-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-slack-user-identities-request-"))
-   (chat-configuration-arn common-lisp:nil :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass describe-slack-user-identities-request common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-user-identities-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-user-identities-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-user-identities-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-slack-user-identities-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-slack-user-identities-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-slack-user-identities-request
                     'make-describe-slack-user-identities-request))
@@ -1384,13 +1872,28 @@
                           describe-slack-user-identities-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-slack-user-identities-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-slack-user-identities-result-"))
-   (slack-user-identities common-lisp:nil :type
-    (common-lisp:or slack-user-identities-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass describe-slack-user-identities-result common-lisp:nil
+                       ((slack-user-identities :initarg :slack-user-identities
+                         :initform common-lisp:nil :type
+                         (common-lisp:or slack-user-identities-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-user-identities-result-slack-user-identities
+                         :shape "SlackUserIdentitiesList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-user-identities-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-slack-user-identities-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-slack-user-identities-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-slack-user-identities-result
                     'make-describe-slack-user-identities-result))
@@ -1430,13 +1933,27 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'describe-slack-workspaces-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-slack-workspaces-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-slack-workspaces-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass describe-slack-workspaces-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-workspaces-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-workspaces-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-slack-workspaces-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-slack-workspaces-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-slack-workspaces-request
                     'make-describe-slack-workspaces-request))
@@ -1470,13 +1987,28 @@
                           describe-slack-workspaces-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (describe-slack-workspaces-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-describe-slack-workspaces-result-"))
-   (slack-workspaces common-lisp:nil :type
-    (common-lisp:or slack-workspaces-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass describe-slack-workspaces-result common-lisp:nil
+                       ((slack-workspaces :initarg :slack-workspaces :initform
+                         common-lisp:nil :type
+                         (common-lisp:or slack-workspaces-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-workspaces-result-slack-workspaces
+                         :shape "SlackWorkspacesList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-describe-slack-workspaces-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-describe-slack-workspaces-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'describe-slack-workspaces-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'describe-slack-workspaces-result
                     'make-describe-slack-workspaces-result))
@@ -1515,9 +2047,14 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'get-account-preferences-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-account-preferences-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-account-preferences-request-")))
+ (common-lisp:defclass get-account-preferences-request common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-account-preferences-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-account-preferences-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-account-preferences-request
                     'make-get-account-preferences-request))
@@ -1537,11 +2074,20 @@
                           get-account-preferences-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-account-preferences-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-account-preferences-result-"))
-   (account-preferences common-lisp:nil :type
-    (common-lisp:or account-preferences common-lisp:null)))
+ (common-lisp:defclass get-account-preferences-result common-lisp:nil
+                       ((account-preferences :initarg :account-preferences
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-preferences common-lisp:null)
+                         :accessor
+                         struct-shape-get-account-preferences-result-account-preferences
+                         :shape "AccountPreferences" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-account-preferences-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-account-preferences-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-account-preferences-result
                     'make-get-account-preferences-result))
@@ -1574,12 +2120,24 @@
  (common-lisp:export
   (common-lisp:list 'get-teams-channel-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-teams-channel-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-teams-channel-configuration-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null)))
+ (common-lisp:defclass get-teams-channel-configuration-request common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-teams-channel-configuration-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-teams-channel-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-teams-channel-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-teams-channel-configuration-request
                     'make-get-teams-channel-configuration-request))
@@ -1607,11 +2165,21 @@
                           get-teams-channel-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-teams-channel-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-teams-channel-configuration-result-"))
-   (channel-configuration common-lisp:nil :type
-    (common-lisp:or teams-channel-configuration common-lisp:null)))
+ (common-lisp:defclass get-teams-channel-configuration-result common-lisp:nil
+                       ((channel-configuration :initarg :channel-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or teams-channel-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-teams-channel-configuration-result-channel-configuration
+                         :shape "TeamsChannelConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-teams-channel-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-teams-channel-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-teams-channel-configuration-result
                     'make-get-teams-channel-configuration-result))
@@ -1669,14 +2237,28 @@
  (common-lisp:export
   (common-lisp:list 'list-microsoft-teams-configured-teams-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-microsoft-teams-configured-teams-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-microsoft-teams-configured-teams-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-microsoft-teams-configured-teams-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-configured-teams-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-configured-teams-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-microsoft-teams-configured-teams-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-microsoft-teams-configured-teams-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-microsoft-teams-configured-teams-request
                     'make-list-microsoft-teams-configured-teams-request))
@@ -1710,14 +2292,29 @@
                           list-microsoft-teams-configured-teams-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-microsoft-teams-configured-teams-result (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-microsoft-teams-configured-teams-result-"))
-   (configured-teams common-lisp:nil :type
-    (common-lisp:or configured-teams-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-microsoft-teams-configured-teams-result
+                       common-lisp:nil
+                       ((configured-teams :initarg :configured-teams :initform
+                         common-lisp:nil :type
+                         (common-lisp:or configured-teams-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-configured-teams-result-configured-teams
+                         :shape "ConfiguredTeamsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-configured-teams-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-microsoft-teams-configured-teams-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-microsoft-teams-configured-teams-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-microsoft-teams-configured-teams-result
                     'make-list-microsoft-teams-configured-teams-result))
@@ -1757,16 +2354,37 @@
  (common-lisp:export
   (common-lisp:list 'list-microsoft-teams-user-identities-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-microsoft-teams-user-identities-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-microsoft-teams-user-identities-request-"))
-   (chat-configuration-arn common-lisp:nil :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null)))
+ (common-lisp:defclass list-microsoft-teams-user-identities-request
+                       common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-user-identities-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-user-identities-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-user-identities-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-microsoft-teams-user-identities-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-microsoft-teams-user-identities-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-microsoft-teams-user-identities-request
                     'make-list-microsoft-teams-user-identities-request))
@@ -1808,13 +2426,29 @@
                           list-microsoft-teams-user-identities-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-microsoft-teams-user-identities-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-microsoft-teams-user-identities-result-"))
-   (teams-user-identities common-lisp:nil :type
-    (common-lisp:or teams-user-identities-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null)))
+ (common-lisp:defclass list-microsoft-teams-user-identities-result
+                       common-lisp:nil
+                       ((teams-user-identities :initarg :teams-user-identities
+                         :initform common-lisp:nil :type
+                         (common-lisp:or teams-user-identities-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-user-identities-result-teams-user-identities
+                         :shape "TeamsUserIdentitiesList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-microsoft-teams-user-identities-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-microsoft-teams-user-identities-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-microsoft-teams-user-identities-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-microsoft-teams-user-identities-result
                     'make-list-microsoft-teams-user-identities-result))
@@ -1855,14 +2489,33 @@
  (common-lisp:export
   (common-lisp:list 'list-teams-channel-configurations-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-teams-channel-configurations-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-teams-channel-configurations-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (team-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass list-teams-channel-configurations-request
+                       common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-teams-channel-configurations-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-teams-channel-configurations-request-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (team-id :initarg :team-id :initform common-lisp:nil
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-list-teams-channel-configurations-request-team-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-teams-channel-configurations-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-teams-channel-configurations-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-teams-channel-configurations-request
                     'make-list-teams-channel-configurations-request))
@@ -1903,13 +2556,29 @@
                           list-teams-channel-configurations-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-teams-channel-configurations-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-teams-channel-configurations-result-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or pagination-token common-lisp:null))
-   (team-channel-configurations common-lisp:nil :type
-    (common-lisp:or team-channel-configurations-list common-lisp:null)))
+ (common-lisp:defclass list-teams-channel-configurations-result common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or pagination-token common-lisp:null)
+                         :accessor
+                         struct-shape-list-teams-channel-configurations-result-next-token
+                         :shape "PaginationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (team-channel-configurations :initarg
+                         :team-channel-configurations :initform common-lisp:nil
+                         :type
+                         (common-lisp:or team-channel-configurations-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-teams-channel-configurations-result-team-channel-configurations
+                         :shape "TeamChannelConfigurationsList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-teams-channel-configurations-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-teams-channel-configurations-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-teams-channel-configurations-result
                     'make-list-teams-channel-configurations-result))
@@ -1951,32 +2620,102 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (slack-channel-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-slack-channel-configuration-"))
-   (slack-team-name (common-lisp:error ":slack-team-name is required") :type
-    (common-lisp:or slack-team-name common-lisp:null))
-   (slack-team-id (common-lisp:error ":slack-team-id is required") :type
-    (common-lisp:or slack-team-id common-lisp:null))
-   (slack-channel-id (common-lisp:error ":slack-channel-id is required") :type
-    (common-lisp:or slack-channel-id common-lisp:null))
-   (slack-channel-name (common-lisp:error ":slack-channel-name is required")
-    :type (common-lisp:or slack-channel-display-name common-lisp:null))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (sns-topic-arns (common-lisp:error ":sns-topic-arns is required") :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (configuration-name common-lisp:nil :type
-    (common-lisp:or configuration-name common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null))
-   (guardrail-policy-arns common-lisp:nil :type
-    (common-lisp:or guardrail-policy-arn-list common-lisp:null))
-   (user-authorization-required common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null)))
+ (common-lisp:defclass slack-channel-configuration common-lisp:nil
+                       ((slack-team-name :initarg :slack-team-name :initform
+                         (common-lisp:error ":slack-team-name is required")
+                         :type
+                         (common-lisp:or slack-team-name common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-slack-team-name
+                         :shape "SlackTeamName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-team-id :initarg :slack-team-id :initform
+                         (common-lisp:error ":slack-team-id is required") :type
+                         (common-lisp:or slack-team-id common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-slack-team-id
+                         :shape "SlackTeamId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-channel-id :initarg :slack-channel-id :initform
+                         (common-lisp:error ":slack-channel-id is required")
+                         :type
+                         (common-lisp:or slack-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-slack-channel-id
+                         :shape "SlackChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-channel-name :initarg :slack-channel-name
+                         :initform
+                         (common-lisp:error ":slack-channel-name is required")
+                         :type
+                         (common-lisp:or slack-channel-display-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-slack-channel-name
+                         :shape "SlackChannelDisplayName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         (common-lisp:error ":iam-role-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-slack-channel-configuration-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         (common-lisp:error ":sns-topic-arns is required")
+                         :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration-name :initarg :configuration-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or configuration-name common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-configuration-name
+                         :shape "ConfigurationName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (guardrail-policy-arns :initarg :guardrail-policy-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or guardrail-policy-arn-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-guardrail-policy-arns
+                         :shape "GuardrailPolicyArnList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (user-authorization-required :initarg
+                         :user-authorization-required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-slack-channel-configuration-user-authorization-required
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-slack-channel-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'slack-channel-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'slack-channel-configuration
                     'make-slack-channel-configuration))
@@ -2098,20 +2837,50 @@
                            (trivial-types:proper-list slack-user-identity))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (slack-user-identity (:copier common-lisp:nil)
-      (:conc-name "struct-shape-slack-user-identity-"))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (slack-team-id (common-lisp:error ":slack-team-id is required") :type
-    (common-lisp:or slack-team-id common-lisp:null))
-   (slack-user-id (common-lisp:error ":slack-user-id is required") :type
-    (common-lisp:or slack-user-id common-lisp:null))
-   (aws-user-identity common-lisp:nil :type
-    (common-lisp:or aws-user-identity common-lisp:null)))
+ (common-lisp:defclass slack-user-identity common-lisp:nil
+                       ((iam-role-arn :initarg :iam-role-arn :initform
+                         (common-lisp:error ":iam-role-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-slack-user-identity-iam-role-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-slack-user-identity-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (slack-team-id :initarg :slack-team-id :initform
+                         (common-lisp:error ":slack-team-id is required") :type
+                         (common-lisp:or slack-team-id common-lisp:null)
+                         :accessor
+                         struct-shape-slack-user-identity-slack-team-id :shape
+                         "SlackTeamId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (slack-user-id :initarg :slack-user-id :initform
+                         (common-lisp:error ":slack-user-id is required") :type
+                         (common-lisp:or slack-user-id common-lisp:null)
+                         :accessor
+                         struct-shape-slack-user-identity-slack-user-id :shape
+                         "SlackUserId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (aws-user-identity :initarg :aws-user-identity
+                         :initform common-lisp:nil :type
+                         (common-lisp:or aws-user-identity common-lisp:null)
+                         :accessor
+                         struct-shape-slack-user-identity-aws-user-identity
+                         :shape "AwsUserIdentity" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-slack-user-identity
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'slack-user-identity
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'slack-user-identity 'make-slack-user-identity))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2160,13 +2929,25 @@
                         ((aws-sdk/generator/shape::input slack-user-identity))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (slack-workspace (:copier common-lisp:nil)
-      (:conc-name "struct-shape-slack-workspace-"))
-   (slack-team-id (common-lisp:error ":slack-team-id is required") :type
-    (common-lisp:or slack-team-id common-lisp:null))
-   (slack-team-name (common-lisp:error ":slack-team-name is required") :type
-    (common-lisp:or slack-team-name common-lisp:null)))
+ (common-lisp:defclass slack-workspace common-lisp:nil
+                       ((slack-team-id :initarg :slack-team-id :initform
+                         (common-lisp:error ":slack-team-id is required") :type
+                         (common-lisp:or slack-team-id common-lisp:null)
+                         :accessor struct-shape-slack-workspace-slack-team-id
+                         :shape "SlackTeamId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-team-name :initarg :slack-team-name :initform
+                         (common-lisp:error ":slack-team-name is required")
+                         :type
+                         (common-lisp:or slack-team-name common-lisp:null)
+                         :accessor struct-shape-slack-workspace-slack-team-name
+                         :shape "SlackTeamName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-slack-workspace
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'slack-workspace
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'slack-workspace 'make-slack-workspace))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input slack-workspace))
@@ -2218,33 +2999,101 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype team-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (teams-channel-configuration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-teams-channel-configuration-"))
-   (channel-id (common-lisp:error ":channel-id is required") :type
-    (common-lisp:or teams-channel-id common-lisp:null))
-   (channel-name common-lisp:nil :type
-    (common-lisp:or teams-channel-name common-lisp:null))
-   (team-id (common-lisp:error ":team-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (team-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tenant-id (common-lisp:error ":tenant-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (sns-topic-arns (common-lisp:error ":sns-topic-arns is required") :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (configuration-name common-lisp:nil :type
-    (common-lisp:or configuration-name common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null))
-   (guardrail-policy-arns common-lisp:nil :type
-    (common-lisp:or guardrail-policy-arn-list common-lisp:null))
-   (user-authorization-required common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null)))
+ (common-lisp:defclass teams-channel-configuration common-lisp:nil
+                       ((channel-id :initarg :channel-id :initform
+                         (common-lisp:error ":channel-id is required") :type
+                         (common-lisp:or teams-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-teams-channel-configuration-channel-id
+                         :shape "TeamsChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-name :initarg :channel-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or teams-channel-name common-lisp:null)
+                         :accessor
+                         struct-shape-teams-channel-configuration-channel-name
+                         :shape "TeamsChannelName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (team-id :initarg :team-id :initform
+                         (common-lisp:error ":team-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-teams-channel-configuration-team-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (team-name :initarg :team-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-teams-channel-configuration-team-name
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tenant-id :initarg :tenant-id :initform
+                         (common-lisp:error ":tenant-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-teams-channel-configuration-tenant-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-teams-channel-configuration-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         (common-lisp:error ":iam-role-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-teams-channel-configuration-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         (common-lisp:error ":sns-topic-arns is required")
+                         :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-teams-channel-configuration-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configuration-name :initarg :configuration-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or configuration-name common-lisp:null)
+                         :accessor
+                         struct-shape-teams-channel-configuration-configuration-name
+                         :shape "ConfigurationName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-teams-channel-configuration-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (guardrail-policy-arns :initarg :guardrail-policy-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or guardrail-policy-arn-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-teams-channel-configuration-guardrail-policy-arns
+                         :shape "GuardrailPolicyArnList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (user-authorization-required :initarg
+                         :user-authorization-required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-teams-channel-configuration-user-authorization-required
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-teams-channel-configuration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'teams-channel-configuration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'teams-channel-configuration
                     'make-teams-channel-configuration))
@@ -2361,23 +3210,60 @@
                            (trivial-types:proper-list teams-user-identity))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (teams-user-identity (:copier common-lisp:nil)
-      (:conc-name "struct-shape-teams-user-identity-"))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (team-id (common-lisp:error ":team-id is required") :type
-    (common-lisp:or uuid common-lisp:null))
-   (user-id common-lisp:nil :type (common-lisp:or uuid common-lisp:null))
-   (aws-user-identity common-lisp:nil :type
-    (common-lisp:or aws-user-identity common-lisp:null))
-   (teams-channel-id common-lisp:nil :type
-    (common-lisp:or teams-channel-id common-lisp:null))
-   (teams-tenant-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null)))
+ (common-lisp:defclass teams-user-identity common-lisp:nil
+                       ((iam-role-arn :initarg :iam-role-arn :initform
+                         (common-lisp:error ":iam-role-arn is required") :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-teams-user-identity-iam-role-arn :shape
+                         "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-teams-user-identity-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (team-id :initarg :team-id :initform
+                         (common-lisp:error ":team-id is required") :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-teams-user-identity-team-id :shape "UUID"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (user-id :initarg :user-id :initform common-lisp:nil
+                         :type (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-teams-user-identity-user-id :shape "UUID"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (aws-user-identity :initarg :aws-user-identity
+                         :initform common-lisp:nil :type
+                         (common-lisp:or aws-user-identity common-lisp:null)
+                         :accessor
+                         struct-shape-teams-user-identity-aws-user-identity
+                         :shape "AwsUserIdentity" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (teams-channel-id :initarg :teams-channel-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or teams-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-teams-user-identity-teams-channel-id
+                         :shape "TeamsChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (teams-tenant-id :initarg :teams-tenant-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-teams-user-identity-teams-tenant-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-teams-user-identity
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'teams-user-identity
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'teams-user-identity 'make-teams-user-identity))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2446,13 +3332,31 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'update-account-preferences-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-account-preferences-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-account-preferences-request-"))
-   (user-authorization-required common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null))
-   (training-data-collection-enabled common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null)))
+ (common-lisp:defclass update-account-preferences-request common-lisp:nil
+                       ((user-authorization-required :initarg
+                         :user-authorization-required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-account-preferences-request-user-authorization-required
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (training-data-collection-enabled :initarg
+                         :training-data-collection-enabled :initform
+                         common-lisp:nil :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-account-preferences-request-training-data-collection-enabled
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-account-preferences-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-account-preferences-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-account-preferences-request
                     'make-update-account-preferences-request))
@@ -2488,11 +3392,20 @@
                           update-account-preferences-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-account-preferences-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-account-preferences-result-"))
-   (account-preferences common-lisp:nil :type
-    (common-lisp:or account-preferences common-lisp:null)))
+ (common-lisp:defclass update-account-preferences-result common-lisp:nil
+                       ((account-preferences :initarg :account-preferences
+                         :initform common-lisp:nil :type
+                         (common-lisp:or account-preferences common-lisp:null)
+                         :accessor
+                         struct-shape-update-account-preferences-result-account-preferences
+                         :shape "AccountPreferences" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-account-preferences-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-account-preferences-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-account-preferences-result
                     'make-update-account-preferences-result))
@@ -2525,21 +3438,61 @@
  (common-lisp:export
   (common-lisp:list 'update-chime-webhook-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-chime-webhook-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-chime-webhook-configuration-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (webhook-description common-lisp:nil :type
-    (common-lisp:or chime-webhook-description common-lisp:null))
-   (webhook-url common-lisp:nil :type
-    (common-lisp:or chime-webhook-url common-lisp:null))
-   (sns-topic-arns common-lisp:nil :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (iam-role-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null)))
+ (common-lisp:defclass update-chime-webhook-configuration-request
+                       common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-chime-webhook-configuration-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (webhook-description :initarg :webhook-description
+                         :initform common-lisp:nil :type
+                         (common-lisp:or chime-webhook-description
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-chime-webhook-configuration-request-webhook-description
+                         :shape "ChimeWebhookDescription" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (webhook-url :initarg :webhook-url :initform
+                         common-lisp:nil :type
+                         (common-lisp:or chime-webhook-url common-lisp:null)
+                         :accessor
+                         struct-shape-update-chime-webhook-configuration-request-webhook-url
+                         :shape "ChimeWebhookUrl" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-update-chime-webhook-configuration-request-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-update-chime-webhook-configuration-request-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-chime-webhook-configuration-request-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-chime-webhook-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-chime-webhook-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-chime-webhook-configuration-request
                     'make-update-chime-webhook-configuration-request))
@@ -2602,11 +3555,22 @@
                           update-chime-webhook-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-chime-webhook-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-chime-webhook-configuration-result-"))
-   (webhook-configuration common-lisp:nil :type
-    (common-lisp:or chime-webhook-configuration common-lisp:null)))
+ (common-lisp:defclass update-chime-webhook-configuration-result
+                       common-lisp:nil
+                       ((webhook-configuration :initarg :webhook-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or chime-webhook-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-chime-webhook-configuration-result-webhook-configuration
+                         :shape "ChimeWebhookConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-chime-webhook-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-chime-webhook-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-chime-webhook-configuration-result
                     'make-update-chime-webhook-configuration-result))
@@ -2640,25 +3604,79 @@
  (common-lisp:export
   (common-lisp:list 'update-slack-channel-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-slack-channel-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-slack-channel-configuration-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (slack-channel-id (common-lisp:error ":slack-channel-id is required") :type
-    (common-lisp:or slack-channel-id common-lisp:null))
-   (slack-channel-name common-lisp:nil :type
-    (common-lisp:or slack-channel-display-name common-lisp:null))
-   (sns-topic-arns common-lisp:nil :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (iam-role-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null))
-   (guardrail-policy-arns common-lisp:nil :type
-    (common-lisp:or guardrail-policy-arn-list common-lisp:null))
-   (user-authorization-required common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null)))
+ (common-lisp:defclass update-slack-channel-configuration-request
+                       common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-slack-channel-configuration-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (slack-channel-id :initarg :slack-channel-id :initform
+                         (common-lisp:error ":slack-channel-id is required")
+                         :type
+                         (common-lisp:or slack-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-slack-channel-configuration-request-slack-channel-id
+                         :shape "SlackChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (slack-channel-name :initarg :slack-channel-name
+                         :initform common-lisp:nil :type
+                         (common-lisp:or slack-channel-display-name
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-slack-channel-configuration-request-slack-channel-name
+                         :shape "SlackChannelDisplayName" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-update-slack-channel-configuration-request-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-update-slack-channel-configuration-request-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-slack-channel-configuration-request-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (guardrail-policy-arns :initarg :guardrail-policy-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or guardrail-policy-arn-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-slack-channel-configuration-request-guardrail-policy-arns
+                         :shape "GuardrailPolicyArnList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (user-authorization-required :initarg
+                         :user-authorization-required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-slack-channel-configuration-request-user-authorization-required
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-slack-channel-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-slack-channel-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-slack-channel-configuration-request
                     'make-update-slack-channel-configuration-request))
@@ -2737,11 +3755,22 @@
                           update-slack-channel-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-slack-channel-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-slack-channel-configuration-result-"))
-   (channel-configuration common-lisp:nil :type
-    (common-lisp:or slack-channel-configuration common-lisp:null)))
+ (common-lisp:defclass update-slack-channel-configuration-result
+                       common-lisp:nil
+                       ((channel-configuration :initarg :channel-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or slack-channel-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-slack-channel-configuration-result-channel-configuration
+                         :shape "SlackChannelConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-slack-channel-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-slack-channel-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-slack-channel-configuration-result
                     'make-update-slack-channel-configuration-result))
@@ -2775,25 +3804,77 @@
  (common-lisp:export
   (common-lisp:list 'update-teams-channel-configuration-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-teams-channel-configuration-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-teams-channel-configuration-request-"))
-   (chat-configuration-arn
-    (common-lisp:error ":chat-configuration-arn is required") :type
-    (common-lisp:or chat-configuration-arn common-lisp:null))
-   (channel-id (common-lisp:error ":channel-id is required") :type
-    (common-lisp:or teams-channel-id common-lisp:null))
-   (channel-name common-lisp:nil :type
-    (common-lisp:or teams-channel-name common-lisp:null))
-   (sns-topic-arns common-lisp:nil :type
-    (common-lisp:or sns-topic-arn-list common-lisp:null))
-   (iam-role-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (logging-level common-lisp:nil :type
-    (common-lisp:or customer-cw-log-level common-lisp:null))
-   (guardrail-policy-arns common-lisp:nil :type
-    (common-lisp:or guardrail-policy-arn-list common-lisp:null))
-   (user-authorization-required common-lisp:nil :type
-    (common-lisp:or boolean-account-preference common-lisp:null)))
+ (common-lisp:defclass update-teams-channel-configuration-request
+                       common-lisp:nil
+                       ((chat-configuration-arn :initarg
+                         :chat-configuration-arn :initform
+                         (common-lisp:error
+                          ":chat-configuration-arn is required")
+                         :type
+                         (common-lisp:or chat-configuration-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-teams-channel-configuration-request-chat-configuration-arn
+                         :shape "ChatConfigurationArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (channel-id :initarg :channel-id :initform
+                         (common-lisp:error ":channel-id is required") :type
+                         (common-lisp:or teams-channel-id common-lisp:null)
+                         :accessor
+                         struct-shape-update-teams-channel-configuration-request-channel-id
+                         :shape "TeamsChannelId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (channel-name :initarg :channel-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or teams-channel-name common-lisp:null)
+                         :accessor
+                         struct-shape-update-teams-channel-configuration-request-channel-name
+                         :shape "TeamsChannelName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sns-topic-arns :initarg :sns-topic-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sns-topic-arn-list common-lisp:null)
+                         :accessor
+                         struct-shape-update-teams-channel-configuration-request-sns-topic-arns
+                         :shape "SnsTopicArnList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (iam-role-arn :initarg :iam-role-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or arn common-lisp:null) :accessor
+                         struct-shape-update-teams-channel-configuration-request-iam-role-arn
+                         :shape "Arn" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (logging-level :initarg :logging-level :initform
+                         common-lisp:nil :type
+                         (common-lisp:or customer-cw-log-level
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-teams-channel-configuration-request-logging-level
+                         :shape "CustomerCwLogLevel" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (guardrail-policy-arns :initarg :guardrail-policy-arns
+                         :initform common-lisp:nil :type
+                         (common-lisp:or guardrail-policy-arn-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-teams-channel-configuration-request-guardrail-policy-arns
+                         :shape "GuardrailPolicyArnList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (user-authorization-required :initarg
+                         :user-authorization-required :initform common-lisp:nil
+                         :type
+                         (common-lisp:or boolean-account-preference
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-teams-channel-configuration-request-user-authorization-required
+                         :shape "BooleanAccountPreference" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-teams-channel-configuration-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-teams-channel-configuration-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-teams-channel-configuration-request
                     'make-update-teams-channel-configuration-request))
@@ -2872,11 +3953,22 @@
                           update-teams-channel-configuration-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-teams-channel-configuration-result (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-teams-channel-configuration-result-"))
-   (channel-configuration common-lisp:nil :type
-    (common-lisp:or teams-channel-configuration common-lisp:null)))
+ (common-lisp:defclass update-teams-channel-configuration-result
+                       common-lisp:nil
+                       ((channel-configuration :initarg :channel-configuration
+                         :initform common-lisp:nil :type
+                         (common-lisp:or teams-channel-configuration
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-teams-channel-configuration-result-channel-configuration
+                         :shape "TeamsChannelConfiguration" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-teams-channel-configuration-result
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-teams-channel-configuration-result
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-teams-channel-configuration-result
                     'make-update-teams-channel-configuration-result))

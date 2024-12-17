@@ -43,11 +43,21 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (account-settings (:copier common-lisp:nil)
-      (:conc-name "struct-shape-account-settings-"))
-   (notification-subscription-status common-lisp:nil :type
-    (common-lisp:or notification-subscription-status common-lisp:null)))
+ (common-lisp:defclass account-settings common-lisp:nil
+                       ((notification-subscription-status :initarg
+                         :notification-subscription-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or notification-subscription-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-account-settings-notification-subscription-status
+                         :shape "NotificationSubscriptionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-account-settings
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'account-settings
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'account-settings 'make-account-settings))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -81,9 +91,13 @@
                     'conflict-exception-resource-id
                     'conflict-exception-resource-type)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-account-settings-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-account-settings-request-")))
+ (common-lisp:defclass get-account-settings-request common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-account-settings-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-account-settings-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-account-settings-request
                     'make-get-account-settings-request))
@@ -103,11 +117,20 @@
                           get-account-settings-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-account-settings-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-account-settings-response-"))
-   (account-settings common-lisp:nil :type
-    (common-lisp:or account-settings common-lisp:null)))
+ (common-lisp:defclass get-account-settings-response common-lisp:nil
+                       ((account-settings :initarg :account-settings :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-settings common-lisp:null)
+                         :accessor
+                         struct-shape-get-account-settings-response-account-settings
+                         :shape "AccountSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-account-settings-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-account-settings-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-account-settings-response
                     'make-get-account-settings-response))
@@ -134,13 +157,25 @@
                           get-account-settings-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-report-metadata-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-report-metadata-request-"))
-   (report-id (common-lisp:error ":reportid is required") :type
-    (common-lisp:or report-id common-lisp:null))
-   (report-version common-lisp:nil :type
-    (common-lisp:or version-attribute common-lisp:null)))
+ (common-lisp:defclass get-report-metadata-request common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         (common-lisp:error ":reportid is required") :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-get-report-metadata-request-report-id
+                         :shape "ReportId" :location "querystring"
+                         :location-name "reportId")
+                        (report-version :initarg :report-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or version-attribute common-lisp:null)
+                         :accessor
+                         struct-shape-get-report-metadata-request-report-version
+                         :shape "VersionAttribute" :location "querystring"
+                         :location-name "reportVersion"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-report-metadata-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-report-metadata-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-report-metadata-request
                     'make-get-report-metadata-request))
@@ -160,11 +195,19 @@
                           get-report-metadata-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-report-metadata-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-report-metadata-response-"))
-   (report-details common-lisp:nil :type
-    (common-lisp:or report-detail common-lisp:null)))
+ (common-lisp:defclass get-report-metadata-response common-lisp:nil
+                       ((report-details :initarg :report-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or report-detail common-lisp:null)
+                         :accessor
+                         struct-shape-get-report-metadata-response-report-details
+                         :shape "ReportDetail" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-report-metadata-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-report-metadata-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-report-metadata-response
                     'make-get-report-metadata-response))
@@ -191,15 +234,32 @@
                           get-report-metadata-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-report-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-report-request-"))
-   (report-id (common-lisp:error ":reportid is required") :type
-    (common-lisp:or report-id common-lisp:null))
-   (report-version common-lisp:nil :type
-    (common-lisp:or version-attribute common-lisp:null))
-   (term-token (common-lisp:error ":termtoken is required") :type
-    (common-lisp:or short-string-attribute common-lisp:null)))
+ (common-lisp:defclass get-report-request common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         (common-lisp:error ":reportid is required") :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-get-report-request-report-id :shape
+                         "ReportId" :location "querystring" :location-name
+                         "reportId")
+                        (report-version :initarg :report-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or version-attribute common-lisp:null)
+                         :accessor
+                         struct-shape-get-report-request-report-version :shape
+                         "VersionAttribute" :location "querystring"
+                         :location-name "reportVersion")
+                        (term-token :initarg :term-token :initform
+                         (common-lisp:error ":termtoken is required") :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-get-report-request-term-token
+                         :shape "ShortStringAttribute" :location "querystring"
+                         :location-name "termToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-report-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-report-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-report-request 'make-get-report-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -212,12 +272,23 @@
                         ((aws-sdk/generator/shape::input get-report-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-report-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-report-response-"))
-   (document-presigned-url common-lisp:nil :type
-    (common-lisp:or get-report-response-document-presigned-url-string
-                    common-lisp:null)))
+ (common-lisp:defclass get-report-response common-lisp:nil
+                       ((document-presigned-url :initarg
+                         :document-presigned-url :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          get-report-response-document-presigned-url-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-get-report-response-document-presigned-url
+                         :shape "GetReportResponseDocumentPresignedUrlString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-report-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-report-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-report-response 'make-get-report-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -240,13 +311,25 @@
 (common-lisp:deftype get-report-response-document-presigned-url-string ()
   'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-term-for-report-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-term-for-report-request-"))
-   (report-id (common-lisp:error ":reportid is required") :type
-    (common-lisp:or report-id common-lisp:null))
-   (report-version common-lisp:nil :type
-    (common-lisp:or version-attribute common-lisp:null)))
+ (common-lisp:defclass get-term-for-report-request common-lisp:nil
+                       ((report-id :initarg :report-id :initform
+                         (common-lisp:error ":reportid is required") :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-get-term-for-report-request-report-id
+                         :shape "ReportId" :location "querystring"
+                         :location-name "reportId")
+                        (report-version :initarg :report-version :initform
+                         common-lisp:nil :type
+                         (common-lisp:or version-attribute common-lisp:null)
+                         :accessor
+                         struct-shape-get-term-for-report-request-report-version
+                         :shape "VersionAttribute" :location "querystring"
+                         :location-name "reportVersion"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-term-for-report-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-term-for-report-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-term-for-report-request
                     'make-get-term-for-report-request))
@@ -266,13 +349,30 @@
                           get-term-for-report-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-term-for-report-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-term-for-report-response-"))
-   (document-presigned-url common-lisp:nil :type
-    (common-lisp:or get-term-for-report-response-document-presigned-url-string
-                    common-lisp:null))
-   (term-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass get-term-for-report-response common-lisp:nil
+                       ((document-presigned-url :initarg
+                         :document-presigned-url :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          get-term-for-report-response-document-presigned-url-string
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-get-term-for-report-response-document-presigned-url
+                         :shape
+                         "GetTermForReportResponseDocumentPresignedUrlString"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (term-token :initarg :term-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-get-term-for-report-response-term-token
+                         :shape "String" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-term-for-report-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-term-for-report-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-term-for-report-response
                     'make-get-term-for-report-response))
@@ -322,13 +422,26 @@
                     'internal-server-exception-message
                     'internal-server-exception-retry-after-seconds)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-reports-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-reports-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results-attribute common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-attribute common-lisp:null)))
+ (common-lisp:defclass list-reports-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results-attribute
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-reports-request-max-results :shape
+                         "MaxResultsAttribute" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-attribute common-lisp:null)
+                         :accessor struct-shape-list-reports-request-next-token
+                         :shape "NextTokenAttribute" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-reports-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-reports-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-reports-request 'make-list-reports-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -341,13 +454,24 @@
                         ((aws-sdk/generator/shape::input list-reports-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-reports-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-reports-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token-attribute common-lisp:null))
-   (reports common-lisp:nil :type
-    (common-lisp:or reports-list common-lisp:null)))
+ (common-lisp:defclass list-reports-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token-attribute common-lisp:null)
+                         :accessor
+                         struct-shape-list-reports-response-next-token :shape
+                         "NextTokenAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (reports :initarg :reports :initform common-lisp:nil
+                         :type (common-lisp:or reports-list common-lisp:null)
+                         :accessor struct-shape-list-reports-response-reports
+                         :shape "ReportsList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-reports-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-reports-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-reports-response 'make-list-reports-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -385,11 +509,21 @@
 (common-lisp:deftype notification-subscription-status () 'common-lisp:string)
 (common-lisp:deftype published-state () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-account-settings-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-account-settings-request-"))
-   (notification-subscription-status common-lisp:nil :type
-    (common-lisp:or notification-subscription-status common-lisp:null)))
+ (common-lisp:defclass put-account-settings-request common-lisp:nil
+                       ((notification-subscription-status :initarg
+                         :notification-subscription-status :initform
+                         common-lisp:nil :type
+                         (common-lisp:or notification-subscription-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-account-settings-request-notification-subscription-status
+                         :shape "NotificationSubscriptionStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-account-settings-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-account-settings-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-account-settings-request
                     'make-put-account-settings-request))
@@ -417,11 +551,20 @@
                           put-account-settings-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-account-settings-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-account-settings-response-"))
-   (account-settings common-lisp:nil :type
-    (common-lisp:or account-settings common-lisp:null)))
+ (common-lisp:defclass put-account-settings-response common-lisp:nil
+                       ((account-settings :initarg :account-settings :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-settings common-lisp:null)
+                         :accessor
+                         struct-shape-put-account-settings-response-account-settings
+                         :shape "AccountSettings" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-account-settings-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-account-settings-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-account-settings-response
                     'make-put-account-settings-response))
@@ -448,48 +591,137 @@
                           put-account-settings-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (report-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-report-detail-"))
-   (acceptance-type common-lisp:nil :type
-    (common-lisp:or acceptance-type common-lisp:null))
-   (arn common-lisp:nil :type
-    (common-lisp:or long-string-attribute common-lisp:null))
-   (category common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (company-name common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (created-at common-lisp:nil :type
-    (common-lisp:or timestamp-attribute common-lisp:null))
-   (deleted-at common-lisp:nil :type
-    (common-lisp:or timestamp-attribute common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or long-string-attribute common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or report-id common-lisp:null))
-   (last-modified-at common-lisp:nil :type
-    (common-lisp:or timestamp-attribute common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (period-end common-lisp:nil :type
-    (common-lisp:or timestamp-attribute common-lisp:null))
-   (period-start common-lisp:nil :type
-    (common-lisp:or timestamp-attribute common-lisp:null))
-   (product-name common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (sequence-number common-lisp:nil :type
-    (common-lisp:or sequence-number-attribute common-lisp:null))
-   (series common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (state common-lisp:nil :type
-    (common-lisp:or published-state common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null))
-   (term-arn common-lisp:nil :type
-    (common-lisp:or long-string-attribute common-lisp:null))
-   (upload-state common-lisp:nil :type
-    (common-lisp:or upload-state common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or version-attribute common-lisp:null)))
+ (common-lisp:defclass report-detail common-lisp:nil
+                       ((acceptance-type :initarg :acceptance-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or acceptance-type common-lisp:null)
+                         :accessor struct-shape-report-detail-acceptance-type
+                         :shape "AcceptanceType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or long-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-arn :shape
+                         "LongStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (category :initarg :category :initform common-lisp:nil
+                         :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-category :shape
+                         "ShortStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (company-name :initarg :company-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-company-name
+                         :shape "ShortStringAttribute" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (created-at :initarg :created-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-attribute common-lisp:null)
+                         :accessor struct-shape-report-detail-created-at :shape
+                         "TimestampAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (deleted-at :initarg :deleted-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-attribute common-lisp:null)
+                         :accessor struct-shape-report-detail-deleted-at :shape
+                         "TimestampAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-description
+                         :shape "LongStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-report-detail-id :shape "ReportId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (last-modified-at :initarg :last-modified-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-attribute common-lisp:null)
+                         :accessor struct-shape-report-detail-last-modified-at
+                         :shape "TimestampAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-name :shape
+                         "ShortStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (period-end :initarg :period-end :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-attribute common-lisp:null)
+                         :accessor struct-shape-report-detail-period-end :shape
+                         "TimestampAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (period-start :initarg :period-start :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-attribute common-lisp:null)
+                         :accessor struct-shape-report-detail-period-start
+                         :shape "TimestampAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (product-name :initarg :product-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-product-name
+                         :shape "ShortStringAttribute" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (sequence-number :initarg :sequence-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or sequence-number-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-sequence-number
+                         :shape "SequenceNumberAttribute" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (series :initarg :series :initform common-lisp:nil
+                         :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-series :shape
+                         "ShortStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or published-state common-lisp:null)
+                         :accessor struct-shape-report-detail-state :shape
+                         "PublishedState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor struct-shape-report-detail-status-message
+                         :shape "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (term-arn :initarg :term-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or long-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-detail-term-arn :shape
+                         "LongStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upload-state :initarg :upload-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or upload-state common-lisp:null)
+                         :accessor struct-shape-report-detail-upload-state
+                         :shape "UploadState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or version-attribute common-lisp:null)
+                         :accessor struct-shape-report-detail-version :shape
+                         "VersionAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-report-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'report-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'report-detail 'make-report-detail))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input report-detail))
@@ -642,36 +874,99 @@
    common-lisp:nil))
 (common-lisp:deftype report-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (report-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-report-summary-"))
-   (arn common-lisp:nil :type
-    (common-lisp:or long-string-attribute common-lisp:null))
-   (category common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (company-name common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or long-string-attribute common-lisp:null))
-   (id common-lisp:nil :type (common-lisp:or report-id common-lisp:null))
-   (name common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (period-end common-lisp:nil :type
-    (common-lisp:or timestamp-attribute common-lisp:null))
-   (period-start common-lisp:nil :type
-    (common-lisp:or timestamp-attribute common-lisp:null))
-   (product-name common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (series common-lisp:nil :type
-    (common-lisp:or short-string-attribute common-lisp:null))
-   (state common-lisp:nil :type
-    (common-lisp:or published-state common-lisp:null))
-   (status-message common-lisp:nil :type
-    (common-lisp:or status-message common-lisp:null))
-   (upload-state common-lisp:nil :type
-    (common-lisp:or upload-state common-lisp:null))
-   (version common-lisp:nil :type
-    (common-lisp:or version-attribute common-lisp:null)))
+ (common-lisp:defclass report-summary common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or long-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-summary-arn :shape
+                         "LongStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (category :initarg :category :initform common-lisp:nil
+                         :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-summary-category :shape
+                         "ShortStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (company-name :initarg :company-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-summary-company-name
+                         :shape "ShortStringAttribute" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or long-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-summary-description
+                         :shape "LongStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (id :initarg :id :initform common-lisp:nil :type
+                         (common-lisp:or report-id common-lisp:null) :accessor
+                         struct-shape-report-summary-id :shape "ReportId"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform common-lisp:nil :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-summary-name :shape
+                         "ShortStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (period-end :initarg :period-end :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-attribute common-lisp:null)
+                         :accessor struct-shape-report-summary-period-end
+                         :shape "TimestampAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (period-start :initarg :period-start :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp-attribute common-lisp:null)
+                         :accessor struct-shape-report-summary-period-start
+                         :shape "TimestampAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (product-name :initarg :product-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-summary-product-name
+                         :shape "ShortStringAttribute" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (series :initarg :series :initform common-lisp:nil
+                         :type
+                         (common-lisp:or short-string-attribute
+                                         common-lisp:null)
+                         :accessor struct-shape-report-summary-series :shape
+                         "ShortStringAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (state :initarg :state :initform common-lisp:nil :type
+                         (common-lisp:or published-state common-lisp:null)
+                         :accessor struct-shape-report-summary-state :shape
+                         "PublishedState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-message :initarg :status-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-message common-lisp:null)
+                         :accessor struct-shape-report-summary-status-message
+                         :shape "StatusMessage" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (upload-state :initarg :upload-state :initform
+                         common-lisp:nil :type
+                         (common-lisp:or upload-state common-lisp:null)
+                         :accessor struct-shape-report-summary-upload-state
+                         :shape "UploadState" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (version :initarg :version :initform common-lisp:nil
+                         :type
+                         (common-lisp:or version-attribute common-lisp:null)
+                         :accessor struct-shape-report-summary-version :shape
+                         "VersionAttribute" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-report-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'report-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'report-summary 'make-report-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input report-summary))
@@ -858,13 +1153,24 @@
                     'validation-exception-message
                     'validation-exception-reason)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (validation-exception-field (:copier common-lisp:nil)
-      (:conc-name "struct-shape-validation-exception-field-"))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass validation-exception-field common-lisp:nil
+                       ((message :initarg :message :initform
+                         (common-lisp:error ":message is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-message :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-validation-exception-field-name :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-validation-exception-field
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'validation-exception-field
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'validation-exception-field
                     'make-validation-exception-field))

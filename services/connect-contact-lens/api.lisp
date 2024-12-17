@@ -40,13 +40,27 @@
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (categories (:copier common-lisp:nil)
-      (:conc-name "struct-shape-categories-"))
-   (matched-categories (common-lisp:error ":matched-categories is required")
-    :type (common-lisp:or matched-categories common-lisp:null))
-   (matched-details (common-lisp:error ":matched-details is required") :type
-    (common-lisp:or matched-details common-lisp:null)))
+ (common-lisp:defclass categories common-lisp:nil
+                       ((matched-categories :initarg :matched-categories
+                         :initform
+                         (common-lisp:error ":matched-categories is required")
+                         :type
+                         (common-lisp:or matched-categories common-lisp:null)
+                         :accessor struct-shape-categories-matched-categories
+                         :shape "MatchedCategories" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (matched-details :initarg :matched-details :initform
+                         (common-lisp:error ":matched-details is required")
+                         :type
+                         (common-lisp:or matched-details common-lisp:null)
+                         :accessor struct-shape-categories-matched-details
+                         :shape "MatchedDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-categories
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'categories
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'categories 'make-categories))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input categories))
@@ -72,11 +86,21 @@
                         ((aws-sdk/generator/shape::input categories))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (category-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-category-details-"))
-   (points-of-interest (common-lisp:error ":points-of-interest is required")
-    :type (common-lisp:or points-of-interest common-lisp:null)))
+ (common-lisp:defclass category-details common-lisp:nil
+                       ((points-of-interest :initarg :points-of-interest
+                         :initform
+                         (common-lisp:error ":points-of-interest is required")
+                         :type
+                         (common-lisp:or points-of-interest common-lisp:null)
+                         :accessor
+                         struct-shape-category-details-points-of-interest
+                         :shape "PointsOfInterest" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-category-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'category-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'category-details 'make-category-details))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -98,13 +122,29 @@
 (common-lisp:deftype category-name () 'common-lisp:string)
 (common-lisp:deftype character-offset () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct
-     (character-offsets (:copier common-lisp:nil)
-      (:conc-name "struct-shape-character-offsets-"))
-   (begin-offset-char (common-lisp:error ":begin-offset-char is required")
-    :type (common-lisp:or character-offset common-lisp:null))
-   (end-offset-char (common-lisp:error ":end-offset-char is required") :type
-    (common-lisp:or character-offset common-lisp:null)))
+ (common-lisp:defclass character-offsets common-lisp:nil
+                       ((begin-offset-char :initarg :begin-offset-char
+                         :initform
+                         (common-lisp:error ":begin-offset-char is required")
+                         :type
+                         (common-lisp:or character-offset common-lisp:null)
+                         :accessor
+                         struct-shape-character-offsets-begin-offset-char
+                         :shape "CharacterOffset" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-offset-char :initarg :end-offset-char :initform
+                         (common-lisp:error ":end-offset-char is required")
+                         :type
+                         (common-lisp:or character-offset common-lisp:null)
+                         :accessor
+                         struct-shape-character-offsets-end-offset-char :shape
+                         "CharacterOffset" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-character-offsets
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'character-offsets
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'character-offsets 'make-character-offsets))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -149,11 +189,21 @@
   (common-lisp:list 'invalid-request-exception
                     'invalid-request-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (issue-detected (:copier common-lisp:nil)
-      (:conc-name "struct-shape-issue-detected-"))
-   (character-offsets (common-lisp:error ":character-offsets is required")
-    :type (common-lisp:or character-offsets common-lisp:null)))
+ (common-lisp:defclass issue-detected common-lisp:nil
+                       ((character-offsets :initarg :character-offsets
+                         :initform
+                         (common-lisp:error ":character-offsets is required")
+                         :type
+                         (common-lisp:or character-offsets common-lisp:null)
+                         :accessor
+                         struct-shape-issue-detected-character-offsets :shape
+                         "CharacterOffsets" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-issue-detected
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'issue-detected
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'issue-detected 'make-issue-detected))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input issue-detected))
@@ -180,18 +230,40 @@
                            (trivial-types:proper-list issue-detected))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-realtime-contact-analysis-segments-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-realtime-contact-analysis-segments-request-"))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
-   (contact-id (common-lisp:error ":contact-id is required") :type
-    (common-lisp:or contact-id common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-realtime-contact-analysis-segments-request
+                       common-lisp:nil
+                       ((instance-id :initarg :instance-id :initform
+                         (common-lisp:error ":instance-id is required") :type
+                         (common-lisp:or instance-id common-lisp:null)
+                         :accessor
+                         struct-shape-list-realtime-contact-analysis-segments-request-instance-id
+                         :shape "InstanceId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (contact-id :initarg :contact-id :initform
+                         (common-lisp:error ":contact-id is required") :type
+                         (common-lisp:or contact-id common-lisp:null) :accessor
+                         struct-shape-list-realtime-contact-analysis-segments-request-contact-id
+                         :shape "ContactId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-realtime-contact-analysis-segments-request-max-results
+                         :shape "MaxResults" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-realtime-contact-analysis-segments-request-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-realtime-contact-analysis-segments-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-realtime-contact-analysis-segments-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-realtime-contact-analysis-segments-request
                     'make-list-realtime-contact-analysis-segments-request))
@@ -239,15 +311,28 @@
                           list-realtime-contact-analysis-segments-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-realtime-contact-analysis-segments-response
-      (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-list-realtime-contact-analysis-segments-response-"))
-   (segments (common-lisp:error ":segments is required") :type
-    (common-lisp:or realtime-contact-analysis-segments common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-realtime-contact-analysis-segments-response
+                       common-lisp:nil
+                       ((segments :initarg :segments :initform
+                         (common-lisp:error ":segments is required") :type
+                         (common-lisp:or realtime-contact-analysis-segments
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-realtime-contact-analysis-segments-response-segments
+                         :shape "RealtimeContactAnalysisSegments" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-realtime-contact-analysis-segments-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-realtime-contact-analysis-segments-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-realtime-contact-analysis-segments-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-realtime-contact-analysis-segments-response
                     'make-list-realtime-contact-analysis-segments-response))
@@ -302,13 +387,28 @@
 (common-lisp:deftype participant-id () 'common-lisp:string)
 (common-lisp:deftype participant-role () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (point-of-interest (:copier common-lisp:nil)
-      (:conc-name "struct-shape-point-of-interest-"))
-   (begin-offset-millis (common-lisp:error ":begin-offset-millis is required")
-    :type (common-lisp:or offset-millis common-lisp:null))
-   (end-offset-millis (common-lisp:error ":end-offset-millis is required")
-    :type (common-lisp:or offset-millis common-lisp:null)))
+ (common-lisp:defclass point-of-interest common-lisp:nil
+                       ((begin-offset-millis :initarg :begin-offset-millis
+                         :initform
+                         (common-lisp:error ":begin-offset-millis is required")
+                         :type (common-lisp:or offset-millis common-lisp:null)
+                         :accessor
+                         struct-shape-point-of-interest-begin-offset-millis
+                         :shape "OffsetMillis" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-offset-millis :initarg :end-offset-millis
+                         :initform
+                         (common-lisp:error ":end-offset-millis is required")
+                         :type (common-lisp:or offset-millis common-lisp:null)
+                         :accessor
+                         struct-shape-point-of-interest-end-offset-millis
+                         :shape "OffsetMillis" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-point-of-interest
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'point-of-interest
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'point-of-interest 'make-point-of-interest))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -343,13 +443,25 @@
                            (trivial-types:proper-list point-of-interest))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (realtime-contact-analysis-segment (:copier common-lisp:nil)
-      (:conc-name "struct-shape-realtime-contact-analysis-segment-"))
-   (transcript common-lisp:nil :type
-    (common-lisp:or transcript common-lisp:null))
-   (categories common-lisp:nil :type
-    (common-lisp:or categories common-lisp:null)))
+ (common-lisp:defclass realtime-contact-analysis-segment common-lisp:nil
+                       ((transcript :initarg :transcript :initform
+                         common-lisp:nil :type
+                         (common-lisp:or transcript common-lisp:null) :accessor
+                         struct-shape-realtime-contact-analysis-segment-transcript
+                         :shape "Transcript" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (categories :initarg :categories :initform
+                         common-lisp:nil :type
+                         (common-lisp:or categories common-lisp:null) :accessor
+                         struct-shape-realtime-contact-analysis-segment-categories
+                         :shape "Categories" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-realtime-contact-analysis-segment
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'realtime-contact-analysis-segment
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'realtime-contact-analysis-segment
                     'make-realtime-contact-analysis-segment))
@@ -408,25 +520,63 @@
  (common-lisp:export
   (common-lisp:list 'throttling-exception 'throttling-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (transcript (:copier common-lisp:nil)
-      (:conc-name "struct-shape-transcript-"))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or transcript-id common-lisp:null))
-   (participant-id (common-lisp:error ":participant-id is required") :type
-    (common-lisp:or participant-id common-lisp:null))
-   (participant-role (common-lisp:error ":participant-role is required") :type
-    (common-lisp:or participant-role common-lisp:null))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or transcript-content common-lisp:null))
-   (begin-offset-millis (common-lisp:error ":begin-offset-millis is required")
-    :type (common-lisp:or offset-millis common-lisp:null))
-   (end-offset-millis (common-lisp:error ":end-offset-millis is required")
-    :type (common-lisp:or offset-millis common-lisp:null))
-   (sentiment (common-lisp:error ":sentiment is required") :type
-    (common-lisp:or sentiment-value common-lisp:null))
-   (issues-detected common-lisp:nil :type
-    (common-lisp:or issues-detected common-lisp:null)))
+ (common-lisp:defclass transcript common-lisp:nil
+                       ((id :initarg :id :initform
+                         (common-lisp:error ":id is required") :type
+                         (common-lisp:or transcript-id common-lisp:null)
+                         :accessor struct-shape-transcript-id :shape
+                         "TranscriptId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (participant-id :initarg :participant-id :initform
+                         (common-lisp:error ":participant-id is required")
+                         :type (common-lisp:or participant-id common-lisp:null)
+                         :accessor struct-shape-transcript-participant-id
+                         :shape "ParticipantId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (participant-role :initarg :participant-role :initform
+                         (common-lisp:error ":participant-role is required")
+                         :type
+                         (common-lisp:or participant-role common-lisp:null)
+                         :accessor struct-shape-transcript-participant-role
+                         :shape "ParticipantRole" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content :initarg :content :initform
+                         (common-lisp:error ":content is required") :type
+                         (common-lisp:or transcript-content common-lisp:null)
+                         :accessor struct-shape-transcript-content :shape
+                         "TranscriptContent" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (begin-offset-millis :initarg :begin-offset-millis
+                         :initform
+                         (common-lisp:error ":begin-offset-millis is required")
+                         :type (common-lisp:or offset-millis common-lisp:null)
+                         :accessor struct-shape-transcript-begin-offset-millis
+                         :shape "OffsetMillis" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (end-offset-millis :initarg :end-offset-millis
+                         :initform
+                         (common-lisp:error ":end-offset-millis is required")
+                         :type (common-lisp:or offset-millis common-lisp:null)
+                         :accessor struct-shape-transcript-end-offset-millis
+                         :shape "OffsetMillis" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sentiment :initarg :sentiment :initform
+                         (common-lisp:error ":sentiment is required") :type
+                         (common-lisp:or sentiment-value common-lisp:null)
+                         :accessor struct-shape-transcript-sentiment :shape
+                         "SentimentValue" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (issues-detected :initarg :issues-detected :initform
+                         common-lisp:nil :type
+                         (common-lisp:or issues-detected common-lisp:null)
+                         :accessor struct-shape-transcript-issues-detected
+                         :shape "IssuesDetected" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-transcript
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'transcript
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'transcript 'make-transcript))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input transcript))

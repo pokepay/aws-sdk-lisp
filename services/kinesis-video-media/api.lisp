@@ -55,15 +55,30 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype fragment-number-string () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-media-input (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-media-input-"))
-   (stream-name common-lisp:nil :type
-    (common-lisp:or stream-name common-lisp:null))
-   (stream-arn common-lisp:nil :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (start-selector (common-lisp:error ":start-selector is required") :type
-    (common-lisp:or start-selector common-lisp:null)))
+ (common-lisp:defclass get-media-input common-lisp:nil
+                       ((stream-name :initarg :stream-name :initform
+                         common-lisp:nil :type
+                         (common-lisp:or stream-name common-lisp:null)
+                         :accessor struct-shape-get-media-input-stream-name
+                         :shape "StreamName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (stream-arn :initarg :stream-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor struct-shape-get-media-input-stream-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (start-selector :initarg :start-selector :initform
+                         (common-lisp:error ":start-selector is required")
+                         :type (common-lisp:or start-selector common-lisp:null)
+                         :accessor struct-shape-get-media-input-start-selector
+                         :shape "StartSelector" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-media-input
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-media-input
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'get-media-input 'make-get-media-input))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input get-media-input))
@@ -96,12 +111,23 @@
                         ((aws-sdk/generator/shape::input get-media-input))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-media-output (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-media-output-"))
-   (content-type common-lisp:nil :type
-    (common-lisp:or content-type common-lisp:null))
-   (payload common-lisp:nil :type (common-lisp:or payload common-lisp:null)))
+ (common-lisp:defclass get-media-output common-lisp:nil
+                       ((content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or content-type common-lisp:null)
+                         :accessor struct-shape-get-media-output-content-type
+                         :shape "ContentType" :location "header" :location-name
+                         "Content-Type")
+                        (payload :initarg :payload :initform common-lisp:nil
+                         :type (common-lisp:or payload common-lisp:null)
+                         :accessor struct-shape-get-media-output-payload :shape
+                         "Payload" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-media-output
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-media-output
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-media-output 'make-get-media-output))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -160,17 +186,42 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-selector (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-selector-"))
-   (start-selector-type (common-lisp:error ":start-selector-type is required")
-    :type (common-lisp:or start-selector-type common-lisp:null))
-   (after-fragment-number common-lisp:nil :type
-    (common-lisp:or fragment-number-string common-lisp:null))
-   (start-timestamp common-lisp:nil :type
-    (common-lisp:or timestamp common-lisp:null))
-   (continuation-token common-lisp:nil :type
-    (common-lisp:or continuation-token common-lisp:null)))
+ (common-lisp:defclass start-selector common-lisp:nil
+                       ((start-selector-type :initarg :start-selector-type
+                         :initform
+                         (common-lisp:error ":start-selector-type is required")
+                         :type
+                         (common-lisp:or start-selector-type common-lisp:null)
+                         :accessor
+                         struct-shape-start-selector-start-selector-type :shape
+                         "StartSelectorType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (after-fragment-number :initarg :after-fragment-number
+                         :initform common-lisp:nil :type
+                         (common-lisp:or fragment-number-string
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-selector-after-fragment-number
+                         :shape "FragmentNumberString" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (start-timestamp :initarg :start-timestamp :initform
+                         common-lisp:nil :type
+                         (common-lisp:or timestamp common-lisp:null) :accessor
+                         struct-shape-start-selector-start-timestamp :shape
+                         "Timestamp" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (continuation-token :initarg :continuation-token
+                         :initform common-lisp:nil :type
+                         (common-lisp:or continuation-token common-lisp:null)
+                         :accessor
+                         struct-shape-start-selector-continuation-token :shape
+                         "ContinuationToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-selector
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'start-selector
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'start-selector 'make-start-selector))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input start-selector))

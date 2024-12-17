@@ -41,11 +41,19 @@
   (common-lisp:list 'access-denied-exception 'access-denied-exception-message)))
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-destination (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-destination-"))
-   (s3destination (common-lisp:error ":s3destination is required") :type
-    (common-lisp:or s3config-map common-lisp:null)))
+ (common-lisp:defclass audience-destination common-lisp:nil
+                       ((s3destination :initarg :s3destination :initform
+                         (common-lisp:error ":s3destination is required") :type
+                         (common-lisp:or s3config-map common-lisp:null)
+                         :accessor
+                         struct-shape-audience-destination-s3destination :shape
+                         "S3ConfigMap" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-destination
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audience-destination
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'audience-destination 'make-audience-destination))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -75,28 +83,81 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype audience-export-job-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-export-job-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-export-job-summary-"))
-   (audience-generation-job-arn
-    (common-lisp:error ":audiencegenerationjobarn is required") :type
-    (common-lisp:or audience-generation-job-arn common-lisp:null))
-   (audience-size (common-lisp:error ":audiencesize is required") :type
-    (common-lisp:or audience-size common-lisp:null))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (output-location common-lisp:nil :type
-    (common-lisp:or s3path common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or audience-export-job-status common-lisp:null))
-   (status-details common-lisp:nil :type
-    (common-lisp:or status-details common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass audience-export-job-summary common-lisp:nil
+                       ((audience-generation-job-arn :initarg
+                         :audience-generation-job-arn :initform
+                         (common-lisp:error
+                          ":audiencegenerationjobarn is required")
+                         :type
+                         (common-lisp:or audience-generation-job-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-export-job-summary-audience-generation-job-arn
+                         :shape "AudienceGenerationJobArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (audience-size :initarg :audience-size :initform
+                         (common-lisp:error ":audiencesize is required") :type
+                         (common-lisp:or audience-size common-lisp:null)
+                         :accessor
+                         struct-shape-audience-export-job-summary-audience-size
+                         :shape "AudienceSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-export-job-summary-create-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-audience-export-job-summary-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-audience-export-job-summary-name :shape
+                         "NameString" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (output-location :initarg :output-location :initform
+                         common-lisp:nil :type
+                         (common-lisp:or s3path common-lisp:null) :accessor
+                         struct-shape-audience-export-job-summary-output-location
+                         :shape "S3Path" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or audience-export-job-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-export-job-summary-status :shape
+                         "AudienceExportJobStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-details :initarg :status-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-details common-lisp:null)
+                         :accessor
+                         struct-shape-audience-export-job-summary-status-details
+                         :shape "StatusDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-export-job-summary-update-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-export-job-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audience-export-job-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'audience-export-job-summary
                     'make-audience-export-job-summary))
@@ -181,13 +242,27 @@
    common-lisp:nil))
 (common-lisp:deftype audience-generation-job-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-generation-job-data-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-generation-job-data-source-"))
-   (data-source (common-lisp:error ":datasource is required") :type
-    (common-lisp:or s3config-map common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or iam-role-arn common-lisp:null)))
+ (common-lisp:defclass audience-generation-job-data-source common-lisp:nil
+                       ((data-source :initarg :data-source :initform
+                         (common-lisp:error ":datasource is required") :type
+                         (common-lisp:or s3config-map common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-data-source-data-source
+                         :shape "S3ConfigMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or iam-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-data-source-role-arn
+                         :shape "IamRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-generation-job-data-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'audience-generation-job-data-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'audience-generation-job-data-source
                     'make-audience-generation-job-data-source))
@@ -231,29 +306,85 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype audience-generation-job-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-generation-job-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-generation-job-summary-"))
-   (audience-generation-job-arn
-    (common-lisp:error ":audiencegenerationjobarn is required") :type
-    (common-lisp:or audience-generation-job-arn common-lisp:null))
-   (collaboration-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (started-by common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or audience-generation-job-status common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass audience-generation-job-summary common-lisp:nil
+                       ((audience-generation-job-arn :initarg
+                         :audience-generation-job-arn :initform
+                         (common-lisp:error
+                          ":audiencegenerationjobarn is required")
+                         :type
+                         (common-lisp:or audience-generation-job-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-summary-audience-generation-job-arn
+                         :shape "AudienceGenerationJobArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (collaboration-id :initarg :collaboration-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-audience-generation-job-summary-collaboration-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-summary-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-summary-create-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-summary-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-summary-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (started-by :initarg :started-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-audience-generation-job-summary-started-by
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or audience-generation-job-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-summary-status
+                         :shape "AudienceGenerationJobStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-generation-job-summary-update-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-generation-job-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'audience-generation-job-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'audience-generation-job-summary
                     'make-audience-generation-job-summary))
@@ -347,16 +478,34 @@
                            (trivial-types:proper-list audience-model-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-model-metric (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-model-metric-"))
-   (for-top-kitem-predictions
-    (common-lisp:error ":fortopkitempredictions is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or audience-model-metric-type common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass audience-model-metric common-lisp:nil
+                       ((for-top-kitem-predictions :initarg
+                         :for-top-kitem-predictions :initform
+                         (common-lisp:error
+                          ":fortopkitempredictions is required")
+                         :type (common-lisp:or integer common-lisp:null)
+                         :accessor
+                         struct-shape-audience-model-metric-for-top-kitem-predictions
+                         :shape "Integer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or audience-model-metric-type
+                                         common-lisp:null)
+                         :accessor struct-shape-audience-model-metric-type
+                         :shape "AudienceModelMetricType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-audience-model-metric-value :shape
+                         "Double" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-model-metric
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audience-model-metric
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'audience-model-metric 'make-audience-model-metric))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -407,23 +556,66 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype audience-model-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-model-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-model-summary-"))
-   (audience-model-arn (common-lisp:error ":audiencemodelarn is required")
-    :type (common-lisp:or audience-model-arn common-lisp:null))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or audience-model-status common-lisp:null))
-   (training-dataset-arn (common-lisp:error ":trainingdatasetarn is required")
-    :type (common-lisp:or training-dataset-arn common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass audience-model-summary common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform
+                         (common-lisp:error ":audiencemodelarn is required")
+                         :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-audience-model-summary-audience-model-arn
+                         :shape "AudienceModelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-model-summary-create-time :shape
+                         "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-audience-model-summary-description :shape
+                         "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor struct-shape-audience-model-summary-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or audience-model-status
+                                         common-lisp:null)
+                         :accessor struct-shape-audience-model-summary-status
+                         :shape "AudienceModelStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (training-dataset-arn :initarg :training-dataset-arn
+                         :initform
+                         (common-lisp:error ":trainingdatasetarn is required")
+                         :type
+                         (common-lisp:or training-dataset-arn common-lisp:null)
+                         :accessor
+                         struct-shape-audience-model-summary-training-dataset-arn
+                         :shape "TrainingDatasetArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-audience-model-summary-update-time :shape
+                         "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-model-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audience-model-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'audience-model-summary 'make-audience-model-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -492,11 +684,21 @@
                           audience-model-summary))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-quality-metrics (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-quality-metrics-"))
-   (relevance-metrics (common-lisp:error ":relevancemetrics is required") :type
-    (common-lisp:or relevance-metrics common-lisp:null)))
+ (common-lisp:defclass audience-quality-metrics common-lisp:nil
+                       ((relevance-metrics :initarg :relevance-metrics
+                         :initform
+                         (common-lisp:error ":relevancemetrics is required")
+                         :type
+                         (common-lisp:or relevance-metrics common-lisp:null)
+                         :accessor
+                         struct-shape-audience-quality-metrics-relevance-metrics
+                         :shape "RelevanceMetrics" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-quality-metrics
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audience-quality-metrics
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'audience-quality-metrics 'make-audience-quality-metrics))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -522,13 +724,24 @@
                           audience-quality-metrics))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-size (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-size-"))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or audience-size-type common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or audience-size-value common-lisp:null)))
+ (common-lisp:defclass audience-size common-lisp:nil
+                       ((type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or audience-size-type common-lisp:null)
+                         :accessor struct-shape-audience-size-type :shape
+                         "AudienceSizeType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or audience-size-value common-lisp:null)
+                         :accessor struct-shape-audience-size-value :shape
+                         "AudienceSizeValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-size
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audience-size
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'audience-size 'make-audience-size))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input audience-size))
@@ -562,13 +775,30 @@
                            (trivial-types:proper-list audience-size-value))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (audience-size-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-audience-size-config-"))
-   (audience-size-bins (common-lisp:error ":audiencesizebins is required")
-    :type (common-lisp:or audience-size-bins common-lisp:null))
-   (audience-size-type (common-lisp:error ":audiencesizetype is required")
-    :type (common-lisp:or audience-size-type common-lisp:null)))
+ (common-lisp:defclass audience-size-config common-lisp:nil
+                       ((audience-size-bins :initarg :audience-size-bins
+                         :initform
+                         (common-lisp:error ":audiencesizebins is required")
+                         :type
+                         (common-lisp:or audience-size-bins common-lisp:null)
+                         :accessor
+                         struct-shape-audience-size-config-audience-size-bins
+                         :shape "AudienceSizeBins" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (audience-size-type :initarg :audience-size-type
+                         :initform
+                         (common-lisp:error ":audiencesizetype is required")
+                         :type
+                         (common-lisp:or audience-size-type common-lisp:null)
+                         :accessor
+                         struct-shape-audience-size-config-audience-size-type
+                         :shape "AudienceSizeType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-audience-size-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'audience-size-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'audience-size-config 'make-audience-size-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -599,13 +829,24 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype column-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (column-schema (:copier common-lisp:nil)
-      (:conc-name "struct-shape-column-schema-"))
-   (column-name (common-lisp:error ":columnname is required") :type
-    (common-lisp:or column-name common-lisp:null))
-   (column-types (common-lisp:error ":columntypes is required") :type
-    (common-lisp:or column-type-list common-lisp:null)))
+ (common-lisp:defclass column-schema common-lisp:nil
+                       ((column-name :initarg :column-name :initform
+                         (common-lisp:error ":columnname is required") :type
+                         (common-lisp:or column-name common-lisp:null)
+                         :accessor struct-shape-column-schema-column-name
+                         :shape "ColumnName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (column-types :initarg :column-types :initform
+                         (common-lisp:error ":columntypes is required") :type
+                         (common-lisp:or column-type-list common-lisp:null)
+                         :accessor struct-shape-column-schema-column-types
+                         :shape "ColumnTypeList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-column-schema
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'column-schema
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'column-schema 'make-column-schema))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input column-schema))
@@ -650,13 +891,27 @@
                             configured-audience-model-summary))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (configured-audience-model-output-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configured-audience-model-output-config-"))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or audience-destination common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or iam-role-arn common-lisp:null)))
+ (common-lisp:defclass configured-audience-model-output-config common-lisp:nil
+                       ((destination :initarg :destination :initform
+                         (common-lisp:error ":destination is required") :type
+                         (common-lisp:or audience-destination common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-output-config-destination
+                         :shape "AudienceDestination" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or iam-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-output-config-role-arn
+                         :shape "IamRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configured-audience-model-output-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'configured-audience-model-output-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configured-audience-model-output-config
                     'make-configured-audience-model-output-config))
@@ -691,26 +946,80 @@
    common-lisp:nil))
 (common-lisp:deftype configured-audience-model-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (configured-audience-model-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-configured-audience-model-summary-"))
-   (audience-model-arn (common-lisp:error ":audiencemodelarn is required")
-    :type (common-lisp:or audience-model-arn common-lisp:null))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (output-config (common-lisp:error ":outputconfig is required") :type
-    (common-lisp:or configured-audience-model-output-config common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or configured-audience-model-status common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass configured-audience-model-summary common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform
+                         (common-lisp:error ":audiencemodelarn is required")
+                         :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-summary-audience-model-arn
+                         :shape "AudienceModelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-summary-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-summary-create-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-summary-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-summary-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-config :initarg :output-config :initform
+                         (common-lisp:error ":outputconfig is required") :type
+                         (common-lisp:or
+                          configured-audience-model-output-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-summary-output-config
+                         :shape "ConfiguredAudienceModelOutputConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or configured-audience-model-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-summary-status
+                         :shape "ConfiguredAudienceModelStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-configured-audience-model-summary-update-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-configured-audience-model-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'configured-audience-model-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'configured-audience-model-summary
                     'make-configured-audience-model-summary))
@@ -794,22 +1103,66 @@
  (common-lisp:export
   (common-lisp:list 'conflict-exception 'conflict-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-audience-model-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-audience-model-request-"))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (kms-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (training-data-end-time common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (training-data-start-time common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (training-dataset-arn (common-lisp:error ":trainingdatasetarn is required")
-    :type (common-lisp:or training-dataset-arn common-lisp:null)))
+ (common-lisp:defclass create-audience-model-request common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-create-audience-model-request-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-arn :initarg :kms-key-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-audience-model-request-kms-key-arn
+                         :shape "KmsKeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-create-audience-model-request-name :shape
+                         "NameString" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-audience-model-request-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (training-data-end-time :initarg
+                         :training-data-end-time :initform common-lisp:nil
+                         :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-audience-model-request-training-data-end-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (training-data-start-time :initarg
+                         :training-data-start-time :initform common-lisp:nil
+                         :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-audience-model-request-training-data-start-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (training-dataset-arn :initarg :training-dataset-arn
+                         :initform
+                         (common-lisp:error ":trainingdatasetarn is required")
+                         :type
+                         (common-lisp:or training-dataset-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-audience-model-request-training-dataset-arn
+                         :shape "TrainingDatasetArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-audience-model-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-audience-model-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-audience-model-request
                     'make-create-audience-model-request))
@@ -881,11 +1234,22 @@
                           create-audience-model-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-audience-model-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-audience-model-response-"))
-   (audience-model-arn (common-lisp:error ":audiencemodelarn is required")
-    :type (common-lisp:or audience-model-arn common-lisp:null)))
+ (common-lisp:defclass create-audience-model-response common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform
+                         (common-lisp:error ":audiencemodelarn is required")
+                         :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-audience-model-response-audience-model-arn
+                         :shape "AudienceModelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-audience-model-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-audience-model-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-audience-model-response
                     'make-create-audience-model-response))
@@ -912,27 +1276,83 @@
                           create-audience-model-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-configured-audience-model-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-configured-audience-model-request-"))
-   (audience-model-arn (common-lisp:error ":audiencemodelarn is required")
-    :type (common-lisp:or audience-model-arn common-lisp:null))
-   (audience-size-config common-lisp:nil :type
-    (common-lisp:or audience-size-config common-lisp:null))
-   (child-resource-tag-on-create-policy common-lisp:nil :type
-    (common-lisp:or tag-on-create-policy common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (min-matching-seed-size common-lisp:nil :type
-    (common-lisp:or min-matching-seed-size common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (output-config (common-lisp:error ":outputconfig is required") :type
-    (common-lisp:or configured-audience-model-output-config common-lisp:null))
-   (shared-audience-metrics
-    (common-lisp:error ":sharedaudiencemetrics is required") :type
-    (common-lisp:or metrics-list common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass create-configured-audience-model-request common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform
+                         (common-lisp:error ":audiencemodelarn is required")
+                         :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-request-audience-model-arn
+                         :shape "AudienceModelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (audience-size-config :initarg :audience-size-config
+                         :initform common-lisp:nil :type
+                         (common-lisp:or audience-size-config common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-request-audience-size-config
+                         :shape "AudienceSizeConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (child-resource-tag-on-create-policy :initarg
+                         :child-resource-tag-on-create-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-on-create-policy common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-request-child-resource-tag-on-create-policy
+                         :shape "TagOnCreatePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-request-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (min-matching-seed-size :initarg
+                         :min-matching-seed-size :initform common-lisp:nil
+                         :type
+                         (common-lisp:or min-matching-seed-size
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-request-min-matching-seed-size
+                         :shape "MinMatchingSeedSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-request-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-config :initarg :output-config :initform
+                         (common-lisp:error ":outputconfig is required") :type
+                         (common-lisp:or
+                          configured-audience-model-output-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-request-output-config
+                         :shape "ConfiguredAudienceModelOutputConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (shared-audience-metrics :initarg
+                         :shared-audience-metrics :initform
+                         (common-lisp:error
+                          ":sharedaudiencemetrics is required")
+                         :type (common-lisp:or metrics-list common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-request-shared-audience-metrics
+                         :shape "MetricsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-configured-audience-model-request-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-configured-audience-model-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-configured-audience-model-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-configured-audience-model-request
                     'make-create-configured-audience-model-request))
@@ -1019,12 +1439,25 @@
                           create-configured-audience-model-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-configured-audience-model-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-configured-audience-model-response-"))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null)))
+ (common-lisp:defclass create-configured-audience-model-response
+                       common-lisp:nil
+                       ((configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-create-configured-audience-model-response-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-configured-audience-model-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-configured-audience-model-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-configured-audience-model-response
                     'make-create-configured-audience-model-response))
@@ -1052,19 +1485,49 @@
                           create-configured-audience-model-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-training-dataset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-training-dataset-request-"))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or iam-role-arn common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (training-data (common-lisp:error ":trainingdata is required") :type
-    (common-lisp:or create-training-dataset-request-training-data-list
-                    common-lisp:null)))
+ (common-lisp:defclass create-training-dataset-request common-lisp:nil
+                       ((description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-create-training-dataset-request-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-create-training-dataset-request-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or iam-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-training-dataset-request-role-arn
+                         :shape "IamRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-create-training-dataset-request-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (training-data :initarg :training-data :initform
+                         (common-lisp:error ":trainingdata is required") :type
+                         (common-lisp:or
+                          create-training-dataset-request-training-data-list
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-create-training-dataset-request-training-data
+                         :shape "CreateTrainingDatasetRequestTrainingDataList"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-training-dataset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-training-dataset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-training-dataset-request
                     'make-create-training-dataset-request))
@@ -1127,11 +1590,22 @@
                            (trivial-types:proper-list dataset))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (create-training-dataset-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-create-training-dataset-response-"))
-   (training-dataset-arn (common-lisp:error ":trainingdatasetarn is required")
-    :type (common-lisp:or training-dataset-arn common-lisp:null)))
+ (common-lisp:defclass create-training-dataset-response common-lisp:nil
+                       ((training-dataset-arn :initarg :training-dataset-arn
+                         :initform
+                         (common-lisp:error ":trainingdatasetarn is required")
+                         :type
+                         (common-lisp:or training-dataset-arn common-lisp:null)
+                         :accessor
+                         struct-shape-create-training-dataset-response-training-dataset-arn
+                         :shape "TrainingDatasetArn" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-create-training-dataset-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'create-training-dataset-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'create-training-dataset-response
                     'make-create-training-dataset-response))
@@ -1159,11 +1633,19 @@
                           create-training-dataset-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (data-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-data-source-"))
-   (glue-data-source (common-lisp:error ":gluedatasource is required") :type
-    (common-lisp:or glue-data-source common-lisp:null)))
+ (common-lisp:defclass data-source common-lisp:nil
+                       ((glue-data-source :initarg :glue-data-source :initform
+                         (common-lisp:error ":gluedatasource is required")
+                         :type
+                         (common-lisp:or glue-data-source common-lisp:null)
+                         :accessor struct-shape-data-source-glue-data-source
+                         :shape "GlueDataSource" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-data-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'data-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'data-source 'make-data-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input data-source))
@@ -1182,12 +1664,24 @@
                         ((aws-sdk/generator/shape::input data-source))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dataset (:copier common-lisp:nil) (:conc-name "struct-shape-dataset-"))
-   (input-config (common-lisp:error ":inputconfig is required") :type
-    (common-lisp:or dataset-input-config common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or dataset-type common-lisp:null)))
+ (common-lisp:defclass dataset common-lisp:nil
+                       ((input-config :initarg :input-config :initform
+                         (common-lisp:error ":inputconfig is required") :type
+                         (common-lisp:or dataset-input-config common-lisp:null)
+                         :accessor struct-shape-dataset-input-config :shape
+                         "DatasetInputConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (type :initarg :type :initform
+                         (common-lisp:error ":type is required") :type
+                         (common-lisp:or dataset-type common-lisp:null)
+                         :accessor struct-shape-dataset-type :shape
+                         "DatasetType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dataset
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dataset
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'dataset 'make-dataset))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input dataset))
@@ -1213,13 +1707,26 @@
                         ((aws-sdk/generator/shape::input dataset))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (dataset-input-config (:copier common-lisp:nil)
-      (:conc-name "struct-shape-dataset-input-config-"))
-   (data-source (common-lisp:error ":datasource is required") :type
-    (common-lisp:or data-source common-lisp:null))
-   (schema (common-lisp:error ":schema is required") :type
-    (common-lisp:or dataset-input-config-schema-list common-lisp:null)))
+ (common-lisp:defclass dataset-input-config common-lisp:nil
+                       ((data-source :initarg :data-source :initform
+                         (common-lisp:error ":datasource is required") :type
+                         (common-lisp:or data-source common-lisp:null)
+                         :accessor
+                         struct-shape-dataset-input-config-data-source :shape
+                         "DataSource" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (schema :initarg :schema :initform
+                         (common-lisp:error ":schema is required") :type
+                         (common-lisp:or dataset-input-config-schema-list
+                                         common-lisp:null)
+                         :accessor struct-shape-dataset-input-config-schema
+                         :shape "DatasetInputConfigSchemaList" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-dataset-input-config
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'dataset-input-config
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'dataset-input-config 'make-dataset-input-config))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1262,12 +1769,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype dataset-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-audience-generation-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-audience-generation-job-request-"))
-   (audience-generation-job-arn
-    (common-lisp:error ":audiencegenerationjobarn is required") :type
-    (common-lisp:or audience-generation-job-arn common-lisp:null)))
+ (common-lisp:defclass delete-audience-generation-job-request common-lisp:nil
+                       ((audience-generation-job-arn :initarg
+                         :audience-generation-job-arn :initform
+                         (common-lisp:error
+                          ":audiencegenerationjobarn is required")
+                         :type
+                         (common-lisp:or audience-generation-job-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-audience-generation-job-request-audience-generation-job-arn
+                         :shape "AudienceGenerationJobArn" :location "uri"
+                         :location-name "audienceGenerationJobArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-audience-generation-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-audience-generation-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-audience-generation-job-request
                     'make-delete-audience-generation-job-request))
@@ -1287,11 +1806,22 @@
                           delete-audience-generation-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-audience-model-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-audience-model-request-"))
-   (audience-model-arn (common-lisp:error ":audiencemodelarn is required")
-    :type (common-lisp:or audience-model-arn common-lisp:null)))
+ (common-lisp:defclass delete-audience-model-request common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform
+                         (common-lisp:error ":audiencemodelarn is required")
+                         :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-audience-model-request-audience-model-arn
+                         :shape "AudienceModelArn" :location "uri"
+                         :location-name "audienceModelArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-audience-model-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-audience-model-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-audience-model-request
                     'make-delete-audience-model-request))
@@ -1311,13 +1841,25 @@
                           delete-audience-model-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-configured-audience-model-policy-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-delete-configured-audience-model-policy-request-"))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null)))
+ (common-lisp:defclass delete-configured-audience-model-policy-request
+                       common-lisp:nil
+                       ((configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-configured-audience-model-policy-request-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location "uri"
+                         :location-name "configuredAudienceModelArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-configured-audience-model-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-configured-audience-model-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-configured-audience-model-policy-request
                     'make-delete-configured-audience-model-policy-request))
@@ -1337,12 +1879,24 @@
                           delete-configured-audience-model-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-configured-audience-model-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-configured-audience-model-request-"))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null)))
+ (common-lisp:defclass delete-configured-audience-model-request common-lisp:nil
+                       ((configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-configured-audience-model-request-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location "uri"
+                         :location-name "configuredAudienceModelArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-configured-audience-model-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-configured-audience-model-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-configured-audience-model-request
                     'make-delete-configured-audience-model-request))
@@ -1362,11 +1916,22 @@
                           delete-configured-audience-model-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-training-dataset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-training-dataset-request-"))
-   (training-dataset-arn (common-lisp:error ":trainingdatasetarn is required")
-    :type (common-lisp:or training-dataset-arn common-lisp:null)))
+ (common-lisp:defclass delete-training-dataset-request common-lisp:nil
+                       ((training-dataset-arn :initarg :training-dataset-arn
+                         :initform
+                         (common-lisp:error ":trainingdatasetarn is required")
+                         :type
+                         (common-lisp:or training-dataset-arn common-lisp:null)
+                         :accessor
+                         struct-shape-delete-training-dataset-request-training-dataset-arn
+                         :shape "TrainingDatasetArn" :location "uri"
+                         :location-name "trainingDatasetArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-training-dataset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'delete-training-dataset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-training-dataset-request
                     'make-delete-training-dataset-request))
@@ -1387,12 +1952,24 @@
    common-lisp:nil))
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-audience-generation-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-audience-generation-job-request-"))
-   (audience-generation-job-arn
-    (common-lisp:error ":audiencegenerationjobarn is required") :type
-    (common-lisp:or audience-generation-job-arn common-lisp:null)))
+ (common-lisp:defclass get-audience-generation-job-request common-lisp:nil
+                       ((audience-generation-job-arn :initarg
+                         :audience-generation-job-arn :initform
+                         (common-lisp:error
+                          ":audiencegenerationjobarn is required")
+                         :type
+                         (common-lisp:or audience-generation-job-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-request-audience-generation-job-arn
+                         :shape "AudienceGenerationJobArn" :location "uri"
+                         :location-name "audienceGenerationJobArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-audience-generation-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-audience-generation-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-audience-generation-job-request
                     'make-get-audience-generation-job-request))
@@ -1412,38 +1989,120 @@
                           get-audience-generation-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-audience-generation-job-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-audience-generation-job-response-"))
-   (audience-generation-job-arn
-    (common-lisp:error ":audiencegenerationjobarn is required") :type
-    (common-lisp:or audience-generation-job-arn common-lisp:null))
-   (collaboration-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (include-seed-in-output common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (metrics common-lisp:nil :type
-    (common-lisp:or audience-quality-metrics common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (seed-audience common-lisp:nil :type
-    (common-lisp:or audience-generation-job-data-source common-lisp:null))
-   (started-by common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or audience-generation-job-status common-lisp:null))
-   (status-details common-lisp:nil :type
-    (common-lisp:or status-details common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass get-audience-generation-job-response common-lisp:nil
+                       ((audience-generation-job-arn :initarg
+                         :audience-generation-job-arn :initform
+                         (common-lisp:error
+                          ":audiencegenerationjobarn is required")
+                         :type
+                         (common-lisp:or audience-generation-job-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-audience-generation-job-arn
+                         :shape "AudienceGenerationJobArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (collaboration-id :initarg :collaboration-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-get-audience-generation-job-response-collaboration-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-create-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-seed-in-output :initarg
+                         :include-seed-in-output :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-include-seed-in-output
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metrics :initarg :metrics :initform common-lisp:nil
+                         :type
+                         (common-lisp:or audience-quality-metrics
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-metrics
+                         :shape "AudienceQualityMetrics" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (seed-audience :initarg :seed-audience :initform
+                         common-lisp:nil :type
+                         (common-lisp:or audience-generation-job-data-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-seed-audience
+                         :shape "AudienceGenerationJobDataSource" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (started-by :initarg :started-by :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-get-audience-generation-job-response-started-by
+                         :shape "AccountId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or audience-generation-job-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-status
+                         :shape "AudienceGenerationJobStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (status-details :initarg :status-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-details common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-status-details
+                         :shape "StatusDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-audience-generation-job-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-generation-job-response-update-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-audience-generation-job-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-audience-generation-job-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-audience-generation-job-response
                     'make-get-audience-generation-job-response))
@@ -1564,11 +2223,21 @@
                           get-audience-generation-job-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-audience-model-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-audience-model-request-"))
-   (audience-model-arn (common-lisp:error ":audiencemodelarn is required")
-    :type (common-lisp:or audience-model-arn common-lisp:null)))
+ (common-lisp:defclass get-audience-model-request common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform
+                         (common-lisp:error ":audiencemodelarn is required")
+                         :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-request-audience-model-arn
+                         :shape "AudienceModelArn" :location "uri"
+                         :location-name "audienceModelArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-audience-model-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-audience-model-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-audience-model-request
                     'make-get-audience-model-request))
@@ -1588,34 +2257,113 @@
                           get-audience-model-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-audience-model-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-audience-model-response-"))
-   (audience-model-arn (common-lisp:error ":audiencemodelarn is required")
-    :type (common-lisp:or audience-model-arn common-lisp:null))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (kms-key-arn common-lisp:nil :type
-    (common-lisp:or kms-key-arn common-lisp:null))
-   (metrics common-lisp:nil :type
-    (common-lisp:or audience-model-metrics common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or audience-model-status common-lisp:null))
-   (status-details common-lisp:nil :type
-    (common-lisp:or status-details common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (training-data-end-time common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (training-data-start-time common-lisp:nil :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (training-dataset-arn (common-lisp:error ":trainingdatasetarn is required")
-    :type (common-lisp:or training-dataset-arn common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass get-audience-model-response common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform
+                         (common-lisp:error ":audiencemodelarn is required")
+                         :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-audience-model-arn
+                         :shape "AudienceModelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-create-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (kms-key-arn :initarg :kms-key-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or kms-key-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-kms-key-arn
+                         :shape "KmsKeyArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (metrics :initarg :metrics :initform common-lisp:nil
+                         :type
+                         (common-lisp:or audience-model-metrics
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-metrics
+                         :shape "AudienceModelMetrics" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-name :shape
+                         "NameString" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or audience-model-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-status :shape
+                         "AudienceModelStatus" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status-details :initarg :status-details :initform
+                         common-lisp:nil :type
+                         (common-lisp:or status-details common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-status-details
+                         :shape "StatusDetails" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-audience-model-response-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (training-data-end-time :initarg
+                         :training-data-end-time :initform common-lisp:nil
+                         :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-training-data-end-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (training-data-start-time :initarg
+                         :training-data-start-time :initform common-lisp:nil
+                         :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-training-data-start-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (training-dataset-arn :initarg :training-dataset-arn
+                         :initform
+                         (common-lisp:error ":trainingdatasetarn is required")
+                         :type
+                         (common-lisp:or training-dataset-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-training-dataset-arn
+                         :shape "TrainingDatasetArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-audience-model-response-update-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-audience-model-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-audience-model-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-audience-model-response
                     'make-get-audience-model-response))
@@ -1729,13 +2477,25 @@
                           get-audience-model-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-configured-audience-model-policy-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-configured-audience-model-policy-request-"))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null)))
+ (common-lisp:defclass get-configured-audience-model-policy-request
+                       common-lisp:nil
+                       ((configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-policy-request-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location "uri"
+                         :location-name "configuredAudienceModelArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-configured-audience-model-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-configured-audience-model-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-configured-audience-model-policy-request
                     'make-get-configured-audience-model-policy-request))
@@ -1755,18 +2515,41 @@
                           get-configured-audience-model-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-configured-audience-model-policy-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-get-configured-audience-model-policy-response-"))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (configured-audience-model-policy
-    (common-lisp:error ":configuredaudiencemodelpolicy is required") :type
-    (common-lisp:or resource-policy common-lisp:null))
-   (policy-hash (common-lisp:error ":policyhash is required") :type
-    (common-lisp:or hash common-lisp:null)))
+ (common-lisp:defclass get-configured-audience-model-policy-response
+                       common-lisp:nil
+                       ((configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-policy-response-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (configured-audience-model-policy :initarg
+                         :configured-audience-model-policy :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelpolicy is required")
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-policy-response-configured-audience-model-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-hash :initarg :policy-hash :initform
+                         (common-lisp:error ":policyhash is required") :type
+                         (common-lisp:or hash common-lisp:null) :accessor
+                         struct-shape-get-configured-audience-model-policy-response-policy-hash
+                         :shape "Hash" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-configured-audience-model-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-configured-audience-model-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-configured-audience-model-policy-response
                     'make-get-configured-audience-model-policy-response))
@@ -1809,12 +2592,24 @@
                           get-configured-audience-model-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-configured-audience-model-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-configured-audience-model-request-"))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null)))
+ (common-lisp:defclass get-configured-audience-model-request common-lisp:nil
+                       ((configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-request-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location "uri"
+                         :location-name "configuredAudienceModelArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-configured-audience-model-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-configured-audience-model-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-configured-audience-model-request
                     'make-get-configured-audience-model-request))
@@ -1834,36 +2629,118 @@
                           get-configured-audience-model-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-configured-audience-model-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-configured-audience-model-response-"))
-   (audience-model-arn (common-lisp:error ":audiencemodelarn is required")
-    :type (common-lisp:or audience-model-arn common-lisp:null))
-   (audience-size-config common-lisp:nil :type
-    (common-lisp:or audience-size-config common-lisp:null))
-   (child-resource-tag-on-create-policy common-lisp:nil :type
-    (common-lisp:or tag-on-create-policy common-lisp:null))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (min-matching-seed-size common-lisp:nil :type
-    (common-lisp:or min-matching-seed-size common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (output-config (common-lisp:error ":outputconfig is required") :type
-    (common-lisp:or configured-audience-model-output-config common-lisp:null))
-   (shared-audience-metrics
-    (common-lisp:error ":sharedaudiencemetrics is required") :type
-    (common-lisp:or metrics-list common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or configured-audience-model-status common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass get-configured-audience-model-response common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform
+                         (common-lisp:error ":audiencemodelarn is required")
+                         :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-audience-model-arn
+                         :shape "AudienceModelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (audience-size-config :initarg :audience-size-config
+                         :initform common-lisp:nil :type
+                         (common-lisp:or audience-size-config common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-audience-size-config
+                         :shape "AudienceSizeConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (child-resource-tag-on-create-policy :initarg
+                         :child-resource-tag-on-create-policy :initform
+                         common-lisp:nil :type
+                         (common-lisp:or tag-on-create-policy common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-child-resource-tag-on-create-policy
+                         :shape "TagOnCreatePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-create-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (min-matching-seed-size :initarg
+                         :min-matching-seed-size :initform common-lisp:nil
+                         :type
+                         (common-lisp:or min-matching-seed-size
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-min-matching-seed-size
+                         :shape "MinMatchingSeedSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-config :initarg :output-config :initform
+                         (common-lisp:error ":outputconfig is required") :type
+                         (common-lisp:or
+                          configured-audience-model-output-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-output-config
+                         :shape "ConfiguredAudienceModelOutputConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (shared-audience-metrics :initarg
+                         :shared-audience-metrics :initform
+                         (common-lisp:error
+                          ":sharedaudiencemetrics is required")
+                         :type (common-lisp:or metrics-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-shared-audience-metrics
+                         :shape "MetricsList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or configured-audience-model-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-status
+                         :shape "ConfiguredAudienceModelStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-configured-audience-model-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-configured-audience-model-response-update-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-configured-audience-model-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-configured-audience-model-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-configured-audience-model-response
                     'make-get-configured-audience-model-response))
@@ -1979,11 +2856,21 @@
                           get-configured-audience-model-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-training-dataset-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-training-dataset-request-"))
-   (training-dataset-arn (common-lisp:error ":trainingdatasetarn is required")
-    :type (common-lisp:or training-dataset-arn common-lisp:null)))
+ (common-lisp:defclass get-training-dataset-request common-lisp:nil
+                       ((training-dataset-arn :initarg :training-dataset-arn
+                         :initform
+                         (common-lisp:error ":trainingdatasetarn is required")
+                         :type
+                         (common-lisp:or training-dataset-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-request-training-dataset-arn
+                         :shape "TrainingDatasetArn" :location "uri"
+                         :location-name "trainingDatasetArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-training-dataset-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-training-dataset-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-training-dataset-request
                     'make-get-training-dataset-request))
@@ -2003,26 +2890,79 @@
                           get-training-dataset-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-training-dataset-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-training-dataset-response-"))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or iam-role-arn common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or training-dataset-status common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null))
-   (training-data (common-lisp:error ":trainingdata is required") :type
-    (common-lisp:or dataset-list common-lisp:null))
-   (training-dataset-arn (common-lisp:error ":trainingdatasetarn is required")
-    :type (common-lisp:or training-dataset-arn common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass get-training-dataset-response common-lisp:nil
+                       ((create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-response-create-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-response-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-response-name :shape
+                         "NameString" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":rolearn is required") :type
+                         (common-lisp:or iam-role-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-response-role-arn
+                         :shape "IamRoleArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or training-dataset-status
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-response-status
+                         :shape "TrainingDatasetStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-get-training-dataset-response-tags :shape
+                         "TagMap" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (training-data :initarg :training-data :initform
+                         (common-lisp:error ":trainingdata is required") :type
+                         (common-lisp:or dataset-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-response-training-data
+                         :shape "DatasetList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (training-dataset-arn :initarg :training-dataset-arn
+                         :initform
+                         (common-lisp:error ":trainingdatasetarn is required")
+                         :type
+                         (common-lisp:or training-dataset-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-response-training-dataset-arn
+                         :shape "TrainingDatasetArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-training-dataset-response-update-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-training-dataset-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-training-dataset-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-training-dataset-response
                     'make-get-training-dataset-response))
@@ -2106,15 +3046,30 @@
                           get-training-dataset-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (glue-data-source (:copier common-lisp:nil)
-      (:conc-name "struct-shape-glue-data-source-"))
-   (catalog-id common-lisp:nil :type
-    (common-lisp:or account-id common-lisp:null))
-   (database-name (common-lisp:error ":databasename is required") :type
-    (common-lisp:or glue-database-name common-lisp:null))
-   (table-name (common-lisp:error ":tablename is required") :type
-    (common-lisp:or glue-table-name common-lisp:null)))
+ (common-lisp:defclass glue-data-source common-lisp:nil
+                       ((catalog-id :initarg :catalog-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or account-id common-lisp:null) :accessor
+                         struct-shape-glue-data-source-catalog-id :shape
+                         "AccountId" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (database-name :initarg :database-name :initform
+                         (common-lisp:error ":databasename is required") :type
+                         (common-lisp:or glue-database-name common-lisp:null)
+                         :accessor struct-shape-glue-data-source-database-name
+                         :shape "GlueDatabaseName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (table-name :initarg :table-name :initform
+                         (common-lisp:error ":tablename is required") :type
+                         (common-lisp:or glue-table-name common-lisp:null)
+                         :accessor struct-shape-glue-data-source-table-name
+                         :shape "GlueTableName" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-glue-data-source
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'glue-data-source
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'glue-data-source 'make-glue-data-source))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2154,15 +3109,36 @@
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:deftype kms-key-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-audience-export-jobs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-audience-export-jobs-request-"))
-   (audience-generation-job-arn common-lisp:nil :type
-    (common-lisp:or audience-generation-job-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-audience-export-jobs-request common-lisp:nil
+                       ((audience-generation-job-arn :initarg
+                         :audience-generation-job-arn :initform common-lisp:nil
+                         :type
+                         (common-lisp:or audience-generation-job-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-audience-export-jobs-request-audience-generation-job-arn
+                         :shape "AudienceGenerationJobArn" :location
+                         "querystring" :location-name
+                         "audienceGenerationJobArn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-audience-export-jobs-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-audience-export-jobs-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-audience-export-jobs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-audience-export-jobs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-audience-export-jobs-request
                     'make-list-audience-export-jobs-request))
@@ -2182,13 +3158,29 @@
                           list-audience-export-jobs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-audience-export-jobs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-audience-export-jobs-response-"))
-   (audience-export-jobs (common-lisp:error ":audienceexportjobs is required")
-    :type (common-lisp:or audience-export-job-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-audience-export-jobs-response common-lisp:nil
+                       ((audience-export-jobs :initarg :audience-export-jobs
+                         :initform
+                         (common-lisp:error ":audienceexportjobs is required")
+                         :type
+                         (common-lisp:or audience-export-job-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-audience-export-jobs-response-audience-export-jobs
+                         :shape "AudienceExportJobList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-audience-export-jobs-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-audience-export-jobs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-audience-export-jobs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-audience-export-jobs-response
                     'make-list-audience-export-jobs-response))
@@ -2223,17 +3215,42 @@
                           list-audience-export-jobs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-audience-generation-jobs-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-audience-generation-jobs-request-"))
-   (collaboration-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (configured-audience-model-arn common-lisp:nil :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-audience-generation-jobs-request common-lisp:nil
+                       ((collaboration-id :initarg :collaboration-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-list-audience-generation-jobs-request-collaboration-id
+                         :shape "UUID" :location "querystring" :location-name
+                         "collaborationId")
+                        (configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-audience-generation-jobs-request-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         "querystring" :location-name
+                         "configuredAudienceModelArn")
+                        (max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-audience-generation-jobs-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-audience-generation-jobs-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-audience-generation-jobs-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-audience-generation-jobs-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-audience-generation-jobs-request
                     'make-list-audience-generation-jobs-request))
@@ -2253,14 +3270,30 @@
                           list-audience-generation-jobs-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-audience-generation-jobs-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-audience-generation-jobs-response-"))
-   (audience-generation-jobs
-    (common-lisp:error ":audiencegenerationjobs is required") :type
-    (common-lisp:or audience-generation-job-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-audience-generation-jobs-response common-lisp:nil
+                       ((audience-generation-jobs :initarg
+                         :audience-generation-jobs :initform
+                         (common-lisp:error
+                          ":audiencegenerationjobs is required")
+                         :type
+                         (common-lisp:or audience-generation-job-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-audience-generation-jobs-response-audience-generation-jobs
+                         :shape "AudienceGenerationJobList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-audience-generation-jobs-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-audience-generation-jobs-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-audience-generation-jobs-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-audience-generation-jobs-response
                     'make-list-audience-generation-jobs-response))
@@ -2295,13 +3328,25 @@
                           list-audience-generation-jobs-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-audience-models-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-audience-models-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-audience-models-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-audience-models-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-audience-models-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-audience-models-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'list-audience-models-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-audience-models-request
                     'make-list-audience-models-request))
@@ -2321,13 +3366,27 @@
                           list-audience-models-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-audience-models-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-audience-models-response-"))
-   (audience-models (common-lisp:error ":audiencemodels is required") :type
-    (common-lisp:or audience-model-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-audience-models-response common-lisp:nil
+                       ((audience-models :initarg :audience-models :initform
+                         (common-lisp:error ":audiencemodels is required")
+                         :type
+                         (common-lisp:or audience-model-list common-lisp:null)
+                         :accessor
+                         struct-shape-list-audience-models-response-audience-models
+                         :shape "AudienceModelList" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-audience-models-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-audience-models-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-audience-models-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-audience-models-response
                     'make-list-audience-models-response))
@@ -2361,13 +3420,26 @@
                           list-audience-models-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-configured-audience-models-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-configured-audience-models-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-configured-audience-models-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-configured-audience-models-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-configured-audience-models-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-configured-audience-models-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-configured-audience-models-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-configured-audience-models-request
                     'make-list-configured-audience-models-request))
@@ -2387,14 +3459,30 @@
                           list-configured-audience-models-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-configured-audience-models-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-configured-audience-models-response-"))
-   (configured-audience-models
-    (common-lisp:error ":configuredaudiencemodels is required") :type
-    (common-lisp:or configured-audience-model-list common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-configured-audience-models-response common-lisp:nil
+                       ((configured-audience-models :initarg
+                         :configured-audience-models :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodels is required")
+                         :type
+                         (common-lisp:or configured-audience-model-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-configured-audience-models-response-configured-audience-models
+                         :shape "ConfiguredAudienceModelList" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-configured-audience-models-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-configured-audience-models-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-configured-audience-models-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-configured-audience-models-response
                     'make-list-configured-audience-models-response))
@@ -2429,11 +3517,20 @@
                           list-configured-audience-models-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or taggable-arn common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or taggable-arn common-lisp:null)
+                         :accessor
+                         struct-shape-list-tags-for-resource-request-resource-arn
+                         :shape "TaggableArn" :location "uri" :location-name
+                         "resourceArn"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -2453,11 +3550,19 @@
                           list-tags-for-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-tags-for-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-tags-for-resource-response-"))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass list-tags-for-resource-response common-lisp:nil
+                       ((tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-list-tags-for-resource-response-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-tags-for-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-tags-for-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -2484,13 +3589,26 @@
                           list-tags-for-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-training-datasets-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-training-datasets-request-"))
-   (max-results common-lisp:nil :type
-    (common-lisp:or max-results common-lisp:null))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null)))
+ (common-lisp:defclass list-training-datasets-request common-lisp:nil
+                       ((max-results :initarg :max-results :initform
+                         common-lisp:nil :type
+                         (common-lisp:or max-results common-lisp:null)
+                         :accessor
+                         struct-shape-list-training-datasets-request-max-results
+                         :shape "MaxResults" :location "querystring"
+                         :location-name "maxResults")
+                        (next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-training-datasets-request-next-token
+                         :shape "NextToken" :location "querystring"
+                         :location-name "nextToken"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-training-datasets-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-training-datasets-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-training-datasets-request
                     'make-list-training-datasets-request))
@@ -2510,13 +3628,29 @@
                           list-training-datasets-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (list-training-datasets-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-list-training-datasets-response-"))
-   (next-token common-lisp:nil :type
-    (common-lisp:or next-token common-lisp:null))
-   (training-datasets (common-lisp:error ":trainingdatasets is required") :type
-    (common-lisp:or training-dataset-list common-lisp:null)))
+ (common-lisp:defclass list-training-datasets-response common-lisp:nil
+                       ((next-token :initarg :next-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or next-token common-lisp:null) :accessor
+                         struct-shape-list-training-datasets-response-next-token
+                         :shape "NextToken" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (training-datasets :initarg :training-datasets
+                         :initform
+                         (common-lisp:error ":trainingdatasets is required")
+                         :type
+                         (common-lisp:or training-dataset-list
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-list-training-datasets-response-training-datasets
+                         :shape "TrainingDatasetList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-list-training-datasets-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'list-training-datasets-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'list-training-datasets-response
                     'make-list-training-datasets-response))
@@ -2563,20 +3697,50 @@
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype policy-existence-condition () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-configured-audience-model-policy-request (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-put-configured-audience-model-policy-request-"))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (configured-audience-model-policy
-    (common-lisp:error ":configuredaudiencemodelpolicy is required") :type
-    (common-lisp:or resource-policy common-lisp:null))
-   (policy-existence-condition common-lisp:nil :type
-    (common-lisp:or policy-existence-condition common-lisp:null))
-   (previous-policy-hash common-lisp:nil :type
-    (common-lisp:or hash common-lisp:null)))
+ (common-lisp:defclass put-configured-audience-model-policy-request
+                       common-lisp:nil
+                       ((configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-configured-audience-model-policy-request-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location "uri"
+                         :location-name "configuredAudienceModelArn")
+                        (configured-audience-model-policy :initarg
+                         :configured-audience-model-policy :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelpolicy is required")
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-put-configured-audience-model-policy-request-configured-audience-model-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-existence-condition :initarg
+                         :policy-existence-condition :initform common-lisp:nil
+                         :type
+                         (common-lisp:or policy-existence-condition
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-configured-audience-model-policy-request-policy-existence-condition
+                         :shape "PolicyExistenceCondition" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (previous-policy-hash :initarg :previous-policy-hash
+                         :initform common-lisp:nil :type
+                         (common-lisp:or hash common-lisp:null) :accessor
+                         struct-shape-put-configured-audience-model-policy-request-previous-policy-hash
+                         :shape "Hash" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-configured-audience-model-policy-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-configured-audience-model-policy-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-configured-audience-model-policy-request
                     'make-put-configured-audience-model-policy-request))
@@ -2620,15 +3784,30 @@
                           put-configured-audience-model-policy-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-configured-audience-model-policy-response (:copier common-lisp:nil)
-      (:conc-name
-       "struct-shape-put-configured-audience-model-policy-response-"))
-   (configured-audience-model-policy
-    (common-lisp:error ":configuredaudiencemodelpolicy is required") :type
-    (common-lisp:or resource-policy common-lisp:null))
-   (policy-hash (common-lisp:error ":policyhash is required") :type
-    (common-lisp:or hash common-lisp:null)))
+ (common-lisp:defclass put-configured-audience-model-policy-response
+                       common-lisp:nil
+                       ((configured-audience-model-policy :initarg
+                         :configured-audience-model-policy :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelpolicy is required")
+                         :type
+                         (common-lisp:or resource-policy common-lisp:null)
+                         :accessor
+                         struct-shape-put-configured-audience-model-policy-response-configured-audience-model-policy
+                         :shape "ResourcePolicy" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-hash :initarg :policy-hash :initform
+                         (common-lisp:error ":policyhash is required") :type
+                         (common-lisp:or hash common-lisp:null) :accessor
+                         struct-shape-put-configured-audience-model-policy-response-policy-hash
+                         :shape "Hash" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-configured-audience-model-policy-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'put-configured-audience-model-policy-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-configured-audience-model-policy-response
                     'make-put-configured-audience-model-policy-response))
@@ -2663,12 +3842,23 @@
                           put-configured-audience-model-policy-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (relevance-metric (:copier common-lisp:nil)
-      (:conc-name "struct-shape-relevance-metric-"))
-   (audience-size (common-lisp:error ":audiencesize is required") :type
-    (common-lisp:or audience-size common-lisp:null))
-   (score common-lisp:nil :type (common-lisp:or double common-lisp:null)))
+ (common-lisp:defclass relevance-metric common-lisp:nil
+                       ((audience-size :initarg :audience-size :initform
+                         (common-lisp:error ":audiencesize is required") :type
+                         (common-lisp:or audience-size common-lisp:null)
+                         :accessor struct-shape-relevance-metric-audience-size
+                         :shape "AudienceSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (score :initarg :score :initform common-lisp:nil :type
+                         (common-lisp:or double common-lisp:null) :accessor
+                         struct-shape-relevance-metric-score :shape "Double"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-relevance-metric
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'relevance-metric
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'relevance-metric 'make-relevance-metric))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -2713,11 +3903,18 @@
                     'resource-not-found-exception-message)))
 (common-lisp:deftype resource-policy () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (s3config-map (:copier common-lisp:nil)
-      (:conc-name "struct-shape-s3config-map-"))
-   (s3uri (common-lisp:error ":s3uri is required") :type
-    (common-lisp:or s3path common-lisp:null)))
+ (common-lisp:defclass s3config-map common-lisp:nil
+                       ((s3uri :initarg :s3uri :initform
+                         (common-lisp:error ":s3uri is required") :type
+                         (common-lisp:or s3path common-lisp:null) :accessor
+                         struct-shape-s3config-map-s3uri :shape "S3Path"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-s3config-map
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 's3config-map
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 's3config-map 'make-s3config-map))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input s3config-map))
@@ -2746,18 +3943,45 @@
                     'service-quota-exceeded-exception-message)))
 (common-lisp:deftype shared-audience-metrics () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-audience-export-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-audience-export-job-request-"))
-   (audience-generation-job-arn
-    (common-lisp:error ":audiencegenerationjobarn is required") :type
-    (common-lisp:or audience-generation-job-arn common-lisp:null))
-   (audience-size (common-lisp:error ":audiencesize is required") :type
-    (common-lisp:or audience-size common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+ (common-lisp:defclass start-audience-export-job-request common-lisp:nil
+                       ((audience-generation-job-arn :initarg
+                         :audience-generation-job-arn :initform
+                         (common-lisp:error
+                          ":audiencegenerationjobarn is required")
+                         :type
+                         (common-lisp:or audience-generation-job-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-export-job-request-audience-generation-job-arn
+                         :shape "AudienceGenerationJobArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (audience-size :initarg :audience-size :initform
+                         (common-lisp:error ":audiencesize is required") :type
+                         (common-lisp:or audience-size common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-export-job-request-audience-size
+                         :shape "AudienceSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-export-job-request-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-export-job-request-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-audience-export-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-audience-export-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-audience-export-job-request
                     'make-start-audience-export-job-request))
@@ -2806,23 +4030,64 @@
                           start-audience-export-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-audience-generation-job-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-audience-generation-job-request-"))
-   (collaboration-id common-lisp:nil :type
-    (common-lisp:or uuid common-lisp:null))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (include-seed-in-output common-lisp:nil :type
-    (common-lisp:or boolean common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (seed-audience (common-lisp:error ":seedaudience is required") :type
-    (common-lisp:or audience-generation-job-data-source common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass start-audience-generation-job-request common-lisp:nil
+                       ((collaboration-id :initarg :collaboration-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or uuid common-lisp:null) :accessor
+                         struct-shape-start-audience-generation-job-request-collaboration-id
+                         :shape "UUID" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-generation-job-request-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-generation-job-request-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (include-seed-in-output :initarg
+                         :include-seed-in-output :initform common-lisp:nil
+                         :type (common-lisp:or boolean common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-generation-job-request-include-seed-in-output
+                         :shape "Boolean" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-generation-job-request-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (seed-audience :initarg :seed-audience :initform
+                         (common-lisp:error ":seedaudience is required") :type
+                         (common-lisp:or audience-generation-job-data-source
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-generation-job-request-seed-audience
+                         :shape "AudienceGenerationJobDataSource" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-start-audience-generation-job-request-tags
+                         :shape "TagMap" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-audience-generation-job-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-audience-generation-job-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-audience-generation-job-request
                     'make-start-audience-generation-job-request))
@@ -2893,12 +4158,24 @@
                           start-audience-generation-job-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (start-audience-generation-job-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-start-audience-generation-job-response-"))
-   (audience-generation-job-arn
-    (common-lisp:error ":audiencegenerationjobarn is required") :type
-    (common-lisp:or audience-generation-job-arn common-lisp:null)))
+ (common-lisp:defclass start-audience-generation-job-response common-lisp:nil
+                       ((audience-generation-job-arn :initarg
+                         :audience-generation-job-arn :initform
+                         (common-lisp:error
+                          ":audiencegenerationjobarn is required")
+                         :type
+                         (common-lisp:or audience-generation-job-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-start-audience-generation-job-response-audience-generation-job-arn
+                         :shape "AudienceGenerationJobArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-start-audience-generation-job-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'start-audience-generation-job-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'start-audience-generation-job-response
                     'make-start-audience-generation-job-response))
@@ -2926,12 +4203,23 @@
                           start-audience-generation-job-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (status-details (:copier common-lisp:nil)
-      (:conc-name "struct-shape-status-details-"))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (status-code common-lisp:nil :type
-    (common-lisp:or string common-lisp:null)))
+ (common-lisp:defclass status-details common-lisp:nil
+                       ((message :initarg :message :initform common-lisp:nil
+                         :type (common-lisp:or string common-lisp:null)
+                         :accessor struct-shape-status-details-message :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (status-code :initarg :status-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or string common-lisp:null) :accessor
+                         struct-shape-status-details-status-code :shape
+                         "String" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-status-details
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'status-details
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'status-details 'make-status-details))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input status-details))
@@ -2975,13 +4263,25 @@
       (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype tag-on-create-policy () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or taggable-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+ (common-lisp:defclass tag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or taggable-arn common-lisp:null)
+                         :accessor
+                         struct-shape-tag-resource-request-resource-arn :shape
+                         "TaggableArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tags :initarg :tags :initform
+                         (common-lisp:error ":tags is required") :type
+                         (common-lisp:or tag-map common-lisp:null) :accessor
+                         struct-shape-tag-resource-request-tags :shape "TagMap"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3001,9 +4301,12 @@
                         ((aws-sdk/generator/shape::input tag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-tag-resource-response-")))
+ (common-lisp:defclass tag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'tag-resource-response 'make-tag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3035,21 +4338,57 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype training-dataset-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (training-dataset-summary (:copier common-lisp:nil)
-      (:conc-name "struct-shape-training-dataset-summary-"))
-   (create-time (common-lisp:error ":createtime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or training-dataset-status common-lisp:null))
-   (training-dataset-arn (common-lisp:error ":trainingdatasetarn is required")
-    :type (common-lisp:or training-dataset-arn common-lisp:null))
-   (update-time (common-lisp:error ":updatetime is required") :type
-    (common-lisp:or synthetic-timestamp-date-time common-lisp:null)))
+ (common-lisp:defclass training-dataset-summary common-lisp:nil
+                       ((create-time :initarg :create-time :initform
+                         (common-lisp:error ":createtime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-training-dataset-summary-create-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-training-dataset-summary-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or name-string common-lisp:null)
+                         :accessor struct-shape-training-dataset-summary-name
+                         :shape "NameString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (status :initarg :status :initform
+                         (common-lisp:error ":status is required") :type
+                         (common-lisp:or training-dataset-status
+                                         common-lisp:null)
+                         :accessor struct-shape-training-dataset-summary-status
+                         :shape "TrainingDatasetStatus" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (training-dataset-arn :initarg :training-dataset-arn
+                         :initform
+                         (common-lisp:error ":trainingdatasetarn is required")
+                         :type
+                         (common-lisp:or training-dataset-arn common-lisp:null)
+                         :accessor
+                         struct-shape-training-dataset-summary-training-dataset-arn
+                         :shape "TrainingDatasetArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (update-time :initarg :update-time :initform
+                         (common-lisp:error ":updatetime is required") :type
+                         (common-lisp:or synthetic-timestamp-date-time
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-training-dataset-summary-update-time
+                         :shape "SyntheticTimestamp_date_time" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-training-dataset-summary
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'training-dataset-summary
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'training-dataset-summary 'make-training-dataset-summary))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3112,13 +4451,25 @@
    common-lisp:nil))
 (common-lisp:deftype uuid () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-request-"))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or taggable-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+ (common-lisp:defclass untag-resource-request common-lisp:nil
+                       ((resource-arn :initarg :resource-arn :initform
+                         (common-lisp:error ":resourcearn is required") :type
+                         (common-lisp:or taggable-arn common-lisp:null)
+                         :accessor
+                         struct-shape-untag-resource-request-resource-arn
+                         :shape "TaggableArn" :location "uri" :location-name
+                         "resourceArn")
+                        (tag-keys :initarg :tag-keys :initform
+                         (common-lisp:error ":tagkeys is required") :type
+                         (common-lisp:or tag-keys common-lisp:null) :accessor
+                         struct-shape-untag-resource-request-tag-keys :shape
+                         "TagKeys" :location "querystring" :location-name
+                         "tagKeys"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3137,9 +4488,12 @@
                           untag-resource-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (untag-resource-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-untag-resource-response-")))
+ (common-lisp:defclass untag-resource-response common-lisp:nil common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-untag-resource-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'untag-resource-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'untag-resource-response 'make-untag-resource-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -3158,24 +4512,70 @@
                           untag-resource-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-configured-audience-model-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-configured-audience-model-request-"))
-   (audience-model-arn common-lisp:nil :type
-    (common-lisp:or audience-model-arn common-lisp:null))
-   (audience-size-config common-lisp:nil :type
-    (common-lisp:or audience-size-config common-lisp:null))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null))
-   (description common-lisp:nil :type
-    (common-lisp:or resource-description common-lisp:null))
-   (min-matching-seed-size common-lisp:nil :type
-    (common-lisp:or min-matching-seed-size common-lisp:null))
-   (output-config common-lisp:nil :type
-    (common-lisp:or configured-audience-model-output-config common-lisp:null))
-   (shared-audience-metrics common-lisp:nil :type
-    (common-lisp:or metrics-list common-lisp:null)))
+ (common-lisp:defclass update-configured-audience-model-request common-lisp:nil
+                       ((audience-model-arn :initarg :audience-model-arn
+                         :initform common-lisp:nil :type
+                         (common-lisp:or audience-model-arn common-lisp:null)
+                         :accessor
+                         struct-shape-update-configured-audience-model-request-audience-model-arn
+                         :shape "AudienceModelArn" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (audience-size-config :initarg :audience-size-config
+                         :initform common-lisp:nil :type
+                         (common-lisp:or audience-size-config common-lisp:null)
+                         :accessor
+                         struct-shape-update-configured-audience-model-request-audience-size-config
+                         :shape "AudienceSizeConfig" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-configured-audience-model-request-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location "uri"
+                         :location-name "configuredAudienceModelArn")
+                        (description :initarg :description :initform
+                         common-lisp:nil :type
+                         (common-lisp:or resource-description common-lisp:null)
+                         :accessor
+                         struct-shape-update-configured-audience-model-request-description
+                         :shape "ResourceDescription" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (min-matching-seed-size :initarg
+                         :min-matching-seed-size :initform common-lisp:nil
+                         :type
+                         (common-lisp:or min-matching-seed-size
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-configured-audience-model-request-min-matching-seed-size
+                         :shape "MinMatchingSeedSize" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (output-config :initarg :output-config :initform
+                         common-lisp:nil :type
+                         (common-lisp:or
+                          configured-audience-model-output-config
+                          common-lisp:null)
+                         :accessor
+                         struct-shape-update-configured-audience-model-request-output-config
+                         :shape "ConfiguredAudienceModelOutputConfig" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (shared-audience-metrics :initarg
+                         :shared-audience-metrics :initform common-lisp:nil
+                         :type (common-lisp:or metrics-list common-lisp:null)
+                         :accessor
+                         struct-shape-update-configured-audience-model-request-shared-audience-metrics
+                         :shape "MetricsList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-configured-audience-model-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-configured-audience-model-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-configured-audience-model-request
                     'make-update-configured-audience-model-request))
@@ -3240,12 +4640,25 @@
                           update-configured-audience-model-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (update-configured-audience-model-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-update-configured-audience-model-response-"))
-   (configured-audience-model-arn
-    (common-lisp:error ":configuredaudiencemodelarn is required") :type
-    (common-lisp:or configured-audience-model-arn common-lisp:null)))
+ (common-lisp:defclass update-configured-audience-model-response
+                       common-lisp:nil
+                       ((configured-audience-model-arn :initarg
+                         :configured-audience-model-arn :initform
+                         (common-lisp:error
+                          ":configuredaudiencemodelarn is required")
+                         :type
+                         (common-lisp:or configured-audience-model-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-update-configured-audience-model-response-configured-audience-model-arn
+                         :shape "ConfiguredAudienceModelArn" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-update-configured-audience-model-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'update-configured-audience-model-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'update-configured-audience-model-response
                     'make-update-configured-audience-model-response))

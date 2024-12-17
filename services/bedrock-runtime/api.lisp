@@ -57,16 +57,36 @@
                     'internal-server-exception-message)))
 (common-lisp:deftype invoke-model-identifier () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invoke-model-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invoke-model-request-"))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or body common-lisp:null))
-   (content-type common-lisp:nil :type
-    (common-lisp:or mime-type common-lisp:null))
-   (accept common-lisp:nil :type (common-lisp:or mime-type common-lisp:null))
-   (model-id (common-lisp:error ":modelid is required") :type
-    (common-lisp:or invoke-model-identifier common-lisp:null)))
+ (common-lisp:defclass invoke-model-request common-lisp:nil
+                       ((body :initarg :body :initform
+                         (common-lisp:error ":body is required") :type
+                         (common-lisp:or body common-lisp:null) :accessor
+                         struct-shape-invoke-model-request-body :shape "Body"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mime-type common-lisp:null) :accessor
+                         struct-shape-invoke-model-request-content-type :shape
+                         "MimeType" :location "header" :location-name
+                         "Content-Type")
+                        (accept :initarg :accept :initform common-lisp:nil
+                         :type (common-lisp:or mime-type common-lisp:null)
+                         :accessor struct-shape-invoke-model-request-accept
+                         :shape "MimeType" :location "header" :location-name
+                         "Accept")
+                        (model-id :initarg :model-id :initform
+                         (common-lisp:error ":modelid is required") :type
+                         (common-lisp:or invoke-model-identifier
+                                         common-lisp:null)
+                         :accessor struct-shape-invoke-model-request-model-id
+                         :shape "InvokeModelIdentifier" :location "uri"
+                         :location-name "modelId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-invoke-model-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'invoke-model-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'invoke-model-request 'make-invoke-model-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -94,13 +114,24 @@
                         ((aws-sdk/generator/shape::input invoke-model-request))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'body)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invoke-model-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invoke-model-response-"))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or body common-lisp:null))
-   (content-type (common-lisp:error ":contenttype is required") :type
-    (common-lisp:or mime-type common-lisp:null)))
+ (common-lisp:defclass invoke-model-response common-lisp:nil
+                       ((body :initarg :body :initform
+                         (common-lisp:error ":body is required") :type
+                         (common-lisp:or body common-lisp:null) :accessor
+                         struct-shape-invoke-model-response-body :shape "Body"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         (common-lisp:error ":contenttype is required") :type
+                         (common-lisp:or mime-type common-lisp:null) :accessor
+                         struct-shape-invoke-model-response-content-type :shape
+                         "MimeType" :location "header" :location-name
+                         "Content-Type"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-invoke-model-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'invoke-model-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'invoke-model-response 'make-invoke-model-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -130,16 +161,40 @@
                           invoke-model-response))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'body)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invoke-model-with-response-stream-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invoke-model-with-response-stream-request-"))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or body common-lisp:null))
-   (content-type common-lisp:nil :type
-    (common-lisp:or mime-type common-lisp:null))
-   (accept common-lisp:nil :type (common-lisp:or mime-type common-lisp:null))
-   (model-id (common-lisp:error ":modelid is required") :type
-    (common-lisp:or invoke-model-identifier common-lisp:null)))
+ (common-lisp:defclass invoke-model-with-response-stream-request
+                       common-lisp:nil
+                       ((body :initarg :body :initform
+                         (common-lisp:error ":body is required") :type
+                         (common-lisp:or body common-lisp:null) :accessor
+                         struct-shape-invoke-model-with-response-stream-request-body
+                         :shape "Body" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or mime-type common-lisp:null) :accessor
+                         struct-shape-invoke-model-with-response-stream-request-content-type
+                         :shape "MimeType" :location "header" :location-name
+                         "Content-Type")
+                        (accept :initarg :accept :initform common-lisp:nil
+                         :type (common-lisp:or mime-type common-lisp:null)
+                         :accessor
+                         struct-shape-invoke-model-with-response-stream-request-accept
+                         :shape "MimeType" :location "header" :location-name
+                         "X-Amzn-Bedrock-Accept")
+                        (model-id :initarg :model-id :initform
+                         (common-lisp:error ":modelid is required") :type
+                         (common-lisp:or invoke-model-identifier
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-invoke-model-with-response-stream-request-model-id
+                         :shape "InvokeModelIdentifier" :location "uri"
+                         :location-name "modelId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-invoke-model-with-response-stream-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'invoke-model-with-response-stream-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'invoke-model-with-response-stream-request
                     'make-invoke-model-with-response-stream-request))
@@ -175,13 +230,27 @@
                           invoke-model-with-response-stream-request))
    (common-lisp:slot-value aws-sdk/generator/shape::input 'body)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invoke-model-with-response-stream-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-invoke-model-with-response-stream-response-"))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or response-stream common-lisp:null))
-   (content-type (common-lisp:error ":contenttype is required") :type
-    (common-lisp:or mime-type common-lisp:null)))
+ (common-lisp:defclass invoke-model-with-response-stream-response
+                       common-lisp:nil
+                       ((body :initarg :body :initform
+                         (common-lisp:error ":body is required") :type
+                         (common-lisp:or response-stream common-lisp:null)
+                         :accessor
+                         struct-shape-invoke-model-with-response-stream-response-body
+                         :shape "ResponseStream" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (content-type :initarg :content-type :initform
+                         (common-lisp:error ":contenttype is required") :type
+                         (common-lisp:or mime-type common-lisp:null) :accessor
+                         struct-shape-invoke-model-with-response-stream-response-content-type
+                         :shape "MimeType" :location "header" :location-name
+                         "X-Amzn-Bedrock-Content-Type"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-invoke-model-with-response-stream-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'invoke-model-with-response-stream-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'invoke-model-with-response-stream-response
                     'make-invoke-model-with-response-stream-response))
@@ -260,10 +329,17 @@
 (common-lisp:deftype part-body ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (payload-part (:copier common-lisp:nil)
-      (:conc-name "struct-shape-payload-part-"))
-   (bytes common-lisp:nil :type (common-lisp:or part-body common-lisp:null)))
+ (common-lisp:defclass payload-part common-lisp:nil
+                       ((bytes :initarg :bytes :initform common-lisp:nil :type
+                         (common-lisp:or part-body common-lisp:null) :accessor
+                         struct-shape-payload-part-bytes :shape "PartBody"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-payload-part
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'payload-part
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'payload-part 'make-payload-part))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input payload-part))
@@ -290,20 +366,58 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (response-stream (:copier common-lisp:nil)
-      (:conc-name "struct-shape-response-stream-"))
-   (chunk common-lisp:nil :type (common-lisp:or payload-part common-lisp:null))
-   (internal-server-exception common-lisp:nil :type
-    (common-lisp:or internal-server-exception common-lisp:null))
-   (model-stream-error-exception common-lisp:nil :type
-    (common-lisp:or model-stream-error-exception common-lisp:null))
-   (validation-exception common-lisp:nil :type
-    (common-lisp:or validation-exception common-lisp:null))
-   (throttling-exception common-lisp:nil :type
-    (common-lisp:or throttling-exception common-lisp:null))
-   (model-timeout-exception common-lisp:nil :type
-    (common-lisp:or model-timeout-exception common-lisp:null)))
+ (common-lisp:defclass response-stream common-lisp:nil
+                       ((chunk :initarg :chunk :initform common-lisp:nil :type
+                         (common-lisp:or payload-part common-lisp:null)
+                         :accessor struct-shape-response-stream-chunk :shape
+                         "PayloadPart" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (internal-server-exception :initarg
+                         :internal-server-exception :initform common-lisp:nil
+                         :type
+                         (common-lisp:or internal-server-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-response-stream-internal-server-exception
+                         :shape "InternalServerException" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (model-stream-error-exception :initarg
+                         :model-stream-error-exception :initform
+                         common-lisp:nil :type
+                         (common-lisp:or model-stream-error-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-response-stream-model-stream-error-exception
+                         :shape "ModelStreamErrorException" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (validation-exception :initarg :validation-exception
+                         :initform common-lisp:nil :type
+                         (common-lisp:or validation-exception common-lisp:null)
+                         :accessor
+                         struct-shape-response-stream-validation-exception
+                         :shape "ValidationException" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (throttling-exception :initarg :throttling-exception
+                         :initform common-lisp:nil :type
+                         (common-lisp:or throttling-exception common-lisp:null)
+                         :accessor
+                         struct-shape-response-stream-throttling-exception
+                         :shape "ThrottlingException" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (model-timeout-exception :initarg
+                         :model-timeout-exception :initform common-lisp:nil
+                         :type
+                         (common-lisp:or model-timeout-exception
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-response-stream-model-timeout-exception
+                         :shape "ModelTimeoutException" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-response-stream
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'response-stream
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'response-stream 'make-response-stream))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input response-stream))

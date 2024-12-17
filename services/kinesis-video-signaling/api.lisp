@@ -46,15 +46,38 @@
                     'client-limit-exceeded-exception-message)))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-ice-server-config-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-ice-server-config-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (client-id common-lisp:nil :type
-    (common-lisp:or client-id common-lisp:null))
-   (service common-lisp:nil :type (common-lisp:or service common-lisp:null))
-   (username common-lisp:nil :type (common-lisp:or username common-lisp:null)))
+ (common-lisp:defclass get-ice-server-config-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-get-ice-server-config-request-channel-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (client-id :initarg :client-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or client-id common-lisp:null) :accessor
+                         struct-shape-get-ice-server-config-request-client-id
+                         :shape "ClientId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (service :initarg :service :initform common-lisp:nil
+                         :type (common-lisp:or service common-lisp:null)
+                         :accessor
+                         struct-shape-get-ice-server-config-request-service
+                         :shape "Service" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (username :initarg :username :initform common-lisp:nil
+                         :type (common-lisp:or username common-lisp:null)
+                         :accessor
+                         struct-shape-get-ice-server-config-request-username
+                         :shape "Username" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-ice-server-config-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-ice-server-config-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-ice-server-config-request
                     'make-get-ice-server-config-request))
@@ -102,11 +125,20 @@
                           get-ice-server-config-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-ice-server-config-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-ice-server-config-response-"))
-   (ice-server-list common-lisp:nil :type
-    (common-lisp:or ice-server-list common-lisp:null)))
+ (common-lisp:defclass get-ice-server-config-response common-lisp:nil
+                       ((ice-server-list :initarg :ice-server-list :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ice-server-list common-lisp:null)
+                         :accessor
+                         struct-shape-get-ice-server-config-response-ice-server-list
+                         :shape "IceServerList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-ice-server-config-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-ice-server-config-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-ice-server-config-response
                     'make-get-ice-server-config-response))
@@ -133,13 +165,30 @@
                           get-ice-server-config-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ice-server (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ice-server-"))
-   (uris common-lisp:nil :type (common-lisp:or uris common-lisp:null))
-   (username common-lisp:nil :type (common-lisp:or username common-lisp:null))
-   (password common-lisp:nil :type (common-lisp:or password common-lisp:null))
-   (ttl common-lisp:nil :type (common-lisp:or ttl common-lisp:null)))
+ (common-lisp:defclass ice-server common-lisp:nil
+                       ((uris :initarg :uris :initform common-lisp:nil :type
+                         (common-lisp:or uris common-lisp:null) :accessor
+                         struct-shape-ice-server-uris :shape "Uris" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (username :initarg :username :initform common-lisp:nil
+                         :type (common-lisp:or username common-lisp:null)
+                         :accessor struct-shape-ice-server-username :shape
+                         "Username" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (password :initarg :password :initform common-lisp:nil
+                         :type (common-lisp:or password common-lisp:null)
+                         :accessor struct-shape-ice-server-password :shape
+                         "Password" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (ttl :initarg :ttl :initform common-lisp:nil :type
+                         (common-lisp:or ttl common-lisp:null) :accessor
+                         struct-shape-ice-server-ttl :shape "Ttl" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ice-server
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ice-server
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'ice-server 'make-ice-server))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input ice-server))
@@ -222,15 +271,35 @@
   (common-lisp:list 'resource-not-found-exception
                     'resource-not-found-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (send-alexa-offer-to-master-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-send-alexa-offer-to-master-request-"))
-   (channel-arn (common-lisp:error ":channel-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (sender-client-id (common-lisp:error ":sender-client-id is required") :type
-    (common-lisp:or client-id common-lisp:null))
-   (message-payload (common-lisp:error ":message-payload is required") :type
-    (common-lisp:or message-payload common-lisp:null)))
+ (common-lisp:defclass send-alexa-offer-to-master-request common-lisp:nil
+                       ((channel-arn :initarg :channel-arn :initform
+                         (common-lisp:error ":channel-arn is required") :type
+                         (common-lisp:or resource-arn common-lisp:null)
+                         :accessor
+                         struct-shape-send-alexa-offer-to-master-request-channel-arn
+                         :shape "ResourceARN" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (sender-client-id :initarg :sender-client-id :initform
+                         (common-lisp:error ":sender-client-id is required")
+                         :type (common-lisp:or client-id common-lisp:null)
+                         :accessor
+                         struct-shape-send-alexa-offer-to-master-request-sender-client-id
+                         :shape "ClientId" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (message-payload :initarg :message-payload :initform
+                         (common-lisp:error ":message-payload is required")
+                         :type
+                         (common-lisp:or message-payload common-lisp:null)
+                         :accessor
+                         struct-shape-send-alexa-offer-to-master-request-message-payload
+                         :shape "MessagePayload" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-send-alexa-offer-to-master-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'send-alexa-offer-to-master-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'send-alexa-offer-to-master-request
                     'make-send-alexa-offer-to-master-request))
@@ -271,10 +340,19 @@
                           send-alexa-offer-to-master-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (send-alexa-offer-to-master-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-send-alexa-offer-to-master-response-"))
-   (answer common-lisp:nil :type (common-lisp:or answer common-lisp:null)))
+ (common-lisp:defclass send-alexa-offer-to-master-response common-lisp:nil
+                       ((answer :initarg :answer :initform common-lisp:nil
+                         :type (common-lisp:or answer common-lisp:null)
+                         :accessor
+                         struct-shape-send-alexa-offer-to-master-response-answer
+                         :shape "Answer" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-send-alexa-offer-to-master-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'send-alexa-offer-to-master-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'send-alexa-offer-to-master-response
                     'make-send-alexa-offer-to-master-response))

@@ -36,32 +36,98 @@
     ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
     ("RegionDisabledException" . region-disabled-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assume-role-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assume-role-request-"))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (role-session-name (common-lisp:error ":role-session-name is required")
-    :type (common-lisp:or |roleSessionNameType| common-lisp:null))
-   (policy-arns common-lisp:nil :type
-    (common-lisp:or |policyDescriptorListType| common-lisp:null))
-   (policy common-lisp:nil :type
-    (common-lisp:or |unrestrictedSessionPolicyDocumentType| common-lisp:null))
-   (duration-seconds common-lisp:nil :type
-    (common-lisp:or |roleDurationSecondsType| common-lisp:null))
-   (tags common-lisp:nil :type (common-lisp:or |tagListType| common-lisp:null))
-   (transitive-tag-keys common-lisp:nil :type
-    (common-lisp:or |tagKeyListType| common-lisp:null))
-   (external-id common-lisp:nil :type
-    (common-lisp:or |externalIdType| common-lisp:null))
-   (serial-number common-lisp:nil :type
-    (common-lisp:or |serialNumberType| common-lisp:null))
-   (token-code common-lisp:nil :type
-    (common-lisp:or |tokenCodeType| common-lisp:null))
-   (source-identity common-lisp:nil :type
-    (common-lisp:or |sourceIdentityType| common-lisp:null))
-   (provided-contexts common-lisp:nil :type
-    (common-lisp:or provided-contexts-list-type common-lisp:null)))
+ (common-lisp:defclass assume-role-request common-lisp:nil
+                       ((role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":role-arn is required") :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-assume-role-request-role-arn :shape
+                         "arnType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (role-session-name :initarg :role-session-name
+                         :initform
+                         (common-lisp:error ":role-session-name is required")
+                         :type
+                         (common-lisp:or |roleSessionNameType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-request-role-session-name
+                         :shape "roleSessionNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-arns :initarg :policy-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |policyDescriptorListType|
+                                         common-lisp:null)
+                         :accessor struct-shape-assume-role-request-policy-arns
+                         :shape "policyDescriptorListType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or
+                          |unrestrictedSessionPolicyDocumentType|
+                          common-lisp:null)
+                         :accessor struct-shape-assume-role-request-policy
+                         :shape "unrestrictedSessionPolicyDocumentType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (duration-seconds :initarg :duration-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |roleDurationSecondsType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-request-duration-seconds
+                         :shape "roleDurationSecondsType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or |tagListType| common-lisp:null)
+                         :accessor struct-shape-assume-role-request-tags :shape
+                         "tagListType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (transitive-tag-keys :initarg :transitive-tag-keys
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |tagKeyListType| common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-request-transitive-tag-keys
+                         :shape "tagKeyListType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (external-id :initarg :external-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |externalIdType| common-lisp:null)
+                         :accessor struct-shape-assume-role-request-external-id
+                         :shape "externalIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (serial-number :initarg :serial-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |serialNumberType| common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-request-serial-number :shape
+                         "serialNumberType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-code :initarg :token-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |tokenCodeType| common-lisp:null)
+                         :accessor struct-shape-assume-role-request-token-code
+                         :shape "tokenCodeType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source-identity :initarg :source-identity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |sourceIdentityType| common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-request-source-identity
+                         :shape "sourceIdentityType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (provided-contexts :initarg :provided-contexts
+                         :initform common-lisp:nil :type
+                         (common-lisp:or provided-contexts-list-type
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-request-provided-contexts
+                         :shape "ProvidedContextsListType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assume-role-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'assume-role-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assume-role-request 'make-assume-role-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -158,17 +224,41 @@
                         ((aws-sdk/generator/shape::input assume-role-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assume-role-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assume-role-response-"))
-   (credentials common-lisp:nil :type
-    (common-lisp:or credentials common-lisp:null))
-   (assumed-role-user common-lisp:nil :type
-    (common-lisp:or assumed-role-user common-lisp:null))
-   (packed-policy-size common-lisp:nil :type
-    (common-lisp:or |nonNegativeIntegerType| common-lisp:null))
-   (source-identity common-lisp:nil :type
-    (common-lisp:or |sourceIdentityType| common-lisp:null)))
+ (common-lisp:defclass assume-role-response common-lisp:nil
+                       ((credentials :initarg :credentials :initform
+                         common-lisp:nil :type
+                         (common-lisp:or credentials common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-response-credentials :shape
+                         "Credentials" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (assumed-role-user :initarg :assumed-role-user
+                         :initform common-lisp:nil :type
+                         (common-lisp:or assumed-role-user common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-response-assumed-role-user
+                         :shape "AssumedRoleUser" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (packed-policy-size :initarg :packed-policy-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |nonNegativeIntegerType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-response-packed-policy-size
+                         :shape "nonNegativeIntegerType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (source-identity :initarg :source-identity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |sourceIdentityType| common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-response-source-identity
+                         :shape "sourceIdentityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assume-role-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'assume-role-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assume-role-response 'make-assume-role-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -209,21 +299,55 @@
                         ((aws-sdk/generator/shape::input assume-role-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assume-role-with-samlrequest (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assume-role-with-samlrequest-"))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (principal-arn (common-lisp:error ":principal-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (samlassertion (common-lisp:error ":samlassertion is required") :type
-    (common-lisp:or samlassertion-type common-lisp:null))
-   (policy-arns common-lisp:nil :type
-    (common-lisp:or |policyDescriptorListType| common-lisp:null))
-   (policy common-lisp:nil :type
-    (common-lisp:or |sessionPolicyDocumentType| common-lisp:null))
-   (duration-seconds common-lisp:nil :type
-    (common-lisp:or |roleDurationSecondsType| common-lisp:null)))
+ (common-lisp:defclass assume-role-with-samlrequest common-lisp:nil
+                       ((role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":role-arn is required") :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-assume-role-with-samlrequest-role-arn
+                         :shape "arnType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (principal-arn :initarg :principal-arn :initform
+                         (common-lisp:error ":principal-arn is required") :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-assume-role-with-samlrequest-principal-arn
+                         :shape "arnType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (samlassertion :initarg :samlassertion :initform
+                         (common-lisp:error ":samlassertion is required") :type
+                         (common-lisp:or samlassertion-type common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlrequest-samlassertion
+                         :shape "SAMLAssertionType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-arns :initarg :policy-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |policyDescriptorListType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlrequest-policy-arns
+                         :shape "policyDescriptorListType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |sessionPolicyDocumentType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlrequest-policy
+                         :shape "sessionPolicyDocumentType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (duration-seconds :initarg :duration-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |roleDurationSecondsType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlrequest-duration-seconds
+                         :shape "roleDurationSecondsType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assume-role-with-samlrequest
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'assume-role-with-samlrequest
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assume-role-with-samlrequest
                     'make-assume-role-with-samlrequest))
@@ -285,24 +409,74 @@
                           assume-role-with-samlrequest))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assume-role-with-samlresponse (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assume-role-with-samlresponse-"))
-   (credentials common-lisp:nil :type
-    (common-lisp:or credentials common-lisp:null))
-   (assumed-role-user common-lisp:nil :type
-    (common-lisp:or assumed-role-user common-lisp:null))
-   (packed-policy-size common-lisp:nil :type
-    (common-lisp:or |nonNegativeIntegerType| common-lisp:null))
-   (subject common-lisp:nil :type (common-lisp:or subject common-lisp:null))
-   (subject-type common-lisp:nil :type
-    (common-lisp:or subject-type common-lisp:null))
-   (issuer common-lisp:nil :type (common-lisp:or issuer common-lisp:null))
-   (audience common-lisp:nil :type (common-lisp:or audience common-lisp:null))
-   (name-qualifier common-lisp:nil :type
-    (common-lisp:or name-qualifier common-lisp:null))
-   (source-identity common-lisp:nil :type
-    (common-lisp:or |sourceIdentityType| common-lisp:null)))
+ (common-lisp:defclass assume-role-with-samlresponse common-lisp:nil
+                       ((credentials :initarg :credentials :initform
+                         common-lisp:nil :type
+                         (common-lisp:or credentials common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-credentials
+                         :shape "Credentials" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (assumed-role-user :initarg :assumed-role-user
+                         :initform common-lisp:nil :type
+                         (common-lisp:or assumed-role-user common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-assumed-role-user
+                         :shape "AssumedRoleUser" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (packed-policy-size :initarg :packed-policy-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |nonNegativeIntegerType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-packed-policy-size
+                         :shape "nonNegativeIntegerType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (subject :initarg :subject :initform common-lisp:nil
+                         :type (common-lisp:or subject common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-subject
+                         :shape "Subject" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subject-type :initarg :subject-type :initform
+                         common-lisp:nil :type
+                         (common-lisp:or subject-type common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-subject-type
+                         :shape "SubjectType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (issuer :initarg :issuer :initform common-lisp:nil
+                         :type (common-lisp:or issuer common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-issuer
+                         :shape "Issuer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (audience :initarg :audience :initform common-lisp:nil
+                         :type (common-lisp:or audience common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-audience
+                         :shape "Audience" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (name-qualifier :initarg :name-qualifier :initform
+                         common-lisp:nil :type
+                         (common-lisp:or name-qualifier common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-name-qualifier
+                         :shape "NameQualifier" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source-identity :initarg :source-identity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |sourceIdentityType| common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-samlresponse-source-identity
+                         :shape "sourceIdentityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assume-role-with-samlresponse
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'assume-role-with-samlresponse
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assume-role-with-samlresponse
                     'make-assume-role-with-samlresponse))
@@ -385,23 +559,68 @@
                           assume-role-with-samlresponse))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assume-role-with-web-identity-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assume-role-with-web-identity-request-"))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (role-session-name (common-lisp:error ":role-session-name is required")
-    :type (common-lisp:or |roleSessionNameType| common-lisp:null))
-   (web-identity-token (common-lisp:error ":web-identity-token is required")
-    :type (common-lisp:or |clientTokenType| common-lisp:null))
-   (provider-id common-lisp:nil :type
-    (common-lisp:or |urlType| common-lisp:null))
-   (policy-arns common-lisp:nil :type
-    (common-lisp:or |policyDescriptorListType| common-lisp:null))
-   (policy common-lisp:nil :type
-    (common-lisp:or |sessionPolicyDocumentType| common-lisp:null))
-   (duration-seconds common-lisp:nil :type
-    (common-lisp:or |roleDurationSecondsType| common-lisp:null)))
+ (common-lisp:defclass assume-role-with-web-identity-request common-lisp:nil
+                       ((role-arn :initarg :role-arn :initform
+                         (common-lisp:error ":role-arn is required") :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-assume-role-with-web-identity-request-role-arn
+                         :shape "arnType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (role-session-name :initarg :role-session-name
+                         :initform
+                         (common-lisp:error ":role-session-name is required")
+                         :type
+                         (common-lisp:or |roleSessionNameType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-request-role-session-name
+                         :shape "roleSessionNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (web-identity-token :initarg :web-identity-token
+                         :initform
+                         (common-lisp:error ":web-identity-token is required")
+                         :type
+                         (common-lisp:or |clientTokenType| common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-request-web-identity-token
+                         :shape "clientTokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (provider-id :initarg :provider-id :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |urlType| common-lisp:null) :accessor
+                         struct-shape-assume-role-with-web-identity-request-provider-id
+                         :shape "urlType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy-arns :initarg :policy-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |policyDescriptorListType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-request-policy-arns
+                         :shape "policyDescriptorListType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |sessionPolicyDocumentType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-request-policy
+                         :shape "sessionPolicyDocumentType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (duration-seconds :initarg :duration-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |roleDurationSecondsType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-request-duration-seconds
+                         :shape "roleDurationSecondsType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assume-role-with-web-identity-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'assume-role-with-web-identity-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assume-role-with-web-identity-request
                     'make-assume-role-with-web-identity-request))
@@ -470,21 +689,63 @@
                           assume-role-with-web-identity-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assume-role-with-web-identity-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assume-role-with-web-identity-response-"))
-   (credentials common-lisp:nil :type
-    (common-lisp:or credentials common-lisp:null))
-   (subject-from-web-identity-token common-lisp:nil :type
-    (common-lisp:or |webIdentitySubjectType| common-lisp:null))
-   (assumed-role-user common-lisp:nil :type
-    (common-lisp:or assumed-role-user common-lisp:null))
-   (packed-policy-size common-lisp:nil :type
-    (common-lisp:or |nonNegativeIntegerType| common-lisp:null))
-   (provider common-lisp:nil :type (common-lisp:or issuer common-lisp:null))
-   (audience common-lisp:nil :type (common-lisp:or audience common-lisp:null))
-   (source-identity common-lisp:nil :type
-    (common-lisp:or |sourceIdentityType| common-lisp:null)))
+ (common-lisp:defclass assume-role-with-web-identity-response common-lisp:nil
+                       ((credentials :initarg :credentials :initform
+                         common-lisp:nil :type
+                         (common-lisp:or credentials common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-response-credentials
+                         :shape "Credentials" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (subject-from-web-identity-token :initarg
+                         :subject-from-web-identity-token :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |webIdentitySubjectType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-response-subject-from-web-identity-token
+                         :shape "webIdentitySubjectType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (assumed-role-user :initarg :assumed-role-user
+                         :initform common-lisp:nil :type
+                         (common-lisp:or assumed-role-user common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-response-assumed-role-user
+                         :shape "AssumedRoleUser" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (packed-policy-size :initarg :packed-policy-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |nonNegativeIntegerType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-response-packed-policy-size
+                         :shape "nonNegativeIntegerType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (provider :initarg :provider :initform common-lisp:nil
+                         :type (common-lisp:or issuer common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-response-provider
+                         :shape "Issuer" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (audience :initarg :audience :initform common-lisp:nil
+                         :type (common-lisp:or audience common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-response-audience
+                         :shape "Audience" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (source-identity :initarg :source-identity :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |sourceIdentityType| common-lisp:null)
+                         :accessor
+                         struct-shape-assume-role-with-web-identity-response-source-identity
+                         :shape "sourceIdentityType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assume-role-with-web-identity-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'assume-role-with-web-identity-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assume-role-with-web-identity-response
                     'make-assume-role-with-web-identity-response))
@@ -554,13 +815,26 @@
                           assume-role-with-web-identity-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (assumed-role-user (:copier common-lisp:nil)
-      (:conc-name "struct-shape-assumed-role-user-"))
-   (assumed-role-id (common-lisp:error ":assumed-role-id is required") :type
-    (common-lisp:or |assumedRoleIdType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+ (common-lisp:defclass assumed-role-user common-lisp:nil
+                       ((assumed-role-id :initarg :assumed-role-id :initform
+                         (common-lisp:error ":assumed-role-id is required")
+                         :type
+                         (common-lisp:or |assumedRoleIdType| common-lisp:null)
+                         :accessor
+                         struct-shape-assumed-role-user-assumed-role-id :shape
+                         "assumedRoleIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-assumed-role-user-arn :shape "arnType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-assumed-role-user
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'assumed-role-user
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'assumed-role-user 'make-assumed-role-user))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -588,17 +862,39 @@
    common-lisp:nil))
 (common-lisp:deftype audience () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (credentials (:copier common-lisp:nil)
-      (:conc-name "struct-shape-credentials-"))
-   (access-key-id (common-lisp:error ":access-key-id is required") :type
-    (common-lisp:or |accessKeyIdType| common-lisp:null))
-   (secret-access-key (common-lisp:error ":secret-access-key is required")
-    :type (common-lisp:or |accessKeySecretType| common-lisp:null))
-   (session-token (common-lisp:error ":session-token is required") :type
-    (common-lisp:or |tokenType| common-lisp:null))
-   (expiration (common-lisp:error ":expiration is required") :type
-    (common-lisp:or |dateType| common-lisp:null)))
+ (common-lisp:defclass credentials common-lisp:nil
+                       ((access-key-id :initarg :access-key-id :initform
+                         (common-lisp:error ":access-key-id is required") :type
+                         (common-lisp:or |accessKeyIdType| common-lisp:null)
+                         :accessor struct-shape-credentials-access-key-id
+                         :shape "accessKeyIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (secret-access-key :initarg :secret-access-key
+                         :initform
+                         (common-lisp:error ":secret-access-key is required")
+                         :type
+                         (common-lisp:or |accessKeySecretType|
+                                         common-lisp:null)
+                         :accessor struct-shape-credentials-secret-access-key
+                         :shape "accessKeySecretType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (session-token :initarg :session-token :initform
+                         (common-lisp:error ":session-token is required") :type
+                         (common-lisp:or |tokenType| common-lisp:null)
+                         :accessor struct-shape-credentials-session-token
+                         :shape "tokenType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expiration :initarg :expiration :initform
+                         (common-lisp:error ":expiration is required") :type
+                         (common-lisp:or |dateType| common-lisp:null) :accessor
+                         struct-shape-credentials-expiration :shape "dateType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-credentials
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'credentials
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'credentials 'make-credentials))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input credentials))
@@ -638,11 +934,21 @@
                         ((aws-sdk/generator/shape::input credentials))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decode-authorization-message-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decode-authorization-message-request-"))
-   (encoded-message (common-lisp:error ":encoded-message is required") :type
-    (common-lisp:or |encodedMessageType| common-lisp:null)))
+ (common-lisp:defclass decode-authorization-message-request common-lisp:nil
+                       ((encoded-message :initarg :encoded-message :initform
+                         (common-lisp:error ":encoded-message is required")
+                         :type
+                         (common-lisp:or |encodedMessageType| common-lisp:null)
+                         :accessor
+                         struct-shape-decode-authorization-message-request-encoded-message
+                         :shape "encodedMessageType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decode-authorization-message-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'decode-authorization-message-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'decode-authorization-message-request
                     'make-decode-authorization-message-request))
@@ -669,11 +975,20 @@
                           decode-authorization-message-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (decode-authorization-message-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-decode-authorization-message-response-"))
-   (decoded-message common-lisp:nil :type
-    (common-lisp:or |decodedMessageType| common-lisp:null)))
+ (common-lisp:defclass decode-authorization-message-response common-lisp:nil
+                       ((decoded-message :initarg :decoded-message :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |decodedMessageType| common-lisp:null)
+                         :accessor
+                         struct-shape-decode-authorization-message-response-decoded-message
+                         :shape "decodedMessageType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-decode-authorization-message-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'decode-authorization-message-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'decode-authorization-message-response
                     'make-decode-authorization-message-response))
@@ -707,13 +1022,27 @@
  (common-lisp:export
   (common-lisp:list 'expired-token-exception 'expired-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (federated-user (:copier common-lisp:nil)
-      (:conc-name "struct-shape-federated-user-"))
-   (federated-user-id (common-lisp:error ":federated-user-id is required")
-    :type (common-lisp:or |federatedIdType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+ (common-lisp:defclass federated-user common-lisp:nil
+                       ((federated-user-id :initarg :federated-user-id
+                         :initform
+                         (common-lisp:error ":federated-user-id is required")
+                         :type
+                         (common-lisp:or |federatedIdType| common-lisp:null)
+                         :accessor
+                         struct-shape-federated-user-federated-user-id :shape
+                         "federatedIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform
+                         (common-lisp:error ":arn is required") :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-federated-user-arn :shape "arnType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-federated-user
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'federated-user
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'federated-user 'make-federated-user))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input federated-user))
@@ -739,11 +1068,19 @@
                         ((aws-sdk/generator/shape::input federated-user))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-access-key-info-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-access-key-info-request-"))
-   (access-key-id (common-lisp:error ":access-key-id is required") :type
-    (common-lisp:or |accessKeyIdType| common-lisp:null)))
+ (common-lisp:defclass get-access-key-info-request common-lisp:nil
+                       ((access-key-id :initarg :access-key-id :initform
+                         (common-lisp:error ":access-key-id is required") :type
+                         (common-lisp:or |accessKeyIdType| common-lisp:null)
+                         :accessor
+                         struct-shape-get-access-key-info-request-access-key-id
+                         :shape "accessKeyIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-access-key-info-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-access-key-info-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-access-key-info-request
                     'make-get-access-key-info-request))
@@ -770,11 +1107,18 @@
                           get-access-key-info-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-access-key-info-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-access-key-info-response-"))
-   (account common-lisp:nil :type
-    (common-lisp:or |accountType| common-lisp:null)))
+ (common-lisp:defclass get-access-key-info-response common-lisp:nil
+                       ((account :initarg :account :initform common-lisp:nil
+                         :type (common-lisp:or |accountType| common-lisp:null)
+                         :accessor
+                         struct-shape-get-access-key-info-response-account
+                         :shape "accountType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-access-key-info-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-access-key-info-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-access-key-info-response
                     'make-get-access-key-info-response))
@@ -801,9 +1145,13 @@
                           get-access-key-info-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-caller-identity-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-caller-identity-request-")))
+ (common-lisp:defclass get-caller-identity-request common-lisp:nil
+                       common-lisp:nil
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-caller-identity-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-caller-identity-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-caller-identity-request
                     'make-get-caller-identity-request))
@@ -823,14 +1171,29 @@
                           get-caller-identity-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-caller-identity-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-caller-identity-response-"))
-   (user-id common-lisp:nil :type
-    (common-lisp:or |userIdType| common-lisp:null))
-   (account common-lisp:nil :type
-    (common-lisp:or |accountType| common-lisp:null))
-   (arn common-lisp:nil :type (common-lisp:or |arnType| common-lisp:null)))
+ (common-lisp:defclass get-caller-identity-response common-lisp:nil
+                       ((user-id :initarg :user-id :initform common-lisp:nil
+                         :type (common-lisp:or |userIdType| common-lisp:null)
+                         :accessor
+                         struct-shape-get-caller-identity-response-user-id
+                         :shape "userIdType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (account :initarg :account :initform common-lisp:nil
+                         :type (common-lisp:or |accountType| common-lisp:null)
+                         :accessor
+                         struct-shape-get-caller-identity-response-account
+                         :shape "accountType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-get-caller-identity-response-arn :shape
+                         "arnType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-caller-identity-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-caller-identity-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-caller-identity-response
                     'make-get-caller-identity-response))
@@ -871,19 +1234,49 @@
                           get-caller-identity-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-federation-token-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-federation-token-request-"))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (policy common-lisp:nil :type
-    (common-lisp:or |sessionPolicyDocumentType| common-lisp:null))
-   (policy-arns common-lisp:nil :type
-    (common-lisp:or |policyDescriptorListType| common-lisp:null))
-   (duration-seconds common-lisp:nil :type
-    (common-lisp:or |durationSecondsType| common-lisp:null))
-   (tags common-lisp:nil :type
-    (common-lisp:or |tagListType| common-lisp:null)))
+ (common-lisp:defclass get-federation-token-request common-lisp:nil
+                       ((name :initarg :name :initform
+                         (common-lisp:error ":name is required") :type
+                         (common-lisp:or |userNameType| common-lisp:null)
+                         :accessor
+                         struct-shape-get-federation-token-request-name :shape
+                         "userNameType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (policy :initarg :policy :initform common-lisp:nil
+                         :type
+                         (common-lisp:or |sessionPolicyDocumentType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-federation-token-request-policy
+                         :shape "sessionPolicyDocumentType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (policy-arns :initarg :policy-arns :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |policyDescriptorListType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-federation-token-request-policy-arns
+                         :shape "policyDescriptorListType" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (duration-seconds :initarg :duration-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |durationSecondsType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-federation-token-request-duration-seconds
+                         :shape "durationSecondsType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (tags :initarg :tags :initform common-lisp:nil :type
+                         (common-lisp:or |tagListType| common-lisp:null)
+                         :accessor
+                         struct-shape-get-federation-token-request-tags :shape
+                         "tagListType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-federation-token-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-federation-token-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-federation-token-request
                     'make-get-federation-token-request))
@@ -938,15 +1331,35 @@
                           get-federation-token-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-federation-token-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-federation-token-response-"))
-   (credentials common-lisp:nil :type
-    (common-lisp:or credentials common-lisp:null))
-   (federated-user common-lisp:nil :type
-    (common-lisp:or federated-user common-lisp:null))
-   (packed-policy-size common-lisp:nil :type
-    (common-lisp:or |nonNegativeIntegerType| common-lisp:null)))
+ (common-lisp:defclass get-federation-token-response common-lisp:nil
+                       ((credentials :initarg :credentials :initform
+                         common-lisp:nil :type
+                         (common-lisp:or credentials common-lisp:null)
+                         :accessor
+                         struct-shape-get-federation-token-response-credentials
+                         :shape "Credentials" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (federated-user :initarg :federated-user :initform
+                         common-lisp:nil :type
+                         (common-lisp:or federated-user common-lisp:null)
+                         :accessor
+                         struct-shape-get-federation-token-response-federated-user
+                         :shape "FederatedUser" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (packed-policy-size :initarg :packed-policy-size
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |nonNegativeIntegerType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-federation-token-response-packed-policy-size
+                         :shape "nonNegativeIntegerType" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-federation-token-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'get-federation-token-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-federation-token-response
                     'make-get-federation-token-response))
@@ -987,15 +1400,34 @@
                           get-federation-token-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-session-token-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-session-token-request-"))
-   (duration-seconds common-lisp:nil :type
-    (common-lisp:or |durationSecondsType| common-lisp:null))
-   (serial-number common-lisp:nil :type
-    (common-lisp:or |serialNumberType| common-lisp:null))
-   (token-code common-lisp:nil :type
-    (common-lisp:or |tokenCodeType| common-lisp:null)))
+ (common-lisp:defclass get-session-token-request common-lisp:nil
+                       ((duration-seconds :initarg :duration-seconds :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |durationSecondsType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-session-token-request-duration-seconds
+                         :shape "durationSecondsType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (serial-number :initarg :serial-number :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |serialNumberType| common-lisp:null)
+                         :accessor
+                         struct-shape-get-session-token-request-serial-number
+                         :shape "serialNumberType" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (token-code :initarg :token-code :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |tokenCodeType| common-lisp:null)
+                         :accessor
+                         struct-shape-get-session-token-request-token-code
+                         :shape "tokenCodeType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-session-token-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-session-token-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-session-token-request
                     'make-get-session-token-request))
@@ -1036,11 +1468,19 @@
                           get-session-token-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-session-token-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-session-token-response-"))
-   (credentials common-lisp:nil :type
-    (common-lisp:or credentials common-lisp:null)))
+ (common-lisp:defclass get-session-token-response common-lisp:nil
+                       ((credentials :initarg :credentials :initform
+                         common-lisp:nil :type
+                         (common-lisp:or credentials common-lisp:null)
+                         :accessor
+                         struct-shape-get-session-token-response-credentials
+                         :shape "Credentials" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-session-token-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-session-token-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-session-token-response
                     'make-get-session-token-response))
@@ -1117,10 +1557,17 @@
   (common-lisp:list 'packed-policy-too-large-exception
                     'packed-policy-too-large-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (policy-descriptor-type (:copier common-lisp:nil)
-      (:conc-name "struct-shape-policy-descriptor-type-"))
-   (arn common-lisp:nil :type (common-lisp:or |arnType| common-lisp:null)))
+ (common-lisp:defclass policy-descriptor-type common-lisp:nil
+                       ((arn :initarg :arn :initform common-lisp:nil :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-policy-descriptor-type-arn :shape
+                         "arnType" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-policy-descriptor-type
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'policy-descriptor-type
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'policy-descriptor-type 'make-policy-descriptor-type))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1146,13 +1593,26 @@
                           policy-descriptor-type))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (provided-context (:copier common-lisp:nil)
-      (:conc-name "struct-shape-provided-context-"))
-   (provider-arn common-lisp:nil :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (context-assertion common-lisp:nil :type
-    (common-lisp:or |contextAssertionType| common-lisp:null)))
+ (common-lisp:defclass provided-context common-lisp:nil
+                       ((provider-arn :initarg :provider-arn :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |arnType| common-lisp:null) :accessor
+                         struct-shape-provided-context-provider-arn :shape
+                         "arnType" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (context-assertion :initarg :context-assertion
+                         :initform common-lisp:nil :type
+                         (common-lisp:or |contextAssertionType|
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-provided-context-context-assertion :shape
+                         "contextAssertionType" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-provided-context
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'provided-context
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'provided-context 'make-provided-context))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -1198,12 +1658,23 @@
 (common-lisp:deftype subject () 'common-lisp:string)
 (common-lisp:deftype subject-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or |tagKeyType| common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or |tagValueType| common-lisp:null)))
+ (common-lisp:defclass tag common-lisp:nil
+                       ((key :initarg :key :initform
+                         (common-lisp:error ":key is required") :type
+                         (common-lisp:or |tagKeyType| common-lisp:null)
+                         :accessor struct-shape-tag-key :shape "tagKeyType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or |tagValueType| common-lisp:null)
+                         :accessor struct-shape-tag-value :shape "tagValueType"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-tag (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'tag
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input tag))

@@ -42,18 +42,44 @@
  (common-lisp:export
   (common-lisp:list 'access-forbidden 'access-forbidden-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-record-error (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-record-error-"))
-   (feature-group-name (common-lisp:error ":feature-group-name is required")
-    :type (common-lisp:or value-as-string common-lisp:null))
-   (record-identifier-value-as-string
-    (common-lisp:error ":record-identifier-value-as-string is required") :type
-    (common-lisp:or value-as-string common-lisp:null))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or value-as-string common-lisp:null))
-   (error-message (common-lisp:error ":error-message is required") :type
-    (common-lisp:or message common-lisp:null)))
+ (common-lisp:defclass batch-get-record-error common-lisp:nil
+                       ((feature-group-name :initarg :feature-group-name
+                         :initform
+                         (common-lisp:error ":feature-group-name is required")
+                         :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-error-feature-group-name
+                         :shape "ValueAsString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (record-identifier-value-as-string :initarg
+                         :record-identifier-value-as-string :initform
+                         (common-lisp:error
+                          ":record-identifier-value-as-string is required")
+                         :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-error-record-identifier-value-as-string
+                         :shape "ValueAsString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-code :initarg :error-code :initform
+                         (common-lisp:error ":error-code is required") :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-error-error-code :shape
+                         "ValueAsString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (error-message :initarg :error-message :initform
+                         (common-lisp:error ":error-message is required") :type
+                         (common-lisp:or message common-lisp:null) :accessor
+                         struct-shape-batch-get-record-error-error-message
+                         :shape "Message" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-record-error
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-get-record-error
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-record-error 'make-batch-get-record-error))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -109,16 +135,39 @@
                            (trivial-types:proper-list batch-get-record-error))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-record-identifier (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-record-identifier-"))
-   (feature-group-name (common-lisp:error ":feature-group-name is required")
-    :type (common-lisp:or feature-group-name-or-arn common-lisp:null))
-   (record-identifiers-value-as-string
-    (common-lisp:error ":record-identifiers-value-as-string is required") :type
-    (common-lisp:or record-identifiers common-lisp:null))
-   (feature-names common-lisp:nil :type
-    (common-lisp:or feature-names common-lisp:null)))
+ (common-lisp:defclass batch-get-record-identifier common-lisp:nil
+                       ((feature-group-name :initarg :feature-group-name
+                         :initform
+                         (common-lisp:error ":feature-group-name is required")
+                         :type
+                         (common-lisp:or feature-group-name-or-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-identifier-feature-group-name
+                         :shape "FeatureGroupNameOrArn" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (record-identifiers-value-as-string :initarg
+                         :record-identifiers-value-as-string :initform
+                         (common-lisp:error
+                          ":record-identifiers-value-as-string is required")
+                         :type
+                         (common-lisp:or record-identifiers common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-identifier-record-identifiers-value-as-string
+                         :shape "RecordIdentifiers" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (feature-names :initarg :feature-names :initform
+                         common-lisp:nil :type
+                         (common-lisp:or feature-names common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-identifier-feature-names
+                         :shape "FeatureNames" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-record-identifier
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-get-record-identifier
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-record-identifier
                     'make-batch-get-record-identifier))
@@ -169,13 +218,29 @@
                             batch-get-record-identifier))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-record-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-record-request-"))
-   (identifiers (common-lisp:error ":identifiers is required") :type
-    (common-lisp:or batch-get-record-identifiers common-lisp:null))
-   (expiration-time-response common-lisp:nil :type
-    (common-lisp:or expiration-time-response common-lisp:null)))
+ (common-lisp:defclass batch-get-record-request common-lisp:nil
+                       ((identifiers :initarg :identifiers :initform
+                         (common-lisp:error ":identifiers is required") :type
+                         (common-lisp:or batch-get-record-identifiers
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-request-identifiers
+                         :shape "BatchGetRecordIdentifiers" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (expiration-time-response :initarg
+                         :expiration-time-response :initform common-lisp:nil
+                         :type
+                         (common-lisp:or expiration-time-response
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-request-expiration-time-response
+                         :shape "ExpirationTimeResponse" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-record-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-get-record-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-record-request 'make-batch-get-record-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -209,16 +274,39 @@
                           batch-get-record-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-record-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-record-response-"))
-   (records (common-lisp:error ":records is required") :type
-    (common-lisp:or batch-get-record-result-details common-lisp:null))
-   (errors (common-lisp:error ":errors is required") :type
-    (common-lisp:or batch-get-record-errors common-lisp:null))
-   (unprocessed-identifiers
-    (common-lisp:error ":unprocessed-identifiers is required") :type
-    (common-lisp:or unprocessed-identifiers common-lisp:null)))
+ (common-lisp:defclass batch-get-record-response common-lisp:nil
+                       ((records :initarg :records :initform
+                         (common-lisp:error ":records is required") :type
+                         (common-lisp:or batch-get-record-result-details
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-response-records :shape
+                         "BatchGetRecordResultDetails" :location
+                         common-lisp:nil :location-name common-lisp:nil)
+                        (errors :initarg :errors :initform
+                         (common-lisp:error ":errors is required") :type
+                         (common-lisp:or batch-get-record-errors
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-response-errors :shape
+                         "BatchGetRecordErrors" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (unprocessed-identifiers :initarg
+                         :unprocessed-identifiers :initform
+                         (common-lisp:error
+                          ":unprocessed-identifiers is required")
+                         :type
+                         (common-lisp:or unprocessed-identifiers
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-response-unprocessed-identifiers
+                         :shape "UnprocessedIdentifiers" :location
+                         common-lisp:nil :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-record-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'batch-get-record-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-record-response
                     'make-batch-get-record-response))
@@ -260,18 +348,44 @@
                           batch-get-record-response))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (batch-get-record-result-detail (:copier common-lisp:nil)
-      (:conc-name "struct-shape-batch-get-record-result-detail-"))
-   (feature-group-name (common-lisp:error ":feature-group-name is required")
-    :type (common-lisp:or value-as-string common-lisp:null))
-   (record-identifier-value-as-string
-    (common-lisp:error ":record-identifier-value-as-string is required") :type
-    (common-lisp:or value-as-string common-lisp:null))
-   (record (common-lisp:error ":record is required") :type
-    (common-lisp:or record common-lisp:null))
-   (expires-at common-lisp:nil :type
-    (common-lisp:or expires-at common-lisp:null)))
+ (common-lisp:defclass batch-get-record-result-detail common-lisp:nil
+                       ((feature-group-name :initarg :feature-group-name
+                         :initform
+                         (common-lisp:error ":feature-group-name is required")
+                         :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-result-detail-feature-group-name
+                         :shape "ValueAsString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (record-identifier-value-as-string :initarg
+                         :record-identifier-value-as-string :initform
+                         (common-lisp:error
+                          ":record-identifier-value-as-string is required")
+                         :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor
+                         struct-shape-batch-get-record-result-detail-record-identifier-value-as-string
+                         :shape "ValueAsString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (record :initarg :record :initform
+                         (common-lisp:error ":record is required") :type
+                         (common-lisp:or record common-lisp:null) :accessor
+                         struct-shape-batch-get-record-result-detail-record
+                         :shape "Record" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expires-at :initarg :expires-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or expires-at common-lisp:null) :accessor
+                         struct-shape-batch-get-record-result-detail-expires-at
+                         :shape "ExpiresAt" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-batch-get-record-result-detail
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance
+                      'batch-get-record-result-detail
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'batch-get-record-result-detail
                     'make-batch-get-record-result-detail))
@@ -329,20 +443,53 @@
                             batch-get-record-result-detail))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-record-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-record-request-"))
-   (feature-group-name (common-lisp:error ":feature-group-name is required")
-    :type (common-lisp:or feature-group-name-or-arn common-lisp:null))
-   (record-identifier-value-as-string
-    (common-lisp:error ":record-identifier-value-as-string is required") :type
-    (common-lisp:or value-as-string common-lisp:null))
-   (event-time (common-lisp:error ":event-time is required") :type
-    (common-lisp:or value-as-string common-lisp:null))
-   (target-stores common-lisp:nil :type
-    (common-lisp:or target-stores common-lisp:null))
-   (deletion-mode common-lisp:nil :type
-    (common-lisp:or deletion-mode common-lisp:null)))
+ (common-lisp:defclass delete-record-request common-lisp:nil
+                       ((feature-group-name :initarg :feature-group-name
+                         :initform
+                         (common-lisp:error ":feature-group-name is required")
+                         :type
+                         (common-lisp:or feature-group-name-or-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-delete-record-request-feature-group-name
+                         :shape "FeatureGroupNameOrArn" :location "uri"
+                         :location-name "FeatureGroupName")
+                        (record-identifier-value-as-string :initarg
+                         :record-identifier-value-as-string :initform
+                         (common-lisp:error
+                          ":record-identifier-value-as-string is required")
+                         :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor
+                         struct-shape-delete-record-request-record-identifier-value-as-string
+                         :shape "ValueAsString" :location "querystring"
+                         :location-name "RecordIdentifierValueAsString")
+                        (event-time :initarg :event-time :initform
+                         (common-lisp:error ":event-time is required") :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor
+                         struct-shape-delete-record-request-event-time :shape
+                         "ValueAsString" :location "querystring" :location-name
+                         "EventTime")
+                        (target-stores :initarg :target-stores :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-stores common-lisp:null)
+                         :accessor
+                         struct-shape-delete-record-request-target-stores
+                         :shape "TargetStores" :location "querystring"
+                         :location-name "TargetStores")
+                        (deletion-mode :initarg :deletion-mode :initform
+                         common-lisp:nil :type
+                         (common-lisp:or deletion-mode common-lisp:null)
+                         :accessor
+                         struct-shape-delete-record-request-deletion-mode
+                         :shape "DeletionMode" :location "querystring"
+                         :location-name "DeletionMode"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-record-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-record-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-record-request 'make-delete-record-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -374,15 +521,31 @@
                            (trivial-types:proper-list feature-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (feature-value (:copier common-lisp:nil)
-      (:conc-name "struct-shape-feature-value-"))
-   (feature-name (common-lisp:error ":feature-name is required") :type
-    (common-lisp:or feature-name common-lisp:null))
-   (value-as-string common-lisp:nil :type
-    (common-lisp:or value-as-string common-lisp:null))
-   (value-as-string-list common-lisp:nil :type
-    (common-lisp:or value-as-string-list common-lisp:null)))
+ (common-lisp:defclass feature-value common-lisp:nil
+                       ((feature-name :initarg :feature-name :initform
+                         (common-lisp:error ":feature-name is required") :type
+                         (common-lisp:or feature-name common-lisp:null)
+                         :accessor struct-shape-feature-value-feature-name
+                         :shape "FeatureName" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value-as-string :initarg :value-as-string :initform
+                         common-lisp:nil :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor struct-shape-feature-value-value-as-string
+                         :shape "ValueAsString" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value-as-string-list :initarg :value-as-string-list
+                         :initform common-lisp:nil :type
+                         (common-lisp:or value-as-string-list common-lisp:null)
+                         :accessor
+                         struct-shape-feature-value-value-as-string-list :shape
+                         "ValueAsStringList" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-feature-value
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'feature-value
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'feature-value 'make-feature-value))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input feature-value))
@@ -416,18 +579,49 @@
                         ((aws-sdk/generator/shape::input feature-value))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-record-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-record-request-"))
-   (feature-group-name (common-lisp:error ":feature-group-name is required")
-    :type (common-lisp:or feature-group-name-or-arn common-lisp:null))
-   (record-identifier-value-as-string
-    (common-lisp:error ":record-identifier-value-as-string is required") :type
-    (common-lisp:or value-as-string common-lisp:null))
-   (feature-names common-lisp:nil :type
-    (common-lisp:or feature-names common-lisp:null))
-   (expiration-time-response common-lisp:nil :type
-    (common-lisp:or expiration-time-response common-lisp:null)))
+ (common-lisp:defclass get-record-request common-lisp:nil
+                       ((feature-group-name :initarg :feature-group-name
+                         :initform
+                         (common-lisp:error ":feature-group-name is required")
+                         :type
+                         (common-lisp:or feature-group-name-or-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-record-request-feature-group-name
+                         :shape "FeatureGroupNameOrArn" :location "uri"
+                         :location-name "FeatureGroupName")
+                        (record-identifier-value-as-string :initarg
+                         :record-identifier-value-as-string :initform
+                         (common-lisp:error
+                          ":record-identifier-value-as-string is required")
+                         :type
+                         (common-lisp:or value-as-string common-lisp:null)
+                         :accessor
+                         struct-shape-get-record-request-record-identifier-value-as-string
+                         :shape "ValueAsString" :location "querystring"
+                         :location-name "RecordIdentifierValueAsString")
+                        (feature-names :initarg :feature-names :initform
+                         common-lisp:nil :type
+                         (common-lisp:or feature-names common-lisp:null)
+                         :accessor
+                         struct-shape-get-record-request-feature-names :shape
+                         "FeatureNames" :location "querystring" :location-name
+                         "FeatureName")
+                        (expiration-time-response :initarg
+                         :expiration-time-response :initform common-lisp:nil
+                         :type
+                         (common-lisp:or expiration-time-response
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-get-record-request-expiration-time-response
+                         :shape "ExpirationTimeResponse" :location
+                         "querystring" :location-name
+                         "ExpirationTimeResponse"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-record-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-record-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-record-request 'make-get-record-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -440,12 +634,23 @@
                         ((aws-sdk/generator/shape::input get-record-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-record-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-record-response-"))
-   (record common-lisp:nil :type (common-lisp:or record common-lisp:null))
-   (expires-at common-lisp:nil :type
-    (common-lisp:or expires-at common-lisp:null)))
+ (common-lisp:defclass get-record-response common-lisp:nil
+                       ((record :initarg :record :initform common-lisp:nil
+                         :type (common-lisp:or record common-lisp:null)
+                         :accessor struct-shape-get-record-response-record
+                         :shape "Record" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (expires-at :initarg :expires-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or expires-at common-lisp:null) :accessor
+                         struct-shape-get-record-response-expires-at :shape
+                         "ExpiresAt" :location common-lisp:nil :location-name
+                         common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-record-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-record-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-record-response 'make-get-record-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -480,17 +685,41 @@
   (common-lisp:list 'internal-failure 'internal-failure-message)))
 (common-lisp:deftype message () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (put-record-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-put-record-request-"))
-   (feature-group-name (common-lisp:error ":feature-group-name is required")
-    :type (common-lisp:or feature-group-name-or-arn common-lisp:null))
-   (record (common-lisp:error ":record is required") :type
-    (common-lisp:or record common-lisp:null))
-   (target-stores common-lisp:nil :type
-    (common-lisp:or target-stores common-lisp:null))
-   (ttl-duration common-lisp:nil :type
-    (common-lisp:or ttl-duration common-lisp:null)))
+ (common-lisp:defclass put-record-request common-lisp:nil
+                       ((feature-group-name :initarg :feature-group-name
+                         :initform
+                         (common-lisp:error ":feature-group-name is required")
+                         :type
+                         (common-lisp:or feature-group-name-or-arn
+                                         common-lisp:null)
+                         :accessor
+                         struct-shape-put-record-request-feature-group-name
+                         :shape "FeatureGroupNameOrArn" :location "uri"
+                         :location-name "FeatureGroupName")
+                        (record :initarg :record :initform
+                         (common-lisp:error ":record is required") :type
+                         (common-lisp:or record common-lisp:null) :accessor
+                         struct-shape-put-record-request-record :shape "Record"
+                         :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (target-stores :initarg :target-stores :initform
+                         common-lisp:nil :type
+                         (common-lisp:or target-stores common-lisp:null)
+                         :accessor
+                         struct-shape-put-record-request-target-stores :shape
+                         "TargetStores" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (ttl-duration :initarg :ttl-duration :initform
+                         common-lisp:nil :type
+                         (common-lisp:or ttl-duration common-lisp:null)
+                         :accessor struct-shape-put-record-request-ttl-duration
+                         :shape "TtlDuration" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-put-record-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'put-record-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'put-record-request 'make-put-record-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -562,13 +791,24 @@
                            (trivial-types:proper-list target-store))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct
-     (ttl-duration (:copier common-lisp:nil)
-      (:conc-name "struct-shape-ttl-duration-"))
-   (unit (common-lisp:error ":unit is required") :type
-    (common-lisp:or ttl-duration-unit common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or ttl-duration-value common-lisp:null)))
+ (common-lisp:defclass ttl-duration common-lisp:nil
+                       ((unit :initarg :unit :initform
+                         (common-lisp:error ":unit is required") :type
+                         (common-lisp:or ttl-duration-unit common-lisp:null)
+                         :accessor struct-shape-ttl-duration-unit :shape
+                         "TtlDurationUnit" :location common-lisp:nil
+                         :location-name common-lisp:nil)
+                        (value :initarg :value :initform
+                         (common-lisp:error ":value is required") :type
+                         (common-lisp:or ttl-duration-value common-lisp:null)
+                         :accessor struct-shape-ttl-duration-value :shape
+                         "TtlDurationValue" :location common-lisp:nil
+                         :location-name common-lisp:nil))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-ttl-duration
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'ttl-duration
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'ttl-duration 'make-ttl-duration))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input ttl-duration))

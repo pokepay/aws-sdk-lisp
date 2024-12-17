@@ -35,11 +35,18 @@
 (common-lisp:deftype data ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (delete-connection-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-delete-connection-request-"))
-   (connection-id (common-lisp:error ":connection-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass delete-connection-request common-lisp:nil
+                       ((connection-id :initarg :connection-id :initform
+                         (common-lisp:error ":connection-id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-delete-connection-request-connection-id
+                         :shape "__string" :location "uri" :location-name
+                         "connectionId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-delete-connection-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'delete-connection-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'delete-connection-request
                     'make-delete-connection-request))
@@ -64,11 +71,18 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'forbidden-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-connection-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-connection-request-"))
-   (connection-id (common-lisp:error ":connection-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass get-connection-request common-lisp:nil
+                       ((connection-id :initarg :connection-id :initform
+                         (common-lisp:error ":connection-id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-get-connection-request-connection-id
+                         :shape "__string" :location "uri" :location-name
+                         "connectionId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-connection-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-connection-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-connection-request 'make-get-connection-request))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -87,14 +101,32 @@
                           get-connection-request))
    common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (get-connection-response (:copier common-lisp:nil)
-      (:conc-name "struct-shape-get-connection-response-"))
-   (connected-at common-lisp:nil :type
-    (common-lisp:or |__timestampIso8601| common-lisp:null))
-   (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (last-active-at common-lisp:nil :type
-    (common-lisp:or |__timestampIso8601| common-lisp:null)))
+ (common-lisp:defclass get-connection-response common-lisp:nil
+                       ((connected-at :initarg :connected-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__timestampIso8601| common-lisp:null)
+                         :accessor
+                         struct-shape-get-connection-response-connected-at
+                         :shape "__timestampIso8601" :location common-lisp:nil
+                         :location-name "connectedAt")
+                        (identity :initarg :identity :initform common-lisp:nil
+                         :type (common-lisp:or identity common-lisp:null)
+                         :accessor
+                         struct-shape-get-connection-response-identity :shape
+                         "Identity" :location common-lisp:nil :location-name
+                         "identity")
+                        (last-active-at :initarg :last-active-at :initform
+                         common-lisp:nil :type
+                         (common-lisp:or |__timestampIso8601| common-lisp:null)
+                         :accessor
+                         struct-shape-get-connection-response-last-active-at
+                         :shape "__timestampIso8601" :location common-lisp:nil
+                         :location-name "lastActiveAt"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-get-connection-response
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'get-connection-response
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'get-connection-response 'make-get-connection-response))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
@@ -139,12 +171,22 @@
      common-lisp:nil)
  (common-lisp:export (common-lisp:list 'gone-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (identity (:copier common-lisp:nil) (:conc-name "struct-shape-identity-"))
-   (source-ip (common-lisp:error ":source-ip is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (user-agent (common-lisp:error ":user-agent is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass identity common-lisp:nil
+                       ((source-ip :initarg :source-ip :initform
+                         (common-lisp:error ":source-ip is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-identity-source-ip :shape "__string"
+                         :location common-lisp:nil :location-name "sourceIp")
+                        (user-agent :initarg :user-agent :initform
+                         (common-lisp:error ":user-agent is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-identity-user-agent :shape "__string"
+                         :location common-lisp:nil :location-name "userAgent"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-identity
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'identity
+                      aws-sdk/generator/shape::args))
  (common-lisp:export (common-lisp:list 'identity 'make-identity))
  (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         ((aws-sdk/generator/shape::input identity))
@@ -178,13 +220,24 @@
   (common-lisp:list 'payload-too-large-exception
                     'payload-too-large-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (post-to-connection-request (:copier common-lisp:nil)
-      (:conc-name "struct-shape-post-to-connection-request-"))
-   (data (common-lisp:error ":data is required") :type
-    (common-lisp:or data common-lisp:null))
-   (connection-id (common-lisp:error ":connection-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+ (common-lisp:defclass post-to-connection-request common-lisp:nil
+                       ((data :initarg :data :initform
+                         (common-lisp:error ":data is required") :type
+                         (common-lisp:or data common-lisp:null) :accessor
+                         struct-shape-post-to-connection-request-data :shape
+                         "Data" :location common-lisp:nil :location-name
+                         common-lisp:nil)
+                        (connection-id :initarg :connection-id :initform
+                         (common-lisp:error ":connection-id is required") :type
+                         (common-lisp:or |__string| common-lisp:null) :accessor
+                         struct-shape-post-to-connection-request-connection-id
+                         :shape "__string" :location "uri" :location-name
+                         "connectionId"))
+                       (:metaclass aws-sdk/generator/shape::members-class))
+ (common-lisp:defun make-post-to-connection-request
+                    (common-lisp:&rest aws-sdk/generator/shape::args)
+   (common-lisp:apply #'common-lisp:make-instance 'post-to-connection-request
+                      aws-sdk/generator/shape::args))
  (common-lisp:export
   (common-lisp:list 'post-to-connection-request
                     'make-post-to-connection-request))
